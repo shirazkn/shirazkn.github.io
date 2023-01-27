@@ -2,4 +2,4 @@
 
 Use ```git clone --recurse-submodules <this-url>```
 <br>
-Access the website [here](shirazkn.github.io)!
+Access the website [here](https://shirazkn.github.io)!
