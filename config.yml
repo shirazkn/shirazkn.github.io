@@ -3,3 +3,14 @@ languageCode: en-us
 title: Shiraz
 theme: PaperMod
 publishDir: docs
+params:
+
+  homeInfoParams:
+    Title: "under construction..."
+    Content: "Please leave a comment!"
+
+  socialIcons: # optional
+    - name: "Github"
+      url: "https://www.github.com/shirazkn"
+    - name: "Self-reference"
+      url: "https://www.shiraz-k.com"
