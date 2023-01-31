@@ -1,0 +1,5 @@
+.headerfooter {
+    color: var(--tertiary);
+    opacity: 0.3;
+    text-align: center;
+}
