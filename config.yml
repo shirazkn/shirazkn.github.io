@@ -5,8 +5,8 @@ theme: PaperMod
 publishDir: docs
 params:
   homeInfoParams:
-    Title: "under construction..."
-    Content: "Please leave a comment!"
+    Title: <img src="favicon.png" class=logo> </img>
+    Content: "Please see my collection of strange mathematical attractions.<br> "
 
   socialIcons: # optional
     - name: "Github"
@@ -28,3 +28,8 @@ menu:
       name: archives
       url: /archives/
       weight: 10
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
