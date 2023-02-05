@@ -6,7 +6,7 @@ description: "We look at why natural languages allow us to say illogical things.
 This is part 1 of 2."
 tags: ["non-mathematical"]
 categories: ["logic"]
-series: ["Language and Logic"]
+# series: ["Language and Logic"]
 ShowToc: false
 TocOpen: false
 ---
