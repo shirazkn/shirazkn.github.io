@@ -1,3 +1,2 @@
-static/scripts
-docs/static/scripts
+scripts/env
 .DS_Store
