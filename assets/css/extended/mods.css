@@ -2,17 +2,8 @@
     /* float: right; position: static;  */
     color: var(--accent);}
 
-img.logo {
-    max-width: 30%;
-    margin: auto;
-    margin-bottom: 40px;
-}
-img.logo:after {
-    content: "\A";
-}
-
-img.logo.dark {
-    filter: invert(100%);
+body.dark figure.invertible img {
+    filter: invert(0.875) hue-rotate(180deg);
 }
 
 .headerfooter {
