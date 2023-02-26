@@ -1,0 +1,63 @@
+div#logo-s {
+    margin: auto;
+    height: 40vh;
+    width: 100hw;
+}
+
+div#logo-s svg .cls-black {
+  /* Default logo fills: #2a2a2a, #8b0a4c, #ff51af */
+  fill: url(#black-gradient);
+  fill-rule: evenodd;
+}
+
+div#logo-s svg .cls-pink {
+    fill: url(#pink-gradient);
+    fill-rule: nonzero;
+  }
+
+div#logo-s svg .cls-darkpink {
+    fill: url(#darkpink-gradient);
+    fill-rule: nonzero;
+}
+
+#black-gradient {
+    --color-1: #1a1a1a;
+    --color-2: #343434;
+}
+
+#darkpink-gradient {
+    --color-1: #5b193b;
+    --color-2: #b41a6a;
+}
+
+#pink-gradient {
+    --color-1: #db327e99;
+    --color-2: #ff51af;
+    --color-3: #f19dca;
+    --color-4: #f96bb7;
+}
+
+div#logo-s svg {
+    width: 75%;
+    height: 75%;
+}
+
+@keyframes cursor-blink {
+    33% {
+      opacity: 0;
+    }
+    66% {
+        opacity: 1;
+    }
+  }
+
+.entry-content-2::after {
+    content: "";
+    width: 1.0px;
+    height: 1em;
+    margin-bottom: 1000px;
+    transform: translateY(0.1em) translateX(-0.25em);
+    background: var(--primary);
+    display: inline-block;
+    animation: cursor-blink 1.2s steps(1) infinite;
+}

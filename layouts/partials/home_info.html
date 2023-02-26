@@ -1,0 +1,35 @@
+{{- with site.Params.homeInfoParams }}
+
+{{- $logo := resources.Get "js/logo.js" | minify | fingerprint -}}
+<script type="application/javascript" src="{{ $logo.Permalink }}"></script>
+
+{{/*  <svg id="cont" height="1000" width="1000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <circle id="cir1" cx="0" cy="0" r="40" stroke="yellow" stroke-width="" fill="black" />
+</svg>  */}}
+
+<article class="first-entry home-info">
+    <header class="entry-header">
+        <h1>{{ .Title | markdownify }}</h1>
+    </header>
+    <div class="entry-content">
+        {{ .Content | markdownify }}
+    </div>
+    <div id=logo-s>
+        <div id=svg-rotator>
+            {{- partial "logo_svg.html" . }}      
+        </div>    
+    </div>
+    {{/*  <footer class="entry-footer">
+        {{ partial "social_icons.html" site.Params.socialIcons }}
+    </footer> */}}
+
+    <div id="debug">
+        No debug messages...
+    </div>
+
+    <div class="entry-content-2">
+        {{/*  I hope you find what you're looking for  */}}
+        Welcome3
+    </div>
+</article>
+{{- end -}}
