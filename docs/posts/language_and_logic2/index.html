@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>The Quest for Completeness | Shiraz</title>
+<meta name="keywords" content="slightly mathematical">
+<meta name="description" content="In my earlier post I suggested that there is no objective notion of logical truth, that whether a statement is &rsquo;true&rsquo; can depend on the system of truth that one is operating in. Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I&rsquo;m excited to talk about it!
+Axiomatic Systems An axiomatization is an assignment of rules (axioms) such as &ldquo;one plus one equals two,&rdquo; making up an axiomatic system or a formal system.">
+<meta name="author" content="">
+<link rel="canonical" href="https://shirazkn.github.io/posts/language_and_logic2/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6a9189d5bcc41c7e58585760383ef865137a00228b3e1d4d47b4f018e7da0798.css" integrity="sha256-apGJ1bzEHH5YWFdgOD74ZRN6ACKLPh1NR7TwGOfaB5g=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://shirazkn.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://shirazkn.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="The Quest for Completeness" />
+<meta property="og:description" content="In my earlier post I suggested that there is no objective notion of logical truth, that whether a statement is &rsquo;true&rsquo; can depend on the system of truth that one is operating in. Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I&rsquo;m excited to talk about it!
+Axiomatic Systems An axiomatization is an assignment of rules (axioms) such as &ldquo;one plus one equals two,&rdquo; making up an axiomatic system or a formal system." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shirazkn.github.io/posts/language_and_logic2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-05T08:46:18-05:00" />
+<meta property="article:modified_time" content="2023-02-05T08:46:18-05:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The Quest for Completeness"/>
+<meta name="twitter:description" content="In my earlier post I suggested that there is no objective notion of logical truth, that whether a statement is &rsquo;true&rsquo; can depend on the system of truth that one is operating in. Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I&rsquo;m excited to talk about it!
+Axiomatic Systems An axiomatization is an assignment of rules (axioms) such as &ldquo;one plus one equals two,&rdquo; making up an axiomatic system or a formal system."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://shirazkn.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "The Quest for Completeness",
+      "item": "https://shirazkn.github.io/posts/language_and_logic2/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Quest for Completeness",
+  "name": "The Quest for Completeness",
+  "description": "In my earlier post I suggested that there is no objective notion of logical truth, that whether a statement is \u0026rsquo;true\u0026rsquo; can depend on the system of truth that one is operating in. Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I\u0026rsquo;m excited to talk about it!\nAxiomatic Systems An axiomatization is an assignment of rules (axioms) such as \u0026ldquo;one plus one equals two,\u0026rdquo; making up an axiomatic system or a formal system.",
+  "keywords": [
+    "slightly mathematical"
+  ],
+  "articleBody": "In my earlier post I suggested that there is no objective notion of logical truth, that whether a statement is ’true’ can depend on the system of truth that one is operating in. Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I’m excited to talk about it!\nAxiomatic Systems An axiomatization is an assignment of rules (axioms) such as “one plus one equals two,” making up an axiomatic system or a formal system. If you happen to be within that formal system, then you must follow all of the assigned rules. The choice of axioms dictates the degree of expressiveness that one has within the formal system. For instance, North Korea has a small number of state-approved haircuts that everyone must choose from, which does not sound like a very expressive system.\nSimilarly, in pre-elementary school mathematics you are introduced to the natural numbers: $0$, $1$, $2$, $3\\dots$ You can add one natural number to another, but don’t you dare subtract them! Once we allow subtraction, we are able to express negative numbers such as -$5$. Then comes multiplication, which doesn’t seem to introduce any new numbers. By middle school, we are allowed the use of division, which grants us a greater degree of expression. We are able to concoct fantastic things such as $2.25$.\nChess Not all formal systems are stratified in this way. Consider the system of moves on a chessboard. It allows us to succinctly describe and manipulate objects in the world of chess, but it isn’t clear whether the system of chess goes ‘above’ or ‘below’ some other formal system about numbers.\nFormal systems which can (to varying extents) characterize the natural numbers include the Presburger arithmetic, Peano arithmetic, and the Zermelo theory. These are all formal systems named after their respective conceivers. There is no single canonical formal system for describing numbers. In fact, different systems capture different properties about the numbers, and we may be interested in exploring these properties and the ensuing mathematical structure. In the $1920$s, Zermelo’s system was extended (similar to how we extended the integers to the rationals, above) to the Zermelo-Fraenkel (ZF) set theory , often touted as being the foundation of modern mathematics , as it captures just about every mathematical concept that we come across in school. To see just how pedantic mathematicians are (I mean that in the most endearing sense), a key addition to the Zermelo-Fraenkel theory over Zermelo’s was that we could now count not just to infinity, but beyond . Of course, 21st century mathematicians are interested in adding more axioms to this system so that we can find new infinities in between the existing infinities 1. It seems as if somebody should stop them from taking this bit any further.\nI can’t speak for whether we invented numbers, but we definitely made up the rules for how they behave. I guess you could argue that we did make up numbers, but only so far as to effectively capture the essence and structure of our perceived reality. The natural numbers described by each of the above formal systems works precisely like counting does, $1$ plus $2$ makes a $3$. Maybe there is such a thing as a ’number’ that just exists out there, but the numbers we use in our everyday math is the version that was invented by humans. It’s Zermelo and Fraenkel’s best approximation of what being a number entails. Like the cavemen in Plato’s allegory, we can trace over shadows on a wall, even if we can’t see or touch the objects casting these shadows.\nMathematics is certainly not just the study of numbers, though. It can be regarded as the study of patterns and structure instead. One begins this process by carefully choosing the axioms so as to best represent the structure that is to be studied, then further structure emerges through the logical inferences that are made about these axioms. Entire mathematical fields can be founded on axioms (i.e., we don’t always have to start by describing numbers). For doing probability we could use the Kolmogorov axioms , for geometry there’s Euclid’s axioms, for group theory we have group axioms, and so on.\nThere is a school of thought within mathematics called logicism , which believes that all of mathematics was founded on logic, logical inference was the glue that held axioms together to form theorems. More specifically, they believed that any mathematical truth could be proved using the one-two punch of axioms and logical inference. The mathematician David Hilbert was at the helm of this movement in the $1920$s. Hilbert is perhaps best known for posing a series of unsolved problems in mathematics, most of which were conjectures that mathematicians felt were true, but had neither been able to prove nor disprove yet. One of these conjectures was that all of mathematics can be founded on logic.\nBut wait a second, the whole point of this exercise was to figure out how logic could itself be defined. After all, logical inference should itself follow rules, else the formal systems based on them would be kind of messy and all over the place. Well, we could define logic as (pause for effect…) a formal system! This is indeed what we did. The Zermelo-Fraenkel theory (which, recall, is the formal system underlying most of modern mathematics) is built on first-order logic , which is indeed a formal system unto itself. First-order logic comes with, in addition to its axioms, its own formal system for logical inference, called zeroth-order logic or propositional logic .\nBefore we continue, it is worth mentioning that some languages (but not natural languages like English) can be defined as axiomatic systems too, and there are good reasons for why one might want to do this. Formal languages have been used to study linguistic structures. Alfred Tarski (of the Banach-Tarski paradox fame) also attempted to define truth using formal languages, noting that using a formal language one could construct a consistent, fool-proof definition for truth that was free of ambiguity.\nThen there are programming languages. Alan Turing introduced the concept of Turing machines (which are axiomatic systems) to study the fundamental limitations of computers, laying the foundation for all of theoretical computer science. Amazingly, he did so in a time when the word computer referred to a human occupation, not an electronic machine. We’ll revisit both Tarski and Turing’s works later in this post.\nChoosing the Axioms Let’s ask the question of how one chooses an axiomatic system. What kind of axioms would we want for our system? Suppose $A$ is an axiom and $\\neg A$ is its negation, i.e., the statement ‘$A$ is not true’. Clearly, $A$ and $\\neg A$ cannot both be axioms as this gives us a contradictory system. So we have our first requirement:\nCONSISTENCY – It should not be possible to prove contradictory statements\nWe should also have the ability to prove things within an axiomatic system. Proofs (or disproofs) are how we can be certain that something is true (or false). Those unsolved problems that Hilbert posed? Surely, any good axiomatic system will have either a proof or a disproof of each of the conjectures. Anything that is proved, we can call a theorem. If a conjecture gets disproved instead, we can negate it and call that a theorem. That is ideally how we would like to do mathematics.\nCOMPLETENESS – Anything that we feel is true should be provable\nFinally, a characteristic of a useful axiomatic system is that we are able to do something with these axioms. A mathematics based on just $12$ numbers may be sufficient to tell the time, but there are many situations where we would like to count past 12. This leads us to the very subjective stipulation which we call expressiveness.[^3]\nEXPRESSIVENESS – The axiomatic system should have a variety of objects and relationships that we can, for example, use to describe real-world phenomena We now have all the background needed to get into the meat of this post.\nGödel’s Incompleteness Theorems The mathematician Kurt Gödel was able to show, around a 100 years ago, that no axiomatic system can have all three of these qualities. Specifically, he showed that any axiomatic system (that is expressive enough to do basic arithmetic ) is either incomplete or inconsistent. This is called Gödel’s (first) incompleteness theorem.\nImplications in Mathematics Let’s think about what this means. Suppose we design an axiomatic system that is sufficiently expressive (can do basic computations, like add one thing to another to give two things). Either there are some true statements in it which cannot be proved using the axioms (incompleteness), or there exist contradictory statements in it, each of which can be proved using the axioms (inconsistency). In fact, the latter case, inconsistency, is far worse, and pretty much a deal-breaker. A single contradiction can suspend all credibility of an axiomatic system, because in a contradictory axiomatic system one can prove anything . That’s bad! We don’t want to have one mathematician prove that $2$ plus $2$ equals $5$, another prove that it doesn’t, and have no grounds for deciding who’s right. So it’s looking like we’d rather mathematics be incomplete (i.e., missing some things) than inconsistent (i.e., self-contradictory).\nIt turned out that at least one of Hilbert’s unsolved problems could neither be proved nor disproved, namely the continuum hypothesis (which conjectured that there is no set that is bigger than the integers and smaller than the real numbers). There was absolutely nothing that the Zermelo-Fraenkel ($ZF$) system could say definitively about this conjecture. So then what do we do with the continuum hypothesis ($CH$)? Does it not have a place in mathematics? Well, we could assume $CH$ is true and adopt it as a new axiom. We could also assume that it is false (which we write as ‘$\\neg CH$’) and adopt that as an axiom instead. Adding an axiom like this comes with its consequences, though. For instance, $ZF + CH$ implies that the infamous axiom of choice holds, which in turn leads to the Banach-Tarski paradox . Put simply, this means that geometry can have non-intuitive (‘weird’) properties in $ZF + CH$. So we want to double-check whether we indeed want geometry to behave in this way, before adding $CH$ (or $\\neg CH$) as an axiom to $ZF$.\nMathematicians are able to show that adding $CH$ at least does not make $ZF$ inconsistent, but that’s another possibility we should consider before adding new axioms. Given a choice, we’d rather be incomplete than inconsistent.\nReasons for Incompleteness There are axiomatic systems which are indeed consistent and complete, and first-order logic is one of them! (This is the content of the lesser known Gödel’s completeness theorem.) The incompleteness theorems require us to first qualify how expressive a system is, before we can say anything about its incompleteness. So let’s now look at when and why a given axiomatic system, be it language, logic, or mathematics, comes under the purview of the incompleteness theorems.\nInfinity / Recursion: Observe that, if an axiomatic system has only finitely many statements in it, we can just enumerate through all of its statements and check whether they’re true. Sort of like a brute force proof. A brute force proof in a system with infinitely many ’things’ in it either may or may not terminate (see the four color theorem and the Riemann hypothesis , respectively, for examples of either case.)\nRecall that Alan Turing’s work involved the study of programming languages, or rather, the computer algorithms that can be written using them. He showed that no computer program can decide (determine with certainty) whether another computer program ‘halts’, i.e., terminates, as opposed to getting stuck in an infinite loop. This is called the halting problem, and it is said to be undecidable. Here, undecidable only means that there is no effective algorithm to solve the halting problem. Similarly, Gödel’s theorem says nothing about the (non-)existence of infinitely long proofs. It just says that there are statements that do not have finite proofs, but we conveniently omit the word finite. (At this point, I would implore the reader who is familiar with Cauchy’s completeness in metric spaces to compare the two uses of the term ‘completeness’ 😃)\nIt seems like it is necessary and sufficient for an axiomatic system to have some notion of ‘infinitely many things’ in it for Gödel’s theorems to apply. But this isn’t quite the case. Robinson arithmetic is an incomplete axiomatic system that can be generated using finitely many axioms. On the other hand, Tarski's theory of real closed fields is a complete and decidable axiomatic system that characterizes the (infinitely large) set of real numbers2.\nAs a segue, consider the following block of (Python) code, which prints infinitely long strings of letters:\n1 2 3 def recursive_function(x): print(x) recursive_function(x) The function above takes some input x and uses what programmers call ‘self-reference’ to print the object x infinitely many times on the screen, indicating that self-reference has the potential to generate infinitely many things. This is a hint at the fact that self-reference, and not infinitude, may be the deeper reason for incompleteness.\nSelf-Reference: A universal feature of axiomatic systems where Gödel-like incompleteness theorems do apply is that these systems are capable of self-reference. Self-reference leads to what we call in common parlance paradoxes. A well-known example of a paradox arising from self-reference is “This statement is false”; we can’t assign a truth value to this statement without arriving at a contradiction, exactly as in Gödel’s theorem. Another well-known paradox from mathematics (which is of historical significance) is Russel’s paradox, which asks whether the set that contains all the other sets contains itself. Russel’s paradox showed that ’naive set theory’ (one in which you can even posit the existence of such a ‘set of all sets’) is inconsistent. The ‘ Barber paradox ’ is a more prosaic way of asking the same question: There is a village that has only one barber, who shaves those (and only those) who do not shave themselves. Does the barber shave himself?3\nA lot of Gödel-like theorems use proof by contradiction , where the contradiction arises from self-reference. Turing’s proof of the undecidability of the halting problem involves giving a computer program a version of itself as the input. (It’s a very accessible proof, so you could watch this video if you’re curious!)\nThe Second Incompleteness Theorem Okay, so many our axiomatic systems are incomplete, including mathematics. That might be a good thing, right? At least they aren’t inconsistent? Well, the second of Gödel’s incompleteness theorems states that no (sufficiently expressive) consistent system can prove its own consistency either. As we already know that the Zermelo-Fraenkel theory is incomplete (because of the unprovability of $CH$), it is guaranteed to have some unprovable (but potentially true) statements. One of these unprovable statements is that of its own consistency.\nSimilarly, recall how Tarski tried to define truth using axiomatic systems, such that the definition of truth varies based on the axiomatic system we’re interested in. In the last post, I suggested that truth is kind of like logical consistency. There is indeed a version of the second incompleteness theorem that swaps consistency out for truth. Tarki’s undefinability theorem says that the concept of truth in a formal system cannot be defined within that system. Tarski’s proof of the undefinability theorem mostly relies on self-reference, rather than on recursion as many other Gödel-like proofs do. It is also about formal systems in general, and not about mathematics. Owing to this fundamentality of Tarski’s theorem, the mathematician Raymond Smullyan showed in $1957$ that Gödel’s incompleteness theorems can be applied to many more formal systems than was believed in Gödel’s time. For these reasons, Smullyan also espouses that Tarski’s work should get much of the attention that Gödel’s does.\nIt seems like the study of consistency (or provability, truth, etc.) should itself be privy to the problem of self-reference, since we say that a formal system is unable to prove its own consistency. For that matter, the second incompleteness theorem is phrased a bit peculiarly; it doesn’t preclude the possibility that one formal system can prove the consistency of another.\nTranscending Language using Metalanguage As opposed to proofs in a formal system, proofs about a formal system can be expressed in a metalogic or a metalanguage. The metalanguage sits ‘above’ the formal system it is looking at, called the object language, in the sense that it is often more ‘powerful’ or expressive than the object language, and assumes the authority to state and prove theorems about the object language. Proofs about (in)consistency, (in)completeness, (un)decidability, and (un)provability are often stated in a metalogic/metalanguage. Similarly, Tarski’s definition of truth in a language (which is in this case the object language) was stated in a metalanguage, and his undefinability theorem showed that the metalanguage and its object language cannot coincide. As in the case of the incompleteness theorems, all of this only holds unless the object language was not very expressive to begin with. If the language is such that self-reference and/or basic arithmetic are not within its expressive capabilities, then it is indeed possible that it could serve as its own metalanguage, and/or that it is both complete and consistent.\nNatural Languages Natural languages are expressive by design, that’s their whole point. They encompass everything that we would want to talk to each other about. This includes a multitude of axiomatic systems, spanning formal language, logic, and mathematics. Since linguists, logicians, and mathematicians talk to each other in natural languages like English, natural languages should necessarily operate as metalanguages. If there were such a thing as a ‘formal natural language’, it would seem that Gödel’s theorems must apply to it, by virtue of its expressiveness. But in contrast to axiomatic systems of mathematics, we’d probably want a formal natural language to be complete rather than consistent.\nThe picture we are painting is misleading in the sense that formal systems that are 'bigger' are also more likely to be incomplete, which is counterintuitive to what we expect from the word incomplete. One way to resolve this is to consider that a small box is easy to fill up with things, but a bigger box with the same things in it would not be completely filled up. The property of being bigger increases the box's propensity for incompleteness. If you went to an English-speaking school, you were probably taught the semantics and grammatical constructs of the English language in English. Mathematicians are able to state Gödel’s theorems in English. Computer programmers use English to write pseudo-code. A natural language such as English has some element of completeness in the sense that we want it to do everything. If it weren’t complete, we’d just want a metalanguage ‘above’ it to fill in the holes, and so on. For example, a non-native English speaker may instinctively switch to their native language when they’re trying to express something complex, something they may not have the vocabulary for in English. It is even possible that they went to a school where English (the object language) was taught to them in their native language.\nThis is similar to how we added $CH$ to $ZF$ earlier to ‘complete’ it in some sense, but we cautioned that it comes at the risk of making the more powerful language, $ZF+CH$, to be inconsistent. In the case of natural languages, we embrace this potential inconsistency as being the trade-off for completeness.\nBefore we close, I should do my due diligence and note that, while formal languages can be used to discuss natural languages, the latter fall under the category of informal languages and may not have a definable notion of truth. In fact, Tarski explicitly warned against the extension of his ideas to natural languages. Tarski's critics also stress on the distinction between mathematical truth and metaphysical truth, which should not be conflated with each other. Nonetheless, one could argue that the mathematical (or rather, the axiomatic) approach to defining truth is as clean and air-tight a characterization of truth as we can hope to achieve. We just need to bear in mind that we aren’t here to establish a singular meaning for the word truth, but to appreciate the intricacies involved in defining truth and logic. The self-reference in trying to arrive at the true definition of truth shall not be lost on us.\nThe two infinities of the continuum hypothesis are the sizes of the natural numbers and the real numbers. See Cantor’s diagonalization for a proof of the fact that these sizes are indeed different, one of the most delightful proofs in math that is accessible even to middle-schoolers. Incidentally, the mathematical tool used in proving Gödel and Tarski’s theorems is named the diagonal lemma for its resemblance to Cantor’s diagonalization. ↩︎\nThe fact that there exists a Gödel-complete axiomatization of the real numbers should come as a surprise. Surely, any axiomatization of the reals must be more expressive than the so-called ‘basic arithmetic’ that Gödel’s theorems apply to, right? The reason why Tarski’s axiomatization of the reals is complete is because it cannot do the basic arithmetic that is stipulated in Gödel’s theorems. While Tarski’s axiomatization captures the properties of the reals, it does not have what it takes to define integers and their arithmetic properties. (Think of a number line that does not have any markings on it!) In fact, if one so much as introduces a sine function into this axiomatization, it becomes undecidable , because it allows us to encode integer arithmetic within the system. ↩︎\nThe barber in the Barber paradox appears to be a special person whom the rule does not apply to. This is similar to how the ‘set’ in Russel’s paradox cannot be treated as just any other set, but perhaps we could give it another name in order to avoid self-reference, and thus avoid contradiction. ↩︎\n",
+  "wordCount" : "3665",
+  "inLanguage": "en",
+  "datePublished": "2023-02-05T08:46:18-05:00",
+  "dateModified": "2023-02-05T08:46:18-05:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://shirazkn.github.io/posts/language_and_logic2/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shiraz",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://shirazkn.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://shirazkn.github.io" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://shirazkn.github.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      The Quest for Completeness
+    </h1>
+    <div class="post-meta"><span title='2023-02-05 08:46:18 -0500 EST'>February 5, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>In <a href="/posts/language_and_logic1" class="accented">
+    my earlier post
+</a> I suggested that there is no objective notion of logical truth, that whether a statement is &rsquo;true&rsquo; can depend on the system of truth that one is operating in.
+Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I&rsquo;m excited to talk about it!</p>
+<!-- Towards the end, we will see why it may be inevitable that natural languages are logically inconsistent. -->
+<h3 id="axiomatic-systems">Axiomatic Systems<a hidden class="anchor" aria-hidden="true" href="#axiomatic-systems">#</a></h3>
+<p>An <strong>axiomatization</strong> is an assignment of rules (axioms) such as &ldquo;<span>one plus one equals two</span>,&rdquo; making up an <strong>axiomatic system</strong> or a <strong>formal system</strong>.
+If you happen to be within that formal system, then you <em>must</em> follow all of the assigned rules.
+The choice of axioms dictates the degree of expressiveness that one has within the formal system. For instance, North Korea has a small number of state-approved haircuts that everyone must choose from, which does not sound like a very expressive system.</p>
+<!-- &#8211; -->
+<p>Similarly, in pre-elementary school mathematics you are introduced to the <strong>natural numbers</strong>: $0$, $1$, $2$, $3\dots$ You can add one natural number to another, but don&rsquo;t you dare subtract them! Once we <em>allow</em> subtraction, we are able to express <strong>negative numbers</strong> such as -$5$. Then comes multiplication, which doesn&rsquo;t seem to introduce any new numbers.
+By middle school, we are allowed the use of division, which grants us a greater degree of expression. We are able to concoct fantastic things such as $2.25$.</p>
+<aside> 
+<b>Chess</b>
+<p>Not all formal systems are stratified in this way. Consider the system of moves on a chessboard. It allows us to succinctly describe and manipulate objects in the world of chess, but it isn&rsquo;t clear whether the system of chess goes &lsquo;above&rsquo; or &lsquo;below&rsquo; some other formal system about numbers.</p>
+</aside>
+<p>Formal systems which can (to varying extents) characterize the natural numbers include the <em>Presburger arithmetic</em>, <em>Peano arithmetic</em>, and the <em>Zermelo theory</em>. These are all formal systems named after their respective conceivers. There is no single <em>canonical</em> formal system for describing numbers. In fact, different systems capture different properties about the numbers, and we may be interested in exploring these properties and the ensuing mathematical structure. In the $1920$s, Zermelo&rsquo;s system was extended (similar to how we extended the integers to the rationals, above) to the <strong><a href="https://en.wikipedia.org/wiki/Zermelo%e2%80%93Fraenkel_set_theory" target="_blank" class="accented">
+    Zermelo-Fraenkel (ZF) set theory
+</a></strong>, often touted as <a href="https://lawrencecpaulson.github.io/2022/01/26/Set_theory.html" target="_blank" class="accented">
+    being the foundation of modern mathematics
+</a>, as it captures just about every mathematical concept that we come across in school. To see just how pedantic mathematicians are (I mean that in the most endearing sense), a key addition to the Zermelo-Fraenkel theory over Zermelo&rsquo;s was that we could now <a href="https://www.youtube.com/watch?v=SrU9YDoXE88" target="_blank" class="accented">
+    count not just to infinity, but beyond
+</a>. Of course, 21<sup>st</sup> century mathematicians are interested in adding more axioms to this system so that we can find new infinities
+<a href="https://www.quantamagazine.org/how-many-numbers-exist-infinity-proof-moves-math-closer-to-an-answer-20210715" class=accented>
+<em>in between</em> the existing infinities
+</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.
+It seems as if somebody should stop them from taking this bit any further.</p>
+<p>I can&rsquo;t speak for whether we <em>invented</em> numbers, but we definitely made up the rules for how they behave.
+I guess you could argue that we did make up numbers, but only so far as to <span class=accented>effectively capture the essence and structure of our perceived reality</span>. The natural numbers described by each of the above formal systems works precisely like counting does, $1$ plus $2$ makes a $3$. <!-- We (humans) decided that what we define as 'numbers' should capture such relationships. -->
+Maybe there is such a thing as a &rsquo;number&rsquo; that just <em>exists</em> out there, but the numbers we use in our everyday math is the version that was invented by humans. It&rsquo;s Zermelo and Fraenkel&rsquo;s best approximation of what being a number entails.
+Like the cavemen in
+<a href="https://en.wikipedia.org/wiki/Allegory_of_the_cave" class=accented>Plato&rsquo;s allegory</a>,
+we can trace over shadows on a wall, even if we can&rsquo;t see or touch the objects casting these shadows.</p>
+<p>Mathematics is certainly not just the study of numbers, though. It can be regarded as the study of <em>patterns</em> and <em>structure</em> instead.
+One begins this process by carefully choosing the axioms so as to best represent the structure that is to be studied, then further structure emerges through the logical inferences that are made about these axioms. Entire mathematical fields can be founded on axioms (i.e., we don&rsquo;t always have to start by describing numbers). For doing probability we could use the <a href="https://en.wikipedia.org/wiki/Probability_axioms" target="_blank" class="accented">
+    Kolmogorov axioms
+</a>, for geometry there&rsquo;s Euclid&rsquo;s axioms, for <a href="https://www.youtube.com/watch?v=mvmuCPvRoWQ" target="_blank" class="accented">
+    group theory
+</a> we have group axioms, and so on.</p>
+<div>
+<figure class=invertible>
+<img src=/post-images/axioms_structure.png>
+</figure>
+</div>
+<p>There is a school of thought within mathematics called <a href="https://en.wikipedia.org/wiki/Logicism" target="_blank" class="accented">
+    logicism
+</a>, which believes that all of mathematics was founded on logic, <span class=accented>logical inference was the glue that held axioms together to form theorems</span>. More specifically, they believed that any mathematical truth could be proved using the one-two punch of  <span class=accented>axioms</span> and  <span class=accented>logical inference</span>. The mathematician David Hilbert was at the helm of this movement in the $1920$s. Hilbert is perhaps best known for posing <a href="https://en.wikipedia.org/wiki/Hilbert%27s_problems" target="_blank" class="accented">
+    a series of unsolved problems
+</a> in mathematics, most of which were conjectures that mathematicians <em>felt</em> were true, but had neither been able to prove nor disprove yet. One of these conjectures was that all of mathematics can be founded on logic.</p>
+<p>But wait a second, the whole point of this exercise was to figure out how <strong>logic</strong> could itself be defined. After all, logical inference should itself follow rules, else the formal systems based on them would be kind of messy and all over the place.
+Well, we <em>could</em> define logic as (pause for effect&hellip;) a formal system! This is indeed what we did.
+The Zermelo-Fraenkel theory (which, recall, is the formal system underlying most of modern mathematics) is built on <a href="https://en.wikipedia.org/wiki/First-order_logic" target="_blank" class="accented">
+    first-order logic
+</a>, which is indeed a formal system unto itself. First-order logic comes with, in addition to its axioms, its own formal system for logical inference, called <span class=accented>zeroth-order logic</span> or <a href="https://en.wikipedia.org/wiki/Propositional_calculus" target="_blank" class="accented">
+    propositional logic
+</a>.</p>
+<!-- <aside class=aside-right>
+<b>Law of the Excluded Middle</b>
+
+An example of what reasoning in zeroth-order logic looks like is
+<a href="https://en.wikipedia.org/wiki/Law_of_excluded_middle" class=gray>the following</a>: If some statement $B$ is true, then its negation $\neg B$ (read as 'not $B$') must be false, and vice versa. This means that either $B$ or $\neg B$ must be true. This is what the method of 'proof by contradiction' relies on. (Please note the <a href="https://en.wikipedia.org/wiki/To_be,_or_not_to_be" class=gray>cheeky Shakespearean pun</a>.)
+</aside> -->
+<p>Before we continue, it is worth mentioning that some languages (but not natural languages like English) can be defined as axiomatic systems too, and there are good reasons for why one might want to do this. <span class=accented><strong>Formal languages</strong></span> have been used to study linguistic structures. Alfred Tarski (of the <a href="https://www.youtube.com/watch?v=s86-Z-CbaHA" target="_blank" class="accented">
+    Banach-Tarski paradox
+</a> fame) also attempted to define <em><a href="https://en.wikipedia.org/wiki/Semantic_theory_of_truth" target="_blank" class="accented">
+    truth
+</a></em> using formal languages, noting that using a formal language one could construct a consistent, fool-proof definition for <em>truth</em> that was free of ambiguity.</p>
+<p>Then there are <strong>programming languages</strong>. Alan Turing introduced the concept of <em>Turing machines</em> (which are axiomatic systems) to study the fundamental limitations of computers, laying the foundation for all of theoretical computer science. Amazingly, he did so in a time when the word <em><a href="https://en.wikipedia.org/wiki/Computer_%28occupation%29" target="_blank" class="accented">
+    computer
+</a></em> referred to a human occupation, not an electronic machine. We&rsquo;ll revisit both Tarski and Turing&rsquo;s works later in this post.</p>
+<!-- (though some prefer to think in terms of *category theory*, the so called [mathematics of mathematics](https://eugeniacheng.com/wp-content/uploads/2017/02/cheng-architecture.pdf)[^1]) -->
+<!-- [^1]: Euginia Cheng's book [The Joy of Abstraction](https://www.amazon.com/Joy-Abstraction-Exploration-Category-Theory/dp/1108477224) is in part what motivated me to start a math blog! It is a surprisingly accessible introduction to concepts that are usually only taught to graduate students in math. She compiled part of the book using notes from the category theory class that she teaches at the Art Institute of Chicago. -->
+<h3 id="choosing-the-axioms">Choosing the Axioms<a hidden class="anchor" aria-hidden="true" href="#choosing-the-axioms">#</a></h3>
+<p>Let&rsquo;s ask the question of how one chooses an axiomatic system. What kind of axioms would we want for our system?
+Suppose $A$ is an axiom and $\neg A$ is its negation, i.e., the statement &lsquo;$A$ is not true&rsquo;. Clearly, $A$ and $\neg A$ cannot both be axioms as this gives us a contradictory system. So we have our first requirement:</p>
+<p class="equation-like print">
+<span class=accented>CONSISTENCY &#8211; </span>  It should not be possible to prove contradictory statements<br>
+</p>
+<p>We should also have the ability to <em>prove</em> things within an axiomatic system. Proofs (or disproofs) are how we can be certain that something is true (or false). Those unsolved problems that Hilbert posed? Surely, any good axiomatic system will have either a proof or a disproof of each of the conjectures. Anything that is proved, we can call a theorem. If a conjecture gets disproved instead, we can negate it and call <em>that</em> a theorem. That is ideally how we would like to do mathematics.</p>
+<p class="equation-like print">
+<span class=accented>COMPLETENESS &#8211; </span> Anything that we <i>feel</i> is true should be provable<br>
+</p> 
+<p>Finally, a characteristic of a useful axiomatic system is that we are able to <em>do</em> something with these axioms. A <a href="https://en.wikipedia.org/wiki/Modular_arithmetic" target="_blank" class="accented">
+    mathematics based on just $12$ numbers
+</a> may be sufficient to tell the time, but there are many situations where we would like to count past 12. This leads us to the very subjective stipulation which we call <em>expressiveness</em>.[^3]</p>
+<!-- 
+[^3]: An additional quality that we desire of an axiomatic system is [soundness](https://en.wikipedia.org/wiki/Soundness#Logical_systems), though from my understanding it is more relevant to discuss soundness when defining *logic*, rather than when defining mathematical systems that employ logic. It is also rather straightforward to build sound mathematical systems and to establish their soundness, so we don't bother with soundness too much. -->
+<p class="equation-like print">
+<span class=accented>EXPRESSIVENESS &#8211; </span> The axiomatic system should have a variety of objects and relationships that we can, for example, use to describe real-world phenomena<cr>
+</p>
+<p>We now have all the background needed to get into the meat of this post.</p>
+<hr>
+<h3 id="gödels-incompleteness-theorems">Gödel&rsquo;s Incompleteness Theorems<a hidden class="anchor" aria-hidden="true" href="#gödels-incompleteness-theorems">#</a></h3>
+<p>The mathematician Kurt Gödel was able to show, around a 100 years ago, that no axiomatic system can have all three of these qualities. Specifically, he showed that <span class=accented>any axiomatic system (that is expressive enough to do <a href="https://en.wikipedia.org/wiki/Robinson_arithmetic" target="_blank" class="accented">
+    basic arithmetic
+</a>) is either incomplete or inconsistent</span>. This is called Gödel&rsquo;s (first) incompleteness theorem.</p>
+<h4 id="implications-in-mathematics">Implications in Mathematics<a hidden class="anchor" aria-hidden="true" href="#implications-in-mathematics">#</a></h4>
+<p>Let&rsquo;s think about what this means. Suppose we design an axiomatic system that is sufficiently expressive (can do basic computations, like add one thing to another to give two things). Either there are some <em>true</em> statements in it which cannot be proved using the axioms (incompleteness), or there exist contradictory statements in it, each of which can be proved using the axioms (inconsistency). In fact, the latter case, inconsistency, is far worse, and pretty much a deal-breaker. A single contradiction can suspend all credibility of an axiomatic system, because <a href="https://www.nku.edu/~longa/classes/mat385_resources/docs/russellpope.html" target="_blank" class="accented">
+    in a contradictory axiomatic system one can prove anything
+</a>. That&rsquo;s bad! We don&rsquo;t want to have one mathematician prove that $2$ plus $2$ equals $5$, another prove that it doesn&rsquo;t, and have no grounds for deciding who&rsquo;s right. So it&rsquo;s looking like we&rsquo;d rather mathematics be <strong>incomplete</strong> (i.e., missing some things) than <strong>inconsistent</strong> (i.e., self-contradictory).</p>
+<p>It turned out that at least one of Hilbert&rsquo;s unsolved problems could neither be proved nor disproved, namely the <a href="https://www.youtube.com/watch?v=SrU9YDoXE88" target="_blank" class="accented">
+    continuum hypothesis
+</a> (which conjectured that there is no set that is bigger than the integers and smaller than the real numbers). There was absolutely nothing that the Zermelo-Fraenkel ($ZF$) system could say definitively about this conjecture. So then what do we do with the continuum hypothesis ($CH$)? Does it not have a place in mathematics? Well, we could assume $CH$ is true and adopt it as a new axiom. We could also assume that it is false (which we write as &lsquo;$\neg CH$&rsquo;) and adopt <em>that</em> as an axiom instead. Adding an axiom like this comes with its consequences, though. For instance, $ZF + CH$ implies that the infamous <span class=accented>axiom of choice</span> holds, which in turn leads to the <a href="https://www.youtube.com/watch?v=s86-Z-CbaHA" target="_blank" class="accented">
+    Banach-Tarski paradox
+</a>. Put simply, this means that geometry can have non-intuitive (&lsquo;weird&rsquo;) properties in $ZF + CH$. So we want to double-check whether we indeed want geometry to behave in this way, before adding $CH$ (or $\neg CH$) as an axiom to $ZF$.</p>
+<!-- Analogously, we would not want our axiomatic system to have $1+1=1$ be true within it, because that's not how we want numbers to behave; it defeats the purpose of defining natural numbers as a way of counting things. -->
+<p>Mathematicians are able to show that adding $CH$ at least does not make $ZF$ inconsistent, but that&rsquo;s another possibility we should consider before adding new axioms. Given a choice, we&rsquo;d rather be incomplete than inconsistent.</p>
+<!-- So $ZF$ is consistent if and only if $ZF + CH$ (or equivalently, $ZF + \neg CH$) is consistent; we say that $CH$ is independent of $ZF$. -->
+<h4 id="reasons-for-incompleteness">Reasons for Incompleteness<a hidden class="anchor" aria-hidden="true" href="#reasons-for-incompleteness">#</a></h4>
+<p>There are axiomatic systems which are indeed consistent and complete, and first-order logic is one of them! (This is the content of the lesser known <span class=accented>Gödel&rsquo;s completeness theorem</span>.)
+The incompleteness theorems require us to first qualify how <em>expressive</em> a system is, before we can say anything about its incompleteness. So let&rsquo;s now look at when and why a given axiomatic system, be it language, logic, or mathematics, comes under the purview of the incompleteness theorems.</p>
+<p><b class=accented>Infinity / Recursion</b>: Observe that, if an axiomatic system has only finitely many statements in it, we can just enumerate through all of its statements and check whether they&rsquo;re true. Sort of like a brute force proof. A brute force proof in a system with infinitely many &rsquo;things&rsquo; in it either <span class=accented>may</span> or <span class=accented>may not</span> terminate (see the <a href="https://en.wikipedia.org/wiki/Four_color_theorem" target="_blank" class="accented">
+    four color theorem
+</a> and the <a href="https://www.youtube.com/watch?v=zlm1aajH6gY" target="_blank" class="accented">
+    Riemann hypothesis
+</a>, respectively, for examples of either case.)</p>
+<p>Recall that Alan Turing&rsquo;s work involved the study of programming languages, or rather, the computer algorithms that can be written using them. He showed that <span class=accented>no computer program can decide (determine with certainty) whether another computer program &lsquo;halts&rsquo;</span>, i.e., terminates, as opposed to getting stuck in an infinite loop. This is called the halting problem, and it is said to be <span class=accented>undecidable</span>. Here, undecidable only means that there is no <em>effective</em> algorithm to solve the halting problem. Similarly, Gödel&rsquo;s theorem says nothing about the (non-)existence of infinitely long proofs. It just says that there are statements that do not have <em>finite</em> proofs, but we conveniently omit the word finite. (At this point, I would implore the reader who is familiar with Cauchy&rsquo;s completeness in metric spaces to compare the two uses of the term &lsquo;completeness&rsquo; 😃)</p>
+<p>It seems like it is <em>necessary</em> and <em>sufficient</em> for an axiomatic system to have some notion of &lsquo;infinitely many things&rsquo; in it for Gödel&rsquo;s theorems to apply. But this isn&rsquo;t quite the case. <a href="https://en.wikipedia.org/wiki/Robinson_arithmetic" target="_blank" class="accented">
+    Robinson arithmetic
+</a> is an incomplete axiomatic system that can be generated using finitely many axioms. On the other hand, <a href="https://en.wikipedia.org/wiki/Real_closed_field" target="_blank" class="accented">
+    Tarski&#39;s theory of real closed fields
+</a> is a complete and decidable axiomatic system that characterizes the (infinitely large) set of real numbers<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p>As a segue, consider the following block of (Python) code, which prints infinitely long strings of letters:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">recursive_function</span>(x):
+</span></span><span style="display:flex;"><span>    print(x)
+</span></span><span style="display:flex;"><span>    recursive_function(x)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The function above takes some input <code>x</code> and uses what programmers call &lsquo;self-reference&rsquo; to print the object <code>x</code> infinitely many times on the screen, indicating that self-reference has the potential to generate infinitely many things. This is a hint at the fact that self-reference, and not infinitude, may be the deeper reason for incompleteness.</p>
+<p><b class=accented>Self-Reference</b>:
+A universal feature of axiomatic systems where Gödel-like incompleteness theorems do apply is that these systems are capable of <span class=accented><strong>self-reference</strong></span>. Self-reference leads to what we call in common parlance <em>paradoxes</em>. A well-known example of a paradox arising from self-reference is &ldquo;<span class=accented>This statement is false</span>&rdquo;; we can&rsquo;t assign a truth value to this statement without arriving at a contradiction, exactly as in Gödel&rsquo;s theorem.
+Another well-known paradox from mathematics (which is of historical significance) is <a href=https://en.wikipedia.org/wiki/Russell%27s_paradox class=accented>Russel&rsquo;s paradox</a>, which asks <span class=accented>whether the set that contains all the other sets contains itself</span>. Russel&rsquo;s paradox showed that &rsquo;naive set theory&rsquo; (one in which you can even posit the existence of such a &lsquo;set of all sets&rsquo;) is inconsistent. <!-- The paradox is partially resolved by accepting that such a set cannot be constructed, even if the statement presupposes that it can.  Russel's paradox predates Gödel's work, and was the first nail in the coffin for logicism. --></p>
+<p>The &lsquo;<a href="https://en.wikipedia.org/wiki/Barber_paradox" target="_blank" class="accented">
+    Barber paradox
+</a>&rsquo; is a more prosaic way of asking the same question: <span class=print>There is a village that has only one barber, who shaves those (and only those) who do not shave themselves. Does the barber shave himself?</span><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p><a href="https://www.quantamagazine.org/how-godels-incompleteness-theorems-work-20200714/" target="_blank" class="accented">
+    A lot of Gödel-like theorems use proof by contradiction
+</a>, where the contradiction arises from self-reference. Turing&rsquo;s proof of the undecidability of the halting problem involves giving a computer program a version of itself as the input. (It&rsquo;s a very accessible proof, so you could <a href="https://www.youtube.com/watch?v=wGLQiHXHWNk" target="_blank" class="accented">
+    watch this video
+</a> if you&rsquo;re curious!)</p>
+<!-- As you add expressiveness to a formal system (via axioms), at some point it becomes expressive enough for the incompleteness theorems to hold. -->
+<h4 id="the-second-incompleteness-theorem">The Second Incompleteness Theorem<a hidden class="anchor" aria-hidden="true" href="#the-second-incompleteness-theorem">#</a></h4>
+<p>Okay, so many our axiomatic systems are incomplete, including mathematics. That might be a good thing, right? At least they aren&rsquo;t inconsistent? Well, the <em>second</em> of Gödel&rsquo;s incompleteness theorems states that <span class=accented>no (sufficiently expressive) consistent system can prove its own consistency</span> either. As we already know that the Zermelo-Fraenkel theory is incomplete (because of the unprovability of $CH$), it is guaranteed to have some unprovable (but potentially true) statements. One of these unprovable statements is that of its own consistency.</p>
+<p>Similarly, recall how Tarski tried to define <em>truth</em> using axiomatic systems, such that the definition of <em>truth</em> varies based on the axiomatic system we&rsquo;re interested in. In the last post, I suggested that truth is kind of like logical consistency. There is indeed a version of the second incompleteness theorem that swaps <em>consistency</em> out for <em>truth</em>.
+<a href=https://plato.stanford.edu/entries/goedel-incompleteness/#TarTheUndTru class=accented>Tarki&rsquo;s undefinability theorem</a> says that the concept of truth in a formal system cannot be defined <em>within</em> that system. Tarski&rsquo;s proof of the undefinability theorem mostly relies on self-reference, rather than on recursion as many other Gödel-like proofs do. It is also about formal systems in general, and not about mathematics.
+Owing to this fundamentality of Tarski&rsquo;s theorem, the mathematician <a href="https://en.wikipedia.org/wiki/Raymond_Smullyan" target="_blank" class="accented">
+    Raymond Smullyan
+</a> showed in $1957$ that Gödel&rsquo;s incompleteness theorems can be applied <a href="https://www.jstor.org/stable/2964058" target="_blank" class="accented">
+    to many more formal systems
+</a> than was believed in Gödel&rsquo;s time. For these reasons, Smullyan also espouses that Tarski&rsquo;s work should get much of the attention that Gödel&rsquo;s does.</p>
+<!-- So how then, did Tarski define truth to begin with? How are Gödel, Turing, and the others able to prove all these weird results about the very nature of provability within axiomatic systems?  -->
+<p>It seems like the study of consistency (or provability, truth, etc.) should itself be privy to the problem of self-reference, since we say that a formal system is unable to prove <em>its own</em> consistency. For that matter, the second incompleteness theorem is phrased a bit peculiarly; it doesn&rsquo;t preclude the possibility that one formal system can prove the consistency of another.</p>
+<hr>
+<h3 id="transcending-language-using-metalanguage">Transcending Language using Metalanguage<a hidden class="anchor" aria-hidden="true" href="#transcending-language-using-metalanguage">#</a></h3>
+ <!--  Like if we prove some theorem about the real numbers, it will tell us something deep about the natural numbers, allowing us to say things about the natural numbers without ever having to deal with them directly. -->
+<p>As opposed to proofs <em>in</em> a formal system, proofs <em>about</em> a formal system can be expressed in a <span class=accented>metalogic</span> or a <span class=accented>metalanguage</span>. The metalanguage sits &lsquo;above&rsquo; the formal system it is looking at, called the <span class=accented>object language</span>, in the sense that it is often more &lsquo;powerful&rsquo; or expressive than the object language, and assumes the authority to state and prove theorems about the object language. Proofs about (in)consistency, (in)completeness, (un)decidability, and (un)provability are often stated in a metalogic/metalanguage. Similarly, Tarski&rsquo;s definition of truth in a language (which is in this case the object language) was stated in a metalanguage, and his undefinability theorem showed that the metalanguage and its object language cannot coincide. As in the case of the incompleteness theorems, all of this only holds unless the object language was not very expressive to begin with. If the language is such that self-reference and/or basic arithmetic are not within its expressive capabilities, then it is indeed possible that it could serve as its own metalanguage, and/or that it is both complete and consistent.</p>
+<h4 id="natural-languages">Natural Languages<a hidden class="anchor" aria-hidden="true" href="#natural-languages">#</a></h4>
+<p>Natural languages <em>are</em> expressive by design, that&rsquo;s their whole point. They encompass everything that we would want to talk to each other about.
+This includes a multitude of axiomatic systems, spanning formal language, logic, and mathematics. Since linguists, logicians, and mathematicians talk to each other in natural languages like English, natural languages should necessarily operate as metalanguages. If there <em>were</em> such a thing as a &lsquo;formal natural language&rsquo;, it would seem that Gödel&rsquo;s theorems must apply to it, by virtue of its expressiveness. But in contrast to axiomatic systems of mathematics, we&rsquo;d probably want a formal natural language to be <em>complete</em> rather than <em>consistent</em>.</p>
+<aside class=aside-right>
+The picture we are painting is misleading in the sense that formal systems that are 'bigger' are also more likely to be incomplete, which is counterintuitive to what we expect from the word incomplete. One way to resolve this is to consider that a small box is easy to fill up with things, but a bigger box with the same things in it would not be completely filled up. The property of being bigger increases the box's propensity for incompleteness.
+</aside>
+<p>If you went to an English-speaking school, you were probably taught the semantics and grammatical constructs of the English language <em>in</em> English. Mathematicians are able to state Gödel&rsquo;s theorems in English. Computer programmers use English to write pseudo-code. A natural language such as English has some element of <em>completeness</em> in the sense that we want it to do everything. If it weren&rsquo;t complete, we&rsquo;d just want a metalanguage &lsquo;above&rsquo; it to fill in the holes, and so on. For example, a non-native English speaker may instinctively switch to their native language when they&rsquo;re trying to express something complex, something they may not have the vocabulary for in English. It is even possible that they went to a school where English (the object language) was taught to them in their native language.</p>
+<!-- <div>
+<figure class=invertible>
+<img src=/post-images/test_image.png>
+</figure>
+</div> -->
+<p>This is similar to how we added $CH$ to $ZF$ earlier to &lsquo;complete&rsquo; it in some sense, but we cautioned that it comes at the risk of making the more powerful language, $ZF+CH$, to be inconsistent. In the case of natural languages, we embrace this potential inconsistency as being the trade-off for completeness.</p>
+<hr>
+<p>Before we close, I should do my due diligence and note that, while formal languages can be used to discuss natural languages, the latter fall under the category of <em>informal languages</em> and may not have a definable notion of truth. In fact, Tarski explicitly warned against the extension of his ideas to natural languages. <a href="https://pca.st/oq41guck" target="_blank" class="accented">
+    Tarski&#39;s critics
+</a> also stress on the distinction between mathematical truth and metaphysical truth, which should not be conflated with each other. Nonetheless, one could argue that the mathematical (or rather, the axiomatic) approach to defining truth is as clean and air-tight a characterization of truth as we can hope to achieve. We just need to bear in mind that we aren&rsquo;t here to establish a singular meaning for the word <em>truth</em>, but to appreciate the intricacies involved in defining <em>truth</em> and <em>logic</em>. The self-reference in trying to arrive at the <em>true</em> definition of <em>truth</em> shall not be lost on us.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The two infinities of the continuum hypothesis are the sizes of the natural numbers and the real numbers. See <a class=accented href=https://en.wikipedia.org/wiki/Cantor%27s_diagonal_argument>Cantor&rsquo;s diagonalization</a> for a proof of the fact that these sizes are indeed different, one of the most delightful proofs in math that is accessible even to middle-schoolers. Incidentally, the mathematical tool used in proving Gödel and Tarski&rsquo;s theorems is named the <a href="https://en.wikipedia.org/wiki/Diagonal_lemma" target="_blank" class="accented">
+    diagonal lemma
+</a> for its resemblance to Cantor&rsquo;s diagonalization.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>The fact that there exists a Gödel-complete axiomatization of the real numbers should come as a surprise. Surely, any axiomatization of the reals must be more expressive than the so-called &lsquo;basic arithmetic&rsquo; that Gödel&rsquo;s theorems apply to, right? The reason why Tarski&rsquo;s axiomatization of the reals is complete is because it cannot do the basic arithmetic that is stipulated in Gödel&rsquo;s theorems. While Tarski&rsquo;s axiomatization captures the properties of the reals, it does not have what it takes to define integers and their arithmetic properties. (Think of a number line that does not have any markings on it!) In fact, if one so much as introduces a <code>sine</code> function into this axiomatization, it <a href="https://en.wikipedia.org/wiki/Decidability_of_first-order_theories_of_the_real_numbers" target="_blank" class="accented">
+    becomes undecidable
+</a>, because it allows us to encode integer arithmetic within the system.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>The barber in the Barber paradox appears to be a special person whom the rule does not apply to. This is similar to how the &lsquo;set&rsquo; in Russel&rsquo;s paradox cannot be treated as just any other set, but perhaps we could give it <a href="https://en.wikipedia.org/wiki/Class_%28set_theory%29" target="_blank" class="accented">
+    another name
+</a> in order to avoid self-reference, and thus avoid contradiction.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://shirazkn.github.io/tags/slightly-mathematical/">slightly mathematical</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://shirazkn.github.io">Shiraz</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="headerfooter">
+    <sub><sup><sub>&#9786;</sub></sup></sub>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
