@@ -21,7 +21,7 @@ div#logo-s svg .cls-darkpink {
 }
 
 #black-gradient {
-    --color-1: #1a1a1a;
+    --color-1: #232323;
     --color-2: #343434;
 }
 
@@ -38,7 +38,8 @@ div#logo-s svg .cls-darkpink {
 }
 
 div#logo-s svg {
-    width: 75%;
+    padding-left: 10%;
+    width: 92%;
     height: 75%;
 }
 
@@ -55,7 +56,7 @@ div#logo-s svg {
     content: "";
     width: 1.0px;
     height: 1em;
-    margin-bottom: 1000px;
+    /* margin-bottom: 1000px; */
     transform: translateY(0.1em) translateX(-0.25em);
     background: var(--primary);
     display: inline-block;
