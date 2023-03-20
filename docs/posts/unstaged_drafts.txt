@@ -1,0 +1,11 @@
+<!-- ($1$) has a surprisingly useful visual interpretation as well. -->
+
+<!-- to add: 
+does language follow logic? statistically maybe, entropy (3b1b), tai-danae's paper, monte carlo, 
+... but then anything with even the slightest amount of regularity is mathematical.
+incompleteness theorems as languages.. -->
+
+<!-- however, languages are informal, allow statements like this sentence is false. -->
+<!-- Aside: would a language that is expressive enough to encapsulate mathematical logic be incomplete?
+language allows us to transcend mathematical systems. -->
+<!-- Takashi Tokeida's paradox about propositional logic (contravariance) -->
