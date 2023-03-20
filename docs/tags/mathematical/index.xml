@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>mathematical on Shiraz</title>
+    <link>https://shirazkn.github.io/tags/mathematical/</link>
+    <description>Recent content in mathematical on Shiraz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 Mar 2023 21:07:38 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/tags/mathematical/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cat Theory 😼</title>
+      <link>https://shirazkn.github.io/posts/cat_theory_1/</link>
+      <pubDate>Sat, 18 Mar 2023 21:07:38 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/cat_theory_1/</guid>
+      <description>One of my biggest motivations for starting a blog was Eugenia Cheng&amp;rsquo;s delightful book The Joy of Abstraction 1. It&amp;rsquo;s a surprisingly accessible, gentle introduction to category theory, a topic that is usually only taught to graduate students in math. She compiled part of the book using notes from the category theory class that she teaches at the Art Institute of Chicago, a testament to the aesthetic appreciation that one can expect to gain of category theory, irrespective of their academic background.</description>
+    </item>
+    
+  </channel>
+</rss>
