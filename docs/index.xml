@@ -6,7 +6,16 @@
     <description>Recent content on Shiraz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Mar 2023 21:07:38 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Apr 2023 12:20:39 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Unreasonable Effectiveness of $2$ in Statistics</title>
+      <link>https://shirazkn.github.io/posts/leastsquares/</link>
+      <pubDate>Sun, 09 Apr 2023 12:20:39 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/leastsquares/</guid>
+      <description>First off, this is a reference to The Unreasonable Effectiveness of Mathematics in the Natural Sciences , a very popular paper by Eugene Wigner which explores how mathematics is unreasonably effective at not only explaining, but also predicting scientific phenomena. I had a similar question about the number $2$ which repeatedly shows up in engineering and science, like in least squares regression, and seems remarkably effective at doing what it&amp;rsquo;s supposed to do.</description>
+    </item>
+    
     <item>
       <title>Cat Theory 😼</title>
       <link>https://shirazkn.github.io/posts/cat_theory_1/</link>
