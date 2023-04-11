@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Norms, Metrics, and Inner Products | Shiraz</title>
+<meta name="keywords" content="">
+<meta name="description" content="Norms A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
+It is nonnegative, and $0$ only at the &lsquo;zero element&rsquo; (for e.g., at the origin of $\mathbb R^n$).
+$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.
+It satisfies the triangle inequality,
+\[ \|x&#43;y\|\leq \|x\| &#43; \|y\| \]
+We start by defining the usual vector $p$-norm:">
+<meta name="author" content="">
+<link rel="canonical" href="https://shirazkn.github.io/posts/balls/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.97cf87836fe9febd6762ee021598f461858ae137854a39219ecf9bf3543a96fa.css" integrity="sha256-l8&#43;Hg2/p/r1nYu4CFZj0YYWK4TeFSjkhns&#43;b81Q6lvo=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://shirazkn.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://shirazkn.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="Norms, Metrics, and Inner Products" />
+<meta property="og:description" content="Norms A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
+It is nonnegative, and $0$ only at the &lsquo;zero element&rsquo; (for e.g., at the origin of $\mathbb R^n$).
+$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.
+It satisfies the triangle inequality,
+\[ \|x&#43;y\|\leq \|x\| &#43; \|y\| \]
+We start by defining the usual vector $p$-norm:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shirazkn.github.io/posts/balls/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-10T12:20:23-04:00" />
+<meta property="article:modified_time" content="2023-04-10T12:20:23-04:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Norms, Metrics, and Inner Products"/>
+<meta name="twitter:description" content="Norms A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
+It is nonnegative, and $0$ only at the &lsquo;zero element&rsquo; (for e.g., at the origin of $\mathbb R^n$).
+$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.
+It satisfies the triangle inequality,
+\[ \|x&#43;y\|\leq \|x\| &#43; \|y\| \]
+We start by defining the usual vector $p$-norm:"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://shirazkn.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Norms, Metrics, and Inner Products",
+      "item": "https://shirazkn.github.io/posts/balls/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Norms, Metrics, and Inner Products",
+  "name": "Norms, Metrics, and Inner Products",
+  "description": "Norms A norm is any real-valued function $\\lVert{}\\cdot{}\\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:\nIt is nonnegative, and $0$ only at the \u0026lsquo;zero element\u0026rsquo; (for e.g., at the origin of $\\mathbb R^n$).\n$\\lVert \\alpha x \\rVert = |\\alpha| \\lVert x \\rVert$ for any scalar $\\alpha$.\nIt satisfies the triangle inequality,\n\\[ \\|x+y\\|\\leq \\|x\\| + \\|y\\| \\]\nWe start by defining the usual vector $p$-norm:",
+  "keywords": [
+    
+  ],
+  "articleBody": "Norms A norm is any real-valued function $\\lVert{}\\cdot{}\\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:\nIt is nonnegative, and $0$ only at the ‘zero element’ (for e.g., at the origin of $\\mathbb R^n$).\n$\\lVert \\alpha x \\rVert = |\\alpha| \\lVert x \\rVert$ for any scalar $\\alpha$.\nIt satisfies the triangle inequality,\n\\[ \\|x+y\\|\\leq \\|x\\| + \\|y\\| \\]\nWe start by defining the usual vector $p$-norm:\n\\[ \\|x\\|_p \\coloneqq \\left(\\sum_i |x_i|^p\\right)^{\\frac{1}{p}} \\]\nThe cases of $p=0$ and $\\infty$ are evaluated using limits, and thus take special forms:\n\\[ \\|x\\|_0 = \\sum_i |x_i|^0 \\] \\[ \\|x\\|_\\infty=\\max\\left\\lbrace|x_1|, |x_2|, \\dots, |x_n|\\right\\rbrace \\]\nwhere $0^0$ is defined as $0$. So, $\\lVert x\\rVert_0$ counts the number of non-zero entries in the vector, whereas $\\lVert x\\rVert_\\infty$ picks out the maximum (in magnitude) entry of the vector.\nActually, $\\lVert x\\rVert_0$ isn’t really a norm (it fails property no. $2$), but it gets called the “$0$-norm” for convenience. I’ve seen some authors call it a pseudonorm. The “$0$-norm” has exploded in popularity due to its applications in the field of compressive sensing.\nMetrics While a norm takes one operand, distances/metrics take two operands. Observe that a norm can be interpreted as ’the distance from the origin’. In fact, all norms give rise to a corresponding distance/metric for that space. The $p$-norm norm gives rise to (or as mathematicians say, induces) the Minkowski distance for $\\mathbb R^n$. Given $x,y\\in\\mathbb R^n$, the Minkowski distance/metric is\n\\[ D_p(x,y) \\coloneqq \\| x-y\\|_p = \\left(\\sum_i |x_i-y_i|^p\\right)^{\\frac{1}{p}} \\] When $p$=2, this is the Euclidean distance, the one we learn early on in our mathematical careers in the form of the Pythagoras theorem. The other interesting cases are when $p$ is $0$, $1$ or $\\infty$, in which cases it’s called the Hamming, Manhattan, or Chebychev distance. Metrics must satisfy properties that are analogous to those for norms except property no. $2$ (so the “$0$-norm” actually defines a proper metric even though it’s not a norm). In addition, metrics should satisfy the symmetry condition: $D(x,y)=D(y,x)$.\nThe space $\\mathbb R^n$ together with a norm $\\lVert{}\\cdot{}\\rVert_p$ is called a normed space, whereas $\\mathbb R^n$ together with the distance $D_p(\\cdot,{}\\cdot)$ is called a metric space.\nInner Products There is an additional notion of an inner product (which generalizes the ‘dot product’ for vectors), giving an inner product space. Like metrics, an inner product takes two operands, $x$ and $y$, and gives a real number denoted by $\\langle x,y \\rangle$. It induces a corresponding norm, given by $\\lVert x \\rVert = \\sqrt{\\langle x,x \\rangle}$. Thus, an inner product space is a normed space, and a normed space is a metric space. Neither of the converse directions is true.\nInner product spaces are the most rare, or rather, we impose very specific conditions on inner product spaces which makes them so rare. This also means that they are endowed with a lot of structure; it takes more words to describe an intricate sculpture than it does to, say, describe a block of stone. Mathematicians like to say that inner product spaces are rich in structure. They allow us to define geometric concepts such as angles, which may not be easy to define for general metric spaces. The angle between two vectors $x$ and $y$ can be defined as\n\\[ \\theta = \\arccos\\left(\\frac{\\langle x,y \\rangle}{\\sqrt{\\langle x, x\\rangle \\langle y, y\\rangle}}\\right) \\]\nThis definition works not only in higher dimensional Euclidean spaces, but in any inner product space, including function spaces.\nThe only distance that comes from an inner product is the Euclidean distance ($p$=2), which comes from our most familiar inner product – the dot product in $\\mathbb R^n$:\n\\[ D_2(x,y) = \\|x-y\\|_2 = \\sqrt{(x-y)\\cdot (x-y)} \\]\nThe dot product induces the $2$-norm which induces the Euclidean distance, so the whole gang is here. This is why we typically call $\\mathbb R^n$ the Euclidean space; since there is only one canonical inner product for it (the dot product), we don’t particularly mind restricting ourselves to the $p=2$ case because it feels somewhat natural to the space.\nThus, inner products are the most rarest of them all. Metrics/distances are on the other extreme, because all Minkowski distances with $0\\leq p\\leq \\infty$ are proper metrics, but only $p=2$ corresponds to an inner product. Norms are sandwiched in-between the two, as $p$-norms are norms only for $p \\geq 1$.\n\\[ \\text{Inner Product Spaces} \\subset \\text{Normed Vector Spaces} \\subset \\text{Metric Spaces} \\]\nor in terms of the values for $p$, we can write\n\\[ \\lbrace 2 \\rbrace \\subset [1, \\infty] \\subset [0, \\infty] \\]\nAn interesting observation which always trips me up is that metric spaces don’t have to be vector spaces, or vice versa.\nWhat’s so special about $2$ anyway? Once again , I am annoyed by the special place that $2$ takes in this hierarchy of spaces. It has a host of interesting properties (which I will link in this post if I ever decide to explore them further):\nThe Euclidean distance ($p=2$) is the only distance that comes from an inner product.\nThe unit balls corresponding to the $2$-norm, $\\lbrace x : \\lVert x \\rVert_2\\leq1 \\rbrace$ are spherical.\nFor this reason, the Euclidean distance ($p=2$) has the richest rotational isometry group 1. This is related to the observation that rotation of a sphere does not ‘change its shape’, but rotating a non-spherical object can ‘change its shape’. In fact, for $p\\neq2$, the other Minkowski distances do not have any continuous rotational isometries because their unit balls are non-spherical and somewhat pointy.\nThe Euclidean space (the space $\\mathbb R^n$ combined with the $2$-norm induced distance) can be uniquely characterized by the fact that the distance-squared function is differentiable everywhere .\nThe last one was fascinating to me because the differentiability fails not only if you change the distance function, but also if you change to a different topological space, like say, a circle! So not only is the Euclidean distance special, the Euclidean space $\\mathbb R^n$ is itself quite special when equipped with the Euclidean distance.\nI’m not too knowledgable about group theory, so expect an abuse of terminology here. ↩︎\n",
+  "wordCount" : "1014",
+  "inLanguage": "en",
+  "datePublished": "2023-04-10T12:20:23-04:00",
+  "dateModified": "2023-04-10T12:20:23-04:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://shirazkn.github.io/posts/balls/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shiraz",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://shirazkn.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://shirazkn.github.io" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://shirazkn.github.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Norms, Metrics, and Inner Products
+    </h1>
+    <div class="post-meta"><span title='2023-04-10 12:20:23 -0400 EDT'>April 10, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h3 id="norms">Norms<a hidden class="anchor" aria-hidden="true" href="#norms">#</a></h3>
+<p>A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:</p>
+<ol>
+<li>
+<p>It is nonnegative, and $0$ only at the &lsquo;zero element&rsquo; (for e.g., at the origin of $\mathbb R^n$).</p>
+</li>
+<li>
+<p>$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.</p>
+</li>
+<li>
+<p>It satisfies the triangle inequality,</p>
+</li>
+</ol>
+<p>\[
+\|x+y\|\leq \|x\| + \|y\|
+\]</p>
+<p>We start by defining the usual vector <span class=accented>$p$-norm</span>:</p>
+<p>\[
+\|x\|_p \coloneqq \left(\sum_i |x_i|^p\right)^{\frac{1}{p}}
+\]</p>
+<p>The cases of $p=0$ and $\infty$ are evaluated using limits, and thus take special forms:</p>
+<p>\[
+\|x\|_0 = \sum_i |x_i|^0
+\]
+\[
+\|x\|_\infty=\max\left\lbrace|x_1|, |x_2|, \dots, |x_n|\right\rbrace
+\]</p>
+<p>where $0^0$ is defined as $0$. So, $\lVert x\rVert_0$ counts the number of non-zero entries in the vector, whereas $\lVert x\rVert_\infty$ picks out the maximum (in magnitude) entry of the vector.</p>
+<p>Actually, $\lVert x\rVert_0$ isn&rsquo;t really a norm (it fails property no. $2$), but it gets called the &ldquo;$0$-norm&rdquo; for convenience. I&rsquo;ve seen some authors call it a <em>pseudonorm</em>. The &ldquo;$0$-norm&rdquo; has exploded in popularity due to its applications in the field of <em>compressive sensing</em>.</p>
+<!-- It's used to reconstruct sparse vectors, those that only have a few non-zero entries. This is akin to searching for compressed information, since sparse vectors can be stored in computers using fewer numbers than are required for general vectors.  -->
+<h3 id="metrics">Metrics<a hidden class="anchor" aria-hidden="true" href="#metrics">#</a></h3>
+<p>While a norm takes one operand, distances/metrics take two operands. Observe that a norm can be interpreted as &rsquo;the distance from the origin&rsquo;. In fact, all norms give rise to a corresponding distance/metric for that space. The $p$-norm norm gives rise to (or as mathematicians say, <em>induces</em>) the <span class=accented>Minkowski distance</span> for $\mathbb R^n$. Given $x,y\in\mathbb R^n$, the Minkowski distance/metric is</p>
+<p>
+\[
+   D_p(x,y) \coloneqq \| x-y\|_p = \left(\sum_i |x_i-y_i|^p\right)^{\frac{1}{p}}
+    \]
+</p>
+<p>When $p$=2, this is the <span class=accented>Euclidean distance</span>, the one we learn early on in our mathematical careers in the form of the Pythagoras theorem. The other interesting cases are when $p$ is $0$, $1$ or $\infty$, in which cases it&rsquo;s called the Hamming, Manhattan, or Chebychev distance. Metrics must satisfy properties that are analogous to those for norms <em>except</em> property no. $2$ (so the &ldquo;$0$-norm&rdquo; actually defines a proper metric even though it&rsquo;s not a norm). In addition, metrics should satisfy the symmetry condition: $D(x,y)=D(y,x)$.</p>
+<p>The space $\mathbb R^n$ together with a norm $\lVert{}\cdot{}\rVert_p$ is called a <span class=accented>normed space</span>, whereas $\mathbb R^n$ together with the distance $D_p(\cdot,{}\cdot)$ is called a <span class=accented>metric space</span>.</p>
+<h3 id="inner-products">Inner Products<a hidden class="anchor" aria-hidden="true" href="#inner-products">#</a></h3>
+<p>There is an additional notion of an inner product (which generalizes the &lsquo;dot product&rsquo; for vectors), giving an <span class=accented>inner product space</span>.
+Like metrics, an inner product takes two operands, $x$ and $y$, and gives a real number denoted by $\langle x,y \rangle$. It induces a corresponding norm, given by $\lVert x \rVert = \sqrt{\langle x,x \rangle}$. Thus, an inner product space is a normed space, and a normed space is a metric space. Neither of the converse directions is true.</p>
+<p>Inner product spaces are the most rare, or rather, we impose <a href="https://en.wikipedia.org/wiki/Inner_product_space" target="_blank" class="accented">
+    very specific conditions
+</a> on inner product spaces which makes them so rare. This also means that they are endowed with a lot of structure; it takes more words to describe an intricate sculpture than it does to, say, describe a block of stone. Mathematicians like to say that inner product spaces are <em>rich</em> in structure. They allow us to define geometric concepts such as angles, which may not be easy to define for general metric spaces. The angle between two vectors $x$ and $y$ can be defined as</p>
+<p>\[
+\theta = \arccos\left(\frac{\langle x,y \rangle}{\sqrt{\langle x, x\rangle \langle y, y\rangle}}\right)
+\]</p>
+<p>This definition works not only in higher dimensional Euclidean spaces, but in <em>any</em> inner product space, including function spaces.</p>
+<p>The only distance that comes from an inner product is the Euclidean distance ($p$=2), which comes from our most familiar inner product &ndash; the dot product in $\mathbb R^n$:</p>
+<p>\[
+D_2(x,y) = \|x-y\|_2 = \sqrt{(x-y)\cdot (x-y)}
+\]</p>
+<p>The dot product induces the  $2$-norm which induces the Euclidean distance, so the whole gang is here.
+This is why we typically call $\mathbb R^n$ the Euclidean space; since there is only one canonical inner product for it (the dot product), we don&rsquo;t particularly mind restricting ourselves to the $p=2$ case because it feels somewhat natural to the space.</p>
+<p>Thus, inner products are the most rarest of them all. Metrics/distances are on the other extreme, because all Minkowski distances with $0\leq p\leq \infty$ are proper metrics, but only $p=2$ corresponds to an inner product. Norms are sandwiched in-between the two, as $p$-norms are norms only for $p \geq 1$.</p>
+<p>\[
+\text{Inner Product Spaces} \subset \text{Normed Vector Spaces} \subset \text{Metric Spaces}
+\]</p>
+<p>or in terms of the values for $p$, we can write</p>
+<p>\[
+\lbrace 2 \rbrace \subset [1, \infty] \subset [0, \infty]
+\]</p>
+<p>An interesting observation which always trips me up is that metric spaces don&rsquo;t have to be vector spaces, or vice versa.</p>
+<h3 id="whats-so-special-about-2-anyway">What&rsquo;s so special about $2$ anyway?<a hidden class="anchor" aria-hidden="true" href="#whats-so-special-about-2-anyway">#</a></h3>
+<p><a href="/posts/leastsquares" class="accented">
+    Once again
+</a>, I am annoyed by the special place that $2$ takes in this hierarchy of spaces. It has a host of interesting properties (which I will link in this post if I ever decide to explore them further):</p>
+<ol>
+<li>
+<p>The Euclidean distance ($p=2$) is the only distance that comes from an inner product.</p>
+</li>
+<li>
+<p>The unit balls corresponding to the $2$-norm,  $\lbrace x : \lVert x \rVert_2\leq1 \rbrace$ are spherical.</p>
+</li>
+<li>
+<p>For this reason, the Euclidean distance ($p=2$) has <a href="https://mathoverflow.net/questions/64443/which-norms-have-rich-isometry-groups" target="_blank" class="accented">
+    the richest rotational isometry group
+</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. This is related to the observation that rotation of a sphere does not &lsquo;change its shape&rsquo;, but rotating a non-spherical object can &lsquo;change its shape&rsquo;. In fact, for $p\neq2$, the other Minkowski distances do not have any continuous rotational isometries because their unit balls are non-spherical and somewhat pointy.</p>
+</li>
+<li>
+<p>The Euclidean space (the space $\mathbb R^n$ combined with the $2$-norm induced distance) <a href="https://mathstodon.xyz/@francisbrb/109908877121683860" target="_blank" class="accented">
+    can be uniquely characterized by the fact that the distance-squared function is differentiable everywhere
+</a>.</p>
+</li>
+</ol>
+<p>The last one was fascinating to me because the differentiability fails not only if you change the distance function, but also if you change to a different topological space, like say, a circle! So not only is the Euclidean distance special, the Euclidean space $\mathbb R^n$ is itself quite special when equipped with the Euclidean distance.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>I&rsquo;m not too knowledgable about group theory, so expect an abuse of terminology here.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://shirazkn.github.io">Shiraz</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="headerfooter">
+    <sub><sup><sub>&#9786;</sub></sup></sub>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

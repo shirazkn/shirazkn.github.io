@@ -6,7 +6,21 @@
     <description>Recent content in Posts on Shiraz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Apr 2023 12:20:39 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Apr 2023 12:20:23 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Norms, Metrics, and Inner Products</title>
+      <link>https://shirazkn.github.io/posts/balls/</link>
+      <pubDate>Mon, 10 Apr 2023 12:20:23 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/balls/</guid>
+      <description>Norms A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
+It is nonnegative, and $0$ only at the &amp;lsquo;zero element&amp;rsquo; (for e.g., at the origin of $\mathbb R^n$).
+$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.
+It satisfies the triangle inequality,
+\[ \|x+y\|\leq \|x\| + \|y\| \]
+We start by defining the usual vector $p$-norm:</description>
+    </item>
+    
     <item>
       <title>The Unreasonable Effectiveness of $2$ in Statistics</title>
       <link>https://shirazkn.github.io/posts/leastsquares/</link>
