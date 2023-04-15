@@ -6,19 +6,27 @@
     <description>Recent content on Shiraz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Apr 2023 12:20:23 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Apr 2023 15:53:46 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Real World is a Special Case</title>
+      <link>https://shirazkn.github.io/posts/pythagoras/</link>
+      <pubDate>Fri, 14 Apr 2023 15:53:46 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/pythagoras/</guid>
+      <description>The title is a quote from Dr. Carol Jacoby&amp;rsquo;s excellent math podcast .
+I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only inner product spaces that are &amp;rsquo;tangible&amp;rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No higher-dimensional spaces, no other inner product spaces that I can think of, are nearly as intuitive to us.</description>
+    </item>
+    
     <item>
       <title>Norms, Metrics, and Inner Products</title>
-      <link>https://shirazkn.github.io/posts/balls/</link>
+      <link>https://shirazkn.github.io/posts/norms_metrics/</link>
       <pubDate>Mon, 10 Apr 2023 12:20:23 -0400</pubDate>
       
-      <guid>https://shirazkn.github.io/posts/balls/</guid>
-      <description>Norms A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
+      <guid>https://shirazkn.github.io/posts/norms_metrics/</guid>
+      <description>This is an explainer on norms, metrics, and inner products, and their relationships to each other.
+Norms A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
 It is nonnegative, and $0$ only at the &amp;lsquo;zero element&amp;rsquo; (for e.g., at the origin of $\mathbb R^n$).
-$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.
-It satisfies the triangle inequality,
-\[ \|x+y\|\leq \|x\| + \|y\| \]
-We start by defining the usual vector $p$-norm:</description>
+$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.</description>
     </item>
     
     <item>

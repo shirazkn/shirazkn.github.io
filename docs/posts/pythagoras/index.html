@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>The Real World is a Special Case | Shiraz</title>
+<meta name="keywords" content="">
+<meta name="description" content="The title is a quote from Dr. Carol Jacoby&rsquo;s excellent math podcast .
+I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only inner product spaces that are &rsquo;tangible&rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No higher-dimensional spaces, no other inner product spaces that I can think of, are nearly as intuitive to us.">
+<meta name="author" content="">
+<link rel="canonical" href="https://shirazkn.github.io/posts/pythagoras/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.97cf87836fe9febd6762ee021598f461858ae137854a39219ecf9bf3543a96fa.css" integrity="sha256-l8&#43;Hg2/p/r1nYu4CFZj0YYWK4TeFSjkhns&#43;b81Q6lvo=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://shirazkn.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://shirazkn.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="The Real World is a Special Case" />
+<meta property="og:description" content="The title is a quote from Dr. Carol Jacoby&rsquo;s excellent math podcast .
+I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only inner product spaces that are &rsquo;tangible&rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No higher-dimensional spaces, no other inner product spaces that I can think of, are nearly as intuitive to us." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shirazkn.github.io/posts/pythagoras/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-14T15:53:46-04:00" />
+<meta property="article:modified_time" content="2023-04-14T15:53:46-04:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The Real World is a Special Case"/>
+<meta name="twitter:description" content="The title is a quote from Dr. Carol Jacoby&rsquo;s excellent math podcast .
+I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only inner product spaces that are &rsquo;tangible&rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No higher-dimensional spaces, no other inner product spaces that I can think of, are nearly as intuitive to us."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://shirazkn.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "The Real World is a Special Case",
+      "item": "https://shirazkn.github.io/posts/pythagoras/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Real World is a Special Case",
+  "name": "The Real World is a Special Case",
+  "description": "The title is a quote from Dr. Carol Jacoby\u0026rsquo;s excellent math podcast .\nI mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only inner product spaces that are \u0026rsquo;tangible\u0026rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No higher-dimensional spaces, no other inner product spaces that I can think of, are nearly as intuitive to us.",
+  "keywords": [
+    
+  ],
+  "articleBody": "The title is a quote from Dr. Carol Jacoby’s excellent math podcast .\nI mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only inner product spaces that are ’tangible’ to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No higher-dimensional spaces, no other inner product spaces that I can think of, are nearly as intuitive to us.1\nAnyway, in this post I’m showing how the Pythagoras theorem generalizes to other inner product spaces. Contents of the last post are pre-requisites for this one.\nThe Parallelogram Law Let $x$ and $y$ be two vectors in a normed vector space that we are interested in. Recall that the existence of an inner product $\\langle x, y\\rangle$ implies the existence of a corresponding norm, $\\lVert x\\rVert = \\sqrt{\\langle x, x\\rangle}$. But the converse direction is not always true. When it is true, is precisely when the normed vector space obeys the parallelogram law; for all vectors $x$ and $y$,\n\\[2\\|x\\|^2 + 2\\|y\\|^2 = \\|x+y\\|^2 + \\|x-y\\|^2 \\] The name of this law again comes from the special case of $\\mathbb R^2$ shown above, where it is a relationship between the side lengths and diagonals of a parallelogram. Notably, if $\\lVert x+y \\rVert=\\lVert x-y \\rVert$, i.e., the parallelogram is a rectangle, then we recover the Pythagoras theorem. Thus, the Pythagoras theorem is a corollary (i.e., a by product) of the fact that $\\mathbb R^2$ equipped with the Euclidean norm $\\lVert{}\\cdot{}\\rVert_2$ satisfies the parallelogram law.\nNext, let’s see why the validity of the parallelogram law coincides with the existence of an inner product.\nSymmetric Bilinear Forms A symmetric bilinear form is a map $\\phi(x,y)$ that takes two vectors $x$ and $y$ of a vector space and gives a real number2, much like an inner product or a metric does. A symmetric bilinear form is symmetric\n\\[ \\phi(x, y) = \\phi(y,x) \\] and bilinear\n\\[ \\phi(x+y, z+w) = \\phi(x,z) + \\phi(x,w) + \\phi(y,z) + \\phi(y,w) \\] which means that it is linear in either argument. As a part of what we require of an inner product in a real vector space, they must be positive-definite symmetric bilinear forms. Positive definite means that $\\phi(x,x)\\geq 0$ and $\\phi(x,x)=0$ $\\Leftrightarrow$ $x=0$.\nNow, if we set $z=x$ and $w=y$ in the above expression, and using the positive-definite, symmetric, and bilinear properties of inner products, we get\n\\[ \\langle x+y, x+y \\rangle = \\langle x,x \\rangle + \\langle x,y \\rangle + \\langle y,x \\rangle + \\langle y,y \\rangle \\] \\[ \\| x+y\\|^2 = \\| x \\|^2 + 2 \\langle x,y \\rangle + \\| y\\|^2 \\] where we used the notation, $\\lVert x\\rVert = \\sqrt{\\langle x, x\\rangle}$. As $(-y)$ is also an element of our vector space, we can repeat the same steps to get\n\\[ \\| x-y\\|^2 = \\| x \\|^2 - 2 \\langle x,y \\rangle + \\| y\\|^2 \\] Adding the last two equations gives us the parallelogram law, whereas subtracting the second equation from the first gives us\n\\[ \\langle x,y \\rangle = \\frac{\\|x+y\\|^2 - \\|x-y\\|^2}{4} \\] Observe that we can use the preceding equation as a definition for the inner product in terms of the underlying norm. Thus, normed vector spaces satisfying the parallelogram law have a unique inner product, which is defined as above. What remains to be shown is that this definition of an inner product using a norm, combined with the parallelogram law (which our norm supposedly satisfies), indeed satisfies all of the requirements that the inner product should .\nSpecial Cases Suppose the normed space we were working with was $\\mathbb R^n$ with the $2$-norm, $\\lVert{}\\cdot{}\\rVert_2$, then as one would expect, the unique inner product we get is the dot product for finite-dimensional vectors. Other $p$-norms do not satisfy the parallelogram law, and hence do not have an associated inner product.\nFurther specializing the underlying vector space to $\\mathbb R^2$ gives us a relationship between the sides and diagonals of a parallelogram. Further specializing to the case where $x$ and $y$ make an angle of $90^\\circ$ between each other, i.e., $\\langle x,y\\rangle = 0$, yields the Pythagoras theorem.\nI think the real world just manifests as a $3$ dimensional Euclidean space in particular, and it is our ability to project this space into lower dimensions that imparts to us our intuition about $1$ and $2$ dimensional Euclidean spaces. You could argue that time is a $1$ dimensional space which we can observe directly, but I don’t think humans have a good internal perception of time. ↩︎\n… more generally, an element of the field of that vector space, which is $\\mathbb C$ for complex vector spaces, and so on. We can generalize the above discussion to vector spaces over other fields if we were so inclined. ↩︎\n",
+  "wordCount" : "799",
+  "inLanguage": "en",
+  "datePublished": "2023-04-14T15:53:46-04:00",
+  "dateModified": "2023-04-14T15:53:46-04:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://shirazkn.github.io/posts/pythagoras/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shiraz",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://shirazkn.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://shirazkn.github.io" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://shirazkn.github.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      The Real World is a Special Case
+    </h1>
+    <div class="post-meta"><span title='2023-04-14 15:53:46 -0400 EDT'>April 14, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>The title is a quote from Dr. Carol Jacoby&rsquo;s <a href="https://theartofmathematicspodcast.com" target="_blank" class="accented">
+    excellent math podcast
+</a>.</p>
+<p>I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only inner product spaces that are &rsquo;tangible&rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No higher-dimensional spaces, no other inner product spaces that I can think of, are nearly as intuitive to us.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>Anyway, in this post I&rsquo;m showing how the Pythagoras theorem generalizes to other inner product spaces. Contents of <a href="/posts/norms_metrics" class="accented">
+    the last post
+</a> are pre-requisites for this one.</p>
+<!-- When I want to think about $1$ dimensional spaces, I'm instead picturing a ruler in my head, or one of those high-school physics problems involving a train moving at constant velocity. -->
+<!-- Anyway, now I will generalize the Pythagoras theorem, which in its most common form is a theorem for $\mathbb R^2$. It is more generally a statement about inner product spaces. -->
+<!-- # TODO: how do you measure flatness of a space -->
+<h3 id="the-parallelogram-lawhttpsenwikipediaorgwikiparallelogram_law"><a href="https://en.wikipedia.org/wiki/Parallelogram_law" target="_blank" class="accented">
+    The Parallelogram Law
+</a></h3>
+<p>Let $x$ and $y$ be two vectors in a normed vector space that we are interested in.
+Recall that the existence of an inner product $\langle x, y\rangle$ implies the existence of a corresponding norm, $\lVert x\rVert = \sqrt{\langle x, x\rangle}$. But the converse direction is not always true.
+When it <em>is</em> true, is precisely when the normed vector space obeys the parallelogram law; for all vectors $x$ and $y$,</p>
+<p>
+\[2\|x\|^2 + 2\|y\|^2 = \|x+y\|^2 + \|x-y\|^2 \]
+</p>
+<br>
+<div>
+<figure class=invertible style="max-width: 25%;">
+<img src=/post-images/linear_algebra/parallelogram_law.png>
+</figure>
+</div>
+<p>The name of this law again comes from the special case of $\mathbb R^2$ shown above, where it is a relationship between the side lengths and diagonals of a parallelogram. Notably, if $\lVert x+y \rVert=\lVert x-y \rVert$, i.e., the parallelogram is a rectangle, then we recover the Pythagoras theorem. Thus, the Pythagoras theorem is a corollary (i.e., a by product) of the fact that $\mathbb R^2$ equipped with the Euclidean norm $\lVert{}\cdot{}\rVert_2$ satisfies the parallelogram law.</p>
+<p>Next, let&rsquo;s see why the validity of the parallelogram law coincides with the existence of an inner product.</p>
+<h3 id="symmetric-bilinear-forms">Symmetric Bilinear Forms<a hidden class="anchor" aria-hidden="true" href="#symmetric-bilinear-forms">#</a></h3>
+<p>A <span class=accented>symmetric bilinear form</span> is a map $\phi(x,y)$ that takes two vectors $x$ and $y$ of a vector space and gives a real number<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, much like an inner product or a metric does. A symmetric bilinear form is symmetric</p>
+<p>
+\[
+\phi(x, y) = \phi(y,x)
+\]
+</p>
+<p>and bilinear</p>
+<p>
+\[
+\phi(x+y, z+w) = \phi(x,z) + \phi(x,w) + \phi(y,z) + \phi(y,w)
+\]
+</p>
+<!-- The word 'Hermitian' refers to the fact that we're talking about real numbers (recall that Hermitian matrices have real eigenvalues).  -->
+<p>which means that it is linear in either argument.
+As a part of what we require of an inner product in a real vector space, they must be positive-definite symmetric bilinear forms. Positive definite means that $\phi(x,x)\geq 0$ and $\phi(x,x)=0$ $\Leftrightarrow$ $x=0$.</p>
+<p>Now, if we set $z=x$ and $w=y$ in the above expression, and using the positive-definite, symmetric, and bilinear properties of inner products, we get</p>
+<p>
+\[
+    \langle x+y, x+y \rangle = \langle x,x \rangle + \langle x,y \rangle + \langle y,x \rangle + \langle y,y \rangle
+\]
+\[
+   \| x+y\|^2 = \| x \|^2 + 2 \langle x,y \rangle + \| y\|^2
+\]
+</p>
+<p>where we used the notation, $\lVert x\rVert = \sqrt{\langle x, x\rangle}$.
+As $(-y)$ is also an element of our vector space, we can repeat the same steps to get</p>
+<p>
+\[
+   \| x-y\|^2 = \| x \|^2 - 2 \langle x,y \rangle + \| y\|^2
+\]
+</p>
+<p>Adding the last two equations gives us the parallelogram law, whereas
+subtracting the second equation from the first gives us</p>
+<p>
+\[
+   \langle x,y \rangle = \frac{\|x+y\|^2 - \|x-y\|^2}{4}
+\]
+</p>
+<p>Observe that we can use the preceding equation as a <em>definition</em> for the inner product in terms of the underlying norm.
+Thus, normed vector spaces satisfying the parallelogram law have a unique inner product, which is defined as above. What remains to be shown is that this definition of an inner product using a norm, combined with the parallelogram law (which our norm supposedly satisfies), indeed <a href="https://mathoverflow.net/questions/123/linearity-of-the-inner-product-using-the-parallelogram-law" target="_blank" class="accented">
+    satisfies all of the requirements that the inner product should
+</a>.</p>
+<h3 id="special-cases">Special Cases<a hidden class="anchor" aria-hidden="true" href="#special-cases">#</a></h3>
+<p>Suppose the normed space we were working with was $\mathbb R^n$ with the $2$-norm, $\lVert{}\cdot{}\rVert_2$, then as one would expect, the unique inner product we get is the dot product for finite-dimensional vectors. Other $p$-norms do not satisfy the parallelogram law, and hence do not have an associated inner product.</p>
+<p>Further specializing the underlying vector space to $\mathbb R^2$ gives us a relationship between the sides and diagonals of a parallelogram. Further specializing to the case where $x$ and $y$ make an angle of $90^\circ$ between each other, i.e., $\langle x,y\rangle = 0$, yields the Pythagoras theorem.</p>
+<!-- It remains to be unpacked in a future post what the parallelogram law is *really* saying. I mean... it doesn't look all that fundamental to me? Does anybody actually use it to define an inner product which isn't already obvious? We know all about dot products, show us something more interesting. -->
+<!-- #### But what is the Parallelogram Law *really* saying?
+
+The so called law is really establishing the *flatness* of an affine space.
+An affine space is a vector space that has [forgotten its origin](https://ncatlab.org/nlab/show/affine+space), i.e., where you choose to place the origin does not change its structure. -->
+<!-- It is a special case of [sesquilinear forms](https://en.wikipedia.org/wiki/Sesquilinear_form) for complex vector spaces.  --><div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>I think the real world just manifests as a $3$ dimensional Euclidean space in particular, and it is our ability to project this space into lower dimensions that imparts to us our intuition about $1$ and $2$ dimensional Euclidean spaces. You could argue that <em>time</em> is a $1$ dimensional space which we can observe directly, but I don&rsquo;t think humans have a good internal perception of time.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>&hellip; more generally, an element of the <a href="https://en.wikipedia.org/wiki/Symmetric_bilinear_form" target="_blank" class="accented">
+    field
+</a> of that vector space, which is $\mathbb C$ for complex vector spaces, and so on. We can generalize the above discussion to vector spaces over other fields if we were so inclined.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://shirazkn.github.io">Shiraz</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="headerfooter">
+    <sub><sup><sub>&#9786;</sub></sup></sub>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
