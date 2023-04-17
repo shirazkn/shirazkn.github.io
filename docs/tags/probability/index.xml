@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Probability on Shiraz</title>
+    <link>https://shirazkn.github.io/tags/probability/</link>
+    <description>Recent content in Probability on Shiraz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 09 Apr 2023 12:20:39 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/tags/probability/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Unreasonable Effectiveness of $2$ in Statistics</title>
+      <link>https://shirazkn.github.io/posts/leastsquares/</link>
+      <pubDate>Sun, 09 Apr 2023 12:20:39 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/leastsquares/</guid>
+      <description>First off, this is a reference to The Unreasonable Effectiveness of Mathematics in the Natural Sciences , a very popular paper by Eugene Wigner which explores how mathematics is unreasonably effective at not only explaining, but also predicting scientific phenomena. I had a similar question about the number $2$ which repeatedly shows up in engineering and science, specifically in the form of the $2$-norm of a vector, and seems surprisingly effective at doing what it&amp;rsquo;s supposed to do.</description>
+    </item>
+    
+  </channel>
+</rss>

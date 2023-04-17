@@ -13,8 +13,8 @@
       <pubDate>Fri, 14 Apr 2023 15:53:46 -0400</pubDate>
       
       <guid>https://shirazkn.github.io/posts/pythagoras/</guid>
-      <description>The title is a quote from Dr. Carol Jacoby&amp;rsquo;s excellent math podcast .
-I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only inner product spaces that are &amp;rsquo;tangible&amp;rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No higher-dimensional spaces, no other inner product spaces that I can think of, are nearly as intuitive to us.</description>
+      <description>The title is a quote from Dr. Carol Jacoby&amp;rsquo;s math podcast . I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are &amp;rsquo;tangible&amp;rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.
+In this post I&amp;rsquo;m showing how the Pythagoras theorem is a special case of a more general feature of inner product spaces.</description>
     </item>
     
     <item>
@@ -48,7 +48,7 @@ $\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.</de
     </item>
     
     <item>
-      <title>The Quest for Completeness</title>
+      <title>The Incompleteness Theorems</title>
       <link>https://shirazkn.github.io/posts/language_and_logic2/</link>
       <pubDate>Sun, 05 Feb 2023 08:46:18 -0500</pubDate>
       
@@ -63,7 +63,7 @@ Axiomatic Systems An axiomatization is an assignment of rules (axioms) such as &
       <pubDate>Fri, 27 Jan 2023 13:48:49 -0500</pubDate>
       
       <guid>https://shirazkn.github.io/posts/language_and_logic1/</guid>
-      <description>This post concerns the question of whether spoken and written languages like English could be &amp;rsquo;logical&amp;rsquo; by design, and why they aren&amp;rsquo;t. I will break this discussion up into two posts. The first one (this post) does not require a mathematical background whatsoever, whereas the second touches on the concepts of axioms, theorems and proofs. Both parts are somewhat self-contained, so you can skip to the next post if you&amp;rsquo;d like.</description>
+      <description>This post discusses the question of whether spoken and written languages like English could be &amp;rsquo;logical&amp;rsquo; by design, and why they aren&amp;rsquo;t. I will break this topic up into two posts. The first one (this post) does not require a mathematical background whatsoever, whereas the second touches on the concepts of axioms, theorems and proofs. Both parts are somewhat self-contained, so you can skip to the next post if you&amp;rsquo;d like.</description>
     </item>
     
   </channel>

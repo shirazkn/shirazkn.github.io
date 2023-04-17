@@ -6,31 +6,31 @@
     <description>Recent content in Tags on Shiraz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Mar 2023 21:07:38 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Apr 2023 15:53:46 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>mathematical</title>
-      <link>https://shirazkn.github.io/tags/mathematical/</link>
+      <title>Linear Algebra</title>
+      <link>https://shirazkn.github.io/tags/linear-algebra/</link>
+      <pubDate>Fri, 14 Apr 2023 15:53:46 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/tags/linear-algebra/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Probability</title>
+      <link>https://shirazkn.github.io/tags/probability/</link>
+      <pubDate>Sun, 09 Apr 2023 12:20:39 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/tags/probability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>General</title>
+      <link>https://shirazkn.github.io/tags/general/</link>
       <pubDate>Sat, 18 Mar 2023 21:07:38 -0400</pubDate>
       
-      <guid>https://shirazkn.github.io/tags/mathematical/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>slightly mathematical</title>
-      <link>https://shirazkn.github.io/tags/slightly-mathematical/</link>
-      <pubDate>Sun, 05 Feb 2023 08:46:18 -0500</pubDate>
-      
-      <guid>https://shirazkn.github.io/tags/slightly-mathematical/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>non-mathematical</title>
-      <link>https://shirazkn.github.io/tags/non-mathematical/</link>
-      <pubDate>Fri, 27 Jan 2023 13:48:49 -0500</pubDate>
-      
-      <guid>https://shirazkn.github.io/tags/non-mathematical/</guid>
+      <guid>https://shirazkn.github.io/tags/general/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Linear Algebra on Shiraz</title>
+    <link>https://shirazkn.github.io/tags/linear-algebra/</link>
+    <description>Recent content in Linear Algebra on Shiraz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Apr 2023 15:53:46 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/tags/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Real World is a Special Case</title>
+      <link>https://shirazkn.github.io/posts/pythagoras/</link>
+      <pubDate>Fri, 14 Apr 2023 15:53:46 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/pythagoras/</guid>
+      <description>The title is a quote from Dr. Carol Jacoby&amp;rsquo;s math podcast . I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are &amp;rsquo;tangible&amp;rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.
+In this post I&amp;rsquo;m showing how the Pythagoras theorem is a special case of a more general feature of inner product spaces.</description>
+    </item>
+    
+    <item>
+      <title>Norms, Metrics, and Inner Products</title>
+      <link>https://shirazkn.github.io/posts/norms_metrics/</link>
+      <pubDate>Mon, 10 Apr 2023 12:20:23 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/norms_metrics/</guid>
+      <description>This is an explainer on norms, metrics, and inner products, and their relationships to each other.
+Norms A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
+It is nonnegative, and $0$ only at the &amp;lsquo;zero element&amp;rsquo; (for e.g., at the origin of $\mathbb R^n$).
+$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.</description>
+    </item>
+    
+    <item>
+      <title>The Unreasonable Effectiveness of $2$ in Statistics</title>
+      <link>https://shirazkn.github.io/posts/leastsquares/</link>
+      <pubDate>Sun, 09 Apr 2023 12:20:39 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/leastsquares/</guid>
+      <description>First off, this is a reference to The Unreasonable Effectiveness of Mathematics in the Natural Sciences , a very popular paper by Eugene Wigner which explores how mathematics is unreasonably effective at not only explaining, but also predicting scientific phenomena. I had a similar question about the number $2$ which repeatedly shows up in engineering and science, specifically in the form of the $2$-norm of a vector, and seems surprisingly effective at doing what it&amp;rsquo;s supposed to do.</description>
+    </item>
+    
+  </channel>
+</rss>
