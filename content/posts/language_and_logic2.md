@@ -1,9 +1,9 @@
 ---
-title: "The Quest for Completeness"
+title: "The Incompleteness Theorems"
 date: 2023-02-05T08:46:18-05:00
 # series: ["Language and Logic"]
 # description: ""
-tags: ["slightly mathematical"]
+tags: ["General"]
 # draft: true
 ---
 In [my earlier post](/posts/language_and_logic1) I suggested that there is no objective notion of logical truth, that whether a statement is 'true' can depend on the system of truth that one is operating in.

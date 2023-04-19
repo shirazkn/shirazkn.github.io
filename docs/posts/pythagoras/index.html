@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>The Real World is a Special Case | Shiraz</title>
 <meta name="keywords" content="Linear Algebra">
-<meta name="description" content="The title is a quote from Dr. Carol Jacoby&rsquo;s math podcast . I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are &rsquo;tangible&rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.
+<meta name="description" content="The title is a quote from this math podcast . I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are &rsquo;tangible&rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.
 In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a more general feature of inner product spaces.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/pythagoras/">
@@ -79,7 +79,7 @@ In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a
 </script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="The Real World is a Special Case" />
-<meta property="og:description" content="The title is a quote from Dr. Carol Jacoby&rsquo;s math podcast . I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are &rsquo;tangible&rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.
+<meta property="og:description" content="The title is a quote from this math podcast . I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are &rsquo;tangible&rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.
 In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a more general feature of inner product spaces." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://shirazkn.github.io/posts/pythagoras/" /><meta property="article:section" content="posts" />
@@ -88,7 +88,7 @@ In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="The Real World is a Special Case"/>
-<meta name="twitter:description" content="The title is a quote from Dr. Carol Jacoby&rsquo;s math podcast . I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are &rsquo;tangible&rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.
+<meta name="twitter:description" content="The title is a quote from this math podcast . I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are &rsquo;tangible&rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.
 In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a more general feature of inner product spaces."/>
 
 
@@ -118,12 +118,12 @@ In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a
   "@type": "BlogPosting",
   "headline": "The Real World is a Special Case",
   "name": "The Real World is a Special Case",
-  "description": "The title is a quote from Dr. Carol Jacoby\u0026rsquo;s math podcast . I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are \u0026rsquo;tangible\u0026rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.\nIn this post I\u0026rsquo;m showing how the Pythagoras theorem is a special case of a more general feature of inner product spaces.",
+  "description": "The title is a quote from this math podcast . I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are \u0026rsquo;tangible\u0026rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.\nIn this post I\u0026rsquo;m showing how the Pythagoras theorem is a special case of a more general feature of inner product spaces.",
   "keywords": [
     "Linear Algebra"
   ],
-  "articleBody": "The title is a quote from Dr. Carol Jacoby’s math podcast . I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are ’tangible’ to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.\nIn this post I’m showing how the Pythagoras theorem is a special case of a more general feature of inner product spaces. Contents of the last post are pre-requisites for this one.\nThe Parallelogram Law Let $x$ and $y$ be two vectors in a normed vector space that we are interested in. Recall that the existence of an inner product $\\langle x, y\\rangle$ implies the existence of a corresponding norm, $\\lVert x\\rVert = \\sqrt{\\langle x, x\\rangle}$. But the converse direction is not always true. When it is true, is precisely when the normed vector space obeys the parallelogram law; for all vectors $x$ and $y$,\n\\[2\\|x\\|^2 + 2\\|y\\|^2 = \\|x+y\\|^2 + \\|x-y\\|^2 \\] The name of this law comes from the special case of $\\mathbb R^2$ shown above, where it is a relationship between the side lengths and diagonals of a parallelogram. Notably, if $\\lVert x+y \\rVert=\\lVert x-y \\rVert$, i.e., the parallelogram is a rectangle, then we recover the Pythagoras theorem. Thus, the Pythagoras theorem is a corollary (i.e., a by product) of the fact that $\\mathbb R^2$ equipped with the Euclidean norm $\\lVert{}\\cdot{}\\rVert_2$ satisfies the parallelogram law.\nNext, let’s see why the validity of the parallelogram law coincides with the existence of an inner product.\nSymmetric Bilinear Forms A symmetric bilinear form is a map $\\phi(x,y)$ that takes two vectors $x$ and $y$ of a vector space and gives a real number1, much like an inner product or a metric does. A symmetric bilinear form is symmetric\n\\[ \\phi(x, y) = \\phi(y,x) \\] and bilinear\n\\[ \\phi(x+y, z+w) = \\phi(x,z) + \\phi(x,w) + \\phi(y,z) + \\phi(y,w) \\] which means that it is linear in either argument. As a part of what we require of an inner product in a real vector space, they must be positive-definite symmetric bilinear forms. Positive definite means that $\\phi(x,x)\\geq 0$ and $\\phi(x,x)=0$ $\\Leftrightarrow$ $x=0$.\nNow, if we set $z=x$ and $w=y$ in the above expression, and using the positive-definite, symmetric, and bilinear properties of inner products, we get\n\\[ \\langle x+y, x+y \\rangle = \\langle x,x \\rangle + \\langle x,y \\rangle + \\langle y,x \\rangle + \\langle y,y \\rangle \\] \\[ \\| x+y\\|^2 = \\| x \\|^2 + 2 \\langle x,y \\rangle + \\| y\\|^2 \\] where we used the notation, $\\lVert x\\rVert = \\sqrt{\\langle x, x\\rangle}$. As $(-y)$ is also an element of our vector space, we can repeat the same steps to get\n\\[ \\| x-y\\|^2 = \\| x \\|^2 - 2 \\langle x,y \\rangle + \\| y\\|^2 \\] The sum of the last two equations is the parallelogram law, whereas subtracting the second equation from the first gives us\n\\[ \\langle x,y \\rangle = \\frac{\\|x+y\\|^2 - \\|x-y\\|^2}{4} \\] Observe that we can use the preceding equation as a definition for the inner product in terms of the underlying norm. Thus, normed vector spaces satisfying the parallelogram law have a unique inner product, which is defined as above. What remains to be shown is that this definition of an inner product using a norm, combined with the parallelogram law (which our norm supposedly satisfies), indeed satisfies all of the requirements that the inner product should .\nSpecial Cases Suppose the normed space we were working with was $\\mathbb R^n$ with the $2$-norm, $\\lVert{}\\cdot{}\\rVert_2$, then as one would expect, the unique inner product we get is the dot product for finite-dimensional vectors $x$ and $y$, which we usually write as $x^Ty$ or $x\\cdot y$ in place of the more general notation of $\\langle x, y \\rangle$. Other $p$-norms do not satisfy the parallelogram law, and hence do not have an associated inner product.\nAs we saw, specializing the underlying vector space to $\\mathbb R^2$ makes the parallelogram law a relationship between the sides and diagonals of a parallelogram. Further specializing to the case where $x$ and $y$ make an angle of $90^\\circ$ between each other, i.e., $\\langle x,y\\rangle = 0$, yields the Pythagoras theorem.\nFinally, in $\\mathbb R$, the law takes its most plausible form:\n\\[ (x+y)^2 + (x-y)^2 = 2x^2 + 2y^2 \\] … more generally, an element of the field of that vector space, which is $\\mathbb C$ for complex vector spaces, and so on. We can generalize the above discussion to vector spaces over other fields if we were so inclined. ↩︎\n",
-  "wordCount" : "773",
+  "articleBody": "The title is a quote from this math podcast . I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are ’tangible’ to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.\nIn this post I’m showing how the Pythagoras theorem is a special case of a more general feature of inner product spaces. Contents of the last post are pre-requisites for this one.\nThe Parallelogram Law Let $x$ and $y$ be two vectors in a normed vector space that we are interested in. Recall that the existence of an inner product $\\langle x, y\\rangle$ implies the existence of a corresponding norm, $\\lVert x\\rVert = \\sqrt{\\langle x, x\\rangle}$. But the converse direction is not always true. When it is true, is precisely when the normed vector space obeys the parallelogram law; for all vectors $x$ and $y$,\n\\[2\\|x\\|^2 + 2\\|y\\|^2 = \\|x+y\\|^2 + \\|x-y\\|^2 \\] The name of this law comes from the special case of $\\mathbb R^2$ shown above, where it is a relationship between the side lengths and diagonals of a parallelogram. Notably, if $\\lVert x+y \\rVert=\\lVert x-y \\rVert$, i.e., the parallelogram is a rectangle, then we recover the Pythagoras theorem. Thus, the Pythagoras theorem is a corollary (i.e., a by product) of the fact that $\\mathbb R^2$ equipped with the Euclidean norm $\\lVert{}\\cdot{}\\rVert_2$ satisfies the parallelogram law.\nNext, let’s see why the validity of the parallelogram law coincides with the existence of an inner product.\nSymmetric Bilinear Forms A symmetric bilinear form is a map $\\phi(x,y)$ that takes two vectors $x$ and $y$ of a vector space and gives a real number1, much like an inner product or a metric does. A symmetric bilinear form is symmetric\n\\[ \\phi(x, y) = \\phi(y,x) \\] and bilinear\n\\[ \\phi(x+y, z+w) = \\phi(x,z) + \\phi(x,w) + \\phi(y,z) + \\phi(y,w) \\] which means that it is linear in either argument. As a part of what we require of an inner product in a real vector space, they must be positive-definite symmetric bilinear forms. Positive definite means that $\\phi(x,x)\\geq 0$ and $\\phi(x,x)=0$ $\\Leftrightarrow$ $x=0$.\nNow, if we set $z=x$ and $w=y$ in the above expression, and using the positive-definite, symmetric, and bilinear properties of inner products, we get\n\\[ \\langle x+y, x+y \\rangle = \\langle x,x \\rangle + \\langle x,y \\rangle + \\langle y,x \\rangle + \\langle y,y \\rangle \\] \\[ \\| x+y\\|^2 = \\| x \\|^2 + 2 \\langle x,y \\rangle + \\| y\\|^2 \\] where we used the notation, $\\lVert x\\rVert = \\sqrt{\\langle x, x\\rangle}$. As $(-y)$ is also an element of our vector space, we can repeat the same steps to get\n\\[ \\| x-y\\|^2 = \\| x \\|^2 - 2 \\langle x,y \\rangle + \\| y\\|^2 \\] The sum of the last two equations is the parallelogram law, whereas subtracting the second equation from the first gives us\n\\[ \\langle x,y \\rangle = \\frac{\\|x+y\\|^2 - \\|x-y\\|^2}{4} \\] Observe that we can use the preceding equation as a definition for the inner product in terms of the underlying norm. Thus, normed vector spaces satisfying the parallelogram law have a unique inner product, which is defined as above. What remains to be shown is that this definition of an inner product using a norm, combined with the parallelogram law (which our norm supposedly satisfies), indeed satisfies all of the requirements that the inner product should .\nSpecial Cases Suppose the normed space we were working with was $\\mathbb R^n$ with the $2$-norm, $\\lVert{}\\cdot{}\\rVert_2$, then as one would expect, the unique inner product we get is the dot product for finite-dimensional vectors $x$ and $y$, which we usually write as $x^Ty$ or $x\\cdot y$ in place of the more general notation of $\\langle x, y \\rangle$. Other $p$-norms do not satisfy the parallelogram law, and hence do not have an associated inner product.\nAs we saw, specializing the underlying vector space to $\\mathbb R^2$ makes the parallelogram law a relationship between the sides and diagonals of a parallelogram. Further specializing to the case where $x$ and $y$ make an angle of $90^\\circ$ between each other, i.e., $\\langle x,y\\rangle = 0$, yields the Pythagoras theorem.\nFinally, in $\\mathbb R$, the law takes its most plausible form:\n\\[ (x+y)^2 + (x-y)^2 = 2x^2 + 2y^2 \\] Update: Someone on Mathstodon pointed out to me that what the parallelogram law is really saying is that the norm-squared function $f(x)=\\lVert x\\rVert^2$ is a degree $2$ polynomial. Let’s explore this real quick.\nNotice that a degree $2$ polynomial is characterized by the fact that its second derivative is constant everywhere. Suppose this constant is $C$. Let’s take the Taylor series expansion of $f$ at $x$, sticking to the Euclidean space $\\mathbb R^n$ for simplicity.\n\\[ f(x+y) = f(x) + f'(x)^T y + \\frac{1}{2} y^Tf''(x)y \\] \\[ \\qquad \\ = f(x) + f'(x)^T y + \\frac{C}{2} f(y) \\] Similarly,\n\\[ f(x-y) = f(x) - f'(x)^T y + \\frac{C}{2} f(y) \\] Adding these,\n\\[ f(x+y) + f(x-y) = 2 f(x) + C f(y) \\] Naturally, we set $C=2$. We have reduced the parallelogram law to:\nThe norm-squared function is a polynomial of degree $2$\nwhich sounds more fundamental and less arbitrary than the parallelogram law to me, let alone the Pythagoras theorem. But we need to do more work to generalize this math outside of Euclidean spaces. Someone more knowledgeable than me in differential geometry should explore the connection between inner products and metric tensors on Riemannian manifolds .\n… more generally, an element of the field of that vector space, which is $\\mathbb C$ for complex vector spaces, and so on. We can generalize the above discussion to vector spaces over other fields if we were so inclined. ↩︎\n",
+  "wordCount" : "969",
   "inLanguage": "en",
   "datePublished": "2023-04-14T15:53:46-04:00",
   "dateModified": "2023-04-14T15:53:46-04:00",
@@ -208,8 +208,8 @@ In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a
 
 </div>
   </header> 
-  <div class="post-content"><p>The title is a quote from Dr. Carol Jacoby&rsquo;s <a href="https://theartofmathematicspodcast.com" target="_blank" class="accented">
-    math podcast
+  <div class="post-content"><p>The title is a quote from <a href="https://theartofmathematicspodcast.com" target="_blank" class="accented">
+    this math podcast
 </a>. I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are &rsquo;tangible&rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.</p>
 <!-- [^huge_footnote] -->
 <!-- [^huge_footnote]: I think the real world just manifests as a $3$ dimensional Euclidean space in particular, and it is our ability to project this space into lower dimensions that imparts to us our intuition about $1$ and $2$ dimensional Euclidean spaces. You could argue that *time* is a $1$ dimensional space which we can observe directly, but I don't think humans have a good internal perception of time. -->
@@ -288,6 +288,42 @@ Thus, normed vector spaces satisfying the parallelogram law have a unique inner 
    (x+y)^2 + (x-y)^2 = 2x^2 + 2y^2
    \]
 </p>
+<hr>
+<p><strong>Update</strong>: Someone on Mathstodon pointed out to me that what the parallelogram law is <em>really</em> saying is that the norm-squared function $f(x)=\lVert x\rVert^2$ is a degree $2$ polynomial. Let&rsquo;s explore this real quick.</p>
+<!-- 
+If we can write the norm-squared function $f(x)=\lVert x\rVert^2$ as an inner product, $\langle x, x\rangle$, then we can differentiate it twice to get
+
+<p>
+\[ \frac{\partial ^2 }{\partial x ^2} \|x\|^2 = 
+\frac{\partial }{\partial x} 2\|x\|  =
+\frac{\partial }{\partial x} 2\sqrt{\langle x, x\rangle} = 
+\frac{\frac{\partial }{\partial x}\|x\|}{\sqrt{\langle x, x\rangle}}
+ \]
+</p> -->
+<p>Notice that a degree $2$ polynomial is characterized by the fact that its second derivative is constant everywhere. Suppose this constant is $C$. Let&rsquo;s take the Taylor series expansion of $f$ at $x$, sticking to the Euclidean space $\mathbb R^n$ for simplicity.</p>
+<p>
+\[
+  f(x+y) = f(x) + f'(x)^T y + \frac{1}{2} y^Tf''(x)y \]
+  \[ \qquad \ = f(x) + f'(x)^T y + \frac{C}{2} f(y) 
+   \]
+</p>
+<p>Similarly,</p>
+<p>
+\[
+  f(x-y) = f(x) - f'(x)^T y + \frac{C}{2} f(y) 
+   \]
+</p>
+<p>Adding these,</p>
+<p>
+\[ f(x+y) + f(x-y) = 2 f(x) + C f(y) \]
+</p>
+<p>Naturally, we set $C=2$. We have reduced the parallelogram law to:</p>
+<blockquote>
+<p><span class=accented>The norm-squared function is a polynomial of degree $2$</span></p>
+</blockquote>
+<p>which sounds more fundamental and less arbitrary than the parallelogram law to me, let alone the Pythagoras theorem. But we need to do more work to generalize this math outside of Euclidean spaces. Someone more knowledgeable than me in differential geometry should explore the connection between inner products and <a href="https://en.wikipedia.org/wiki/Metric_tensor" target="_blank" class="accented">
+    metric tensors on Riemannian manifolds
+</a>.</p>
 <!-- Please reach out to me if you have a neat/natural intuition for where the parallelogram law *really* comes from! -->
 <!--
 ### What *is* the Parallelogram Law?

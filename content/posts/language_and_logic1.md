@@ -3,8 +3,8 @@ title: Misuse as a Use of Language
 date: 2023-01-27T13:48:49-05:00
 draft: false
 # description: "We look at why natural languages allow us to say illogical things. This is part 1 of 2."
-tags: ["non-mathematical"]
-categories: ["logic"]
+tags: ["General"]
+# categories: ["general"]
 # series: ["Language and Logic"]
 ShowToc: false
 TocOpen: false
@@ -16,11 +16,11 @@ clickable footnotes
 sidebar box
 -->
 
-This post concerns the question of <span class=accented>whether spoken and written languages like English could be 'logical' by design, and why they aren't</span>. I will break this discussion up into two posts. The first one (this post) does not require a mathematical background whatsoever, whereas the second touches on the concepts of axioms, theorems and proofs. Both parts are somewhat self-contained, so you can [skip to the next post](/posts/language_and_logic2) if you'd like.
+This post discusses the question of <span class=accented>whether spoken and written languages like English could be 'logical' by design, and why they aren't</span>. I will break this topic up into two posts. The first one (this post) does not require a mathematical background whatsoever, whereas the second touches on the concepts of axioms, theorems and proofs. Both parts are somewhat self-contained, so you can [skip to the next post](/posts/language_and_logic2) if you'd like.
 
 ### Fallacies
 
-The word <span class=accented>logic</span>, as it is used in everyday parlance, refers to informal logic (as opposed to formal logic, which is instead a rigorous mathematical construct; we will look at formal logic in the sequel).
+The word *logic*, as it is used in everyday parlance, refers to informal logic (as opposed to formal logic, which is instead a rigorous mathematical construct; we will look at formal logic in the sequel).
 You've probably come across logical fallacies such as the [false dilemma](https://en.m.wikipedia.org/wiki/False_dilemma), which goes something like this:
 <p class=equation-like>
 <span class=print><b>Person 1:</b> Women and trans people are in need of better mental health infrastructure.<br>
