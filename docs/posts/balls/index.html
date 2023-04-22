@@ -5,14 +5,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Norms, Metrics, and Inner Products | Shiraz</title>
-<meta name="keywords" content="">
-<meta name="description" content="Norms A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
-It is nonnegative, and $0$ only at the &lsquo;zero element&rsquo; (for e.g., at the origin of $\mathbb R^n$).
-$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.
-It satisfies the triangle inequality,
-\[ \|x&#43;y\|\leq \|x\| &#43; \|y\| \]
-We start by defining the usual vector $p$-norm:">
+<title>Balls | Shiraz</title>
+<meta name="keywords" content="Linear Algebra">
+<meta name="description" content="Let&rsquo;s talk about balls. Specifically, I want to look at unit balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is
+\[ \|x\|_p \coloneqq \left(\sum_i |x_i|^p\right)^{\frac{1}{p}} \] When $p=2$ this is the usual Euclidean distance. The corresponding ball is what we think of when someone says ball, it is all the points that are within a given distance from the origin.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/balls/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.97cf87836fe9febd6762ee021598f461858ae137854a39219ecf9bf3543a96fa.css" integrity="sha256-l8&#43;Hg2/p/r1nYu4CFZj0YYWK4TeFSjkhns&#43;b81Q6lvo=" rel="preload stylesheet" as="style">
@@ -82,26 +78,18 @@ We start by defining the usual vector $p$-norm:">
     });
 </script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="Norms, Metrics, and Inner Products" />
-<meta property="og:description" content="Norms A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
-It is nonnegative, and $0$ only at the &lsquo;zero element&rsquo; (for e.g., at the origin of $\mathbb R^n$).
-$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.
-It satisfies the triangle inequality,
-\[ \|x&#43;y\|\leq \|x\| &#43; \|y\| \]
-We start by defining the usual vector $p$-norm:" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="Balls" />
+<meta property="og:description" content="Let&rsquo;s talk about balls. Specifically, I want to look at unit balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is
+\[ \|x\|_p \coloneqq \left(\sum_i |x_i|^p\right)^{\frac{1}{p}} \] When $p=2$ this is the usual Euclidean distance. The corresponding ball is what we think of when someone says ball, it is all the points that are within a given distance from the origin." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://shirazkn.github.io/posts/balls/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-04-10T12:20:23-04:00" />
-<meta property="article:modified_time" content="2023-04-10T12:20:23-04:00" />
+<meta property="article:published_time" content="2023-04-18T21:32:10-04:00" />
+<meta property="article:modified_time" content="2023-04-18T21:32:10-04:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Norms, Metrics, and Inner Products"/>
-<meta name="twitter:description" content="Norms A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
-It is nonnegative, and $0$ only at the &lsquo;zero element&rsquo; (for e.g., at the origin of $\mathbb R^n$).
-$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.
-It satisfies the triangle inequality,
-\[ \|x&#43;y\|\leq \|x\| &#43; \|y\| \]
-We start by defining the usual vector $p$-norm:"/>
+<meta name="twitter:title" content="Balls"/>
+<meta name="twitter:description" content="Let&rsquo;s talk about balls. Specifically, I want to look at unit balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is
+\[ \|x\|_p \coloneqq \left(\sum_i |x_i|^p\right)^{\frac{1}{p}} \] When $p=2$ this is the usual Euclidean distance. The corresponding ball is what we think of when someone says ball, it is all the points that are within a given distance from the origin."/>
 
 
 <script type="application/ld+json">
@@ -118,7 +106,7 @@ We start by defining the usual vector $p$-norm:"/>
     {
       "@type": "ListItem",
       "position":  3 ,
-      "name": "Norms, Metrics, and Inner Products",
+      "name": "Balls",
       "item": "https://shirazkn.github.io/posts/balls/"
     }
   ]
@@ -128,17 +116,17 @@ We start by defining the usual vector $p$-norm:"/>
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Norms, Metrics, and Inner Products",
-  "name": "Norms, Metrics, and Inner Products",
-  "description": "Norms A norm is any real-valued function $\\lVert{}\\cdot{}\\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:\nIt is nonnegative, and $0$ only at the \u0026lsquo;zero element\u0026rsquo; (for e.g., at the origin of $\\mathbb R^n$).\n$\\lVert \\alpha x \\rVert = |\\alpha| \\lVert x \\rVert$ for any scalar $\\alpha$.\nIt satisfies the triangle inequality,\n\\[ \\|x+y\\|\\leq \\|x\\| + \\|y\\| \\]\nWe start by defining the usual vector $p$-norm:",
+  "headline": "Balls",
+  "name": "Balls",
+  "description": "Let\u0026rsquo;s talk about balls. Specifically, I want to look at unit balls corresponding to the different $p$-norms in $\\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\\in \\mathbb R^n$, the $p$-norm is\n\\[ \\|x\\|_p \\coloneqq \\left(\\sum_i |x_i|^p\\right)^{\\frac{1}{p}} \\] When $p=2$ this is the usual Euclidean distance. The corresponding ball is what we think of when someone says ball, it is all the points that are within a given distance from the origin.",
   "keywords": [
-    
+    "Linear Algebra"
   ],
-  "articleBody": "Norms A norm is any real-valued function $\\lVert{}\\cdot{}\\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:\nIt is nonnegative, and $0$ only at the ‘zero element’ (for e.g., at the origin of $\\mathbb R^n$).\n$\\lVert \\alpha x \\rVert = |\\alpha| \\lVert x \\rVert$ for any scalar $\\alpha$.\nIt satisfies the triangle inequality,\n\\[ \\|x+y\\|\\leq \\|x\\| + \\|y\\| \\]\nWe start by defining the usual vector $p$-norm:\n\\[ \\|x\\|_p \\coloneqq \\left(\\sum_i |x_i|^p\\right)^{\\frac{1}{p}} \\]\nThe cases of $p=0$ and $\\infty$ are evaluated using limits, and thus take special forms:\n\\[ \\|x\\|_0 = \\sum_i |x_i|^0 \\] \\[ \\|x\\|_\\infty=\\max\\left\\lbrace|x_1|, |x_2|, \\dots, |x_n|\\right\\rbrace \\]\nwhere $0^0$ is defined as $0$. So, $\\lVert x\\rVert_0$ counts the number of non-zero entries in the vector, whereas $\\lVert x\\rVert_\\infty$ picks out the maximum (in magnitude) entry of the vector.\nActually, $\\lVert x\\rVert_0$ isn’t really a norm (it fails property no. $2$), but it gets called the “$0$-norm” for convenience. I’ve seen some authors call it a pseudonorm. The “$0$-norm” has exploded in popularity due to its applications in the field of compressive sensing.\nMetrics While a norm takes one operand, distances/metrics take two operands. Observe that a norm can be interpreted as ’the distance from the origin’. In fact, all norms give rise to a corresponding distance/metric for that space. The $p$-norm norm gives rise to (or as mathematicians say, induces) the Minkowski distance for $\\mathbb R^n$. Given $x,y\\in\\mathbb R^n$, the Minkowski distance/metric is\n\\[ D_p(x,y) \\coloneqq \\| x-y\\|_p = \\left(\\sum_i |x_i-y_i|^p\\right)^{\\frac{1}{p}} \\] When $p$=2, this is the Euclidean distance, the one we learn early on in our mathematical careers in the form of the Pythagoras theorem. The other interesting cases are when $p$ is $0$, $1$ or $\\infty$, in which cases it’s called the Hamming, Manhattan, or Chebychev distance. Metrics must satisfy properties that are analogous to those for norms except property no. $2$ (so the “$0$-norm” actually defines a proper metric even though it’s not a norm). In addition, metrics should satisfy the symmetry condition: $D(x,y)=D(y,x)$.\nThe space $\\mathbb R^n$ together with a norm $\\lVert{}\\cdot{}\\rVert_p$ is called a normed space, whereas $\\mathbb R^n$ together with the distance $D_p(\\cdot,{}\\cdot)$ is called a metric space.\nInner Products There is an additional notion of an inner product (which generalizes the ‘dot product’ for vectors), giving an inner product space. Like metrics, an inner product takes two operands, $x$ and $y$, and gives a real number denoted by $\\langle x,y \\rangle$. It induces a corresponding norm, given by $\\lVert x \\rVert = \\sqrt{\\langle x,x \\rangle}$. Thus, an inner product space is a normed space, and a normed space is a metric space. Neither of the converse directions is true.\nInner product spaces are the most rare, or rather, we impose very specific conditions on inner product spaces which makes them so rare. This also means that they are endowed with a lot of structure; it takes more words to describe an intricate sculpture than it does to, say, describe a block of stone. Mathematicians like to say that inner product spaces are rich in structure. They allow us to define geometric concepts such as angles, which may not be easy to define for general metric spaces. The angle between two vectors $x$ and $y$ can be defined as\n\\[ \\theta = \\arccos\\left(\\frac{\\langle x,y \\rangle}{\\sqrt{\\langle x, x\\rangle \\langle y, y\\rangle}}\\right) \\]\nThis definition works not only in higher dimensional Euclidean spaces, but in any inner product space, including function spaces.\nThe only distance that comes from an inner product is the Euclidean distance ($p$=2), which comes from our most familiar inner product – the dot product in $\\mathbb R^n$:\n\\[ D_2(x,y) = \\|x-y\\|_2 = \\sqrt{(x-y)\\cdot (x-y)} \\]\nThe dot product induces the $2$-norm which induces the Euclidean distance, so the whole gang is here. This is why we typically call $\\mathbb R^n$ the Euclidean space; since there is only one canonical inner product for it (the dot product), we don’t particularly mind restricting ourselves to the $p=2$ case because it feels somewhat natural to the space.\nThus, inner products are the most rarest of them all. Metrics/distances are on the other extreme, because all Minkowski distances with $0\\leq p\\leq \\infty$ are proper metrics, but only $p=2$ corresponds to an inner product. Norms are sandwiched in-between the two, as $p$-norms are norms only for $p \\geq 1$.\n\\[ \\text{Inner Product Spaces} \\subset \\text{Normed Vector Spaces} \\subset \\text{Metric Spaces} \\]\nor in terms of the values for $p$, we can write\n\\[ \\lbrace 2 \\rbrace \\subset [1, \\infty] \\subset [0, \\infty] \\]\nAn interesting observation which always trips me up is that metric spaces don’t have to be vector spaces, or vice versa.\nWhat’s so special about $2$ anyway? Once again , I am annoyed by the special place that $2$ takes in this hierarchy of spaces. It has a host of interesting properties (which I will link in this post if I ever decide to explore them further):\nThe Euclidean distance ($p=2$) is the only distance that comes from an inner product.\nThe unit balls corresponding to the $2$-norm, $\\lbrace x : \\lVert x \\rVert_2\\leq1 \\rbrace$ are spherical.\nFor this reason, the Euclidean distance ($p=2$) has the richest rotational isometry group 1. This is related to the observation that rotation of a sphere does not ‘change its shape’, but rotating a non-spherical object can ‘change its shape’. In fact, for $p\\neq2$, the other Minkowski distances do not have any continuous rotational isometries because their unit balls are non-spherical and somewhat pointy.\nThe Euclidean space (the space $\\mathbb R^n$ combined with the $2$-norm induced distance) can be uniquely characterized by the fact that the distance-squared function is differentiable everywhere .\nThe last one was fascinating to me because the differentiability fails not only if you change the distance function, but also if you change to a different topological space, like say, a circle! So not only is the Euclidean distance special, the Euclidean space $\\mathbb R^n$ is itself quite special when equipped with the Euclidean distance.\nI’m not too knowledgable about group theory, so expect an abuse of terminology here. ↩︎\n",
-  "wordCount" : "1014",
+  "articleBody": "Let’s talk about balls. Specifically, I want to look at unit balls corresponding to the different $p$-norms in $\\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\\in \\mathbb R^n$, the $p$-norm is\n\\[ \\|x\\|_p \\coloneqq \\left(\\sum_i |x_i|^p\\right)^{\\frac{1}{p}} \\] When $p=2$ this is the usual Euclidean distance. The corresponding ball is what we think of when someone says ball, it is all the points that are within a given distance from the origin. More generally, the ball of ‘radius’ $r$ corresponding to a norm $\\lVert{}\\cdot{}\\rVert$ is\n\\[\\lbrace x\\ |\\ x\\in\\mathbb R^n, \\|x\\|\\leq r\\rbrace\\] Let’s call the ball corresponding to $\\lVert{}\\cdot{}\\rVert_p$ as the $p$-ball. If $r=1$, we will call it a unit ball. This website shows the unit balls corresponding to other $p$-norms. Here is my artistic illustration of the same:\nThe figure may indicate that $\\lVert{}\\cdot{}\\rVert_p$ gets bigger as $p$ increases, but it’s the other way around:\n\\[\\|x\\|_1 \\geq \\|x\\|_2 \\geq \\dots \\geq \\|x\\|_\\infty\\]\nbecause you need to go further from the origin to get to the $\\infty$ ball. This is similar to how a car with a poorer mileage would need to expend more fuel to get to the same point. So the balls get bigger, but the ‘mileage’ gets smaller.\nRecall that if $p\u003c1$, then ‘$p$-norm’ is not actually a norm, as it is guaranteed to violate the conditions which we usually place on a norm. What feature do we see appearing in the $p$-balls, when $p\u003c1$? They answer is that they curve inwards (are non-convex). In particular, the $0$-ball is quite bizarre, it is exactly the axes! (Recall that the “$0$-norm” counts the number of non-zero elements in a vector, which is $1$ for each point on the axes). Let’s not talk about the $0$-ball for now.\nThe $2$-Ball When $n=2$ the $2$-ball is a circle, and when $n=3$ the $2$-ball is a sphere. What’s less obvious is the case of $n=1$, in which case each of the $p$-norm unit balls is just the line segment from $-1$ to $1$.\nWe may or may not remember from high-school physics that spheres (i.e., $2$-balls) minimize the ratio of the surface area to volume of a shape. It is why bubbles take spherical shapes, in order to minimize their potential energy. A defining feature of the $2$-ball is that it has continuous rotational symmetry – we can rotate the $2$-ball without changing its shape, something we cannot do for any of the other $p$-balls.\nThe $\\infty$-Ball Recall that the $\\infty$-norm is evaluated by taking the limit $p\\rightarrow \\infty$ in the definition of the $p$-norm, giving\n\\[ \\|x\\|_\\infty=\\max\\left\\lbrace|x_1|, |x_2|, \\dots, |x_n|\\right\\rbrace \\] The $\\lVert{}\\cdot{}\\rVert_\\infty$ unit ball is always a cube in each dimension, it can be treated as the definition of a unit cube. As such, it has $2n$ faces in dimension $n$. This is because\n\\[ \\max\\left\\lbrace|x_1|, |x_2|, \\dots, |x_n|\\right\\rbrace \\leq 1 \\] \\[ \\Updownarrow \\] \\[ |x_1|\\leq 1\\quad \\text{and}\\quad |x_2|\\leq 1\\quad \\text{and}\\quad \\dots\\quad |x_n|\\leq 1 \\] \\[ \\Updownarrow \\] \\[ x_1\\leq 1\\quad \\text{and}\\quad -x_1\\leq 1\\quad \\dots\\quad x_n\\leq 1 \\quad \\text{and}\\quad -x_n\\leq 1 \\] which gives us $2n$ linear constraints, with each linear constraint adding a face.\nThe $1$-Ball The $1$-Ball in $2$ dimensions seems like a rotated square, or a diamond, and it appears like this should generalize. Let’s count its faces.\n\\[ |x_1| + |x_2| + \\dots + |x_n| \\leq 1 \\quad \\Leftrightarrow \\quad \\pm x_1 \\pm x_2 \\pm \\dots \\pm x_n \\leq 1 \\] where each ‘$\\pm$’ indicates that we can choose either sign to obtain a different inequality. The total number of linear inequalities that we can construct is $2^n$. So $1$-balls have many, many more faces than $\\infty$-balls in higher dimensions!\nThis observation has consequences in the field of optimization; some poor bloke here is trying to check whether a given vector $x$ lies inside the $1$-ball. They write this out as a system of linear inequalities, only to realize that it would take an exponentially large number of linear inequalities to do this.\nEquivalence of Norms Given any two numbers $p_1$ and $p_2$ between 0 and $\\infty$, with $1\\leq p_1,p_2\\leq \\infty$, we can place $p_1$-balls inside and outside a given $p_2$-ball so that they touch. Two examples of this are as follows:\nThis is what is meant when we say that the $p$-norms are equivalent. Vectors are big (or small) in one norm if and only if they’re big (or small) in the other. ‘Big’ and ‘small’ are used very subjectively here.\nHigher Dimensions We can use everything we just introduced to show interesting quirks of high-dimensional geometry. While this is an entertaining discussion in its own right, it has important consequences in fields like deep learning and probability theory.\nThe Construction: Consider placing a cube of side length $2$ centred at the origin, as well as a green cube with side length $4$. Then place a sphere at each of the corners of the (inner) cube so that they touch each other, as follows:\nwhere by ‘sphere’ and ‘cube’ we really mean hypersphere and hypercube, which are their corresponding higher dimensional analogues. Finally, we try to squeeze in a new orange sphere at the centre. The entire configuration fits snugly inside the bigger green cube, and the maroon/pink spheres are in some sense ’tightly packed’ inside the green cube. The figure above is for dimension $2$.\nSome Observations: Let’s say we are in some higher dimension, $n$. If this feels like unfamiliar territory, we can think of these as $2$-balls and $\\infty$-balls, so we have all the machinery needed to be able to think about these high-dimensional objects at some capacity. For example, we know the following:\nFrom the origin, we can travel exactly $1$ unit along any axis to reach the cube The radii of the spheres at the corners is $1$ The corners of the cube are $\\sqrt n$ away from the origin, in terms of the Euclidean distance (or by a repeated application of the Pythagoras theorem ) When $n\\gg1$, the corners of the cube are extremely ($\\sqrt n$) far from the origin, whereas the faces are still $1$ unit away. People often phrase this as “higher dimensional cubes are spiky”. Here are some weirder facts:\nThe spheres at the corners still have radius $1$ There are $2^n$ spheres at the corners, because there are $2^n$ corners for the cube The orange sphere has a radius of $\\sqrt n -1$ Thus, in $1$ dimension, the orange sphere has radius $0$. In $3$ dimensions it has radius $\\sqrt 3 -1$. In $4$ dimensions it has radius… $1$? It’s the same size as the spheres at the corners… and it touches the faces of the inner cube…\nIn the $10^{th}$ dimension, the sphere in the middle sticks out of the green cube. Because the corners of the black box have moved far from the origin, so have the unit spheres we placed at them, making more room for the orange sphere to expand with the dimension.\nGoing Inwards Let’s take now the following construction, where we inscribe a purple sphere inside the inner cube. These are precisely the unit balls of the $2$ and $\\infty$ norms:\nWe saw that the $\\infty$-ball always touches the $2$-ball from the outside, so even if we turn up the dimension, the sphere better remain contained within the cube. But the corners are still moving away from the origin, so the cube seems to be getting comparatively larger. Let $\\text{Vol}({}\\cdot{})$ denote the volume (given by the Lebesgue measure ) of a set.\n\\[\\frac{\\text{Vol}\\left(\\textit{\\ Unit Sphere in }\\mathbb R^n\\ \\right)}{\\text{Vol}\\left(\\textit{\\ Unit Cube in }\\mathbb R^n\\ \\right)}\\ \\rightarrow\\ 0\\qquad \\text{as}\\ n\\rightarrow \\infty \\] The higher dimensional sphere is insignificantly small in comparison to the cube.\nThere’s a variety of ways of showing this, though it’s less straightforward than the stuff we did so far. My favorite proof of this (or rather, a comparable) result is from Durett’s book on probability, where he shows it using the law of large numbers! The reason it stands out in my memory is not only because of the absurdity of showing a fact of geometry using something so seemingly far removed from geometry, but because he prefaces the result with the sentence, “Our next result is for comic relief.” It’s given in example $2.2.5$ of Probability Theory by Rick Durett. Specifically, the probabilistic argument shows that almost all of the volume of the cube is concentrated within some thin shell, somewhere between its center and its corners. It’s about as bizarre as it sounds.\nA quirk that shows up repeatedly in deep learning in various forms is the so-called curse of dimensionality. It usually refers to one of several things, but one of these is the vanishing of the higher dimensional sphere. Think of each dimension in the preceding analysis as the weight of a neural network. The ambient space (where the orange sphere lives) is like the parameter space of the neural network; it is the set of all possible combinations of weights. Searching for the right combination of weights (the sphere) in the much larger parameter space (the cube) becomes more and more futile as the number of weights (the dimension) increases.\nOn the other hand, Durett’s ‘volume concentration’ example, and other quirks of higher dimensional geometry constitute what some researchers call the blessing of dimensionality . Of the different things it can refer to, one of the observations is that as the dimension increases, random sampling from this high-dimensional space becomes more and more well-behaved. It can be used to facilitate, rather than hinder high-dimensional computational tasks, so long as one knows what to watch out for.\n",
+  "wordCount" : "1602",
   "inLanguage": "en",
-  "datePublished": "2023-04-10T12:20:23-04:00",
-  "dateModified": "2023-04-10T12:20:23-04:00",
+  "datePublished": "2023-04-18T21:32:10-04:00",
+  "dateModified": "2023-04-18T21:32:10-04:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://shirazkn.github.io/posts/balls/"
@@ -200,6 +188,11 @@ We start by defining the usual vector $p$-norm:"/>
                     <span>archives</span>
                 </a>
             </li>
+            <li>
+                <a href="https://shirazkn.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -209,113 +202,166 @@ We start by defining the usual vector $p$-norm:"/>
   <header class="post-header">
     
     <h1 class="post-title">
-      Norms, Metrics, and Inner Products
+      Balls
     </h1>
-    <div class="post-meta"><span title='2023-04-10 12:20:23 -0400 EDT'>April 10, 2023</span>
+    <div class="post-meta"><span title='2023-04-18 21:32:10 -0400 EDT'>April 18, 2023</span>
 
 </div>
   </header> 
-  <div class="post-content"><h3 id="norms">Norms<a hidden class="anchor" aria-hidden="true" href="#norms">#</a></h3>
-<p>A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:</p>
-<ol>
-<li>
-<p>It is nonnegative, and $0$ only at the &lsquo;zero element&rsquo; (for e.g., at the origin of $\mathbb R^n$).</p>
-</li>
-<li>
-<p>$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.</p>
-</li>
-<li>
-<p>It satisfies the triangle inequality,</p>
-</li>
-</ol>
-<p>\[
-\|x+y\|\leq \|x\| + \|y\|
-\]</p>
-<p>We start by defining the usual vector <span class=accented>$p$-norm</span>:</p>
-<p>\[
-\|x\|_p \coloneqq \left(\sum_i |x_i|^p\right)^{\frac{1}{p}}
-\]</p>
-<p>The cases of $p=0$ and $\infty$ are evaluated using limits, and thus take special forms:</p>
-<p>\[
-\|x\|_0 = \sum_i |x_i|^0
-\]
-\[
-\|x\|_\infty=\max\left\lbrace|x_1|, |x_2|, \dots, |x_n|\right\rbrace
-\]</p>
-<p>where $0^0$ is defined as $0$. So, $\lVert x\rVert_0$ counts the number of non-zero entries in the vector, whereas $\lVert x\rVert_\infty$ picks out the maximum (in magnitude) entry of the vector.</p>
-<p>Actually, $\lVert x\rVert_0$ isn&rsquo;t really a norm (it fails property no. $2$), but it gets called the &ldquo;$0$-norm&rdquo; for convenience. I&rsquo;ve seen some authors call it a <em>pseudonorm</em>. The &ldquo;$0$-norm&rdquo; has exploded in popularity due to its applications in the field of <em>compressive sensing</em>.</p>
-<!-- It's used to reconstruct sparse vectors, those that only have a few non-zero entries. This is akin to searching for compressed information, since sparse vectors can be stored in computers using fewer numbers than are required for general vectors.  -->
-<h3 id="metrics">Metrics<a hidden class="anchor" aria-hidden="true" href="#metrics">#</a></h3>
-<p>While a norm takes one operand, distances/metrics take two operands. Observe that a norm can be interpreted as &rsquo;the distance from the origin&rsquo;. In fact, all norms give rise to a corresponding distance/metric for that space. The $p$-norm norm gives rise to (or as mathematicians say, <em>induces</em>) the <span class=accented>Minkowski distance</span> for $\mathbb R^n$. Given $x,y\in\mathbb R^n$, the Minkowski distance/metric is</p>
+  <div class="post-content"><p>Let&rsquo;s talk about balls. Specifically, I want to look at unit balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is</p>
 <p>
 \[
-   D_p(x,y) \coloneqq \| x-y\|_p = \left(\sum_i |x_i-y_i|^p\right)^{\frac{1}{p}}
+    \|x\|_p \coloneqq \left(\sum_i |x_i|^p\right)^{\frac{1}{p}}
+\]
+</p>
+<p>When $p=2$ this is the usual Euclidean distance. The corresponding ball is what we think of when someone says <em>ball</em>, it is all the points that are within a given distance from the origin. More generally, the ball of &lsquo;radius&rsquo; $r$ corresponding to a norm $\lVert{}\cdot{}\rVert$ is</p>
+<p>
+\[\lbrace x\ |\ x\in\mathbb R^n, \|x\|\leq r\rbrace\]
+</p>
+<p>Let&rsquo;s call the ball corresponding to $\lVert{}\cdot{}\rVert_p$ as the $p$-ball. If $r=1$, we will call it a unit ball.
+<a href="https://mimmackk.github.io/unitball/" target="_blank" class="accented">
+    This website
+</a> shows the unit balls corresponding to other $p$-norms. Here is my artistic illustration of the same:</p>
+<div>
+<!-- <figure class=invertible style="max-width: 25%;"> -->
+<figure class=invertible style="max-width: 100%;">
+<img src=/post-images/linear_algebra/NormBalls.png>
+</figure>
+</div>
+<p>The figure may indicate that $\lVert{}\cdot{}\rVert_p$ gets bigger as $p$ increases, but it&rsquo;s the other way around:</p>
+<p>\[\|x\|_1 \geq \|x\|_2 \geq \dots \geq \|x\|_\infty\]</p>
+<p>because you need to go <em>further</em> from the origin to get to the $\infty$ ball. This is similar to how a car with a <em>poorer</em> mileage would need to expend <em>more</em> fuel to get to the same point. So the balls get bigger, but the &lsquo;mileage&rsquo; gets smaller.</p>
+<p>Recall that if $p&lt;1$, then &lsquo;$p$-norm&rsquo; is not actually a norm, as it is guaranteed to violate <a href="/posts/norms_metrics" class="accented">
+    the conditions
+</a> which we usually place on a norm. What feature do we see appearing in the $p$-balls, when $p&lt;1$? They answer is that they curve inwards (are <em>non-convex</em>). In particular, the $0$-ball is quite bizarre, it is exactly the axes! (Recall that the &ldquo;$0$-norm&rdquo; counts the number of non-zero elements in a vector, which is $1$ for each point on the axes). Let&rsquo;s not talk about the $0$-ball for now.</p>
+<h3 id="the-2-ball">The $2$-Ball<a hidden class="anchor" aria-hidden="true" href="#the-2-ball">#</a></h3>
+<p>When $n=2$ the $2$-ball is a circle, and when $n=3$ the $2$-ball is a sphere. What&rsquo;s less obvious is the case of $n=1$, in which case each of the $p$-norm unit balls is just the line segment from $-1$ to $1$.</p>
+<p>We may or may not remember from high-school physics that spheres (i.e., $2$-balls) minimize the ratio of the surface area to volume of a shape. It is why bubbles take spherical shapes, in order to minimize their potential energy. A defining feature of the $2$-ball is that it has continuous rotational symmetry &ndash; we can rotate the $2$-ball without changing its shape, something we cannot do for any of the other $p$-balls.</p>
+<!-- We looked at the $2$-norm in detail in [earlier posts](/posts/leastsquares). Specifically, we observe that we can rotate the $2$-balls without changing its shape, something we cannot do for any of the other $p$-balls. -->
+<h3 id="the-infty-ball">The $\infty$-Ball<a hidden class="anchor" aria-hidden="true" href="#the-infty-ball">#</a></h3>
+<p>Recall that the $\infty$-norm is evaluated by taking the limit $p\rightarrow \infty$ in the definition of the $p$-norm, giving</p>
+<p>
+\[
+    \|x\|_\infty=\max\left\lbrace|x_1|, |x_2|, \dots, |x_n|\right\rbrace
     \]
 </p>
-<p>When $p$=2, this is the <span class=accented>Euclidean distance</span>, the one we learn early on in our mathematical careers in the form of the Pythagoras theorem. The other interesting cases are when $p$ is $0$, $1$ or $\infty$, in which cases it&rsquo;s called the Hamming, Manhattan, or Chebychev distance. Metrics must satisfy properties that are analogous to those for norms <em>except</em> property no. $2$ (so the &ldquo;$0$-norm&rdquo; actually defines a proper metric even though it&rsquo;s not a norm). In addition, metrics should satisfy the symmetry condition: $D(x,y)=D(y,x)$.</p>
-<p>The space $\mathbb R^n$ together with a norm $\lVert{}\cdot{}\rVert_p$ is called a <span class=accented>normed space</span>, whereas $\mathbb R^n$ together with the distance $D_p(\cdot,{}\cdot)$ is called a <span class=accented>metric space</span>.</p>
-<h3 id="inner-products">Inner Products<a hidden class="anchor" aria-hidden="true" href="#inner-products">#</a></h3>
-<p>There is an additional notion of an inner product (which generalizes the &lsquo;dot product&rsquo; for vectors), giving an <span class=accented>inner product space</span>.
-Like metrics, an inner product takes two operands, $x$ and $y$, and gives a real number denoted by $\langle x,y \rangle$. It induces a corresponding norm, given by $\lVert x \rVert = \sqrt{\langle x,x \rangle}$. Thus, an inner product space is a normed space, and a normed space is a metric space. Neither of the converse directions is true.</p>
-<p>Inner product spaces are the most rare, or rather, we impose <a href="https://en.wikipedia.org/wiki/Inner_product_space" target="_blank" class="accented">
-    very specific conditions
-</a> on inner product spaces which makes them so rare. This also means that they are endowed with a lot of structure; it takes more words to describe an intricate sculpture than it does to, say, describe a block of stone. Mathematicians like to say that inner product spaces are <em>rich</em> in structure. They allow us to define geometric concepts such as angles, which may not be easy to define for general metric spaces. The angle between two vectors $x$ and $y$ can be defined as</p>
-<p>\[
-\theta = \arccos\left(\frac{\langle x,y \rangle}{\sqrt{\langle x, x\rangle \langle y, y\rangle}}\right)
-\]</p>
-<p>This definition works not only in higher dimensional Euclidean spaces, but in <em>any</em> inner product space, including function spaces.</p>
-<p>The only distance that comes from an inner product is the Euclidean distance ($p$=2), which comes from our most familiar inner product &ndash; the dot product in $\mathbb R^n$:</p>
-<p>\[
-D_2(x,y) = \|x-y\|_2 = \sqrt{(x-y)\cdot (x-y)}
-\]</p>
-<p>The dot product induces the  $2$-norm which induces the Euclidean distance, so the whole gang is here.
-This is why we typically call $\mathbb R^n$ the Euclidean space; since there is only one canonical inner product for it (the dot product), we don&rsquo;t particularly mind restricting ourselves to the $p=2$ case because it feels somewhat natural to the space.</p>
-<p>Thus, inner products are the most rarest of them all. Metrics/distances are on the other extreme, because all Minkowski distances with $0\leq p\leq \infty$ are proper metrics, but only $p=2$ corresponds to an inner product. Norms are sandwiched in-between the two, as $p$-norms are norms only for $p \geq 1$.</p>
-<p>\[
-\text{Inner Product Spaces} \subset \text{Normed Vector Spaces} \subset \text{Metric Spaces}
-\]</p>
-<p>or in terms of the values for $p$, we can write</p>
-<p>\[
-\lbrace 2 \rbrace \subset [1, \infty] \subset [0, \infty]
-\]</p>
-<p>An interesting observation which always trips me up is that metric spaces don&rsquo;t have to be vector spaces, or vice versa.</p>
-<h3 id="whats-so-special-about-2-anyway">What&rsquo;s so special about $2$ anyway?<a hidden class="anchor" aria-hidden="true" href="#whats-so-special-about-2-anyway">#</a></h3>
-<p><a href="/posts/leastsquares" class="accented">
-    Once again
-</a>, I am annoyed by the special place that $2$ takes in this hierarchy of spaces. It has a host of interesting properties (which I will link in this post if I ever decide to explore them further):</p>
-<ol>
-<li>
-<p>The Euclidean distance ($p=2$) is the only distance that comes from an inner product.</p>
-</li>
-<li>
-<p>The unit balls corresponding to the $2$-norm,  $\lbrace x : \lVert x \rVert_2\leq1 \rbrace$ are spherical.</p>
-</li>
-<li>
-<p>For this reason, the Euclidean distance ($p=2$) has <a href="https://mathoverflow.net/questions/64443/which-norms-have-rich-isometry-groups" target="_blank" class="accented">
-    the richest rotational isometry group
-</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. This is related to the observation that rotation of a sphere does not &lsquo;change its shape&rsquo;, but rotating a non-spherical object can &lsquo;change its shape&rsquo;. In fact, for $p\neq2$, the other Minkowski distances do not have any continuous rotational isometries because their unit balls are non-spherical and somewhat pointy.</p>
-</li>
-<li>
-<p>The Euclidean space (the space $\mathbb R^n$ combined with the $2$-norm induced distance) <a href="https://mathstodon.xyz/@francisbrb/109908877121683860" target="_blank" class="accented">
-    can be uniquely characterized by the fact that the distance-squared function is differentiable everywhere
-</a>.</p>
-</li>
-</ol>
-<p>The last one was fascinating to me because the differentiability fails not only if you change the distance function, but also if you change to a different topological space, like say, a circle! So not only is the Euclidean distance special, the Euclidean space $\mathbb R^n$ is itself quite special when equipped with the Euclidean distance.</p>
-<div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>I&rsquo;m not too knowledgable about group theory, so expect an abuse of terminology here.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
+<p>The $\lVert{}\cdot{}\rVert_\infty$ unit ball is always a cube in each dimension, it can be treated as the definition of a <span class=accented>unit cube</span>.
+As such, it has $2n$ faces in dimension $n$. This is because</p>
+<p>
+\[
+  \max\left\lbrace|x_1|, |x_2|, \dots, |x_n|\right\rbrace \leq 1
+    \]
+    \[
+  \Updownarrow
+    \]
+\[
+ |x_1|\leq 1\quad \text{and}\quad |x_2|\leq 1\quad \text{and}\quad \dots\quad |x_n|\leq 1 
+ \]
+ \[
+  \Updownarrow
+    \]
+\[
+ x_1\leq 1\quad \text{and}\quad -x_1\leq 1\quad \dots\quad x_n\leq 1 \quad \text{and}\quad -x_n\leq 1
+ \]
+</p>
+<p>which gives us $2n$ linear constraints, with each linear constraint adding a face.</p>
+<h3 id="the-1-ball">The $1$-Ball<a hidden class="anchor" aria-hidden="true" href="#the-1-ball">#</a></h3>
+<p>The $1$-Ball in $2$ dimensions seems like a rotated square, or a diamond, and it appears like this should generalize. Let&rsquo;s count its faces.</p>
+<p>
+\[
+|x_1| + |x_2|  + \dots + |x_n| \leq 1
+ \quad  \Leftrightarrow \quad
+  \pm x_1 \pm x_2  \pm \dots \pm x_n \leq 1
+    \]
+</p>
+<p>where each &lsquo;$\pm$&rsquo; indicates that we can choose either sign to obtain a different inequality. The total number of linear inequalities that we can construct is $2^n$. So $1$-balls have many, many more faces than $\infty$-balls in higher dimensions!</p>
+<p>This observation has consequences in the field of <em>optimization</em>; <a href="https://math.stackexchange.com/questions/2287818/writing-the-unit-ell-1-ball-in-mathbbrn-as-the-intersection-of-closed-h" target="_blank" class="accented">
+    some poor bloke here
+</a> is trying to check whether a given vector $x$ lies inside the $1$-ball. They write this out as a system of linear inequalities,
+only to realize that it would take an exponentially large number of linear inequalities to do this.</p>
+<!-- I will explore $1$-balls more in a later post when I talk about compressive sensing, a field in which the $1$-ball plays a foundational role. -->
+<!-- The particular face in the positive quadrant of the $1$-ball, with $x_i\geq 0 \forall i$, is called the *probability simplex* -->
+<h3 id="equivalence-of-norms">Equivalence of Norms<a hidden class="anchor" aria-hidden="true" href="#equivalence-of-norms">#</a></h3>
+<p>Given any two numbers $p_1$ and $p_2$ between 0 and $\infty$, with $1\leq p_1,p_2\leq \infty$, we can <span class=accented>place $p_1$-balls inside and outside a given $p_2$-ball</span> so that they touch.
+Two examples of this are as follows:</p>
+<div>
+<!-- <figure class=invertible style="max-width: 25%;"> -->
+<figure class=invertible style="max-width: 80%;">
+<img src=/post-images/linear_algebra/equivalence.png>
+</figure>
 </div>
+<p>This is what is meant when we say that the $p$-norms are <em>equivalent</em>. Vectors are big (or small) in one norm if and only if they&rsquo;re big (or small) in the other. &lsquo;Big&rsquo; and &lsquo;small&rsquo; are used very subjectively here.</p>
+<h2 id="higher-dimensions">Higher Dimensions<a hidden class="anchor" aria-hidden="true" href="#higher-dimensions">#</a></h2>
+<p>We can use everything we just introduced to show interesting quirks of high-dimensional geometry. While this is an entertaining discussion in its own right, it has important consequences in fields like deep learning and probability theory.</p>
+<p><strong>The Construction:</strong> Consider placing a cube of side length $2$ centred at the origin, as well as a green cube with side length $4$. Then place a sphere at each of the corners of the (inner) cube so that they touch each other, as follows:</p>
+<div>
+<!-- <figure class=invertible style="max-width: 25%;"> -->
+<figure class=invertible style="max-width: 100%;">
+<img src=/post-images/linear_algebra/spheres_on_cube.png>
+</figure>
+</div>
+<p>where by &lsquo;sphere&rsquo; and &lsquo;cube&rsquo; we really mean hypersphere and hypercube, which are their corresponding higher dimensional analogues. Finally, we try to <em>squeeze in</em> a new <span>orange sphere</span> at the centre. The entire configuration fits snugly inside the bigger green cube, and the maroon/pink spheres are in some sense &rsquo;tightly packed&rsquo; inside the green cube. The figure above is for dimension $2$.</p>
+<p><strong>Some Observations:</strong>
+Let&rsquo;s say we are in some higher dimension, $n$. If this feels like unfamiliar territory, we can think of these as $2$-balls and $\infty$-balls, so we have all the machinery needed to be able to think about these high-dimensional objects at some capacity. For example, we know the following:</p>
+<ol>
+<li>From the origin, we can travel exactly $1$ unit along any axis to reach the cube</li>
+<li>The radii of the spheres at the corners is $1$</li>
+<li>The corners of the cube are $\sqrt n$ away from the origin, in terms of the <a href="/posts/norms_metrics" class="accented">
+    Euclidean distance
+</a> (or by a repeated application of <a href="/posts/pythagoras" class="accented">
+    the Pythagoras theorem
+</a>)</li>
+</ol>
+<p>When $n\gg1$, the corners of the cube are extremely ($\sqrt n$) far from the origin, whereas the faces are still $1$ unit away. People often phrase this as
+&ldquo;<span class=accented>higher dimensional cubes are spiky</span>&rdquo;. Here are some weirder facts:</p>
+<ol start="4">
+<li>The spheres at the corners still have radius $1$</li>
+<li>There are $2^n$ spheres at the corners, because there are $2^n$ corners for the cube</li>
+</ol>
+<div>
+<!-- <figure class=invertible style="max-width: 25%;"> -->
+<figure class=invertible style="max-width: 100%;">
+<img src=/post-images/linear_algebra/inner_sphere.png>
+</figure>
+</div>
+<ol start="6">
+<li>The orange sphere has a radius of $\sqrt n -1$</li>
+</ol>
+<p>Thus, in $1$ dimension, the orange sphere has radius $0$. In $3$ dimensions it has radius $\sqrt 3 -1$. In $4$ dimensions it has radius&hellip; $1$? It&rsquo;s the same size as the spheres at the corners&hellip; and it touches the faces of the inner cube&hellip;</p>
+<ol start="7">
+<li>In the $10^{th}$ dimension, the sphere in the middle sticks out of the green cube.</li>
+</ol>
+<p>Because the corners of the black box have moved far from the origin, so have the unit spheres we placed at them, making more room for the orange sphere to expand with the dimension.</p>
+<hr>
+<h3 id="going-inwards">Going Inwards<a hidden class="anchor" aria-hidden="true" href="#going-inwards">#</a></h3>
+<p>Let&rsquo;s take now the following construction, where we inscribe a purple sphere inside the inner cube. These are precisely the unit balls of the $2$ and $\infty$ norms:</p>
+<div>
+<!-- <figure class=invertible style="max-width: 25%;"> -->
+<figure class=invertible style="max-width: 100%;">
+<img src=/post-images/linear_algebra/sphere_in_cube.png>
+</figure>
+</div>
+<p>We saw that the $\infty$-ball always touches the $2$-ball from the outside, so even if we turn up the dimension, the sphere better remain contained within the cube. But the corners are still moving away from the origin, so the cube seems to be getting comparatively larger. Let $\text{Vol}({}\cdot{})$ denote the volume (given by the <a href="https://en.wikipedia.org/wiki/Lebesgue_measure" target="_blank" class="accented">
+    Lebesgue measure
+</a>) of a set.</p>
+<p>
+\[\frac{\text{Vol}\left(\textit{\ Unit Sphere in }\mathbb R^n\ \right)}{\text{Vol}\left(\textit{\ Unit Cube in }\mathbb R^n\ \right)}\  \rightarrow\  0\qquad \text{as}\ n\rightarrow \infty \]
+</p>
+<p>The higher dimensional sphere is insignificantly small in comparison to the cube.</p>
+<p>There&rsquo;s a variety of ways of showing this, though it&rsquo;s less straightforward than the stuff we did so far. My favorite proof of this (or rather, a comparable) result is from Durett&rsquo;s book on probability, where he shows it using the law of large numbers! The reason it stands out in my memory is not only because of the absurdity of showing a fact of geometry using something so seemingly far removed from geometry, but
+because he prefaces the result with the sentence, &ldquo;<em>Our next result is for comic relief.</em>&rdquo; It&rsquo;s given in example $2.2.5$ of Probability Theory by Rick Durett. Specifically, the probabilistic argument shows that almost all of the volume of the cube is concentrated within some thin shell, somewhere between its center and its corners. It&rsquo;s about as bizarre as it sounds.</p>
+<hr>
+<p>A quirk that shows up repeatedly in deep learning in various forms is the so-called <span class=accented>curse of dimensionality</span>. It usually refers to one of several things, but one of these is the vanishing of the higher dimensional sphere. Think of each dimension in the preceding analysis as the <em>weight</em> of a neural network. The ambient space (where the orange sphere lives) is like the <em>parameter space</em> of the neural network; it is the set of all possible combinations of weights. Searching for the right combination of weights (the sphere) in the much larger parameter space (the cube) becomes more and more futile as the number of weights (the dimension) increases.</p>
+<p>On the other hand, Durett&rsquo;s &lsquo;volume concentration&rsquo; example, and other quirks of higher dimensional geometry constitute what some researchers call the <a href="https://citeseerx.ist.psu.edu/doc/10.1.1.329.3392" target="_blank" class="accented">
+    blessing of dimensionality
+</a>. Of the different things it can refer to, one of the observations is that as the dimension increases, random sampling from this high-dimensional space becomes more and more well-behaved. It can be used to facilitate, rather than hinder high-dimensional computational tasks, so long as one knows what to watch out for.</p>
 
 
   </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
+      <li><a href="https://shirazkn.github.io/tags/linear-algebra/">Linear Algebra</a></li>
     </ul>
   </footer>
 </article>

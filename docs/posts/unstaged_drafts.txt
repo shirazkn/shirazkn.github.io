@@ -9,3 +9,30 @@ incompleteness theorems as languages.. -->
 <!-- Aside: would a language that is expressive enough to encapsulate mathematical logic be incomplete?
 language allows us to transcend mathematical systems. -->
 <!-- Takashi Tokeida's paradox about propositional logic (contravariance) -->
+
+
+## Emmy Noether
+
+## David Blackwell
+
+## Alan Turing
+
+## Maryam Mirzakhani
+
+## Hilda Geiringer
+
+## Honorable Mentions
+
+### Bell Burnell
+
+### Vera Rubin
+
+### Srinivasa Ramanujan
+
+### Sophie Germain, Ada Lovelace, Hypatia, Florence Nightingale
+
+## In our time...
+
+### Eugenia Cheng
+
+### Terrence Tao
