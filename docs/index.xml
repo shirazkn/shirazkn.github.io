@@ -6,7 +6,16 @@
     <description>Recent content on Shiraz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Apr 2023 21:32:10 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Apr 2023 12:09:09 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hilbert Spaces</title>
+      <link>https://shirazkn.github.io/posts/hilbert-spaces/</link>
+      <pubDate>Fri, 21 Apr 2023 12:09:09 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/hilbert-spaces/</guid>
+      <description>Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an inner product (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is complete, i.e., it doesn&amp;rsquo;t have er&amp;hellip; holes in it. Recall that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product for vectors.</description>
+    </item>
+    
     <item>
       <title>Balls</title>
       <link>https://shirazkn.github.io/posts/balls/</link>
