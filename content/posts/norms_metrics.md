@@ -99,7 +99,7 @@ An interesting observation which always trips me up is that metric spaces don't 
 
 1. The Euclidean distance ($p=2$) is the only distance that comes from an inner product.
 
-1. The unit balls corresponding to the $2$-norm,  $\lbrace x : \lVert x \rVert_2\leq1 \rbrace$ are spherical.
+1. The [unit balls](/posts/balls) corresponding to the $2$-norm,  $\lbrace x : \lVert x \rVert_2\leq1 \rbrace$ are spherical.
 
 1. For this reason, the Euclidean distance ($p=2$) has [the richest rotational isometry group](https://mathoverflow.net/questions/64443/which-norms-have-rich-isometry-groups)[^foot]. This is related to the observation that rotation of a sphere does not 'change its shape', but rotating a non-spherical object can 'change its shape'. In fact, for $p\neq2$, the other Minkowski distances do not have any continuous rotational isometries because their unit balls are non-spherical and somewhat pointy.
 

@@ -2,10 +2,10 @@
 title: "Balls"
 date: 2023-04-18T21:32:10-04:00
 draft: false
-tags: ["Linear Algebra"]
+tags: ["Linear Algebra", "Optimization"]
 ---
 
-Let's talk about balls. Specifically, I want to look at unit balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is
+Let's talk about balls. Specifically, I want to look at unit balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is <!--more-->
 
 <p>
 \[
@@ -35,7 +35,7 @@ The figure may indicate that $\lVert{}\cdot{}\rVert_p$ gets bigger as $p$ increa
 
 because you need to go *further* from the origin to get to the $\infty$ ball. This is similar to how a car with a *poorer* mileage would need to expend *more* fuel to get to the same point. So the balls get bigger, but the 'mileage' gets smaller.
 
-Recall that if $p<1$, then '$p$-norm' is not actually a norm, as it is guaranteed to violate [the conditions](/posts/norms_metrics) which we usually place on a norm. What feature do we see appearing in the $p$-balls, when $p<1$? They answer is that they curve inwards (are *non-convex*). In particular, the $0$-ball is quite bizarre, it is exactly the axes! (Recall that the "$0$-norm" counts the number of non-zero elements in a vector, which is $1$ for each point on the axes). Let's not talk about the $0$-ball for now.
+If $p<1$, then the corresponding "$p$-norm" is not actually a norm, as it is guaranteed to violate [the conditions](/posts/norms_metrics) which we usually place on a norm. What feature do we see appearing in the $p$-balls, when $p<1$? They answer is that they curve inwards (are *non-convex*). In particular, the $0$-ball is quite bizarre, it is exactly the axes! ([Recall](/posts/norms_metrics) that the "$0$-norm" counts the number of non-zero elements in a vector, which is $1$ for each point on the axes). Let's not talk about the $0$-ball for now.
 
 ### The $2$-Ball
 
@@ -127,13 +127,13 @@ We can use everything we just introduced to show interesting quirks of high-dime
 where by 'sphere' and 'cube' we really mean hypersphere and hypercube, which are their corresponding higher dimensional analogues. Finally, we try to *squeeze in* a new <span>orange sphere</span> at the centre. The entire configuration fits snugly inside the bigger green cube, and the maroon/pink spheres are in some sense 'tightly packed' inside the green cube. The figure above is for dimension $2$. 
 
 **Some Observations:**
-Let's say we are in some higher dimension, $n$. If this feels like unfamiliar territory, we can think of these as $2$-balls and $\infty$-balls, so we have all the machinery needed to be able to think about these high-dimensional objects at some capacity. For example, we know the following:
+Let's say we are in some higher dimension, $n$. If this feels like unfamiliar territory, we can think of these as $2$-balls and $\infty$-balls, so we have all the machinery needed to be able to think about these objects at some capacity. For example, we know the following:
 
-1. From the origin, we can travel exactly $1$ unit along any axis to reach the cube
+1. From the origin, we can travel exactly $1$ unit along any axis to reach the inner cube
 2. The radii of the spheres at the corners is $1$
-3. The corners of the cube are $\sqrt n$ away from the origin, in terms of the [Euclidean distance](/posts/norms_metrics) (or by a repeated application of [the Pythagoras theorem](/posts/pythagoras))
+3. The corners of the inner cube are $\sqrt n$ away from the origin, in terms of the [Euclidean distance](/posts/norms_metrics) (or by a repeated application of [the Pythagoras theorem](/posts/pythagoras))
 
-When $n\gg1$, the corners of the cube are extremely ($\sqrt n$) far from the origin, whereas the faces are still $1$ unit away. People often phrase this as 
+When $n\gg1$, the corners of the inner cube are extremely ($\sqrt n$) far from the origin, whereas its faces are still $1$ unit away. People often phrase this as 
 "<span class=accented>higher dimensional cubes are spiky</span>". Here are some weirder facts:
 
 4. The spheres at the corners still have radius $1$
@@ -150,9 +150,9 @@ When $n\gg1$, the corners of the cube are extremely ($\sqrt n$) far from the ori
 
 Thus, in $1$ dimension, the orange sphere has radius $0$. In $3$ dimensions it has radius $\sqrt 3 -1$. In $4$ dimensions it has radius... $1$? It's the same size as the spheres at the corners... and it touches the faces of the inner cube...
 
-7. In the $10^{th}$ dimension, the sphere in the middle sticks out of the green cube.
+7. In the $10^{th}$ dimension, the sphere in the middle sticks out of the outer (green) cube!
 
-Because the corners of the black box have moved far from the origin, so have the unit spheres we placed at them, making more room for the orange sphere to expand with the dimension.
+Because the corners of the cube have moved far from the origin, so have the unit spheres we placed at them, making more room for the orange sphere to expand with the dimension.
 
 <hr>
 
@@ -173,13 +173,28 @@ We saw that the $\infty$-ball always touches the $2$-ball from the outside, so e
 \[\frac{\text{Vol}\left(\textit{\ Unit Sphere in }\mathbb R^n\ \right)}{\text{Vol}\left(\textit{\ Unit Cube in }\mathbb R^n\ \right)}\  \rightarrow\  0\qquad \text{as}\ n\rightarrow \infty \]
 </p>
 
-The higher dimensional sphere is insignificantly small in comparison to the cube.
+The higher dimensional sphere is insignificantly small in comparison to the cube. Actually, our earlier construction was also saying the same thing. The purple sphere can be thought of as one of the spheres we placed at the corners of the inner cube, each of which vanishes as $n\rightarrow \infty$![^link]
 
-There's a variety of ways of showing this, though it's less straightforward than the stuff we did so far. My favorite proof of this (or rather, a comparable) result is from Durett's book on probability, where he shows it using the law of large numbers! The reason it stands out in my memory is not only because of the absurdity of showing a fact of geometry using something so seemingly far removed from geometry, but
-because he prefaces the result with the sentence, "*Our next result is for comic relief.*" It's given in example $2.2.5$ of Probability Theory by Rick Durett. Specifically, the probabilistic argument shows that almost all of the volume of the cube is concentrated within some thin shell, somewhere between its center and its corners. It's about as bizarre as it sounds.
+There's a variety of ways of showing this, though it's less straightforward than the stuff we did so far. My favorite proof of this (or rather, a comparable) result is from example $2.2.5$ of Rick Durett's Probability Theory, where he shows it using the law of large numbers! The reason it stands out in my memory is not only because of the absurdity of showing a fact of geometry using something so seemingly far removed from geometry, but
+because he prefaces the result with the sentence, "*Our next result is for comic relief.*" The probabilistic argument shows that almost all of the volume of the cube is concentrated within some thin shell, somewhere between its center and its corners. I know, it's bizarre.
+
+#### An Intuition
+
+We can reuse my analogy about the 'mileage' for norms. In higher dimensions, the $2$-norm has a lot of mileage in the '$45^{\circ}$' direction, so we don't need to go that far out to reach its unit ball. The $\infty$-ball actually has barely any mileage in this direction, because we need to go $\sqrt{n}$ far to reach its ball. Another useful way to think of this is to consider the sequence of real numbers (which is really what $\mathbb R^n$ is),
+
+<p>
+\[(1, 1, 1, \dots, 1)\]
+</p>
+
+Think about its sum ($1$-norm) vs. its maximum element ($\infty$-norm), and remember that 'mileage' of a norm corresponds inversely to the size of the norm ball.
 
 <hr>
 
-A quirk that shows up repeatedly in deep learning in various forms is the so-called <span class=accented>curse of dimensionality</span>. It usually refers to one of several things, but one of these is the vanishing of the higher dimensional sphere. Think of each dimension in the preceding analysis as the *weight* of a neural network. The ambient space (where the orange sphere lives) is like the *parameter space* of the neural network; it is the set of all possible combinations of weights. Searching for the right combination of weights (the sphere) in the much larger parameter space (the cube) becomes more and more futile as the number of weights (the dimension) increases.
+### The Curse of Dimensionality 
 
-On the other hand, Durett's 'volume concentration' example, and other quirks of higher dimensional geometry constitute what some researchers call the [blessing of dimensionality](https://citeseerx.ist.psu.edu/doc/10.1.1.329.3392). Of the different things it can refer to, one of the observations is that as the dimension increases, random sampling from this high-dimensional space becomes more and more well-behaved. It can be used to facilitate, rather than hinder high-dimensional computational tasks, so long as one knows what to watch out for.
+A quirk that shows up repeatedly in deep learning in various forms is the so-called <span class=accented>curse of dimensionality</span>. It usually refers to one of several things, but one of these is the vanishing of the higher dimensional sphere. Think of each dimension in the preceding discussion as the *parameter* of a neural network. The ambient space (where the purple sphere lives) is like the *parameter space* of the neural network; it is the set of all possible combinations of parameters. Searching for the right combination of parameters (the sphere) in the much larger parameter space (the cube) becomes more and more futile as the number of parameters (the dimension) increases.
+
+On the other hand, certain quirks of higher dimensional geometry constitute what some researchers call the [blessing of dimensionality](https://citeseerx.ist.psu.edu/doc/10.1.1.329.3392). Of the different things it can refer to, one of the observations is that as the dimension increases, random sampling from a high-dimensional vector space becomes more and more well-behaved. The sampled vectors [are increasingly likely to be orthogonal](https://drscotthawley.github.io/blog/2022/01/24/MultiDim-DotProducts.html), and have a somewhat predictable length (due to Durett's 'volume concentration' example). It can be used to facilitate, rather than hinder high-dimensional computational tasks, so long as one knows what to watch out for.
+
+[^link]: At the end of [this note](https://faculty.etsu.edu/gardnerr/Func/notes/HWG-5-4.pdf) the author places spheres at the corners of the $1$-ball instead. I don't know enough topology to see if the 'paradox' that arises in this case can be explained without introducing additional concepts.
+<!-- In this case, the spheres stay a fixed distance from the origin, and their centres of any two spheres are always a distance of $\sqrt 2$ apart. Their radii are also fixed. The 'paradox' in this case is that it violates the Heine-Borel and Weierstrass' theorems which hold in finite-dimensional case. -->

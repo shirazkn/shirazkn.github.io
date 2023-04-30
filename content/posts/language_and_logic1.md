@@ -16,7 +16,7 @@ clickable footnotes
 sidebar box
 -->
 
-This post discusses the question of <span class=accented>whether spoken and written languages like English could be 'logical' by design, and why they aren't</span>. I will break this topic up into two posts. The first one (this post) does not require a mathematical background whatsoever, whereas the second touches on the concepts of axioms, theorems and proofs. Both parts are somewhat self-contained, so you can [skip to the next post](/posts/language_and_logic2) if you'd like.
+This is my first post! It discusses the question of whether spoken and written languages like English could be 'logical' by design. I will break this post up into two parts. The first one does not require a mathematical background whatsoever, whereas [the second](/posts/language_and_logic2) touches on the concepts of axioms, theorems and proofs.
 
 ### Fallacies
 

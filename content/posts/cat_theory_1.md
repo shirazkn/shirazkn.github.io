@@ -5,7 +5,7 @@ tags: ["General"]
 draft: false
 ---
 
-One of my biggest motivations for starting a blog was Eugenia Cheng's delightful book [The Joy of Abstraction](https://www.amazon.com/Joy-Abstraction-Exploration-Category-Theory/dp/1108477224)[^bookclub]. It's a surprisingly accessible, gentle introduction to <span class=accented>category theory</span>, a topic that is usually only taught to graduate students in math. She compiled part of the book using notes from the category theory class that she teaches at the Art Institute of Chicago, a testament to the aesthetic appreciation that one can expect to gain of category theory, irrespective of their academic background. In this post I will introduce the main ideas in category theory (as I best understand it) and show that it offers a *clean* way of thinking about mathematics.
+One of my motivations for starting a blog was Eugenia Cheng's book [The Joy of Abstraction](https://www.amazon.com/Joy-Abstraction-Exploration-Category-Theory/dp/1108477224)[^bookclub]. It's a surprisingly accessible, gentle introduction to <span class=accented>category theory</span>, a topic that is usually only taught to graduate students in math. She compiled part of the book using notes from the category theory class that she teaches at the Art Institute of Chicago, a testament to the aesthetic appreciation that one can expect to gain of category theory, irrespective of their academic background. In this post I will introduce the main ideas in category theory (as I best understand it) and show that it offers a 'clean' way of thinking about mathematics.
 
 <!-- **Required Background:** Familiarity with 'one-one' and 'onto' functions between sets.  -->
 
@@ -16,7 +16,7 @@ One of my biggest motivations for starting a blog was Eugenia Cheng's delightful
 
 ### The Main Idea
 
-The brilliant Tai-Danae Bradley [described category theory](https://www.youtube.com/watch?v=Gz8W1r90olc) as a sort of *mad libs* for mathematics. Mad libs are a game where you have a sentence with a few blank spaces, and depending on what you place in the blank space, you get a different interpretation out of it: 
+The mathematician Tai-Danae Bradley [describes category theory](https://www.youtube.com/watch?v=Gz8W1r90olc) as a sort of *mad libs* for mathematics. Mad libs are a game where you have a sentence with a few blank spaces, and depending on what you place in the blank space, you get a different interpretation out of it: 
 
 <p class="equation-like print">
 Your <span class=gray>[noun]</span> is so <span class=gray>[adjective]</span> that it's making me <span class=gray>[adjective]</span>!
@@ -24,7 +24,7 @@ Your <span class=gray>[noun]</span> is so <span class=gray>[adjective]</span> th
 
 Mad libs fix the *structure* of the sentence, but the *objects* you put in let you extract different interpretations out of it. Try putting in the words <span class=gray>blog</span>, <span class=gray>boring</span> and <span class=gray>sleepy</span> 😕 
 
-Category theory lets you do something similar. Every now and then you encounter something in mathematics that makes you go <span class=accented>Hey, this feels a lot like that other thing!</span> If there were some way to move back and forth between the two universes that have a similar structure, we can apply the insights that we gain in one universe to the other. The following is an example of where I might want to 'move between mathematical universes with the same structure':
+Category theory lets you do something similar. Every now and then you encounter something in mathematics that makes you go "Hey, this feels a lot like that other thing!" If there were some way to move back and forth between the two universes that have a similar structure, we can apply the insights that we gain in one universe to the other. The following is an example of where I might want to 'move between mathematical universes with the same structure':
 
 <p>
 <aside class=aside-center>
@@ -48,13 +48,13 @@ Let $A^C$ denote the complement of $A$, i.e., everything that's not in $A$. Then
 </figure>
 </div>
 
-Even if these examples are of no interest to you, all you need to know is that we replaced the symbol $\Rightarrow$ (implies) with $\subseteq$ (is a subset of), but the relationship between the corresponding objects look almost identical. As the objects we're swapping out become more complex, the insights that carry over during the 'swapping out' become deeper. 
+Even if these examples are of no interest to you, all we need to note is that we replaced the symbol $\Rightarrow$ (implies) with $\subseteq$ (is a subset of), but the relationship between the corresponding objects look almost identical. As the objects we're swapping out become more complex, the insights that carry over during the 'swapping out' become deeper. 
 
 The two different mathematical universes (*logic* and *set theory*) consist of objects (*statements* and *sets*) as well as relationships between them ($\Rightarrow$ and $\subseteq$). Similarly, a category is something that is made up of objects as well as their relationships to each other (called *morphisms*), satisfying some additional rules which impart to it its structure.
 
 ### Categories
 
-The best part of category theory is that it takes a whopping $5$ minutes to set up the foundations of it, but we can spend days thinking about the ideas that come with it. Let's give the definition of a category.
+The best part of category theory is that it takes a whopping $10$ minutes or so to set up the foundations of it, but it comes with rich insights and new ways of thinking about math. Let's give the definition of a category.
 
 A **category** $\mathcal C$ consists of **objects** $\text{ob}(\mathcal C)$ and **morphisms**, which are basically *arrows* from one object in the category to another.
 For objects $X$ and $Y$ in $\text{ob}(\mathcal C)$, we write $\mathcal C(X,Y)$ to denote the collection of all the morphisms (or arrows/relationships) from $X$ to $Y$. Note that (unlike in the above two examples) there may be more than one arrow in $\mathcal C(X,Y)$.

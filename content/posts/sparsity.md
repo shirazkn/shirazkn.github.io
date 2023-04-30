@@ -1,44 +1,71 @@
 ---
-title: "Hilbert Spaces"
-date: 2023-04-21T12:09:09-04:00
-draft: true
+title: "Sparsity"
+date: 2023-04-22T11:05:58-04:00
+tags: ["Linear Algebra", "Optimization"]
+draft: false
 ---
-<!-- 
-Consider the optimization problem
+
+
+
+### Sparsity (in Engineering)
+
+The well-known [curse of dimensionality](/posts/balls) in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant. 
+This is because many (if not all) of the problems we're interested in solving as engineers have some inherent <span class=accented>sparsity</span>. Steve Brunton has an [excellent video](https://www.youtube.com/watch?v=Dt2WYkqZfbs) explaining why this is so. 
+
+As a shorthand, the word 'sparse' means 'mostly zeros'. Here is a sparse vector:
 
 <p>
-\[
-\underset{x\in \mathcal C}{\text{minimize}}\quad f(x)
+\[x^{\intercal}=[0\ 3\  5\ 0\ 0\  1\ 0\ \dots\ 0\ 8\ 0]^{\intercal}\]
+</p>
+
+Often, you might need to transform the original object into another domain, before the object looks sparse. As an example, the function $\sin(t)$ is sparse in the frequency domain (it only has a single frequency component) but is non-sparse in the time domain, because $\sin(t)\neq 0$ for most values of $t$. 
+The Fourier transform lets us move back and forth between the  original and sparse domains. A lot of high-dimensional data transfer (like streaming videos, talking on Zoom) relies on exploiting the <span class=accented>sparsity</span> of the information, if not in the frequency domain, then in some other form. (See the post on [Hilbert spaces](/posts/hilbert-spaces) for a more general treatment.)
+
+### Compressive Sensing
+
+A field of research that blew up in the $2000$s is *compressive sensing*, in which a recurring theme is the following observation. Suppose you want to solve the problem $Ax=b$; you know $A$ and $b$, but not $x$. We call this  a 'system of equations'. It is a high-school math fact that exactly one of the following is true:
+
+- there is a unique $x$ such that $Ax=b$
+- there is no $x$ such that $Ax=b$ (<span class=accented>overdetermined</span> and inconsistent system of equations)
+- there are infinitely many $x$'s such that $Ax=b$ (<span class=accented>underdetermined</span> system of equations)
+
+The last case arises when $A\in \mathbb R^{m\times n}$ is a 'wide' matrix, with $n>m$. This automatically means that $A$ has a non-trivial nullspace (or 'kernel'), and for any $v\in \ker(A)$, $A(x+v)=Ax$. So we can construct infinitely many solutions this way.
+
+One reason for solving $Ax=b$ might be because $b$ are the measurements that we have of an unknown vector $x$; $A$ is called the measurement matrix. If $n\gg m$, it means that we have far fewer measurements than unknowns (underdetermined system of equations). The theory of compressive sensing says that <span class=accented>it is still possible to recover $x$ uniquely if the solution is known to be sparse</span>.[^conditions] And as we mentioned, the solution oftentimes *is* sparse.
+Instead of solving $Ax=b$, we can solve
+
+<p>
+\[\begin{array}{ll}
+\underset{x\in\mathbb R^n}{\textrm{minimize}} &\|x\|_0\\
+\textrm{subject to} & Ax = b
+\end{array}
 \]
 </p>
 
-where $\mathcal C\subseteq \mathcal X$ is called the *feasible* or the *constraint set*. Here, 
+[^conditions]: In addition, $A$ needs to satisfy one of certain properties, such as the *restricted isometry property*. It essentially ensures that the measurements are somewhat orthogonal to each other, i.e., that we aren't wasting the few measurements we *do* have by making redundant measurements.
 
-In engineering applications, $f(x)$ corresponds to an error term, or the distance between two objects in a Hilbert space, and so on. It can also be the negative of something we want to $\text{maximize}$.  -->
+which picks out the sparsest solution (in terms of the number of $0$'s in $x$).
+In this way, we can uniquely reconstruct $x$ with a comically small number of measurements. (In fact, it can even beat the [Nyquist sampling theorem](https://en.wikipedia.org/wiki/Nyquist–Shannon_sampling_theorem).) The simple trick of 'searching for sparse solutions' now allows us to do things like MRI imaging much more efficiently.
 
-Let $\mathcal X$ be a Hilbert space, it is an inner product space that is also *complete*, which means it doesn't have er.. holes in it. Recall that inner product spaces have rich geometric structure, and so do Hilbert spaces. The Euclidean space $\bold R^n$ is an obvious example, where the inner product is just the dot product for vectors. Let's look at some more interesting examples.
-<!-- Of course, this is equivalent to maximizing $-f(x)$. -->
+### Why are sparse solutions special?
 
-<b>The $\ell^2$ space:</b> it consists of a sequences of elements in $\mathbb R$ (or some other field, like the complex numbers $\mathbb C$, but we will stick to the real case). We denote this sequence as $(x_i)_{i=1}^{N}$.
-This sequence is in $\ell^2$ if and only if it is <span class=accented>square-summable</span>, which means
+So why is it that among the infinitely many solutions of $Ax=b$, the sparsest solution turns out to be precisely the solution we were looking for? Let's take a quick peek at what's going on.
 
-<p>\[
-    \sum_{i=1}^{N}|x_i|^2 < \infty 
-    \]</p>
+Suppose $A\in \mathbb R^{m \times n}$, $m\leq n$, and $\textrm{Rank}(A)$ is its rank (equivalently, its 'row rank'). We know that $r = n- \textrm{Rank}(A)$ is the dimension of its nullspace. Then, the space of the solutions of $Ax=b$ (including non-sparse solutions) is $r$-dimensional. Of course, $r\geq n-m$ because $\textrm{Rank}(A)\leq m$.
 
-This can be thought of as analogous to how in linear algebra, we study vectors that are a finite Euclidean distance away from the origin. A sequence which is not in $\ell^2$ is 
-$\left(\frac{1}{\sqrt{1}}, \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{3}}, \dots\right)$, a sequence that is in $\ell ^2$ is $\left(\frac{1}{1}, \frac{1}{2}, \frac{1}{3}, \dots\right)$.
-
-### Isomorphisms
-
-Recall from [our brief discussion](/posts/cat_theory_1) of category theory that isomorpshisms are maps from one type of mathematical object to another that preserves its structure.
-[All (separable) Hilbert spaces are isomorphic to the $\ell^2$ space](http://mathonline.wikidot.com/separable-hilbert-spaces-are-isometrically-isomorphic-to-2), which is a fancy way of saying that we can do the following: We first construct a countable orthonormal basis for $\mathcal X$, denoted as $(e_i)_{i=1}^N$ (if $\mathcal X$ is finite dimensional, we can just use the Gram-Schmidt process to construct one). Then, we define an isometric isomorphism (a distance-preserving, [structure-preserving](/posts/cat_theory_1) mapping) from $\mathcal X$ to $\ell^2$ as follows:
+Now suppose we know that the *true* solution $x$ is $s$-sparse, i.e., it has at most $s$ non-zero elements. There are $\binom{n}{s}$ ways of choosing where these non-zero elements may appear. Each choice of the location of the non-zero elements (called as the *support* of $x$) defines an $s$-dimensional subspace.
+The space of $s$-sparse vectors is the *union* of these $s$-dimensional spaces. <!-- (Note: It is the union, and not the span/sum!).  -->For e.g., let $n=3$ and $s=2$, then the $2$-sparse vectors in $\mathbb R^3$ are
 
 <p>
-\[T: \mathcal X \rightarrow l^2\]
-\[T(x) = (\langle e_i,x \rangle)_{i=1}^N\]
+\[\textrm{span}\Big(\lbrace [1\ 0\ 0]^{\intercal}, [0\ 1\ 0]^{\intercal}\rbrace\Big)\ \bigcup\  
+\textrm{span}\Big(\lbrace [1\ 0\ 0]^{\intercal}, [0\ 0\ 1]^{\intercal}\rbrace\Big)\\
+\bigcup \ 
+\textrm{span}\Big(\lbrace [0\ 1\ 0]^{\intercal}, [0\ 0\ 1]^{\intercal}\rbrace\Big) 
+\]
 </p>
 
-The map $T(\cdot)$ [is necessarily linear](https://proofwiki.org/wiki/Surjection_that_Preserves_Inner_Product_is_Linear), which means that the discussion thus far should be reminding us of the concept of `change of basis' in undergraduate linear algebra. 
+Unions of two subspaces is much smaller than the $\textrm{span}$ or sum of them. The set of all $1$-sparse vectors in $\mathbb R^n$ is the union of the 'axes' or the standard basis vectors of $\mathbb R^n$, but the axes obviously *span* the whole space.
 
-Suppose we have two finite-dimensional Hilbert spaces, 
+Thus, even when $n\gg m$, we can intersect this large $r$-dimensional solution space (where $r\geq n-m$) with the tiny $s$-dimensional slices to find the special, sparse solutions of $Ax=b$.
+
+In [the next post](/posts/sparsity_2), I talk about why we can also swap $\lVert x\rVert_0$ out for $\lVert x\rVert_1$ in practice, and still recover $x$ uniquely and perfectly in many cases. Minimization of $\lVert x\rVert_0$ is a combinatorial problem (which means that the computational effort required to solve it scales exponentially in the dimension of the problem), but minimization of $\lVert x\rVert_1$ is a *convex optimization* problem, which admits efficient, scalable algorithms for solving it.
