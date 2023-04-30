@@ -244,7 +244,7 @@ In this way, we can uniquely reconstruct $x$ with a comically small number of me
 <p>So why is it that among the infinitely many solutions of $Ax=b$, the sparsest solution turns out to be precisely the solution we were looking for? Let&rsquo;s take a quick peek at what&rsquo;s going on.</p>
 <p>Suppose $A\in \mathbb R^{m \times n}$, $m\leq n$, and $\textrm{Rank}(A)$ is its rank (equivalently, its &lsquo;row rank&rsquo;). We know that $r = n- \textrm{Rank}(A)$ is the dimension of its nullspace. Then, the space of the solutions of $Ax=b$ (including non-sparse solutions) is $r$-dimensional. Of course, $r\geq n-m$ because $\textrm{Rank}(A)\leq m$.</p>
 <p>Now suppose we know that the <em>true</em> solution $x$ is $s$-sparse, i.e., it has at most $s$ non-zero elements. There are $\binom{n}{s}$ ways of choosing where these non-zero elements may appear. Each choice of the location of the non-zero elements (called as the <em>support</em> of $x$) defines an $s$-dimensional subspace.
-The space of $s$-sparse vectors is the <em>union</em> of these $s$-dimensional spaces. <!-- (Note: It is the union, and not the span/sum!).  -->For e.g., let $n=3$ and $s=2$, then the $2$-sparse vectors in $\mathbb R^3$ are</p>
+The space of $s$-sparse vectors is the <em>union</em> of these $s$-dimensional spaces. For e.g., let $n=3$ and $s=2$, then the $2$-sparse vectors in $\mathbb R^3$ are</p>
 <p>
 \[\textrm{span}\big(\lbrace [1\ 0\ 0]^{\intercal}, [0\ 1\ 0]^{\intercal}\rbrace\big)\ \cup\  
 \textrm{span}\big(\lbrace [1\ 0\ 0]^{\intercal}, [0\ 0\ 1]^{\intercal}\rbrace\big)\\
