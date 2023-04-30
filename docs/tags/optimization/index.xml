@@ -31,12 +31,12 @@
     </item>
     
     <item>
-      <title>Balls</title>
+      <title>Norm Balls</title>
       <link>https://shirazkn.github.io/posts/balls/</link>
       <pubDate>Tue, 18 Apr 2023 21:32:10 -0400</pubDate>
       
       <guid>https://shirazkn.github.io/posts/balls/</guid>
-      <description>&lt;p&gt;Let&amp;rsquo;s talk about balls. Specifically, I want to look at unit balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is&lt;/p&gt;</description>
+      <description>&lt;p&gt;Let&amp;rsquo;s look at the norm balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is&lt;/p&gt;</description>
     </item>
     
   </channel>
