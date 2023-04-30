@@ -13,7 +13,7 @@
       <pubDate>Sat, 22 Apr 2023 11:05:58 -0400</pubDate>
       
       <guid>https://shirazkn.github.io/posts/sparsity/</guid>
-      <description>Sparsity (in Engineering) The well-known curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant. This is because many (if not all) of the problems we&amp;rsquo;re interested in solving as engineers have some inherent sparsity.</description>
+      <description>The so called curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant. This is because many (if not all) of the problems we&amp;rsquo;re interested in solving as engineers have some inherent sparsity.</description>
     </item>
     
     <item>
