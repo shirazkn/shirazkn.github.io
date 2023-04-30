@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Sparsity | Shiraz</title>
+<meta name="keywords" content="Linear Algebra, Optimization">
+<meta name="description" content="Sparsity (in Engineering) The well-known curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant. This is because many (if not all) of the problems we&rsquo;re interested in solving as engineers have some inherent sparsity.">
+<meta name="author" content="">
+<link rel="canonical" href="https://shirazkn.github.io/posts/sparsity/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.97cf87836fe9febd6762ee021598f461858ae137854a39219ecf9bf3543a96fa.css" integrity="sha256-l8&#43;Hg2/p/r1nYu4CFZj0YYWK4TeFSjkhns&#43;b81Q6lvo=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://shirazkn.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://shirazkn.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="Sparsity" />
+<meta property="og:description" content="Sparsity (in Engineering) The well-known curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant. This is because many (if not all) of the problems we&rsquo;re interested in solving as engineers have some inherent sparsity." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shirazkn.github.io/posts/sparsity/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-22T11:05:58-04:00" />
+<meta property="article:modified_time" content="2023-04-22T11:05:58-04:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Sparsity"/>
+<meta name="twitter:description" content="Sparsity (in Engineering) The well-known curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant. This is because many (if not all) of the problems we&rsquo;re interested in solving as engineers have some inherent sparsity."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://shirazkn.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Sparsity",
+      "item": "https://shirazkn.github.io/posts/sparsity/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Sparsity",
+  "name": "Sparsity",
+  "description": "Sparsity (in Engineering) The well-known curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant. This is because many (if not all) of the problems we\u0026rsquo;re interested in solving as engineers have some inherent sparsity.",
+  "keywords": [
+    "Linear Algebra", "Optimization"
+  ],
+  "articleBody": "Sparsity (in Engineering) The well-known curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant. This is because many (if not all) of the problems we’re interested in solving as engineers have some inherent sparsity. Steve Brunton has an excellent video explaining why this is so.\nAs a shorthand, the word ‘sparse’ means ‘mostly zeros’. Here is a sparse vector:\n\\[x^{\\intercal}=[0\\ 3\\ 5\\ 0\\ 0\\ 1\\ 0\\ \\dots\\ 0\\ 8\\ 0]^{\\intercal}\\] Often, you might need to transform the original object into another domain, before the object looks sparse. As an example, the function $\\sin(t)$ is sparse in the frequency domain (it only has a single frequency component) but is non-sparse in the time domain, because $\\sin(t)\\neq 0$ for most values of $t$. The Fourier transform lets us move back and forth between the original and sparse domains. A lot of high-dimensional data transfer (like streaming videos, talking on Zoom) relies on exploiting the sparsity of the information, if not in the frequency domain, then in some other form. (See the post on Hilbert spaces for a more general treatment.)\nCompressive Sensing A field of research that blew up in the $2000$s is compressive sensing, in which a recurring theme is the following observation. Suppose you want to solve the problem $Ax=b$; you know $A$ and $b$, but not $x$. We call this a ‘system of equations’. It is a high-school math fact that exactly one of the following is true:\nthere is a unique $x$ such that $Ax=b$ there is no $x$ such that $Ax=b$ (overdetermined and inconsistent system of equations) there are infinitely many $x$’s such that $Ax=b$ (underdetermined system of equations) The last case arises when $A\\in \\mathbb R^{m\\times n}$ is a ‘wide’ matrix, with $n\u003em$. This automatically means that $A$ has a non-trivial nullspace (or ‘kernel’), and for any $v\\in \\ker(A)$, $A(x+v)=Ax$. So we can construct infinitely many solutions this way.\nOne reason for solving $Ax=b$ might be because $b$ are the measurements that we have of an unknown vector $x$; $A$ is called the measurement matrix. If $n\\gg m$, it means that we have far fewer measurements than unknowns (underdetermined system of equations). The theory of compressive sensing says that it is still possible to recover $x$ uniquely if the solution is known to be sparse.1 And as we mentioned, the solution oftentimes is sparse. Instead of solving $Ax=b$, we can solve\n\\[\\begin{array}{ll} \\underset{x\\in\\mathbb R^n}{\\textrm{minimize}} \u0026\\|x\\|_0\\\\ \\textrm{subject to} \u0026 Ax = b \\end{array} \\] which picks out the sparsest solution (in terms of the number of $0$’s in $x$). In this way, we can uniquely reconstruct $x$ with a comically small number of measurements. (In fact, it can even beat the Nyquist sampling theorem .) The simple trick of ‘searching for sparse solutions’ now allows us to do things like MRI imaging much more efficiently.\nWhy are sparse solutions special? So why is it that among the infinitely many solutions of $Ax=b$, the sparsest solution turns out to be precisely the solution we were looking for? Let’s take a quick peek at what’s going on.\nSuppose $A\\in \\mathbb R^{m \\times n}$, $m\\leq n$, and $\\textrm{Rank}(A)$ is its rank (equivalently, its ‘row rank’). We know that $r = n- \\textrm{Rank}(A)$ is the dimension of its nullspace. Then, the space of the solutions of $Ax=b$ (including non-sparse solutions) is $r$-dimensional. Of course, $r\\geq n-m$ because $\\textrm{Rank}(A)\\leq m$.\nNow suppose we know that the true solution $x$ is $s$-sparse, i.e., it has at most $s$ non-zero elements. There are $\\binom{n}{s}$ ways of choosing where these non-zero elements may appear. Each choice of the location of the non-zero elements (called as the support of $x$) defines an $s$-dimensional subspace. The space of $s$-sparse vectors is the union of these $s$-dimensional spaces. For e.g., let $n=3$ and $s=2$, then the $2$-sparse vectors in $\\mathbb R^3$ are\n\\[\\textrm{span}\\Big(\\lbrace [1\\ 0\\ 0]^{\\intercal}, [0\\ 1\\ 0]^{\\intercal}\\rbrace\\Big)\\ \\bigcup\\ \\textrm{span}\\Big(\\lbrace [1\\ 0\\ 0]^{\\intercal}, [0\\ 0\\ 1]^{\\intercal}\\rbrace\\Big)\\\\ \\bigcup \\ \\textrm{span}\\Big(\\lbrace [0\\ 1\\ 0]^{\\intercal}, [0\\ 0\\ 1]^{\\intercal}\\rbrace\\Big) \\] Unions of two subspaces is much smaller than the $\\textrm{span}$ or sum of them. The set of all $1$-sparse vectors in $\\mathbb R^n$ is the union of the ‘axes’ or the standard basis vectors of $\\mathbb R^n$, but the axes obviously span the whole space.\nThus, even when $n\\gg m$, we can intersect this large $r$-dimensional solution space (where $r\\geq n-m$) with the tiny $s$-dimensional slices to find the special, sparse solutions of $Ax=b$.\nIn the next post , I talk about why we can also swap $\\lVert x\\rVert_0$ out for $\\lVert x\\rVert_1$ in practice, and still recover $x$ uniquely and perfectly in many cases. Minimization of $\\lVert x\\rVert_0$ is a combinatorial problem (which means that the computational effort required to solve it scales exponentially in the dimension of the problem), but minimization of $\\lVert x\\rVert_1$ is a convex optimization problem, which admits efficient, scalable algorithms for solving it.\nIn addition, $A$ needs to satisfy one of certain properties, such as the restricted isometry property. It essentially ensures that the measurements are somewhat orthogonal to each other, i.e., that we aren’t wasting the few measurements we do have by making redundant measurements. ↩︎\n",
+  "wordCount" : "899",
+  "inLanguage": "en",
+  "datePublished": "2023-04-22T11:05:58-04:00",
+  "dateModified": "2023-04-22T11:05:58-04:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://shirazkn.github.io/posts/sparsity/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shiraz",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://shirazkn.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://shirazkn.github.io" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://shirazkn.github.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shirazkn.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Sparsity
+    </h1>
+    <div class="post-meta"><span title='2023-04-22 11:05:58 -0400 EDT'>April 22, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h3 id="sparsity-in-engineering">Sparsity (in Engineering)<a hidden class="anchor" aria-hidden="true" href="#sparsity-in-engineering">#</a></h3>
+<p>The well-known <a href="/posts/balls" class="accented">
+    curse of dimensionality
+</a> in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant.
+This is because many (if not all) of the problems we&rsquo;re interested in solving as engineers have some inherent <span class=accented>sparsity</span>. Steve Brunton has an <a href="https://www.youtube.com/watch?v=Dt2WYkqZfbs" target="_blank" class="accented">
+    excellent video
+</a> explaining why this is so.</p>
+<p>As a shorthand, the word &lsquo;sparse&rsquo; means &lsquo;mostly zeros&rsquo;. Here is a sparse vector:</p>
+<p>
+\[x^{\intercal}=[0\ 3\  5\ 0\ 0\  1\ 0\ \dots\ 0\ 8\ 0]^{\intercal}\]
+</p>
+<p>Often, you might need to transform the original object into another domain, before the object looks sparse. As an example, the function $\sin(t)$ is sparse in the frequency domain (it only has a single frequency component) but is non-sparse in the time domain, because $\sin(t)\neq 0$ for most values of $t$.
+The Fourier transform lets us move back and forth between the  original and sparse domains. A lot of high-dimensional data transfer (like streaming videos, talking on Zoom) relies on exploiting the <span class=accented>sparsity</span> of the information, if not in the frequency domain, then in some other form. (See the post on <a href="/posts/hilbert-spaces" class="accented">
+    Hilbert spaces
+</a> for a more general treatment.)</p>
+<h3 id="compressive-sensing">Compressive Sensing<a hidden class="anchor" aria-hidden="true" href="#compressive-sensing">#</a></h3>
+<p>A field of research that blew up in the $2000$s is <em>compressive sensing</em>, in which a recurring theme is the following observation. Suppose you want to solve the problem $Ax=b$; you know $A$ and $b$, but not $x$. We call this  a &lsquo;system of equations&rsquo;. It is a high-school math fact that exactly one of the following is true:</p>
+<ul>
+<li>there is a unique $x$ such that $Ax=b$</li>
+<li>there is no $x$ such that $Ax=b$ (<span class=accented>overdetermined</span> and inconsistent system of equations)</li>
+<li>there are infinitely many $x$&rsquo;s such that $Ax=b$ (<span class=accented>underdetermined</span> system of equations)</li>
+</ul>
+<p>The last case arises when $A\in \mathbb R^{m\times n}$ is a &lsquo;wide&rsquo; matrix, with $n&gt;m$. This automatically means that $A$ has a non-trivial nullspace (or &lsquo;kernel&rsquo;), and for any $v\in \ker(A)$, $A(x+v)=Ax$. So we can construct infinitely many solutions this way.</p>
+<p>One reason for solving $Ax=b$ might be because $b$ are the measurements that we have of an unknown vector $x$; $A$ is called the measurement matrix. If $n\gg m$, it means that we have far fewer measurements than unknowns (underdetermined system of equations). The theory of compressive sensing says that <span class=accented>it is still possible to recover $x$ uniquely if the solution is known to be sparse</span>.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> And as we mentioned, the solution oftentimes <em>is</em> sparse.
+Instead of solving $Ax=b$, we can solve</p>
+<p>
+\[\begin{array}{ll}
+\underset{x\in\mathbb R^n}{\textrm{minimize}} &\|x\|_0\\
+\textrm{subject to} & Ax = b
+\end{array}
+\]
+</p>
+<p>which picks out the sparsest solution (in terms of the number of $0$&rsquo;s in $x$).
+In this way, we can uniquely reconstruct $x$ with a comically small number of measurements. (In fact, it can even beat the <a href="https://en.wikipedia.org/wiki/Nyquist%e2%80%93Shannon_sampling_theorem" target="_blank" class="accented">
+    Nyquist sampling theorem
+</a>.) The simple trick of &lsquo;searching for sparse solutions&rsquo; now allows us to do things like MRI imaging much more efficiently.</p>
+<h3 id="why-are-sparse-solutions-special">Why are sparse solutions special?<a hidden class="anchor" aria-hidden="true" href="#why-are-sparse-solutions-special">#</a></h3>
+<p>So why is it that among the infinitely many solutions of $Ax=b$, the sparsest solution turns out to be precisely the solution we were looking for? Let&rsquo;s take a quick peek at what&rsquo;s going on.</p>
+<p>Suppose $A\in \mathbb R^{m \times n}$, $m\leq n$, and $\textrm{Rank}(A)$ is its rank (equivalently, its &lsquo;row rank&rsquo;). We know that $r = n- \textrm{Rank}(A)$ is the dimension of its nullspace. Then, the space of the solutions of $Ax=b$ (including non-sparse solutions) is $r$-dimensional. Of course, $r\geq n-m$ because $\textrm{Rank}(A)\leq m$.</p>
+<p>Now suppose we know that the <em>true</em> solution $x$ is $s$-sparse, i.e., it has at most $s$ non-zero elements. There are $\binom{n}{s}$ ways of choosing where these non-zero elements may appear. Each choice of the location of the non-zero elements (called as the <em>support</em> of $x$) defines an $s$-dimensional subspace.
+The space of $s$-sparse vectors is the <em>union</em> of these $s$-dimensional spaces. <!-- (Note: It is the union, and not the span/sum!).  -->For e.g., let $n=3$ and $s=2$, then the $2$-sparse vectors in $\mathbb R^3$ are</p>
+<p>
+\[\textrm{span}\Big(\lbrace [1\ 0\ 0]^{\intercal}, [0\ 1\ 0]^{\intercal}\rbrace\Big)\ \bigcup\  
+\textrm{span}\Big(\lbrace [1\ 0\ 0]^{\intercal}, [0\ 0\ 1]^{\intercal}\rbrace\Big)\\
+\bigcup \ 
+\textrm{span}\Big(\lbrace [0\ 1\ 0]^{\intercal}, [0\ 0\ 1]^{\intercal}\rbrace\Big) 
+\]
+</p>
+<p>Unions of two subspaces is much smaller than the $\textrm{span}$ or sum of them. The set of all $1$-sparse vectors in $\mathbb R^n$ is the union of the &lsquo;axes&rsquo; or the standard basis vectors of $\mathbb R^n$, but the axes obviously <em>span</em> the whole space.</p>
+<p>Thus, even when $n\gg m$, we can intersect this large $r$-dimensional solution space (where $r\geq n-m$) with the tiny $s$-dimensional slices to find the special, sparse solutions of $Ax=b$.</p>
+<p>In <a href="/posts/sparsity_2" class="accented">
+    the next post
+</a>, I talk about why we can also swap $\lVert x\rVert_0$ out for $\lVert x\rVert_1$ in practice, and still recover $x$ uniquely and perfectly in many cases. Minimization of $\lVert x\rVert_0$ is a combinatorial problem (which means that the computational effort required to solve it scales exponentially in the dimension of the problem), but minimization of $\lVert x\rVert_1$ is a <em>convex optimization</em> problem, which admits efficient, scalable algorithms for solving it.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>In addition, $A$ needs to satisfy one of certain properties, such as the <em>restricted isometry property</em>. It essentially ensures that the measurements are somewhat orthogonal to each other, i.e., that we aren&rsquo;t wasting the few measurements we <em>do</em> have by making redundant measurements.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://shirazkn.github.io/tags/linear-algebra/">Linear Algebra</a></li>
+      <li><a href="https://shirazkn.github.io/tags/optimization/">Optimization</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://shirazkn.github.io">Shiraz</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="headerfooter">
+    <sub><sup><sub>&#9786;</sub></sup></sub>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

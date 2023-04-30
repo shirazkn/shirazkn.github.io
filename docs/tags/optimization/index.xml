@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Optimization on Shiraz</title>
+    <link>https://shirazkn.github.io/tags/optimization/</link>
+    <description>Recent content in Optimization on Shiraz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Apr 2023 17:15:26 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/tags/optimization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding Sparsity through Sub-Gradients</title>
+      <link>https://shirazkn.github.io/posts/sparsity_2/</link>
+      <pubDate>Fri, 28 Apr 2023 17:15:26 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/sparsity_2/</guid>
+      <description>&lt;!-- This post will require some familiarity with optimization (or least-squares, if you will). --&gt;
+&lt;p&gt;&lt;a href=&#34;https://shirazkn.github.io/posts/sparsity&#34; class=&#34;accented&#34;&gt;
+    We talked about
+&lt;/a&gt; why sparsity plays an important role in many of the &lt;a href=&#34;https://en.wikipedia.org/wiki/Inverse_problem&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    inverse problems
+&lt;/a&gt; that we encounter in engineering. To actually find the sparse solutions to these problems, we add &amp;lsquo;sparsity-promoting&amp;rsquo; terms to our optimization problems; the machine learning community calls this approach &lt;em&gt;regularization&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Sparsity</title>
+      <link>https://shirazkn.github.io/posts/sparsity/</link>
+      <pubDate>Sat, 22 Apr 2023 11:05:58 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/sparsity/</guid>
+      <description>Sparsity (in Engineering) The well-known curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant. This is because many (if not all) of the problems we&amp;rsquo;re interested in solving as engineers have some inherent sparsity.</description>
+    </item>
+    
+    <item>
+      <title>Balls</title>
+      <link>https://shirazkn.github.io/posts/balls/</link>
+      <pubDate>Tue, 18 Apr 2023 21:32:10 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/balls/</guid>
+      <description>&lt;p&gt;Let&amp;rsquo;s talk about balls. Specifically, I want to look at unit balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
