@@ -6,7 +6,16 @@
     <description>Recent content on Shiraz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Apr 2023 17:15:26 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 May 2023 15:26:18 -0700</lastBuildDate><atom:link href="https://shirazkn.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What is a Vector?</title>
+      <link>https://shirazkn.github.io/posts/vector/</link>
+      <pubDate>Sat, 20 May 2023 15:26:18 -0700</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/vector/</guid>
+      <description>A running gag in engineering colleges is that a lot of instructors begin their first class of the semester with this question: &amp;ldquo;What is a vector?&amp;rdquo;. I found this ritual almost pointless because, to me, every answer to this question felt either like a non-answer or a matter of context. I mean it depends, right? A structural engineer should have a different answer to this question than, say, a data scientist.</description>
+    </item>
+    
     <item>
       <title>Understanding Sparsity through Sub-Gradients</title>
       <link>https://shirazkn.github.io/posts/sparsity_2/</link>
