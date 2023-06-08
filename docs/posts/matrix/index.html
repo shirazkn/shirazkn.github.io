@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Matrix Multiplication | Shiraz</title>
+<meta name="keywords" content="">
+<meta name="description" content="In this post, I want to bridge the gap between abstract vector spaces (which are the mathematical foundation of linear algebra) and matrix multiplication (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space &ndash; the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about solving systems of equations in this post.">
+<meta name="author" content="">
+<link rel="canonical" href="https://shirazkn.github.io/posts/matrix/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.97cf87836fe9febd6762ee021598f461858ae137854a39219ecf9bf3543a96fa.css" integrity="sha256-l8&#43;Hg2/p/r1nYu4CFZj0YYWK4TeFSjkhns&#43;b81Q6lvo=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://shirazkn.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://shirazkn.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="Matrix Multiplication" />
+<meta property="og:description" content="In this post, I want to bridge the gap between abstract vector spaces (which are the mathematical foundation of linear algebra) and matrix multiplication (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space &ndash; the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about solving systems of equations in this post." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shirazkn.github.io/posts/matrix/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-28T10:35:07-04:00" />
+<meta property="article:modified_time" content="2023-05-28T10:35:07-04:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Matrix Multiplication"/>
+<meta name="twitter:description" content="In this post, I want to bridge the gap between abstract vector spaces (which are the mathematical foundation of linear algebra) and matrix multiplication (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space &ndash; the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about solving systems of equations in this post."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://shirazkn.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Matrix Multiplication",
+      "item": "https://shirazkn.github.io/posts/matrix/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Matrix Multiplication",
+  "name": "Matrix Multiplication",
+  "description": "In this post, I want to bridge the gap between abstract vector spaces (which are the mathematical foundation of linear algebra) and matrix multiplication (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space \u0026ndash; the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about solving systems of equations in this post.",
+  "keywords": [
+    
+  ],
+  "articleBody": "In this post, I want to bridge the gap between abstract vector spaces (which are the mathematical foundation of linear algebra) and matrix multiplication (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space – the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about solving systems of equations in this post. While solving systems of equations served as the historical precedent for mathematicians to begin work on linear algebra, it is today an application, and not the foundation of linear algebra.\nFor this post, I expect that the reader has come across concepts like linear independence and orthogonal vectors before, and can consult Wikipedia for anything that looks new to them.\nThe Recipe for $\\mathbb R^n$ We write $\\mathbb R^n$ as a short-hand for $\\mathbb R \\times \\mathbb R \\times \\dots \\times \\mathbb R$, the set of sequences (of length $n$) of real numbers. For notational convenience, we also use ‘$\\mathbb R^n$’ to denote the $n$-dimensional Euclidean space, which is not just a set of objects, but a set of objects that has a particular structure. In order to arrive at this structure, we need to introduce the following mathematical ingredients, in order:\nScalars: Defined as the elements of a set (technically, a field ) which has two binary operations called addition and multiplication. We choose $\\mathbb R$ (the real numbers) as the set of scalars.\nVectors: For some integer $n \u003e 0$, we define the set of vectors as $\\mathbb R^n$. The vectors have the vector addition and scalar multiplication operations. These operations satisfy certain axioms which ensure that the addition and multiplication operations behave like they ought to.\nBasis: We need to pick a basis $\\mathcal B$ for $\\mathbb R^n$, which is a set of vectors $\\lbrace \\bold b_1, \\bold b_2, \\dots, \\bold b_n \\rbrace$, where $\\bold b_i \\in \\mathbb R^n$, such that every vector $\\bold v\\in \\mathbb R^n$ can be uniquely expressed as a linear combination of the basis vectors. This means that there is a unique sequence of real numbers $v^{(\\mathcal B)}_1,v^{(\\mathcal B)}_2, \\dots, v^{(\\mathcal B)}_n \\in \\mathbb R$ satisfying \\[ \\bold v= v^{(\\mathcal B)}_1 \\bold b_1 + v^{(\\mathcal B)}_2 \\bold b_2 + \\dots + v^{(\\mathcal B)}_n \\bold b_n \\] Inner Product: For vectors $\\bold v$ and $\\bold w$, $\\langle \\bold v,\\bold w \\rangle$ is called the inner product of $\\bold v$ and $\\bold w$; it maps each pair of vectors to a scalar. The usual inner product that we define for $\\mathbb R^n$ is sometimes called the dot product. An inner product imparts geometry to its vector space, because we can use it to define the ’length’ of a vector $\\bold v$ as $\\sqrt{\\langle \\bold v, \\bold v\\rangle }$, and ‘angles’ between vectors as \\[\\theta(\\bold v,\\bold w) = \\arccos\\left(\\frac{\\langle \\bold v,\\bold w \\rangle}{\\sqrt{\\langle \\bold v, \\bold v\\rangle \\langle \\bold w, \\bold w\\rangle}}\\right)\\] Orthonormal Basis: If the basis $\\mathcal B$ is such that $\\langle \\bold b_i, \\bold b_j\\rangle = 1$ when $i=j$ and $0$ otherwise, we call it an orthonormal basis. Because of how we defined $\\theta$, $\\langle \\bold b_i, \\bold b_j\\rangle = 0$ implies that $\\theta(\\bold b_i, \\bold b_j)=90^\\circ$. Some notes on the basis: Every possible basis of a given (finite-dimensional) vector space has the same number of vectors in it; this number is called as the dimension of the vector space. If there were fewer than $n$ vectors in a basis, we would not have been able to describe every vector of $\\mathbb R^n$ as a linear combination of the basis vectors.\nThe set of basis vectors is always linearly independent; this comes from the requirement that each vector of $\\mathbb R^n$ can be expressed as a unique linear combination.1\nWe can construct a basis by picking linearly independent vectors one by one, until we are no longer able to do so.\nWe have introduced ingredients 3, 4, and 5 in a very specific order. Let’s see why that is so.\nThe Standard Basis Mathematicians avoid picking the basis $\\mathcal B$ explicitly. Often, they start their analysis with the following (implied) disclaimer:\n“We have chosen some basis, $\\mathcal B \\subseteq \\mathbb R^n$, but the specific choice of basis does not matter for what we’re about to show.”\nBasically, don’t worry too much about which basis we chose, just know that we have chosen one. Once a basis $\\mathcal B = \\lbrace \\bold b_1, \\bold b_2, \\dots, \\bold b_n\\rbrace$ has been chosen, each vector $\\bold v\\in \\mathbb R ^n$ can be uniquely expressed by a sequence of $n$ coefficients, $\\left(v^{(\\mathcal B)}_i\\right)_{i=1}^n$, such that $\\bold v=\\sum_{i=1}^n v^{(\\mathcal B)}_i \\bold b_i$. Thus, the vector $\\bold v$ can be expressed unambiguously using the following, more familiar notation:\n\\[\\begin{bmatrix} v^{(\\mathcal B)}_1\\\\ v^{(\\mathcal B)}_2\\\\ \\vdots\\\\ v^{(\\mathcal B)}_n \\end{bmatrix}\\] Note that this notation involves both a vector $\\bold v$ and a basis $\\mathcal B$. Choosing a different basis $\\mathcal B’ = \\lbrace \\bold b’_1, \\bold b’_2, \\dots, \\bold b’_n \\rbrace$ changes the coefficients of the vector to $\\left(v^{(\\mathcal B’)}_i\\right)_{i=1}^n$, but it does not change the vector itself. For bases $\\mathcal B$ and $\\mathcal B’$, we have\n\\[\\bold v=\\sum_{i=1}^n v^{(\\mathcal B)}_i \\bold b_i =\\sum_{i=1}^n v^{(\\mathcal B')}_i \\bold b'_i\\] At a glance, this assertion might appear to contradict with the following observation:\n\\[\\begin{bmatrix} v^{(\\mathcal B)}_1\\\\ v^{(\\mathcal B)}_2\\\\ \\vdots\\\\ v^{(\\mathcal B)}_n \\end{bmatrix} \\neq \\begin{bmatrix} v^{(\\mathcal B')}_1\\\\ v^{(\\mathcal B')}_2\\\\ \\vdots\\\\ v^{(\\mathcal B')}_n \\end{bmatrix} \\] This is purely because of the ‘square-bracket’ notation. Before we write vectors in their ‘square-bracket’ form, we must not only choose a basis, but also fix a basis. Let’s fix a basis $\\mathcal B$ for $\\mathbb R^n$, which we call as the standard basis. Now, for $c_1,c_2,\\dots,c_n\\in\\mathbb R$, the ‘square-bracket’ notation\n\\[\\begin{bmatrix} c_1\\\\ c_2\\\\ \\vdots\\\\ c_n \\end{bmatrix} \\] refers unambiguously to the vector $\\sum_{i=1}^n c_i \\bold b_i$. Therefore, observe that\n\\[ \\begin{bmatrix} v^{(\\mathcal B)}_1\\\\ v^{(\\mathcal B)}_2\\\\ \\vdots\\\\ v^{(\\mathcal B)}_n \\end{bmatrix} \\neq \\begin{bmatrix} v^{(\\mathcal B')}_1\\\\ v^{(\\mathcal B')}_2\\\\ \\vdots\\\\ v^{(\\mathcal B')}_n \\end{bmatrix} \\text{ \\ because\\ } \\sum_{i=1}^n v^{(\\mathcal B)}_i \\bold b_i \\neq \\sum_{i=1}^n v^{(\\mathcal B')}_i \\bold b_i \\] Thus, there is a distinction between the vector itself and its representation in the standard basis $\\mathcal B$; the ‘square-bracket’ notation gives us the latter, and it is our job to infer the former. Observe that the standard basis vectors $\\bold b_i$ can themselves be represented in the ‘square-bracket’ notation, as\n\\[ \\mathcal B = \\left\\lbrace \\begin{bmatrix} 1\\\\ 0\\\\ 0\\\\ \\vdots\\\\ 0 \\end{bmatrix}, \\begin{bmatrix} 0\\\\ 1\\\\ 0\\\\ \\vdots\\\\ 0 \\end{bmatrix}, \\begin{bmatrix} 0\\\\ 0\\\\ 1\\\\ \\vdots\\\\ 0 \\end{bmatrix}, \\dots, \\begin{bmatrix} 0\\\\ 0\\\\ 0\\\\ \\vdots\\\\ 1 \\end{bmatrix} \\right\\rbrace \\] Notice that we can do our usual linear algebra stuff without actually specifying the contents of $\\mathcal B$, as long as we fix $\\mathcal B$ and don’t change it thereafter. Nothing about the orthogonality of $\\bold b_1, \\bold b_2, \\dots, \\bold b_n$ has been said yet, because we need an inner product to even define what orthogonality means.\nThe Dot Product We can now define an inner product in terms of the standard basis $\\mathcal B$. For vectors $\\bold v, \\bold w \\in \\mathbb R^n$, we define $\\langle \\bold v, \\bold w\\rangle = \\sum_{i=1}^n v^{(\\mathcal B)}_i w^{(\\mathcal B)}_i$, which we call as the dot product. In the matrix multiplication or “square-bracket” notation, we write this as\n\\[ \\begin{bmatrix} v^{(\\mathcal B)}_1 \u0026 v^{(\\mathcal B)}_2 \u0026 v^{(\\mathcal B)}_3 \u0026 \\dots \u0026 v^{(\\mathcal B)}_n \\end{bmatrix} \\begin{bmatrix} w^{(\\mathcal B)}_1 \\\\ w^{(\\mathcal B)}_2 \\\\ w^{(\\mathcal B)}_3 \\\\ \\vdots \\\\ w^{(\\mathcal B)}_n \\end{bmatrix} \\] Note that we are defining the inner product this way. Importantly, we are defining it in a way that makes the basis vectors, $\\bold b_1, \\bold b_2, \\dots, \\bold b_n$, orthonormal. If we had instead defined the inner product as $\\langle \\bold v, \\bold w\\rangle = \\sum_{i=1}^n v^{(\\mathcal B’)}_i w^{(\\mathcal B’)}_i$, then the basis $\\mathcal B’$ becomes orthonormal (under this new definition of orthonormality). Thus, any basis can be ‘made orthonormal’ by redefining the inner product appropriately.\nThe ‘row vector’ corresponding to $\\bold v$ is usually called the transpose of $\\bold v$, and is denoted as $\\bold v^\\intercal$. Strictly speaking, it is a linear map $\\bold v^\\intercal:\\mathbb R^n \\rightarrow \\mathbb R$ (See dual space if you’re curious about what’s going on here.)\nLinear Algebra Let $V$ and $W$ be vector spaces. They could be Euclidean spaces, but they could also be subspaces of Euclidean spaces (recall that a flat plane passing through the origin is a subspace of $\\mathbb R^3$), or something else entirely. A linear map or a linear transformation is a map $f:V\\rightarrow W$ which transforms each vector in $V$ to a vector in $W$ in a linear manner. This means that for $\\bold u,\\bold v\\in V$ and $a\\in \\mathbb R$,\n\\[f(\\bold u + \\bold v)= f(\\bold u)+f(\\bold v)\\] and\n\\[f(a\\bold u)= af(\\bold u)\\] Notably, we have $f(0 \\bold u) = f(\\bold 0) = \\bold 0$. The word ’linear’ comes from the special case of the linear map, $f:\\mathbb R \\rightarrow \\mathbb R$; the plot of this function is a straight line passing through the origin. This is also where the ’linear’ in linear algebra comes from: it is the study of linear maps in vector spaces.\nNow here’s where abstract linear algebra starts developing into the ‘matrix multiplication’ version of linear algebra:\nAny linear map $f:V \\rightarrow W$ between two finite-dimensional vector spaces $V$ and $W$ can be represented as a matrix.\nTo see this, let’s start by choosing bases for $V$ and $W$, denoted as $\\mathcal B^{(V)} = \\lbrace \\bold b^{(V)}_1, \\bold b^{(V)}_2, \\dots, \\bold b^{(V)}_n \\rbrace$ and $\\mathcal B^{(W)} = \\lbrace \\bold b^{(W)}_1, \\bold b^{(W)}_2, \\dots, \\bold b^{(W)}_m \\rbrace$, where $n$ and $m$ are the dimensions of $V$ and $W$. For simplicity, we will assume that the scalars in $V$ and $W$ are real numbers (as opposed to, say, one of them being a complex vector space).\nObserve that $f(\\bold b^{(V)}_i)\\in W$. Each vector in the basis of $V$ is mapped (linearly) to a corresponding vector in $W$. This means that we can express each of the mapped basis vectors $f(\\bold b^{(V)}_i)$ as a linear combination:\n\\[ \\begin{align*} f(\\bold b^{(V)}_i) \u0026= F_{1i} \\bold b^{(W)}_1 +F_{2i} \\bold b^{(W)}_2 + \\dots + F_{mi} \\bold b^{(W)}_m \\\\ \u0026= \\sum_{j=1}^{m} F_{ji} \\bold b^{(W)}_j \\end{align*} \\] where $F_{ji} \\in \\mathbb R$ are unique. Now consider the action of $f$ on an arbitrary vector $\\bold v \\in V$ that is not a basis vector. We first write $\\bold v$ as the linear combination\n\\[ \\bold v = v_1 \\bold b^{(V)}_1 + v_2 \\bold b^{(V)}_2 + \\dots + v_n \\bold b^{(V)}_n \\in V \\] Due to the properties of a linear transformation (i.e., its linearity), we have the following algebra:\n\\[ \\begin{align*} f(\\bold v) \u0026= f\\left(v_1 \\bold b^{(V)}_1 + v_2 \\bold b^{(V)}_2 + \\dots + v_n \\bold b^{(V)}_n\\right)\\\\ \u0026= f\\big(v_1 \\bold b^{(V)}_1\\big) + f\\big(v_2 \\bold b^{(V)}_2\\big) + \\dots + f\\big(v_n \\bold b^{(V)}_n\\big)\\\\ \u0026= v_1 f\\big(\\bold b^{(V)}_1\\big) + v_2 f\\big( \\bold b^{(V)}_2\\big) + \\dots + v_n f\\big(\\bold b^{(V)}_n\\big)\\\\ \\end{align*} \\] Thus, the action of $f$ on the vector $\\bold v$ indirectly depends on the action of $f$ on the basis vectors. We have already seen where $f$ takes the basis vectors of $V$, so let’s plug that in:\n\\[ \\begin{align*} f(\\bold v) \u0026= \\sum_{i=1}^n v_i f(\\bold b^{(V)}_i) \\\\\u0026= \\sum_{i=1}^n v_i \\sum_{j=1}^{m} F_{ji} \\bold b^{(W)}_j \\\\\u0026= \\sum_{j=1}^{m} \\sum_{i=1}^n v_i F_{ji} \\bold b^{(W)}_j\\\\ \u0026= \\sum_{i=1}^n v_i F_{1i} \\bold b^{(W)}_1 + \\sum_{i=1}^n v_i F_{2i} \\bold b^{(W)}_2 + \\dots + \\sum_{i=1}^n v_i F_{mi} \\bold b^{(W)}_m \\end{align*} \\] where $\\sum_{i=1}^n v_i F_{1i}$ is the coefficient of $f(\\bold v)$ corresponding to the basis vector $\\bold b_1^{(W)}$. From here on, it’s only a matter of noticing that we can represent this entire relationship using the “matrix-multiplication” operation:\n\\[ \\begin{bmatrix} \\sum_{i=1}^n v_i F_{1i}\\\\ \\sum_{i=1}^n v_i F_{2i}\\\\ \\vdots\\\\ \\sum_{i=1}^n v_i F_{mi} \\end{bmatrix} = \\begin{bmatrix} F_{11} \u0026 F_{12} \u0026 \u0026 \\\\ F_{21} \u0026 F_{22} \u0026 \u0026 \\\\ \u0026 \u0026 \\ddots \u0026 \u0026\\\\ \u0026 \u0026 \u0026 F_{mn} \\end{bmatrix} \\begin{bmatrix} v_1\\\\v_2\\\\ \\vdots \\\\ v_n \\end{bmatrix} \\] which we can write as “$\\bold w = \\bold F \\bold v$”. There is a subtlety here: on the left-hand side of this equation, we assume the ‘standard basis’ to be $\\mathcal B^{(W)}$, whereas for the vector on the right we were using the standard basis $\\mathcal B^{(V)}$. Thus, we need to fix both bases (one for $V$ and one for $W$) before the linear transformation can be written, unambiguously, as a matrix multiplication. If the dimensions of $V$ and $W$ are the same, we may pick the same basis on either side.\nObserve that we never used the inner product while talking about linear transformations, and thus, we do not claim whether the bases we used above are orthonormal. They are simply linearly independent, as all bases are. In case the basis $\\mathcal B^{(V)}$ is orthonormal, then this just means that we can find the coefficients $v_1, \\dots, v_n$ very easily: $v_i = \\langle \\bold v, \\bold b_i \\rangle$.\nOrthonormal Transformations Let’s now study $\\mathbb R^n$ as an inner product space, which is the vector space $\\mathbb R^n$ combined with the usual inner product – the dot product.\nWe say that a matrix $\\bold U$ is orthonormal if $\\bold U^\\intercal \\bold U = \\bold U \\bold U^\\intercal = \\bold I$. This is closely related to how we say that a set of basis vectors is orthonormal: Suppose $\\mathcal B$ is an orthonormal basis, then so is the basis $\\mathcal B_U = \\lbrace \\bold U \\bold b_1, \\bold U \\bold b_2, \\dots, \\bold U \\bold b_n \\rbrace$, because\n\\[ \\langle \\bold U\\bold b_i, \\bold U\\bold b_j \\rangle = \\bold b_i^\\intercal \\bold U^\\intercal \\bold U \\bold b_j = \\bold b_i ^\\intercal \\bold b_j = \\langle \\bold b_i, \\bold b_j \\rangle \\] Let the underlying linear transformation corresponding to $\\bold U$ be denoted as $g:V\\rightarrow V$, with $\\mathcal B$ being an orthonormal basis for $V$. $\\bold U$ is the representation of $g$ in the matrix multiplication form, with respect to the basis $\\mathcal B$. Recall the algebra we did earlier:\n\\[g(\\bold v) = g\\Big( \\sum_{i=1}^n v_i\\bold b_i\\Big) = \\sum_{i=1}^n v_i g(\\bold b_i)\\] where we know that the set $\\lbrace g(\\bold b_1), g(\\bold b_2), \\dots g(\\bold b_n)\\rbrace = \\mathcal B_U$ is orthonormal. Thus, $\\bold v$ and $g(\\bold v)$ have the same representation (given by the numbers $v_1, v_2, \\dots v_n$) under $\\mathcal B$ and $\\mathcal B_U$. This is why we can call $\\bold U$ a “change of basis” – it keeps the vector’s representation the same, but changes the (orthonormal) basis that we are representing it in. Even though the vector’s representation is same in either basis, the vector itself is changing under $\\bold U$:\n\\[ \\bold v = \\sum_{i=1}^{n} v_i \\bold b_i \\neq \\sum_{i=1}^{n} v_i g(\\bold b_i) = g(\\bold v) \\] Thus, there are two equivalent ways to interpret the orthogonal transformation, $g$:\nIt keeps the vector’s representation $(v_1, v_2, \\dots, v_n)$ fixed while changing the orthonormal basis as $\\mathcal B \\mapsto \\mathcal B_U$.\nIt changes the vector representation as\n\\[ \\begin{bmatrix} v_1 \\\\ v_2 \\\\ \\vdots \\\\ v_n \\end{bmatrix} \\mapsto \\bold U \\begin{bmatrix} v_1 \\\\ v_2 \\\\ \\vdots \\\\ v_n \\end{bmatrix} \\] while using the same orthonormal basis on either side, $\\mathcal B$. The first interpretation requires you to tilt your head to the left: Notice that we drew a geometric picture for an orthonormal transformation, but we avoided doing so for a linear transformation.\nPreserving Structure and Dimension Any transformation on a mathematical space that preserves its structure (i.e., the relationships of its objects to each other) turns out to be quite special. Linear transformations preserve the structure of a vector space, because any three vectors $\\bold u,\\bold v,\\bold w\\in V$ which have the relationship $\\bold u + \\bold v = \\bold w$ are still related to each other after the transformation: $f(\\bold u) + f(\\bold v) = f(\\bold w)$.2\nStructure-preserving transformations which are also invertible are called as isomorphisms . We can show that the inverse $f^{-1}:W\\rightarrow V$, if it exists, must also be a linear transformation. Thus, $f^{-1}$ can be represented as a matrix. Invertible linear transformations are the isomorphisms of vector spaces. Invertible matrices are “square” because a linear transformation can only be invertible if its domain and codomain have the same dimension. 3\nSimilarly, orthonormal matrices represent the structure-preserving transformations in inner-product spaces : a set of vectors that is orthonormal before the transformation remains orthonormal after the transformation, where orthonormality is defined via the dot product. They are also the isomorphisms of inner-product spaces, because the inverse of an orthonormal matrix $\\bold U$ always exists $–$ it is $\\bold U^\\intercal$.\nMathematicians almost always (or perhaps, always) study mathematical objects “up to isomorphism”. This means that we are not studying any particular mathematical object, but rather we are simultaneously studying all of the mathematical objects that are isomorphic to each other. This is why we do not need to specify which basis we are using as the standard basis: it simply does not matter, as long as we fix this basis and stay consistent. This is analogous to how we may need to fix the origin when studying ‘displacement’ and ‘speed’ in physics. Choosing a different origin does not change the physical phenomenon, it only changes our description of it.\nThe words every and unique can be compared to the concepts of surjectivity (also called as onto) and injectivity (also called as one-one), respectively. A function between two sets is invertible if and only if it is both surjective and injective. The ‘sets’ here are the vectors and their representations. ↩︎\nThere is an abuse (or rather, a reuse) of notation here; note that the vector addition in $W$ may be different from the vector addition in $V$, though we denote both as ‘$+$’ for convenience. We also use ‘$+$’ to denote the scalar addition operation. ↩︎\nAn invertible function between sets must be injective and surjective. If the dimension of $W$ is greater than that of $V$, then $f$ cannot be surjective. If the dimension of $V$ is greater, then $f$ cannot be injective. ↩︎\n",
+  "wordCount" : "2991",
+  "inLanguage": "en",
+  "datePublished": "2023-05-28T10:35:07-04:00",
+  "dateModified": "2023-05-28T10:35:07-04:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://shirazkn.github.io/posts/matrix/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shiraz",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://shirazkn.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://shirazkn.github.io" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://shirazkn.github.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shirazkn.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Matrix Multiplication
+    </h1>
+    <div class="post-meta"><span title='2023-05-28 10:35:07 -0400 EDT'>May 28, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>In this post, <!-- I will summarize some of the linear algebra concepts I discussed over the past few weeks, and paint a useful *picture* of linear algebra based on the <span class=accented>singular value decomposition</span>. By a *picture*, I mean that it can serve as an aid for thinking about a variety of concepts in linear algebra. Additionally --> I want to bridge the gap between <span class=accented>abstract vector spaces</span> (which are the mathematical foundation of linear algebra) and <span class=accented>matrix multiplication</span> (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space &ndash; the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about <a href="https://en.wikipedia.org/wiki/System_of_linear_equations" target="_blank" class="accented">
+    solving systems of equations
+</a> in this post. While <span class=accented>solving systems of equations</span> served as the historical precedent for mathematicians to begin work on linear algebra, it is today an <em>application</em>, and not the foundation of linear algebra.</p>
+<!-- Sure, linear equations *behave* like vectors (you can multiply an equation by a scalar and add it to another), but a lot of other things (like functions and random variables) behave like vectors too. -->
+<!-- We will see that "solving systems of equations" constitutes a small (albeit historically significant) chunk of linear algebra. -->
+<p>For this post, I expect that the reader has come across concepts like <em>linear independence</em> and <em>orthogonal vectors</em> before, and can consult Wikipedia for anything that looks new to them.</p>
+<h3 id="the-recipe-for-mathbb-rn">The Recipe for $\mathbb R^n$<a hidden class="anchor" aria-hidden="true" href="#the-recipe-for-mathbb-rn">#</a></h3>
+<p>We write $\mathbb R^n$ as a short-hand for $\mathbb R \times \mathbb R \times \dots \times \mathbb R$, the set of sequences (of length $n$) of real numbers. For notational convenience, we also use &lsquo;$\mathbb R^n$&rsquo; to denote <span class=accented>the $n$-dimensional Euclidean space</span>, which is not just a set of objects, but a set of objects that has a particular structure. In order to arrive at this structure, we need to introduce the following mathematical ingredients, in order:</p>
+<ol>
+<li>
+<p><strong>Scalars</strong>: Defined as the elements of a set (technically, a <a href="/posts/vector/#Field" class="accented">
+    field
+</a>) which has two binary operations called <em>addition</em> and <em>multiplication</em>. We choose $\mathbb R$ (the real numbers) as the set of scalars.</p>
+</li>
+<li>
+<p><strong>Vectors</strong>: For some integer $n &gt; 0$, we define the set of vectors as $\mathbb R^n$. The vectors have the <em>vector addition</em> and <em>scalar multiplication</em> operations. These operations satisfy <a href="https://mathworld.wolfram.com/VectorSpace.html" target="_blank" class="accented">
+    certain axioms
+</a> which ensure that the addition and multiplication operations behave like they ought to.</p>
+</li>
+</ol>
+<!-- For instance, scalar multiplication is *distributive* with respective to the scalar and vector addition operations, in the sense that for any $a,b\in\mathbb R$ and $\bold v\in \mathbb R^n$
+
+<p>
+\[(a+b)\bold v = a\bold v + b\bold v\]
+</p> -->
+<!-- 3. **Linear Dependence**: A collection of vectors $b_1, b_2, \dots b_m \in \mathbb R^n$ is linearly dependent if there exists a set of scalars, $c_1, c_2, \dots, c_m \in \mathbb R$, such that $\sum_{i=1}^m c_i * b_i = \bold 0$. Here, $\bold 0$ is a special vector (Called the *origin*) which is the identity element of vector addition, i.e., $v+\bold 0 = v$ for all $v\in \mathbb R^n$. -->
+<ol start="3">
+<li><strong>Basis</strong>: We need to pick a basis $\mathcal B$ for $\mathbb R^n$, which is a set of vectors $\lbrace \bold b_1, \bold b_2, \dots, \bold b_n \rbrace$, where $\bold b_i \in \mathbb R^n$, such that <span class=accented>every</span> vector $\bold v\in \mathbb R^n$ can be <span class=accented>uniquely</span> expressed as a linear combination of the basis vectors. This means that there is a unique sequence of real numbers $v^{(\mathcal B)}_1,v^{(\mathcal B)}_2, \dots, v^{(\mathcal B)}_n \in \mathbb R$ satisfying</li>
+</ol>
+<p>
+\[ \bold v= v^{(\mathcal B)}_1 \bold b_1 + v^{(\mathcal B)}_2 \bold b_2 + \dots + v^{(\mathcal B)}_n \bold b_n \]
+</p>
+<ol start="4">
+<li><strong>Inner Product</strong>: For vectors $\bold v$ and $\bold w$, $\langle \bold v,\bold w \rangle$ is called the <a href="/posts/norms_metrics" class="accented">
+    inner product
+</a> of $\bold v$ and $\bold w$; it maps each pair of vectors to a scalar. The usual inner product that we define for $\mathbb R^n$ is sometimes called the <span class=accented>dot product</span>. An inner product imparts <span class=accented>geometry</span> to its vector space, because we can use it to define the &rsquo;length&rsquo; of a vector $\bold v$ as $\sqrt{\langle \bold v, \bold v\rangle }$, and &lsquo;angles&rsquo; between vectors as</li>
+</ol>
+<p>
+\[\theta(\bold v,\bold w) = \arccos\left(\frac{\langle \bold v,\bold w \rangle}{\sqrt{\langle \bold v, \bold v\rangle \langle \bold w, \bold w\rangle}}\right)\]
+</p>
+<ol start="5">
+<li><strong>Orthonormal Basis</strong>: If the basis $\mathcal B$ is such that $\langle \bold b_i, \bold b_j\rangle = 1$ when $i=j$ and $0$ otherwise, we call it an orthonormal basis. Because of how we defined $\theta$,  $\langle \bold b_i, \bold b_j\rangle = 0$ implies that $\theta(\bold b_i, \bold b_j)=90^\circ$.</li>
+</ol>
+<!-- Notice how we first defined a basis (which is needed to define the inner product), then we defined an inner product (which is needed to define the concept of orthogonality), and finally we are able to ask whether the basis is orthonormal. -->
+<aside class=aside-center style="padding-bottom:0pt;">
+Some notes on the basis:
+<ul>
+<li>
+<p>Every possible basis of a given (finite-dimensional) vector space has the same number of vectors in it; this number is called as the <span class=accented>dimension</span> of the vector space. If there were fewer than $n$ vectors in a basis, we would not have been able to describe <u>every</u> vector of $\mathbb R^n$ as a linear combination of the basis vectors.</p>
+</li>
+<li>
+<p>The set of basis vectors is always <span class=accented>linearly independent</span>; this comes from the requirement that each vector of $\mathbb R^n$ can be expressed as a <u>unique</u> linear combination.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+</li>
+<li>
+<p>We can <span class=accented>construct</span> a basis by picking linearly independent vectors one by one, until we are no longer able to do so.</p>
+</li>
+</ul>
+<!-- - The $\hspace{1pt} \text{span}\hspace{1pt}$ of a basis of $\mathbb R^n$ is equal to $\mathbb R^n$. -->
+</aside>
+<p>We have introduced ingredients 3, 4, and 5 in a very specific order. Let&rsquo;s see why that is so.</p>
+<hr>
+<h2 id="the-standard-basis">The Standard Basis<a hidden class="anchor" aria-hidden="true" href="#the-standard-basis">#</a></h2>
+<!-- ### The Standard Basis -->
+<p>Mathematicians avoid picking the basis $\mathcal B$ explicitly. Often, they start their analysis with the following (implied) disclaimer:</p>
+<blockquote>
+<p>&ldquo;We have chosen <em>some</em> basis, $\mathcal B \subseteq \mathbb R^n$, but the specific choice of basis does not matter for what we&rsquo;re about to show.&rdquo;</p>
+</blockquote>
+<p>Basically, don&rsquo;t worry too much about <em>which</em> basis we chose, just know that we have chosen one. Once a basis $\mathcal B = \lbrace \bold b_1, \bold b_2, \dots, \bold b_n\rbrace$ has been chosen, each vector $\bold v\in \mathbb R ^n$ can be uniquely expressed by a sequence of $n$ coefficients, $\left(v^{(\mathcal B)}_i\right)_{i=1}^n$, such that $\bold v=\sum_{i=1}^n v^{(\mathcal B)}_i \bold b_i$.<!--  Note that the order of the coefficients matter, because the $i^{th}$ coefficient $a_i$ refers to the contribution of the basis vector which we labeled as $b_i$. --> Thus, the vector $\bold v$ can be expressed unambiguously using the following, more familiar notation:</p>
+<p>
+\[\begin{bmatrix}
+v^{(\mathcal B)}_1\\
+v^{(\mathcal B)}_2\\
+\vdots\\
+v^{(\mathcal B)}_n
+\end{bmatrix}\]
+</p>
+<p>Note that this notation involves both a vector $\bold v$ and a basis $\mathcal B$. Choosing a different basis $\mathcal B&rsquo; = \lbrace \bold b&rsquo;_1, \bold b&rsquo;_2, \dots, \bold b&rsquo;_n \rbrace$ changes the coefficients of the vector to $\left(v^{(\mathcal B&rsquo;)}_i\right)_{i=1}^n$, but it does not change the vector itself. For bases $\mathcal B$ and $\mathcal B&rsquo;$, we have</p>
+<p>
+\[\bold v=\sum_{i=1}^n v^{(\mathcal B)}_i \bold b_i =\sum_{i=1}^n v^{(\mathcal B')}_i \bold b'_i\]
+</p>
+<p>At a glance, this assertion might appear to contradict with the following observation:</p>
+<p>
+\[\begin{bmatrix}
+v^{(\mathcal B)}_1\\
+v^{(\mathcal B)}_2\\
+\vdots\\
+v^{(\mathcal B)}_n
+\end{bmatrix} \neq
+\begin{bmatrix}
+v^{(\mathcal B')}_1\\
+v^{(\mathcal B')}_2\\
+\vdots\\
+v^{(\mathcal B')}_n
+\end{bmatrix}
+\]
+</p>
+<p>This is purely because of the &lsquo;square-bracket&rsquo; notation. Before we write vectors in their &lsquo;square-bracket&rsquo; form, we must not only choose a basis, but also <em>fix</em> a basis. Let&rsquo;s fix a basis $\mathcal B$ for $\mathbb R^n$, which we call as <span class=accented>the standard basis</span>. Now, for $c_1,c_2,\dots,c_n\in\mathbb R$, the &lsquo;square-bracket&rsquo; notation</p>
+<p>
+\[\begin{bmatrix}
+c_1\\
+c_2\\
+\vdots\\
+c_n
+\end{bmatrix}
+\]
+</p>
+<p>refers unambiguously to the vector $\sum_{i=1}^n c_i \bold b_i$. Therefore, observe that</p>
+<p>
+\[
+ \begin{bmatrix}
+v^{(\mathcal B)}_1\\
+v^{(\mathcal B)}_2\\
+\vdots\\
+v^{(\mathcal B)}_n
+\end{bmatrix} \neq
+\begin{bmatrix}
+v^{(\mathcal B')}_1\\
+v^{(\mathcal B')}_2\\
+\vdots\\
+v^{(\mathcal B')}_n
+\end{bmatrix}
+ \text{ \ because\  } \sum_{i=1}^n v^{(\mathcal B)}_i \bold b_i  \neq \sum_{i=1}^n v^{(\mathcal B')}_i \bold b_i 
+ \]
+</p>
+<!-- We cannot introduce the 'square-bracket' notation without first *fixing* a basis, $\mathcal B$, which we call the standard basis. Thereafter, the 'square-bracket' notation implies the use of the standard basis, $\mathcal B$. -->
+<p>Thus, there is a distinction between the <strong>vector</strong> itself and its <em>representation</em> in the standard basis $\mathcal B$; the &lsquo;square-bracket&rsquo; notation gives us the <em>latter</em>, and it is our job to infer the <strong>former</strong>.
+Observe that the standard basis vectors $\bold b_i$ can themselves be represented in the &lsquo;square-bracket&rsquo; notation, as</p>
+<p>
+\[
+    \mathcal B = \left\lbrace \begin{bmatrix}
+1\\
+0\\
+0\\
+\vdots\\
+0
+\end{bmatrix},
+\begin{bmatrix}
+0\\
+1\\
+0\\
+\vdots\\
+0
+\end{bmatrix}, 
+\begin{bmatrix}
+0\\
+0\\
+1\\
+\vdots\\
+0
+\end{bmatrix},
+\dots,
+\begin{bmatrix}
+0\\
+0\\
+0\\
+\vdots\\
+1
+\end{bmatrix}
+\right\rbrace
+\]
+</p>
+<p>Notice that we can do our usual linear algebra stuff without actually specifying the contents of $\mathcal B$, as long as we <em>fix</em> $\mathcal B$ and don&rsquo;t change it thereafter.
+Nothing about the orthogonality of $\bold b_1, \bold b_2, \dots, \bold b_n$ has been said yet, because we need an inner product to even define what orthogonality means.</p>
+<h3 id="the-dot-product">The Dot Product<a hidden class="anchor" aria-hidden="true" href="#the-dot-product">#</a></h3>
+<p>We can now define an <a href="/postsnorms_metrics" class="accented">
+    inner product
+</a> in terms of the standard basis $\mathcal B$. For vectors $\bold v, \bold w \in \mathbb R^n$, we define $\langle \bold v, \bold w\rangle = \sum_{i=1}^n v^{(\mathcal B)}_i w^{(\mathcal B)}_i$, which we call as the <span class=accented>dot product</span>. In the matrix multiplication or &ldquo;square-bracket&rdquo; notation, we write this as</p>
+<p>
+\[
+    \begin{bmatrix}
+    v^{(\mathcal B)}_1 & v^{(\mathcal B)}_2 & v^{(\mathcal B)}_3 & \dots & v^{(\mathcal B)}_n
+    \end{bmatrix}
+    \begin{bmatrix}
+    w^{(\mathcal B)}_1 \\ w^{(\mathcal B)}_2 \\ w^{(\mathcal B)}_3 \\ \vdots \\ w^{(\mathcal B)}_n
+    \end{bmatrix}
+    \]
+</p>
+<p>Note that we are <em>defining</em> the inner product this way. Importantly, we are defining it in a way that makes the basis vectors, $\bold b_1, \bold b_2, \dots, \bold b_n$, orthonormal. If we had instead defined the inner product as $\langle \bold v, \bold w\rangle = \sum_{i=1}^n v^{(\mathcal B&rsquo;)}_i w^{(\mathcal B&rsquo;)}_i$, then the basis $\mathcal B&rsquo;$ becomes orthonormal (under this new definition of orthonormality). Thus, any basis can be &lsquo;made orthonormal&rsquo; by redefining the inner product appropriately.</p>
+<p>The &lsquo;row vector&rsquo; corresponding to $\bold v$ is usually called the <em>transpose</em> of $\bold v$, and is denoted as $\bold v^\intercal$. Strictly speaking, it is a linear map $\bold v^\intercal:\mathbb R^n \rightarrow \mathbb R$ (See <a href="https://en.wikipedia.org/wiki/Dual_space" target="_blank" class="accented">
+    dual space
+</a> if you&rsquo;re curious about what&rsquo;s going on here.)</p>
+<hr> 
+<h2 id="linear-algebra">Linear Algebra<a hidden class="anchor" aria-hidden="true" href="#linear-algebra">#</a></h2>
+<p>Let $V$ and $W$ be vector spaces. They could be Euclidean spaces, but they could also be <a href="https://en.wikipedia.org/wiki/Linear_subspace" target="_blank" class="accented">
+    subspaces
+</a> of Euclidean spaces (recall that a flat plane passing through the origin is a subspace of $\mathbb R^3$), or something else entirely. A <span class=accented>linear map</span> or a <span class=accented>linear transformation</span> is a map $f:V\rightarrow W$ which transforms each vector in $V$ to a vector in $W$ in a  <em>linear</em> manner. This means that for $\bold u,\bold v\in V$ and $a\in \mathbb R$,</p>
+<p>
+\[f(\bold u + \bold v)= f(\bold u)+f(\bold v)\]
+</p>
+<p>and</p>
+<p>
+\[f(a\bold u)= af(\bold u)\]
+</p>
+<p>Notably, we have $f(0 \bold u) = f(\bold 0) = \bold 0$.
+The word &rsquo;linear&rsquo; comes from the special case of the linear map, $f:\mathbb R \rightarrow \mathbb R$; the plot of this function is a straight line passing through the origin. This is also where the &rsquo;linear&rsquo; in <span class=accented>linear algebra</span> comes from: it is <span class=accented>the study of linear maps in vector spaces</span>.</p>
+<p>Now here&rsquo;s where abstract linear algebra starts developing into the &lsquo;matrix multiplication&rsquo; version of linear algebra:</p>
+<!-- <span class=accented> -->
+<blockquote>
+<p>Any linear map $f:V \rightarrow W$ between two finite-dimensional vector spaces $V$ and $W$ can be represented as a matrix.</p>
+</blockquote>
+<p>To see this, let&rsquo;s start by choosing bases for $V$ and $W$, denoted as $\mathcal B^{(V)} = \lbrace \bold b^{(V)}_1, \bold b^{(V)}_2, \dots, \bold b^{(V)}_n \rbrace$ and $\mathcal B^{(W)} = \lbrace \bold b^{(W)}_1, \bold b^{(W)}_2, \dots, \bold b^{(W)}_m \rbrace$, where $n$ and $m$ are the dimensions of $V$ and $W$. For simplicity, we will assume that the <em>scalars</em> in $V$ and $W$ are real numbers (as opposed to, say, one of them being a complex vector space).</p>
+<p>Observe that $f(\bold b^{(V)}_i)\in W$. Each vector in the basis of $V$ is mapped (linearly) to a corresponding vector in $W$. This means that we can express each of the mapped basis vectors $f(\bold b^{(V)}_i)$ as a linear combination:</p>
+<p>
+\[
+    \begin{align*}
+f(\bold b^{(V)}_i) &= F_{1i} \bold b^{(W)}_1 +F_{2i} \bold b^{(W)}_2 + \dots + F_{mi} \bold b^{(W)}_m \\
+&= \sum_{j=1}^{m} F_{ji} \bold b^{(W)}_j
+\end{align*}
+\]
+</p>
+<div>
+<figure class=invertible style="max-width: 100%;">
+<img src=/post-images/linear_algebra/linear_tfm.png>
+</figure>
+</div>
+<p>where $F_{ji} \in \mathbb R$ are unique. Now consider the action of $f$ on an arbitrary vector $\bold v \in V$ that is not a basis vector. We first write $\bold v$ as the linear combination</p>
+<p>
+\[
+\bold v = v_1 \bold b^{(V)}_1 + v_2 \bold b^{(V)}_2 + \dots + v_n \bold b^{(V)}_n \in V
+\]
+</p>
+<p>Due to the properties of a linear transformation (i.e., its <em>linearity</em>), we have the following algebra:</p>
+<p>
+\[
+    \begin{align*}
+f(\bold v) &= f\left(v_1 \bold b^{(V)}_1 + v_2 \bold b^{(V)}_2 + \dots + v_n \bold b^{(V)}_n\right)\\
+&= f\big(v_1 \bold b^{(V)}_1\big) + f\big(v_2 \bold b^{(V)}_2\big) + \dots + f\big(v_n \bold b^{(V)}_n\big)\\
+&= v_1 f\big(\bold b^{(V)}_1\big) + v_2 f\big( \bold b^{(V)}_2\big) + \dots + v_n f\big(\bold b^{(V)}_n\big)\\
+\end{align*}
+\]
+</p>
+<p>Thus, the action of $f$ on the vector $\bold v$ indirectly depends on the action of $f$ on the basis vectors. We have already seen where $f$ takes the basis vectors of $V$, so let&rsquo;s plug that in:</p>
+<p>
+\[
+    \begin{align*}
+f(\bold v) &= \sum_{i=1}^n v_i f(\bold b^{(V)}_i) \\&= \sum_{i=1}^n v_i \sum_{j=1}^{m} F_{ji} \bold b^{(W)}_j \\&= \sum_{j=1}^{m} \sum_{i=1}^n v_i F_{ji} \bold b^{(W)}_j\\
+&=  \sum_{i=1}^n v_i F_{1i} \bold b^{(W)}_1 + \sum_{i=1}^n v_i F_{2i} \bold b^{(W)}_2 + \dots + \sum_{i=1}^n v_i F_{mi} \bold b^{(W)}_m
+\end{align*}
+\]
+</p>
+<p>where $\sum_{i=1}^n v_i F_{1i}$ is the coefficient of $f(\bold v)$ corresponding to the basis vector $\bold b_1^{(W)}$.
+From here on, it&rsquo;s only a matter of noticing that we can represent this entire relationship using the &ldquo;matrix-multiplication&rdquo; operation:</p>
+<p>\[
+\begin{bmatrix}
+\sum_{i=1}^n v_i F_{1i}\\
+\sum_{i=1}^n v_i F_{2i}\\
+\vdots\\
+\sum_{i=1}^n v_i F_{mi}
+\end{bmatrix}
+=
+\begin{bmatrix}
+F_{11} & F_{12} & & \\
+F_{21} & F_{22} & & \\
+& & \ddots & &\\
+& & & F_{mn}
+\end{bmatrix}
+\begin{bmatrix}
+v_1\\v_2\\ \vdots \\ v_n
+\end{bmatrix}
+\]
+</p>
+<p>which we can write as &ldquo;$\bold w = \bold F \bold v$&rdquo;. There is a subtlety here: on the left-hand side of this equation, we assume the &lsquo;standard basis&rsquo; to be $\mathcal B^{(W)}$, whereas for the vector on the right we were using the standard basis $\mathcal B^{(V)}$. Thus, we need to fix both bases (one for $V$ and one for $W$) before the linear transformation can be written, unambiguously, as a matrix multiplication. If the dimensions of $V$ and $W$ are the same, we may pick the same basis on either side.</p>
+<!-- 
+[^4]: It is possible that the "range" of a linear transformation may be an $m'$-dimensional subspace of $\mathbb R^m$, where $m'<m$. -->
+<!-- Almost always, the choice of bases does not matter as much as the fact that we *fixed* them. -->
+<!-- Note that this is different from what we call a "change of basis" in linear algebra. 
+A "change of basis" usually refers to an *orthonormal* basis in particular, but we haven't said anything about orthonormality yet.  -->
+<p>Observe that we never used the inner product while talking about linear transformations, and thus, we do not claim whether the bases we used above are orthonormal. They are simply linearly independent, as all bases are. In case the basis $\mathcal B^{(V)}$ <em>is</em> orthonormal, then this just means that we can find the coefficients $v_1, \dots, v_n$ very easily: $v_i = \langle \bold v, \bold b_i \rangle$.</p>
+<!-- Let $V$ and $W$ be subspaces of $\mathbb R^n$ and $\mathbb R^m$. This means two things: $V$ and $W$ are vector spaces
+For instance, we may have $V=\mathbb R^n$
+
+... -->
+<h3 id="orthonormal-transformations">Orthonormal Transformations<a hidden class="anchor" aria-hidden="true" href="#orthonormal-transformations">#</a></h3>
+<p>Let&rsquo;s now study $\mathbb R^n$ as an inner product space, which is the vector space $\mathbb R^n$ combined with the usual inner product &ndash; the dot product.</p>
+<p>We say that a matrix $\bold U$ is <span class=accented>orthonormal</span> if $\bold U^\intercal \bold U = \bold U \bold U^\intercal = \bold I$. This is closely related to how we say that a set of basis vectors is orthonormal: Suppose $\mathcal B$ is an orthonormal basis, then so is the basis $\mathcal B_U = \lbrace \bold U \bold b_1, \bold U \bold b_2, \dots, \bold U \bold b_n \rbrace$, because</p>
+<p>
+\[
+\langle \bold U\bold b_i, \bold U\bold b_j \rangle =  \bold b_i^\intercal \bold U^\intercal \bold U \bold b_j = \bold b_i ^\intercal \bold b_j = \langle \bold b_i, \bold b_j \rangle
+\]
+</p>
+<p>Let the underlying linear transformation corresponding to $\bold U$ be denoted as $g:V\rightarrow V$, with $\mathcal B$ being an orthonormal basis for $V$. $\bold U$ is the representation of $g$ in the matrix multiplication form, with respect to the basis $\mathcal B$. Recall the algebra we did earlier:</p>
+<p>
+\[g(\bold v) = g\Big( \sum_{i=1}^n v_i\bold b_i\Big) = \sum_{i=1}^n v_i g(\bold b_i)\]
+</p>
+<p>where we know that the set $\lbrace g(\bold b_1), g(\bold b_2), \dots g(\bold b_n)\rbrace = \mathcal B_U$ is orthonormal. Thus, $\bold v$ and $g(\bold v)$ have the same representation (given by the numbers $v_1, v_2, \dots v_n$) under $\mathcal B$ and $\mathcal B_U$. This is why we can call $\bold U$ a &ldquo;change of basis&rdquo; &ndash; it keeps the vector&rsquo;s <em>representation</em> the same, but changes the (orthonormal) basis that we are representing it in. Even though the vector&rsquo;s representation is same in either basis, the vector itself is changing under $\bold U$:</p>
+<p>
+\[
+\bold v = \sum_{i=1}^{n} v_i \bold b_i \neq \sum_{i=1}^{n} v_i g(\bold b_i) = g(\bold v)
+\]
+</p>
+<p>Thus, there are two equivalent ways to interpret the orthogonal transformation, $g$:</p>
+<ol>
+<li>
+<p>It keeps the vector&rsquo;s representation $(v_1, v_2, \dots, v_n)$ fixed while <span class=accented>changing the orthonormal basis</span> as $\mathcal B \mapsto \mathcal B_U$.</p>
+</li>
+<li>
+<p>It <span class=accented>changes the vector representation</span> as</p>
+</li>
+</ol>
+<div>
+\[
+    \begin{bmatrix}
+    v_1 \\ v_2 \\ \vdots \\ v_n
+    \end{bmatrix} \mapsto
+    \bold U \begin{bmatrix}
+    v_1 \\ v_2 \\ \vdots \\ v_n
+    \end{bmatrix}
+    \]
+</div>
+while using the same orthonormal basis on either side, $\mathcal B$. The first interpretation requires you to tilt your head to the left:
+<div>
+<figure class=invertible style="max-width: 100%;">
+<img src=/post-images/linear_algebra/orthogonal_transformation.png>
+</figure>
+</div>
+<p>Notice that we drew a geometric picture for an orthonormal transformation, but we avoided doing so for a linear transformation.</p>
+<!-- Note that $\lbrace \bold U \bold b_1, \bold U \bold b_2, \dots, \bold U \bold b_n \rbrace$ is a basis for the codomain of $W$
+set of vectors represented via their coefficients in the basis $\mathcal B$. Recall that linear transformations involve up to two *different* vector spaces -->
+<h4 id="preserving-structure-and-dimension">Preserving Structure and Dimension<a hidden class="anchor" aria-hidden="true" href="#preserving-structure-and-dimension">#</a></h4>
+<p>Any transformation on a mathematical space that preserves its <em>structure</em> (i.e., the relationships of its objects to each other) turns out to be quite special. Linear transformations <span class=accented>preserve the structure of a vector space</span>, because any three vectors $\bold u,\bold v,\bold w\in V$ which have the relationship $\bold u + \bold v = \bold w$ are still related to each other after the transformation: $f(\bold u) + f(\bold v) = f(\bold w)$.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>Structure-preserving transformations which are also invertible are called as <a href="/posts/cat_theory_1" class="accented">
+    isomorphisms
+</a>.
+We can show that the inverse $f^{-1}:W\rightarrow V$, if it exists, must also be a linear transformation. Thus, $f^{-1}$ can be represented as a matrix. Invertible linear transformations are the isomorphisms of vector spaces. Invertible matrices are &ldquo;square&rdquo; because a linear transformation can only be invertible if its domain and codomain have the same dimension. <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p>Similarly, orthonormal matrices represent <a href="/posts/hilbert-spaces" class="accented">
+    the structure-preserving transformations in inner-product spaces
+</a>: a set of vectors that is orthonormal before the transformation remains orthonormal after the transformation, where orthonormality is defined via the dot product. They are also the <span class=accented>isomorphisms</span> of inner-product spaces, because the inverse of an orthonormal matrix $\bold U$ always exists $&ndash;$ it is $\bold U^\intercal$.</p>
+<p>Mathematicians almost always (or perhaps, always) study mathematical objects &ldquo;<span class=accented>up to isomorphism</span>&rdquo;. This means that we are not studying any particular mathematical object, but rather we are simultaneously studying all of the mathematical objects that are isomorphic to each other. This is why we do not need to specify <em>which</em> basis we are using as the standard basis: it simply does not matter, as long as we <em>fix</em> this basis and stay consistent. This is analogous to how we may need to <em>fix</em> the origin when studying &lsquo;displacement&rsquo; and &lsquo;speed&rsquo; in physics. Choosing a different origin does not change the physical phenomenon, it only changes our description of it.</p>
+<!-- As an example, this is analogous to how we can redefine the integers so that $1$ behaves like $0$, $2$ behaves like $1$ and so on. -->
+<!-- As an example of how commonplace this is, notice that we can *flip* the integers so that the positive numbers are to the left of $0$, and the negative numbers to the right. All of the properties of integers -->
+<!-- To see this, note that $\langle \bold v, \bold U \bold v \rangle = \langle \bold U^\intercal \bold v,  \bold v \rangle$ -->
+<!-- 
+This is why the "$\text{Rank}$" of $A$ plus the dimension of $\text{Null}(A)$ equals the number of rows, $m$. When $\text{Null}(A) \neq 0$, or equivalently, $\text{Rank}(A)<m$,
+Note that $A$ maps a subspace to a subspace.
+Some of these subspaces are mapped onto $0$ 
+to the $\text{Range}$ of $A$, whereas the others (namely, the subspaces in $\text{Null}(A)$) go to $0$. --><div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The words <u>every</u> and <u>unique</u> can be compared to the concepts of <em>surjectivity</em> (also called as <em>onto</em>) and <em>injectivity</em> (also called as <em>one-one</em>), respectively. A function between two sets is invertible if and only if it is both surjective and injective. The &lsquo;sets&rsquo; here are the vectors and their representations.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>There is an abuse (or rather, a reuse) of notation here; note that the vector addition in $W$ <a href="/posts/vector" class="accented">
+    may be different from
+</a> the vector addition in $V$, though we denote both as &lsquo;$+$&rsquo; for convenience.
+We also use &lsquo;$+$&rsquo; to denote the scalar addition operation.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>An invertible function between sets <a href="/posts/cat_theory_1" class="accented">
+    must be
+</a> injective and surjective. If the dimension of $W$ is greater than that of $V$, then $f$ cannot be surjective. If the dimension of $V$ is greater, then $f$ cannot be injective.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer><script src="https://giscus.app/client.js"
+        data-repo="shirazkn/shirazkn.github.io"
+        data-repo-id="R_kgDOI2VbWw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOI2VbW84CWJnt"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://shirazkn.github.io">Shiraz</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="headerfooter">
+    <sub><sup><sub>&#9786;</sub></sup></sub>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

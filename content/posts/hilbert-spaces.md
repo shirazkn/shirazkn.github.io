@@ -4,22 +4,10 @@ date: 2023-04-21T12:09:09-04:00
 tags: ["Linear Algebra"]
 draft: false
 ---
-<!-- 
-Consider the optimization problem
 
-<p>
-\[
-\underset{x\in \mathcal C}{\text{minimize}}\quad f(x)
-\]
-</p>
+Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an <span class=accented>inner product</span> (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is <span class=accented>complete</span>, i.e., it doesn't have er... holes in it. [Recall](/posts/norms_metrics) that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product. Mathematicians sometimes use 'Hilbert space' to refer specifically to infinite-dimensional inner product spaces, but for our purposes, we will conflate the usage of 'Hilbert space' to include the finite-dimensional case.
 
-where $\mathcal C\subseteq \mathcal X$ is called the *feasible* or the *constraint set*. Here, 
-
-In engineering applications, $f(x)$ corresponds to an error term, or the distance between two objects in a Hilbert space, and so on. It can also be the negative of something we want to $\text{maximize}$.  -->
-
-Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an inner product (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is <span class=accented>complete</span>, i.e., it doesn't have er... holes in it. [Recall](/posts/norms_metrics) that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product for vectors. Mathematicians sometimes use 'Hilbert space' to refer specifically to infinite-dimensional inner product spaces, but for our purposes, we will conflate the usage of 'Hilbert space' to include the finite-dimensional case.
-
-Some interesting Hilbert spaces are given below. Try to think about what the induced norm $\lVert x \rVert_{\mathcal X}=\sqrt{\langle x, x\rangle}_{\mathcal X}$ represents in each of these spaces:
+Some interesting Hilbert spaces are given below. Each of these spaces has a corresponding norm, $\lVert x \rVert_{\mathcal X}=\sqrt{\langle x, x\rangle}_{\mathcal X}$, which we call as the norm that is *induced* by the inner product.
 
 |  Hilbert Space $\mathcal X$ | Inner Product $\langle \cdot, \cdot\rangle _\mathcal X$ |
 | -------------------------------| ---------------------------------------------|
@@ -52,7 +40,7 @@ We can define the *projection* of an element $x\in \mathcal X$ onto a subspace $
 </p>
 
 where $\lVert v \rVert_{\mathcal X} = \sqrt{\langle v, v\rangle}_{\mathcal X}$ is the induced norm.
-The remarkable by-product of these definitions of angles, orthogonality, and projection, is that it is consistent with our Euclidean intuition: $x-\text{P}_S(x)$ is always orthogonal to $S$. A [related theorem](https://en.wikipedia.org/wiki/Hilbert_projection_theorem) says that $\text P\_{\bar S}(x)$ is well-defined and unique even if $\tilde S$ is any closed convex set in $\mathcal X$, although in this case we do not have orthogonality of $x-\text{P}\_{\tilde S}(x)$ to the other elements in $\tilde S$.
+The remarkable by-product of these definitions of angles, orthogonality, and projection, is that it is consistent with our Euclidean intuition: $x-\text{P}_S(x)$ is always orthogonal to $S$. A [related theorem](https://en.wikipedia.org/wiki/Hilbert_projection_theorem) says that $\text P\_{\tilde S}(x)$ is well-defined and unique even if $\tilde S \subseteq \mathcal X$ is a closed convex set, although in this case we do not have orthogonality of $x-\text{P}\_{\tilde S}(x)$ to the other elements in $\tilde S$.
 
 <div>
 <!-- <figure class=invertible style="max-width: 25%;"> -->
@@ -76,7 +64,7 @@ Now, let's ignore all of that and our geometric intuition of vectors, and consid
 \[x = (x_1, x_2, \dots, x_N)\]
 </p>
 
-and the norm can be defined as $\left(\sum_i^N x_i^2\right)^{1/2}$. So, nowhere did we have to talk about vectors or matrices. We can generalize this to $N\rightarrow \infty$.
+and the norm can be defined as $\left(\sum_{i=1}^N |x_i|^2\right)^{1/2}$. So, nowhere did we have to talk about vectors or matrices. We can generalize this to $N\rightarrow \infty$.
 
 ### The $\ell^2$ Space of Sequences
 $\ell^2(\mathbb R)$ consists of countable sequences of real numbers. 'Countable' here means that we can count them like we can count the natural numbers, but they are infinitely long nonetheless. We denote this sequence as $(x_i)_{i=1}^{\infty}$.
@@ -93,8 +81,8 @@ $\left(\frac{1}{\sqrt{1}}, \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{3}}, \dots\right)$
 
 ### (Separable) Hilbert Spaces are Isomorphic
 
-[Isomorpshisms](/posts/cat_theory_1) are maps from one type of mathematical object to another that preserve its structure.
-[All (separable) infinite-dimensional Hilbert spaces are isomorphic to the $\ell^2$ space](http://mathonline.wikidot.com/separable-hilbert-spaces-are-isometrically-isomorphic-to-2), which is a fancy way of saying that we can do the following: We first construct a countable orthonormal basis for $\mathcal X$, denoted as $(e_i)_{i=1}^{\infty}$. Then, we define an isometric isomorphism (a distance-preserving, [structure-preserving](/posts/cat_theory_1) mapping) from $\mathcal X$ to $\ell^2$, as follows:
+<span class=accented>Isomorpshisms</span> are maps from one type of mathematical object to another that preserve its structure. 
+[All (separable) infinite-dimensional Hilbert spaces are isomorphic to the $\ell^2$ space](http://mathonline.wikidot.com/separable-hilbert-spaces-are-isometrically-isomorphic-to-2), which is a fancy way of saying that we can do the following: We first construct a countable orthonormal basis for $\mathcal X$ (e.g., using the [Gram-Schmidt process](https://en.wikipedia.org/wiki/Gram–Schmidt_process)), denoted as $(e_i)_{i=1}^{\infty}$. Then, we define an isometric isomorphism (a distance-preserving, [structure-preserving](/posts/cat_theory_1) mapping) from $\mathcal X$ to $\ell^2$, as follows:
 
 <p>
 \[T: \mathcal X \rightarrow \ell^2\]
@@ -117,10 +105,10 @@ It can be shown that the map $T({}\cdot{})$ [is necessarily linear](https://proo
 The discussion thus far should be reminding us of linear transformations in undergraduate linear algebra. Indeed, the mapping $T({}\cdot{})$ can always be represented via a matrix, although this matrix can be infinite dimensional in general.
 
 
-In the finite-dimensional case, we can just use the Gram-Schmidt process to construct an orthonormal basis. Using a similar reasoning as above, we see that all (separable) Hilbert spaces with dimension $N$ are isomorphic to the $(\mathbb R^N, \lVert{}\cdot{}\rVert_2)$ space.
+Using a similar reasoning as above in the finite-dimensional case, we see that all (separable) Hilbert spaces with dimension $N$ are isomorphic to the $(\mathbb R^N, \lVert{}\cdot{}\rVert_2)$ space.
 The condition that $T^*=T^{-1}$ might remind you of [unitary matrices](https://en.wikipedia.org/wiki/Unitary_matrix) ($U^\dagger = U^{-1}$, where $U^\dagger$ is the conjugate transpose of $U$), which are exactly the distance-preserving, structure-preserving matrices in $\mathbb C^N$. 
 
-When we're working in $\mathbb R^N$, we replace 'unitary' with 'orthonormal', and we have $Q^\intercal = Q^{-1}$ for an orthonormal matrix $Q$. They are an isometry (distance-preserving) because $\lVert Qx\rVert_2 = \lVert x \rVert_2$, and they are an isomorphism (structure-preserving) because $\langle Qx, Qy \rangle =\langle x, Q^\intercal Qy \rangle = \langle x, y\rangle$.
+When we're working in $\mathbb R^N$, we replace 'unitary' with 'orthonormal', and we have $Q^\intercal = Q^{-1}$ for an orthonormal matrix $Q$. They are an isometry (distance-preserving) because $\lVert Qx\rVert_2 = \lVert x \rVert_2$, and they are an isomorphism (structure-preserving) because $\langle Qx, Qy \rangle =\langle x, Q^\intercal Qy \rangle = \langle x, y\rangle$. (Note that isomorphisms preserve 'right angles.')
 
 Thus, we always have a (non-unique) unitary matrix (or a [unitary operator](https://en.wikipedia.org/wiki/Unitary_operator), in the infinite-dimensional case) which will take us from one vector space to 'another' (but actually, it takes us to a rotated version of the same space 🙃) in a distance-preserving, structure-preserving manner.
 
@@ -138,7 +126,7 @@ The space $L^1(\mathbb R)$ is the space of <span class=accented>absolutely integ
 where $f:\mathbb R\rightarrow \mathbb C$ (so yeah, its codomain can be complex-valued). It is not a Hilbert space, because we have not yet defined an inner product for this space. The space $L^2(\mathbb R)$ has functions which are <span class=accented>square-integrable</span>:
 
 <p>
-\[ \| f\|_{L^2}^2 =\int_{\mathbb R} | f(x)|^2dx < \infty
+\[ \| f\|_{L^2} =\left(\int_{\mathbb R} | f(x)|^2dx\right)^{1/2} < \infty
 \]</p>
 
 which is a Hilbert space because it has the following inner product + norm combination:
@@ -157,7 +145,9 @@ Observe that we always require some sort of 'boundedness of norm' when defining 
 </aside>
 
 
-Observe that the norms on $\ell^p$ and $L^p$ spaces are natural extensions of the [$p$-norms](/posts/norms_metrics) for finite-dimensional vector spaces, and as expected, we have an inner product only when $p=2$. The $L^p$ space can be thought of as a 'refinement' of the domain of the $\ell^p$ space, where the index set $\lbrace 1, 2, \dots, \infty\rbrace$ (which was countable) of $\ell^p$ is replaced with $\mathbb R$ (which is uncountable) in $L^p$. So even though these might seem like completely different concepts thrown together, they are [closely related](https://en.wikipedia.org/wiki/Lp_space#Special_cases) and inherit much of each other's properties!
+The norms on $\ell^p$ and $L^p$ spaces are natural extensions of the [$p$-norms](/posts/norms_metrics) for finite-dimensional vector spaces, and as expected, we have an inner product only when $p=2$. The $L^p(\mathbb R)$ space can be thought of as a 'refinement' of the domain of the $\ell^p$ space[^net], where the index set $\lbrace 1, 2, \dots, \infty\rbrace$ (which was countable) of $\ell^p$ is replaced with $\mathbb R$ (which is uncountable) in $L^p$. So even though these might seem like completely different concepts thrown together, they are [closely related](https://en.wikipedia.org/wiki/Lp_space#Special_cases) and inherit much of each other's properties!
+
+[^net]: We could also view it as a *[net](https://en.wikipedia.org/wiki/Net_%28mathematics%29)*.
 
 <div>
 <!-- <figure class=invertible style="max-width: 25%;"> -->
@@ -166,7 +156,7 @@ Observe that the norms on $\ell^p$ and $L^p$ spaces are natural extensions of th
 </figure>
 </div>
 
-But since $L^2$ and $\ell^2$ are supposed to be isomorphic, this suggests that we could go from $L^2$ to $\ell^2$ using a linear map, which might seem bizarre at first -- we would be representing a function on a continuous domain using a sequence of numbers.
+But since $L^2$ and $\ell^2$ are supposed to be isomorphic, this suggests that we can go from $L^2$ to $\ell^2$ (and back) using a linear map. The fact that we can represent an arbitrary function on a continuous domain using a sequence of numbers is remarkable.
 
 #### [Fourier Transforms](https://en.m.wikipedia.org/wiki/Hilbert_space#Fourier_analysis)
 
@@ -199,7 +189,7 @@ has a special name in the signal processing community: it's called <a href="http
 
 One of the motivations for defining the map $T$ is that we can now represent objects in an arbitrary Hilbert space using a (countable) set of numbers (in $\ell^2$). Aside from being a powerful theoretical tool, it lets us store and manipulate these objects on computers efficiently, as evidenced by the example of the Fourier transform. 
 
-All that said, the reason I love typing out posts like these is because it's so gratifying to see all of these different mathematical objects come together under a unifying idea. The interplay between vectors, sequences, and functions is something that was never taught or emphasized to me in school. All throughout college, my instructors usually pulled the Fourier transform out of their hat, just to use it for 2 lectures and then put it back in before I ever figured out what it was.
+All that said, the reason I love typing out posts like these is because it's so gratifying to see all of these different mathematical objects be unified under a single concept. The interplay between vectors, sequences, and functions is something that was never taught or emphasized to me in school. All throughout college, my instructors usually pulled the Fourier transform out of their hat, just to use it for 2 lectures and then put it back in before I ever figured out what it was. Maybe I'm just a slow learner, so it's a good thing I have (hopefully) a long life ahead of me to keep learning.
 
 <!-- Aha! I'm now beginning to understand some of the things that were kept hidden from me... -->
 

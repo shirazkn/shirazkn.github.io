@@ -1,11 +1,11 @@
 ---
-title: "Balls"
+title: "Norm Balls"
 date: 2023-04-18T21:32:10-04:00
 draft: false
 tags: ["Linear Algebra", "Optimization"]
 ---
 
-Let's talk about balls. Specifically, I want to look at unit balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is <!--more-->
+Let's look at the norm balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is <!--more-->
 
 <p>
 \[
@@ -93,7 +93,6 @@ where each '$\pm$' indicates that we can choose either sign to obtain a differen
 
 This observation has consequences in the field of *optimization*; [some poor bloke here](https://math.stackexchange.com/questions/2287818/writing-the-unit-ell-1-ball-in-mathbbrn-as-the-intersection-of-closed-h) is trying to check whether a given vector $x$ lies inside the $1$-ball. They write this out as a system of linear inequalities,
  only to realize that it would take an exponentially large number of linear inequalities to do this.
-<!-- I will explore $1$-balls more in a later post when I talk about compressive sensing, a field in which the $1$-ball plays a foundational role. -->
 
 <!-- The particular face in the positive quadrant of the $1$-ball, with $x_i\geq 0 \forall i$, is called the *probability simplex* -->
 
@@ -103,7 +102,6 @@ Given any two numbers $p_1$ and $p_2$ between 0 and $\infty$, with $1\leq p_1,p_
 Two examples of this are as follows:
 
 <div>
-<!-- <figure class=invertible style="max-width: 25%;"> -->
 <figure class=invertible style="max-width: 80%;">
 <img src=/post-images/linear_algebra/equivalence.png>
 </figure>
@@ -118,7 +116,6 @@ We can use everything we just introduced to show interesting quirks of high-dime
 **The Construction:** Consider placing a cube of side length $2$ centred at the origin, as well as a green cube with side length $4$. Then place a sphere at each of the corners of the (inner) cube so that they touch each other, as follows:
 
 <div>
-<!-- <figure class=invertible style="max-width: 25%;"> -->
 <figure class=invertible style="max-width: 100%;">
 <img src=/post-images/linear_algebra/spheres_on_cube.png>
 </figure>
@@ -140,7 +137,6 @@ When $n\gg1$, the corners of the inner cube are extremely ($\sqrt n$) far from t
 5. There are $2^n$ spheres at the corners, because there are $2^n$ corners for the cube
 
 <div>
-<!-- <figure class=invertible style="max-width: 25%;"> -->
 <figure class=invertible style="max-width: 100%;">
 <img src=/post-images/linear_algebra/inner_sphere.png>
 </figure>
@@ -161,7 +157,6 @@ Because the corners of the cube have moved far from the origin, so have the unit
 Let's take now the following construction, where we inscribe a purple sphere inside the inner cube. These are precisely the unit balls of the $2$ and $\infty$ norms:
 
 <div>
-<!-- <figure class=invertible style="max-width: 25%;"> -->
 <figure class=invertible style="max-width: 100%;">
 <img src=/post-images/linear_algebra/sphere_in_cube.png>
 </figure>
@@ -197,4 +192,4 @@ A quirk that shows up repeatedly in deep learning in various forms is the so-cal
 On the other hand, certain quirks of higher dimensional geometry constitute what some researchers call the [blessing of dimensionality](https://citeseerx.ist.psu.edu/doc/10.1.1.329.3392). Of the different things it can refer to, one of the observations is that as the dimension increases, random sampling from a high-dimensional vector space becomes more and more well-behaved. The sampled vectors [are increasingly likely to be orthogonal](https://drscotthawley.github.io/blog/2022/01/24/MultiDim-DotProducts.html), and have a somewhat predictable length (due to Durett's 'volume concentration' example). It can be used to facilitate, rather than hinder high-dimensional computational tasks, so long as one knows what to watch out for.
 
 [^link]: At the end of [this note](https://faculty.etsu.edu/gardnerr/Func/notes/HWG-5-4.pdf) the author places spheres at the corners of the $1$-ball instead. I don't know enough topology to see if the 'paradox' that arises in this case can be explained without introducing additional concepts.
-<!-- In this case, the spheres stay a fixed distance from the origin, and their centres of any two spheres are always a distance of $\sqrt 2$ apart. Their radii are also fixed. The 'paradox' in this case is that it violates the Heine-Borel and Weierstrass' theorems which hold in finite-dimensional case. -->
+<!-- The 'paradox' in this case is that it violates the Heine-Borel and Weierstrass' theorems which hold in finite-dimensional case. -->

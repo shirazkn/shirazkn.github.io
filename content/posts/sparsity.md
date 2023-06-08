@@ -6,10 +6,7 @@ draft: false
 ---
 
 
-
-### Sparsity (in Engineering)
-
-The well-known [curse of dimensionality](/posts/balls) in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant. 
+The so called [curse of dimensionality](/posts/balls) in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant. 
 This is because many (if not all) of the problems we're interested in solving as engineers have some inherent <span class=accented>sparsity</span>. Steve Brunton has an [excellent video](https://www.youtube.com/watch?v=Dt2WYkqZfbs) explaining why this is so. 
 
 As a shorthand, the word 'sparse' means 'mostly zeros'. Here is a sparse vector:
@@ -54,18 +51,16 @@ So why is it that among the infinitely many solutions of $Ax=b$, the sparsest so
 Suppose $A\in \mathbb R^{m \times n}$, $m\leq n$, and $\textrm{Rank}(A)$ is its rank (equivalently, its 'row rank'). We know that $r = n- \textrm{Rank}(A)$ is the dimension of its nullspace. Then, the space of the solutions of $Ax=b$ (including non-sparse solutions) is $r$-dimensional. Of course, $r\geq n-m$ because $\textrm{Rank}(A)\leq m$.
 
 Now suppose we know that the *true* solution $x$ is $s$-sparse, i.e., it has at most $s$ non-zero elements. There are $\binom{n}{s}$ ways of choosing where these non-zero elements may appear. Each choice of the location of the non-zero elements (called as the *support* of $x$) defines an $s$-dimensional subspace.
-The space of $s$-sparse vectors is the *union* of these $s$-dimensional spaces. <!-- (Note: It is the union, and not the span/sum!).  -->For e.g., let $n=3$ and $s=2$, then the $2$-sparse vectors in $\mathbb R^3$ are
+The space of $s$-sparse vectors is the *union* of these $s$-dimensional spaces. For e.g., let $n=3$ and $s=2$, then the $2$-sparse vectors in $\mathbb R^3$ are
 
 <p>
-\[\textrm{span}\Big(\lbrace [1\ 0\ 0]^{\intercal}, [0\ 1\ 0]^{\intercal}\rbrace\Big)\ \bigcup\  
-\textrm{span}\Big(\lbrace [1\ 0\ 0]^{\intercal}, [0\ 0\ 1]^{\intercal}\rbrace\Big)\\
-\bigcup \ 
-\textrm{span}\Big(\lbrace [0\ 1\ 0]^{\intercal}, [0\ 0\ 1]^{\intercal}\rbrace\Big) 
+\[\textrm{span}\big(\lbrace [1\ 0\ 0]^{\intercal}, [0\ 1\ 0]^{\intercal}\rbrace\big)\ \cup\  
+\textrm{span}\big(\lbrace [1\ 0\ 0]^{\intercal}, [0\ 0\ 1]^{\intercal}\rbrace\big)\\
+\cup \ 
+\textrm{span}\big(\lbrace [0\ 1\ 0]^{\intercal}, [0\ 0\ 1]^{\intercal}\rbrace\big) 
 \]
 </p>
 
-Unions of two subspaces is much smaller than the $\textrm{span}$ or sum of them. The set of all $1$-sparse vectors in $\mathbb R^n$ is the union of the 'axes' or the standard basis vectors of $\mathbb R^n$, but the axes obviously *span* the whole space.
-
-Thus, even when $n\gg m$, we can intersect this large $r$-dimensional solution space (where $r\geq n-m$) with the tiny $s$-dimensional slices to find the special, sparse solutions of $Ax=b$.
+Unions of two subspaces is much smaller than the $\textrm{span}$ or sum of them. The set of all $1$-sparse vectors in $\mathbb R^n$ is the union of the 'axes' or the standard basis vectors of $\mathbb R^n$, but the axes obviously *span* the whole space. Thus, even when $n\gg m$, we can intersect this large $r$-dimensional solution space (where $r\geq n-m$) with the tiny $s$-dimensional slices to find the special, sparse solutions of $Ax=b$.
 
 In [the next post](/posts/sparsity_2), I talk about why we can also swap $\lVert x\rVert_0$ out for $\lVert x\rVert_1$ in practice, and still recover $x$ uniquely and perfectly in many cases. Minimization of $\lVert x\rVert_0$ is a combinatorial problem (which means that the computational effort required to solve it scales exponentially in the dimension of the problem), but minimization of $\lVert x\rVert_1$ is a *convex optimization* problem, which admits efficient, scalable algorithms for solving it.

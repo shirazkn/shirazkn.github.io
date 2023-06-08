@@ -21,7 +21,9 @@ An optimization method that was popularized in the $80$s and $90$s is the [LASSO
     \]
 </p>
 
-...or something similar/equivalent to this. The claim is that the additional term $\lVert x\rVert_1$ 'promotes sparsity', i.e., attempts to set one or more elements of $x$ to $0$. Similarly, [ridge regression](https://en.wikipedia.org/wiki/Ridge_regression) (or Tikhonov / $L^2$ norm regularization) is known to 'shrink' the solution towards the origin, but not necessarily promote sparsity. Ridge regression adds a $\lVert x\rVert_2^2$ term to the objective.[^prox]
+...or something similar/equivalent to this. 
+Usually, $f(x)$ corresponds to an error term, or the distance between two objects in some (metric) space. It can also be the negative of something we wish to $\text{maximize}$.
+The claim is that the additional term $\lVert x\rVert_1$ 'promotes sparsity' of the solution $x_0$, i.e., attempts to set one or more elements of $x_0$ to $0$. Similarly, in [ridge regression](https://en.wikipedia.org/wiki/Ridge_regression) (also called as *Tikhonov* or *$L^2$ norm regularization*), we add a $\lVert x\rVert_2^2$ term to the objective. This is known to 'shrink' the solution towards the origin, but it does not necessarily make the solution sparse.[^prox]
 
 [^prox]: As an aside, LASSO and ridge regression can be studied using the theory of [proximal operators](https://en.wikipedia.org/wiki/Proximal_operator).
 
@@ -107,7 +109,8 @@ Suppose $x\in \mathbb R^2$. The function <span class=accented>$\lVert x \rVert_1
 </div>
 
 where the green plane is a sub-gradient at the origin.
-Since $\lVert x \rVert_1$ is non-differentiable along the axes, it tries to *snap* the minima towards the axes. Note that the axes of $\mathbb R^2$ are exactly where the sparse vectors are. So $\lVert x \rVert_1$ always promotes sparsity, even in higher dimensions.
+Since $\lVert x \rVert_1$ is non-differentiable along the axes, it tries to *snap* the minima towards the axes. Note that the axes of $\mathbb R^2$ are exactly where the sparse vectors are. At what points is $\lVert x\rVert_1$ non-differentiable, in higher-dimensions? (Hint: it's not just the axes!)
+<!-- $\lVert x \rVert_1$ always promotes sparsity, even in higher dimensions. -->
 
 The function <span class=accented>$\lVert x \rVert_2$</span> looks like an ice-cream cone:
 
@@ -126,10 +129,8 @@ since it's only non-differentiable at the origin, it tries to snap the solution 
 where $x_i \in \mathbb R^{d_i}$, and $x \in \mathbb R^{\sum_{i=1}^n d_i}$. Suppose we know that the sparsity of $x$ occurs in blocks, i.e., some of the $x_i$ are full of zeros.
 Then, the regularization term $\sum_{i=1}^{n}\lVert x_i \rVert_2$ is what we want to use, because it sets some of the $x_i$ to $\bold 0$, but does not promote sparsity *within* each block. At what values of $x$ is $\sum_{i=1}^{n}\lVert x_i \rVert_2$ non-differentiable?
 
-### Closing Note
+#### Closing Note
 
 There are many different ways to think about sparsity. You could imagine trying to balance a tennis ball that is resting on one of the surfaces we showed above, by holding the surface from below and tilting it. The ball is likely to settle at one of the non-differentiable points of the surface.
-I like the sub-gradient interpretation because it works irrespective of dimension. We can test for differentiability of arbitrary functions even if we cannot visualize them.
+I like the sub-gradient interpretation because it works irrespective of the dimension. We can test for differentiability of arbitrary functions even if we cannot visualize them.
 <!-- Moreover, the sub-gradient interpretation speaks of the global minima of the function, whereas the 'tennis ball' analogy only says that the ball will rest at one of the local minima. -->
-<!-- 
-At the end of the day, you don't have to pick a favorite explanation of a given mathematical phenomenon. They are all available to you, all the time.  -->
