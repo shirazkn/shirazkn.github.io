@@ -5,14 +5,13 @@ theme: PaperMod
 publishDir: docs
 params:
   homeInfoParams:
-    Title: # <img src="favicon.png" class=logo> </img>
-    # Content: "Please see my collection of strange mathematical attractions.<br> "
+    Title:
 
   socialIcons: # optional
     - name: "Github"
       url: "https://www.github.com/shirazkn"
-    - name: "Self-reference"
-      url: "https://www.shiraz-k.com"
+    - name: "LinkedIn"
+      url: "https://www.linkedin.com/in/shiraz-k/"
 
   assets:
     favicon: "/favicon.ico"
@@ -21,6 +20,8 @@ params:
     apple_touch_icon: "apple-touch-icon.png"
     safari_pinned_tab: "/favicon.ico"
   math: true
+
+  comments: true
   
 menu:
   main:

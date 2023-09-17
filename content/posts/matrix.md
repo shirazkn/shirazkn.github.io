@@ -2,9 +2,10 @@
 title: "Matrix Multiplication"
 date: 2023-05-28T10:35:07-04:00
 draft: false
+tags: ["Linear Algebra"]
 ---
 
-In this post, <!-- I will summarize some of the linear algebra concepts I discussed over the past few weeks, and paint a useful *picture* of linear algebra based on the <span class=accented>singular value decomposition</span>. By a *picture*, I mean that it can serve as an aid for thinking about a variety of concepts in linear algebra. Additionally --> I want to bridge the gap between <span class=accented>abstract vector spaces</span> (which are the mathematical foundation of linear algebra) and <span class=accented>matrix multiplication</span> (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space -- the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about [solving systems of equations](https://en.wikipedia.org/wiki/System_of_linear_equations) in this post. While <span class=accented>solving systems of equations</span> served as the historical precedent for mathematicians to begin work on linear algebra, it is today an *application*, and not the foundation of linear algebra.
+In this post, <!-- I will summarize some of the linear algebra concepts I discussed over the past few weeks, and paint a useful *picture* of linear algebra based on the <span class=accented>singular value decomposition</span>. By a *picture*, I mean that it can serve as an aid for thinking about a variety of concepts in linear algebra. Additionally --> I want to bridge the gap between <span class=accented>abstract vector spaces</span> (which are the mathematical foundation of linear algebra) and <span class=accented>matrix multiplication</span> (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space -- the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about [solving systems of equations](https://en.wikipedia.org/wiki/System_of_linear_equations) in this post. While <span class=accented>solving systems of equations</span> served as the historical precedent[^h] for mathematicians to begin work on linear algebra, it is today an *application*, and not the foundation of linear algebra.
 
 <!-- Sure, linear equations *behave* like vectors (you can multiply an equation by a scalar and add it to another), but a lot of other things (like functions and random variables) behave like vectors too. -->
 
@@ -338,7 +339,7 @@ Thus, there are two equivalent ways to interpret the orthogonal transformation, 
 
 1. It keeps the vector's representation $(v_1, v_2, \dots, v_n)$ fixed while <span class=accented>changing the orthonormal basis</span> as $\mathcal B \mapsto \mathcal B_U$.
 
-2. It <span class=accented>changes the vector representation</span> as 
+2. It <span class=accented>changes the vector's representation</span> as 
 <div>
 \[
     \begin{bmatrix}
@@ -382,6 +383,7 @@ Mathematicians almost always (or perhaps, always) study mathematical objects "<s
 [^1]: There is an abuse (or rather, a reuse) of notation here; note that the vector addition in $W$ [may be different from](/posts/vector) the vector addition in $V$, though we denote both as '$+$' for convenience.
  We also use '$+$' to denote the scalar addition operation.
 
+[^h]: See [this](https://math.stackexchange.com/questions/271927/why-historically-do-we-multiply-matrices-as-we-do) for the historical context of matrix multiplication, which is different from (but essentially the same as 😉) modern mathematics' treatment of it.
 <!-- 
 This is why the "$\text{Rank}$" of $A$ plus the dimension of $\text{Null}(A)$ equals the number of rows, $m$. When $\text{Null}(A) \neq 0$, or equivalently, $\text{Rank}(A)<m$,
 Note that $A$ maps a subspace to a subspace.
