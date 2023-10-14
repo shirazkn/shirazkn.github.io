@@ -109,7 +109,7 @@ f(t) = \frac{1}{2\pi} \int_{-\infty}^\infty \left[\sum_{k=-\infty}^{\infty}\int_
 $$
 
 where the factor $1/2\pi$ is a standard feature of Fourier analysis; it shows up when we do $\mathcal F^{-1}\big[\mathcal F[\ \cdot\ ]\big]$.
-Since we're both engineers, we will swap the integrals and summation around like it's nothing (in actuality, we need to check certain convergence and 'regularity' conditions):
+Since we're both engineers, we will swap the integrals and summation around (in actuality, we need to check certain convergence and 'regularity' conditions before doing this):
 
 <p>
 \[
