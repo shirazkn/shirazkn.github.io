@@ -6,7 +6,16 @@
     <description>Recent content in Linear Algebra on Shiraz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 May 2023 15:26:18 -0700</lastBuildDate><atom:link href="https://shirazkn.github.io/tags/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 May 2023 10:35:07 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/tags/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Matrix Multiplication</title>
+      <link>https://shirazkn.github.io/posts/matrix/</link>
+      <pubDate>Sun, 28 May 2023 10:35:07 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/matrix/</guid>
+      <description>In this post, I want to bridge the gap between abstract vector spaces (which are the mathematical foundation of linear algebra) and matrix multiplication (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space &amp;ndash; the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about solving systems of equations in this post.</description>
+    </item>
+    
     <item>
       <title>What is a Vector?</title>
       <link>https://shirazkn.github.io/posts/vector/</link>

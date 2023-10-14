@@ -6,7 +6,16 @@
     <description>Recent content on Shiraz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 May 2023 10:35:07 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Oct 2023 14:59:15 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fourier Transforms of Periodic Functions</title>
+      <link>https://shirazkn.github.io/posts/fourier/</link>
+      <pubDate>Mon, 02 Oct 2023 14:59:15 -0400</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/fourier/</guid>
+      <description>The Fourier transform takes a (absolutely integrable) function $f:\mathbb R \rightarrow \mathbb R$ and outputs a different (possibly complex-valued) function. If the first is interpreted as a signal (e.g., the waveform of an audio that is parameterized by time), then its Fourier transform has its &amp;lsquo;peaks&amp;rsquo; at the dominant frequencies of the signal. I will not expound too much on the Fourier transform itself, but its computation looks something like this1:</description>
+    </item>
+    
     <item>
       <title>Matrix Multiplication</title>
       <link>https://shirazkn.github.io/posts/matrix/</link>
