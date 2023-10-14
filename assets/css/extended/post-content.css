@@ -5,6 +5,13 @@
     display:table;
 }
 
+.post-content .centred {
+    color: var(--content);
+    padding: 0 5%;
+    width:auto;
+    text-align: center;
+}
+
 .post-content .tertiary {
     opacity: 0.5;
 }
