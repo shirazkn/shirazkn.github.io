@@ -62,3 +62,12 @@ div#logo-s svg {
     display: inline-block;
     animation: cursor-blink 1.2s steps(1) infinite;
 }
+
+.inline-link {
+    display: inline-block;
+    /* padding: 0px 5px;
+    border-radius: 3px; */
+    /* background-color: var(--theme); */
+    color: var(--accent);
+    /* font-family: monospace; */
+}

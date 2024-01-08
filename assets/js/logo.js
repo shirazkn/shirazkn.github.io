@@ -83,7 +83,7 @@ document.documentElement.onmousemove=function(event){
 
 function isTouchEvent(event) {
   return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0) ||
-      (event instanceof TouchEvent);
+      ('touches' in event);
 }
 
 function isMobileDevice() {
@@ -94,7 +94,7 @@ function getScrollSpeed(callback) {
   if (isMobileDevice()) {
       let lastScrollTop = 0;
       let lastTimestamp = 0;
-      const maxScrollSpeed = 400;
+      const maxScrollSpeed = 2000;
       const scrollEndTimeout = 100;
 
 
@@ -110,7 +110,7 @@ function getScrollSpeed(callback) {
 
           const timeDiff = timestamp - lastTimestamp;
           var distance = scrollTop - lastScrollTop;
-          distance = (distance**3);
+          distance = distance*distance*Math.sign(distance);
 
           const speed = (distance / timeDiff) * 1000; // pixels per second
           scrollSpeed = Math.max(Math.min(speed / maxScrollSpeed, 1), -1);

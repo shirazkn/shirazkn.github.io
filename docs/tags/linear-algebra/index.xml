@@ -6,7 +6,16 @@
     <description>Recent content in Linear Algebra on Shiraz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 May 2023 10:35:07 -0400</lastBuildDate><atom:link href="https://shirazkn.github.io/tags/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Jan 2024 11:22:28 -0500</lastBuildDate><atom:link href="https://shirazkn.github.io/tags/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vector Fields on Manifolds</title>
+      <link>https://shirazkn.github.io/posts/differential-forms/</link>
+      <pubDate>Wed, 03 Jan 2024 11:22:28 -0500</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/differential-forms/</guid>
+      <description>Over the past year, I have struggled to pin down what the scope of my blog should be. There is plenty of exposition out there on just about every aspect of modern mathematics, but especially on exterior calculus and differential geometry due to their situation at the intersection of several areas in theoretical and applied mathematics. (As a case in point, the two main references that I&amp;rsquo;ve been using to self-learn differential forms were the creations of a theoretical physicist and a computer scientist , respectively).</description>
+    </item>
+    
     <item>
       <title>Matrix Multiplication</title>
       <link>https://shirazkn.github.io/posts/matrix/</link>
@@ -72,15 +81,6 @@ In this post I&amp;rsquo;m showing how the Pythagoras theorem is a special case 
 Norms A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
 It is nonnegative, and $0$ only at the &amp;lsquo;zero element&amp;rsquo; (for e.g., at the origin of $\mathbb R^n$).
 $\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.</description>
-    </item>
-    
-    <item>
-      <title>The Unreasonable Effectiveness of $2$ in Statistics</title>
-      <link>https://shirazkn.github.io/posts/leastsquares/</link>
-      <pubDate>Sun, 09 Apr 2023 12:20:39 -0400</pubDate>
-      
-      <guid>https://shirazkn.github.io/posts/leastsquares/</guid>
-      <description>First off, this is a reference to The Unreasonable Effectiveness of Mathematics in the Natural Sciences , a very popular paper by Eugene Wigner which explores how mathematics is unreasonably effective at not only explaining, but also predicting scientific phenomena. I had a similar question about the number $2$ which repeatedly shows up in engineering and science, specifically in the form of the $2$-norm of a vector, and seems surprisingly effective at doing what it&amp;rsquo;s supposed to do.</description>
     </item>
     
   </channel>

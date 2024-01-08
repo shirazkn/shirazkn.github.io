@@ -1,7 +1,7 @@
 ---
 title: "The Unreasonable Effectiveness of $2$ in Statistics"
 date: 2023-04-09T12:20:39-04:00
-tags: ["Linear Algebra", "Probability"]
+tags: ["Probability"]
 draft: false
 ---
 
