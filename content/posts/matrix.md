@@ -327,7 +327,7 @@ Let the underlying linear transformation corresponding to $\bold U$ be denoted a
 \[g(\bold v) = g\Big( \sum_{i=1}^n v_i\bold b_i\Big) = \sum_{i=1}^n v_i g(\bold b_i)\]
 </p>
 
-where we know that the set $\lbrace g(\bold b_1), g(\bold b_2), \dots g(\bold b_n)\rbrace = \mathcal B_U$ is orthonormal. Thus, $\bold v$ and $g(\bold v)$ have the same representation (given by the numbers $v_1, v_2, \dots v_n$) under $\mathcal B$ and $\mathcal B_U$. This is why we can call $\bold U$ a "change of basis" -- it keeps the vector's *representation* the same, but changes the (orthonormal) basis that we are representing it in. Even though the vector's representation is same in either basis, the vector itself is changing under $\bold U$:
+where we know that the set $\lbrace g(\bold b_1), g(\bold b_2), \dots g(\bold b_n)\rbrace = \mathcal B_U$ is orthonormal. Thus, $\bold v$ and $g(\bold v)$ have the same representation (given by the numbers $v_1, v_2, \dots v_n$) under $\mathcal B$ and $\mathcal B_U$. This is why we can call $\bold U$ a "change of basis" -- it keeps the vector's *representation* the same, but changes the (orthonormal) basis that we are representing it in. Even if the vector's representation is same in either basis, the vector itself is changing under $\bold U$:
 
 <p>
 \[
@@ -335,6 +335,8 @@ where we know that the set $\lbrace g(\bold b_1), g(\bold b_2), \dots g(\bold b_
 \]
 </p>
 
+Alternatively, we can re-express the transformed vector in the original basis $\mathcal B$, in which case $g$ is interpreted as purely a transformation of the vector's components (rather than of its basis). This duality in how we can view a 'change of basis' has been explored more in [this article](/posts/differential-forms).
+<!-- 
 Thus, there are two equivalent ways to interpret the orthogonal transformation, $g$:
 
 1. It keeps the vector's representation $(v_1, v_2, \dots, v_n)$ fixed while <span class=accented>changing the orthonormal basis</span> as $\mathcal B \mapsto \mathcal B_U$.
@@ -356,11 +358,11 @@ while using the same orthonormal basis on either side, $\mathcal B$. The first i
 <figure class=invertible style="max-width: 100%;">
 <img src=/post-images/linear_algebra/orthogonal_transformation.png>
 </figure>
-</div>
+</div> -->
 
 [^3]: An invertible function between sets [must be](/posts/cat_theory_1) injective and surjective. If the dimension of $W$ is greater than that of $V$, then $f$ cannot be surjective. If the dimension of $V$ is greater, then $f$ cannot be injective.
 
-Notice that we drew a geometric picture for an orthonormal transformation, but we avoided doing so for a linear transformation.
+<!-- Notice that we drew a geometric picture for an orthonormal transformation, but we avoided doing so for a linear transformation. -->
 <!-- Note that $\lbrace \bold U \bold b_1, \bold U \bold b_2, \dots, \bold U \bold b_n \rbrace$ is a basis for the codomain of $W$
 set of vectors represented via their coefficients in the basis $\mathcal B$. Recall that linear transformations involve up to two *different* vector spaces -->
 
