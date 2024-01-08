@@ -9,6 +9,7 @@ const CLIP_DISTANCE = 2*dt**2;
 const K_OVER_M = 0.0003;
 const C_OVER_M = 0.05;
 const MAX_SPEED = 10.0;
+var scrollEnded = true;
 
 
 // -------- FUNCTIONS -------- //
@@ -95,7 +96,7 @@ function getScrollSpeed(callback) {
       let lastScrollTop = 0;
       let lastTimestamp = 0;
       const maxScrollSpeed = 2000;
-      const scrollEndTimeout = 100;
+      const scrollEndTimeout = 25;
 
 
       function handleScroll() {
@@ -119,11 +120,12 @@ function getScrollSpeed(callback) {
           lastTimestamp = timestamp;
           lastScrollTop = scrollTop;
           
+          scrollEnded = false;
           callback(scrollSpeed);
           clearTimeout(handleScroll.scrollEndTimeoutId);
             handleScroll.scrollEndTimeoutId = setTimeout(function() {
                 console.log('Scroll Ended');
-                scrollSpeed = 0.0001;
+                scrollEnded = true;
             }, scrollEndTimeout);
       }
 
@@ -146,12 +148,17 @@ setInterval(function(){
     var mouseY=(currentEvent.clientY);
     accelerate_towards(mouseX, mouseY);
     set_keyframes();
+    keyframeX = (keyframeX - 1)*1.2 + 1;
+    keyframeY = (keyframeY - 1)*1.2 + 1;
   }
   else if(scrollSpeed){
     accelerate_towards(centreX, centreY + scrollSpeed*(centreY))
     set_keyframes();
-    keyframeX = (keyframeX - 1)*1.5 + 1;
-    keyframeY = (keyframeY - 1)*1.5 + 1;
+    if (scrollEnded){
+      scrollSpeed = scrollSpeed*0.8;
+    }
+    keyframeX = (keyframeX - 1)*1.75 + 1;
+    keyframeY = (keyframeY - 1)*1.75 + 1;
   }
 
   black_gradient.setAttribute("cx", get_keyframed_value(0.6, -0.1, keyframeX));
@@ -167,8 +174,8 @@ setInterval(function(){
 
   let rotationX = get_keyframed_value(0, -7, keyframeX) + "deg";
   let rotationY = get_keyframed_value(0, 8, keyframeY) + "deg";
-  let translationX = get_keyframed_value(0, 1.5, keyframeX) + "%";
-  let translationY = get_keyframed_value(0, 1.5, keyframeY) + "%";
+  let translationX = get_keyframed_value(0, 1.0, keyframeX) + "%";
+  let translationY = get_keyframed_value(0, 1.0, keyframeY) + "%";
   var svg_rotator = document.getElementById('svg-rotator');
   svg_rotator.style.transform = `rotateX(${rotationY}) rotateY(${rotationX}) translateX(${translationX}) translateY(${translationY})`;
   black_path.setAttribute('d', `M1034,366c35.5-54.894,62.83-131.321,34-185-42.55-79.227-252.733-142.207-517.087-23C269,285.116,${get_keyframed_value(211, -30, keyframeX)},${get_keyframed_value(475, -10, keyframeY)},${get_keyframed_value(299, -15, keyframeX)},${get_keyframed_value(544, -5, keyframeY)}c82.946,66.043,364.329,145.659,${get_keyframed_value(663, -7, keyframeX)},${get_keyframed_value(283, -15, keyframeY)},291.081,131.651,351.751,263.87,377.721,323.73,25.19,58.08,15.73,210.66${get_keyframed_value(-251, 15, keyframeX)},${get_keyframed_value(244, +10, keyframeY)}-281.67,35.34-428.145-31.29-568.769-91.36C380.3,1242.5,135.822,1068.23,200.539,937.684c22.031-44.44,162.2-78.073,162.2-78.073S-6.819,747.32,22.271,597.628C-8.014,706.162-5.483,791,${get_keyframed_value(46, 0, keyframeX)},${get_keyframed_value(917, -10, keyframeY)}c107.977,261.668,401.817,401.038,539.353,452.9,144.976,54.68,363.9,72.5,${get_keyframed_value(566, -15, keyframeX)},${get_keyframed_value(52, -10, keyframeY)},181.07-17.84,280.68-156.89,${get_keyframed_value(265, -5, keyframeX)},${get_keyframed_value(-246, -10, keyframeY)}-14.67-86.23-155.94-285.966${get_keyframed_value(-482, -5, keyframeX)}${get_keyframed_value(-417, 10, keyframeY)}-338.391-137.644-513.57${get_keyframed_value(-240, 10, keyframeY)}${get_keyframed_value(-552, 10, keyframeX)},${get_keyframed_value(-285, 20, keyframeY)}-37-43.08-85.188-130.385,159.836-262.9C773.258,87.064,902.781,136.941,968.4,177.612c74.975,46.471,36.675,132.184-14.524,184.764C951.191,361.005,1007.52,406.869,1034,366ZM856.987,381.907`)
