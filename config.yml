@@ -4,6 +4,8 @@ title: Shiraz
 theme: PaperMod
 publishDir: docs
 params:
+  env: production
+  
   homeInfoParams:
     Title:
 
