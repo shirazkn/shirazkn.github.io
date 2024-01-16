@@ -5,8 +5,8 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags: ["Linear Algebra"]
-cover:
-    image: "/post-images/differential_forms/section.png"
+images:
+    - /post-images/differential_forms/section.png
 ---
 
 Over the past year, I have struggled to pin down what the scope of my blog should be. There is plenty of exposition out there on just about every aspect of modern mathematics, but especially on <span class=accented>exterior calculus</span> and <span class=accented>differential geometry</span> due to their situation at the intersection of several areas in theoretical and applied mathematics. (As a case in point, the two main references that I've been using to self-learn differential forms were the creations of a [theoretical physicist](https://en.wikipedia.org/wiki/David_Lovelock) and a [computer scientist](https://www.cs.cmu.edu/~kmcrane/), respectively). So then what is the scope of my blog? Maybe it is for me to catalog the process of self-learning mathematics as an engineering major who lacks a curricular background in modern mathematics. Maybe it is to assure others like me (who are also privileged enough to learn mathematics in isolation of such material concerns as its '*job prospects*') that it can be done. This post will do a bit of both; it serves in part the purpose of organizing my own thoughts on these matters, and in part the purpose of providing a roadmap for others who are interested in embarking on a similar journey.
