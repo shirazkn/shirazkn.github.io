@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Differential Geometry on Shiraz</title>
+    <link>https://shirazkn.github.io/tags/differential-geometry/</link>
+    <description>Recent content in Differential Geometry on Shiraz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Jan 2024 07:24:59 -0500</lastBuildDate><atom:link href="https://shirazkn.github.io/tags/differential-geometry/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Lie Group-Lie Algebra Correspondence</title>
+      <link>https://shirazkn.github.io/posts/lie-groups/</link>
+      <pubDate>Mon, 15 Jan 2024 07:24:59 -0500</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/lie-groups/</guid>
+      <description>A topological group is a set of elements $G$ that has both a group operation $\odot$ and a topology . The group operation satisfies the usual axioms (same as those of finite groups ), and the presence of a topology lets us say things like &amp;rsquo;the group is connected&amp;rsquo; and &amp;rsquo;the group operation is continuous&amp;rsquo;. $G$ is called a Lie group if it is also a smooth manifold. The smooth structure of the manifold must be compatible with the group operation in the following sense: $\odot$ is differentiable with respect to either of its arguments 1.</description>
+    </item>
+    
+    <item>
+      <title>Vector Fields on Manifolds</title>
+      <link>https://shirazkn.github.io/posts/differential-forms/</link>
+      <pubDate>Wed, 03 Jan 2024 11:22:28 -0500</pubDate>
+      
+      <guid>https://shirazkn.github.io/posts/differential-forms/</guid>
+      <description>Over the past year, I have struggled to pin down what the scope of my blog should be. There is plenty of exposition out there on just about every aspect of modern mathematics, but especially on exterior calculus and differential geometry due to their situation at the intersection of several areas in theoretical and applied mathematics. (As a case in point, the two main references that I&amp;rsquo;ve been using to self-learn differential forms were the creations of a theoretical physicist and a computer scientist , respectively).</description>
+    </item>
+    
+  </channel>
+</rss>
