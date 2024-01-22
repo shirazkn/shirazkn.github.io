@@ -303,8 +303,8 @@ The above result becomes interesting when we consider a group isomorphism from $
 \]
 </p>
 
-where ${a} \in \mathbb R$. Clearly, $e=S^0$ is the identity element of $G$ and $S^a\circ S^{-a} = S^0$.
-I omit the details here (to understand it, we need to understand the tangent vectors as [derivations](https://math.stackexchange.com/questions/1340503/tangent-space-as-derivations-exercise)), but a tangent vector in $T_{S^0}G$ is given by a differential operator of the form $\tau \frac{d}{dt}$,
+where ${a} \in \mathbb R$. Clearly, $e=S^0$ is the identity element of $G$ and $S^a\circ S^{-a} = S^0$.<!-- I omit the details here (to understand it, we need to understand the tangent vectors as [derivations](https://math.stackexchange.com/questions/1340503/tangent-space-as-derivations-exercise)) -->
+I defer the details to a footnote[^ddt], but a tangent vector in $T_{S^0}G$ is given by a differential operator of the form $\tau \frac{d}{dt}$,
 where $\tau \in \mathbb R$. The exponential map is then given by
 
 <p>
@@ -314,6 +314,8 @@ where $\tau \in \mathbb R$. The exponential map is then given by
     \end{align}
     \]
 </p>
+
+[^ddt]: Let $\gamma(a) \coloneqq S^a$ be a smooth curve on $G$ such that $\gamma (0) = S^0$. Then $\frac{d}{da}\left[S^a f(t)\right]\big\vert\_{a=0} = \lim_{\Delta a \rightarrow 0}\frac{f(t+\Delta a) - f(t)}{\Delta a} = \frac{df}{dt}(t)$. This is for a unit tangent vector; a scaled tangent vector is obtained by considering a curve of the form $\gamma(a) \coloneqq S^{\tau a}$ instead.
 
 It cannot be understated just how remarkable the above result is. Letting the left-hand side of <span class=accented>$(15)$</span>
  operate on a function $f$ and evaluating the resulting function at $t_0$, we get
