@@ -7,7 +7,7 @@ draft: false
 tags: ["Differential Geometry"]
 ---
 
-A <span class=accented>topological group</span> is a set of elements $G$ that has both a group operation $\odot$ and a [topology](https://www.youtube.com/watch?v=62WNNkoRCLE). The group operation satisfies the usual axioms (same as [those of finite groups](https://youtu.be/g7L_r6zw4-c?si=Y2Zit5muzZrCciaQ)), and the presence of a topology lets us say things like 'the group is connected' and 'the group operation is continuous'. $G$ is called a <span class=accented>Lie group</span> if it is also a smooth manifold. The smooth structure of the manifold must be *compatible* with the group operation in the following sense: $\odot$ is differentiable with respect to either of its arguments [^1]. The compatibility of its constituent structures is what makes a Lie group so special, enabling it to capturing the essence of a [continuous symmetry](https://en.wikipedia.org/wiki/Noether's_theorem).
+A <span class=accented>topological group</span> is a set of elements $G$ that has both a group operation $\odot$ and a [topology](https://www.youtube.com/watch?v=62WNNkoRCLE). The group operation satisfies the usual axioms (same as [those of finite groups](https://youtu.be/g7L_r6zw4-c?si=Y2Zit5muzZrCciaQ)), and the presence of a topology lets us say things like 'the group is connected' and 'the group operation is continuous'. $G$ is called a <span class=accented>Lie group</span> if it is also a smooth manifold. The smooth structure of the manifold must be *compatible* with the group operation in the following sense: $\odot$ is differentiable with respect to either of its arguments [^1]. The compatibility of its constituent structures is what makes a Lie group so special, enabling it to capture the essence of a [continuous symmetry](https://en.wikipedia.org/wiki/Noether's_theorem).
 
 [^1]: More precisely, we test for the differentiability of $\odot$ in the product topology on $G \times G$.
 
@@ -35,9 +35,9 @@ I +
 
 Still, the above observation alone does not make it clear what the relationship between $SO(2)$ and $T_ISO(2)$ is. For starters, why should one expect infinitesimal rotations to be related in any way to arbitrary (large angle) rotations? What is the significance of the Lie bracket? 
 
-[^2]: The converse holds if $G$ is [simply connected](https://en.wikipedia.org/wiki/Simply_connected_space) as a manifold (i.e., it has no holes). We say that the Lie group-Lie algebra correspondence is one-to-one in these cases. Note that the $SO(3)$ group is not simply connected; I highly recommend walking through the proof of this fact in$\ \mathrm{Sec.\ 1.3.4}\ $of Brian C. Hall's book.
+[^2]: The converse holds if $G$ is [simply connected](https://en.wikipedia.org/wiki/Simply_connected_space) as a manifold (i.e., it has no holes). We say that the Lie group-Lie algebra correspondence is one-to-one in these cases. Note that the $SO(3)$ group is not simply connected; I recommend walking through the proof of this fact in$\ \mathrm{Sec.\ 1.3.4}\ $of Brian C. Hall's book.
 
-This post is by no means meant to be an introduction to Lie groups; for that, I recommend the first few chapters of <a href=https://link.springer.com/book/10.1007/978-3-319-13467-3 class=accented>Brian C. Hall's book</a>. I will instead hurry us along to our main line of investigation -- understanding the <span class=accented>Lie group-Lie algebra correspondence</span>, pausing only to show you some pictures/diagrams that I had fun drawing. A bonus take away from this post will be a deeper understanding of the exponential map, one that unifies the exponentials of real numbers, complex numbers, and matrices.
+This post is by no means meant to be an introduction to Lie groups; for that, I recommend the first few chapters of <a href=https://link.springer.com/book/10.1007/978-3-319-13467-3 class=accented>Brian C. Hall's book</a>. I will instead hurry us along to our main line of investigation -- understanding the <span class=accented>Lie group-Lie algebra correspondence</span>, pausing only to show you some pictures/diagrams that I had fun drawing. A bonus takeaway from this post will be a deeper understanding of the exponential map, one that unifies the exponentials of real numbers, complex numbers, and matrices.
 
 
 <aside class=aside-center>
@@ -82,7 +82,7 @@ where the curve passing through $g$ was obtained by composing $\gamma$ with $\ma
 
 [^ident]: The word *identified* is used here in the sense of 'made identical to'. I remember being amused when I first came across this usage of it, today I quite like how resolute it sounds.
 
-By a reuse of notation, we can also 'push forward' entire vector fields (when $f$ is a diffeomorphism):
+By reuse of notation, we can also 'push forward' entire vector fields (when $f$ is a diffeomorphism):
 
 <p>
 \[
@@ -97,7 +97,7 @@ where $\mathfrak X(\cdot)$ denotes the set of all smooth vector fields on a mani
 
 ### Morphisms
 
-Most (if not all) mathematical objects come with a distinctive *structure*; for topological spaces it is their topology/open sets, for vector spaces their vector addition and scalar multiplication operations, for finite groups the existence of inverses, and so on. Mappings between objects of the same type that preserve these structures are called <span class=accented>homomorphisms</span> (or in the jargon of category theory, simply morphisms). The homomorphisms between vector spaces are the *linear transformations* between them. Suppose $f:V\rightarrow W$ is a linear transformation, then
+Most (if not all) mathematical objects come with a distinctive *structure*; for topological , it is their topology/open sets, for vector spaces their vector addition and scalar multiplication operations, for finite groups the existence of inverses, and so on. Mappings between objects of the same type that preserve these structures are called <span class=accented>homomorphisms</span> (or in the jargon of category theory, simply morphisms). The homomorphisms between vector spaces are the *linear transformations* between them. Suppose $f:V\rightarrow W$ is a linear transformation, then
 
 <p>
 \[
@@ -194,7 +194,7 @@ A left-invariant vector field $X\in \mathfrak X^{\mathcal L}(G)$ is special beca
 
 ## The Exponential Map
 
-If the Lie algebra is to correspond to the Lie group, the elements of the Lie algebra should be somehow *associated* to the elements of the Lie group. How do we associate $\tilde X \in T_eG$ to a unique group element of $G$?
+If the Lie algebra is to correspond to the Lie group, the elements of the Lie algebra should be somehow *associated* with the elements of the Lie group. How do we associate $\tilde X \in T_eG$ to a unique group element of $G$?
 First, we extend $\tilde X$ to the unique left-invariant vector field $X$ that satisfies $X(g) = (\mathcal L_{g*})\_e \tilde X$. Thereafter -- and this is going to sound unbelievably simple -- we place a 'boat' at the identity $e$ and let it flow along the surface of $G$ in the direction of $X$ for exactly *one* unit of time! 
 
 Let's unpack what that means. The boat is going to trace out a path/curve on $G$, which we denote by $\gamma :[0, 1] \rightarrow G$, such that $\gamma (0)=e$. At time $t\in[0,1]$, the boat's position is given by $\gamma(t)\in G$. Its velocity at time $t$ is given by $\gamma ^\prime(t)=X(\gamma(t))$. Thus, we require that
@@ -529,7 +529,7 @@ Given a Lie group homomorphism $\varphi:G\rightarrow H$, it induces a correspond
 As implied through <span class=accented>$(41)$</span> and the choice of notation here, $\varphi_*$ is simply the differential of $\varphi$ at the identity element of $G$.
 In particular, the adjoint representations $\textrm{Ad}$ and $\textrm{ad}$ are related to each other in this way (see Theorem 8.44 of Lee's book, 2<sup>nd</sup> edition). Specifically, $\textrm{ad}:\mathfrak g \rightarrow \mathfrak {gl}(\mathfrak g)$, where $\mathfrak {gl}(\mathfrak g)$ are the endomorphisms of $\mathfrak g$ (as a Lie algebra).
 
-Either representation ($\textrm{Ad}/\textrm{ad}$) is uninteresting when $\odot$ is commutative, in which case conjugation reduces to the identity map ($g\odot h \odot g^{-1} = h$) and the Lie bracket of $\mathfrak g$ vanishes identically. However, they are indispensible tools for studying non-commutative groups. In what follows, we will demonstrate yet another line of investigation in which the adjoint representations arise as a measure of non-commutativity.
+Either representation ($\textrm{Ad}/\textrm{ad}$) is uninteresting when $\odot$ is commutative, in which case conjugation reduces to the identity map ($g\odot h \odot g^{-1} = h$) and the Lie bracket of $\mathfrak g$ vanishes identically. However, they are indispensable tools for studying non-commutative groups. In what follows, we will demonstrate yet another line of investigation in which the adjoint representations arise as a measure of non-commutativity.
 
 My [previous post](/posts/differential-forms#tangentcotangent-bundles) introduced the notion of a fiber bundle, of which the tangent bundle of $G$, $TG$, is an example. The following diagram shows that two bundles $(E_1, M, \pi_1, F)$ and $(E_2, M, \pi_2, F)$ over the same base space ($M$) and fiber ($F$) may be fundamentally different:
 
