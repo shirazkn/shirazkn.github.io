@@ -97,7 +97,7 @@ where $\mathfrak X(\cdot)$ denotes the set of all smooth vector fields on a mani
 
 ### Morphisms
 
-Most (if not all) mathematical objects come with a distinctive *structure*; for topological , it is their topology/open sets, for vector spaces their vector addition and scalar multiplication operations, for finite groups the existence of inverses, and so on. Mappings between objects of the same type that preserve these structures are called <span class=accented>homomorphisms</span> (or in the jargon of category theory, simply morphisms). The homomorphisms between vector spaces are the *linear transformations* between them. Suppose $f:V\rightarrow W$ is a linear transformation, then
+Most (if not all) mathematical objects come with a distinctive *structure*; for topological spaces, it is their topology/open sets, for vector spaces their vector addition and scalar multiplication operations, for finite groups the existence of inverses, and so on. Mappings between objects of the same type that preserve these structures are called <span class=accented>homomorphisms</span> (or in the jargon of category theory, simply morphisms). The homomorphisms between vector spaces are the *linear transformations* between them. Suppose $f:V\rightarrow W$ is a linear transformation, then
 
 <p>
 \[

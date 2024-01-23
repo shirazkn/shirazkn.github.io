@@ -304,7 +304,7 @@ Now behold, for something striking will occur when we combine <span class=accent
 \]
 </p>
 
-This is nothing but the multivariable chain rule, which relates the [differential](https://en.wikipedia.org/wiki/Differential_(mathematics)#Differentials_as_linear_maps) of a function in terms of infinitesimal changes in its arguments.
+This is nothing but the multivariable chain rule, which relates the [differential](https://en.wikipedia.org/wiki/Differential_(mathematics)#Differentials_as_linear_maps) of a function to infinitesimal changes in its arguments.
 
 <aside class=aside-center>
 <b>Disclaimer:</b>
