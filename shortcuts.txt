@@ -1,0 +1,7 @@
+<p>
+\[
+    \begin{align}
+
+    \end{align}
+    \]
+</p> 

@@ -35,7 +35,7 @@ I +
 
 Still, the above observation alone does not make it clear what the relationship between $SO(2)$ and $T_ISO(2)$ is. For starters, why should one expect infinitesimal rotations to be related in any way to arbitrary (large angle) rotations? What is the significance of the Lie bracket? 
 
-[^2]: The converse holds if $G$ is [simply connected](https://en.wikipedia.org/wiki/Simply_connected_space) as a manifold (i.e., it has no holes). We say that the Lie group-Lie algebra correspondence is one-to-one in these cases. Note that the $SO(3)$ group is not simply connected; I recommend walking through the proof of this fact in$\ \mathrm{Sec.\ 1.3.4}\ $of Brian C. Hall's book.
+[^2]: The converse holds if $G$ is [simply connected](https://en.wikipedia.org/wiki/Simply_connected_space) as a manifold (i.e., it has no holes). We say that the Lie group-Lie algebra correspondence is one-to-one in these cases (see the [Cartan-Lie theorem](https://en.wikipedia.org/wiki/Lie%27s_third_theorem)). Note that the $SO(3)$ group is not simply connected; I recommend walking through the proof of this fact in$\ \mathrm{Sec.\ 1.3.4}\ $of Brian C. Hall's book.
 
 This post is by no means meant to be an introduction to Lie groups; for that, I recommend the first few chapters of <a href=https://link.springer.com/book/10.1007/978-3-319-13467-3 class=accented>Brian C. Hall's book</a>. I will instead hurry us along to our main line of investigation -- understanding the <span class=accented>Lie group-Lie algebra correspondence</span>, pausing only to show you some pictures/diagrams that I had fun drawing. A bonus takeaway from this post will be a deeper understanding of the exponential map, one that unifies the exponentials of real numbers, complex numbers, and matrices.
 
