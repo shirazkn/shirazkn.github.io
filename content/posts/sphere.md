@@ -79,7 +79,7 @@ Recall that
 
 which means that $\mathcal L_X Y = [X, Y]$ is simply the Lie bracket of vector fields. We observe the following points of departure between $\nabla _X Y$ and $\mathcal L_X Y$:
 
-- The Lie derivative is well-defined once a smooth structure for $M$ is specified, whereas the connection is an additional structure that is *imposed* on $M$; in particular, endowing $M$ with a geometry uniquely specifies the Levi-Civita connection. Importantly, there is no *natural* choice of a connection on a smooth manifold until a metric is chosen for it
+- The Lie derivative is well-defined once a smooth structure for $M$ is specified, whereas the connection is an additional structure that is *imposed* on $M$; in particular, endowing $M$ with geometry uniquely specifies the Levi-Civita connection. Importantly, there is no *natural* choice of a connection on a smooth manifold until a metric is chosen for it
 
 - The Lie derivative $\mathcal L_X Y$ at $p\in M$ is defined via local flows/diffeomorphisms of $X$ near $p$, whereas $\nabla _X Y$ only depends on the vector $X_p \in T_p M$
 
@@ -137,9 +137,10 @@ We are ready to attempt Problem $5-5$ from Lee's book.
 
 # The Sphere
 
-A vector field $X$ is said to be a *parallel* vector field if $\nabla X$ is identically $0$. **A (local) parallel vector field exists on a manifold if and only if the manifold is (locally) flat.** Here, (local) flatness refers to the property of being (locally) isometric to an open set of the Euclidean space of the same dimension. A $2$-dimensional manifold is locally flat if and only if a small piece (i.e., an open set) cut out from it can be laid flat on the table without stretching, tearing, or crumpling it. The surface of a Cylinder and the Möbius strip (with a certain, natural choice of metric for it) are examples of locally flat surfaces; this is exactly why one can construct these surfaces from a piece of paper.
+A vector field $X$ is said to be a *parallel* vector field if $\nabla X$ is identically $0$. A (local) parallel coordinate frame (see [my other post](/posts/lie-groups_calculus) for an introduction to coordinate frames) exists on (an open set of) a manifold $M$ if and only if $M$ is (locally) flat. Here, local (or global) flatness refers to the property of being locally (or globally) isometric to an open set of the Euclidean space of the same dimension.
 
-The crux of Problem $5-5$ is to show that such a local parallel vector field does not exist on the sphere $S^2$. (This can be compared to the difficulty of drawing a map of the Earth that does not introduce distortions of some sort.)
+A $2$-dimensional manifold is locally flat if and only if a small piece (i.e., an open set) cut out from it can be laid flat on the table without stretching, tearing, or crumpling it. The surface of a Cylinder and the Möbius strip (with a certain, natural choice of metric for it) are examples of locally flat surfaces; this is exactly why one can construct these surfaces from a piece of paper. The crux of Problem $5-5$ is to show that such a local parallel vector field does not exist on the sphere $S^2$. (This can be compared to the difficulty of drawing a map of the Earth that does not introduce distortions of some sort.)
+
 First, Lee asks us to consider the following embedding of the $2$-sphere in $\mathbb R^3$:
 
 <p>
@@ -151,14 +152,14 @@ First, Lee asks us to consider the following embedding of the $2$-sphere in $\ma
     \]
 </p>
 
-where $U\subseteq S^2$ is an open set on the sphere and $(x^1, x^2)$ are the usual spherical polar coordinates on the sphere; technically, $\psi$ is the pullback of an embedding under the spherical polar parametrization:
+where $U\subseteq S^2$ is an open set on the sphere and $(x^1, x^2)$ are the usual spherical polar coordinates on the sphere; technically, $\psi$ is the pullback of an embedding under the spherical polar parameterization:
 
 <figure class=invertible style="max-width: 100%;">
 <img src=/post-images/differential_forms/sphere.png>
 <figcaption>Embedding of the sphere in $\mathbb R^3$</figcaption>
 </figure>
 
-In the illustration, we use a 'wobbly sphere' to remind us that $S^2$ does not necessarily come endowed with a geometry. Rather, by treating $\hat \psi$ as an isometry, we will 'pull back' the geometry of $\mathbb R^3$ onto $S^2$. 
+In the illustration, we use a 'wobbly sphere' to remind us that $S^2$ does not necessarily come endowed with geometry. Rather, by treating $\hat \psi$ as an isometry, we will 'pull back' the geometry of $\mathbb R^3$ onto $S^2$. 
 To this end, consider the frame $\big(\frac{\partial}{\partial x^1}, \frac{\partial}{\partial x^2}\big)$ on $\mathbb R^2$[^coordinate-frame]. We know that $\varphi ^{-1}$ pushes this forward, yielding the local coordinate frame $(\varphi ^{-1}\_\*\frac{\partial}{\partial x^1},\varphi ^{-1}\_\*\frac{\partial}{\partial x^2})$ on $S^2$. 
 It can then be pushed forward to $\mathbb R^3$, giving us 
 
