@@ -240,7 +240,7 @@ such that $x^1(p^\prime), \dots, x^n(p^\prime)$ are the coordinates of a point $
 \]
 </p>
 
-which is indeed the case, i.e., $x^i$ is a representative function from the equivalence class of $dx^i$. Moreover, observe that 
+which is indeed the case, i.e., $x^i$ is a representative function from the equivalence class of $dx^i$. When $\mathcal M = \mathbb R^n$ (with the chart given by the identity map), we have
 
 <p>
 \[
@@ -250,7 +250,13 @@ which is indeed the case, i.e., $x^i$ is a representative function from the equi
     \]
 </p>
 
-where $\delta^i_j$ is the [Kroenecker delta](https://en.wikipedia.org/wiki/Kronecker_delta). Reintroducing the musical isomorphisms, we see that everything appears to work as in the Euclidean setting:
+where $\delta^i_j$ is the [Kroenecker delta](https://en.wikipedia.org/wiki/Kronecker_delta). 
+
+<!-- <aside class=aside-center>
+The choice of the pairing, $\frac{\partial}{\partial x^j}(x^i)=\delta ^i_j$, is called a <i>flat</i> metric. It is only possible to make this choice globally when the manifold is flat. For example, we can choose such a metric on the circle, cylinder, or the $n$-dimensional torus. However, many (and in a sense, most) manifolds will not admit a flat metric; <a href=/posts/sphere class=accented>the sphere does not</a>.
+</aside> -->
+
+Reintroducing the musical isomorphisms, we see that everything appears to work as expected in the Euclidean setting:
 
 <p>
 \[
@@ -306,29 +312,20 @@ Now behold, for something striking will occur when we combine <span class=accent
 
 This is nothing but the multivariable chain rule, which relates the [differential](https://en.wikipedia.org/wiki/Differential_(mathematics)#Differentials_as_linear_maps) of a function to infinitesimal changes in its arguments.
 
-<aside class=aside-center>
+<!-- <aside class=aside-center>
 <b>Disclaimer:</b>
 The usage of <i>differential</i> here plays a different role from its usage in 'differential forms/geometry'. In the latter, it refers to the fact that a form/geometry is defined on the entirety of a manifold (and is in a certain sense, differentiable). More on that later.
-</aside>
+</aside> -->
+
+It should be noted that the measurement of a vector by a covector can be defined in the absence of an inner product, but we do need an inner product to be able to make sense of the musical isomorphisms. 
 
 ## Riemannian Metrics
 
-Before we proceed, it should be noted that the measurement of a vector by a covector can be defined in the absence of an inner product, and in fact, it is desirable to do so, for one does not always have ready access to an inner product. However, we do need an inner product to be able to make sense of the musical isomorphisms. 
+While the choice of basis we made above makes the algebra work out neatly, it is seldom possible to choose an 'orthonormal coordinate system' in an open neighborhood of a point; I touch upon this point in [a later post](/posts/sphere). Such an issue will only arise when we try to extend the basis of $T_p \mathcal M$ into a *frame*, so the reader need not dwell on this point too much right now.
 
-Furthermore, while the choice of bases we made above makes the algebra work out neatly, it is seldom the most desirable basis to work with on a curved manifold. This is because the bases (and the inner product we defined using them) depend on the charts, and charts that are desirable to work with may not capture the geometry inherent to the manifold. (The details of this argument are not entirely clear to me at the time of writing, but the forthcoming formalism should be accurate.)
+A <span class=accented>Riemannian metric</span> $g_{(\cdot)}$ is an object that takes as input a point $p\in \mathcal M$ to become an inner product on $T_p \mathcal M$, written as $g_{p}(\cdot, \cdot)$ or $\langle \cdot,\cdot\rangle\_p$ depending on the author. What we have done above is to stipulate that $g_{p}(\frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j})=\delta^i_j$. More generally, one introduces a convenient coordinate system on $U\subseteq \mathcal M$ (for instance, [the spherical polar coordinates of a sphere](/posts/sphere#the-sphere)) and then specifies (or when there is some natural choice of metric, computes) the 'components of the metric tensor', collected into a matrix of numbers, $g_{p,ij}$. Each of these components is required to be a smooth function of $p$.
 
-What one does in practice is to introduce a <span class=accented>Riemannian metric</span> $g_{(\cdot)}$, which takes as input a point $p\in \mathcal M$ to become an inner product on $T_p \mathcal M$, written as $g_{p}(\cdot, \cdot)$. What we have done above is to stipulate that $g_{p}(\frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j})=\delta^i_j$. More generally, one introduces a convenient basis on $\mathcal M$ through a parameterization (for instance, the spherical polar coordinates of a sphere), denotes this basis by $\mathbf q_1, \mathbf q_2, \dots, \mathbf q_n$, and defines the following values:
-
-<p>
-\[
-\begin{align}
-g_{p,ij} = g_{p}(\mathbf q_i, \mathbf q_j),
-\end{align}
-\]
-</p>
-
-which are in general *not* the Kroenecker delta. The numbers $g_{p,ij}$ are also called as 'the components of a Riemannian metric tensor', and are typically required to be smooth functions of $p$.
-When stored as the entries of a matrix, $g_{p,ij}$ are related to the Jacobian matrix of the parameterization evaluated at $p$, and the corresponding determinant tells you how much the parameterization *stretches* or *squishes* the space near $p$. There are other ways to compute $g_{p,ij}$; for instance, when the manifold is not parameterized but given by an implicit equation (such as '$x^2 + y^2 + z^2=0$'), it is not clear which Jacobian must be evaluated. See [the books](https://www.amazon.com/Stochastic-Models-Information-Theory-Groups/dp/081764802X) by G. S. Chirikjian for more details about these computations.
+When stored as the entries of a matrix, $g_{p,ij}$ are related to the Jacobian matrix of the parameterization evaluated at $p$, and the corresponding determinant tells us how much the parameterization *stretches* or *squishes* the space near $p$. There are other ways to compute $g_{p,ij}$; for instance, when the manifold is not parameterized but given by an implicit equation (such as '$x^2 + y^2 + z^2=0$'), it is not clear which Jacobian must be evaluated. See [the books](https://www.amazon.com/Stochastic-Models-Information-Theory-Groups/dp/081764802X) by G. S. Chirikjian for more details about these computations.
 
 ## Tangent/Cotangent Bundles
 
@@ -368,6 +365,10 @@ When we have a map $\varphi:\mathcal M \rightarrow \mathcal N$ between two manif
 
 Our discussion brings us to a juncture that forks into two different topics in math:
 <span class=accented>parallel transport</span> and <span class=accented>exterior calculus</span> (this distinction is neither sharp nor exhaustive). I don't have anything specific to say about these areas that's particularly insightful or conveys the ideas any better than has been done already, so I will instead leave you with some resources. The two topics can be approached in either order.
+
+<aside class=aside-center>
+<b>Update</b> (April 7 2024): I went on to understand these concepts better. I wrote about connections <a href=/posts/sphere class=accented>here</a> and about differential $k$-forms <a href=/posts/lie-groups_calculus.md class=accented>here</a>.
+</aside>
 
 ## Parallel Transport
 

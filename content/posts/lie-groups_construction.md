@@ -325,22 +325,25 @@ This follows as a consequence of Lemma 7.1, since $\mathfrak o(n)$ are precisely
 </p>
 
 As a corollary, every compact Lie group (including [closed and bounded](https://en.wikipedia.org/wiki/Heine%E2%80%93Borel_theorem) matrix Lie groups like $SO(n)$) admits a bi-invariant metric. While $SO(n) \times \mathbb R^n$ admits a bi-invariant metric, $SE(n) \cong SO(n) \ltimes \mathbb R^n$ does not. 
-(Nevertheless, we will see that $SE(n)$ has the next best thing: a bi-invariant measure.) An interesting property of a Lie group that admits a bi-invariant metric is that its one-parameter subgroups are also geodesic paths of the metric.
+(Nevertheless, $SE(n)$ has the next best thing: a bi-invariant measure.) 
+
+An interesting property of a Lie group that admits a bi-invariant metric is that its one-parameter subgroups are also geodesic (i.e., shortest-distance) paths of the metric.
 
 <!-- <span class=accented><b>Example 1</b> (Revisited)<b>:</b></span><br>
 Let's actually compute the metric of $SE(3) \cong \mathbb R^3 \rtimes SO(3)$. -->
 
 ## Measures
 
-While metrics help assign values to the lengths of tangent vectors, measures assign values to subsets. In classical calculus, the expression $\int_{\mathbb R} f(x) dx$ refers to integration with respect to a specific, canonical choice of a measure -- the Lebesgue measure. The Lebesgue measure is uniquely determined (up to a scaling factor) by the fact that it should be translation invariant, i.e., $\mu([0,1]) = \mu ([1,2])$, and a few other properties that are viewed as being *natural* to the structure of $\mathbb R^n$. It turns out that there is a canonical measure on Lie groups as well, called the (left) <span class=accented>Haar measure</span>, that satisfies $\mu_G(gA) = \mu_G(A)$ for all $g\in G$ and $A\subset G$, where
+While metrics help assign values to the lengths of tangent vectors (and by extension, to curves), measures assign values to subsets. In classical calculus, the expression $\int_{\mathbb R} f(x) dx$ refers to integration with respect to a specific, canonical choice of a measure -- the Lebesgue measure. The Lebesgue measure is uniquely determined (up to a scaling factor) by the fact that it should be translation invariant, i.e., $\mu([0,1]) = \mu ([1,2])$, and a few other properties that are viewed as being *natural* to the structure of $\mathbb R^n$. It turns out that there is a canonical measure on Lie groups as well, called the (left) <span class=accented>Haar measure</span>, that satisfies $\mu_G(gA) = \mu_G(A)$ for all $g\in G$ and $A\subset G$, where
 
 $$gA \coloneqq \lbrace ga\ \vert\ a\in A \rbrace.$$
 
-The Lebesgue measure is a special case of the Haar measure on $\mathbb R^n$; the latter generalizes what we mean by *translation* to include any group operation. In a compact group, a unique Haar measure can be found by normalizing the scaling factor to $1$ so that $\int_G d\mu_G=\mu(G)=1$. If $\mu_G$ is a left Haar measure and $g\in G$, then $\tilde \mu^{(g)}\_G \coloneqq \mu_G\circ \mathcal R_{g}$ is also a left Haar measure, since 
+The Lebesgue measure is a special case of the Haar measure on $\mathbb R^n$; the latter generalizes what we mean by *translation* to include any group operation. Like the Lebesgue measure, the left Haar measure can be shown to be unique up to scaling.
+In a compact group, a unique Haar measure can be found by normalizing the scaling factor to $1$ so that $\int_G d\mu_G=\mu(G)=1$. If $\mu_G$ is a left Haar measure and $g\in G$, then $\tilde \mu^{(g)}\_G \coloneqq \mu_G\circ \mathcal R_{g}$ is also a left Haar measure, since 
 
 $$\tilde \mu^{(g)}_G(hA) = \mu_G(hAg) = \mu_G(Ag) = \tilde \mu^{(g)}_G(A)$$
 
-for all $h\in G$. But since the left Haar measure is unique up to scalar multiplication, it must be the case that $\tilde \mu^{(g)}_G = \Delta (g) \mu_G$ where $\Delta (g)$ is a scalar-valued function that only depends on $g$. This is called the <span class=accented>modular function</span> of $G$ -- once computed, it is independent of the choice of the Haar measure $\mu_G$ that is used to compute it. It relates the left Haar measure to the right Haar measure.
+for all $h\in G$. But since the left Haar measure is unique up to scalar multiplication, it must be the case that $\tilde \mu^{(g)}_G = \Delta (g) \mu_G$ where $\Delta (g)$ is a scalar-valued function that only depends on $g$. This is called the <span class=accented>modular function</span> of $G$ -- once computed, it is independent of the choice of the Haar measure $\mu_G$ that is used to compute it. It relates the left Haar measure to the right Haar measure. A lot of the properties and implications of $\Delta(\ \cdot\ )$ follow from showing that it is a group homomorphism from $G$ to $\mathbb R^\times\_{>0}$.
 
 <!-- ## Unimodularity and Bi-invariance -->
 
@@ -349,10 +352,10 @@ A Lie group is said to be <span class=accented>unimodular</span> *iff* its left 
 
 
 <p class=equation-like>
-<span class=print><b>Lemma 6.1</b> A Lie group is unimodular if and only if the linear transformation $\textrm{Ad}_X$ has determinant $\pm 1$ for every $X\in\mathfrak g$.<br>
+<span class=print><b>Lemma 6.1</b> A Lie group is unimodular if and only if the linear transformation $\textrm{Ad}_g$ has determinant $\pm 1$ for every $g\in G$.<br>
 </p>
 
-The absolute value of this determinant [is precisely the modular function](https://www.math.toronto.edu/mein/teaching/LectureNotes/lie.pdf), $\Delta(g)$. $\Delta$ is therefore a Lie group homomorphism from $G$ to $\mathbb R^\times_{>0}$, the multiplicative group of positive real numbers.
+The absolute value of this determinant [is precisely the modular function](https://www.math.toronto.edu/mein/teaching/LectureNotes/lie.pdf), $\Delta(g)$. Recall or verify that $\lvert\det(\ \cdot\ )\rvert$ is a Lie group homomorphism from $GL(n; \mathbb R)$ to $\mathbb R^\times_{>0}$, the multiplicative group of positive real numbers.
 
 <p class=equation-like>
 <span class=print><b>Lemma 6.3</b> A connected Lie group is unimodular if and only if the linear transformation $\textrm{ad}_X$ has trace zero for every $X\in\mathfrak g$.<br>
@@ -360,9 +363,9 @@ The absolute value of this determinant [is precisely the modular function](https
 
 Compare the relationship between these lemmas with the fact that $\textrm{det}(e^A) = e^{\textrm{tr}(A)}$ for any matrix $A$.
 
-Note that in matrix Lie groups $\textrm{ad}_X(Y)$ is always trace zero, since $\textrm{ad}_X(Y) = XY - YX$ and $\textrm{tr}(XY) = \textrm{tr}(YX)$. Lemma 6.3 is talking of the trace of $\textrm{ad}_X$ as a linear transformation on $\mathfrak g$ (as opposed to the trace of $\textrm{ad}\_X(Y)$), which can be written out as a matrix regardless of whether $G$ and $\mathfrak g$ have matrix representations. Moreover, for computing the trace of $\textrm{ad}_X$ it does not matter what basis of $\mathfrak g$ we choose, since the trace is a property of the underlying linear transformation rather than of the matrix. As a special case of Lemma 6.3, the $\textrm{ad}_X$ matrices corresponding to a [nilpotent](https://en.wikipedia.org/wiki/Nilpotent_Lie_algebra) Lie algebra [are given by nilpotent matrices](https://en.wikipedia.org/wiki/Engel%27s_theorem), which have trace zero. Thus, every nilpotent Lie group is unimodular.
+Note that for matrix Lie groups, $\textrm{ad}_X(Y)$ is always trace zero, since $\textrm{ad}_X(Y) = XY - YX$ and $\textrm{tr}(XY) = \textrm{tr}(YX)$. Lemma 6.3 is talking of the trace of $\textrm{ad}_X$ as a linear transformation on $\mathfrak g$ (as opposed to the trace of $\textrm{ad}\_X(Y)$). Moreover, for computing the trace of $\textrm{ad}_X$ it does not matter what basis of $\mathfrak g$ we choose, since the trace is a property of the underlying linear transformation rather than of the matrix. As a special case of Lemma 6.3, the $\textrm{ad}_X$ matrices corresponding to a [nilpotent](https://en.wikipedia.org/wiki/Nilpotent_Lie_algebra) Lie algebra [are given by nilpotent matrices](https://en.wikipedia.org/wiki/Engel%27s_theorem), which have trace zero. Thus, every nilpotent Lie group is unimodular. Moreover, compact Lie groups are unimodular because $\Delta(g)$ is a homomorphism into the non-compact group $\mathbb R^\times\_{>0}$, whereas the only compact subgroup of $\mathbb R^\times\_{>0}$ is $\lbrace 1 \rbrace$.
 
-Bi-invariant Haar measures are incredible useful, partly because they offer a *natural* and well-defined way for integrating on Lie groups (and thus, for defining integrals, probability densities, Fourier transforms, etc.), but also because they come with properties that are analogous to the ones from classical (&agrave; la Lebesgue integration) calculus:
+Bi-invariant Haar measures are incredibly useful because they offer a way to integrate on Lie groups (as well as to define probability densities, Fourier transforms, etc.) while retaining the intuitive and attractive properties of the Lebesgue integral:
 
 <p>
 \[

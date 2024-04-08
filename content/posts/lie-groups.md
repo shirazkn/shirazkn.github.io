@@ -80,7 +80,7 @@ Given $g\in G$, let $\mathcal L_g:G\rightarrow G$ denote <span class=accented>le
 
 where the curve passing through $g$ was obtained by composing $\gamma$ with $\mathcal L_g$. Since $T_eG$ is going to be identified[^ident] with $\mathfrak g$ (as a vector space), the above illustration is going to play a key role in the forthcoming discussion. It shows that $(\mathcal L_{g^{-1}*})\_g$$=(\mathcal L_{g\*})\_e ^{-1}$ will reduce a tangent vector at $g$ to an element of the Lie algebra.
 
-[^ident]: The word *identified* is used here in the sense of 'made identical to'. I remember being amused when I first came across this usage of it, today I quite like how resolute it sounds.
+[^ident]: The word *identified* is used here in the sense of 'made identical to'. I remember being amused when I first came across this usage of it, now I love how resolute it sounds.
 
 By reuse of notation, we can also 'push forward' entire vector fields (when $f$ is a diffeomorphism):
 
@@ -354,7 +354,7 @@ We have skipped a lot of the standard results in Lie theory in order to get to t
 
 - It is always *locally* invertible near the identity element $0\in \mathfrak g$.
 - Given a choice of $\tilde X\in \mathfrak g$, $\gamma(t)=\exp (t \tilde X)$ is a [one-parameter subgroup](https://en.wikipedia.org/wiki/One-parameter_group) of $G$, i.e., a Lie group homomorphism from $\mathbb R$ to $G$. Consequently, $\exp\big((t_1+t_2) \tilde X\big)=\exp(t_1\tilde X) \exp (t_2 \tilde X)$, and $\exp(-\tilde X)=\exp (\tilde X)^{-1}$.
-- $\exp(t\tilde X)$ represent geodesic paths passing through the identity of $G$ with respect to a particular choice of metric (namely, a bi-invariant Riemannian metric, [if one exists](https://en.wikipedia.org/wiki/Exponential_map_(Riemannian_geometry)#Relationships_to_exponential_maps_in_Lie_theory)) and the resulting Levi-Civita connection.
+- $\exp(t\tilde X)$ represent geodesic paths passing through the identity of $G$ with respect to a particular choice of metric (namely, a bi-invariant Riemannian metric, [if one exists](/posts/lie-groups_construction)) and the resulting Levi-Civita connection.
 
 ## The Flows of $\mathfrak X^{\mathcal L}(G)$
 
