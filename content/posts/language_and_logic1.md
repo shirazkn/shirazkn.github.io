@@ -20,7 +20,7 @@ This is my first post! It discusses the question of whether spoken and written l
 
 ### Fallacies
 
-The word *logic*, as it is used in everyday parlance, refers to informal logic (as opposed to formal logic, which is instead a rigorous mathematical construct; we will look at formal logic in the sequel).
+The word *logic* as it is used in everyday parlance refers to <span class=accented>informal logic</span> (as opposed to [formal logic](/posts/language_and_logic2), which is instead a rigorous mathematical construct).
 You've probably come across logical fallacies such as the [false dilemma](https://en.m.wikipedia.org/wiki/False_dilemma), which goes something like this:
 <p class=equation-like>
 <span class=print><b>Person 1:</b> Women and trans people are in need of better mental health infrastructure.<br>

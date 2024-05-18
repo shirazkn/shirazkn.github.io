@@ -20,6 +20,10 @@
     color: var(--accent);
 }
 
+.post-content .red {
+    color: red;
+}
+
 .post-content .gray {
     color: var(--secondary);
 }

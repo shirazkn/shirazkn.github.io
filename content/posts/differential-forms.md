@@ -120,7 +120,7 @@ An often overlooked requirement for studying differential geometry is the abilit
 
 ---
 
-# Tangent/Cotangent Spaces
+# Tangent & Cotangent Spaces of $\mathcal M$
 
 Any $n$-dimensional vector space is isomorphic to $\mathbb R^n$, which is to say that it can only differ superficially from $\mathbb R^n$. This begs the question of what happens in $n$-dimensional spaces that differ from $\mathbb R^n$ in some meaningful way. Of particular interest to us (and to physicists and roboticists) are spaces that are *curved*. Einstein was interested in the geometry of a particular curved four-dimensional space (composed of one temporal and three spatial dimensions). A prototypical example to keep in mind is the surface of a ball in $\mathbb R^3$, which is a $2$-dimensional manifold; each point on its surface has a neighborhood that appears to be a $2$-dimensional plane (hence arises the confusion of flat-earthers).
 
@@ -172,7 +172,7 @@ So is a function $f\in C^1(\mathcal M)$ a covector? Not quite.
 We could not simply identify the tangent vectors with the paths/curves on $\mathcal M$ passing through $p$ because it would lead to inadvertent double-counting; two paths that are indistinguishable near $p$ would get counted as two distinct tangent vectors, which is not the case. A similar problem arises if we try to identify the functions $f\in C^1(\mathcal M)$ with covectors. Two functions that behave similarly near $p$ would get counted as different cotangent vectors, even though they extract the same measurement out of a given vector.
 
 <aside class=aside-right>
-Note that we tend to say that covectors measure vectors, which is in direct opposition to the observation that directional derivatives (represented by vectors) operate on functions (represented by covectors). It would seem more natural then to stipulate that 'vectors measure covectors'. Nonetheless, it's a good idea to brush aside this urge to make sense of the phrasing and instead focus on the underlying mathematical structure.
+Note that we tend to say that covectors measure vectors, which is in direct opposition to the observation that directional derivatives (represented by vectors) operate on functions (represented in a sense, by covectors). It would seem more natural then to stipulate that 'vectors measure covectors'. Nonetheless, it's a good idea to brush aside this urge to make sense of the phrasing and instead focus on the underlying mathematical structure.
 </aside>
 
 So, we do the same thing as before. Denote by $df$ a <span class=accented>cotangent vector</span>, covector, or one-form at $p$, defined as the equivalence class of all the functions that have the same directional derivatives at $p$. In other words, functions $f_1,f_2\in C^1(\mathcal M)$ are associated to the same covector $df$ as long as $\mathbf v(f_1) = \mathbf v(f_2)$
@@ -186,12 +186,14 @@ For example, if $\mathcal M=\mathbb R$, then $T_p \mathbb R$ is a one-dimensiona
 
 ## Partial Derivatives and Differentials
 
-In the [diagram](#fig:paths) above (which must be consulted repeatedly during the forthcoming discussion), we depict the standard basis on $\mathbb R^n$ by the black rays. Since $h$ is a homeomorphism, we can use $h^{-1}$ to lift the black rays onto $\mathcal M$. These gives us 'coordinate paths' on $\mathcal M$ whose equivalence classes may be defined (on account of their linear independence) as a basis of $T_p \mathcal M$. This basis will be denoted as $\left \lbrace \frac{\partial}{\partial x^1}, \frac{\partial}{\partial x^2}, \dots, \frac{\partial}{\partial x^n}\right \rbrace$. An arbitrary vector $\mathbf v$ can then be expressed as 
+In the [diagram](#fig:paths) above (which must be consulted repeatedly during the forthcoming discussion), we depict the standard basis on $\mathbb R^n$ by the black rays. Since $h$ is a homeomorphism, we can use $h^{-1}$ to lift the black rays onto $\mathcal M$. These gives us 'coordinate paths' on $\mathcal M$ whose equivalence classes (at each $p\in U$) may be defined as a basis of $T_p \mathcal M$ (for each $p\in U$). The basis thus obtained at $p$ is commonly denoted as $\big(\frac{\partial}{\partial x^i}\big\rvert_p\big)\_{i=1}^n$, whereas $\big(\frac{\partial}{\partial x^i}\big)\_{i=1}^n$ defines a set of $n$ vector fields on $U$, called as a *local coordinate frame*. The discussion of frames is deferred to [a later post](/posts/lie-groups_calculus/#frames). 
+
+An arbitrary vector $\mathbf v \in T_p \mathcal M$ can therefore be expressed as 
 
 <p>
 \[
     \begin{align}
-\mathbf v= v^1 \frac{\partial}{\partial x^1} + v^2 \frac{\partial}{\partial x^2} + \dots + v^n \frac{\partial}{\partial x^n},
+\mathbf v= v^1 \frac{\partial}{\partial x^1}\Big\rvert_p + v^2 \frac{\partial}{\partial x^2}\Big\rvert_p + \dots + v^n \frac{\partial}{\partial x^n}\Big\rvert_p,
 \end{align}
 \]
 </p>
@@ -199,26 +201,35 @@ In the [diagram](#fig:paths) above (which must be consulted repeatedly during th
 with $v^i\in \mathbb R$. 
 
 <aside class=aside-center>
-<b>Remark:</b> Some authors use $\lbrace \partial/\partial x^i \rbrace$ to refer to the standard basis vectors of $T_p\mathbb R^n$ (when $p \in \mathbb R^n$), whereas the notation I've used follows that of <a href=https://store.doverpublications.com/0486658406.html class=accented>Lovelock and Rund (p. 334)</a>.
-The distinction between the two is clear once we consider what a directional derivative on a manifold $\mathcal M$ should do: it's a mapping from $C^1(\mathcal M)$ to $\mathbb R$ (i.e., it computes the derivative of a function at a given point on $\mathcal M$ along the prescribed direction).  When treated as a basis vector of $T_p \mathcal M$, $\lbrace{\partial/\partial x^i \rbrace}$ are related to the standard basis vectors of $T_p \mathbb R^n$ by (the <a href=#pushforwards-and-pullbacks class=accented>pushforward</a> of) the mapping $h^{-1}$ that comes from the chart.
+<b>Remark:</b> Some authors reserve the notation '$\lbrace \partial/\partial x^i \rvert_{h(p)}\rbrace$' for the standard basis vectors of $T_{h(p)}\mathbb R^n$, with $h(p) \in \mathbb R^n$, whereas the (abuse of) notation I've used follows from that of <a href=https://store.doverpublications.com/0486658406.html class=accented>Lovelock and Rund (p. 334)</a>.
+The distinction between the two is clear once we consider what a directional derivative on a manifold $\mathcal M$ should do: it's a mapping from $C^1(\mathcal M)$ to $\mathbb R$ (i.e., it computes the derivative of a function at a given point on $\mathcal M$ along the prescribed direction).  When treated as a basis vector of $T_p \mathcal M$, $\lbrace{\partial/\partial x^i \rvert_p\rbrace}$ are related to '$\lbrace \partial/\partial x^i \rvert_{h(p)}\rbrace$' by the <a href=#pushforwards-and-pullbacks class=accented>pushforward</a> map corresponding to $h^{-1}$.
 </aside>
 
-Suppose we are given an inner product $\langle \cdot, \cdot \rangle:T_p\mathcal M \times T_p\mathcal M \rightarrow \mathbb R$. Recall that the inner product allows us to turn vectors into covectors via the musical isomorphism '$\flat$'.
-Thus, the basis $\left\lbrace \frac{\partial}{\partial x^1}, \dots, \frac{\partial}{\partial x^n }\right\rbrace$ of $T_p \mathcal M$ yields a corresponding basis of $T^*\_p \mathcal M$, denoted as $\left\lbrace dx^1, \dots, dx^n\right\rbrace$, where $dx^i = \frac{\partial}{\partial x^i}^\flat$. An arbitrary covector $df \in T^\*\_p \mathcal M$ is represented as 
+<!-- Suppose we are given an inner product $\langle \cdot, \cdot \rangle:T_p\mathcal M \times T_p\mathcal M \rightarrow \mathbb R$. Recall that the inner product allows us to turn vectors into covectors via the musical isomorphism '$\flat$'. -->
+The basis $\left\lbrace \frac{\partial}{\partial x^1}\big\rvert_p, \dots, \frac{\partial}{\partial x^n }\big\rvert_p\right\rbrace$ of $T_p \mathcal M$ gives rise to a corresponding basis of $T^*\_p \mathcal M$, called the <a class=accented>dual basis</a>. The dual basis is denoted as $\left\lbrace dx^1_p, \dots, dx^n_p\right\rbrace$ and defined such that the following identity holds:
+
+<p>
+\[
+    \begin{align}
+    dx^i_p\left(\frac{\partial}{\partial x^j}\Big\rvert_p\right) = \delta_{ij},
+    \end{align}
+    \]
+</p>
+
+where $\delta_{ij}$ is the [Kroenecker delta](https://en.wikipedia.org/wiki/Kronecker_delta). A covector $df_p \in T^\*\_p \mathcal M$ can therefore represented as 
 <!-- In other words, $\langle d x^j, \frac{\partial}{\partial x^k} \rangle= \delta_k^j$ (which is the [Kronecker delta](https://en.wikipedia.org/wiki/Kronecker_delta)).  -->
 
 <p>
 \[
     \begin{align}
-    df = f_1 dx^1 + f_2 dx^2 + \dots + f_n dx^n. 
+    df_p = f_1 dx^1_p + f_2 dx^2_p + \dots + f_n dx^n_p. 
     \end{align}
     \]
 </p>
 
 <!-- With these representations in place, the inner product is simply $\langle df, \mathbf v \rangle = \sum_{i=1}^n f_i v^i$. -->
 
-Each of the preceding definitions can be made in *any* vector space. They do not rely on the notion that the tangent vectors are defined via directional derivatives on $\mathcal M$. In fact, the basis vectors $\left\lbrace \frac{\partial}{\partial x^i}\right\rbrace_{i=1}^n$ and $\lbrace dx^i \rbrace_{i=1}^n$ can be considered as purely notational, with no reference to differentiation on $\mathcal M$. The notation starts to have further meaning when we unpack what the inner product $\langle \cdot , \cdot \rangle$ ought to do in the context of directional derivatives and functions.
-
+The notation that was introduced above starts to have further meaning once we introduce the so-called coordinate functions.
 Decompose the chart $h$ into its constituent <span class=accented>coordinate functions</span> as follows:
 
 <p>
@@ -230,48 +241,42 @@ Decompose the chart $h$ into its constituent <span class=accented>coordinate fun
 </p>
 
 
-such that $x^1(p^\prime), \dots, x^n(p^\prime)$ are the coordinates of a point $p^\prime \in U$ with respect to the chart $(U, h)$ at $p$. Thus, $x^i:U \rightarrow \mathbb R$. From the notation used above, it appears as if we have defined the basis vector $dx^i$ such that 
+such that $x^1(p^\prime), \dots, x^n(p^\prime)$ are the coordinates of a point $p^\prime \in U$ with respect to the chart $(U, h)$ at $p$. Thus, $x^i:U \rightarrow \mathbb R$. It appears as if we have defined the basis vector $dx^i_p$ such that 
 
 <p>
 \[
 \begin{align}
-    dx^i(\frac{\partial}{\partial x^j}) = \frac{\partial}{\partial x^j}(x^i),
+    dx^i_p\Big(\frac{\partial}{\partial x^j}\Big\rvert_p\Big) = \frac{\partial}{\partial x^j}\Big\rvert_p(x^i),
 \end{align}
 \]
 </p>
 
-which is indeed the case, i.e., $x^i$ is a representative function from the equivalence class of $dx^i$. When $\mathcal M = \mathbb R^n$ (with the chart given by the identity map), we have
+which is indeed the case, i.e., $x^i$ is a representative function from the equivalence class of $dx^i_p$ (in fact, this statement holds for all $p\in U$).
+
+
+## The Euclidean Case
+When $\mathcal M = \mathbb R^n$, there is a canonical inner product on $T_p\mathbb R^n$ that has a diagonal/Dirac delta structure,
 
 <p>
 \[
     \begin{align}
-    \frac{\partial}{\partial x^j}(x^i) = \delta_j^i,
+    \langle \frac{\partial}{\partial x^i}\Big\rvert_p, \frac{\partial}{\partial x^j}\Big\rvert_p\rangle = \delta_{ij},
     \end{align}
     \]
 </p>
 
-where $\delta^i_j$ is the [Kroenecker delta](https://en.wikipedia.org/wiki/Kronecker_delta). 
-
-<!-- <aside class=aside-center>
-The choice of the pairing, $\frac{\partial}{\partial x^j}(x^i)=\delta ^i_j$, is called a <i>flat</i> metric. It is only possible to make this choice globally when the manifold is flat. For example, we can choose such a metric on the circle, cylinder, or the $n$-dimensional torus. However, many (and in a sense, most) manifolds will not admit a flat metric; <a href=/posts/sphere class=accented>the sphere does not</a>.
-</aside> -->
-
-Reintroducing the musical isomorphisms, we see that everything appears to work as expected in the Euclidean setting:
+called the *Euclidean* or *flat* inner product.
+Since $dx^i_p\big(\frac{\partial}{\partial x^j}\Big\rvert_p\big) = \delta_{ij}$ also, we have (in the Euclidean case),
 
 <p>
-\[
-    \begin{align}
-    dx^i\left (\frac{\partial}{\partial x^j}\right) = \frac{\partial}{\partial x^i}^\flat\left(\frac{\partial}{\partial x^j}\right) = \langle \frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j}\rangle = \delta_j^i.
-    \end{align}
-    \]
+\[dx^i_p = \frac{\partial}{\partial x^i}\Big\vert_p^{\flat}, \quad {dx^i_p}^\sharp = \frac{\partial}{\partial x^i}\Big\vert_p. \]
 </p>
-
 We also have the following convenient fact that follows from the bilinearity of the inner product:
 
 <p>
 \[
     \begin{align}
-\langle \frac{\partial}{\partial x^i}, \mathbf v\rangle = \sum_{j=1}^{n}v^j \langle \frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j}\rangle = v^i
+\langle \frac{\partial}{\partial x^i}\Big\rvert_p, \mathbf v\rangle = \sum_{j=1}^{n}v^j \langle \frac{\partial}{\partial x^i}\Big\rvert_p, \frac{\partial}{\partial x^j}\Big\rvert_p\rangle = v^i
 \end{align}
 \]
 </p>
@@ -281,7 +286,7 @@ This is analogous to how a row vector such as $\begin{bmatrix}0 & \cdots& 0 & 1 
 <p>
 \[
      \begin{align}
-    \langle \frac{\partial}{\partial x^i}, df^\sharp\rangle =  f_i.
+    \langle \frac{\partial}{\partial x^i}\Big\rvert_p, df^\sharp_p\rangle =  f_i.
     \end{align}
 \]
 </p>
@@ -291,10 +296,10 @@ Using simple manipulations, we can offer alternative interpretations to the prev
 <p>
 \[
     \begin{align}
-    \langle \frac{\partial}{\partial x^i}, df^\sharp\rangle &= \langle df^\sharp, \frac{\partial}{\partial x^i}\rangle \\
-    &= {df^\sharp}^\flat \left(\frac{\partial}{\partial x^i}\right)\\
-    &= {df} \left(\frac{\partial}{\partial x^i}\right)\\
-    &= \frac{\partial}{\partial x^i}(f) = f_i.
+    \langle \frac{\partial}{\partial x^i}\Big\rvert_p, df^\sharp_p\rangle &= \langle df^\sharp_p, \frac{\partial}{\partial x^i}\Big\rvert_p\rangle \\
+    &= ({df_p^\sharp})^\flat \left(\frac{\partial}{\partial x^i}\Big\rvert_p\right)\\
+    &= {df}_p \left(\frac{\partial}{\partial x^i}\Big\rvert_p\right)\\
+    &= \frac{\partial}{\partial x^i}\Big\rvert_p(f) = f_i.
     \end{align}
     \]
 </p>
@@ -304,8 +309,8 @@ Now behold, for something striking will occur when we combine <span class=accent
 <p>
 \[
      \begin{align}
-   df &= \sum_{i=1}^n f_i dx^i \\
-   &=  \sum_{i=1}^n  \frac{\partial f}{\partial x^i} dx^i
+   df_p &= \sum_{i=1}^n f_i dx^i_p \\
+   &=  \sum_{i=1}^n  \frac{\partial f}{\partial x^i}\Big\rvert_p dx^i_p
      \end{align}
 \]
 </p>
@@ -319,13 +324,20 @@ The usage of <i>differential</i> here plays a different role from its usage in '
 
 It should be noted that the measurement of a vector by a covector can be defined in the absence of an inner product, but we do need an inner product to be able to make sense of the musical isomorphisms. 
 
-## Riemannian Metrics
+## The Non-Euclidean Case
 
-While the choice of basis we made above makes the algebra work out neatly, it is seldom possible to choose an 'orthonormal coordinate system' in an open neighborhood of a point; I touch upon this point in [a later post](/posts/sphere). Such an issue will only arise when we try to extend the basis of $T_p \mathcal M$ into a *frame*, so the reader need not dwell on this point too much right now.
+While it's always possible to choose a chart $(U, h)$ containing $p$ such that $\frac{\partial}{\partial x^i}\big\rvert_p$ is orthonormal, it is seldom possible to choose an 'orthonormal coordinate system' whose coordinate vector fields are orthonormal at all points of $U$. Alternatively, the existence of such a chart would imply that the manifold is of a very special type: it is *flat*. Cylinders, cones, and other objects that can be wrapped with a sheet of paper without tearing, wrinkling, or folding the paper are examples of flat manifolds.
+I touch upon this point in [a later post](/posts/sphere). Such considerations will only arise when we try to extend the basis of $T_p \mathcal M$ into a *frame*, so the reader need not dwell on this point too much right now.
 
-A <span class=accented>Riemannian metric</span> $g_{(\cdot)}$ is an object that takes as input a point $p\in \mathcal M$ to become an inner product on $T_p \mathcal M$, written as $g_{p}(\cdot, \cdot)$ or $\langle \cdot,\cdot\rangle\_p$ depending on the author. What we have done above is to stipulate that $g_{p}(\frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j})=\delta^i_j$. More generally, one introduces a convenient coordinate system on $U\subseteq \mathcal M$ (for instance, [the spherical polar coordinates of a sphere](/posts/sphere#the-sphere)) and then specifies (or when there is some natural choice of metric, computes) the 'components of the metric tensor', collected into a matrix of numbers, $g_{p,ij}$. Each of these components is required to be a smooth function of $p$.
+A <span class=accented>Riemannian metric</span> $g_{(\cdot)}$ is an object that takes as input a point $p\in \mathcal M$ to become an inner product on $T_p \mathcal M$, written as $g_{p}(\cdot, \cdot)$ or $\langle \cdot,\cdot\rangle\_p$ depending on the author. What we have done above is to stipulate that $g_{p}(\frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j})=\delta_{ij}$. More generally, one introduces a convenient coordinate system on $U\subseteq \mathcal M$ (for instance, [the spherical polar coordinates of a sphere](/posts/sphere#the-sphere)) and then specifies (or when there is some natural choice of metric, computes) the 'components of the metric tensor', collected into a matrix of numbers, $g_{ij}(p)$. Each of these components is required to be a smooth function of $p$ -- a requirement that marries the differential structure of $\mathcal M$ to its geometric structure. In the general case, we write
 
-When stored as the entries of a matrix, $g_{p,ij}$ are related to the Jacobian matrix of the parameterization evaluated at $p$, and the corresponding determinant tells us how much the parameterization *stretches* or *squishes* the space near $p$. There are other ways to compute $g_{p,ij}$; for instance, when the manifold is not parameterized but given by an implicit equation (such as '$x^2 + y^2 + z^2=0$'), it is not clear which Jacobian must be evaluated. See [the books](https://www.amazon.com/Stochastic-Models-Information-Theory-Groups/dp/081764802X) by G. S. Chirikjian for more details about these computations.
+<p>
+\[
+   \big\langle\frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j}\big\rangle _p=g_{ij}(p)
+\]
+</p>
+
+When stored as the entries of a matrix, $g_{ij}(p)$ are related to the Jacobian matrix of the parameterization evaluated at $p$, and the corresponding determinant tells us how much the parameterization *stretches* or *squishes* the space near $p$. There are other ways to compute $g_{ij}(p)$; for instance, when the manifold is not parameterized but given by an implicit equation (such as '$x^2 + y^2 + z^2=0$'), it is not clear which Jacobian must be evaluated. See [the books](https://www.amazon.com/Stochastic-Models-Information-Theory-Groups/dp/081764802X) by G. S. Chirikjian for more details about these computations.
 
 ## Tangent/Cotangent Bundles
 
