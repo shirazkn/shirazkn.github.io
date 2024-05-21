@@ -42,7 +42,7 @@ Let $A^\complement$ denote the complement of $A$, i.e., everything that's not in
 </aside>
 </p>
 
-<div>
+<div style="width: 75%; margin: 0 auto; text-align: center;">
 <figure class=invertible>
 <img src=/post-images/cat_theory/set_contrapositive.png>
 </figure>
@@ -59,8 +59,8 @@ The two different mathematical universes (*logic* and *set theory*) consist of o
 
 The best part of category theory is that it takes a whopping $10$ minutes or so to set up the foundations of it, but it comes with rich insights and new ways of thinking about math. Let's give the definition of a category.
 
-A **category** $\mathcal C$ consists of **objects** $\text{ob}(\mathcal C)$ and **morphisms**, which are basically *arrows* from one object in the category to another.
-For objects $X$ and $Y$ in $\text{ob}(\mathcal C)$, we write $\mathcal C(X,Y)$ to denote the collection of all the morphisms (or arrows/relationships) from $X$ to $Y$. Note that (unlike in the above two examples) there may be more than one arrow in $\mathcal C(X,Y)$.
+A **category** $\mathcal C$ consists of **objects** and **morphisms**; the latter are basically *arrows* from one object in $\mathcal C$ to another. We write $\text{ob}(\mathcal C)$ to refer to the collection of all the objects in $\mathcal C$.
+Given two objects $X$ and $Y$ in $\text{ob}(\mathcal C)$, we write $\mathcal C(X,Y)$ to denote the collection of all the morphisms (i.e., arrows/relationships) from $X$ to $Y$. Note that (unlike in the above two examples) there may be more than one arrow in $\mathcal C(X,Y)$.
 
 If there is an arrow $f$ from $X$ to $Y$, and an arrow $g$ from $Y$ to $Z$, then we can draw an arrow from $X$ to $Z$ (which represents the path of going from $X$ to $Y$, then to $Z$). We call this specific arrow from $X$ to $Z$ as the **composition** of $f$ and $g$, denoting it as $g\circ f$. We also say that $f$ and $g$ are *composable*, since the arrow-head of $f$ touches the tail of $g$.
 
@@ -93,9 +93,9 @@ Moreover, for any $X$ and $Y$ in $\text{ob} (\mathcal C)$ and $f$ in $\mathcal C
 </figure>
 </div>
 
-If $X\in \mathbb R^n$ and $Y \in \mathbb R^m$ are vector spaces and $M$ is the $n \times m$ matrix that takes $X$ to $Y$, then the first bullet point is saying $ M I_m = M = I_n M$. Similarly the second bullet point is just stipulating the associativity of matrix multiplication. The order in which we compose arrows (that are composable) does not matter.
+For e.g., if $X$ and $Y$ are vector spaces and $M$ is the linear transformation that takes $X$ to $Y$, then the first bullet point is saying that $ M I_X = M = I_Y M$, where $I_X$ corresponds to the identity matrix of the vector space $X$ (note that $I_X$ and $I_Y$ may have different dimensions as matrices!). Similarly, the second bullet point is just stipulating the associativity of matrix multiplication, which we are so used to that we take it for granted. The order in which we compose arrows (that are composable) does not matter.
 
-In the two examples we gave earlier (*logic* and *sets*), we only introduced one morphism ($\Rightarrow$ and $\subseteq$, respectively) that goes between any two objects. Since $\textbf A \Rightarrow \textbf A$ and $A\subseteq A$, we *do* have identity morphisms (arrows from the object to itself) at each object. Similarly, if the objects are numbers, then $\leq$ is another morphism that serves both as an identity as well as a relationship between two distinct numbers. At the same time, $<$ would not work as an identity morphism, as it is not true that a number is $<$ itself. 
+In the two examples we gave earlier, *logic* and *sets*, we only introduced one type of morphism each: $\Rightarrow$ and $\subseteq$, respectively. Since $\textbf A \Rightarrow \textbf A$ and $A\subseteq A$, we *do* have identity morphisms (arrows from the object to itself) at each object. Similarly, if the objects are numbers, then $\leq$ is another morphism that serves both as an identity as well as a relationship between two distinct numbers. At the same time, $<$ would not work as an identity morphism, as it is not true that a number is $<$ itself. 
 
 Observe that we are in the business of 'swapping out' morphisms and not just objects.
 
