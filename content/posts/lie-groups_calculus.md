@@ -240,31 +240,31 @@ I like to read this as: $f^\*\omega$ eats vector fields on $M$ by imitating how 
 
 # Lie Groups
 
-The tangent space at the identity of a Lie group, $T_e G$, can be given one of infinitely many possible inner products. However, there is a unique way to extend this inner product to a Riemannian metric by requiring that it be compatible with the group structure of $G$ (and as a consequence, compatible with the differential structure of $G$ as a manifold). For the same reason, there is also a unique choice of volume form (or equivalently, measure) with respect to which one can define the integral. This will be called the <span class=accented>Haar integral</span>, and it specializes to the Lebesgue integral when $G=\mathbb R^n$.
+The tangent space at the identity of a Lie group $G$ can be given one of infinitely many possible inner products. However, there is a unique way to extend this inner product to a Riemannian metric by requiring that it be compatible with the group structure of $G$ (and as a consequence, compatible with the differential structure of $G$ as a manifold). For the same reason, there is also a unique choice of volume form (or equivalently, measure) with respect to which one can define the integral. This will be called the <span class=accented>Haar integral</span>, and it specializes to the Lebesgue integral when $G=\mathbb R^n$.
 <!-- <span class=accented>continue here</span>. -->
 
-Yet another extremely useful property of Lie groups is that there is a unique (up to isomorphism) way to construct global orthonormal frames for it: we choose an orthonormal basis of $T_e G$ and extend it to a set of left/right-invariant vector fields. As always, orthonormal *coordinate* frames are an extremely rare occurrence;
-if $G$ is non-Abelian, then such an orthonormal frame could not possibly come from a coordinate system (also see [this](/posts/sphere/#a-word-of-caution)).
+Yet another useful property of Lie groups is that there is a way to construct global orthonormal frames for it: we choose an orthonormal basis of $T_e G$ and extend it to a set of left/right-invariant vector fields. As always, orthonormal *coordinate* frames are an extremely rare occurrence;
+if $G$ is non-Abelian, then such an orthonormal frame could not possibly come from a coordinate system (also see [this](/posts/sphere/#a-word-of-caution)). Nevertheless, the fact that a global orthonormal frame exists is already quite a special property.
 
 ### Preliminaries
 Let $G$ be a Lie group, $e\in G$ its identity element, and $\mathfrak g$ its Lie algebra. We will conflate $\mathfrak g$ with $T_e G$ for convenience.
-Consider an inner product on $\mathfrak g$, $\langle \cdot, \cdot \rangle\_e$, and use the Gram-Schmidt process to construct an orthonormal basis for $\mathfrak g$. Denote one such orthonormal basis by $(\tilde E_i)\_{i=1}^n$, where $\tilde E_i \in \mathfrak g$, so that $\langle \tilde E_i, \tilde E_j \rangle_e = \delta_{ij}$. Its corresponding dual basis is denoted as $(\tilde \varepsilon^i)\_{i=1}^n$, where $\tilde \varepsilon^i \in \mathfrak g^*$.
- We can then express $\langle \cdot, \cdot \rangle\_e$ by the tensor $\delta_{ij} \tilde \varepsilon^i \tilde \varepsilon^j$. If a vector $\mathbf v \in \mathfrak g$ is expressed as $\mathbf v = v^i \tilde E_i$, then our inner product becomes the usual 'dot product' of vectors of the form $[v^1 \ \cdots\ v^n]^\top$.
+Consider an inner product on $\mathfrak g$, $\langle \cdot, \cdot \rangle\_e$, and use the Gram-Schmidt process to construct an orthonormal basis for $\mathfrak g$. Denote one such orthonormal basis by $(\tilde E_i)\_{i=1}^n$, where $\tilde E_i \in \mathfrak g$ and $\langle \tilde E_i, \tilde E_j \rangle_e = \delta_{ij}$. Its corresponding dual basis is denoted as $(\tilde \varepsilon^i)\_{i=1}^n$, where $\tilde \varepsilon^i \in \mathfrak g^*$.
+ We can then express $\langle \cdot, \cdot \rangle\_e$ by the tensor $\delta_{ij} \tilde \varepsilon^i \tilde \varepsilon^j$.
 
-Let $\mathcal L\_{g}:G\rightarrow G$ denote the left-multiplication map, $\mathcal L\_{g}(h) = gh$, and similarly define $\mathcal R\_{g}$[^doubleusage]; observe that these maps are diffeomorphisms from $G$ to $G$, and can therefore push and pull tensors and tensor fields from one point of $G$ to another. For instance, the orthonormal basis $(\tilde E_i)\_{i=1}^n$ can be extended to a global orthonormal frame $(E_i)\_{i=1}^n$ on $G$, where each $E_i\in\mathfrak X(G)$ is a left-invariant vector field on $G$. This is accomplished by observing that $\mathcal L_{g}(e) = g$, and defining
+Let $\mathcal L\_{g}:G\rightarrow G$ denote the left-multiplication map, $\mathcal L\_{g}(h) = gh$, and similarly define $\mathcal R\_{g}$[^doubleusage]; observe that these maps are diffeomorphisms from $G$ to $G$, and can therefore push and pull tensors and tensor fields from one point of $G$ to another. For instance, the orthonormal basis $(\tilde E_i)\_{i=1}^n$ can be extended to a global orthonormal frame $(E_i)\_{i=1}^n$ on $G$, where each $E_i\in\mathfrak X(G)$ is a left-invariant vector field on $G$. That is, we define
 
 [^doubleusage]: Beware: In the first half of this post, $g$ denoted the Riemannian metric, whereas in the latter half it represents an arbitrary element of $G$.
 
 <p>
 \[
-    E_i(g) \coloneqq \left(\mathcal L_{g}\right)_* \tilde E_i 
+    E_i(g) \coloneqq \left(\mathcal L_{g}\right)_* \tilde E_i.
 \]
     </p>
 
 Such a global orthonormal frame on $G$ also serves as a *generating set* or "basis" of the $C^\infty(G)$-module of vector fields on $G$, since any vector field $V\in\mathfrak X(G)$ can be uniquely expressed as
 $V = v^i E_i$, where $v^i \in C^\infty(G)$. In short, we say that Lie groups are [parallelizable](https://en.wikipedia.org/wiki/Parallelizable_manifold) manifolds; also see [this](/posts/lie-groups/#representation-theory).
 
-Once can similarly extend $(\tilde \varepsilon^i)\_{i=1}^n$ to a global coframe $(\varepsilon^i)\_{i=1}^n$ on $G$, as
+Once can similarly extend $(\tilde \varepsilon^i)\_{i=1}^n$ to a left-invariant global coframe $(\varepsilon^i)\_{i=1}^n$ on $G$:
 
 <p>
 \[
@@ -283,8 +283,37 @@ Immediately, we have the following property at all $g\in G$:
 \]
 </p>
 
-### Invariant Metrics
-Consider the Riemannian metric $\langle V, W\rangle_g$.......
+### Invariant Metrics and Volumes
+In the following, we assume that $(E\_i)\_{i=1}^n$ and $(\varepsilon^i)\_{i=1}^n$ are left-invariant. Analogous arguments follow for the right-invariant case. The only caveat is that the left-invariant and right-invariant metrics and volume forms may or may not turn out to be the same, as discussed in [my previous post](/posts/lie-groups_construction/#geometry).
+
+The left-invariant Riemannian metric on $G$ is given by 
+
+<p>
+\[
+    \langle \cdot, \cdot\rangle=\delta_{ij}\varepsilon^i \varepsilon^j.
+\]
+</p>
+
+Observe that this metric is *invariant* under the left-multiplication action of $G$ on itself, i.e., for all $g\in G$ and vector fields $V,W \in \mathfrak X(G)$,
+
+<p>
+\[
+\begin{align}
+\langle (\mathcal L_g)_* V, (\mathcal L_g)_* W \rangle &= \delta_{ij} \varepsilon^i \varepsilon^j \big(\left(\mathcal L_g\right)_* V,\ \left(\mathcal L_g\right)_* W\big) \\
+&= \delta_{ij}\ \varepsilon^i\big(\left(\mathcal L_g\right)_* V\big)\ \varepsilon^j \big(\left(\mathcal L_g\right)_* W\big)\\
+&= \delta_{ij}\ [\left(\mathcal L_g\right)^* \varepsilon^i] \left( V\right) [\left(\mathcal L_g\right)^* \varepsilon^j] \left( W\right)\\
+&= \delta_{ij}\  \varepsilon^i \left( V\right)  \varepsilon^j \left( W\right) = \langle V, W \rangle.
+\end{align}
+\]
+</p>
+
+<aside class=aside-center>
+Observe that the left-invariant metric can also be defined by pulling back the inner product of $T_eG$ to each tangent space $T_gG$ via the map $\mathcal L_{g^{-1}}$. Our definition via the dual coframe is just a concise way of making the same construction.
+</aside>
+
+Similarly, a left-invariant volume form can be defined as $\omega = \varepsilon^1 \wedge \varepsilon^2 \wedge \cdots \wedge \varepsilon^n$. 
+
+---
 
 We could also have chosen to work with a coordinate coframe on an open set $U$ containing $g$ in order to express $\langle \cdot, \cdot \rangle$. In this case, we should compute the metric tensor coefficients since they will no longer be trivial. For instance, let $(U, \varphi)$ be a chart containing $h$, such that $\varphi (U)=V\subseteq \mathbb R^n$. $\varphi^{-1}$ is a local parametrization of $G$ which is defined on $U$, i.e., we have parameterized a neighborhood of $h\in G$. We can then pull back $\delta_{ij} \tilde \varepsilon^i \tilde \varepsilon^j$ back to $\varphi(h)$ using $\mathcal L_{h^{-1}} \circ \varphi^{-1}$. This is essentially how I have computed the metric tensor coefficients in [the next post](/posts/sphere/#the-sphere), although there I consider the very familiar example of $G=\mathbb R^3$, with $\varphi$ chosen as the spherical polar coordinates. In this case, the action of $\mathcal L_{h^{-1}}^*$ on the metric tensor is trivial, because the notion of Euclidean distance is the same at every point of $\mathbb R^3$.
 
