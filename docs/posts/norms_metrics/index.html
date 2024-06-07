@@ -13,9 +13,7 @@ It is nonnegative, and $0$ only at the &lsquo;zero element&rsquo; (for e.g., at 
 $\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/norms_metrics/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.ae623da78747565eada63e14d10d0bc49214c6bc7dfdb49cb5b54e77629905fc.css" integrity="sha256-rmI9p4dHVl6tpj4U0Q0LxJIUxrx9/bSctbVOd2KZBfw=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.41c5c4f529ce786d89dc3eb49ae8a246b72e45ff4ba97ac417c9b63b7a60891f.css" integrity="sha256-QcXE9SnOeG2J3D60muiiRrcuRf9LqXrEF8m2O3pgiR8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -23,6 +21,7 @@ $\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.">
 <link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://shirazkn.github.io/posts/norms_metrics/">
 <noscript>
     <style>
         #theme-toggle,
@@ -40,7 +39,7 @@ $\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.">
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
             }
@@ -80,7 +79,10 @@ $\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.">
     });
 </script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="Norms, Metrics, and Inner Products" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
+  
+
+<meta property="og:title" content="Norms, Metrics, and Inner Products" />
 <meta property="og:description" content="This is an explainer on norms, metrics, and inner products, and their relationships to each other.
 Norms A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
 It is nonnegative, and $0$ only at the &lsquo;zero element&rsquo; (for e.g., at the origin of $\mathbb R^n$).
@@ -102,16 +104,16 @@ $\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$."/>
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [, 
+  "itemListElement": [
     {
       "@type": "ListItem",
-      "position":  2 ,
+      "position":  1 ,
       "name": "Posts",
       "item": "https://shirazkn.github.io/posts/"
     }, 
     {
       "@type": "ListItem",
-      "position":  3 ,
+      "position":  2 ,
       "name": "Norms, Metrics, and Inner Products",
       "item": "https://shirazkn.github.io/posts/norms_metrics/"
     }
@@ -164,7 +166,7 @@ $\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$."/>
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://shirazkn.github.io" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -207,7 +209,7 @@ $\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$."/>
 <article class="post-single">
   <header class="post-header">
     
-    <h1 class="post-title">
+    <h1 class="post-title entry-hint-parent">
       Norms, Metrics, and Inner Products
     </h1>
     <div class="post-meta"><span title='2023-04-10 12:20:23 -0400 EDT'>April 10, 2023</span>

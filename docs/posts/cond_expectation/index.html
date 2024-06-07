@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Measure-theoretic Probability | Shiraz</title>
+<meta name="keywords" content="">
+<meta name="description" content="Probability theory is one of those subjects that&rsquo;s both &ndash; easy to get started with, and hard to master. In particular, the conditional expectation operation $\mathbb E[{}\cdot{}\mathrel|{}\cdot{}]$ can be tricky to work with, and its properties are not well-understood by researchers in my field who might want and need to use it to prove important results. What I have on offer in this post is a sneak peek into the rigorous framework upon which modern-day probability theory is built.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/cond_expectation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.41c5c4f529ce786d89dc3eb49ae8a246b72e45ff4ba97ac417c9b63b7a60891f.css" integrity="sha256-QcXE9SnOeG2J3D60muiiRrcuRf9LqXrEF8m2O3pgiR8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/favicon.ico">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/cond_expectation/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
+  
+
+<meta property="og:title" content="Measure-theoretic Probability" />
+<meta property="og:description" content="Probability theory is one of those subjects that&rsquo;s both &ndash; easy to get started with, and hard to master. In particular, the conditional expectation operation $\mathbb E[{}\cdot{}\mathrel|{}\cdot{}]$ can be tricky to work with, and its properties are not well-understood by researchers in my field who might want and need to use it to prove important results. What I have on offer in this post is a sneak peek into the rigorous framework upon which modern-day probability theory is built." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/cond_expectation/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-11T07:40:56-07:00" />
+<meta property="article:modified_time" content="2023-05-11T07:40:56-07:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Measure-theoretic Probability"/>
+<meta name="twitter:description" content="Probability theory is one of those subjects that&rsquo;s both &ndash; easy to get started with, and hard to master. In particular, the conditional expectation operation $\mathbb E[{}\cdot{}\mathrel|{}\cdot{}]$ can be tricky to work with, and its properties are not well-understood by researchers in my field who might want and need to use it to prove important results. What I have on offer in this post is a sneak peek into the rigorous framework upon which modern-day probability theory is built."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Measure-theoretic Probability",
+      "item": "http://localhost:1313/posts/cond_expectation/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Measure-theoretic Probability",
+  "name": "Measure-theoretic Probability",
+  "description": "Probability theory is one of those subjects that\u0026rsquo;s both \u0026ndash; easy to get started with, and hard to master. In particular, the conditional expectation operation $\\mathbb E[{}\\cdot{}\\mathrel|{}\\cdot{}]$ can be tricky to work with, and its properties are not well-understood by researchers in my field who might want and need to use it to prove important results. What I have on offer in this post is a sneak peek into the rigorous framework upon which modern-day probability theory is built.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Probability theory is one of those subjects that’s both – easy to get started with, and hard to master. In particular, the conditional expectation operation $\\mathbb E[{}\\cdot{}\\mathrel|{}\\cdot{}]$ can be tricky to work with, and its properties are not well-understood by researchers in my field who might want and need to use it to prove important results. What I have on offer in this post is a sneak peek into the rigorous framework upon which modern-day probability theory is built. I personally find this to be an illuminating way to think about randomness. To some extent, it demystifies what it means for a mathematical object to be random.\nI would call a treatment of probability theory as mathematically rigorous if it starts with explicitly-stated axioms, so that everything else follows naturally. Any rigorous treatment of probability theory begins with a probability space. A probability space is the tuple $(\\Omega, \\mathcal F, P)$, which has $3$ ingredients:\n$\\Omega$ is a set $\\mathcal F$ is a set of subsets of $\\Omega$ $P$ is a function, $P:\\mathcal F \\rightarrow [0,1]$ The probability space, $(\\Omega, \\mathcal F, P)$, can be thought of as some underlying source of randomness (say, God playing dice) on which other random variables can be defined. Here is the most intuitive interpretation of a probability space:\n$\\Omega$ is a set of outcomes, which model the different eventualities that are possible (for e.g., the outcome of a throw of two dice: $\\lbrace 1, 4 \\rbrace \\in \\Omega$)\n$\\mathcal F$ is a set of events, where each event is a set of outcomes. For e.g., the event that the dice add up to $5$, which is the subset $\\left\\lbrace \\lbrace 1, 4 \\rbrace, \\lbrace 2, 3 \\rbrace \\right\\rbrace \\subseteq \\Omega$\n$P$ assigns a probability (number between $0$ and $1$) to each event in $\\mathcal F$\nNote that we do not assign probabilities to the elements of $\\Omega$ directly, but only to the subsets of $\\Omega$ which are in $\\mathcal F$. This interpretation seems intuitive enough, but maybe a more formal description may of interest to us. In what follows, we do not care what the set $\\Omega$ contains (it may or may not be God playing dice; perhaps this is the agnostic approach to doing probability).\nProbability Space The tuple $(\\Omega, \\mathcal F, P)$ is a probability space, where\n$\\Omega$ is a set\n$\\mathcal F$ is a $\\sigma$-algebra, which is a set of subsets of $\\Omega$ satisfying certain properties\n$P\\colon \\mathcal F \\rightarrow [0, 1]$ is a function satisfying certain properties, called a probability measure\nChoosing a $\\sigma$-algebra is a way of picking which events (i.e., subsets of $\\Omega$) we would like to assign probabilities to. Because of the properties we impose on a $\\sigma$-algebra, it always contains the empty set, $\\empty$, and the complete set, $\\Omega$. Thus, $\\lbrace \\empty, \\Omega \\rbrace$ is the smallest possible $\\sigma$-algebra. Rather than smallest, we say that this is the coarsest $\\sigma$-algebra.\nThe other extreme case is that of the finest $\\sigma$-algebra, one that we cannot chop up into smaller pieces. When $\\Omega$ has countably many elements, the power set (i.e., the set of all the subsets) of $\\Omega$, $\\mathcal P(\\Omega)$, is what’s called the discrete $\\sigma$-algebra. It is the finest $\\sigma$-algebra on $\\Omega$. In particular, $\\mathcal P(\\Omega)$ includes singleton sets of the form $\\lbrace \\omega \\rbrace$ where $\\omega \\in \\Omega$ is an outcome, which means that we can assign a probability to each outcome. This is similar to how we use ‘probability mass functions’ in classical probability theory.\nA measure is a function that maps the sets in $\\mathcal F$ to non-negative real numbers, almost like it is ‘weighing’ or ‘measuring’ each set in $\\mathcal F$. Probability measures fall into a sub-category of measures – they take sets to a real number between $0$ and $1$. Think of them as assigning probabilities to events. Recall that probability density functions are special functions that integrate to $1$. Analogously, we have $P(\\Omega)=1$. Terrence Tao has an excellent blogpost that goes over measure theory (and in fact, another that covers probability theory far better than I will be able to 😃).\nTechnical Issue: Measurability You might wonder why we don’t just set $\\mathcal F$ to be the power set of $\\Omega$, $\\mathcal P(\\Omega)$. While this works just fine when $\\Omega$ has countably many elements, some technical issues arise when $\\Omega$ has uncountably many elements.\nTo see why we might be forced to discard some of the subsets of $\\Omega$ when $\\Omega$ is uncountable, consider $\\Omega=(0,1]$. Suppose we want to turn this into a probablity space, $((0,1], \\mathcal F, P_U)$, where $P_U$ is the measure satisfying $P_U\\left((a, b]\\right)= b-a$. If we can pick such a $P_U$, the corresponding probability space would define the uniform random distribution on $(0,1]$.\nUnfortunately, there exist wicked subsets of $(0,1]$ such as the Vitali set , to which $P_U$ is unable to assign a measure (i.e., we can try to assign a value to $P_U(\\textrm{Vitali Set})$, but it would immediately lead to a contradiction). The Vitali set is said to be non-measurable. Thus, $\\sigma$-algebras are also called as measurable subsets of $\\Omega$. We should be able to equip a $\\sigma$-algebra with a well-defined measure without leading to contradictions.\nRandom Variables A lot of texts will call $(\\Omega, \\mathcal F, P)$ as the underlying probability space. It is useful for rigorously defining what we mean by randomness, but we seldom deal with $(\\Omega, \\mathcal F, P)$ directly. Instead, we define a random variable as a measurable function from $\\Omega$ to another space.\n$X:\\Omega \\rightarrow \\mathcal X$ is called a random variable, although it is actually a function, and does not introduce any additional randomness. For instance, suppose we do the following:\nThrow a die. If the die lands on $1$, $2$, or $3$, place a coin heads-up. Otherwise, place the coin tails-up. Then, the coin is going to take values of heads or tails with equal probability, as if it was flipped. But really, the only randomness in this scenario is coming from the throwing of the die (which takes values in $\\Omega=\\lbrace 1, 2, 3, 4, 5, 6 \\rbrace$). The throwing of the die is the so-called underlying probability space, whereas its relationship to the coin is the measurable function. The heads/tails instances of the coin are the random variable, $X$, defined as $X(1)=X(2)=X(3)=\\text{Heads}$, and $X(4)=X(5)=X(6)=\\text{Tails}$.\nWe now have two spaces, a probability space $(\\Omega, \\mathcal F, P)$ and another space $(\\mathcal X, \\mathcal B)$, where $\\mathcal B$ is the set of measurable subsets of $\\mathcal X$. We still need to define a measure for the latter space. The reason we call $X$ a measurable function is because it should satisfy the following property: for all $S \\in \\mathcal B$,\n\\[X^{-1}(S)\\coloneqq \\lbrace \\omega \\in \\Omega | X(\\omega)\\in S \\rbrace \\in \\mathcal F\\]\nWe say that $X$ is $\\mathcal F$-measurable, and that $X^{-1}(S)$ is the pre-image or the pullback of $S$ under $X$. Thus, the definition of $X$ relies not only on the domain and codomain, but also on the corresponding $\\sigma$-algebras. I like having the following picture in mind:\nUsing $X^{-1}$, we can ‘pull back’ sets in $\\mathcal X$ to sets in $\\Omega$, and just measure them using $P$. Thus, we have the measure space $(\\mathcal X, \\mathcal B, P\\circ X^{-1})$, where ‘$\\circ$’ denotes the composition of functions. This is why we say that no new randomness was introduced in the definition of $X$, the randomness still comes from the underlying probability space.\nGiven a random variable $X$ which maps $(\\Omega, \\mathcal F)$ to $(\\mathcal X, \\mathcal B)$, by the $\\sigma$-algebra generated by $X$, we mean the set\n\\[\\sigma (X) \\coloneqq \\lbrace X^{-1}(S) | S\\in \\mathcal B \\rbrace\\] which is the smallest $\\sigma$-algebra that contains all the pullbacks under $X$. Thus, $X^{-1}({}\\cdot{})$ gives the pre-image (almost like an ‘inverse’) of an element in $\\mathcal B$, whereas $\\sigma(X)$ is the union of all such pre-images.\nThe Die-Coin Example Consider our example of the die and the coin from before:\n\\[ \\Omega = \\lbrace 1, 2, 3, 4, 5, 6 \\rbrace \\] \\[ \\mathcal X = \\lbrace \\text{Heads}, \\text{Tails} \\rbrace \\] \\[ X(1) = \\text{Heads},\\ X(2) = \\text{Heads}, \\\\ \\dots, \\ X(6) = \\text{Tails} \\] where $\\Omega$ are the outcomes of the die, and $X$ maps an outcome to the corresponding value taken by the coin. Then, the $\\sigma$-algebra generated by $X$ is\n\\[ \\sigma(X) = \\lbrace \\empty, \\lbrace 1, 2, 3 \\rbrace,\\lbrace 4, 5, 6 \\rbrace, \\Omega \\rbrace \\] Note that the set $\\mathcal X$ (which is necessarily an element of $\\mathcal B$) is the event that either $\\text{Heads}$ or $\\text{Tails}$ has occurred, which is why $X^{-1}(\\mathcal X)=\\Omega \\in \\sigma(X)$. Similarly, $X^{-1}(\\empty) = \\empty \\in \\sigma (X)$. A useful interpretation is to think of $\\sigma (X)$ as all of the randomness of $X$, any other random events (i.e., the other subsets of $\\Omega$) are discarded because they are not relevant to $X$.\nThe Indicator Random Variable Given $S\\subseteq\\Omega$, the indicator random variable $\\textbf 1_S:\\Omega \\rightarrow \\lbrace 0, 1\\rbrace$ is\n\\[ \\textbf{1}_S(\\omega) = \\begin{cases} \\begin{array}{l l} 1 \u0026 \\text{if }\\omega \\in S\\\\ 0 \u0026 \\text{if }\\omega \\notin S \\end{array} \\end{cases} \\]\nSince $\\textbf 1_S^{-1}(\\lbrace 1\\rbrace )=S$ and $\\textbf 1_S^{-1}(\\lbrace 0\\rbrace)=S^\\complement$, we have that $\\sigma(\\textbf{1}_S) = \\lbrace \\empty, S, S^\\complement, \\Omega\\rbrace$. Thus, we say that the random variable $\\textbf 1_S$ is $\\lbrace \\empty, S, S^\\complement, \\Omega\\rbrace$-measurable. In our die-coin example, if we treat $\\text{Heads}$ as $1$ and $\\text{Tails}$ as $0$, then the random variable $X$ is equivalent (for purposes of doing probability) to $\\textbf 1_{\\lbrace 1, 2, 3 \\rbrace}$.\nExpected Value The expected value of a random variable $X$ is defined as\n\\[\\mathbb E[X] = \\int_{\\Omega} X dP \\]\nwhere the integral has a specific meaning, which we are yet to define. This integral (called the Lebesgue integral) is defined using a step-by-step approach.\nThe expectation (or rather, the Lebesgue integral) is first defined for the indicator random variable, $\\textbf 1_S$. We have, $\\mathbb E[\\textbf 1_S] = \\int_{\\Omega} \\textbf 1_S dP = P(S)$, which is the probability of the event, $S$. For the die-coin example, we have $\\mathbb E [\\textbf 1_{\\lbrace 1, 2, 3 \\rbrace}] = P(\\lbrace 1, 2, 3 \\rbrace)$, which we usually set as $1/2$ if the die (as well as the ensuing ‘coin’) is unbiased.\nThereafter, we define the expectation for random variables such as $X(\\omega)=\\sum \\limits_i c_i \\textbf 1_{S_i}(\\omega)$, for which we have\n\\[ \\int_{\\Omega} \\left(\\sum \\limits_i c_i \\textbf 1_{S_i} \\right) dP = \\sum \\limits_i c_i P(S_i) \\]\nThis step-by-step approach by which we are defining the integral should remind you of how, in high-school math education, integration is defined using Riemann summation. However, the domain of integration in high-school education is typically $\\mathbb R$, which is just one of the many possible choices of $\\Omega$. In particular, note that the elements of $\\mathbb R$ are ordered (i.e., come before or after one another), but the elements of $\\Omega$ can include a chimpanzee, for all we care.\nThe following example should help internalize some of the ideas we just discussed.\nThe ‘Deterministic Random Variable’ Let a deterministic random variable $X$ be defined such that $X(\\omega)=k$, i.e., $X(\\omega)$ takes the value $k$ for each outcome $\\omega \\in \\Omega$. This is how we can define a deterministic quantity, also called as a degenerate or an almost-everywhere constant random variable. Given this definition, we have that $X$ is $\\lbrace \\empty, \\Omega \\rbrace$-measurable. This is because $X^{-1}(\\lbrace k\\rbrace) = \\Omega$.\nWe could also write this random variable as $k \\textbf{1}_{\\Omega}$ if we were clever (which we are). Thus, $\\mathbb E[X] = \\mathbb E [ k \\textbf{1}_{\\Omega}] = k P(\\Omega) = k$. In other words, the expectation of a deterministic random variable (which always takes the value $k$) is just $k$.\nThis example also illustrates something that isn’t emphasized in classical probability theory: the expectation operation is taken with respect to an underlying probability space, $(\\Omega, \\mathcal F, P)$. Usually, it is implied which probability space is being referred to, which is why the notation of ‘$\\mathbb E[{}\\cdot{}]$’ does not contain a reference to $(\\Omega, \\mathcal F, P)$. (At this point, see Theorem 1.6.4 of “Probability Theory” by Rick Durett, which derives a general version of the Markov/Chebychev inequality.)\nChange of Variables Let’s review some of the ideas introduced above, We started with a probability space, $(\\Omega, \\mathcal F, P)$. We defined a measurable function, $X$, which takes elements in $\\Omega$ to elements in some codomain, $\\mathcal X$. $\\mathcal B$ is a $\\sigma$-algebra containing (measurable) subsets of $\\mathcal X$. We mentioned that a natural probability measure for $(\\mathcal X, \\mathcal B)$ is $P \\circ X^{-1}$.\nSuppose we want to compute the expectation of $f(X)$ for some measurable function $f:\\mathcal X \\rightarrow \\mathcal Y$. An example is $f(X)=(X^2-\\mathbb E[X])$, whose expectation is called the variance of $X$. Note that $f\\circ X:\\Omega \\rightarrow \\mathcal Y$ is a random variable. We can compute its expectation using the change of variables theorem, which states that\n\\[ \\mathbb E\\big[f(X)\\big]= \\int_{\\Omega} (f\\circ X) dP = \\int_{\\mathcal X} f\\ d (P\\circ X^{-1}) \\] To see what’s going on here, let’s try and build up some intuition. The measure $P\\circ X^{-1}$ allows us to measure a set $S\\subseteq \\mathcal X$ by ‘pulling it back’ such as $X^{-1}(S)$, where $X^{-1}(S) \\subseteq \\Omega$ (by definition) and $X^{-1}(S) \\in\\mathcal F$ (because $X$ is measurable). The integral\n\\[\\mathbb E\\big[f(X)\\big] = \\int_{\\mathcal X} f\\ d \\left(P\\circ X^{-1}\\right)\\] can be thought of as taking the expectation of $f(X)$ while treating $(\\mathcal X, \\mathcal B, P\\circ X^{-1})$ as the underlying probability space, where $X(\\omega)$ is itself treated as an outcome.\nHowever, this is a theorem, and not a trivial consequence of the definitions. Due to the tendency to treat this result as being trivial, it is also called as the law of the unconscious statistician or the LOTUS. The LOTUS is used, for instance, to compute the variance of a random variable using its probability density function (pdf), where the pdf plays the role of $P\\circ X^{-1}$.\n",
+  "wordCount" : "2313",
+  "inLanguage": "en",
+  "datePublished": "2023-05-11T07:40:56-07:00",
+  "dateModified": "2023-05-11T07:40:56-07:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/cond_expectation/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shiraz",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Measure-theoretic Probability
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2023-05-11 07:40:56 -0700 -0700'>May 11, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Probability theory is one of those subjects that&rsquo;s both &ndash; easy to get started with, and hard to master. In particular, the conditional expectation operation $\mathbb E[{}\cdot{}\mathrel|{}\cdot{}]$ can be tricky to work with, and its properties are not well-understood by researchers in my field who might <em>want</em> and <em>need</em> to use it to prove important results. What I have on offer in this post is a sneak peek into the rigorous framework upon which modern-day probability theory is built. I personally find this to be an illuminating way to think about randomness. To some extent, it demystifies what it means for a mathematical object to be random.</p>
+<!-- It's allowed me to understand and reason about *weird* random variables (more on that in a later post) which may not be as easy to grapple with an elementary understanding of probability. -->
+<p>I would call a treatment of probability theory as <em>mathematically rigorous</em> if it starts with explicitly-stated axioms, so that everything else follows naturally.
+Any rigorous treatment of probability theory begins with a <em><span class=accented>probability space</span></em>. A probability space is the tuple $(\Omega, \mathcal F, P)$, which has $3$ ingredients:</p>
+<ul>
+<li>$\Omega$ is a <span class=accented>set</span></li>
+<li>$\mathcal F$ is a <span class=accented>set of subsets</span> of $\Omega$</li>
+<li>$P$ is a <span class=accented>function</span>, $P:\mathcal F \rightarrow [0,1]$</li>
+</ul>
+<p>The probability space, $(\Omega, \mathcal F, P)$, can be thought of as some underlying source of randomness (say, God playing dice) on which other random variables can be defined. Here is the most intuitive interpretation of a probability space:</p>
+<ul>
+<li>
+<p>$\Omega$ is a <span class=accented>set of <em>outcomes</em></span>, which model the different eventualities that are possible (for e.g., the outcome of a throw of two dice: $\lbrace 1, 4 \rbrace \in \Omega$)</p>
+</li>
+<li>
+<p>$\mathcal F$ is a <span class=accented>set of <em>events</em></span>, where each <em>event</em> is a set of outcomes. For e.g., the event that the dice add up to $5$, which is the subset $\left\lbrace \lbrace 1, 4 \rbrace, \lbrace 2, 3 \rbrace \right\rbrace \subseteq \Omega$</p>
+</li>
+<li>
+<p>$P$ <span class=accented>assigns a probability</span> (number between $0$ and $1$) to each event in $\mathcal F$</p>
+</li>
+</ul>
+<p>Note that we do not assign probabilities to the elements of $\Omega$ directly, but only to the subsets of $\Omega$ which are in $\mathcal F$.
+This interpretation seems intuitive enough, but maybe a more formal description may of interest to us.
+In what follows, we do not care what the set $\Omega$ contains (it may or may not be God playing dice; perhaps this is the agnostic approach to doing probability).</p>
+<h3 id="probability-space">Probability Space<a hidden class="anchor" aria-hidden="true" href="#probability-space">#</a></h3>
+<p>The tuple $(\Omega, \mathcal F, P)$ is a probability space, where</p>
+<ul>
+<li>
+<p>$\Omega$ is a <span class=accented>set</span></p>
+</li>
+<li>
+<p>$\mathcal F$ is a <span class=accented>$\sigma$-algebra</span>, which is a set of subsets of $\Omega$ satisfying certain properties</p>
+</li>
+<li>
+<p>$P\colon \mathcal F \rightarrow [0, 1]$ is a function satisfying certain properties, called a <span class=accented>probability measure</span></p>
+</li>
+</ul>
+<p>Choosing a <a href="https://en.wikipedia.org/wiki/%ce%a3-algebra" target="_blank" class="accented">
+    $\sigma$-algebra
+</a> is a way of <em>picking</em> which events (i.e., subsets of $\Omega$) we would like to assign probabilities to. <!-- The other subsets of $\Omega$ (which are not in $\mathcal F$) may be too messy to work with, such that assigning probabilities to these messy subsets may yield unintuitive results. The $\sigma$-algebra $\mathcal F$ contains *nice* subsets of $\Omega$ that may have nice topological (or otherwise) properties. --> Because of the properties we impose on a $\sigma$-algebra, it always contains the empty set, $\empty$, and the complete set, $\Omega$. Thus, $\lbrace \empty, \Omega \rbrace$ is the smallest possible $\sigma$-algebra. Rather than <em>smallest</em>, we say that this is the <em>coarsest</em> $\sigma$-algebra.</p>
+<!-- It represents a deterministic random variable, since regardless of the outcome $\omega \in \Omega$, we consider it to be the same event.  -->
+<p>The other extreme case is that of the <em>finest</em> $\sigma$-algebra, one that we cannot chop up into smaller pieces. When $\Omega$ has countably many elements, the power set (i.e., the set of all the subsets) of $\Omega$, $\mathcal P(\Omega)$, is what&rsquo;s called the <em>discrete</em> $\sigma$-algebra. It is the finest $\sigma$-algebra on $\Omega$. In particular, $\mathcal P(\Omega)$ includes singleton sets of the form $\lbrace \omega \rbrace$ where $\omega \in \Omega$ is an outcome, which means that we can assign a probability to each outcome. This is similar to how we use &lsquo;probability mass functions&rsquo; in classical probability theory.</p>
+<!-- We run into issues when $\Omega$ has uncountably many elements. Suppose $X$ is the uniform random variable on the domain $(0,1]$. We assign probabilities to events such as $X\in(-0.49, 0.51]$, but not to the specific outcome, $X=0.5$. -->
+<p>A <a href="https://en.wikipedia.org/wiki/Measure_%28mathematics%29" target="_blank" class="accented">
+    measure
+</a> is a function that maps the sets in $\mathcal F$ to non-negative real numbers, almost like it is &lsquo;weighing&rsquo; or &lsquo;measuring&rsquo; each set in $\mathcal F$. <span class=accented>Probability measures</span> fall into a sub-category of measures &ndash; they take sets to a real number between $0$ and $1$. Think of them as <em>assigning probabilities to events</em>. Recall that probability density functions are special functions that integrate to $1$. Analogously, we have $P(\Omega)=1$. Terrence Tao has an excellent <a href="https://terrytao.wordpress.com/2009/01/01/245b-notes-0-a-quick-review-of-measure-and-integration-theory/" target="_blank" class="accented">
+    blogpost
+</a> that goes over measure theory (and in fact, another that covers probability theory far better than I will be able to 😃).</p>
+<h4 id="technical-issue-span-classaccentedmeasurabilityspan">Technical Issue: <span class=accented>Measurability</span><a hidden class="anchor" aria-hidden="true" href="#technical-issue-span-classaccentedmeasurabilityspan">#</a></h4>
+<p>You might wonder why we don&rsquo;t just set $\mathcal F$ to be the power set of $\Omega$, $\mathcal P(\Omega)$. While this works just fine when $\Omega$ has countably many elements, <a href="https://stats.stackexchange.com/questions/199280/why-do-we-need-sigma-algebras-to-define-probability-spaces" target="_blank" class="accented">
+    some technical issues
+</a> arise when $\Omega$ has uncountably many elements.</p>
+<p>To see why we might be forced to discard some of the subsets of $\Omega$ when $\Omega$ is uncountable, consider $\Omega=(0,1]$. Suppose we want to turn this into a probablity space, $((0,1], \mathcal F, P_U)$, where $P_U$ is the measure satisfying $P_U\left((a, b]\right)= b-a$. If we can pick such a $P_U$, the corresponding probability space would define the uniform random distribution on $(0,1]$.</p>
+<!-- When we are doing integration, for instance, in introductory calculus classes, we are secretly working with the Lebesgue measure, which turns out to be the most 'natural' measure. -->
+<p>Unfortunately, there exist wicked subsets of $(0,1]$ such as the <a href="https://en.wikipedia.org/wiki/Vitali_set" target="_blank" class="accented">
+    Vitali set
+</a>, to which $P_U$ is unable to assign a measure (i.e., we can try to assign a value to $P_U(\textrm{Vitali Set})$, but it would immediately lead to a contradiction). The Vitali set is said to be non-measurable. Thus, $\sigma$-algebras are also called as <em>measurable</em> subsets of $\Omega$. We should be able to equip a $\sigma$-algebra with a well-defined measure without leading to contradictions.</p>
+<!-- The [axioms](https://en.wikipedia.org/wiki/Σ-algebra#Definition_and_properties) which a $\sigma$-algebra should satisfy are surprisingly straightforward. Mathematicians like cleaning things up at the end of the day. It is unthinkable that an entire field of mathematics (probability) could be founded on messy definitions with many edge cases. -->
+<hr> 
+<h2 id="random-variables">Random Variables<a hidden class="anchor" aria-hidden="true" href="#random-variables">#</a></h2>
+<p>A lot of texts will call $(\Omega, \mathcal F, P)$ as the <em>underlying probability space</em>. It is useful for rigorously defining what we mean by randomness, but we seldom deal with $(\Omega, \mathcal F, P)$ directly. Instead, we define a random variable as a <span class=accented>measurable function</span> from $\Omega$ to another space.</p>
+<p>$X:\Omega \rightarrow \mathcal X$ is called a <span class=accented>random variable</span>, although it is actually a function, and does not introduce any additional randomness. For instance, suppose we do the following:</p>
+<ol>
+<li>Throw a die.</li>
+<li>If the die lands on $1$, $2$, or $3$, place a coin heads-up. Otherwise, place the coin tails-up.</li>
+</ol>
+<p>Then, the coin is going to take values of <em>heads</em> or <em>tails</em> with equal probability, as if it was flipped. But really, the only randomness in this scenario is coming from the throwing of the die (which takes values in $\Omega=\lbrace 1, 2, 3, 4, 5, 6 \rbrace$). The throwing of the die is the so-called underlying probability space, whereas its relationship to the coin is the measurable function. The heads/tails instances of the coin are the random variable, $X$, defined as $X(1)=X(2)=X(3)=\text{Heads}$, and $X(4)=X(5)=X(6)=\text{Tails}$.</p>
+<p>We now have two spaces, a probability space $(\Omega, \mathcal F, P)$ and another space $(\mathcal X, \mathcal B)$, where $\mathcal B$ is the set of measurable subsets of $\mathcal X$. We still need to define a measure for the latter space.
+The reason we call $X$ a <em>measurable</em> function is because it should satisfy the following property: for all $S \in \mathcal B$,</p>
+<p>\[X^{-1}(S)\coloneqq \lbrace \omega \in \Omega | X(\omega)\in S \rbrace \in \mathcal F\]</p>
+<p>We say that $X$ is $\mathcal F$-measurable, and that $X^{-1}(S)$ is the <em>pre-image</em> or the <em>pullback</em> of $S$ under $X$. Thus, the definition of $X$ relies not only on the domain and codomain, but also on the corresponding $\sigma$-algebras.
+I like having the following picture in mind:</p>
+<p>Using $X^{-1}$, we can &lsquo;pull back&rsquo; sets in $\mathcal X$ to sets in $\Omega$, and just measure them using $P$. Thus, we have the measure space $(\mathcal X, \mathcal B, P\circ X^{-1})$, where &lsquo;$\circ$&rsquo; denotes the composition of functions. This is why we say that no new randomness was introduced in the definition of $X$, the randomness still comes from the underlying probability space.</p>
+<p>Given a random variable $X$ which maps $(\Omega, \mathcal F)$ to $(\mathcal X, \mathcal B)$, by <em>the $\sigma$-algebra generated by $X$</em>, we mean the set</p>
+<p>
+\[\sigma (X) \coloneqq \lbrace  X^{-1}(S) | S\in \mathcal B \rbrace\]
+</p>
+<p>which is the smallest $\sigma$-algebra that contains all the pullbacks under $X$. Thus, $X^{-1}({}\cdot{})$ gives the pre-image (almost like an &lsquo;inverse&rsquo;) of an element in $\mathcal B$, whereas $\sigma(X)$ is the union of all such pre-images.</p>
+<!-- Because $X$ is $\mathcal F$-measurable, we have that $\sigma(X)\subseteq \mathcal F$. -->
+<h4 id="the-die-coin-example">The Die-Coin Example<a hidden class="anchor" aria-hidden="true" href="#the-die-coin-example">#</a></h4>
+<p>Consider our example of the die and the coin from before:</p>
+<p>\[
+\Omega = \lbrace 1, 2, 3, 4, 5, 6 \rbrace
+\]
+\[
+\mathcal X = \lbrace \text{Heads}, \text{Tails} \rbrace    
+\]
+\[
+X(1) = \text{Heads},\ X(2) = \text{Heads},  \\ \dots, \ X(6) = \text{Tails} 
+\]
+</p>
+<p>where $\Omega$ are the outcomes of the die, and $X$ maps an outcome to the corresponding value taken by the coin.
+Then, the $\sigma$-algebra generated by $X$ is</p>
+<p>\[
+    \sigma(X) = \lbrace \empty,  \lbrace 1, 2, 3 \rbrace,\lbrace 4, 5, 6 \rbrace, \Omega \rbrace
+\]
+</p>
+<p>Note that the set $\mathcal X$  (which is necessarily an element of $\mathcal B$) is the event that either $\text{Heads}$ or $\text{Tails}$ has occurred, which is why $X^{-1}(\mathcal X)=\Omega \in \sigma(X)$. Similarly, $X^{-1}(\empty) = \empty \in \sigma (X)$. A useful interpretation is to think of $\sigma (X)$ as all of the randomness of $X$, any other random events (i.e., the other subsets of $\Omega$) are discarded because they are not relevant to $X$.</p>
+<h4 id="the-indicator-random-variable">The Indicator Random Variable<a hidden class="anchor" aria-hidden="true" href="#the-indicator-random-variable">#</a></h4>
+<p>Given $S\subseteq\Omega$, the indicator random variable $\textbf 1_S:\Omega \rightarrow \lbrace 0, 1\rbrace$ is</p>
+<p>\[
+\textbf{1}_S(\omega) = \begin{cases}
+\begin{array}{l l}
+1 & \text{if }\omega \in S\\
+0 & \text{if }\omega \notin S
+\end{array}
+\end{cases}
+\]</p>
+<p>Since $\textbf 1_S^{-1}(\lbrace 1\rbrace )=S$ and $\textbf 1_S^{-1}(\lbrace 0\rbrace)=S^\complement$, we have that $\sigma(\textbf{1}_S) = \lbrace \empty, S, S^\complement, \Omega\rbrace$.
+Thus, we say that the random variable $\textbf 1_S$ is $\lbrace \empty, S, S^\complement, \Omega\rbrace$-measurable. In our die-coin example, if we treat $\text{Heads}$ as $1$ and $\text{Tails}$ as $0$, then the random variable $X$ is equivalent (for purposes of doing probability) to $\textbf 1_{\lbrace 1, 2, 3 \rbrace}$.</p>
+<hr>
+<h3 id="expected-value">Expected Value<a hidden class="anchor" aria-hidden="true" href="#expected-value">#</a></h3>
+<p>The expected value of a random variable $X$ is defined as</p>
+<p>\[\mathbb E[X] = \int_{\Omega} X dP \]</p>
+<p>where the integral has a specific meaning, which we are yet to define. This integral (called the <em>Lebesgue integral</em>) is defined using a step-by-step approach.</p>
+<p>The expectation (or rather, the Lebesgue integral) is first defined for the <span class=accented>indicator random variable, </span> $\textbf 1_S$. We have, $\mathbb E[\textbf 1_S] = \int_{\Omega} \textbf 1_S dP = P(S)$, which is the probability of the event, $S$. For the die-coin example, we have $\mathbb E [\textbf 1_{\lbrace 1, 2, 3 \rbrace}] = P(\lbrace 1, 2, 3 \rbrace)$, which we usually set as $1/2$ if the die (as well as the ensuing &lsquo;coin&rsquo;) is unbiased.</p>
+<p>Thereafter, we define the expectation for random variables such as $X(\omega)=\sum \limits_i c_i \textbf 1_{S_i}(\omega)$, for which we have</p>
+<p>\[
+\int_{\Omega} \left(\sum \limits_i c_i \textbf 1_{S_i} \right) dP = \sum \limits_i c_i P(S_i)
+\]</p>
+<p>This step-by-step approach by which we are defining the integral should remind you of how, in high-school math education, integration is defined using Riemann summation. However, the domain of integration in high-school education is typically $\mathbb R$, which is just one of the many possible choices of $\Omega$. In particular, note that the elements of $\mathbb R$ are ordered (i.e., come before or after one another), but the elements of $\Omega$ can include a chimpanzee, for all we care.</p>
+<!-- (The only catch in this definition is that the co-domain of $X$ should have some sort of an addition operation. Moreover, the expectation [may not exist](https://en.wikipedia.org/wiki/Cauchy_distribution), which is when the integral is not defined[^l1].) -->
+<!-- So we have painstakingly defined measure-theoretic probability, and the expectation. Until we consider some concrete examples of $X$, it can be difficult to appreciate what's really going on here. -->
+<p>The following example should help internalize some of the ideas we just discussed.</p>
+<h4 id="the-deterministic-random-variable">The &lsquo;Deterministic Random Variable&rsquo;<a hidden class="anchor" aria-hidden="true" href="#the-deterministic-random-variable">#</a></h4>
+<p>Let a <span class=accented>deterministic random variable</span> $X$ be defined such that $X(\omega)=k$, i.e., $X(\omega)$ takes the value $k$ for each outcome $\omega \in \Omega$. This is how we can define a deterministic quantity, also called as a <em>degenerate</em> or an <em>almost-everywhere constant</em> random variable.
+Given this definition, we have that $X$ is $\lbrace \empty, \Omega \rbrace$-measurable. This is because $X^{-1}(\lbrace k\rbrace) = \Omega$.</p>
+<p>We could also write this random variable as $k \textbf{1}_{\Omega}$ if we were clever (which we are). Thus, $\mathbb E[X] = \mathbb E [ k \textbf{1}_{\Omega}] = k P(\Omega) = k$. In other words, the expectation of a deterministic random variable (which always takes the value $k$) is just $k$.</p>
+<p>This example also illustrates something that isn&rsquo;t emphasized in classical probability theory: the expectation operation is taken <em>with respect to</em> an underlying probability space, $(\Omega, \mathcal F, P)$. Usually, it is implied which probability space is being referred to, which is why the notation of &lsquo;$\mathbb E[{}\cdot{}]$&rsquo; does not contain a reference to $(\Omega, \mathcal F, P)$. (At this point, see Theorem 1.6.4 of &ldquo;Probability Theory&rdquo; by Rick Durett, which derives a general version of the Markov/Chebychev inequality.)</p>
+<h3 id="change-of-variables">Change of Variables<a hidden class="anchor" aria-hidden="true" href="#change-of-variables">#</a></h3>
+<p>Let&rsquo;s review some of the ideas introduced above, We started with a probability space, $(\Omega, \mathcal F, P)$. We defined a measurable function, $X$, which takes elements in $\Omega$ to elements in some codomain, $\mathcal X$. $\mathcal B$ is a $\sigma$-algebra containing (measurable) subsets of $\mathcal X$. We mentioned that a natural probability measure for $(\mathcal X, \mathcal B)$ is $P \circ X^{-1}$.</p>
+<p>Suppose we want to compute the expectation of $f(X)$ for some measurable function $f:\mathcal X \rightarrow \mathcal Y$. An example is $f(X)=(X^2-\mathbb E[X])$, whose expectation is called the variance of $X$.
+Note that $f\circ X:\Omega \rightarrow \mathcal Y$ is a random variable. We can compute its expectation using the <span class=accented>change of variables theorem</span>, which states that</p>
+<p>
+\[ \mathbb E\big[f(X)\big]= \int_{\Omega} (f\circ X) dP 
+=   \int_{\mathcal X} f\ d (P\circ X^{-1}) 
+\]
+</p>
+<p>To see what&rsquo;s going on here, let&rsquo;s try and build up some intuition. The measure $P\circ X^{-1}$ allows us to measure a set $S\subseteq \mathcal X$ by &lsquo;pulling it back&rsquo; such as $X^{-1}(S)$, where
+$X^{-1}(S) \subseteq \Omega$ (by definition) and $X^{-1}(S) \in\mathcal F$ (because $X$ is measurable). The integral</p>
+<p>
+\[\mathbb E\big[f(X)\big] = \int_{\mathcal X} f\ d \left(P\circ X^{-1}\right)\]
+</p>
+<p>can be thought of as taking the expectation of $f(X)$ while treating $(\mathcal X, \mathcal B, P\circ X^{-1})$ as the underlying probability space, where $X(\omega)$ is itself treated as an outcome.</p>
+<p>However, this is a theorem, and not a trivial consequence of the definitions. Due to the tendency to treat this result as being trivial, it is also called as <a href="https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician" target="_blank" class="accented">
+    the law of the unconscious statistician
+</a> or the LOTUS. The LOTUS is used, for instance, to compute the variance of a random variable using its probability density function (pdf), where the pdf plays the role of $P\circ X^{-1}$.</p>
+<!-- ### Conditional Expectated Value
+
+The <span class=accented>conditional expectation</span> operation takes a random variable, $X$, a $\sigma$-algebra, $\mathcal F$, and gives a random variable, $\mathbb E[X|\mathcal F]$. Since it is a random variable, it is a measurable function with the same domain and codomain as $X$:
+
+<p>
+\[\mathbb E[X|\mathcal F]:\Omega \rightarrow \mathcal X\]
+</p>
+
+It is the random variable (whose existence and uniqueness are standard exercises in graduate-level probability classes) which has the following properties:
+
+- Let $Y=\mathbb E[X|\mathcal F]$, then $Y$ is $\mathcal F$-measurable
+-  -->
+<!-- [^l1]: Connection to $L^1$ and $L^2$ spaces: When the codomain is real-valued, $\mathbb E[X]$ exists if $X \in L^1(\Omega)$, and the variance $\mathbb E[X^2]$ exists (is finite) when $X \in L^2(\Omega)$ (also see [this](/posts/hilbert-spaces)). When $X\in L^2(\Omega)$, we have a Hilbert space, and we can define *projections* between random variables. In this setting, projection becomes equivalent to least-squares estimation. -->
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+<script src="https://giscus.app/client.js"
+        data-repo="shirazkn/shirazkn.github.io"
+        data-repo-id="R_kgDOI2VbWw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOI2VbW84CWJnt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="noborder_light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    
+    <div class="signup-form">
+        <script async src="https://eocampaign1.com/form/e5dbf9e6-b891-11ee-a1b7-cdaf9e8a98be.js" data-form="e5dbf9e6-b891-11ee-a1b7-cdaf9e8a98be"></script>
+    </div>
+    
+    
+    
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="headerfooter">
+    <sub><sup><sub>&#9786;</sub></sup></sub>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -261,10 +261,24 @@ Let $\mathcal L\_{g}:G\rightarrow G$ denote the left-multiplication map, $\mathc
 \]
     </p>
 
-Such a global orthonormal frame on $G$ also serves as a *generating set* or "basis" of the $C^\infty(G)$-module of vector fields on $G$, since any vector field $V\in\mathfrak X(G)$ can be uniquely expressed as
-$V = v^i E_i$, where $v^i \in C^\infty(G)$. In short, we say that Lie groups are [parallelizable](https://en.wikipedia.org/wiki/Parallelizable_manifold) manifolds; also see [this](/posts/lie-groups/#representation-theory).
+Such a global orthonormal frame on $G$ also serves as a "basis" of the space (i.e., generating set of the $C^\infty(G)$-module) of vector fields on $G$, since any vector field $V\in\mathfrak X(G)$ can be uniquely expressed as
+$V = v^i E_i$, where $v^i \in C^\infty(G)$. 
+<!-- In short, we say that Lie groups are [parallelizable](https://en.wikipedia.org/wiki/Parallelizable_manifold) manifolds; also see [this](/posts/lie-groups/#representation-theory).  -->
+Let's verify the left-invariance:
 
-Once can similarly extend $(\tilde \varepsilon^i)\_{i=1}^n$ to a left-invariant global coframe $(\varepsilon^i)\_{i=1}^n$ on $G$:
+<p>
+\[
+\begin{align}
+E_i(h) &= ??????????????????????
+\end{align}
+\]
+</p>
+
+where the second equality follows from the fact that $\mathcal L_{h}$ is a diffeomorphism, and the third equality follows from the left-invariance of $\tilde E_i$.
+
+
+
+One can similarly extend $(\tilde \varepsilon^i)\_{i=1}^n$ to a left-invariant global coframe $(\varepsilon^i)\_{i=1}^n$ on $G$:
 
 <p>
 \[
@@ -278,7 +292,7 @@ Immediately, we have the following property at all $g\in G$:
 \[
 \begin{align}
   \varepsilon^i(E_j)(g) &=  \Big[\left(\mathcal L_{g^{-1}}\right)^* \tilde \varepsilon^i\Big]\Big(\left(\mathcal L_{g}\right)_* \tilde E_j \Big)  \\
-    &=  \tilde \varepsilon^i\Big(\left(\mathcal L_{g^{-1}}\right)_*\left(\mathcal L_{g}\right)_* \tilde E_j \Big) =\tilde \varepsilon^i\Big(\tilde E_j\Big) = \delta^i_j.
+    &=  \tilde \varepsilon^i\Big(\left(\mathcal L_{g^{-1}}\right)_*\left(\mathcal L_{g}\right)_* \tilde E_j \Big) =\tilde \varepsilon^i\Big(\tilde E_j\Big) = \delta_{ij}.
   \end{align}
 \]
 </p>
@@ -294,7 +308,7 @@ The left-invariant Riemannian metric on $G$ is given by
 \]
 </p>
 
-Observe that this metric is *invariant* under the left-multiplication action of $G$ on itself, i.e., for all $g\in G$ and vector fields $V,W \in \mathfrak X(G)$,
+We verify that this metric is *invariant* under the left-multiplication action of $G$ on itself; for all $g\in G$ and vector fields $V,W \in \mathfrak X(G)$,
 
 <p>
 \[

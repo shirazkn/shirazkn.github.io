@@ -16,8 +16,9 @@
         </div>    
     </div>
     <footer class="entry-footer">
-        {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
+        {{ partial "social_icons.html" site.Params.socialIcons }}
     </footer>
+
     <div class="entry-content-2">
         Welcome to my recreational mathematics blog. 
         <br>

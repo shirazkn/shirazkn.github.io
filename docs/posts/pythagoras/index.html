@@ -11,9 +11,7 @@
 In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a more general feature of inner product spaces.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/pythagoras/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.ae623da78747565eada63e14d10d0bc49214c6bc7dfdb49cb5b54e77629905fc.css" integrity="sha256-rmI9p4dHVl6tpj4U0Q0LxJIUxrx9/bSctbVOd2KZBfw=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.41c5c4f529ce786d89dc3eb49ae8a246b72e45ff4ba97ac417c9b63b7a60891f.css" integrity="sha256-QcXE9SnOeG2J3D60muiiRrcuRf9LqXrEF8m2O3pgiR8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -21,6 +19,7 @@ In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a
 <link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://shirazkn.github.io/posts/pythagoras/">
 <noscript>
     <style>
         #theme-toggle,
@@ -38,7 +37,7 @@ In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
             }
@@ -78,7 +77,10 @@ In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a
     });
 </script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="The Real World is a Special Case" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
+  
+
+<meta property="og:title" content="The Real World is a Special Case" />
 <meta property="og:description" content="The title is a quote from this math podcast . I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are &rsquo;tangible&rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.
 In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a more general feature of inner product spaces." />
 <meta property="og:type" content="article" />
@@ -96,16 +98,16 @@ In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [, 
+  "itemListElement": [
     {
       "@type": "ListItem",
-      "position":  2 ,
+      "position":  1 ,
       "name": "Posts",
       "item": "https://shirazkn.github.io/posts/"
     }, 
     {
       "@type": "ListItem",
-      "position":  3 ,
+      "position":  2 ,
       "name": "The Real World is a Special Case",
       "item": "https://shirazkn.github.io/posts/pythagoras/"
     }
@@ -158,7 +160,7 @@ In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://shirazkn.github.io" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -201,7 +203,7 @@ In this post I&rsquo;m showing how the Pythagoras theorem is a special case of a
 <article class="post-single">
   <header class="post-header">
     
-    <h1 class="post-title">
+    <h1 class="post-title entry-hint-parent">
       The Real World is a Special Case
     </h1>
     <div class="post-meta"><span title='2023-04-14 15:53:46 -0400 EDT'>April 14, 2023</span>
