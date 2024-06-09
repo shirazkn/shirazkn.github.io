@@ -17,6 +17,13 @@
 Connections First, I go over the technical tools needed to state (let alone solve) the problem. A connection $\nabla$ on a smooth manifold $M$ is a way of differentiating vector fields (and more generally, tensors) along curves in $M$:</description>
     </item>
     <item>
+      <title>Lie Groups as Riemannian Manifolds</title>
+      <link>https://shirazkn.github.io/posts/lie-groups_calculus/</link>
+      <pubDate>Tue, 30 Jan 2024 09:53:05 -0500</pubDate>
+      <guid>https://shirazkn.github.io/posts/lie-groups_calculus/</guid>
+      <description>A Lie group $G$ is a group that is also a (continuous, differentiable) topological space. An example to keep in mind is $G=\mathbb R^n$ which is a group under vector addition and has well-defined notions of continuity and differentiation. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow $G$ with additional structure so that it is not merely a manifold, but a Riemannian manifold.</description>
+    </item>
+    <item>
       <title>Lie Groups: Construction and Geometry</title>
       <link>https://shirazkn.github.io/posts/lie-groups_construction/</link>
       <pubDate>Wed, 24 Jan 2024 14:20:59 -0500</pubDate>

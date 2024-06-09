@@ -5,10 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>$SO(3)$ | Shiraz</title>
-<meta name="keywords" content="">
-<meta name="description" content="Here, I want to construct the Haar measure for $SO(3)$ and pull it back to the axis-angle parametrization of $SO(3)$. Let the basis for $\mathfrak{so}(3)$ be given by
-$$ \begin{align*} E_1 &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; -1 \ 0 &amp; 1 &amp; 0 \end{bmatrix} \ E_2 &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 1 \ 0 &amp; 0 &amp; 0 \ -1 &amp; 0 &amp; 0 \end{bmatrix} \ E_3 &amp;= \begin{bmatrix} 0 &amp; -1 &amp; 0 \ 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 \end{bmatrix} \end{align*} $$">
+<title>Integration on SO(3) | Shiraz</title>
+<meta name="keywords" content="Differential Geometry">
+<meta name="description" content="I will construct the Haar measure for $SO(3)$ and pull it back to the axis-angle parametrization of orthogonal matrices. The goal is to be able to integrate (and thereby define probability densities) on $SO(3)$. My earlier post on the Riemannian volume form is a prerequisite, though you could also just skip over any equations involving exterior calculus (distinguished by the use of the &ldquo;$\wedge$&rdquo; operation) and focus on the computations done in axis-angle coordinates.">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/so3/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.41c5c4f529ce786d89dc3eb49ae8a246b72e45ff4ba97ac417c9b63b7a60891f.css" integrity="sha256-QcXE9SnOeG2J3D60muiiRrcuRf9LqXrEF8m2O3pgiR8=" rel="preload stylesheet" as="style">
@@ -80,18 +79,16 @@ $$ \begin{align*} E_1 &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp;
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
   
 
-<meta property="og:title" content="$SO(3)$" />
-<meta property="og:description" content="Here, I want to construct the Haar measure for $SO(3)$ and pull it back to the axis-angle parametrization of $SO(3)$. Let the basis for $\mathfrak{so}(3)$ be given by
-$$ \begin{align*} E_1 &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; -1 \ 0 &amp; 1 &amp; 0 \end{bmatrix} \ E_2 &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 1 \ 0 &amp; 0 &amp; 0 \ -1 &amp; 0 &amp; 0 \end{bmatrix} \ E_3 &amp;= \begin{bmatrix} 0 &amp; -1 &amp; 0 \ 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 \end{bmatrix} \end{align*} $$" />
+<meta property="og:title" content="Integration on SO(3)" />
+<meta property="og:description" content="I will construct the Haar measure for $SO(3)$ and pull it back to the axis-angle parametrization of orthogonal matrices. The goal is to be able to integrate (and thereby define probability densities) on $SO(3)$. My earlier post on the Riemannian volume form is a prerequisite, though you could also just skip over any equations involving exterior calculus (distinguished by the use of the &ldquo;$\wedge$&rdquo; operation) and focus on the computations done in axis-angle coordinates." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/posts/so3/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-06-07T11:27:55-04:00" />
 <meta property="article:modified_time" content="2024-06-07T11:27:55-04:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="$SO(3)$"/>
-<meta name="twitter:description" content="Here, I want to construct the Haar measure for $SO(3)$ and pull it back to the axis-angle parametrization of $SO(3)$. Let the basis for $\mathfrak{so}(3)$ be given by
-$$ \begin{align*} E_1 &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; -1 \ 0 &amp; 1 &amp; 0 \end{bmatrix} \ E_2 &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 1 \ 0 &amp; 0 &amp; 0 \ -1 &amp; 0 &amp; 0 \end{bmatrix} \ E_3 &amp;= \begin{bmatrix} 0 &amp; -1 &amp; 0 \ 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 \end{bmatrix} \end{align*} $$"/>
+<meta name="twitter:title" content="Integration on SO(3)"/>
+<meta name="twitter:description" content="I will construct the Haar measure for $SO(3)$ and pull it back to the axis-angle parametrization of orthogonal matrices. The goal is to be able to integrate (and thereby define probability densities) on $SO(3)$. My earlier post on the Riemannian volume form is a prerequisite, though you could also just skip over any equations involving exterior calculus (distinguished by the use of the &ldquo;$\wedge$&rdquo; operation) and focus on the computations done in axis-angle coordinates."/>
 
 
 <script type="application/ld+json">
@@ -108,7 +105,7 @@ $$ \begin{align*} E_1 &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp;
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "$SO(3)$",
+      "name": "Integration on SO(3)",
       "item": "http://localhost:1313/posts/so3/"
     }
   ]
@@ -118,14 +115,14 @@ $$ \begin{align*} E_1 &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp;
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "$SO(3)$",
-  "name": "$SO(3)$",
-  "description": "Here, I want to construct the Haar measure for $SO(3)$ and pull it back to the axis-angle parametrization of $SO(3)$. Let the basis for $\\mathfrak{so}(3)$ be given by\n$$ \\begin{align*} E_1 \u0026amp;= \\begin{bmatrix} 0 \u0026amp; 0 \u0026amp; 0 \\ 0 \u0026amp; 0 \u0026amp; -1 \\ 0 \u0026amp; 1 \u0026amp; 0 \\end{bmatrix} \\ E_2 \u0026amp;= \\begin{bmatrix} 0 \u0026amp; 0 \u0026amp; 1 \\ 0 \u0026amp; 0 \u0026amp; 0 \\ -1 \u0026amp; 0 \u0026amp; 0 \\end{bmatrix} \\ E_3 \u0026amp;= \\begin{bmatrix} 0 \u0026amp; -1 \u0026amp; 0 \\ 1 \u0026amp; 0 \u0026amp; 0 \\ 0 \u0026amp; 0 \u0026amp; 0 \\end{bmatrix} \\end{align*} $$",
+  "headline": "Integration on SO(3)",
+  "name": "Integration on SO(3)",
+  "description": "I will construct the Haar measure for $SO(3)$ and pull it back to the axis-angle parametrization of orthogonal matrices. The goal is to be able to integrate (and thereby define probability densities) on $SO(3)$. My earlier post on the Riemannian volume form is a prerequisite, though you could also just skip over any equations involving exterior calculus (distinguished by the use of the \u0026ldquo;$\\wedge$\u0026rdquo; operation) and focus on the computations done in axis-angle coordinates.",
   "keywords": [
-    
+    "Differential Geometry"
   ],
-  "articleBody": "Here, I want to construct the Haar measure for $SO(3)$ and pull it back to the axis-angle parametrization of $SO(3)$. Let the basis for $\\mathfrak{so}(3)$ be given by\n$$ \\begin{align*} E_1 \u0026= \\begin{bmatrix} 0 \u0026 0 \u0026 0 \\ 0 \u0026 0 \u0026 -1 \\ 0 \u0026 1 \u0026 0 \\end{bmatrix} \\ E_2 \u0026= \\begin{bmatrix} 0 \u0026 0 \u0026 1 \\ 0 \u0026 0 \u0026 0 \\ -1 \u0026 0 \u0026 0 \\end{bmatrix} \\ E_3 \u0026= \\begin{bmatrix} 0 \u0026 -1 \u0026 0 \\ 1 \u0026 0 \u0026 0 \\ 0 \u0026 0 \u0026 0 \\end{bmatrix} \\end{align*} $$\nand the corresponding dual basis of $\\mathfrak{so}(3)^*$ be given by $\\lbrace\\varepsilon^1, \\varepsilon^2, \\varepsilon^3\\rbrace$, where we recall that $\\varepsilon^i$ is like the `row vector’ counterpart to $E_i$. In particular, $\\varepsilon^i(E_j) = \\delta_{ij}$.\nThe Haar measure on $SO(3)$ is denoted by $\\mu_{SO(3)}$. It is (up to scaling) simply the canonical Riemannian volume form on $SO(3)$ determined by the left-invariant metric on $SO(3)$:\n$$ \\mu_{SO(3)} = \\frac{1}{(2\\pi)^3}\\varepsilon^1\\wedge\\varepsilon^2\\wedge\\varepsilon^3 $$\nwhere we have added a factor of $\\frac{1}{(2\\pi)^3}$ to normalize the measure.\n",
-  "wordCount" : "174",
+  "articleBody": "I will construct the Haar measure for $SO(3)$ and pull it back to the axis-angle parametrization of orthogonal matrices. The goal is to be able to integrate (and thereby define probability densities) on $SO(3)$. My earlier post on the Riemannian volume form is a prerequisite, though you could also just skip over any equations involving exterior calculus (distinguished by the use of the “$\\wedge$” operation) and focus on the computations done in axis-angle coordinates.\nThe Riemannian Volume Form Let the basis for $\\mathfrak{so}(3)$ be given by\n\\[ \\begin{align*} \\tilde E_1 \u0026= \\begin{bmatrix*}[r] 0 \u0026 0 \u0026 0 \\\\ 0 \u0026 0 \u0026 -1 \\\\ 0 \u0026 1 \u0026 0 \\end{bmatrix*} \\\\ \\tilde E_2 \u0026= \\begin{bmatrix*}[r] 0 \u0026 0 \u0026 1 \\\\ 0 \u0026 0 \u0026 0 \\\\ -1 \u0026 0 \u0026 0 \\end{bmatrix*} \\\\ \\tilde E_3 \u0026= \\begin{bmatrix*}[r] 0 \u0026 -1 \u0026 0 \\\\ 1 \u0026 0 \u0026 0 \\\\ 0 \u0026 0 \u0026 0 \\end{bmatrix*} \\end{align*} \\] and the corresponding dual basis of $\\mathfrak{so}(3)^*$ be given by $\\lbrace \\tilde \\varepsilon^1, \\tilde \\varepsilon^2, \\tilde \\varepsilon^3\\rbrace$, where we recall that $\\tilde \\varepsilon^i$ is like the `row vector’ counterpart to $E_i$. In particular, $\\tilde \\varepsilon^i(\\tilde E_j) = \\delta_{ij}$. As usual, we will push these vectors and covectors around using the left-multiplication maps of the group to generate $\\lbrace E_i\\rbrace_{i=1}^3$ and $\\lbrace \\varepsilon^i\\rbrace_{i=1}^3$. Once again, $\\varepsilon^i(E_j) = \\delta_{ij}$, but now $\\delta_{ij}$ must be thought of as a smooth function on $SO(3)$ that is constant-valued.\nThe Haar measure on $SO(3)$ is denoted by $\\mu$. It is (up to scaling) the canonical1 Riemannian volume form on $SO(3)$ determined by the left-invariant metric on $SO(3)$:\n$$ \\mu = \\textrm c\\cdot \\varepsilon^1\\wedge\\varepsilon^2\\wedge\\varepsilon^3 $$\nIn the Lie group sense, $\\mu$ is the canonical volume form (up to a choice of left/right invariance) since it respects the group structure. In the Riemannian geometric sense, $\\mu$ is only canonical after we have chosen a metric on $SO(3)$, namely the left/right invariant metric. where $\\textrm c\\in \\mathbb R_{\u003e0}$ is a normalizing constant (that we will compute later) satisfying\n$$ \\int_{SO(3)}\\mu = 1. $$\nThis normalization procedure makes sense precisely because $SO(3)$ is a compact manifold. Note that $\\mu$ is also a probability measure and defines a ‘uniform distribution’ over the space of rotations.\nAs an engineer by training, my goal is to do calculations involving $\\mu$. Sadly, this often requires us to step away from the intrinsic formulation and work with coordinate charts instead. The good news is that we can come back to the intrinsic formulation when we want to prove theorems and do manipulations that are intrinsic to $SO(3)$. It is important to remember that the coordinate-based approach that will embark on will be oblivious to many of the topological and group-theoretic properties of $SO(3)$. It will of course respect the local Riemannian structure of $SO(3)$… it better!\nAxis-Angle Parametrization Recall that any rotation of $\\mathbb R^3$ is given by an axis and an angle of rotation. These are represented by tuples of the form $(\\mathbf u, \\theta)$, where $\\mathbf u\\in S^2\\subseteq \\mathbb R^3$ is a unit vector2 and $\\theta\\in [0, \\pi]$. This gives the axis-angle parametrization of $SO(3)$:\n\\[ \\begin{align*} S^2\\times [0, \\pi] \u0026\\to SO(3) \\\\ (\\mathbf u, \\theta) \u0026\\mapsto \\exp\\big(\\theta\\cdot \\mathbf u^\\wedge\\big) \\end{align*} \\] where $\\mathbf u^\\wedge$ denotes the skew-symmetric matrix corresponding to $\\mathbf u$ (and has nothing to do with the big wedge ‘$\\wedge$’ operation from earlier). We have something even better; the Cayley-Hamilton theorem can be used to simplify the infinite series involved in matrix exponentiation, and so the axis-angle parametrization can be written as\n$$ (\\mathbf u, \\theta) \\mapsto \\mathbf I + \\sin\\theta\\cdot \\mathbf u^\\wedge + (1-\\cos\\theta)\\cdot (\\mathbf u^\\wedge)^2 $$\nGenerally, the maps $(\\ \\cdot\\ )^\\wedge$ and $(\\ \\cdot\\ )^\\vee$ refer to the linear isomorphism between $\\mathbb R^3$ and $\\mathfrak{g}$ as vector spaces. In the case of $\\mathfrak g = \\mathfrak{so}(3)$, $\\mathbb R^3$ can be turned into a Lie algebra using the cross product: $$[\\mathbf u^\\wedge, \\mathbf v^\\wedge] = (\\mathbf u \\times \\mathbf v)^\\wedge$$ and so in fact we have a Lie algebra isomorphism on our hands. The following trick will greatly simplify our presentation. What prevents us from calling the above as the axis-angle coordinates (as opposed to parametrization) is that it fails bijectivity when $\\theta = 0$ and $\\theta = \\pi$; all $0$-angle rotations are the same regardless of the axis of rotation, and $\\pi$-angle rotations about $\\mathbf u$ and $-\\mathbf u$ are the same rotation. Either case, $\\theta = 0$ and $\\theta = \\pi$, determines a $2$-dimensional submanifold of $S^2\\times [0, \\pi]$:\n$S^2\\times [0, \\pi]$ is (homeomorphic to) a thick spherical shell Topologically, the axis-angle parametrization (i) collapses the inner surface of this shell into a single point, and (ii) glues together each pair of antipodal points on the outer surface. So, while the image of the $\\theta = 0$ points is a single point in $SO(3)$ (namely, the identity element), the image of the $\\theta = \\pi$ points is a $2$-dimensional submanifold of $SO(3)$. The aforementioned trick which we will use is that these lower-dimensional sets have measure zero under $\\mu$, so we can peel them away from the spherical shell before doing integration and probability. No longer would we have an obstruction to bijectivity.\nLet $\\widetilde {SO}(3) \\subseteq SO(3)$ denote the image of the axis-angle parametrization when restricted to $S^2\\times (0, \\pi) \\subseteq S^2\\times [0, \\pi]$, so that\n$$ \\int_{SO(3)} \\mu = \\int_{\\widetilde{SO}(3)}\\mu $$\nMoreover, we can consider the spherical polar parametrization for $S^2$, which takes values in $[0,2 \\pi) \\times (0, \\pi)$ (after neglecting a similar measure-zero subset!). At long last, we have a bijection on our hands:\n\\[ \\begin{align*} \\psi:\\quad \u0026 U \\ \\to\\ \\widetilde {SO}(3) \\\\ \\psi^{-1}:\\quad \u0026 \\widetilde {SO}(3) \\ \\to\\ U\\\\ \\end{align*} \\] where $U = [0, 2\\pi)\\times(0, \\pi)\\times (0, \\pi) \\subseteq \\mathbb R^3$. From here on, we will treat the set $U$ as a cube in $\\mathbb R^3$ with all but one of its faces removed, i.e., we will quite literally think of it as the set $[0, 2\\pi)\\times(0, \\pi)\\times (0, \\pi)$ rather than a ‘spherical shell’.\nIf we blur the technical details that must be checked, then $\\psi$ may be called a diffeomorphism, and we can think about pulling back the Riemannian structure of $\\widetilde{SO}(3)$ through $\\psi$ in order to establish an (almost-global) isometry from $U$ to $SO(3)$3.\nPulling Back the Volume Form The coordinate chart lets us use integration in $\\mathbb R^3$ as a substitute for integration in $SO(3)$:4\n\\[ \\begin{align*} \\int_{SO(3)} \\mu \u0026= \\int_{\\psi^{-1}\\big(\\widetilde{SO}(3)\\big)} \\psi^*\\mu\\\\ \u0026= \\int_{U} \\psi^*\\mu \\end{align*} \\] Consider the standard frame of $U\\subseteq \\mathbb R^3$, $\\lbrace \\frac{\\partial}{\\partial x^i}\\rbrace_{i=1}^3$, and its dual coframe $\\lbrace dx^i\\rbrace_{i=1}^3$. Any $3$ form in $U$ (and in particular, $\\psi^*\\mu$) can be expressed as $f\\ dx^1 \\wedge dx^2 \\wedge dx^3$, where $f\\in C^\\infty(U)$ is a smooth function. Using Lemma 14.16 of Intro. to Smooth Manifolds,5\n\\[ \\psi^*\\mu = \\textrm c\\ (\\psi^*\\varepsilon ^1)\\wedge (\\psi^*\\varepsilon ^2)\\wedge (\\psi^*\\varepsilon ^3) \\] whereas the pullback $\\psi^*\\varepsilon ^i$ is given by\n\\[ \\big[\\psi^*\\varepsilon ^i\\big]\\Big(\\frac{\\partial}{\\partial x^j} \\Big) =\\varepsilon ^i\\Big(\\psi_* \\frac{\\partial}{\\partial x^j} \\Big) \\] Actually, we will sneak in the definition of $\\varepsilon^i$ here (the motivation for this will be made clear shortly):\n\\[ \\begin{align*} \\big[\\psi^*\\varepsilon ^i\\big]\\Big(\\frac{\\partial}{\\partial x^j} \\Big) =\\big[\\psi^* (\\mathcal L_{g^{-1}})^*\\tilde \\varepsilon ^i\\big]\\Big(\\frac{\\partial}{\\partial x^j} \\Big) = ?????? \\end{align*} \\] So, Proposition 14.9 can be used to yield that\n\\[ \\psi^*\\mu = \\textrm c\\ \\textrm{det}(???) \\] A canonical object in mathematics is one that is uniquely determined by the structure of the object it is associated with. It is in a certain (context-dependent) sense the most natural choice of object to consider – there is the implication that no arbitrary choices were made in its construction. If any arbitrary choices were made, then we admit to it explicitly. This is why we qualify the introduction of $\\mu$ with “up to scaling”. ↩︎\n$S^2$ is the $2$-sphere in $\\mathbb R^3$, and the ‘$2$’ refers to the fact that it is $2$-dimensional as a manifold. ↩︎\n$\\widetilde{SO}(3)$ can be treated as a Riemannian submanifold of $SO(3)$. ↩︎\nSee eq. ($16.1$) in Introduction to Smooth Manifolds by John M. Lee. –\u003e ↩︎\nNote that Proposition 14.20 does not apply here, since $(\\varepsilon^i)_{i=1}^3$ are not a coordinate coframe. ↩︎\n",
+  "wordCount" : "1348",
   "inLanguage": "en",
   "datePublished": "2024-06-07T11:27:55-04:00",
   "dateModified": "2024-06-07T11:27:55-04:00",
@@ -204,7 +201,7 @@ $$ \begin{align*} E_1 &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp;
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      $SO(3)$
+      Integration on SO(3)
       <span class="entry-hint" title="Draft">
         <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
           <path
@@ -216,26 +213,153 @@ $$ \begin{align*} E_1 &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp;
 
 </div>
   </header> 
-  <div class="post-content"><p>Here, I want to construct the Haar measure for $SO(3)$ and pull it back to the axis-angle parametrization of $SO(3)$. Let the basis for $\mathfrak{so}(3)$ be given by</p>
-<p>$$
+  <div class="post-content"><p>I will construct the Haar measure for $SO(3)$ and pull it back to the axis-angle parametrization of orthogonal matrices. The goal is to be able to integrate (and thereby define probability densities) on $SO(3)$.
+My <a href="/posts/lie-groups_calculus" class="accented">
+    earlier post
+</a> on the Riemannian volume form is a prerequisite, though you could also just skip over any equations involving exterior calculus (distinguished by the use of the &ldquo;$\wedge$&rdquo; operation) and focus on the computations done in axis-angle coordinates.</p>
+<h2 id="the-riemannian-volume-form">The Riemannian Volume Form<a hidden class="anchor" aria-hidden="true" href="#the-riemannian-volume-form">#</a></h2>
+<p>Let the basis for $\mathfrak{so}(3)$ be given by</p>
+<p>
+\[
 \begin{align*}
-E_1 &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; -1 \ 0 &amp; 1 &amp; 0 \end{bmatrix} \
-E_2 &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 1 \ 0 &amp; 0 &amp; 0 \ -1 &amp; 0 &amp; 0 \end{bmatrix} \
-E_3 &amp;= \begin{bmatrix} 0 &amp; -1 &amp; 0 \ 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 \end{bmatrix}
+\tilde E_1 &= \begin{bmatrix*}[r] 0 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0 
+\end{bmatrix*} \\
+\tilde E_2 &= \begin{bmatrix*}[r] 0 & 0 & 1 \\ 0 & 0 & 0 \\ -1 & 0 & 0 
+\end{bmatrix*} \\
+\tilde E_3 &= \begin{bmatrix*}[r] 0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 
+\end{bmatrix*}
 \end{align*}
-$$</p>
-<p>and the corresponding dual basis of $\mathfrak{so}(3)^*$ be given by $\lbrace\varepsilon^1, \varepsilon^2, \varepsilon^3\rbrace$, where we recall that $\varepsilon^i$ is like the `row vector&rsquo; counterpart to $E_i$. In particular, $\varepsilon^i(E_j) = \delta_{ij}$.</p>
-<p>The Haar measure on $SO(3)$ is denoted by $\mu_{SO(3)}$. It is (up to scaling) simply the canonical Riemannian volume form on $SO(3)$ determined by the left-invariant metric on $SO(3)$:</p>
+\]
+</p>
+<p>and the corresponding dual basis of $\mathfrak{so}(3)^*$ be given by $\lbrace \tilde \varepsilon^1, \tilde  \varepsilon^2, \tilde  \varepsilon^3\rbrace$, where we recall that $\tilde \varepsilon^i$ is like the `row vector&rsquo; counterpart to $E_i$. In particular, $\tilde \varepsilon^i(\tilde E_j) = \delta_{ij}$. As usual, we will push these vectors and covectors around using the left-multiplication maps of the group to generate $\lbrace E_i\rbrace_{i=1}^3$ and $\lbrace \varepsilon^i\rbrace_{i=1}^3$. Once again, $\varepsilon^i(E_j) = \delta_{ij}$, but now $\delta_{ij}$ must be thought of as a smooth function on $SO(3)$ that is constant-valued.</p>
+<p>The Haar measure on $SO(3)$ is denoted by $\mu$. It is (up to scaling) the canonical<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> Riemannian volume form on $SO(3)$ determined by the left-invariant metric on $SO(3)$:</p>
 <p>$$
-\mu_{SO(3)} = \frac{1}{(2\pi)^3}\varepsilon^1\wedge\varepsilon^2\wedge\varepsilon^3
+\mu = \textrm c\cdot \varepsilon^1\wedge\varepsilon^2\wedge\varepsilon^3
 $$</p>
-<p>where we have added a factor of $\frac{1}{(2\pi)^3}$ to normalize the measure.</p>
+<aside class=aside-right>
+In the Lie group sense, $\mu$ is the <span id="fnref:1"><a href="#fn:1" class="footnote-ref accented" role="doc-noteref">canonical</a></span> volume form (up to a choice of left/right invariance) since it respects the group structure. In the Riemannian geometric sense, $\mu$ is only canonical after we have chosen a metric on $SO(3)$, namely the left/right invariant metric.
+</aside>
+<p>where $\textrm c\in \mathbb R_{&gt;0}$ is a normalizing constant (that we will compute later) satisfying</p>
+<p>$$
+\int_{SO(3)}\mu = 1.
+$$</p>
+<p>This normalization procedure makes sense precisely because $SO(3)$ is a compact manifold. Note that $\mu$ is also a <a href="https://en.wikipedia.org/wiki/Probability_measure" target="_blank" class="accented">
+    probability measure
+</a> and defines a &lsquo;uniform distribution&rsquo; over the space of rotations.</p>
+<p>As an engineer by training, my goal is to do calculations involving $\mu$. Sadly, this often requires us to step away from the intrinsic formulation and work with coordinate charts instead. The good news is that we can come back to the intrinsic formulation when we want to prove theorems and do manipulations that are intrinsic to $SO(3)$. It is important to remember that the coordinate-based approach that will embark on will be oblivious to many of the topological and group-theoretic properties of $SO(3)$. It will of course respect the local Riemannian structure of $SO(3)$&hellip; it better!</p>
+<hr>
+<h2 id="axis-angle-parametrizationhttpsenwikipediaorgwikiaxisangle_representation"><a href="https://en.wikipedia.org/wiki/Axis%e2%80%93angle_representation" target="_blank" class="accented">
+    Axis-Angle Parametrization
+</a></h2>
+<p>Recall that any rotation of $\mathbb R^3$ is given by an axis and an angle of rotation. These are represented by tuples of the form $(\mathbf u, \theta)$, where $\mathbf u\in S^2\subseteq \mathbb R^3$ is a unit vector<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> and $\theta\in [0, \pi]$. This gives the axis-angle parametrization of $SO(3)$:</p>
+<p>
+\[
+   \begin{align*}
+   S^2\times [0, \pi] &\to SO(3) \\
+   (\mathbf u, \theta) &\mapsto \exp\big(\theta\cdot \mathbf u^\wedge\big)
+    \end{align*}
+\]
+</p>
+<p>where $\mathbf u^\wedge$ denotes the skew-symmetric matrix corresponding to $\mathbf u$ (and has nothing to do with the big wedge &lsquo;$\wedge$&rsquo; operation from earlier). We have something even better; the Cayley-Hamilton theorem can be used to simplify the infinite series involved in matrix exponentiation, and so the axis-angle parametrization can be written as</p>
+<p>$$
+(\mathbf u, \theta) \mapsto \mathbf I + \sin\theta\cdot \mathbf u^\wedge + (1-\cos\theta)\cdot (\mathbf u^\wedge)^2
+$$</p>
+<aside class=aside-right>
+Generally, the maps $(\ \cdot\ )^\wedge$ and $(\ \cdot\ )^\vee$ refer to the linear isomorphism between $\mathbb R^3$ and $\mathfrak{g}$ as vector spaces. In the case of $\mathfrak g = \mathfrak{so}(3)$, $\mathbb R^3$ can be turned into a Lie algebra using the cross product: $$[\mathbf u^\wedge, \mathbf v^\wedge] = (\mathbf u \times \mathbf v)^\wedge$$
+and so in fact we have a Lie algebra isomorphism on our hands.
+</aside>
+<p>The following trick will greatly simplify our presentation. What prevents us from calling the above as the axis-angle <em>coordinates</em> (as opposed to <em>parametrization</em>) is that it fails bijectivity when $\theta = 0$ and $\theta = \pi$; all $0$-angle rotations are the same regardless of the axis of rotation, and $\pi$-angle rotations about $\mathbf u$ and $-\mathbf u$ are the same rotation. Either case, $\theta = 0$ and $\theta = \pi$, determines a $2$-dimensional submanifold of $S^2\times [0, \pi]$:</p>
+<figure class=invertible style="max-width: 100%;">
+<img src=/post-images/lie_groups/so3.png>
+<figcaption>$S^2\times [0, \pi]$ is (homeomorphic to) a thick spherical shell</figcaption>
+</figure>
+<p>Topologically, the axis-angle parametrization (i) collapses the inner surface of this shell into a single point, and (ii) glues together each pair of antipodal points on the outer surface.
+So, while the image of the $\theta = 0$ points is a single point in $SO(3)$ (namely, the identity element), the image of the $\theta = \pi$ points is a $2$-dimensional submanifold of $SO(3)$.
+The aforementioned <em>trick</em> which we will use is that these lower-dimensional sets have measure zero under $\mu$, so we can peel them away from the spherical shell before doing integration and probability. No longer would we have an obstruction to bijectivity.</p>
+<p>Let $\widetilde {SO}(3) \subseteq SO(3)$ denote the image of the axis-angle parametrization when restricted to $S^2\times (0, \pi) \subseteq S^2\times [0, \pi]$, so that</p>
+<p>$$
+\int_{SO(3)} \mu = \int_{\widetilde{SO}(3)}\mu
+$$</p>
+<p>Moreover, we can consider the spherical polar parametrization for $S^2$, which takes values in $[0,2 \pi) \times (0, \pi)$ (after neglecting a similar measure-zero subset!).
+At long last, we have a bijection on our hands:</p>
+<p>
+\[
+\begin{align*}
+\psi:\quad & U \ \to\  \widetilde {SO}(3) \\
+\psi^{-1}:\quad &  \widetilde {SO}(3) \ \to\   U\\
+\end{align*}
+\]
+</p>
+<p>where $U = [0, 2\pi)\times(0, \pi)\times (0, \pi) \subseteq \mathbb R^3$. From here on, we will treat the set $U$ as a cube in $\mathbb R^3$ with all but one of its faces removed, i.e., we will quite literally think of it as the set $[0, 2\pi)\times(0, \pi)\times (0, \pi)$ rather than a &lsquo;spherical shell&rsquo;.</p>
+<p>If we blur the technical details that must be checked, then $\psi$ may be called a diffeomorphism, and we can think about pulling back the Riemannian structure of $\widetilde{SO}(3)$ through $\psi$ in order to establish an (almost-global) isometry from $U$ to $SO(3)$<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
+<h3 id="pulling-back-the-volume-form">Pulling Back the Volume Form<a hidden class="anchor" aria-hidden="true" href="#pulling-back-the-volume-form">#</a></h3>
+<p>The coordinate chart lets us use integration in $\mathbb R^3$ as a substitute for integration in $SO(3)$:<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+<p>
+\[
+\begin{align*}
+\int_{SO(3)} \mu &=  \int_{\psi^{-1}\big(\widetilde{SO}(3)\big)} \psi^*\mu\\
+&= \int_{U} \psi^*\mu 
+\end{align*}
+\]
+</p>
+<p>Consider the standard frame of $U\subseteq \mathbb R^3$, $\lbrace \frac{\partial}{\partial x^i}\rbrace_{i=1}^3$, and its dual coframe $\lbrace dx^i\rbrace_{i=1}^3$.
+Any $3$ form in $U$ (and in particular, $\psi^*\mu$) can be expressed as $f\ dx^1 \wedge dx^2 \wedge dx^3$, where $f\in C^\infty(U)$ is a smooth function. Using Lemma 14.16 of Intro. to Smooth Manifolds,<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
+<p>
+\[
+\psi^*\mu = \textrm c\ (\psi^*\varepsilon ^1)\wedge (\psi^*\varepsilon ^2)\wedge (\psi^*\varepsilon ^3)
+\]
+</p>
+<p>whereas the pullback $\psi^*\varepsilon ^i$ is given by</p>
+<p>
+\[
+    \big[\psi^*\varepsilon ^i\big]\Big(\frac{\partial}{\partial x^j} \Big) 
+    =\varepsilon ^i\Big(\psi_* \frac{\partial}{\partial x^j} \Big)
+    \]
+    </p>
+<p>Actually, we will sneak in the definition of $\varepsilon^i$ here (the motivation for this will be made clear shortly):</p>
+<p>
+\[
+    \begin{align*}
+    \big[\psi^*\varepsilon ^i\big]\Big(\frac{\partial}{\partial x^j} \Big) 
+    =\big[\psi^* (\mathcal L_{g^{-1}})^*\tilde \varepsilon ^i\big]\Big(\frac{\partial}{\partial x^j} \Big) 
+    =
+   ??????
+   \end{align*}
+\]
+</p>
+<p>So, Proposition 14.9 can be used to yield that</p>
+<p>
+\[
+    \psi^*\mu = \textrm c\ \textrm{det}(???)
+    \]
+    </p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>A <em>canonical</em> object in mathematics is one that is uniquely determined by the structure of the object it is associated with. It is in a certain (context-dependent) sense the most natural choice of object to consider &ndash; there is the implication that no arbitrary choices were made in its construction. If any arbitrary choices were made, then we admit to it explicitly. This is why we qualify the introduction of $\mu$ with &ldquo;up to scaling&rdquo;.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>$S^2$ is the $2$-sphere in $\mathbb R^3$, and the &lsquo;$2$&rsquo; refers to the fact that it is $2$-dimensional as a manifold.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>$\widetilde{SO}(3)$ can be treated as a Riemannian submanifold of $SO(3)$.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>See eq. ($16.1$) in <em>Introduction to Smooth Manifolds</em> by John M. Lee. &ndash;&gt;&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Note that Proposition 14.20 does not apply here, since $(\varepsilon^i)_{i=1}^3$ are not a coordinate coframe.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 
 
   </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/differential-geometry/">Differential Geometry</a></li>
     </ul>
   </footer>
 <script src="https://giscus.app/client.js"

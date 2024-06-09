@@ -1,9 +1,10 @@
 ---
-title: "Lie Groups: A Tensor Calculus Perspective"
+title: "Lie Groups as Riemannian Manifolds"
 date: 2024-01-30T09:53:05-05:00
-draft: true
 showToc: true
 TocOpen: false
+draft: false
+tags: ["Differential Geometry"]
 ---
 
 A <span class=accented>Lie group</span> $G$ is a group that is also a (continuous, differentiable) topological space. An example to keep in mind is $G=\mathbb R^n$ which is a group under vector addition and has well-defined notions of continuity and differentiation. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow $G$ with additional structure so that it is not merely a manifold, but a <span class=accented>Riemannian manifold</span>. Luckily for us, we only need to define an inner product for the Lie algebra, after which there is a natural definition of length and volume that can be made for the entire group manifold. I say that the resulting choice of volume (called the <span class=accented>Haar measure</span>) is *natural* because it is compatible with the group structure of $G$ as well as its differential structure as a manifold. This can be compared to how the standard notion of volume for $\mathbb R^n$, the Lebesgue measure, is compatible with vector addition; we have for a (measurable) set $A\subseteq \mathbb R^n$ and for every $\mathbf x_0 \in \mathbb R^n$,
@@ -17,7 +18,7 @@ A <span class=accented>Lie group</span> $G$ is a group that is also a (continuou
 Thus begins our journey into making sense of this compatibility in the general context of a Lie group. If you are seeking a more application-oriented approach and/or aren't all that interested in this sort of abstraction, [this book](https://link.springer.com/book/10.1007/978-0-8176-4944-9) has all the formulae worked out, and [my previous post](/posts/lie-groups_construction) introduces the idea of invariant metrics and measures on Lie groups. 
 Note that I will be using the [Einstein summation](https://en.wikipedia.org/wiki/Einstein_notation) convention throughout.
 
-# Lengths and Volumes
+# Lengths and Volumes ✨
 
 Let $M$ be an $n$-dimensional smooth manifold.
 A covariant $2$-tensor field on $M$ is a bilinear map that takes $2$ smooth vector fields as its arguments and produces a smooth $C^\infty(M)$ function.[^2forms] A <span class=accented>Riemannian metric</span> is a covariant $2$-tensor field that is symmetric:
@@ -87,13 +88,13 @@ g(\mathbf{v},\mathbf{w}) &= g_{ij} dx^i dx^j \left(v^k  \frac{\partial}{\partial
 
 Since it is a (pointwise) sum of (pointwise) products of $C^\infty(U)$ functions, $g_{ij} v^i w^j\in C^\infty(U)$. The metric tensor coefficients $(g_{ij})_{i,j=1}^n$ play a role similar to that of a weighting matrix $W \in \mathbb R^{n \times n}$ that is introduced when defining a non-standard inner product in $\mathbb R^n$, as $\langle \mathbf{v}, \mathbf{w}\rangle \coloneqq \mathbf{v}^\top W \mathbf{w}$.
 
-# Frames
+# Frames ✨
 
 In the above expressions, we used a frame (a system of vector fields) that arises from a coordinate chart. However, there may arise situations where we prefer to work with a frame that is not only *not* induced by a coordinate chart, but also *cannot* be induced by a coordinate chart. The frame of left-invariant vector fields on a (non-Abelian) Lie group is a prime example of this. 
 
 <!-- Since the choice of a metric automatically endows a geometry to our manifold, it is expected that a(n essentially) unique volume form should result from it. Proposition 15.29 of Lee's book tells us that this is the case. But to get there, we first need to talk about frames. -->
 
-A <span class=accented>local frame</span> in an open set $U$ of $M$ is a set of tangent (or contravariant) vector fields in $\mathfrak X(U)$, enumerated as $(\mathbf{E}_i)\_{i=1}^n$, such that $(\mathbf{E}_i(p))\_{i=1}^{n}$ is a basis of $T\_p M$ for all $p\in U\subseteq M$. A local frame is <span class=accented>orthonormal</span> if $g(\mathbf{E}\_i, \mathbf{E}\_j) = \delta\_{ij}$, where $\delta\_{ij}$ is the Kronecker delta considered as a constant-valued $C^\infty(U)$ function.
+A <span class=accented>local frame</span> in an open set $U$ of $M$ is a set of tangent (or contravariant) vector fields in $\mathfrak X(U)$, enumerated as $(E_i)\_{i=1}^n$, such that $(E_i(p))\_{i=1}^{n}$ is a basis of $T\_p M$ for all $p\in U\subseteq M$. A local frame is <span class=accented>orthonormal</span> if $g(E\_i, E\_j) = \delta\_{ij}$, where $\delta\_{ij}$ is the Kronecker delta considered as a constant-valued $C^\infty(U)$ function.
 A <span class=accented>global</span> frame is one that is defined on all of $M$, with $U=M$. 
 
 <aside class=aside-center>
@@ -106,7 +107,7 @@ A frame is said to be <i>oriented</i> once we <i>order</i> it and decree that th
     are precisely the even-parity permutations, which is why $\textrm y - \textrm z - \textrm x$ is considered to be positively oriented too.
 </aside>
 
-The <span class=accented>dual coframe</span> to $(\mathbf{E}_i)\_{i=1}^n$ is the collection of cotangent (or covariant) vector fields $(\varepsilon^i)\_{i=1}^n$, such that $\varepsilon^i(\mathbf{E}_j) = \delta^i\_{j}$. These cotangent vector fields form a basis for differential $1$-forms. We can take their tensor products to obtain a basis for covariant $k$-tensor fields: 
+The <span class=accented>dual coframe</span> to $(E_i)\_{i=1}^n$ is the collection of cotangent (or covariant) vector fields $(\varepsilon^i)\_{i=1}^n$, such that $\varepsilon^i(E_j) = \delta^i\_{j}$. These cotangent vector fields form a basis for differential $1$-forms. We can take their tensor products to obtain a basis for covariant $k$-tensor fields: 
 
 <p>
 \[
@@ -128,10 +129,10 @@ or their
 </p> 
 
 <aside class=aside-center>
-Observe that covariant $k$-tensor fields are a more general class of objects than differential $k$-forms, since the latter have the additional, special property of being <i>alternating</i>. This fact is reflected in the dimensions of their bases (notice the range of the indices in either case). Despite this important distinction, differential $k$-forms are often simply called '$k$-covectors'; a more precise term would be <i>alternating $k$-covectors</i>.
+Observe that covariant $k$-tensor fields are a more general class of objects than differential $k$-forms, since the latter have the additional, special property of being <i>alternating</i>. This fact is reflected in the dimensions of their bases (notice the range of the indices in either case). Despite this important distinction, $k$-forms are sometimes simply called '$k$-covectors'; a more precise term would be <i>alternating $k$-covectors</i>.
 </aside>
 
-### Orthonormal Frames
+### 🍩 Orthonormal Frames
 
 In the coordinate coframe $(dx^i)\_{i=1}^n$, we expressed the metric tensor as $g = g_{ij}dx^i dx^j$.
 Let's now try to express it in a local coframe $(\varepsilon^i)\_{i=1}^n$ 
@@ -150,8 +151,8 @@ We have then, that
 <p>
 \[
     \begin{align}
-    \delta_{kl} = g(\mathbf E_k, \mathbf E_l) &= \tilde g_{ij} {\varepsilon}^i {\varepsilon}^j \left(\mathbf E_k, \mathbf E_l\right) \\
-    &= \tilde g_{ij} {\varepsilon}^i \left(\mathbf E_k\right) {\varepsilon}^j \left(\mathbf E_l\right) \\
+    \delta_{kl} = g(E_k, E_l) &= \tilde g_{ij} {\varepsilon}^i {\varepsilon}^j \left(E_k, E_l\right) \\
+    &= \tilde g_{ij} {\varepsilon}^i \left(E_k\right) {\varepsilon}^j \left(E_l\right) \\
     &= \tilde g_{ij} \delta^i_k \delta^j_l  = \tilde g_{kl}
     \end{align}
     \]
@@ -175,7 +176,7 @@ Given a local orthonormal frame of vector fields $(E_i)\_{i=1}^n$ whose dual cof
 
 so that $\omega(E_1, E_2, \cdots, E_n) = 1$. The above statements will look identical in any of the local orthonormal frames of $M$.
 
-### Coordinate Frames
+### 🍩 Coordinate Frames
 
 The allure of orthonormal frames is that $g$ and $\omega_g$ can be represented quite succinctly in them. 
 However, the existence of an orthonormal frame *that arises as the coordinate frame of a chart* is a very rare occasion: such a frame only exists when the Riemannian manifold $(M, g)$ is locally flat. If we would rather work with a frame that arises from coordinates, then we must resort to computing the components of a non-flat metric tensor (one that is not simply the Kroenecker delta). Also see my post on [the non-flatness of the sphere](/posts/sphere).
@@ -208,9 +209,13 @@ Ultimately, we want a coordinate frame on $U$ and not on $V$. Since $\varphi$ is
 
 where $\varphi^{-1 *} \tilde f$ is called the *pullback* of $f$ under $\varphi^{-1}$; it *pulls* the domain of $\tilde f$ back to $V$.
 
+### 🍩 Orthonormal Coordinate Frames
+
 I reiterate that there are Riemannian manifolds where such a coordinate frame couldn't possibly be orthonormal at all $p\in U$. Theorem 13.14 of Lee's *Introduction to Smooth Manifolds* says that this is only possible when $U$ is flat, i.e., $M$ is locally flat.
 
-# Pullbacks
+---
+
+# Pullbacks ✨
 
 Let $f:M \rightarrow N$ be a diffeomorphism between manifolds (though it is possible to generalize the forthcoming discussion to other kinds of smooth maps).
 
@@ -238,22 +243,24 @@ I like to read this as: $f^\*\omega$ eats vector fields on $M$ by imitating how 
 
 ---
 
-# Lie Groups
+# Lie Groups ✨
 
 The tangent space at the identity of a Lie group $G$ can be given one of infinitely many possible inner products. However, there is a unique way to extend this inner product to a Riemannian metric by requiring that it be compatible with the group structure of $G$ (and as a consequence, compatible with the differential structure of $G$ as a manifold). For the same reason, there is also a unique choice of volume form (or equivalently, measure) with respect to which one can define the integral. This will be called the <span class=accented>Haar integral</span>, and it specializes to the Lebesgue integral when $G=\mathbb R^n$.
 <!-- <span class=accented>continue here</span>. -->
 
-Yet another useful property of Lie groups is that there is a way to construct global orthonormal frames for it: we choose an orthonormal basis of $T_e G$ and extend it to a set of left/right-invariant vector fields. As always, orthonormal *coordinate* frames are an extremely rare occurrence;
-if $G$ is non-Abelian, then such an orthonormal frame could not possibly come from a coordinate system (also see [this](/posts/sphere/#a-word-of-caution)). Nevertheless, the fact that a global orthonormal frame exists is already quite a special property.
+Yet another useful property of Lie groups is that there is a way to construct global orthonormal frames for it: we choose an orthonormal basis of $T_e G$ and extend it to a set of left/right-invariant vector fields. Even among Lie groups, orthonormal *coordinate* frames are a rare occurrence;
+if $G$ is non-Abelian, then an orthonormal frame could not possibly come from a coordinate system (also see [this](/posts/sphere/#a-word-of-caution)). Nevertheless, the fact that a global orthonormal frame exists is already quite a special property.
 
-### Preliminaries
-Let $G$ be a Lie group, $e\in G$ its identity element, and $\mathfrak g$ its Lie algebra. We will conflate $\mathfrak g$ with $T_e G$ for convenience.
+### 🍩 Preliminaries
+Let $G$ be a Lie group, $e\in G$ its identity element, and $\mathfrak g$ its Lie algebra.[^conflation]
 Consider an inner product on $\mathfrak g$, $\langle \cdot, \cdot \rangle\_e$, and use the Gram-Schmidt process to construct an orthonormal basis for $\mathfrak g$. Denote one such orthonormal basis by $(\tilde E_i)\_{i=1}^n$, where $\tilde E_i \in \mathfrak g$ and $\langle \tilde E_i, \tilde E_j \rangle_e = \delta_{ij}$. Its corresponding dual basis is denoted as $(\tilde \varepsilon^i)\_{i=1}^n$, where $\tilde \varepsilon^i \in \mathfrak g^*$.
  We can then express $\langle \cdot, \cdot \rangle\_e$ by the tensor $\delta_{ij} \tilde \varepsilon^i \tilde \varepsilon^j$.
 
-Let $\mathcal L\_{g}:G\rightarrow G$ denote the left-multiplication map, $\mathcal L\_{g}(h) = gh$, and similarly define $\mathcal R\_{g}$[^doubleusage]; observe that these maps are diffeomorphisms from $G$ to $G$, and can therefore push and pull tensors and tensor fields from one point of $G$ to another. For instance, the orthonormal basis $(\tilde E_i)\_{i=1}^n$ can be extended to a global orthonormal frame $(E_i)\_{i=1}^n$ on $G$, where each $E_i\in\mathfrak X(G)$ is a left-invariant vector field on $G$. That is, we define
+ [^conflation]: We conflate $\mathfrak g$ with $T_e G$ for convenience. (the latter does not come with a Lie bracket).
 
-[^doubleusage]: Beware: In the first half of this post, $g$ denoted the Riemannian metric, whereas in the latter half it represents an arbitrary element of $G$.
+Let $\mathcal L\_{g}:G\rightarrow G$ denote the left-multiplication map, $\mathcal L\_{g}(h) = gh$, and similarly define $\mathcal R\_{g}$[^doubleusage]; observe that these maps are diffeomorphisms from $G$ to $G$, and can therefore push and pull tensors and tensor fields from one point of $G$ to another. For instance, the orthonormal basis $(\tilde E_i)\_{i=1}^n$ can be extended to a global orthonormal frame $(E_i)\_{i=1}^n$ on $G$:
+
+[^doubleusage]: Beware: In the first half of this post, $g$ denoted the Riemannian metric, whereas in the latter half, it represents an arbitrary element of $G$.
 
 <p>
 \[
@@ -262,21 +269,7 @@ Let $\mathcal L\_{g}:G\rightarrow G$ denote the left-multiplication map, $\mathc
     </p>
 
 Such a global orthonormal frame on $G$ also serves as a "basis" of the space (i.e., generating set of the $C^\infty(G)$-module) of vector fields on $G$, since any vector field $V\in\mathfrak X(G)$ can be uniquely expressed as
-$V = v^i E_i$, where $v^i \in C^\infty(G)$. 
-<!-- In short, we say that Lie groups are [parallelizable](https://en.wikipedia.org/wiki/Parallelizable_manifold) manifolds; also see [this](/posts/lie-groups/#representation-theory).  -->
-Let's verify the left-invariance:
-
-<p>
-\[
-\begin{align}
-E_i(h) &= ??????????????????????
-\end{align}
-\]
-</p>
-
-where the second equality follows from the fact that $\mathcal L_{h}$ is a diffeomorphism, and the third equality follows from the left-invariance of $\tilde E_i$.
-
-
+$V = v^i E_i$ with $v^i \in C^\infty(G)$. Vector fields of the form $\text{c}^i E_i$ (where $\text{c}^i$ are constants) are precisely the <span class=accented>left-invariant vector fields</span> of $G$.
 
 One can similarly extend $(\tilde \varepsilon^i)\_{i=1}^n$ to a left-invariant global coframe $(\varepsilon^i)\_{i=1}^n$ on $G$:
 
@@ -297,18 +290,47 @@ Immediately, we have the following property at all $g\in G$:
 \]
 </p>
 
-### Invariant Metrics and Volumes
 In the following, we assume that $(E\_i)\_{i=1}^n$ and $(\varepsilon^i)\_{i=1}^n$ are left-invariant. Analogous arguments follow for the right-invariant case. The only caveat is that the left-invariant and right-invariant metrics and volume forms may or may not turn out to be the same, as discussed in [my previous post](/posts/lie-groups_construction/#geometry).
+<!-- In short, we say that Lie groups are [parallelizable](https://en.wikipedia.org/wiki/Parallelizable_manifold) manifolds; also see [this](/posts/lie-groups/#representation-theory).  -->
 
-The left-invariant Riemannian metric on $G$ is given by 
+### Left-Invariance of Vector Fields
+
+
+Let's scrutinize the left-invariance of $E_i$. Pretend that the left-multiplication map sends $G$ to another Lie group, $G^💧$! 
+
+<figure class=invertible style="max-width: 80%;">
+<img src=/post-images/lie_groups/left-multiplication-june.png>
+</figure>
+
+The pushforward vector field on $G^💧$, $(\mathcal L_{g})_*E_i$, should act on a function $f\in C^\infty (G^💧)$ by mimicking whatever $E_i$ would have done in its place:
 
 <p>
 \[
-    \langle \cdot, \cdot\rangle=\delta_{ij}\varepsilon^i \varepsilon^j.
-\]
+    \big[(\mathcal L_{g})_*E_i\big](f) = E_i(f \circ \mathcal L_g)
+    \]
 </p>
 
-We verify that this metric is *invariant* under the left-multiplication action of $G$ on itself; for all $g\in G$ and vector fields $V,W \in \mathfrak X(G)$,
+But since $(\mathcal L_{g})_*E_i = E_i$ (this can be checked pointwise, by picking an arbitrary point of $G$ and verifying it there), we have that $E_i(f) = E_i(f \circ \mathcal L_g)$. An analogous property is exhibited by $\varepsilon^i$.
+
+### 🍩 Left-Invariance of Geometric Structure
+
+Now consider what should happen if we define the Riemannian metric of $G$ as 
+
+<p>
+\[
+\langle \hspace{1pt}\cdot\hspace{2pt},\hspace{1pt}\cdot\hspace{2pt}\rangle = Q_{ij}\hspace{1pt}\varepsilon^i \varepsilon^j    
+    \]
+    </p>
+
+where $Q_{ij}$ are constants that should be thought of as a "weighting matrix". Clearly, this metric should inherit the left-invariance properties of $(\varepsilon^i)_{i=1}^n$.
+Indeed, we can use similar arguments as before to show that if $\mathbf v, \mathbf w \in T_gG$, then
+
+$$
+\langle \mathbf v,\mathbf w\rangle_g = \langle (\mathcal L_h)_{\ast_g}\mathbf v, 
+(\mathcal L_h) _{\ast_g}\mathbf w\rangle _{hg}
+$$
+
+It is notationally easier (more concise) to show this property for vector fields. Let $V,W\in\mathfrak X(G)$ be vector fields whose values at $g$ are $\mathbf v$ and $\mathbf w$, respectively. Then,
 
 <p>
 \[
@@ -321,15 +343,13 @@ We verify that this metric is *invariant* under the left-multiplication action o
 \]
 </p>
 
-<aside class=aside-center>
-Observe that the left-invariant metric can also be defined by pulling back the inner product of $T_eG$ to each tangent space $T_gG$ via the map $\mathcal L_{g^{-1}}$. Our definition via the dual coframe is just a concise way of making the same construction.
-</aside>
-
 Similarly, a left-invariant volume form can be defined as $\omega = \varepsilon^1 \wedge \varepsilon^2 \wedge \cdots \wedge \varepsilon^n$. 
 
 ---
 
-We could also have chosen to work with a coordinate coframe on an open set $U$ containing $g$ in order to express $\langle \cdot, \cdot \rangle$. In this case, we should compute the metric tensor coefficients since they will no longer be trivial. For instance, let $(U, \varphi)$ be a chart containing $h$, such that $\varphi (U)=V\subseteq \mathbb R^n$. $\varphi^{-1}$ is a local parametrization of $G$ which is defined on $U$, i.e., we have parameterized a neighborhood of $h\in G$. We can then pull back $\delta_{ij} \tilde \varepsilon^i \tilde \varepsilon^j$ back to $\varphi(h)$ using $\mathcal L_{h^{-1}} \circ \varphi^{-1}$. This is essentially how I have computed the metric tensor coefficients in [the next post](/posts/sphere/#the-sphere), although there I consider the very familiar example of $G=\mathbb R^3$, with $\varphi$ chosen as the spherical polar coordinates. In this case, the action of $\mathcal L_{h^{-1}}^*$ on the metric tensor is trivial, because the notion of Euclidean distance is the same at every point of $\mathbb R^3$.
+### 🍩 Some Actual Examples
+
+We could also have chosen to work with a coordinate coframe on an open set $U$ containing $g$ in order to express $\langle \cdot, \cdot \rangle$. In this case, we should compute the metric tensor coefficients since they will no longer be trivial. In [this post](/posts/sphere/#the-sphere), I computed the metric tensor coefficients for the sphere (not a Lie group!) in spherical polar coordinates. In [the next one](/posts/so3), I pull back the geometric structure of $SO(3)$ to its [axis-angle parametrization](https://en.wikipedia.org/wiki/Axis–angle_representation).
 
 <!-- Let's see an example of why such a pullback can be helpful for computations.
 

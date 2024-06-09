@@ -4,6 +4,7 @@ date: 2024-01-24T14:20:59-05:00
 ShowToc: true
 TocOpen: false
 draft: false
+tags: ["Differential Geometry"]
 ---
 
 There are multiple ways to construct new groups from old ones. For instance, the semidirect product $SO(3) \ltimes \mathbb R^3$ is the Special Euclidean group $SE(3)$, which is composed of all the rigid transformations of $\mathbb R^3$ (minus reflections). Here, I provide an intuition for how these constructions work. I will also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups. While the word *geometry* implies the presence of an inner product/Riemannian metric, the word *calculus* hints at the possibility of differentiation and integration on Lie groups.
