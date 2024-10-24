@@ -7,10 +7,16 @@
 <meta name="robots" content="index, follow">
 <title>The Lie Group-Lie Algebra Correspondence | Shiraz</title>
 <meta name="keywords" content="Differential Geometry">
-<meta name="description" content="A topological group is a set of elements $G$ that has both a group operation $\odot$ and a topology . The group operation satisfies the usual axioms (same as those of finite groups ), and the presence of a topology lets us say things like &rsquo;the group is connected&rsquo; and &rsquo;the group operation is continuous&rsquo;. $G$ is called a Lie group if it is also a smooth manifold. The smooth structure of the manifold must be compatible with the group operation in the following sense: $\odot$ is differentiable with respect to either of its arguments 1.">
+<meta name="description" content="A topological group is a set of elements $G$ that has both a group operation $\odot$ and a 
+    topology
+. The group operation satisfies the usual axioms (same as 
+    those of finite groups
+), and the presence of a topology lets us say things like &rsquo;the group is connected&rsquo; and &rsquo;the group operation is continuous&rsquo;. $G$ is called a Lie group if it is also a smooth manifold. The smooth structure of the manifold must be compatible with the group operation in the following sense: $\odot$ is differentiable with respect to either of its arguments 1. The compatibility of its constituent structures is what makes a Lie group so special, enabling it to capture the essence of a 
+    continuous symmetry
+.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/lie-groups/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.41c5c4f529ce786d89dc3eb49ae8a246b72e45ff4ba97ac417c9b63b7a60891f.css" integrity="sha256-QcXE9SnOeG2J3D60muiiRrcuRf9LqXrEF8m2O3pgiR8=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.42ea6a4c0a68f9389cacd15de82bd17c29e095336bdc1de23c1abfcfb83d2a0c.css" integrity="sha256-QupqTApo&#43;TicrNFd6CvRfCnglTNr3B3iPBq/z7g9Kgw=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -56,9 +62,11 @@
 
     </style>
 </noscript>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         renderMathInElement(document.body, {
@@ -76,11 +84,14 @@
     });
 </script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
-  
-
-<meta property="og:title" content="The Lie Group-Lie Algebra Correspondence" />
-<meta property="og:description" content="A topological group is a set of elements $G$ that has both a group operation $\odot$ and a topology . The group operation satisfies the usual axioms (same as those of finite groups ), and the presence of a topology lets us say things like &rsquo;the group is connected&rsquo; and &rsquo;the group operation is continuous&rsquo;. $G$ is called a Lie group if it is also a smooth manifold. The smooth structure of the manifold must be compatible with the group operation in the following sense: $\odot$ is differentiable with respect to either of its arguments 1." />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="The Lie Group-Lie Algebra Correspondence" />
+<meta property="og:description" content="A topological group is a set of elements $G$ that has both a group operation $\odot$ and a 
+    topology
+. The group operation satisfies the usual axioms (same as 
+    those of finite groups
+), and the presence of a topology lets us say things like &rsquo;the group is connected&rsquo; and &rsquo;the group operation is continuous&rsquo;. $G$ is called a Lie group if it is also a smooth manifold. The smooth structure of the manifold must be compatible with the group operation in the following sense: $\odot$ is differentiable with respect to either of its arguments 1. The compatibility of its constituent structures is what makes a Lie group so special, enabling it to capture the essence of a 
+    continuous symmetry
+." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://shirazkn.github.io/posts/lie-groups/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-01-15T07:24:59-05:00" />
@@ -88,7 +99,13 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="The Lie Group-Lie Algebra Correspondence"/>
-<meta name="twitter:description" content="A topological group is a set of elements $G$ that has both a group operation $\odot$ and a topology . The group operation satisfies the usual axioms (same as those of finite groups ), and the presence of a topology lets us say things like &rsquo;the group is connected&rsquo; and &rsquo;the group operation is continuous&rsquo;. $G$ is called a Lie group if it is also a smooth manifold. The smooth structure of the manifold must be compatible with the group operation in the following sense: $\odot$ is differentiable with respect to either of its arguments 1."/>
+<meta name="twitter:description" content="A topological group is a set of elements $G$ that has both a group operation $\odot$ and a 
+    topology
+. The group operation satisfies the usual axioms (same as 
+    those of finite groups
+), and the presence of a topology lets us say things like &rsquo;the group is connected&rsquo; and &rsquo;the group operation is continuous&rsquo;. $G$ is called a Lie group if it is also a smooth manifold. The smooth structure of the manifold must be compatible with the group operation in the following sense: $\odot$ is differentiable with respect to either of its arguments 1. The compatibility of its constituent structures is what makes a Lie group so special, enabling it to capture the essence of a 
+    continuous symmetry
+."/>
 
 
 <script type="application/ld+json">
@@ -117,7 +134,7 @@
   "@type": "BlogPosting",
   "headline": "The Lie Group-Lie Algebra Correspondence",
   "name": "The Lie Group-Lie Algebra Correspondence",
-  "description": "A topological group is a set of elements $G$ that has both a group operation $\\odot$ and a topology . The group operation satisfies the usual axioms (same as those of finite groups ), and the presence of a topology lets us say things like \u0026rsquo;the group is connected\u0026rsquo; and \u0026rsquo;the group operation is continuous\u0026rsquo;. $G$ is called a Lie group if it is also a smooth manifold. The smooth structure of the manifold must be compatible with the group operation in the following sense: $\\odot$ is differentiable with respect to either of its arguments 1.",
+  "description": "A topological group is a set of elements $G$ that has both a group operation $\\odot$ and a topology . The group operation satisfies the usual axioms (same as those of finite groups ), and the presence of a topology lets us say things like \u0026rsquo;the group is connected\u0026rsquo; and \u0026rsquo;the group operation is continuous\u0026rsquo;. $G$ is called a Lie group if it is also a smooth manifold. The smooth structure of the manifold must be compatible with the group operation in the following sense: $\\odot$ is differentiable with respect to either of its arguments 1. The compatibility of its constituent structures is what makes a Lie group so special, enabling it to capture the essence of a continuous symmetry .\n",
   "keywords": [
     "Differential Geometry"
   ],
@@ -280,7 +297,7 @@ I +
 <p>Still, the above observation alone does not make it clear what the relationship between $SO(2)$ and $T_ISO(2)$ is. For starters, why should one expect infinitesimal rotations to be related in any way to arbitrary (large angle) rotations? What is the significance of the Lie bracket?</p>
 <p>This post is by no means meant to be an introduction to Lie groups; for that, I recommend the first few chapters of <a href=https://link.springer.com/book/10.1007/978-3-319-13467-3 class=accented>Brian C. Hall&rsquo;s book</a>. I will instead hurry us along to our main line of investigation &ndash; understanding the <span class=accented>Lie group-Lie algebra correspondence</span>, pausing only to show you some pictures/diagrams that I had fun drawing. A bonus takeaway from this post will be a deeper understanding of the exponential map, one that unifies the exponentials of real numbers, complex numbers, and matrices.</p>
 <aside class=aside-center>
-<b>Prerequisites:</b> Conceptual understanding of the <a href=/posts/differential-forms/#tangentcotangent-spaces class=accented>tangent spaces of a smooth manifold</a> and familiarity with the standard examples of matrix Lie groups, including $SO(n)$, $GL(n,\mathbb R)$ and $\mathbb R^n$.
+<b>Prerequisites:</b> Conceptual understanding of the <a href=/posts/vector-fields/#tangentcotangent-spaces class=accented>tangent spaces of a smooth manifold</a> and familiarity with the standard examples of matrix Lie groups, including $SO(n)$, $GL(n,\mathbb R)$ and $\mathbb R^n$.
 </aside>
 <hr>
 <h2 id="background">Background<a hidden class="anchor" aria-hidden="true" href="#background">#</a></h2>
@@ -570,9 +587,9 @@ To do this, we first need to understand <a href="https://math.stackexchange.com/
     X(f_1\cdot f_2) = f_1\cdot X(f_2) + f_2\cdot X(f_1)
     \]
     </p>
-<p>with $f_1\cdot f_2$ indicating pointwise multiplication of $C^\infty(G)$ functions. Vector fields are derivations <a href="/posts/differential-forms" class="accented">
+<p>with $f_1\cdot f_2$ indicating pointwise multiplication of $C^\infty(G)$ functions. Vector fields are derivations <a href="/posts/vector-fields" class="accented">
     by construction
-</a>, though we haven&rsquo;t had to emphasize this aspect of them until now. When $X$ acts on a $C^\infty(G)$ function $f$, we will treat it as a derivation, but when $g \in G$, we will treat $X(g)$ as a tangent vector (which acts on <a href="/posts/differential-forms" class="accented">
+</a>, though we haven&rsquo;t had to emphasize this aspect of them until now. When $X$ acts on a $C^\infty(G)$ function $f$, we will treat it as a derivation, but when $g \in G$, we will treat $X(g)$ as a tangent vector (which acts on <a href="/posts/vector-fields" class="accented">
     one-forms
 </a> instead).</p>
 <p>For $X,Y\in \mathfrak X(G)$ and $f_1,f_2\in C^\infty(G)$, since $Y(f_1\cdot f_2)$ is again a $C^\infty(G)$ function, we can have $X$ act on it as follows:</p>
@@ -661,7 +678,7 @@ In particular,</p>
 <p>As implied through <span class=accented>$(41)$</span> and the choice of notation here, $\varphi_*$ is simply the differential of $\varphi$ at the identity element of $G$.
 In particular, the adjoint representations $\textrm{Ad}$ and $\textrm{ad}$ are related to each other in this way (see Theorem 8.44 of Lee&rsquo;s book, 2<sup>nd</sup> edition). Specifically, $\textrm{ad}:\mathfrak g \rightarrow \mathfrak {gl}(\mathfrak g)$, where $\mathfrak {gl}(\mathfrak g)$ are the endomorphisms of $\mathfrak g$ (as a Lie algebra).</p>
 <p>Either representation ($\textrm{Ad}/\textrm{ad}$) is uninteresting when $\odot$ is commutative, in which case conjugation reduces to the identity map ($g\odot h \odot g^{-1} = h$) and the Lie bracket of $\mathfrak g$ vanishes identically. However, they are indispensable tools for studying non-commutative groups. In what follows, we will demonstrate yet another line of investigation in which the adjoint representations arise as a measure of non-commutativity.</p>
-<p>My <a href="/posts/differential-forms#tangentcotangent-bundles" class="accented">
+<p>My <a href="/posts/vector-fields#tangentcotangent-bundles" class="accented">
     previous post
 </a> introduced the notion of a fiber bundle, of which the tangent bundle of $G$, $TG$, is an example. The following diagram shows that two bundles $(E_1, M, \pi_1, F)$ and $(E_2, M, \pi_2, F)$ over the same base space ($M$) and fiber ($F$) may be fundamentally different:</p>
 <figure class=invertible style="max-width: 100%;">

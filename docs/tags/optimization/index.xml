@@ -4,7 +4,7 @@
     <title>Optimization on Shiraz</title>
     <link>https://shirazkn.github.io/tags/optimization/</link>
     <description>Recent content in Optimization on Shiraz</description>
-    <generator>Hugo -- 0.127.0</generator>
+    <generator>Hugo -- 0.136.4</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 28 Apr 2023 17:15:26 -0400</lastBuildDate>
     <atom:link href="https://shirazkn.github.io/tags/optimization/index.xml" rel="self" type="application/rss+xml" />
@@ -25,7 +25,12 @@
       <link>https://shirazkn.github.io/posts/sparsity/</link>
       <pubDate>Sat, 22 Apr 2023 11:05:58 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/sparsity/</guid>
-      <description>The so called curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant. This is because many (if not all) of the problems we&amp;rsquo;re interested in solving as engineers have some inherent sparsity.</description>
+      <description>&lt;p&gt;The so called &lt;a href=&#34;https://shirazkn.github.io/posts/balls&#34; class=&#34;accented&#34;&gt;
+    curse of dimensionality
+&lt;/a&gt; in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant.
+This is because many (if not all) of the problems we&amp;rsquo;re interested in solving as engineers have some inherent &lt;span class=accented&gt;sparsity&lt;/span&gt;. Steve Brunton has an &lt;a href=&#34;https://www.youtube.com/watch?v=Dt2WYkqZfbs&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    excellent video
+&lt;/a&gt; explaining why this is so.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Norm Balls</title>

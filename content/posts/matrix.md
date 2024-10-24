@@ -335,7 +335,7 @@ where we know that the set $\lbrace g(\bold b_1), g(\bold b_2), \dots g(\bold b_
 \]
 </p>
 
-Alternatively, we can re-express the transformed vector in the original basis $\mathcal B$, in which case $g$ is interpreted as purely a transformation of the vector's components (rather than of its basis). This duality in how we can view a 'change of basis' has been explored more in [this article](/posts/differential-forms).
+Alternatively, we can re-express the transformed vector in the original basis $\mathcal B$, in which case $g$ is interpreted as purely a transformation of the vector's components while keeping the basis fixed. This duality in how we can view a 'change of basis' has been explored more in [this article](/posts/vector-fields).
 <!-- 
 Thus, there are two equivalent ways to interpret the orthogonal transformation, $g$:
 
@@ -353,12 +353,13 @@ Thus, there are two equivalent ways to interpret the orthogonal transformation, 
     \]
 </div>
 while using the same orthonormal basis on either side, $\mathcal B$. The first interpretation requires you to tilt your head to the left:
-
+ -->
 <div>
 <figure class=invertible style="max-width: 100%;">
 <img src=/post-images/linear_algebra/orthogonal_transformation.png>
+<figcaption>The vectors $\bold v$ and $g(\bold v)$ have the same components if we rotate our head along with the transformation. They have different components if we keep our head fixed. These are two different (i.e., dual) ways of interpreting an orthonormal transformation.</figcaption>
 </figure>
-</div> -->
+</div>
 
 [^3]: An invertible function between sets [must be](/posts/cat_theory_1) injective and surjective. If the dimension of $W$ is greater than that of $V$, then $f$ cannot be surjective. If the dimension of $V$ is greater, then $f$ cannot be injective.
 
@@ -385,7 +386,7 @@ Mathematicians almost always (or perhaps, always) study mathematical objects "<s
 [^1]: There is an abuse (or rather, a reuse) of notation here; note that the vector addition in $W$ [may be different from](/posts/vector) the vector addition in $V$, though we denote both as '$+$' for convenience.
  We also use '$+$' to denote the scalar addition operation.
 
-[^h]: See [this](https://math.stackexchange.com/questions/271927/why-historically-do-we-multiply-matrices-as-we-do) for the historical context of matrix multiplication, which is different from (but essentially the same as 😉) modern mathematics' treatment of it.
+[^h]: See [this](https://math.stackexchange.com/questions/271927/why-historically-do-we-multiply-matrices-as-we-do) for the historical context of matrix multiplication, which is different from (but essentially the same as) modern mathematics' treatment of it.
 <!-- 
 This is why the "$\text{Rank}$" of $A$ plus the dimension of $\text{Null}(A)$ equals the number of rows, $m$. When $\text{Null}(A) \neq 0$, or equivalently, $\text{Rank}(A)<m$,
 Note that $A$ maps a subspace to a subspace.

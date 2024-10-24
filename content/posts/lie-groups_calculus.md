@@ -293,7 +293,7 @@ Immediately, we have the following property at all $g\in G$:
 In the following, we assume that $(E\_i)\_{i=1}^n$ and $(\varepsilon^i)\_{i=1}^n$ are left-invariant. Analogous arguments follow for the right-invariant case. The only caveat is that the left-invariant and right-invariant metrics and volume forms may or may not turn out to be the same, as discussed in [my previous post](/posts/lie-groups_construction/#geometry).
 <!-- In short, we say that Lie groups are [parallelizable](https://en.wikipedia.org/wiki/Parallelizable_manifold) manifolds; also see [this](/posts/lie-groups/#representation-theory).  -->
 
-### Left-Invariance of Vector Fields
+### 🍩 Left-Invariance of Vector Fields
 
 
 Let's scrutinize the left-invariance of $E_i$. Pretend that the left-multiplication map sends $G$ to another Lie group, $G^💧$! 

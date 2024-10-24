@@ -23,12 +23,12 @@ To appreciate the aspects of vector fields that I will touch upon requires at le
 
 ## The Coordinate-Free Approach
 
-The undergrad course on linear algebra at IIT Madras (my alma mater) relies heavily on coordinates. Or maybe it did not emphasize enough [the distinction between vectors and their representations via coordinates](/posts/matrix), so that I was not privy to [the underlying structure of vector spaces](/posts/vector) until very recently. My fond dislike for coordinate-based linear algebra probably stems from this, though I think there's a case to be made for (to quote one of my mathematical progenitors) speaking as many different languages as one can. This allows one to see the same mathematical object from different perspectives, not unlike how one walks around a sculpture at an art exhibit, appreciating not only the finer details of the craftsmanship but also the overall intent.
+The undergrad course on linear algebra at IIT Madras (my alma mater) relies heavily on coordinates. Or maybe it did not emphasize enough [the distinction between vectors and their representations via coordinates](/posts/matrix), so that I was not privy to [the underlying structure of vector spaces](/posts/vector) until very recently. My fond dislike for coordinate-based linear algebra probably stems from this, though I think there's a case to be made for speaking as many different languages as one can. This allows one to see the same mathematical object from different perspectives, not unlike how one walks around a sculpture at an art exhibit, appreciating not only the finer details of the craftsmanship but also the overall intent.
 
-The <span class=accented>coordinate-based approach</span> to linear algebra begins by choosing (often implicitly) a basis called [the standard basis](/posts/matrix/#the-standard-basis) for each vector space that is encountered. It is once we have fixed the choice of the standard basis that we forget (typically for notational convenience) that a basis was ever in need of being chosen. We instead resort to dealing solely with the coordinate representations of the vectors. This is not a bad thing by any means, it provides a two-pronged (algebraic $+$ numerical) framework for analyzing linear transformations by way of matrix multiplication, something that underlies a lot of the modern-day engineering marvels. The case for the <span class=accented>coordinate-free approach</span> is then that it reveals the underlying structure of the vector space by breaking free of the shackles of a fixed basis.
+The <span class=accented>coordinate-based approach</span> to linear algebra begins by choosing (often implicitly) a basis called [the standard basis](/posts/matrix/#the-standard-basis) for each vector space that is encountered. It is once we have fixed the choice of the standard basis that we forget (typically for notational convenience) that a basis was ever in need of being chosen. We instead resort to dealing solely with the coordinate representations of the vectors. This is not a bad thing by any means, it provides a two-pronged (algebraic $+$ numerical) framework for analyzing linear transformations by way of [matrix multiplication](/posts/matrix/), something that underlies a lot of the modern-day engineering marvels. The case for the <span class=accented>coordinate-free approach</span> is then that it reveals the underlying structure of the vector space by breaking free of the shackles of a fixed basis.
 Indeed, some of the most influential ideas in classical and quantum physics were arrived at by recognizing that no frame of reference is more canonical than the other. The fact that the laws of physics don't change when we switch from one frame of reference to another leads to the famous conservation laws of physics; see <a href=https://en.wikipedia.org/wiki/Noether%27s_theorem class=accented>Noether's theorem</a>. By requiring that the speed of light remain unchanged while switching frames of reference, Einstein was able to uncover key insights that contributed to his theory of special relativity.[^1] In a similar vein, by requiring that a vector remain unchanged under a change of basis, we arrive at a rich algebraic and geometric structure that is ripe for mathematical exploration.
 
-[^1]: As the story goes, he once saw a painter fall off of the roof of a building. Considering the perceived inertial forces (or the lack thereof) from the painter's perspective led to the development of the [general theory of relativity](https://en.wikipedia.org/wiki/General_relativity). Einstein later described this observation as the 'happiest thought of his life'.
+[^1]: As the story goes, he once saw a painter fall off of the roof of a building. By considering the inertial forces (or the lack thereof) perceived in the painter's frame of reference during the fall, he inched closer to his invention of the [general theory of relativity](https://en.wikipedia.org/wiki/General_relativity). Einstein later described this observation as the 'happiest thought of his life'.
 
 ## Covariance and Contravariance
 
@@ -70,14 +70,14 @@ Given an invertible matrix $\mathbf A$, we see that
 This hints at a recurring idea in vector and tensor algebra, that the components (or coordinates) of a vector transform *in an opposite way* to that of the basis vectors. In the language of tensor algebra, we say that the basis vectors transform in a <span class=accented>covariant</span> manner, whereas its components transform in a <span class=accented>contravariant</span> manner. Here, *co-* and *contra-* are supposed to work as antonyms, although beware that the prefix *co-* is used rather inconsistently[^3] in the larger context of mathematics and English. As the basis vectors and the components of $\mathbf v$ both transform in opposite ways, the vector $\mathbf v$ remains unchanged.[^2] 
 
 <aside class=aside-right>
-The basis vectors are said to constitute a type $(0,1)$ tensor, whereas its coordinates constitute a type $(1,0)$ tensor. In general, the transformation of a type $(k,l)$ tensor is given by a mixture of the above two rules; it has $k$ contravariant and $l$ covariant components.
+The components of a vector are said to constitute a type $(1,0)$ tensor. In general, the transformation of a type $(k,l)$ tensor is given by a mixture of the above two rules; it has $k$ contravariant and $l$ covariant components. This is what is meant when one says that <i>"a vector is a contravariant tensor of rank 1."</i>
 </aside>
 
 [^2]: If you're familiar with [basic category theory](/posts/cat_theory_1), connect this to the concept of an [opposite category](https://en.wikipedia.org/wiki/Opposite_category).
 
 [^3]: See the answer by Kevin Lin [here](https://www.quora.com/What-is-the-meaning-of-prefix-co-in-mathematics#:~:text=In%20mathematics%2C%20the%20prefix%20%22co,the%20complement%20of%20a%20set.).
 
-This is analogous to what would happen if you were measuring the length of a rubber band with a ruler made of rubber. Suppose you measured its length as $1\textrm{cm}$ on Tuesday and $2\textrm{cm}$ on Thursday, what can be deduced about the state of affairs on Thursday? Well, maybe somebody stretched the rubber band to twice its size and held it there, causing the length measurement to increase. Alternatively, they might have painstakingly compressed the ruler to half its length, achieving the same increase in the length measurement. These opposing viewpoints of the same phenomenon are ones that we should become comfortable walking back and forth between. It is a manifestation of the idea of <span class=accented>duality</span> that shows up quite often in mathematics. While the notion of duality is fundamental enough that it persists even across a coordinate-heavy treatment of vector spaces, it is brought to the forefront in the modern approach to linear algebra.
+This is analogous to what would happen if you were measuring the length of a rubber band with a ruler made of rubber. Suppose you measured its length as $1\textrm{cm}$ on Tuesday and $2\textrm{cm}$ on Thursday, what can be deduced about the state of affairs on Thursday? Well, maybe somebody stretched the rubber band to twice its size and held it there, causing the length measurement to increase. Alternatively, they might have painstakingly compressed the ruler to half its length, achieving the same (perceived) increase in the length measurement. These opposing viewpoints of the same phenomenon are ones that we should become comfortable walking back and forth between. It is a manifestation of the idea of <span class=accented>duality</span> that shows up quite often in mathematics. While the notion of duality is fundamental enough that it persists even across a coordinate-heavy treatment of vector spaces, it is brought to the forefront in the modern approach to linear algebra.
 
 ## Duality
 
@@ -92,7 +92,7 @@ w(\mathbf v + \mathbf w) &= w(\mathbf v) + w(\mathbf w) \\ w(t \mathbf v) &= t w
 </p>
 
 where $t\in \mathbb R$ and $\mathbf v, \mathbf w \in V$. Given $v, w \in V^\*$, their addition is defined by the rule $(v+w)(\cdot) = v(\cdot) + w(\cdot)$, and scalar multiplication is defined similarly. Thus, $V^\*$ is indeed a vector space.
-The object $w\in V^\*$ is called a dual vector, a covector, a linear functional, a linear form, or a [one-form](https://en.wikipedia.org/wiki/Linear_form). In contrast, the object $\mathbf v \in V$ is called a vector or a <span class=accented>one-vector</span>.
+The object $w\in V^\*$ is called a dual vector, a covector, a linear functional, a linear form, or a [one-form](https://en.wikipedia.org/wiki/Linear_form). In contrast, the object $\mathbf v \in V$ is simply called a vector.
 
 
 <aside class=aside-right>
@@ -102,7 +102,7 @@ You will see a lot of accounts using 'one-form' to mean a differential one-form,
 Suppose that the vector space $V$ is endowed with an inner product, $\langle \cdot, \cdot \rangle:V\times V \rightarrow \mathbb R$. The inner product is by definition (and therefore, by construction) linear in each of its arguments. So, given a vector $\mathbf v\in V$, the mapping $\langle \mathbf v, \cdot \rangle:V \rightarrow \mathbb R$ passes all the requirements for its membership in $V^\*$. Let's define $\mathbf v^\flat (\cdot)=\langle \mathbf v, \cdot \rangle$ such that $\mathbf v^\flat\in V^*$. The inner product thus *induces* a mapping $\mathbf v \mapsto \mathbf v^\flat$ that associates each vector $\mathbf v$ with a corresponding covector $\mathbf v^\flat\in V^\*$. Conversely, we can associate to each covector $f$ a vector $f^\sharp \in V$, which is the vector that satisfies $\langle f^\sharp, \mathbf v\rangle = f(\mathbf v)$.
 
 
-We say that $V$ and $V^\*$ are isomorphic (i.e., have the same underlying structure) as vector spaces, and use '$\sharp$' and '$\flat$' (which are called the [musical isomorphisms](https://en.wikipedia.org/wiki/Musical_isomorphism)) to 'translate between the languages' of the two vector spaces. In high school and undergraduate linear algebra, we might have written $\mathbf v^\top$ to refer to the dual version of (i.e., the covector that is paired to) $\mathbf v$ (it helps that 'covector' rhymes with 'row-vector'). The musical isomorphisms generalize the notion of a transpose by permitting it to operate differently in either direction. The musical meaning of '$\sharp$' and '$\flat$' (raising/lowering a note) is still relevant; it corresponds to the raising/lowering of indices. Take a look again at <span class=accented>$(1)$</span>, and see that I have used the choice of index (superscript vs. subscript) to distinguish the contravariant and covariant pieces.
+On account of this <i>pairing</i> between vectors and covectors, we say that $V$ and $V^\*$ are isomorphic (i.e., have the same underlying structure) as vector spaces, and use '$\sharp$' and '$\flat$' (which are called the [musical isomorphisms](https://en.wikipedia.org/wiki/Musical_isomorphism)) to 'translate between the languages' of the two vector spaces. In high school and undergraduate linear algebra, we might have written $\mathbf v^\top$ to refer to the dual version of (i.e., the covector that is paired to) $\mathbf v$; it helps that 'covector' rhymes with 'row-vector'. The musical isomorphisms generalize the notion of a transpose by permitting it to operate differently in either direction. The musical meaning of '$\sharp$' and '$\flat$' (raising/lowering a note) is still relevant; it corresponds to the raising/lowering of indices. Take a look again at <span class=accented>$(1)$</span>, and see that I have used the choice of index (superscript vs. subscript) to distinguish the contravariant and covariant pieces.
 <!-- If you use a ruler to measure the shadow cast by a thin, straight wooden stick, you can either measure an appreciably large number or a diminishingly small one depending on how the stick is oriented. -->
 
 ## Topology
@@ -114,7 +114,7 @@ All of the above was introduced in the absence of a smooth manifold, which sugge
 3. [Charts and smooth structures](https://en.wikipedia.org/wiki/Atlas_(topology)) on topological spaces; a cursory understanding of the jargon should be sufficient for our purpose (which is to have fun)
 4. Homeomorphisms (and diffeomorphisms), which are continuous (differentiable) maps that have continuous (differentiable) inverses
 
-These topics are also covered in the first chapter of [Introduction to Smooth Manifolds](https://link.springer.com/book/10.1007/978-1-4419-9982-5), by John M. Lee.
+These topics are also covered in the first chapter of [Introduction to Smooth Manifolds](https://link.springer.com/book/10.1007/978-1-4419-9982-5) by John M. Lee.
 
 An often overlooked requirement for studying differential geometry is the ability to conceptualize the *composition* of functions. Given $f_1:A \rightarrow B$ and $f_2:B \rightarrow C$, their composition $f_2 \circ f_1:A \rightarrow C$ can be read out aloud as '$f_2$ *after* $f_1$'. It is the composition of $f_1$ with $f_2$. The order in which $f_1$ and $f_2$ appear in the preceding statements is a source of confusion that can be eliminated by drawing some arrow diagrams. Alternatively, remember that $f_2 \circ f_1 (\cdot) = f_2\left(f_1(\cdot)\right)$, so the functions must be ordered such that the image of $f_1$ is contained in the domain of $f_2$. Finally, $C^1(\mathcal D)$ is the set of all functions that are defined on the domain $\mathcal D$ whose first derivative is continuous (i.e., are differentiable). A function is said to be *smooth* if it's in $C^\infty (\mathcal D)$, though the distinction between $C^1$ and $C^\infty$ is not entirely relevant given the rigor of this article.
 
@@ -122,28 +122,34 @@ An often overlooked requirement for studying differential geometry is the abilit
 
 # Tangent & Cotangent Spaces of $\mathcal M$
 
-Any $n$-dimensional vector space is isomorphic to $\mathbb R^n$, which is to say that it can only differ superficially from $\mathbb R^n$. This begs the question of what happens in $n$-dimensional spaces that differ from $\mathbb R^n$ in some meaningful way. Of particular interest to us (and to physicists and roboticists) are spaces that are *curved*. Einstein was interested in the geometry of a particular curved four-dimensional space (composed of one temporal and three spatial dimensions). A prototypical example to keep in mind is the surface of a ball in $\mathbb R^3$, which is a $2$-dimensional manifold; each point on its surface has a neighborhood that appears to be a $2$-dimensional plane (hence arises the confusion of flat-earthers).
+Any $n$-dimensional vector space is isomorphic to $\mathbb R^n$, which is to say that it can only differ superficially from $\mathbb R^n$. After choosing bases for either space, we are reduced to working with coordinates, and the distinction between the two spaces is lost.
 
+This begs the question of what happens in $n$-dimensional spaces that differ from $\mathbb R^n$ in some meaningful way. Of particular interest to us (and to physicists and roboticists) are spaces that are *curved*. Einstein was interested in the geometry of a particular curved four-dimensional space (composed of one temporal and three spatial dimensions).[^spacetime]
+A prototypical example to keep in mind is the surface of a ball in $\mathbb R^3$, which is a $2$-dimensional manifold; each point on its surface has a neighborhood that appears to be a $2$-dimensional plane (hence arises the confusion of flat-earthers).
+
+[^spacetime]: Actually, the spacetime described by Einstein's theory of special relativity is not curved, but flat, and is called [Minkowski spacetime](https://en.wikipedia.org/wiki/Minkowski_space). The [curvature of spacetime](https://en.wikipedia.org/wiki/Curved_spacetime) is introduced in the theory of general relativity, which incorporated the effects of gravity.
 
 ## The Tangent Space at $p$
 An $n$-dimensional manifold has the property that it locally (but not necessarily globally) resembles (i.e., is homeomorphic to) the $n$-dimensional Euclidean space. We will denote throughout an arbitrary manifold by $\mathcal M$. At each point $p\in \mathcal M$, there is (at least one) <span class=accented>chart</span> $(U, h)$ such that $U\subseteq \mathcal M$ is an open set containing $p$ and $h:U\rightarrow U^\prime$ maps the points in $U$ to those in an open set $U^\prime \subseteq \mathbb R^n$. We say that the manifold is differentiable if the given collection of charts constitutes a <span class=accented>smooth atlas</span>; a smooth atlas is a collection of charts that are compatible with each other in a way that lets us (unambiguously) walk back and forth between $\mathcal M$ and its local descriptions in $\mathbb R^n$ for all our differentiation purposes.
 
-The points on $\mathcal M$ do not constitute a vector space, as we don't necessarily know what it means to 'add two points on a manifold', and vector spaces must (amongst other things) have addition. Given a chart $(U, h)$, $h(U)\subseteq U^\prime$ is not a vector space either (as it's not necessarily closed under addition). It will take some more effort to define a vector space at each point $p$ of $\mathcal M$, which will be called the <span class=accented>tangent space of $\mathcal M$ at $p$</span>, and denoted $T_p \mathcal M$. A naive (and potentially misleading) picture of the tangent space is that of a hyperplane touching $\mathcal M$ at $p$. A more rigorous picture is given by the following diagram:
+The points on $\mathcal M$ do not constitute a vector space, as we don't necessarily know what it means to 'add two points on a manifold', and vector spaces must (amongst other things) have some notion of addition. Given a chart $(U, h)$, $h(U)\subseteq U^\prime$ is not a vector space either (as it may not be closed under addition; a vector space extends indefinitely in all directions due to scalar multiplication). It will take some more effort to define <span class=accented>a vector space at each point $p$ of $\mathcal M$</span>, which we will call the <span class=accented>tangent space of $\mathcal M$ at $p$</span>, and denoted $T_p \mathcal M$. A naive (and potentially misleading) picture of the tangent space is that of a plane touching $\mathcal M$ at $p$. A more rigorous picture is given by the following diagram:
 
 
 <figure class=invertible style="max-width: 100%; " id="fig:paths">
 <img src=/post-images/differential_forms/paths_shaded.png>
 </figure>
 
-Here, $\gamma:[-1,1] \rightarrow \mathcal M$ is a differentiable map (in the sense that $h\circ \gamma:[-1,1]\rightarrow \mathbb R^n$ is differentiable). As we vary $t\in[-1,1]$, $\gamma(t)$ traces out a <span class=accented>path</span> (or a curve[^4]) on $\mathcal M$. $f:\mathcal M \rightarrow \mathbb R$ is an arbitrary differentiable function on $\mathcal M$ (written as $f \in C^1(\mathcal M)$) whose arbitrariness will play a key role in our construction of tangent vectors.
+Here, $\gamma:[-1,1] \rightarrow \mathcal M$ is a differentiable map, in the sense that $h\circ \gamma:[-1,1]\rightarrow \mathbb R^n$ is differentiable. As we vary $t\in[-1,1]$, $\gamma(t)$ traces out a <span class=accented>path</span> (or a curve[^4]) on $\mathcal M$. $f:\mathcal M \rightarrow \mathbb R$ is an arbitrary differentiable function on $\mathcal M$ (written as $f \in C^1(\mathcal M)$) whose arbitrariness will play a key role in our construction of tangent vectors.
 
 Let $\gamma(0)=p$ and $\gamma(\epsilon)=p^\prime$ for some $0<\epsilon \approx 0$.
-The idea of 'differentiation on manifolds' is to capture the change in the value of $f$ as we move from $p$ to $p^\prime$. The choice of the map $\gamma$ (subject to the constraint that it is differentiable and that $\gamma(0)=p$) decides how fast, and in what direction $\gamma(t)$ crosses $p$, leading to the notion of a <span class=accented>directional derivative</span> at $p$. A path $\tilde \gamma$ might zip past $p$ twice as fast as $\gamma$, such that $\tilde \gamma(\epsilon/2) = p^\prime$, i.e., $\tilde \gamma$ took only 'half as much time' as $\gamma$ to get from $p$ to $p^\prime$. One way to do this is to define $\tilde \gamma(t)=\gamma(2t)$, which speeds up the evolution of time by a factor of $2$. Thus, by allowing time to elapse faster, slower, or backward, we have something resembling the scalar multiplication of vectors.
+The idea of 'differentiation on manifolds' is to capture the change in the value of $f$ as we move from $p$ to $p^\prime$. The choice of the map $\gamma$ (subject to the constraint that it is differentiable and that $\gamma(0)=p$) decides how fast, and in what direction $\gamma(t)$ crosses $p$, leading to the notion of a <span class=accented>directional derivative</span> at $p$. 
+If we define a new path $\tilde \gamma(t)\coloneqq\gamma(2t)$ for $t\in[-0.5, 0.5]$, i.e., we speed up the evolution of time by a factor of $2$, then $\tilde \gamma$ will zip past $p$ twice as fast as $\gamma$.
+Indeed, since $$\tilde \gamma(\epsilon/2) =  \gamma(\epsilon) =p^\prime,$$ we see that $\tilde \gamma$ took only 'half as much time' as $\gamma$ to get from $p$ to $p^\prime$. Thus, by allowing time to elapse faster, slower, or backward, we have something resembling the scalar multiplication of vectors.
 
 However, the paths (or functions) $\gamma$ themselves are not the tangent vectors. This is because the tangent space at $p$ is not concerned with how the paths behave away from $p$, rather, it looks at how the infinitesimal displacements near $p$ change the value of an arbitrary smooth function $f$. A suitable definition of a tangent vector is as the [equivalence class](https://en.wikipedia.org/wiki/Equivalence_class) of (i.e., the set of all) paths that zip past $p$ with the same direction and speed; each of these paths corresponds to the same tangent vector as the paths are indistinguishable near $p$. 
-Similarly, our usual notion of *a tangent of a function* has an alternative interpretation: it is identified with the set of all functions whose first-order Taylor series approximations agree (at a given point):
+Similarly, our usual notion of *the tangent of a function (at some point)* has an alternative interpretation: it represents the set of all functions whose first-order Taylor series approximations (at the given point) are identical:
 
-<figure class=invertible style="max-width: 65%;">
+<figure class=invertible style="max-width: 75%;">
 <img src=/post-images/differential_forms/tangent.png>
 </figure>
 
@@ -155,7 +161,7 @@ Given a tangent vector $\mathbf v\in T_p \mathcal M$, we can pick a representati
 <p>
 \[
     \begin{align}
-    \mathbf v(f) = \frac{d}{dt}[f\circ\gamma (t)]_{t=0}
+    \mathbf v(f) = \frac{d}{dt}[f\circ\gamma](t)\Big\vert_{t=0}
     \end{align}
     \]
     </p>
@@ -172,7 +178,7 @@ So is a function $f\in C^1(\mathcal M)$ a covector? Not quite.
 We could not simply identify the tangent vectors with the paths/curves on $\mathcal M$ passing through $p$ because it would lead to inadvertent double-counting; two paths that are indistinguishable near $p$ would get counted as two distinct tangent vectors, which is not the case. A similar problem arises if we try to identify the functions $f\in C^1(\mathcal M)$ with covectors. Two functions that behave similarly near $p$ would get counted as different cotangent vectors, even though they extract the same measurement out of a given vector.
 
 <aside class=aside-right>
-Note that we tend to say that covectors measure vectors, which is in direct opposition to the observation that directional derivatives (represented by vectors) operate on functions (represented in a sense, by covectors). It would seem more natural then to stipulate that 'vectors measure covectors'. Nonetheless, it's a good idea to brush aside this urge to make sense of the phrasing and instead focus on the underlying mathematical structure.
+Note that we tend to say that covectors measure vectors, which is in direct opposition to the observation that directional derivatives (represented by vectors) operate on functions (represented by covectors). It would seem more natural then to stipulate that 'vectors measure covectors'. Nonetheless, it's a good idea to move past this urge to make sense of the phrasing and instead focus on the underlying mathematical structure.
 </aside>
 
 So, we do the same thing as before. Denote by $df$ a <span class=accented>cotangent vector</span>, covector, or one-form at $p$, defined as the equivalence class of all the functions that have the same directional derivatives at $p$. In other words, functions $f_1,f_2\in C^1(\mathcal M)$ are associated to the same covector $df$ as long as $\mathbf v(f_1) = \mathbf v(f_2)$
@@ -180,7 +186,12 @@ for all $\mathbf v \in T_p \mathcal M$.
 Since $df$ is itself something that operates on vectors, we define $df$ such that its operation on the vectors is given by $df(\mathbf v) = \mathbf v(f)$, where the $f$ can be any representative from the equivalence class of $df$.
 The set of all covectors at $p$ make up the <span class=accented>cotangent space of $\mathcal M$ at $p$</span>, which is denoted as $T^\*_p\mathcal M$ on account of its duality to $T_p\mathcal M$. 
 
-For example, if $\mathcal M=\mathbb R$, then $T_p \mathbb R$ is a one-dimensional vector space that encapsulates how fast we are moving past $p\in \mathbb R$, and whether our movement is to the left or to the right; the directions *left* and *right* are related by a change of sign. In this case, $T^*_p \mathbb R$ can be identified with the set of all slopes that a Taylor series approximation of some function (at $p\in\mathbb R$) could have. Its dimension is also one, as the only choice of freedom here is the slope of the line. Before moving on from this example, reflect upon what a path $\gamma :[-1,1]\rightarrow \mathbb R$ on this manifold might possibly look like.
+For example, if $\mathcal M=\mathbb R$, then $T_p \mathbb R$ is a one-dimensional vector space that encapsulates how fast we are moving past $p\in \mathbb R$, and whether our movement is to the left or to the right; the directions *left* and *right* are related by a change of sign. In this case, $T^\*\_p \mathbb R$ can be identified with the set of all slopes that a Taylor series approximation of some function (at $p\in\mathbb R$) could have. Its dimension is also one, as the only choice of freedom here is the slope of the line. Observe that
+$$
+T\_p \mathbb R \cong T^*\_p \mathbb R \cong (-\infty, \infty) = \mathbb R.
+$$
+The first isomorphism holds for all (finite-dimensional) tangent spaces, but the second isomorphism generally only holds for Euclidean spaces. It is certainly NOT the case that $T_p \mathcal M \cong \mathcal M$ in general.
+Before moving on from the above example, reflect upon what a path $\gamma :[-1,1]\rightarrow \mathbb R$ on the manifold $\mathbb R$ might look like.
 
 <!-- To see how the addition and scalar multiplication of tangent vectors can be made concrete in terms of (the equivalence classes of) paths, refer to Lee's book. We will instead switch to a more familar perspective by introducing a basis. -->
 
@@ -201,8 +212,9 @@ An arbitrary vector $\mathbf v \in T_p \mathcal M$ can therefore be expressed as
 with $v^i\in \mathbb R$. 
 
 <aside class=aside-center>
-<b>Remark:</b> Some authors reserve the notation '$\lbrace \partial/\partial x^i \rvert_{h(p)}\rbrace$' for the standard basis vectors of $T_{h(p)}\mathbb R^n$, with $h(p) \in \mathbb R^n$, whereas the (abuse of) notation I've used follows from that of <a href=https://store.doverpublications.com/0486658406.html class=accented>Lovelock and Rund (p. 334)</a>.
-The distinction between the two is clear once we consider what a directional derivative on a manifold $\mathcal M$ should do: it's a mapping from $C^1(\mathcal M)$ to $\mathbb R$ (i.e., it computes the derivative of a function at a given point on $\mathcal M$ along the prescribed direction).  When treated as a basis vector of $T_p \mathcal M$, $\lbrace{\partial/\partial x^i \rvert_p\rbrace}$ are related to '$\lbrace \partial/\partial x^i \rvert_{h(p)}\rbrace$' by the <a href=#pushforwards-and-pullbacks class=accented>pushforward</a> map corresponding to $h^{-1}$.
+<b>Remark:</b> Ideally, we should reserve the notation "$\partial/\partial x^i \rvert_{h(p)}$" for the standard basis vectors of $T_{h(p)}\mathbb R^n$, with $h(p) \in \mathbb R^n$, and use different notation for the tangent vectors of $T_p\mathcal M$.
+The (abuse of) notation I've used follows from that of <a href=https://store.doverpublications.com/0486658406.html class=accented>Lovelock and Rund (p. 334)</a>.
+The distinction between the two is clear once we consider what a directional derivative on a manifold $\mathcal M$ should do: it's a mapping from $C^1(\mathcal M)$ to $\mathbb R$, i.e., it computes the derivative of a $C^1(\mathcal M)$ function at a given point on $\mathcal M$, along a prescribed direction. The object ${\partial/\partial x^i \rvert_p}$ is related to "$ \partial/\partial x^i \rvert_{h(p)}$" by the <a href=#pushforwards-and-pullbacks class=accented>pushforward</a> map corresponding to $h^{-1}$.
 </aside>
 
 <!-- Suppose we are given an inner product $\langle \cdot, \cdot \rangle:T_p\mathcal M \times T_p\mathcal M \rightarrow \mathbb R$. Recall that the inner product allows us to turn vectors into covectors via the musical isomorphism '$\flat$'. -->
@@ -241,21 +253,22 @@ Decompose the chart $h$ into its constituent <span class=accented>coordinate fun
 </p>
 
 
-such that $x^1(p^\prime), \dots, x^n(p^\prime)$ are the coordinates of a point $p^\prime \in U$ with respect to the chart $(U, h)$ at $p$. Thus, $x^i:U \rightarrow \mathbb R$. It appears as if we have defined the basis vector $dx^i_p$ such that 
+such that $x^1(p^\prime), \dots, x^n(p^\prime)$ are the coordinates of a point $p^\prime \in U$ with respect to the chart $(U, h)$ that contains $p$. Thus, $x^i:U \rightarrow \mathbb R$. It appears as if we have defined the basis covector $dx^i_p$ such that 
 
 <p>
 \[
 \begin{align}
-    dx^i_p\Big(\frac{\partial}{\partial x^j}\Big\rvert_p\Big) = \frac{\partial}{\partial x^j}\Big\rvert_p(x^i),
+    dx^i_p\Big(\frac{\partial}{\partial x^j}\Big\rvert_p\Big) = \frac{\partial}{\partial x^j}\Big\rvert_p\big(x^i\small\big),
 \end{align}
 \]
 </p>
 
-which is indeed the case, i.e., $x^i$ is a representative function from the equivalence class of $dx^i_p$ (in fact, this statement holds for all $p\in U$).
+where the $x^i$ on the right-hand side refers to a *function*.
+Thus, $x^i$ is a representative function from the equivalence class of $dx^i_p$ (in fact, this statement holds for all $p\in U$).
 
 
 ## The Euclidean Case
-When $\mathcal M = \mathbb R^n$, there is a canonical inner product on $T_p\mathbb R^n$ that has a diagonal/Dirac delta structure,
+When $\mathcal M = \mathbb R^n$ and we have chosen a basis, there is a canonical inner product on $T_p\mathbb R^n$ that has a diagonal (identity matrix) structure,
 
 <p>
 \[
@@ -265,8 +278,8 @@ When $\mathcal M = \mathbb R^n$, there is a canonical inner product on $T_p\math
     \]
 </p>
 
-called the *Euclidean* or *flat* inner product.
-Since $dx^i_p\big(\frac{\partial}{\partial x^j}\Big\rvert_p\big) = \delta_{ij}$ also, we have (in the Euclidean case),
+which is colloquially called the *standard* inner product for $\mathbb R^n$.
+Since $dx^i_p\big(\frac{\partial}{\partial x^j}\Big\rvert_p\big) = \delta_{ij}$ also, we have in this case,
 
 <p>
 \[dx^i_p = \frac{\partial}{\partial x^i}\Big\vert_p^{\flat}, \quad {dx^i_p}^\sharp = \frac{\partial}{\partial x^i}\Big\vert_p. \]
@@ -304,7 +317,7 @@ Using simple manipulations, we can offer alternative interpretations to the prev
     \]
 </p>
 
-Now behold, for something striking will occur when we combine <span class=accented>(8)</span> and  <span class=accented>(18)</span>:
+Now behold, for something striking will occur when we combine <span class=accented>(9)</span> and  <span class=accented>(18)</span>:
 
 <p>
 \[
@@ -322,12 +335,13 @@ This is nothing but the multivariable chain rule, which relates the [differentia
 The usage of <i>differential</i> here plays a different role from its usage in 'differential forms/geometry'. In the latter, it refers to the fact that a form/geometry is defined on the entirety of a manifold (and is in a certain sense, differentiable). More on that later.
 </aside> -->
 
-It should be noted that the measurement of a vector by a covector can be defined in the absence of an inner product, but we do need an inner product to be able to make sense of the musical isomorphisms. 
+It should be noted that the measurement of a vector by a covector can be defined in the absence of an inner product; even the dual basis of covectors is defined uniquely.
+However, we do need an inner product to be able to make sense of the musical isomorphisms. Simply because the musical isomorphisms *by definition* refer to the pairing between vectors and covectors induced by the inner product.
 
 ## The Non-Euclidean Case
 
 While it's always possible to choose a chart $(U, h)$ containing $p$ such that $\frac{\partial}{\partial x^i}\big\rvert_p$ is orthonormal, it is seldom possible to choose an 'orthonormal coordinate system' whose coordinate vector fields are orthonormal at all points of $U$. Alternatively, the existence of such a chart would imply that the manifold is of a very special type: it is *flat*. Cylinders, cones, and other objects that can be wrapped with a sheet of paper without tearing, wrinkling, or folding the paper are examples of flat manifolds.
-I touch upon this point in [a later post](/posts/sphere). Such considerations will only arise when we try to extend the basis of $T_p \mathcal M$ into a *frame*, so the reader need not dwell on this point too much right now.
+I touch upon this point in [a later post](/posts/sphere). Such considerations will only arise when we try to extend the basis of $T_p \mathcal M$ into a *frame*, so the reader need not dwell on this point too much right now, and may skip comfortably to the next section.
 
 A <span class=accented>Riemannian metric</span> $g_{(\cdot)}$ is an object that takes as input a point $p\in \mathcal M$ to become an inner product on $T_p \mathcal M$, written as $g_{p}(\cdot, \cdot)$ or $\langle \cdot,\cdot\rangle\_p$ depending on the author. What we have done above is to stipulate that $g_{p}(\frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j})=\delta_{ij}$. More generally, one introduces a convenient coordinate system on $U\subseteq \mathcal M$ (for instance, [the spherical polar coordinates of a sphere](/posts/sphere#the-sphere)) and then specifies (or when there is some natural choice of metric, computes) the 'components of the metric tensor', collected into a matrix of numbers, $g_{ij}(p)$. Each of these components is required to be a smooth function of $p$ -- a requirement that marries the differential structure of $\mathcal M$ to its geometric structure. In the general case, we write
 
@@ -337,7 +351,20 @@ A <span class=accented>Riemannian metric</span> $g_{(\cdot)}$ is an object that 
 \]
 </p>
 
-When stored as the entries of a matrix, $g_{ij}(p)$ are related to the Jacobian matrix of the parameterization evaluated at $p$, and the corresponding determinant tells us how much the parameterization *stretches* or *squishes* the space near $p$. There are other ways to compute $g_{ij}(p)$; for instance, when the manifold is not parameterized but given by an implicit equation (such as '$x^2 + y^2 + z^2=0$'), it is not clear which Jacobian must be evaluated. See [the books](https://www.amazon.com/Stochastic-Models-Information-Theory-Groups/dp/081764802X) by G. S. Chirikjian for more details about these computations.
+When stored as the entries of a matrix, $g_{ij}(p)$ are related to the Jacobian matrix of the parameterization evaluated at $p$, and the corresponding determinant tells us how much the parameterization *stretches* or *squishes* the space near $p$. Letting $g^{ij}(p)$ denote the entries of the inverse matrix, the musical isomorphisms are computed as follows:
+
+<p>
+\[
+    \begin{align}
+    \frac{\partial}{\partial x^i}\Big\rvert_p^\flat = g_{ij}(p)\,dx^j_p, \quad {dx^i_p}^\sharp = g^{ij}(p)\frac{\partial}{\partial x^j}\Big\rvert_p,
+    \end{align}
+    \]
+</p>
+
+These operations are sometimes referred to as <span class=accented>lowering</span> and <span class=accented>raising</span> of index (respectively) for obvious reasons.
+There are other ways to compute $g_{ij}(p)$; for instance, when the manifold is not parameterized but given by an implicit equation (such as '$x^2 + y^2 + z^2=0$'), it is not clear which Jacobian must be evaluated. See [the books](https://www.amazon.com/Stochastic-Models-Information-Theory-Groups/dp/081764802X) by G. S. Chirikjian for more details about these computations.
+
+It is also possible to define a non-standard Riemannian metric for $\mathbb R^n$ which is nonetheless "Euclidean", i.e., represents a "flat" space. This is the case when the coefficients $g_{ij}(p)$ are each constant as functions of $p$, for instance.
 
 ## Tangent/Cotangent Bundles
 

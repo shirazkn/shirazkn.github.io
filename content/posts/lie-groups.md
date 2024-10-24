@@ -41,7 +41,7 @@ This post is by no means meant to be an introduction to Lie groups; for that, I 
 
 
 <aside class=aside-center>
-<b>Prerequisites:</b> Conceptual understanding of the <a href=/posts/differential-forms/#tangentcotangent-spaces class=accented>tangent spaces of a smooth manifold</a> and familiarity with the standard examples of matrix Lie groups, including $SO(n)$, $GL(n,\mathbb R)$ and $\mathbb R^n$.
+<b>Prerequisites:</b> Conceptual understanding of the <a href=/posts/vector-fields/#tangentcotangent-spaces class=accented>tangent spaces of a smooth manifold</a> and familiarity with the standard examples of matrix Lie groups, including $SO(n)$, $GL(n,\mathbb R)$ and $\mathbb R^n$.
 </aside>
 
 --- 
@@ -421,7 +421,7 @@ To do this, we first need to understand [vector fields as derivations](https://m
     \]
     </p>
 
-with $f_1\cdot f_2$ indicating pointwise multiplication of $C^\infty(G)$ functions. Vector fields are derivations [by construction](/posts/differential-forms), though we haven't had to emphasize this aspect of them until now. When $X$ acts on a $C^\infty(G)$ function $f$, we will treat it as a derivation, but when $g \in G$, we will treat $X(g)$ as a tangent vector (which acts on [one-forms](/posts/differential-forms) instead).
+with $f_1\cdot f_2$ indicating pointwise multiplication of $C^\infty(G)$ functions. Vector fields are derivations [by construction](/posts/vector-fields), though we haven't had to emphasize this aspect of them until now. When $X$ acts on a $C^\infty(G)$ function $f$, we will treat it as a derivation, but when $g \in G$, we will treat $X(g)$ as a tangent vector (which acts on [one-forms](/posts/vector-fields) instead).
 
 For $X,Y\in \mathfrak X(G)$ and $f_1,f_2\in C^\infty(G)$, since $Y(f_1\cdot f_2)$ is again a $C^\infty(G)$ function, we can have $X$ act on it as follows:
 
@@ -532,7 +532,7 @@ In particular, the adjoint representations $\textrm{Ad}$ and $\textrm{ad}$ are r
 
 Either representation ($\textrm{Ad}/\textrm{ad}$) is uninteresting when $\odot$ is commutative, in which case conjugation reduces to the identity map ($g\odot h \odot g^{-1} = h$) and the Lie bracket of $\mathfrak g$ vanishes identically. However, they are indispensable tools for studying non-commutative groups. In what follows, we will demonstrate yet another line of investigation in which the adjoint representations arise as a measure of non-commutativity.
 
-My [previous post](/posts/differential-forms#tangentcotangent-bundles) introduced the notion of a fiber bundle, of which the tangent bundle of $G$, $TG$, is an example. The following diagram shows that two bundles $(E_1, M, \pi_1, F)$ and $(E_2, M, \pi_2, F)$ over the same base space ($M$) and fiber ($F$) may be fundamentally different:
+My [previous post](/posts/vector-fields#tangentcotangent-bundles) introduced the notion of a fiber bundle, of which the tangent bundle of $G$, $TG$, is an example. The following diagram shows that two bundles $(E_1, M, \pi_1, F)$ and $(E_2, M, \pi_2, F)$ over the same base space ($M$) and fiber ($F$) may be fundamentally different:
 
 <figure class=invertible style="max-width: 100%;">
 <img src=/post-images/lie_groups/trivial-bundles.png>

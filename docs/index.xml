@@ -4,7 +4,7 @@
     <title>Shiraz</title>
     <link>https://shirazkn.github.io/</link>
     <description>Recent content on Shiraz</description>
-    <generator>Hugo -- 0.127.0</generator>
+    <generator>Hugo -- 0.136.4</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Mar 2024 10:43:16 -0400</lastBuildDate>
     <atom:link href="https://shirazkn.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -13,57 +13,73 @@
       <link>https://shirazkn.github.io/posts/sphere/</link>
       <pubDate>Sun, 24 Mar 2024 10:43:16 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/sphere/</guid>
-      <description>Here, I solve Problem $5-5$ from John Lee&amp;rsquo;s book on Riemannian Manifolds, which demonstrates the non-flatness of the ($2$-)sphere. This problem is particularly interesting because it serves as the motivating example for a later chapter in the book on curvature. As a by-product, we will put to rest the concerns of flat-Earthers.
-Connections First, I go over the technical tools needed to state (let alone solve) the problem. A connection $\nabla$ on a smooth manifold $M$ is a way of differentiating vector fields (and more generally, tensors) along curves in $M$:</description>
+      <description>&lt;p&gt;Here, I solve Problem $5-5$ from John Lee&amp;rsquo;s book on &lt;em&gt;Riemannian Manifolds&lt;/em&gt;, which demonstrates the non-flatness of the ($2$-)sphere. This problem is particularly interesting because it serves as the motivating example for a later chapter in the book on &lt;span class=accented&gt;curvature&lt;/span&gt;.
+As a by-product, we will put to rest the concerns of flat-Earthers.&lt;/p&gt;
+&lt;h1 id=&#34;connections&#34;&gt;Connections&lt;/h1&gt;
+&lt;p&gt;First, I go over the technical tools needed to state (let alone solve) the problem.
+A &lt;em&gt;connection&lt;/em&gt; $\nabla$ on a smooth manifold $M$ is a way of differentiating vector fields (and more generally, tensors) along curves in $M$:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Lie Groups as Riemannian Manifolds</title>
       <link>https://shirazkn.github.io/posts/lie-groups_calculus/</link>
       <pubDate>Tue, 30 Jan 2024 09:53:05 -0500</pubDate>
       <guid>https://shirazkn.github.io/posts/lie-groups_calculus/</guid>
-      <description>A Lie group $G$ is a group that is also a (continuous, differentiable) topological space. An example to keep in mind is $G=\mathbb R^n$ which is a group under vector addition and has well-defined notions of continuity and differentiation. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow $G$ with additional structure so that it is not merely a manifold, but a Riemannian manifold.</description>
+      <description>&lt;p&gt;A &lt;span class=accented&gt;Lie group&lt;/span&gt; $G$ is a group that is also a (continuous, differentiable) topological space. An example to keep in mind is $G=\mathbb R^n$ which is a group under vector addition and has well-defined notions of continuity and differentiation. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow $G$ with additional structure so that it is not merely a manifold, but a &lt;span class=accented&gt;Riemannian manifold&lt;/span&gt;. Luckily for us, we only need to define an inner product for the Lie algebra, after which there is a natural definition of length and volume that can be made for the entire group manifold. I say that the resulting choice of volume (called the &lt;span class=accented&gt;Haar measure&lt;/span&gt;) is &lt;em&gt;natural&lt;/em&gt; because it is compatible with the group structure of $G$ as well as its differential structure as a manifold. This can be compared to how the standard notion of volume for $\mathbb R^n$, the Lebesgue measure, is compatible with vector addition; we have for a (measurable) set $A\subseteq \mathbb R^n$ and for every $\mathbf x_0 \in \mathbb R^n$,&lt;/p&gt;</description>
     </item>
     <item>
       <title>Lie Groups: Construction and Geometry</title>
       <link>https://shirazkn.github.io/posts/lie-groups_construction/</link>
       <pubDate>Wed, 24 Jan 2024 14:20:59 -0500</pubDate>
       <guid>https://shirazkn.github.io/posts/lie-groups_construction/</guid>
-      <description>There are multiple ways to construct new groups from old ones. For instance, the semidirect product $SO(3) \ltimes \mathbb R^3$ is the Special Euclidean group $SE(3)$, which is composed of all the rigid transformations of $\mathbb R^3$ (minus reflections). Here, I provide an intuition for how these constructions work. I will also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups.</description>
+      <description>&lt;p&gt;There are multiple ways to construct new groups from old ones. For instance, the semidirect product $SO(3) \ltimes \mathbb R^3$ is the Special Euclidean group $SE(3)$, which is composed of all the rigid transformations of $\mathbb R^3$ (minus reflections). Here, I provide an intuition for how these constructions work. I will also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups. While the word &lt;em&gt;geometry&lt;/em&gt; implies the presence of an inner product/Riemannian metric, the word &lt;em&gt;calculus&lt;/em&gt; hints at the possibility of differentiation and integration on Lie groups.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Lie Group-Lie Algebra Correspondence</title>
       <link>https://shirazkn.github.io/posts/lie-groups/</link>
       <pubDate>Mon, 15 Jan 2024 07:24:59 -0500</pubDate>
       <guid>https://shirazkn.github.io/posts/lie-groups/</guid>
-      <description>A topological group is a set of elements $G$ that has both a group operation $\odot$ and a topology . The group operation satisfies the usual axioms (same as those of finite groups ), and the presence of a topology lets us say things like &amp;rsquo;the group is connected&amp;rsquo; and &amp;rsquo;the group operation is continuous&amp;rsquo;. $G$ is called a Lie group if it is also a smooth manifold. The smooth structure of the manifold must be compatible with the group operation in the following sense: $\odot$ is differentiable with respect to either of its arguments 1.</description>
+      <description>&lt;p&gt;A &lt;span class=accented&gt;topological group&lt;/span&gt; is a set of elements $G$ that has both a group operation $\odot$ and a &lt;a href=&#34;https://www.youtube.com/watch?v=62WNNkoRCLE&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    topology
+&lt;/a&gt;. The group operation satisfies the usual axioms (same as &lt;a href=&#34;https://youtu.be/g7L_r6zw4-c?si=Y2Zit5muzZrCciaQ&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    those of finite groups
+&lt;/a&gt;), and the presence of a topology lets us say things like &amp;rsquo;the group is connected&amp;rsquo; and &amp;rsquo;the group operation is continuous&amp;rsquo;. $G$ is called a &lt;span class=accented&gt;Lie group&lt;/span&gt; if it is also a smooth manifold. The smooth structure of the manifold must be &lt;em&gt;compatible&lt;/em&gt; with the group operation in the following sense: $\odot$ is differentiable with respect to either of its arguments &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. The compatibility of its constituent structures is what makes a Lie group so special, enabling it to capture the essence of a &lt;a href=&#34;https://en.wikipedia.org/wiki/Noether%27s_theorem&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    continuous symmetry
+&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vector Fields on Manifolds</title>
-      <link>https://shirazkn.github.io/posts/differential-forms/</link>
+      <link>https://shirazkn.github.io/posts/vector-fields/</link>
       <pubDate>Wed, 03 Jan 2024 11:22:28 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/differential-forms/</guid>
-      <description>Over the past year, I have struggled to pin down what the scope of my blog should be. There is plenty of exposition out there on just about every aspect of modern mathematics, but especially on exterior calculus and differential geometry due to their situation at the intersection of several areas in theoretical and applied mathematics. (As a case in point, the two main references that I&amp;rsquo;ve been using to self-learn differential forms were the creations of a theoretical physicist and a computer scientist , respectively).</description>
+      <guid>https://shirazkn.github.io/posts/vector-fields/</guid>
+      <description>&lt;p&gt;Over the past year, I have struggled to pin down what the scope of my blog should be. There is plenty of exposition out there on just about every aspect of modern mathematics, but especially on &lt;span class=accented&gt;exterior calculus&lt;/span&gt; and &lt;span class=accented&gt;differential geometry&lt;/span&gt; due to their situation at the intersection of several areas in theoretical and applied mathematics. (As a case in point, the two main references that I&amp;rsquo;ve been using to self-learn differential forms were the creations of a &lt;a href=&#34;https://en.wikipedia.org/wiki/David_Lovelock&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    theoretical physicist
+&lt;/a&gt; and a &lt;a href=&#34;https://www.cs.cmu.edu/~kmcrane/&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    computer scientist
+&lt;/a&gt;, respectively). So then what is the scope of my blog? Maybe it is for me to catalog the process of self-learning mathematics as an engineering major who lacks a curricular background in modern mathematics. Maybe it is to assure others like me (who are also privileged enough to learn mathematics in isolation of such material concerns as its &amp;lsquo;&lt;em&gt;job prospects&lt;/em&gt;&amp;rsquo;) that it can be done. This post will do a bit of both; it serves in part the purpose of organizing my own thoughts on these matters, and in part the purpose of providing a roadmap for others who are interested in embarking on a similar journey.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Fourier Transforms of Periodic Functions</title>
       <link>https://shirazkn.github.io/posts/fourier/</link>
       <pubDate>Mon, 02 Oct 2023 14:59:15 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/fourier/</guid>
-      <description>The Fourier transform takes a (absolutely integrable) function $f:\mathbb R \rightarrow \mathbb R$ and outputs a different (possibly complex-valued) function. If the first is interpreted as a signal (e.g., the waveform of an audio that is parameterized by time), then its Fourier transform has its &amp;lsquo;peaks&amp;rsquo; at the dominant frequencies of the signal. I will not expound too much on the Fourier transform itself, but its computation looks something like this1:</description>
+      <description>&lt;p&gt;The &lt;span class=accented&gt;Fourier transform &lt;/span&gt;takes a (absolutely integrable) function $f:\mathbb R \rightarrow \mathbb R$ and outputs a different (possibly complex-valued) function. If the first is interpreted as a &lt;em&gt;signal&lt;/em&gt; (e.g., the waveform of an audio that is parameterized by time), then its Fourier transform has its &amp;lsquo;peaks&amp;rsquo; at the dominant frequencies of the signal. I will not expound too much on the Fourier transform itself, but its computation looks something like this&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Matrix Multiplication</title>
       <link>https://shirazkn.github.io/posts/matrix/</link>
       <pubDate>Sun, 28 May 2023 10:35:07 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/matrix/</guid>
-      <description>In this post, I want to bridge the gap between abstract vector spaces (which are the mathematical foundation of linear algebra) and matrix multiplication (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space &amp;ndash; the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about solving systems of equations in this post.</description>
+      <description>&lt;p&gt;In this post, &lt;!-- I will summarize some of the linear algebra concepts I discussed over the past few weeks, and paint a useful *picture* of linear algebra based on the &lt;span class=accented&gt;singular value decomposition&lt;/span&gt;. By a *picture*, I mean that it can serve as an aid for thinking about a variety of concepts in linear algebra. Additionally --&gt; I want to bridge the gap between &lt;span class=accented&gt;abstract vector spaces&lt;/span&gt; (which are the mathematical foundation of linear algebra) and &lt;span class=accented&gt;matrix multiplication&lt;/span&gt; (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space &amp;ndash; the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about &lt;a href=&#34;https://en.wikipedia.org/wiki/System_of_linear_equations&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    solving systems of equations
+&lt;/a&gt; in this post. While &lt;span class=accented&gt;solving systems of equations&lt;/span&gt; served as the historical precedent&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; for mathematicians to begin work on linear algebra, it is today an &lt;em&gt;application&lt;/em&gt;, and not the foundation of linear algebra.&lt;/p&gt;</description>
     </item>
     <item>
       <title>What is a Vector?</title>
       <link>https://shirazkn.github.io/posts/vector/</link>
       <pubDate>Sat, 20 May 2023 15:26:18 -0700</pubDate>
       <guid>https://shirazkn.github.io/posts/vector/</guid>
-      <description>A running gag in engineering colleges is that a lot of instructors begin their first class of the semester with this question: &amp;ldquo;What is a vector?&amp;rdquo;. I used to find this ritual almost pointless because to me, every answer to this question felt either like a non-answer or a matter of context. I mean it depends, right? A structural engineer should have a different answer to this question than, say, a data scientist.</description>
+      <description>&lt;p&gt;A running gag in engineering colleges is that a lot of instructors begin their first class of the semester with this question: &amp;ldquo;&lt;span class=accented&gt;What is a vector?&lt;/span&gt;&amp;rdquo;.
+I used to find this ritual almost pointless because to me, every answer to this question felt either like a non-answer or a matter of context. I mean it depends, right? A structural engineer should have a different answer to this question than, say, a data scientist. To a structural engineer, a vector is a physical measurement that has a magnitude and a direction, whereas a data scientist may not necessarily think of a vector as having a direction. Indeed, in its full generality, a vector does not need to have geometric notions such as &lt;em&gt;directions&lt;/em&gt; and &lt;em&gt;angles&lt;/em&gt; associated with it. Today, I no longer think that this is a matter of context. By virtue of how we phrase the question  &amp;ldquo;&lt;span class=accented&gt;What is a vector?&lt;/span&gt;&amp;rdquo;, we may be asking (without ambiguity) the question: &amp;ldquo;If I call some mathematical object a vector, what does that tell you about it?&amp;rdquo;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Understanding Sparsity through Sub-Gradients</title>
@@ -82,14 +98,21 @@ Connections First, I go over the technical tools needed to state (let alone solv
       <link>https://shirazkn.github.io/posts/sparsity/</link>
       <pubDate>Sat, 22 Apr 2023 11:05:58 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/sparsity/</guid>
-      <description>The so called curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant. This is because many (if not all) of the problems we&amp;rsquo;re interested in solving as engineers have some inherent sparsity.</description>
+      <description>&lt;p&gt;The so called &lt;a href=&#34;https://shirazkn.github.io/posts/balls&#34; class=&#34;accented&#34;&gt;
+    curse of dimensionality
+&lt;/a&gt; in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant.
+This is because many (if not all) of the problems we&amp;rsquo;re interested in solving as engineers have some inherent &lt;span class=accented&gt;sparsity&lt;/span&gt;. Steve Brunton has an &lt;a href=&#34;https://www.youtube.com/watch?v=Dt2WYkqZfbs&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    excellent video
+&lt;/a&gt; explaining why this is so.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Hilbert Spaces</title>
       <link>https://shirazkn.github.io/posts/hilbert-spaces/</link>
       <pubDate>Fri, 21 Apr 2023 12:09:09 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/hilbert-spaces/</guid>
-      <description>Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an inner product (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is complete, i.e., it doesn&amp;rsquo;t have er&amp;hellip; holes in it. Recall that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product.</description>
+      <description>&lt;p&gt;Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an &lt;span class=accented&gt;inner product&lt;/span&gt; (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is &lt;span class=accented&gt;complete&lt;/span&gt;, i.e., it doesn&amp;rsquo;t have er&amp;hellip; holes in it. &lt;a href=&#34;https://shirazkn.github.io/posts/norms_metrics&#34; class=&#34;accented&#34;&gt;
+    Recall
+&lt;/a&gt; that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product. Mathematicians sometimes use &amp;lsquo;Hilbert space&amp;rsquo; to refer specifically to infinite-dimensional inner product spaces, but for our purposes, we will conflate the usage of &amp;lsquo;Hilbert space&amp;rsquo; to include the finite-dimensional case.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Norm Balls</title>
@@ -103,48 +126,85 @@ Connections First, I go over the technical tools needed to state (let alone solv
       <link>https://shirazkn.github.io/posts/pythagoras/</link>
       <pubDate>Fri, 14 Apr 2023 15:53:46 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/pythagoras/</guid>
-      <description>The title is a quote from this math podcast . I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are &amp;rsquo;tangible&amp;rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.
-In this post I&amp;rsquo;m showing how the Pythagoras theorem is a special case of a more general feature of inner product spaces.</description>
+      <description>&lt;p&gt;The title is a quote from &lt;a href=&#34;https://theartofmathematicspodcast.com&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    this math podcast
+&lt;/a&gt;. I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are &amp;rsquo;tangible&amp;rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.&lt;/p&gt;
+&lt;!-- [^huge_footnote] --&gt;
+&lt;!-- [^huge_footnote]: I think the real world just manifests as a $3$ dimensional Euclidean space in particular, and it is our ability to project this space into lower dimensions that imparts to us our intuition about $1$ and $2$ dimensional Euclidean spaces. You could argue that *time* is a $1$ dimensional space which we can observe directly, but I don&#39;t think humans have a good internal perception of time. --&gt;
+&lt;p&gt;In this post I&amp;rsquo;m showing how the &lt;span class=accented&gt;Pythagoras theorem&lt;/span&gt; is a special case of a more general feature of inner product spaces. Contents of &lt;a href=&#34;https://shirazkn.github.io/posts/norms_metrics&#34; class=&#34;accented&#34;&gt;
+    the last post
+&lt;/a&gt; are pre-requisites for this one.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Norms, Metrics, and Inner Products</title>
       <link>https://shirazkn.github.io/posts/norms_metrics/</link>
       <pubDate>Mon, 10 Apr 2023 12:20:23 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/norms_metrics/</guid>
-      <description>This is an explainer on norms, metrics, and inner products, and their relationships to each other.
-Norms A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
-It is nonnegative, and $0$ only at the &amp;lsquo;zero element&amp;rsquo; (for e.g., at the origin of $\mathbb R^n$).
-$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.</description>
+      <description>&lt;p&gt;This is an explainer on norms, metrics, and inner products, and their relationships to each other.&lt;/p&gt;
+&lt;h3 id=&#34;norms&#34;&gt;Norms&lt;/h3&gt;
+&lt;p&gt;A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;It is nonnegative, and $0$ only at the &amp;lsquo;zero element&amp;rsquo; (for e.g., at the origin of $\mathbb R^n$).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>The Unreasonable Effectiveness of $2$ in Statistics</title>
+      <title>The Unreasonable Effectiveness of &#39;2&#39; in Statistics</title>
       <link>https://shirazkn.github.io/posts/leastsquares/</link>
       <pubDate>Sun, 09 Apr 2023 12:20:39 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/leastsquares/</guid>
-      <description>First off, this is a reference to The Unreasonable Effectiveness of Mathematics in the Natural Sciences , a very popular paper by Eugene Wigner which explores how mathematics is unreasonably effective at not only explaining, but also predicting scientific phenomena. I had a similar question about the number $2$ which repeatedly shows up in engineering and science, specifically in the form of the $2$-norm of a vector, and seems surprisingly effective at doing what it&amp;rsquo;s supposed to do.</description>
+      <description>&lt;p&gt;The title is a reference to &lt;a href=&#34;https://web.njit.edu/~akansu/PAPERS/The%20Unreasonable%20Effectiveness%20of%20Mathematics%20%28EP%20Wigner%29.pdf&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    The Unreasonable Effectiveness of Mathematics in the Natural Sciences
+&lt;/a&gt;, a very popular paper by Eugene Wigner which explores how mathematics is &lt;i&gt;unreasonably&lt;/i&gt; effective at not only explaining, but also predicting scientific phenomena. I had a similar question about the number $2$ which repeatedly shows up in engineering and science, specifically in the form of the $2$-norm of a vector, and seems surprisingly effective at doing what it&amp;rsquo;s supposed to do. I asked my &lt;a href=&#34;https://engineering.purdue.edu/ECE/Academics/Undergraduates/UGO/CourseInfo/courseInfo?courseid=175&amp;amp;show=true&amp;amp;type=grad&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    Estimation Theory
+&lt;/a&gt; instructor at Purdue why this was so, and he told me that I ask too many (but good) questions. I have since then accumulated a variety of answers for why the number $2$ is, in some sense, ✨special✨ During our journey through this post and the next, we will visit the central limit theorem, Gaussian distributions, and Euclidean geometry.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Cat Theory 😼</title>
       <link>https://shirazkn.github.io/posts/cat_theory_1/</link>
       <pubDate>Sat, 18 Mar 2023 21:07:38 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/cat_theory_1/</guid>
-      <description>One of my motivations for starting a blog was Eugenia Cheng&amp;rsquo;s book The Joy of Abstraction 1. It&amp;rsquo;s a surprisingly accessible, gentle introduction to category theory, a topic that is usually only taught to graduate students in math. She compiled part of the book using notes from the category theory class that she teaches at the Art Institute of Chicago, a testament to the aesthetic appreciation that one can expect to gain of category theory irrespective of their academic background.</description>
+      <description>&lt;p&gt;One of my motivations for starting a blog was Eugenia Cheng&amp;rsquo;s book &lt;a href=&#34;https://www.amazon.com/Joy-Abstraction-Exploration-Category-Theory/dp/1108477224&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    The Joy of Abstraction
+&lt;/a&gt;&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. It&amp;rsquo;s a surprisingly accessible, gentle introduction to &lt;span class=accented&gt;category theory&lt;/span&gt;, a topic that is usually only taught to graduate students in math. She compiled part of the book using notes from the category theory class that she teaches at the Art Institute of Chicago, a testament to the aesthetic appreciation that one can expect to gain of category theory irrespective of their academic background. In this post, I will introduce the main ideas in category theory (as I best understand it) and show that it offers an elegant way of thinking about mathematics.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Incompleteness Theorems</title>
       <link>https://shirazkn.github.io/posts/language_and_logic2/</link>
       <pubDate>Sun, 05 Feb 2023 08:46:18 -0500</pubDate>
       <guid>https://shirazkn.github.io/posts/language_and_logic2/</guid>
-      <description>In my earlier post I suggested that there is no objective notion of logical truth, that whether a statement is &amp;rsquo;true&amp;rsquo; can depend on the system of truth that one is operating in. Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I&amp;rsquo;m excited to talk about it!
-Axiomatic Systems An axiomatization is an assignment of rules (axioms) such as &amp;ldquo;one plus one equals two,&amp;rdquo; making up an axiomatic system or a formal system.</description>
+      <description>&lt;p&gt;In &lt;a href=&#34;https://shirazkn.github.io/posts/language_and_logic1&#34; class=&#34;accented&#34;&gt;
+    my earlier post
+&lt;/a&gt; I suggested that there is no objective notion of logical truth, that whether a statement is &amp;rsquo;true&amp;rsquo; can depend on the system of truth that one is operating in.
+Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I&amp;rsquo;m excited to talk about it!&lt;/p&gt;
+&lt;!-- Towards the end, we will see why it may be inevitable that natural languages are logically inconsistent. --&gt;
+&lt;h3 id=&#34;axiomatic-systems&#34;&gt;Axiomatic Systems&lt;/h3&gt;
+&lt;p&gt;An &lt;strong&gt;axiomatization&lt;/strong&gt; is an assignment of rules (axioms) such as &amp;ldquo;&lt;span&gt;one plus one equals two&lt;/span&gt;,&amp;rdquo; making up an &lt;strong&gt;axiomatic system&lt;/strong&gt; or a &lt;strong&gt;formal system&lt;/strong&gt;.
+If you happen to be within that formal system, then you &lt;em&gt;must&lt;/em&gt; follow all of the assigned rules.
+The choice of axioms dictates the degree of expressiveness that one has within the formal system. For instance, North Korea has a small number of state-approved haircuts that everyone must choose from, which does not sound like a very expressive system.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Misuse as a Use of Language</title>
       <link>https://shirazkn.github.io/posts/language_and_logic1/</link>
       <pubDate>Fri, 27 Jan 2023 13:48:49 -0500</pubDate>
       <guid>https://shirazkn.github.io/posts/language_and_logic1/</guid>
-      <description>This is my first post! It discusses the question of whether spoken and written languages like English could be &amp;rsquo;logical&amp;rsquo; by design. I will break this post up into two parts. The first one does not require a mathematical background whatsoever, whereas the second touches on the concepts of axioms, theorems and proofs.
-Fallacies The word logic as it is used in everyday parlance refers to informal logic (as opposed to formal logic , which is instead a rigorous mathematical construct).</description>
+      <description>&lt;!-- 
+Design ideas:
+clickable footnotes
+sidebar box
+--&gt;
+&lt;p&gt;This is my first post! It discusses the question of whether spoken and written languages like English could be &amp;rsquo;logical&amp;rsquo; by design. I will break this post up into two parts. The first one does not require a mathematical background whatsoever, whereas &lt;a href=&#34;https://shirazkn.github.io/posts/language_and_logic2&#34; class=&#34;accented&#34;&gt;
+    the second
+&lt;/a&gt; touches on the concepts of axioms, theorems and proofs.&lt;/p&gt;
+&lt;h3 id=&#34;fallacies&#34;&gt;Fallacies&lt;/h3&gt;
+&lt;p&gt;The word &lt;em&gt;logic&lt;/em&gt; as it is used in everyday parlance refers to &lt;span class=accented&gt;informal logic&lt;/span&gt; (as opposed to &lt;a href=&#34;https://shirazkn.github.io/posts/language_and_logic2&#34; class=&#34;accented&#34;&gt;
+    formal logic
+&lt;/a&gt;, which is instead a rigorous mathematical construct).
+You&amp;rsquo;ve probably come across logical fallacies such as the &lt;a href=&#34;https://en.m.wikipedia.org/wiki/False_dilemma&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    false dilemma
+&lt;/a&gt;, which goes something like this:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -101,10 +101,10 @@ An interesting observation which always trips me up is that metric spaces don't 
 
 1. The [unit balls](/posts/balls) corresponding to the $2$-norm,  $\lbrace x : \lVert x \rVert_2\leq1 \rbrace$ are spherical.
 
-1. For this reason, the Euclidean distance ($p=2$) has [the richest rotational isometry group](https://mathoverflow.net/questions/64443/which-norms-have-rich-isometry-groups)[^foot]. This is related to the observation that rotation of a sphere does not 'change its shape', but rotating a non-spherical object can 'change its shape'. In fact, for $p\neq2$, the other Minkowski distances do not have any continuous rotational isometries because their unit balls are non-spherical and somewhat pointy.
+1. For this reason, the Euclidean distance ($p=2$) has [the richest rotational isometry group](https://mathoverflow.net/questions/64443/which-norms-have-rich-isometry-groups). This follows from the observation that rotation of a sphere does not 'change its shape', but rotating a non-spherical object can 'change its shape'. In fact, for $p\neq2$, the other Minkowski distances do not have any continuous rotational isometries because their [unit balls](/posts/balls) are non-spherical and pointy.
+
+1. The [next post](/posts/pythagoras) gives some more insights. Also see my [previous post](/posts/leastsquares).
 
 1. The Euclidean space (the space $\mathbb R^n$ combined with the $2$-norm induced distance) [can be uniquely characterized by the fact that the distance-squared function is differentiable everywhere](https://mathstodon.xyz/@francisbrb/109908877121683860).
-
-[^foot]: I'm not too knowledgable about group theory, so expect an abuse of terminology here.
 
 The last one was fascinating to me because the differentiability fails not only if you change the distance function, but also if you change to a different topological space, like say, a circle! So not only is the Euclidean distance special, the Euclidean space $\mathbb R^n$ is itself quite special when equipped with the Euclidean distance.

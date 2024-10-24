@@ -7,11 +7,18 @@
 <meta name="robots" content="index, follow">
 <title>The Incompleteness Theorems | Shiraz</title>
 <meta name="keywords" content="General">
-<meta name="description" content="In my earlier post I suggested that there is no objective notion of logical truth, that whether a statement is &rsquo;true&rsquo; can depend on the system of truth that one is operating in. Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I&rsquo;m excited to talk about it!
-Axiomatic Systems An axiomatization is an assignment of rules (axioms) such as &ldquo;one plus one equals two,&rdquo; making up an axiomatic system or a formal system.">
+<meta name="description" content="In 
+    my earlier post
+ I suggested that there is no objective notion of logical truth, that whether a statement is &rsquo;true&rsquo; can depend on the system of truth that one is operating in.
+Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I&rsquo;m excited to talk about it!
+
+Axiomatic Systems
+An axiomatization is an assignment of rules (axioms) such as &ldquo;one plus one equals two,&rdquo; making up an axiomatic system or a formal system.
+If you happen to be within that formal system, then you must follow all of the assigned rules.
+The choice of axioms dictates the degree of expressiveness that one has within the formal system. For instance, North Korea has a small number of state-approved haircuts that everyone must choose from, which does not sound like a very expressive system.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/language_and_logic2/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.41c5c4f529ce786d89dc3eb49ae8a246b72e45ff4ba97ac417c9b63b7a60891f.css" integrity="sha256-QcXE9SnOeG2J3D60muiiRrcuRf9LqXrEF8m2O3pgiR8=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.42ea6a4c0a68f9389cacd15de82bd17c29e095336bdc1de23c1abfcfb83d2a0c.css" integrity="sha256-QupqTApo&#43;TicrNFd6CvRfCnglTNr3B3iPBq/z7g9Kgw=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -57,9 +64,11 @@ Axiomatic Systems An axiomatization is an assignment of rules (axioms) such as &
 
     </style>
 </noscript>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         renderMathInElement(document.body, {
@@ -77,12 +86,16 @@ Axiomatic Systems An axiomatization is an assignment of rules (axioms) such as &
     });
 </script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
-  
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="The Incompleteness Theorems" />
+<meta property="og:description" content="In 
+    my earlier post
+ I suggested that there is no objective notion of logical truth, that whether a statement is &rsquo;true&rsquo; can depend on the system of truth that one is operating in.
+Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I&rsquo;m excited to talk about it!
 
-<meta property="og:title" content="The Incompleteness Theorems" />
-<meta property="og:description" content="In my earlier post I suggested that there is no objective notion of logical truth, that whether a statement is &rsquo;true&rsquo; can depend on the system of truth that one is operating in. Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I&rsquo;m excited to talk about it!
-Axiomatic Systems An axiomatization is an assignment of rules (axioms) such as &ldquo;one plus one equals two,&rdquo; making up an axiomatic system or a formal system." />
+Axiomatic Systems
+An axiomatization is an assignment of rules (axioms) such as &ldquo;one plus one equals two,&rdquo; making up an axiomatic system or a formal system.
+If you happen to be within that formal system, then you must follow all of the assigned rules.
+The choice of axioms dictates the degree of expressiveness that one has within the formal system. For instance, North Korea has a small number of state-approved haircuts that everyone must choose from, which does not sound like a very expressive system." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://shirazkn.github.io/posts/language_and_logic2/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-02-05T08:46:18-05:00" />
@@ -90,8 +103,15 @@ Axiomatic Systems An axiomatization is an assignment of rules (axioms) such as &
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="The Incompleteness Theorems"/>
-<meta name="twitter:description" content="In my earlier post I suggested that there is no objective notion of logical truth, that whether a statement is &rsquo;true&rsquo; can depend on the system of truth that one is operating in. Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I&rsquo;m excited to talk about it!
-Axiomatic Systems An axiomatization is an assignment of rules (axioms) such as &ldquo;one plus one equals two,&rdquo; making up an axiomatic system or a formal system."/>
+<meta name="twitter:description" content="In 
+    my earlier post
+ I suggested that there is no objective notion of logical truth, that whether a statement is &rsquo;true&rsquo; can depend on the system of truth that one is operating in.
+Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I&rsquo;m excited to talk about it!
+
+Axiomatic Systems
+An axiomatization is an assignment of rules (axioms) such as &ldquo;one plus one equals two,&rdquo; making up an axiomatic system or a formal system.
+If you happen to be within that formal system, then you must follow all of the assigned rules.
+The choice of axioms dictates the degree of expressiveness that one has within the formal system. For instance, North Korea has a small number of state-approved haircuts that everyone must choose from, which does not sound like a very expressive system."/>
 
 
 <script type="application/ld+json">
@@ -120,7 +140,7 @@ Axiomatic Systems An axiomatization is an assignment of rules (axioms) such as &
   "@type": "BlogPosting",
   "headline": "The Incompleteness Theorems",
   "name": "The Incompleteness Theorems",
-  "description": "In my earlier post I suggested that there is no objective notion of logical truth, that whether a statement is \u0026rsquo;true\u0026rsquo; can depend on the system of truth that one is operating in. Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I\u0026rsquo;m excited to talk about it!\nAxiomatic Systems An axiomatization is an assignment of rules (axioms) such as \u0026ldquo;one plus one equals two,\u0026rdquo; making up an axiomatic system or a formal system.",
+  "description": "In my earlier post I suggested that there is no objective notion of logical truth, that whether a statement is \u0026rsquo;true\u0026rsquo; can depend on the system of truth that one is operating in. Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I\u0026rsquo;m excited to talk about it!\nAxiomatic Systems An axiomatization is an assignment of rules (axioms) such as \u0026ldquo;one plus one equals two,\u0026rdquo; making up an axiomatic system or a formal system. If you happen to be within that formal system, then you must follow all of the assigned rules. The choice of axioms dictates the degree of expressiveness that one has within the formal system. For instance, North Korea has a small number of state-approved haircuts that everyone must choose from, which does not sound like a very expressive system.\n",
   "keywords": [
     "General"
   ],
@@ -330,7 +350,7 @@ The incompleteness theorems require us to first qualify how <em>expressive</em> 
 <p>It seems like it is necessary and sufficient for an axiomatic system to have some notion of &lsquo;infinitely many things&rsquo; in it for Gödel&rsquo;s theorems to apply. But this isn&rsquo;t quite the case either. <a href="https://en.wikipedia.org/wiki/Robinson_arithmetic" target="_blank" class="accented">
     Robinson arithmetic
 </a> is an incomplete axiomatic system that can be generated using finitely many axioms. On the other hand, <a href="https://en.wikipedia.org/wiki/Real_closed_field" target="_blank" class="accented">
-    Tarski&#39;s theory of real closed fields
+    Tarski's theory of real closed fields
 </a> is a complete and decidable axiomatic system that characterizes the infinitely large set of real numbers<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
 <p>As a segue, consider the following block of (Python) code, which prints infinitely long strings of letters:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -388,7 +408,7 @@ The picture we are painting is misleading/counter-intuitive in the sense that fo
 <p>This is similar to how we added $CH$ to $ZF$ earlier to &lsquo;complete&rsquo; it in some sense, but we cautioned that it comes at the risk of making the more powerful language, $ZF+CH$, to be inconsistent. In the case of natural languages, we embrace this potential inconsistency as being the trade-off for completeness.</p>
 <hr>
 <p>Before we close, I should do my due diligence and note that, while formal languages can be used to discuss natural languages, the latter fall under the category of <em>informal languages</em> and may not have a definable notion of truth. In fact, Tarski explicitly warned against the extension of his ideas to natural languages. <a href="https://pca.st/oq41guck" target="_blank" class="accented">
-    Tarski&#39;s critics
+    Tarski's critics
 </a> also stress on the distinction between mathematical truth and metaphysical truth, which should not be conflated with each other. Nonetheless, one could argue that the mathematical (or rather, the axiomatic) approach to defining truth is as clean and air-tight a characterization of truth as we can hope to achieve. We just need to bear in mind that we aren&rsquo;t here to establish a singular meaning for the word <em>truth</em>, but to appreciate the intricacies involved in defining <em>truth</em> and <em>logic</em>. The self-reference in trying to arrive at the <em>true</em> definition of <em>truth</em> shall not be lost on us.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>

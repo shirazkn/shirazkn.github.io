@@ -4,7 +4,7 @@ date: 2023-05-11T07:40:56-07:00
 draft: true
 ---
 
-Probability theory is one of those subjects that's both -- easy to get started with, and hard to master. In particular, the conditional expectation operation $\mathbb E[{}\cdot{}\mathrel|{}\cdot{}]$ can be tricky to work with, and its properties are not well-understood by researchers in my field who might *want* and *need* to use it to prove important results. What I have on offer in this post is a sneak peek into the rigorous framework upon which modern-day probability theory is built. I personally find this to be an illuminating way to think about randomness. To some extent, it demystifies what it means for a mathematical object to be random.
+Probability theory is one of those subjects that's both -- easy to get started with, and hard to master. In particular, the conditional expectation operation $\mathbb E[{}\cdot{}\mathrel|{}\cdot{}]$ can be notoriously tricky to work with, and its properties are not well-understood by researchers in my field who might *want* and *need* to use it to prove important results. What I have on offer in this post is a sneak peek into the rigorous framework upon which modern-day probability theory is built. I personally find this to be an illuminating way to think about randomness. To some extent, it demystifies what it means for a mathematical object to be random.
 <!-- It's allowed me to understand and reason about *weird* random variables (more on that in a later post) which may not be as easy to grapple with an elementary understanding of probability. -->
 
 I would call a treatment of probability theory as *mathematically rigorous* if it starts with explicitly-stated axioms, so that everything else follows naturally.

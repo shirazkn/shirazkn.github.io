@@ -51,7 +51,7 @@ Let $A^\complement$ denote the complement of $A$, i.e., everything that's not in
 Even if these examples are of no interest to you, all we need to note is that we replaced the symbol $\Rightarrow$ (implies) with $\subseteq$ (is a subset of), but the relationship between the corresponding objects looks nearly identical[^dual]. 
 As the objects we're swapping out become more complex, the insights that carry over during the 'swapping out' become deeper. 
 
-[^dual]: Either statement is a consequence of *duality* in category theory. Duality manifests again on my blog when I talk about [differential forms](/posts/differential-forms), where the same relationship is seen in the setting of linear algebra.
+[^dual]: Either statement is a consequence of *duality* in category theory. Duality manifests again on my blog when I talk about [differential forms](/posts/vector-fields), where the same relationship is seen in the setting of linear algebra.
 
 The two different mathematical universes (*logic* and *set theory*) consist of objects (*statements* and *sets*) as well as relationships between them ($\Rightarrow$ and $\subseteq$). Similarly, a category is something that is made up of objects as well as their relationships to each other (called *morphisms*), satisfying some additional rules which impart to it its structure.
 

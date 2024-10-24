@@ -8,7 +8,7 @@ tags: ["Differential Geometry"]
 I will construct the Haar measure for $SO(3)$ and pull it back to the axis-angle parametrization of orthogonal matrices. The goal is to be able to integrate (and thereby define probability densities) on $SO(3)$.
 My [earlier post](/posts/lie-groups_calculus) on the Riemannian volume form is a prerequisite, though you could also just skip over any equations involving exterior calculus (distinguished by the use of the "$\wedge$" operation) and focus on the computations done in axis-angle coordinates.
 
-## The Riemannian Volume Form 
+## The Riemannian Volume Form 🪐
 Let the basis for $\mathfrak{so}(3)$ be given by 
 
 <p>
@@ -50,7 +50,7 @@ As an engineer by training, my goal is to do calculations involving $\mu$. Sadly
 
 ---
 
-## [Axis-Angle Parametrization](https://en.wikipedia.org/wiki/Axis–angle_representation)
+## [Axis-Angle Parametrization](https://en.wikipedia.org/wiki/Axis–angle_representation) 🪐
 
 Recall that any rotation of $\mathbb R^3$ is given by an axis and an angle of rotation. These are represented by tuples of the form $(\mathbf u, \theta)$, where $\mathbf u\in S^2\subseteq \mathbb R^3$ is a unit vector[^s2] and $\theta\in [0, \pi]$. This gives the axis-angle parametrization of $SO(3)$:
 
@@ -84,7 +84,7 @@ The following trick will greatly simplify our presentation. What prevents us fro
 </figure>
 
 Topologically, the axis-angle parametrization (i) collapses the inner surface of this shell into a single point, and (ii) glues together each pair of antipodal points on the outer surface.
-So, while the image of the $\theta = 0$ points is a single point in $SO(3)$ (namely, the identity element), the image of the $\theta = \pi$ points is a $2$-dimensional submanifold of $SO(3)$. 
+So, while the image of the $\theta = 0$ points is a single point in $SO(3)$ (namely, the identity element $e\in G$), the image of the $\theta = \pi$ points is a $2$-dimensional submanifold of $SO(3)$. 
 The aforementioned *trick* which we will use is that these lower-dimensional sets have measure zero under $\mu$, so we can peel them away from the spherical shell before doing integration and probability. No longer would we have an obstruction to bijectivity.
 
 Let $\widetilde {SO}(3) \subseteq SO(3)$ denote the image of the axis-angle parametrization when restricted to $S^2\times (0, \pi) \subseteq S^2\times [0, \pi]$, so that 
@@ -111,7 +111,7 @@ If we blur the technical details that must be checked, then $\psi$ may be called
 
 [^submanifold]: $\widetilde{SO}(3)$ can be treated as a Riemannian submanifold of $SO(3)$.
 
-### Pulling Back the Volume Form
+### Pulling <span style="color:transparent; text-shadow: 0 0 0 var(--primary);">🔙</span> the Volume Form
 
 The coordinate chart lets us use integration in $\mathbb R^3$ as a substitute for integration in $SO(3)$:[^ism_1]
 
@@ -127,7 +127,7 @@ The coordinate chart lets us use integration in $\mathbb R^3$ as a substitute fo
 Consider the standard frame of $U\subseteq \mathbb R^3$, $\lbrace \frac{\partial}{\partial x^i}\rbrace_{i=1}^3$, and its dual coframe $\lbrace dx^i\rbrace_{i=1}^3$.
 Any $3$ form in $U$ (and in particular, $\psi^*\mu$) can be expressed as $f\ dx^1 \wedge dx^2 \wedge dx^3$, where $f\in C^\infty(U)$ is a smooth function. Using Lemma 14.16 of Intro. to Smooth Manifolds,[^prop]
 
-[^prop]: Note that Proposition 14.20 does not apply here, since $(\varepsilon^i)_{i=1}^3$ are not a coordinate coframe.
+[^prop]: I don't apply Proposition 14.20 of Lee here since $(\varepsilon^i)_{i=1}^3$ are not a coordinate coframe. Nonetheless, we recover in this post a similar result for a non-coordinate frame.
 
 <p>
 \[
@@ -144,20 +144,22 @@ whereas the pullback $\psi^*\varepsilon ^i$ is given by
     \]
     </p>
 
-Actually, we will sneak in the definition of $\varepsilon^i$ here (the motivation for this will be made clear shortly):
+Actually, we will sneak in the definition of $\varepsilon^i$ here; since $\mu$ itself is defined via a pullback, we will do both of these pullbacks (from $e$ to $g$, and then from $g$ to $\psi^{-1}(g)$) in tandem[^chirik]:
 
 <p>
 \[
     \begin{align*}
     \big[\psi^*\varepsilon ^i\big]\Big(\frac{\partial}{\partial x^j} \Big) 
-    =\big[\psi^* (\mathcal L_{g^{-1}})^*\tilde \varepsilon ^i\big]\Big(\frac{\partial}{\partial x^j} \Big) 
-    =
-   ??????
+    &=\big[\psi^* (\mathcal L_{g^{-1}})^*\tilde \varepsilon ^i\big]\Big(\frac{\partial}{\partial x^j} \Big) \\
+    &=\big[(\mathcal L_{g^{-1}} \circ \psi)^*\tilde \varepsilon ^i\big]\Big(\frac{\partial}{\partial x^j} \Big)\\
+    &= \tilde \varepsilon ^i \Big((\mathcal L_{g^{-1}} \circ \psi)_*\frac{\partial}{\partial x^j} \Big)
    \end{align*}
 \]
 </p>
 
-So, Proposition 14.9 can be used to yield that
+So, Proposition 14.9 can be used to yield
+
+[^chirik]: This is eq. (12.3) of *Stochastic Models...Volume 2* by G.S. Chirikjian.
 
 <p>
 \[

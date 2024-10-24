@@ -7,10 +7,12 @@
 <meta name="robots" content="index, follow">
 <title>Hilbert Spaces | Shiraz</title>
 <meta name="keywords" content="Linear Algebra">
-<meta name="description" content="Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an inner product (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is complete, i.e., it doesn&rsquo;t have er&hellip; holes in it. Recall that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product.">
+<meta name="description" content="Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an inner product (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is complete, i.e., it doesn&rsquo;t have er&hellip; holes in it. 
+    Recall
+ that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product. Mathematicians sometimes use &lsquo;Hilbert space&rsquo; to refer specifically to infinite-dimensional inner product spaces, but for our purposes, we will conflate the usage of &lsquo;Hilbert space&rsquo; to include the finite-dimensional case.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/hilbert-spaces/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.41c5c4f529ce786d89dc3eb49ae8a246b72e45ff4ba97ac417c9b63b7a60891f.css" integrity="sha256-QcXE9SnOeG2J3D60muiiRrcuRf9LqXrEF8m2O3pgiR8=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.42ea6a4c0a68f9389cacd15de82bd17c29e095336bdc1de23c1abfcfb83d2a0c.css" integrity="sha256-QupqTApo&#43;TicrNFd6CvRfCnglTNr3B3iPBq/z7g9Kgw=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -56,9 +58,11 @@
 
     </style>
 </noscript>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         renderMathInElement(document.body, {
@@ -76,11 +80,10 @@
     });
 </script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
-  
-
-<meta property="og:title" content="Hilbert Spaces" />
-<meta property="og:description" content="Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an inner product (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is complete, i.e., it doesn&rsquo;t have er&hellip; holes in it. Recall that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product." />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="Hilbert Spaces" />
+<meta property="og:description" content="Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an inner product (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is complete, i.e., it doesn&rsquo;t have er&hellip; holes in it. 
+    Recall
+ that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product. Mathematicians sometimes use &lsquo;Hilbert space&rsquo; to refer specifically to infinite-dimensional inner product spaces, but for our purposes, we will conflate the usage of &lsquo;Hilbert space&rsquo; to include the finite-dimensional case." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://shirazkn.github.io/posts/hilbert-spaces/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-04-21T12:09:09-04:00" />
@@ -88,7 +91,9 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hilbert Spaces"/>
-<meta name="twitter:description" content="Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an inner product (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is complete, i.e., it doesn&rsquo;t have er&hellip; holes in it. Recall that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product."/>
+<meta name="twitter:description" content="Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an inner product (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is complete, i.e., it doesn&rsquo;t have er&hellip; holes in it. 
+    Recall
+ that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product. Mathematicians sometimes use &lsquo;Hilbert space&rsquo; to refer specifically to infinite-dimensional inner product spaces, but for our purposes, we will conflate the usage of &lsquo;Hilbert space&rsquo; to include the finite-dimensional case."/>
 
 
 <script type="application/ld+json">
@@ -117,7 +122,7 @@
   "@type": "BlogPosting",
   "headline": "Hilbert Spaces",
   "name": "Hilbert Spaces",
-  "description": "Let $\\mathcal X$ be a Hilbert space, which means that it is a vector space that has an inner product (denoted by $\\langle \\cdot, \\cdot\\rangle _\\mathcal X$) and that it is complete, i.e., it doesn\u0026rsquo;t have er\u0026hellip; holes in it. Recall that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\\mathbb R^n$ is an obvious example, where the inner product is just the dot product.",
+  "description": "Let $\\mathcal X$ be a Hilbert space, which means that it is a vector space that has an inner product (denoted by $\\langle \\cdot, \\cdot\\rangle _\\mathcal X$) and that it is complete, i.e., it doesn\u0026rsquo;t have er\u0026hellip; holes in it. Recall that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\\mathbb R^n$ is an obvious example, where the inner product is just the dot product. Mathematicians sometimes use \u0026lsquo;Hilbert space\u0026rsquo; to refer specifically to infinite-dimensional inner product spaces, but for our purposes, we will conflate the usage of \u0026lsquo;Hilbert space\u0026rsquo; to include the finite-dimensional case.\n",
   "keywords": [
     "Linear Algebra"
   ],
@@ -212,42 +217,42 @@
 </a> that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product. Mathematicians sometimes use &lsquo;Hilbert space&rsquo; to refer specifically to infinite-dimensional inner product spaces, but for our purposes, we will conflate the usage of &lsquo;Hilbert space&rsquo; to include the finite-dimensional case.</p>
 <p>Some interesting Hilbert spaces are given below. Each of these spaces has a corresponding norm, $\lVert x \rVert_{\mathcal X}=\sqrt{\langle x, x\rangle}_{\mathcal X}$, which we call as the norm that is <em>induced</em> by the inner product.</p>
 <table>
-<thead>
-<tr>
-<th>Hilbert Space $\mathcal X$</th>
-<th>Inner Product $\langle \cdot, \cdot\rangle _\mathcal X$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Numbers $a$, $b\in \mathbb R$</td>
-<td>$ab$</td>
-</tr>
-<tr>
-<td>Random Variables $X,Y\in \mathbb R$</td>
-<td>$\mathbb E \left[XY \right]$</td>
-</tr>
-<tr>
-<td>Real Vectors $x$, $y\in \mathbb R^n$</td>
-<td>$x^\intercal y$</td>
-</tr>
-<tr>
-<td>Complex Vectors $x$, $y\in \mathbb C^n$</td>
-<td>$x^\dagger y$</td>
-</tr>
-<tr>
-<td>Matrices $A$, $B\in \mathbb R^{m\times n}$</td>
-<td>$\ \text{Trace}(A^{\intercal}B)$</td>
-</tr>
-<tr>
-<td>Sequences $(x_i)_{i=1}^{\infty}, (y_i)_{i=1}^{\infty}\in \ell ^2(\mathbb R) \ $</td>
-<td>$\sum_{i=1}^{\infty} x_i y_i$</td>
-</tr>
-<tr>
-<td>Square-Integrable Functions $f,g \in L^2(\mathbb R)$</td>
-<td>$\int_{-\infty}^{\infty}f(x)\overline{g(x)}dx$</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Hilbert Space $\mathcal X$</th>
+          <th>Inner Product $\langle \cdot, \cdot\rangle _\mathcal X$</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Numbers $a$, $b\in \mathbb R$</td>
+          <td>$ab$</td>
+      </tr>
+      <tr>
+          <td>Random Variables $X,Y\in \mathbb R$</td>
+          <td>$\mathbb E \left[XY \right]$</td>
+      </tr>
+      <tr>
+          <td>Real Vectors $x$, $y\in \mathbb R^n$</td>
+          <td>$x^\intercal y$</td>
+      </tr>
+      <tr>
+          <td>Complex Vectors $x$, $y\in \mathbb C^n$</td>
+          <td>$x^\dagger y$</td>
+      </tr>
+      <tr>
+          <td>Matrices $A$, $B\in \mathbb R^{m\times n}$</td>
+          <td>$\ \text{Trace}(A^{\intercal}B)$</td>
+      </tr>
+      <tr>
+          <td>Sequences $(x_i)_{i=1}^{\infty}, (y_i)_{i=1}^{\infty}\in \ell ^2(\mathbb R) \ $</td>
+          <td>$\sum_{i=1}^{\infty} x_i y_i$</td>
+      </tr>
+      <tr>
+          <td>Square-Integrable Functions $f,g \in L^2(\mathbb R)$</td>
+          <td>$\int_{-\infty}^{\infty}f(x)\overline{g(x)}dx$</td>
+      </tr>
+  </tbody>
 </table>
 <p><sub><sub>
 Here, $\overline{({}\cdot{})}$ is the conjugate of a complex number (where you replace $i$ with $-i$), $({}\cdot{})^\dagger =\overline{({}\cdot{})}^\intercal $ is called the conjugate transpose of a complex vector.</sub></sub></p>
