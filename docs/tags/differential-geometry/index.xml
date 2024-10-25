@@ -17,7 +17,9 @@
 As a by-product, we will put to rest the concerns of flat-Earthers.&lt;/p&gt;
 &lt;h1 id=&#34;connections&#34;&gt;Connections&lt;/h1&gt;
 &lt;p&gt;First, I go over the technical tools needed to state (let alone solve) the problem.
-A &lt;em&gt;connection&lt;/em&gt; $\nabla$ on a smooth manifold $M$ is a way of differentiating vector fields (and more generally, tensors) along curves in $M$:&lt;/p&gt;</description>
+A &lt;em&gt;connection&lt;/em&gt; $\nabla$ on a smooth manifold $M$ is a way of differentiating &lt;a href=&#34;https://shirazkn.github.io/posts/vector-fields&#34; class=&#34;accented&#34;&gt;
+    vector fields
+&lt;/a&gt; (and more generally, tensor fields) along curves in $M$:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Lie Groups as Riemannian Manifolds</title>

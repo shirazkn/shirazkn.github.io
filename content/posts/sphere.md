@@ -12,7 +12,7 @@ As a by-product, we will put to rest the concerns of flat-Earthers.
 # Connections
 
 First, I go over the technical tools needed to state (let alone solve) the problem.
-A *connection* $\nabla$ on a smooth manifold $M$ is a way of differentiating vector fields (and more generally, tensors) along curves in $M$: 
+A *connection* $\nabla$ on a smooth manifold $M$ is a way of differentiating [vector fields](/posts/vector-fields) (and more generally, tensor fields) along curves in $M$: 
 
 <p>
 \[
@@ -22,14 +22,14 @@ A *connection* $\nabla$ on a smooth manifold $M$ is a way of differentiating vec
 
 where $\mathfrak X(M)$ denotes the space of smooth vector fields on $M$. The axioms/properties that must be satisfied by a connection (specifically, a *Koszul connection*) can be found in Lee's book, so I will focus on the insights.
 
-<aside class=aside-center>
+<!-- <aside class=aside-center>
 More generally, let $\pi_E: E \rightarrow M$ be a vector bundle over $M$. A connection on $E$ is a map $\nabla: \mathfrak X(M) \times \Gamma(E) \rightarrow \Gamma(E)$ satisfying the Leibniz rule. A connection on $TM$ (called a <i>linear</i> or <i>affine</i> connection) arises as a special case of this construction. 
 Another important example is the $C^\infty(M)$ functions, which can be viewed as sections of the vector bundle $\pi : M \times \mathbb R \rightarrow M$.
-</aside>
+</aside> -->
 
 <!-- ## Total Covariant Derivative -->
 
-We write $\nabla X: \mathfrak X(M) \rightarrow \mathfrak X(M)$ to denote the <span class=accented>total covariant derivative</span> of $X$, with the intention that $\nabla X(Y) = \nabla _Y X$ inserts $Y$ into the first slot of $\nabla$. Compare this with the map $\nabla _X:\mathfrak X(M) \rightarrow \mathfrak X(M)$ which inserts $Y$ into the second slot of $\nabla$. The former is $C^\infty(M)$-linear in $Y$, while the latter is $\mathbb R$-linear but not $C^\infty(M)$-linear in $Y$. That is, we have $C^\infty(M)$-linearity in the first slot:
+We write $\nabla X: \mathfrak X(M) \rightarrow \mathfrak X(M)$ to denote the <span class=accented>total covariant derivative</span> of $X$, defined such that $\nabla X(Y) = \nabla _Y X$ inserts $Y$ into the first slot of $\nabla$. Compare this with the map $\nabla _X:\mathfrak X(M) \rightarrow \mathfrak X(M)$ which inserts $Y$ into the second slot of $\nabla$. The former is $C^\infty(M)$-linear in $Y$, while the latter is $\mathbb R$-linear but not $C^\infty(M)$-linear in $Y$. That is, we have $C^\infty(M)$-linearity in the first slot:
 
 <p>
 \[
@@ -45,7 +45,7 @@ but a product/Leibnitz rule in the second slot:
     \]
     </p>
 
-Since the total covariant derivative $\nabla X$ is $C^\infty(M)$-linear, it is a tensor, but the connection itself is not a tensor.
+Since the total covariant derivative $\nabla X$ is $C^\infty(M)$-linear, it is expressed as a tensor, but the connection itself is not a tensor. The point is that tensors must be $C^\infty(M)$-linear in all their arguments.
 
 ## The Levi-Civita Connection
 
@@ -329,7 +329,7 @@ The most confusing part of self-learning Riemannian geometry has been, for me, t
 
 The following examples show why this distinction is important:
 
-- The left-invariant vector fields $(E_i)\_{i=1}^n$ of a Lie group form a global, orthonormal (after carrying out the Gram-Schmidt process) frame. Does this mean that every Lie group is globally flat? No, because the frame of left-invariant vector fields on a non-Abelian Lie group is not a coordinate frame. To see this, observe that $[E_i, E_j] \neq 0$ whereas the Lie brackets must vanish in a coordinate frame (since the partial derivative operators of $\mathbb R^n$ commute).[^coordinates]
+- The left-invariant vector fields $(E_i)\_{i=1}^n$ of a Lie group form a global, orthonormal (after carrying out the Gram-Schmidt process) frame. Does this mean that every Lie group is globally flat? No, because the frame of left-invariant vector fields on a non-Abelian Lie group is not a *coordinate* frame; to see this, observe that $[E_i, E_j] \neq 0$, whereas the Lie brackets must vanish in a coordinate frame since the partial derivatives of $\mathbb R^n$ commute.[^coordinates] It is only an orthonormal *coordinate* frame that is indicative of flatness.
 
 - For the same reason, it is seldom possible to choose an orthonormal coordinate frame. One either gives up orthonormality (choosing to introduce a metric tensor) or gives up the coordinate frame (choosing to work with a frame that is not a coordinate frame, such as $(E_i)\_{i=1}^n$).
 

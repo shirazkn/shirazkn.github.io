@@ -5,7 +5,7 @@ tags: ["General"]
 draft: false
 ---
 
-One of my motivations for starting a blog was Eugenia Cheng's book [The Joy of Abstraction](https://www.amazon.com/Joy-Abstraction-Exploration-Category-Theory/dp/1108477224)[^bookclub]. It's a surprisingly accessible, gentle introduction to <span class=accented>category theory</span>, a topic that is usually only taught to graduate students in math. She compiled part of the book using notes from the category theory class that she teaches at the Art Institute of Chicago, a testament to the aesthetic appreciation that one can expect to gain of category theory irrespective of their academic background. In this post, I will introduce the main ideas in category theory (as I best understand it) and show that it offers an elegant way of thinking about mathematics.
+One of my motivations for starting a blog was Eugenia Cheng's book [The Joy of Abstraction](https://www.amazon.com/Joy-Abstraction-Exploration-Category-Theory/dp/1108477224)[^bookclub]. It's a surprisingly accessible, gentle introduction to <span class=accented>category theory</span>, a topic that is usually only taught to graduate students in math. She compiled part of the book using notes from a class that she teaches at the Art Institute of Chicago, a testament to the aesthetic appreciation that one can expect to gain of category theory irrespective of their academic background! In this post, I will introduce the main ideas in category theory (as I best understand it) and show that it offers an elegant way of thinking about mathematics.
 
 <!-- **Required Background:** Familiarity with 'one-one' and 'onto' functions between sets.  -->
 
@@ -33,7 +33,9 @@ The so called <b>contrapositive</b> of the statement $\textbf A\Rightarrow \text
 </aside>
 </p>
 
-Now consider the following relationship between sets $A$ and $B$ instead:
+As an example, consider the statement $\textbf A$ = "Today is Sunday" and $\textbf B$ = "Tomorrow is a Monday." The statement $\textbf A\Rightarrow \textbf B$ is true, but so is its contrapositive $\neg \textbf B \Rightarrow \neg \textbf A$, i.e., "If tomorrow is *not* a Monday, then today is *not* Sunday."
+
+Now consider the following relationship between sets $A$ and $B$ (not to be confused with the propositions $\textbf A$ and $\textbf B$):
 
 <p>
 <aside class=aside-center>
@@ -41,17 +43,17 @@ Let $A^\complement$ denote the complement of $A$, i.e., everything that's not in
 \[ A\subseteq B \quad \textit{if and only if} \quad B^\complement \subseteq A^\complement \]
 </aside>
 </p>
-
 <div style="width: 75%; margin: 0 auto; text-align: center;">
 <figure class=invertible>
 <img src=/post-images/cat_theory/set_contrapositive.png>
+<figcaption>Everything that's inside $A$ is also inside $B$.<br>Everything that's outside $B$ is also outside $A$.</figcaption>
 </figure>
 </div>
 
 Even if these examples are of no interest to you, all we need to note is that we replaced the symbol $\Rightarrow$ (implies) with $\subseteq$ (is a subset of), but the relationship between the corresponding objects looks nearly identical[^dual]. 
 As the objects we're swapping out become more complex, the insights that carry over during the 'swapping out' become deeper. 
 
-[^dual]: Either statement is a consequence of *duality* in category theory. Duality manifests again on my blog when I talk about [differential forms](/posts/vector-fields), where the same relationship is seen in the setting of linear algebra.
+[^dual]: Either statement is a consequence of *duality* in category theory. Duality manifests again on my blog when I talk about [differential forms](/posts/vector-fields).
 
 The two different mathematical universes (*logic* and *set theory*) consist of objects (*statements* and *sets*) as well as relationships between them ($\Rightarrow$ and $\subseteq$). Similarly, a category is something that is made up of objects as well as their relationships to each other (called *morphisms*), satisfying some additional rules which impart to it its structure.
 
@@ -95,7 +97,7 @@ Moreover, for any $X$ and $Y$ in $\text{ob} (\mathcal C)$ and $f$ in $\mathcal C
 
 For e.g., if $X$ and $Y$ are vector spaces and $M$ is the linear transformation that takes $X$ to $Y$, then the first bullet point is saying that $ M I_X = M = I_Y M$, where $I_X$ corresponds to the identity matrix of the vector space $X$ (note that $I_X$ and $I_Y$ may have different dimensions as matrices!). Similarly, the second bullet point is just stipulating the associativity of matrix multiplication, which we are so used to that we take it for granted. The order in which we compose arrows (that are composable) does not matter.
 
-In the two examples we gave earlier, *logic* and *sets*, we only introduced one type of morphism each: $\Rightarrow$ and $\subseteq$, respectively. Since $\textbf A \Rightarrow \textbf A$ and $A\subseteq A$, we *do* have identity morphisms (arrows from the object to itself) at each object. Similarly, if the objects are numbers, then $\leq$ is another morphism that serves both as an identity as well as a relationship between two distinct numbers. At the same time, $<$ would not work as an identity morphism, as it is not true that a number is $<$ itself. 
+In the two examples we gave earlier, *logic* and *sets*, we introduced the morphisms $\Rightarrow$ and $\subseteq$, respectively. Since $\textbf A \Rightarrow \textbf A$ and $A\subseteq A$, we *do* have identity morphisms (arrows from the object to itself) at each object. Similarly, if the objects are numbers, then $\leq$ is another morphism that serves both as an identity as well as a relationship between two distinct numbers. At the same time, $<$ would not work as an identity morphism, as it is not true that a number is $<$ itself. 
 
 Observe that we are in the business of 'swapping out' morphisms and not just objects.
 
