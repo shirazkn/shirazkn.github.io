@@ -21,7 +21,7 @@ Note that I will be using the [Einstein summation](https://en.wikipedia.org/wiki
 # Lengths and Volumes ✨
 
 Let $M$ be an $n$-dimensional smooth manifold.
-A covariant $2$-tensor field on $M$ is a bilinear map that takes $2$ smooth vector fields as its arguments and produces a smooth $C^\infty(M)$ function.[^2forms] A <span class=accented>Riemannian metric</span> is a covariant $2$-tensor field that is symmetric:
+A covariant $2$-tensor field on $M$ is a bilinear map that takes $2$ smooth [vector fields](/posts/vector-fields) as its arguments and produces a smooth $C^\infty(M)$ function.[^2forms] A <span class=accented>Riemannian metric</span> is a covariant $2$-tensor field that is symmetric:
 
 <p>
 \[
@@ -69,7 +69,7 @@ g &=  g_{i_1 i_2}dx^{i_1} dx^{i_2}\\
 This helps us remember that the $dx^{i_1}$ and $dx^{i_2}$ of $g$ can be swapped without consequence, whereas swapping the $dx^{i_1}$ and $dx^{i_k}$ of $\omega$ may or may not incur a sign-change depending on the [parity](https://en.wikipedia.org/wiki/Parity_of_a_permutation) of the permutation.
 
 <aside class=aside-center>
-Here, $dx^i dx^j = \textrm{Sym}(dx^i \otimes dx^j) = \frac{1}{2}(dx^i \otimes dx^j + dx^j \otimes dx^i)$ denotes the symmetric product of tensors $-$ it is defined in a way that forces the resulting tensor to be symmetric in its arguments. Similarly, '$\wedge$' denotes the alternating (or wedge, or exterior) product of tensors, thereby capturing the antisymmetry of a differential form.
+Here, $dx^i dx^j = \textrm{Sym}(dx^i \otimes dx^j) \coloneqq \frac{1}{2}(dx^i \otimes dx^j + dx^j \otimes dx^i)$ denotes the symmetric product of tensors $-$ it is defined in a way that forces the resulting tensor to be symmetric in its arguments. Similarly, '$\wedge$' denotes the alternating (or wedge, or exterior) product of tensors, thereby capturing the antisymmetry of a differential form.
 </aside>
 
 <!-- As does Lee's book, we will use $I$ as a shorthand for a multi-index set such as $i\_1 i\_2 \cdots i\_n$.  -->
@@ -94,7 +94,7 @@ In the above expressions, we used a frame (a system of vector fields) that arise
 
 <!-- Since the choice of a metric automatically endows a geometry to our manifold, it is expected that a(n essentially) unique volume form should result from it. Proposition 15.29 of Lee's book tells us that this is the case. But to get there, we first need to talk about frames. -->
 
-A <span class=accented>local frame</span> in an open set $U$ of $M$ is a set of tangent (or contravariant) vector fields in $\mathfrak X(U)$, enumerated as $(E_i)\_{i=1}^n$, such that $(E_i(p))\_{i=1}^{n}$ is a basis of $T\_p M$ for all $p\in U\subseteq M$. A local frame is <span class=accented>orthonormal</span> if $g(E\_i, E\_j) = \delta\_{ij}$, where $\delta\_{ij}$ is the Kronecker delta considered as a constant-valued $C^\infty(U)$ function.
+A <span class=accented>local frame</span> in an open set $U$ of $M$ is a set of tangent vector fields in $\mathfrak X(U)$, enumerated as $(E_i)\_{i=1}^n$, such that $(E_i(p))\_{i=1}^{n}$ is a basis of $T\_p M$ for all $p\in U\subseteq M$. A local frame is <span class=accented>orthonormal</span> if $g(E\_i, E\_j) = \delta\_{ij}$, where $\delta\_{ij}$ is the Kronecker delta considered as a constant-valued $C^\infty(U)$ function.
 A <span class=accented>global</span> frame is one that is defined on all of $M$, with $U=M$. 
 
 <aside class=aside-center>
@@ -153,7 +153,7 @@ We have then, that
     \begin{align}
     \delta_{kl} = g(E_k, E_l) &= \tilde g_{ij} {\varepsilon}^i {\varepsilon}^j \left(E_k, E_l\right) \\
     &= \tilde g_{ij} {\varepsilon}^i \left(E_k\right) {\varepsilon}^j \left(E_l\right) \\
-    &= \tilde g_{ij} \delta^i_k \delta^j_l  = \tilde g_{kl}
+    &= \tilde g_{ij} \delta^i_k \delta^j_l  = \tilde g_{kl}.
     \end{align}
     \]
 </p> 
@@ -181,22 +181,24 @@ so that $\omega(E_1, E_2, \cdots, E_n) = 1$. The above statements will look iden
 The allure of orthonormal frames is that $g$ and $\omega_g$ can be represented quite succinctly in them. 
 However, the existence of an orthonormal frame *that arises as the coordinate frame of a chart* is a very rare occasion: such a frame only exists when the Riemannian manifold $(M, g)$ is locally flat. If we would rather work with a frame that arises from coordinates, then we must resort to computing the components of a non-flat metric tensor (one that is not simply the Kroenecker delta). Also see my post on [the non-flatness of the sphere](/posts/sphere).
 
-Recall that if $M$ is a smooth manifold, then each point $p\in M$ has a smooth chart[^smooth_chart] $(U, \varphi)$ containing it. Let $\frac{\partial}{\partial x^i}\big\vert_{\varphi(p)}$ be the usual coordinate-wise partial derivative operators in $\mathbb R^n$, $\varphi (p) = q = (q_1, q_2, \dots, q_n)$, and $\varphi(U) = V \subseteq \mathbb R^n$.
-Given $f\in C^\infty(V)$, the partial derivative operators of $\mathbb R^n$ operate on $f$ as follows:
+<!-- Recall that if $M$ is a smooth manifold, then each point $p\in M$ has a smooth chart[^smooth_chart] $(U, \varphi)$ containing it.  -->
+Let $\frac{\partial}{\partial x^i}\Big\vert_{q}$ be the usual coordinate-wise partial derivative operators in $\mathbb R^n$, $q \coloneqq (q_1, q_2, \dots, q_n)$, and $q\in V \subseteq \mathbb R^n$.
+Given a smooth function $f\in C^\infty(V)$, the partial derivative operators of $\mathbb R^n$ operate on $f$ as follows:
 
-[^smooth_chart]: ... i.e., a chart that ensures that the concept of differentiation on $M$ is well-defined.
+<!-- [^smooth_chart]: ... i.e., a chart that ensures that the concept of differentiation on $M$ is well-defined. -->
 
-<p>
-\[
-    \begin{align}
-\frac{\partial}{\partial x^2}\Big\vert_{q} f = \lim_{h\rightarrow 0} \frac{f(q_1, q_2+h, \dots, q_n) - f(q_1, q_2, \dots, q_n)}{h}
-    \end{align}
-    \] 
-</p>
+$$
+    \begin{align*}
+\frac{\partial}{\partial x^2}\bigg\vert_{q} f = \lim_{h\rightarrow 0} \frac{f(q_1, q_2+h, \dots, q_n) - f(q_1, q_2, \dots, q_n)}{h}
+    \end{align*}
+   $$
 
-The $i^{th}$ coordinate vector field of $V$ is defined as $\frac{\partial}{\partial x^i}\big\vert\_{(\ \cdot\ )}:V \rightarrow TV$. Thus, the coordinate vector fields $\left(\frac{\partial}{\partial x^i}\big\vert\_{(\ \cdot\ )}\right)_{i=1}^n$ constitute a <span class=accented>coordinate frame</span> of $TV$, visualized as a sort of a fisherman's net spread across $V$. 
+[Recalling](/posts/vector-fields) that the job of a vector field is to map a smooth function to a real number at every point (in a smooth manner), the following object is in fact a vector field on $V$: 
+$$\frac{\partial}{\partial x^i}\bigg\vert\_{(\ \cdot\ )}:V \rightarrow TV.$$
+Thus, $\left\lbrace\frac{\partial}{\partial x^i}\big\vert\_{(\ \cdot\ )}\right\rbrace_{i=1}^n$ is a set of vector fields on $V$, and may be visualized as a "fisherman's net" spread across $V$. 
 
-Ultimately, we want a coordinate frame on $U$ and not on $V$. Since $\varphi$ is a diffeomorphism, its differential $(\varphi\_*)\_p$ is a vector space isomorphism (i.e., an invertible linear map) between $T_p U$ and $T_q V$. The pushforward of the coordinate frame on $V$ under $\varphi\_\*^{-1}$ gives us a coordinate frame of $U$. By an abuse of notation, I and many others use $\left(\frac{\partial}{\partial x^i}\big\vert\_{(\ \cdot\ )}\right)_{i=1}^n$ to refer to either frame; the subscript, the function being operated on, and/or the context will make it clear which frame is being used. This means that if $\tilde f\in C^\infty (U)$, then we write
+Ultimately, we want a coordinate frame on a subset $U$ of $M$, rather than on $V$, which is in $\mathbb R^n$. Let $\varphi:U \rightarrow V$ be a smooth chart containing some point $p$ of $M$. Its differential $(\varphi\_*)\_p$ is a vector space isomorphism (i.e., an invertible linear map) between $T_p U$ and $T_q V$. <span class=accented>The pushforward of the "partial derivative vector fields" of $V$ under $\varphi^{-1}$ gives us a coordinate frame on $U$.</span> That is, $\varphi^{-1}$ maps the fisherman's on $V$ to one on $U$.
+By an abuse of notation, I and many others use $\left(\frac{\partial}{\partial x^i}\big\vert\_{(\ \cdot\ )}\right)_{i=1}^n$ to refer to either frame; the subscript, the function being operated on, and/or the context will make it clear which frame is being used. This means that if $\tilde f\in C^\infty (U)$, then we write
 
 <p>
 \[
@@ -207,7 +209,7 @@ Ultimately, we want a coordinate frame on $U$ and not on $V$. Since $\varphi$ is
     \]
 </p> 
 
-where $\varphi^{-1 *} \tilde f$ is called the *pullback* of $f$ under $\varphi^{-1}$; it *pulls* the domain of $\tilde f$ back to $V$.
+where $\varphi^{-1 *} \tilde f$ is called the *pullback* of $\tilde f$ under $\varphi^{-1}$; it *pulls* the domain of $\tilde f$ back to $V$.
 
 ### 🍩 Orthonormal Coordinate Frames
 
@@ -219,7 +221,7 @@ I reiterate that there are Riemannian manifolds where such a coordinate frame co
 
 Let $f:M \rightarrow N$ be a diffeomorphism between manifolds (though it is possible to generalize the forthcoming discussion to other kinds of smooth maps).
 
-Recall that tangent and cotangent vectors are dual to each other, and so are their $k^{th}$ exterior powers: $k$-vector fields and differential $k$-forms. Whenever we have a morphism for an object going one way, we expect a dual morphism for the corresponding dual object going the other way. Using this intuition, we deduce that if $f\_\*: TM \rightarrow TN$ allows us to push forward vector fields, there must be a dual morphism $f^\*: T^\* N \rightarrow T^\* M$ that allows us to pull back covector fields. Similarly, $f^\*: \Omega^k(N) \rightarrow \Omega^k(M)$[^omega] pulls back differential forms from $N$ to $M$ (we use the same notation for either map, $f^\*$).   In particular, metrics and volume forms on $N$ can be pulled back to define metrics and volume forms on $M$. 
+Recall that tangent and cotangent vectors are dual to each other, and so are their $k^{th}$ exterior powers: alternating $k$-vector fields and differential $k$-forms. Whenever we have a morphism for an object going one way, we expect a dual morphism for the corresponding dual object going the other way. Using this intuition, we deduce that if $f\_\*: TM \rightarrow TN$ allows us to push forward vector fields, there must be a dual morphism $f^\*: T^\* N \rightarrow T^\* M$ that allows us to pull back covector fields. Similarly, $f^\*: \Omega^k(N) \rightarrow \Omega^k(M)$[^omega] pulls back differential forms from $N$ to $M$ (we use the same notation for either map, $f^\*$).   In particular, metrics and volume forms on $N$ can be pulled back to define metrics and volume forms on $M$. 
 
 [^omega]: The space of differential $k$-forms on $M$ is denoted by $\Omega^k(M)$, which is also the space $\Gamma (\Lambda^k T^* M)$ of smooth sections of the $k^{th}$ exterior power of the cotangent bundle, $T^\*M$. Note that $\Omega^k(M)$ is a subspace (specifically, a submodule) of the space of all the covariant $k$-tensor fields on $M$ (viewed as a $C^\infty(M)$-module).
 <!-- For example, the torus $M=\mathbb S^1 \times\mathbb S^1$ can be embedded in $N=\mathbb R^3$ in the form of a donut, and so the embedding $\iota : M\rightarrow N$ allows us to borrow the metric/volume form from the ambient Euclidean space; we say that the resulting metric/volume form is *induced* on $M$ under the embedding. -->
@@ -237,7 +239,7 @@ The pullback of a differential form is defined such that it must be in concordan
     \]
 </p> 
 
-I like to read this as: $f^\*\omega$ eats vector fields on $M$ by imitating how $\omega$ eats the corresponding pushforward vector fields on $N$. Thus, $f^\*\omega$ is a differential $k$-form on $M$; the domain of $\omega$ has been pulled back by $f^\*$.
+I like to read this as: $f^\*\omega$ eats vector fields on $M$ by imitating how $\omega$ might eat the corresponding pushforward vector fields on $N$. Thus, $f^\*\omega$ is a differential $k$-form on $M$; the domain of $\omega$ has been pulled back by $f^\*$.
 
 <!-- While we have fully characterized the pullback of differential forms, some concrete properties of the pullback map are invaluable for doing actual computations. We will demonstrate these properties by pulling back metrics and volume forms on Lie groups. -->
 
@@ -268,7 +270,7 @@ Let $\mathcal L\_{g}:G\rightarrow G$ denote the left-multiplication map, $\mathc
 \]
     </p>
 
-Such a global orthonormal frame on $G$ also serves as a "basis" of the space (i.e., generating set of the $C^\infty(G)$-module) of vector fields on $G$, since any vector field $V\in\mathfrak X(G)$ can be uniquely expressed as
+Such a global orthonormal frame on $G$ also serves as a "basis" of the space (or more rigorously, a *generating set* of the $C^\infty(G)$-module) of vector fields on $G$, since any vector field $V\in\mathfrak X(G)$ can be uniquely expressed as
 $V = v^i E_i$ with $v^i \in C^\infty(G)$. Vector fields of the form $\text{c}^i E_i$ (where $\text{c}^i$ are constants) are precisely the <span class=accented>left-invariant vector fields</span> of $G$.
 
 One can similarly extend $(\tilde \varepsilon^i)\_{i=1}^n$ to a left-invariant global coframe $(\varepsilon^i)\_{i=1}^n$ on $G$:
@@ -296,21 +298,62 @@ In the following, we assume that $(E\_i)\_{i=1}^n$ and $(\varepsilon^i)\_{i=1}^n
 ### 🍩 Left-Invariance of Vector Fields
 
 
-Let's scrutinize the left-invariance of $E_i$. Pretend that the left-multiplication map sends $G$ to another Lie group, $G^💧$! 
+Let's scrutinize the left-invariance of $E_i$. Pretend that the left-multiplication map $L_g$ sends $G$ to another copy of itself, denoted as $G^💧$! 
 
 <figure class=invertible style="max-width: 80%;">
 <img src=/post-images/lie_groups/left-multiplication-june.png>
 </figure>
 
-The pushforward vector field on $G^💧$, $(\mathcal L_{g})_*E_i$, should act on a function $f\in C^\infty (G^💧)$ by mimicking whatever $E_i$ would have done in its place:
+If we view $E_i$ as a vector field on $G$,
+its pushforward on $G^💧$, $(\mathcal L_{g})_*E_i$, should act on a function $f\in C^\infty (G^💧)$ by mimicking whatever $E_i$ would have done in its place:
 
 <p>
 \[
-    \big[(\mathcal L_{g})_*E_i\big](f) = E_i(f \circ \mathcal L_g)
+    \begin{align}
+    \big[(\mathcal L_{g})_*E_i\big](f) &= E_i(f \circ \mathcal L_g)\\
+    \end{align}
     \]
 </p>
 
-But since $(\mathcal L_{g})_*E_i = E_i$ (this can be checked pointwise, by picking an arbitrary point of $G$ and verifying it there), we have that $E_i(f) = E_i(f \circ \mathcal L_g)$. An analogous property is exhibited by $\varepsilon^i$.
+At some point $h\in G$, we have
+<p>
+\[
+    \begin{align}
+    E_i(f \circ \mathcal L_g)(h) &=  \frac{d}{dt}[f\circ \mathcal L_g]\big(h \exp(t\tilde E_i)\big)\Big\vert_{t=0}\\
+    &= \frac{d}{dt}f\big(g h\exp(t\tilde E_i)\big)\Big\vert_{t=0}\\
+    &= [(E_i f)\circ \mathcal L_g](h)
+    \end{align}
+    \]
+</p>
+
+To make things clear, let me point out that the calculation above involved the following maps:
+
+<p>
+\[
+    \begin{align}
+    f: G &\rightarrow \mathbb R\\
+    E_i f : G &\rightarrow \mathbb R\\
+    \end{align}
+    \]
+</p>
+
+i.e., $f$ and its derivative.
+Then, we notice that we can perform either of these maps on $G^💧$ as well. That is, we do $\mathcal L_g: G \rightarrow G$ *first*, and *then* perform either of the above maps. This gives us two more maps:
+
+<p>
+\[
+    \begin{align}
+    f\circ \mathcal L_g: G &\rightarrow \mathbb R\\
+    (E_i f)\circ \mathcal L_g : G &\rightarrow \mathbb R\\
+    \end{align}
+    \]
+</p>
+
+Finally, we note that $E_i$ can act on the function $f\circ \mathcal L_g$, giving us yet another function 
+
+$$E_i(f\circ \mathcal L_g): G \rightarrow \mathbb R.$$
+That $E_i(f\circ \mathcal L_g)$ and $E_i(f)\circ \mathcal L_g$ are the same function, is what we showed, which is not true unless $E_i$ is left-invariant. The fact that $\mathcal L_g$ moves in and out of the differentiation is what "left-invariant" refers to (also see the commutative square [here](/posts/lie-groups/#invariant-vector-fields)).
+An analogous property is exhibited by $\varepsilon^i$.
 
 ### 🍩 Left-Invariance of Geometric Structure
 
@@ -318,18 +361,18 @@ Now consider what should happen if we define the Riemannian metric of $G$ as
 
 <p>
 \[
-\langle \hspace{1pt}\cdot\hspace{2pt},\hspace{1pt}\cdot\hspace{2pt}\rangle = Q_{ij}\hspace{1pt}\varepsilon^i \varepsilon^j    
+\langle \hspace{1pt}\cdot\hspace{2pt},\hspace{1pt}\cdot\hspace{2pt}\rangle = \textrm{k}_{ij}\hspace{1pt}\varepsilon^i \varepsilon^j    
     \]
     </p>
 
-where $Q_{ij}$ are constants that should be thought of as a "weighting matrix". Clearly, this metric should inherit the left-invariance properties of $(\varepsilon^i)_{i=1}^n$.
+where $\textrm{k}\_{ij}$ are constants that should be thought of as a "weighting matrix". Clearly, this metric should inherit the left-invariance properties of $(\varepsilon^i)_{i=1}^n$.
 Indeed, we can use similar arguments as before to show that if $\mathbf v, \mathbf w \in T_gG$, then
 
 $$
 \langle \mathbf v,\mathbf w\rangle_g = \langle (\mathcal L_h)_{\ast_g}\mathbf v, 
 (\mathcal L_h) _{\ast_g}\mathbf w\rangle _{hg}
 $$
-
+<!-- 
 It is notationally easier (more concise) to show this property for vector fields. Let $V,W\in\mathfrak X(G)$ be vector fields whose values at $g$ are $\mathbf v$ and $\mathbf w$, respectively. Then,
 
 <p>
@@ -341,9 +384,38 @@ It is notationally easier (more concise) to show this property for vector fields
 &= \delta_{ij}\  \varepsilon^i \left( V\right)  \varepsilon^j \left( W\right) = \langle V, W \rangle.
 \end{align}
 \]
+</p> -->
+
+To see this, we evaluate the right hand side:
+
+<p>
+\[
+\begin{align*}
+\langle (\mathcal L_h)_{\ast_g}\mathbf v, 
+(\mathcal L_h) _{\ast_g}\mathbf w\rangle _{hg} &= \textrm{k}_{ij}\hspace{1pt}\varepsilon^i_{hg} \varepsilon^j_{hg} \big((\mathcal L_h)_{\ast_g}\mathbf v, 
+(\mathcal L_h) _{\ast_g}\mathbf w\big)\\
+&= \textrm{k}_{ij}\hspace{1pt}\varepsilon^i_{hg} \big((\mathcal L_h)_{\ast_g}\mathbf v\big) \varepsilon^j_{hg} \big((\mathcal L_h) _{\ast_g}\mathbf w\big)\\
+\end{align*}
+\]
 </p>
 
-Similarly, a left-invariant volume form can be defined as $\omega = \varepsilon^1 \wedge \varepsilon^2 \wedge \cdots \wedge \varepsilon^n$. 
+Then, use the duality between pushforwards and pullbacks to show that
+
+<p>
+\[
+\begin{align*}
+\varepsilon^i_{hg} \big((\mathcal L_h)_{\ast_g}\mathbf v\big) &= \big[(\mathcal L_h)^\ast_{_{hg}}\varepsilon^i_{hg}\big] \big(\mathbf v\big) \\
+&=\big[(\mathcal L_h)^\ast_{_{hg}}
+(\mathcal L_{h^{-1}})^\ast_{_g}
+\varepsilon^i_{g}\big] \big(\mathbf v\big) \\
+&= \varepsilon^i_g \big(\mathbf v\big).
+\end{align*}
+\]
+</p>
+
+The notation may seem cumbersome, but given how light-yet-powerful the notation of differential geometry is already, it's not too bad (depending on what you intend to do with it). Drawing a diagram involving the points $g$ and $hg$, as well as the maps $L_g$ and $L_h$, can help in understanding the above calculation.
+
+A left-invariant volume form can be defined as $\omega = \varepsilon^1 \wedge \varepsilon^2 \wedge \cdots \wedge \varepsilon^n$, and has analogous invariance properties.
 
 ---
 
