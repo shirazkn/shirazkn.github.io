@@ -307,41 +307,50 @@ Let's scrutinize the left-invariance of $E_i$. Pretend that the left-multiplicat
 If we view $E_i$ as a vector field on $G$,
 its pushforward on $G^💧$, $(\mathcal L_{g})_*E_i$, should act on a function $f\in C^\infty (G^💧)$ by mimicking whatever $E_i$ would have done in its place. Given some point $h\in G$, with $\mathcal L_g(h) = gh \in G^💧$, we have
 
-$$
-    \begin{align}
-    \big[(\mathcal L_{g})_*E_i \,f\big](gh) &= \big[E_i(f \circ \mathcal L_g)\big](h)\\
-    \end{align}
-    $$
+<p>
+\[
+\begin{align}
+\big[(\mathcal L_{g})_*E_i \,f\big](gh) &= \big[E_i(f \circ \mathcal L_g)\big](h)
+\end{align}
+\]
+</p>
 
 Moreover,
 
-$$
+<p>
+\[
     \begin{align}
     \big[E_i(f \circ \mathcal L_g)\big](h) &=  \frac{d}{dt}[f\circ \mathcal L_g]\big(h \exp(t\tilde E_i)\big)\Big\vert_{t=0}\\
     &= \frac{d}{dt}f\big(g h\exp(t\tilde E_i)\big)\Big\vert_{t=0}\\
     &= [E_i f](gh)\\
     &= [(E_i f)\circ \mathcal L_g](h).
     \end{align}
-$$
+\]
+</p>
 
 Now let $G=G^💧$ (as we have done implicitly in the calculation above). Observe that the calculation above involved the following maps:
 
-$$
+<p>
+\[
     \begin{align}
     f: G &\rightarrow \mathbb R\\
     E_i f : G &\rightarrow \mathbb R\\
     \end{align}
-$$
+\]
+</p>
 
 i.e., $f$ and its derivative.
 Then, we notice that we can perform either of these maps on $G^💧$ as well. That is, we do $\mathcal L_g: G \rightarrow G$ *first*, and *then* perform either of the above maps. This gives us two more maps:
 
-$$
+<p>
+\[
     \begin{align}
     f\circ \mathcal L_g: G &\rightarrow \mathbb R\\
     (E_i f)\circ \mathcal L_g : G &\rightarrow \mathbb R\\
     \end{align}
-    $$
+ \]
+</p>
+
 Finally, we note that $E_i$ can act on the function $f\circ \mathcal L_g$, giving us yet another function 
 
 $$E_i(f\circ \mathcal L_g): G \rightarrow \mathbb R.$$
