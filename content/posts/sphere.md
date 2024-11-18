@@ -41,7 +41,7 @@ but a product/Leibnitz rule in the second slot:
 
 <p>
 \[
-    \nabla _X (fY) = X(f) + f \nabla _X Y
+    \nabla _X (fY) = X(f)Y + f \nabla _X Y
     \]
     </p>
 
@@ -59,7 +59,7 @@ The first of these can be viewed as a Leibniz/product rule for the metric[^metri
 [^metric_compatibility]: The metric compatibility condition is equivalent to the condition that $\nabla g \equiv 0$, though to define what this even means, we need to understand how the connection on $TM$ induces a connection on symmetric $(0,2)$-tensors on $M$ (of which the metric tensor $g$ is an example).
 
 ## Comparison with the Lie Derivative  ($\mathcal L_X$)
-As suggested in the aside (the indented grey box) above, the connection defines a derivative of $C^\infty (M)$ functions in the following sense:
+The connection defines a derivative of $C^\infty (M)$ functions in the following sense:
 
 <p>
 \[
@@ -68,7 +68,7 @@ As suggested in the aside (the indented grey box) above, the connection defines 
 </p>
 
 which is also the same as $df(X)$, $d$ being the exterior derivative.
-So, $\nabla _X$ and $\mathcal L_X$ operate similarly on functions. However, $\nabla _X Y \neq \mathcal L_X Y$ (in general) when $Y \in \mathfrak X(M)$. This was for me one of the biggest conceptual difficulties while self-studying Riemannian geometry, so it is worth dwelling on the point.
+So, $\nabla _X$ and $\mathcal L_X$ operate identically on functions. However, $\nabla _X Y \neq \mathcal L_X Y$ (in general) when $Y \in \mathfrak X(M)$. This was for me one of the biggest conceptual difficulties while self-studying Riemannian geometry, so it is worth dwelling on the point.
 
 Recall that 
 
@@ -138,7 +138,8 @@ We are ready to attempt Problem $5-5$ from Lee's book.
 
 # The Sphere
 
-A vector field $X$ is said to be a *parallel* vector field if $\nabla X$ is identically $0$. A (local) parallel coordinate frame (see [my other post](/posts/lie-groups_calculus) for an introduction to coordinate frames) exists on (an open set of) a manifold $M$ if and only if $M$ is (locally) flat. Here, local (or global) flatness refers to the property of being locally (or globally) isometric to an open set of the Euclidean space of the same dimension.
+A vector field $X$ is said to be a *parallel* vector field if $\nabla X$ is identically $0$. A (local) parallel coordinate frame (see [my other post](/posts/lie-groups_calculus) for an introduction to coordinate frames) exists on (an open set of) a manifold $M$ if and only if $M$ is (locally) flat. Here, local or global flatness refers to the property of being locally or globally isometric, resp., to an open set of the Euclidean space of the same dimension. 
+<!-- There are other ways to show that a piece (i.e., an open set) of a manifold is flat, but the existence of a parallel frame is what we will focus on in this post. -->
 
 A $2$-dimensional manifold is locally flat if and only if a small piece (i.e., an open set) cut out from it can be laid flat on the table without stretching, tearing, or crumpling it. The surface of a Cylinder and the Möbius strip (with a certain, natural choice of metric for it) are examples of locally flat surfaces; this is exactly why one can construct these surfaces from a piece of paper. The crux of Problem $5-5$ is to show that such a local parallel vector field does not exist on the sphere $S^2$. (This can be compared to the difficulty of drawing a map of the Earth that does not introduce distortions of some sort.)
 
@@ -189,6 +190,23 @@ So, there is a good reason for distinguishing between $(x^1, x^2)$ and $(y^1, y^
 
 [^product]: Note that $\mathcal L_{fX} Y = [fX,Y] = -\mathcal L_Y (fX)$, so the Lie derivative satisfies a Leibniz/product rule in either of its arguments.
 
+### I forgot the chain rule again!</i>
+My favorite thing about differential geometry is that it does not rely on memorization of formulae as much as multivariable calculus did. Instead, most of the heavy-lifting is done by the conceptual ideas, which, once internalized, can be applied to a variety of scenarios in order to recover most of the classical formulae of calculus. Some work is also done by the clever choice of notation.
+<!-- In particular, we can recover the chain rule using the *naturality* of the exterior derivative in relation to the pullback (see Lee's book, Prop. B. 13).  -->
+
+Let $y^1, y^2,$ and $y^3$ be the functions from $\mathbb R^3$ to $\mathbb R$ that project a point to its coordinates. The pushforward vector field $\psi_* \frac{\partial}{\partial x^1}$ can eat the function $ y^1(x^1, x^2)$, giving us
+
+<p>
+\[
+    \begin{aligned}
+        \left[\psi_* \frac{\partial}{\partial x^1}\right] (y^1) &= \frac{\partial}{\partial x^1} (y^1 \circ \psi) = \frac{\partial}{\partial x^1} \left(\sin x^1 \cos x^2\right)\\
+        &= \cos x^1 \cos x^2.
+    \end{aligned}
+    \]
+</p>
+
+On the other hand, any vector field in $\mathbb R^3$ can be expressed as $X^i \frac{\partial}{\partial y^i}$, so that we can let this vector field act on the function $y^1$ to get $ X^i \frac{\partial}{\partial y^i}(y^1) = X^1$. In fact, $X^1(x^1, x^2)$ is precisely the function $\cos x^1 \cos x^2$. We have effectively used the chain rule, though it is barely recognizable here in its intrinsic form.
+
 
 ## Are $X$ and $Y$ Parallel?
 If they are, then we will conclude that the sphere is flat.
@@ -219,9 +237,13 @@ Before we get there, what do you think $\nabla _X X$ will turn out to be? Here's
 
 The frame $\left(\frac{\partial}{\partial y_1}, \frac{\partial}{\partial y_2}, \frac{\partial}{\partial y_3}\right)$ is a global coordinate frame for $\mathbb R^3$ derived from the standard/trivial coordinates, $(y^1,y^2, y^3) \mapsto (y^1,y^2, y^3)$. It is attractive to us because it is orthonormal (the metric tensor coefficients are $\delta_{ij}$, making the metric reduce to a dot product), and the Christoffel symbols $\lbrace\Gamma_{ij}^k\rbrace_{i,j,k=1}^3$ of the Levi-Civita connection $\overline \nabla$ are all identically $0$.
 
-Let's construct a different coordinate frame for $\mathbb R^3$. We consider the spherical polar parametrization of $\mathbb R^3$, $(\varphi, \theta, r) \mapsto (r \sin \varphi \cos \theta, r \sin \varphi \sin \theta, r \cos \varphi)$. This induces a coordinate frame $(\partial\_\varphi, \partial\_\theta, \partial\_r)$ with $\partial\_\varphi\vert\_{r=1}=X$ and $\partial\_\theta\vert\_{r=1}=Y$; the vertical line '$\vert$' is read as 'restricted to'. This frame is not defined along the $y^3$ axis, but that's okay -- it is a *local* coordinate frame. 
+Let's construct a different coordinate frame for $\mathbb R^3$. We consider the spherical polar parametrization of $\mathbb R^3$, $(\varphi, \theta, r) \mapsto (r \sin \varphi \cos \theta, r \sin \varphi \sin \theta, r \cos \varphi)$. This induces a coordinate frame $(\partial\_\varphi, \partial\_\theta, \partial\_r)$ with $\partial\_\varphi\vert\_{r=1}=X$ and $\partial\_\theta\vert\_{r=1}=Y$; the vertical line '$\vert$' is read as 'restricted to'. This frame is not defined along the $y^3$ axis, but that's okay -- it suffices as a *local* coordinate frame. 
 
-It seems as if this should simplify the calculation greatly, so (by an application of the [no free lunch theorem](https://en.wikipedia.org/wiki/No_free_lunch_theorem)) there must be a catch. The catch is that the frame $(\partial\_\varphi, \partial\_\theta, \partial\_r)$ is not orthonormal, so we need to compute the Christoffel symbols of the Levi-Civita connection with respect to this frame. (Chapter 7 of Lee shows that a local orthonormal coordinate frame can exist if and only if the manifold is locally flat; this is yet another way of demonstrating the non-flatness of the sphere.)
+It seems as if this should simplify the calculation greatly, so (by an application of the [no free lunch theorem](https://en.wikipedia.org/wiki/No_free_lunch_theorem)) there must be a catch. The catch is that the frame $(\partial\_\varphi, \partial\_\theta, \partial\_r)$ is not orthonormal, so we need to compute the Christoffel symbols of the Levi-Civita connection with respect to this frame. 
+
+<aside class=aside-center>
+Chapter 7 of Lee shows that a (local) orthonormal coordinate frame can exist if and only if the manifold is (locally) flat, so $X$ and $Y$ could not possibly be orthonormal (on some open set). This is yet another way of demonstrating the non-flatness of the sphere; we just happen to be pursuing the equivalent condition of the existence of a parallel frame.
+</aside>
 
 Let's look at the metric tensor coefficients $g_{ij}$. We have, $g_{11}=\langle \partial\_\varphi, \partial\_\varphi \rangle$, with
 
@@ -300,13 +322,13 @@ In the above, we worked with a specific isometric embedding of the sphere in $\m
 **The non-flat torus:**  The 2-torus $\mathbb T^2 \cong S^1 \times S^1$ can be embedded in $\mathbb R^3$ as a donut: this is not flat, because parallel transport of a vector from inside the hole (i.e., close to the axis) of the donut to the outside (i.e., far from the axis) would need to preserve its length, posing an obstacle to the construction of a parallel coordinate frame. Equivalently, one cannot wrap a piece of paper around a donut (unless the length or width of the piece of paper were vanishingly small) without introducing creases or folds in the paper.
 
 **The flat torus:** At the same time, the 2-torus can be embedded in $\mathbb R^4$ (analogous to how a circle can be embedded in $R^2$[^S2embedding])
-or realized as the quotient manifold $\mathbb R^2/\mathbb Z^2$. The latter two constructions would give rise to natural choices of flat metrics. We conclude that $\mathbb T^2$ admits a flat metric, but the donut (which is $\mathbb T^2$ with a specific choice of metric) is not flat. That being said, it *is* possible to isometrically embed the flat torus in $\mathbb R^3$; [these researchers](http://hevea-project.fr/ENPageToreDossierDePresse.html) are working on visualizing such an embedding, and observe that it has a self-similar, fractal-like structure, indicating that the situation is much more subtle than our naive conception of the donut.
+or realized as the quotient manifold $\mathbb R^2/\mathbb Z^2$. The latter two constructions would give rise to natural choices of flat metrics. We conclude that $\mathbb T^2$ admits a flat metric, but the donut (which is $\mathbb T^2$ with a specific choice of metric) is not flat. That being said, it is technically(?) possible  to isometrically embed the flat torus in $\mathbb R^3$; [these researchers](http://hevea-project.fr/ENPageToreDossierDePresse.html) are working on visualizing such an embedding, and observe that it has a self-similar, fractal-like structure, indicating that the situation is more intricate than our naive conception of the donut.
 
 <!-- [^nash]: The Nash-Kuiper embedding theorem is deemed to be counterintuitive and (according to Wikipedia). we are only guaranteed that we can *approximately* embed a smooth manifold in a higher-dimensional Euclidean space, though the degree of approximation can be arbitrarily good. -->
 
 [^S2embedding]: Note that $S^1$ (and in fact, all one-dimensional smooth manifolds) is flat independently of the choice of metric; a piece of string/yarn can always be curved into another shape of desire. Consequently, the product metric on $S^1\times S^1$ is flat as well.
 
-**The locally flat sphere**: The sphere *does* admits a metric that is locally flat (near a given point, $p\in \mathbb S^2$). To see this, we take a cube in $\mathbb R^3$ and smooth all of its edges and corners (to make it smooth); this smoothed cube is now a smooth embedding of the sphere in $\mathbb R^3$, and its pullback metric is certainly (locally) flat near some of the points. So, a more appropriate question to ask is whether the sphere can be *globally flat*, i.e., does it admit a metric that is flat in every neighborhood, even near the 'edges' of the smoothed cube?
+**The locally flat sphere**: The sphere *does* admits a metric that is locally flat (near a given point, $p\in \mathbb S^2$). To see this, we take a cube in $\mathbb R^3$ and smooth all of its edges and corners (to make it smooth); this smoothed cube is now a Riemannian embedding of the sphere in $\mathbb R^3$, and its induced metric is certainly (locally) flat near some of the points. So, a more appropriate question to ask is whether the sphere can be *globally flat*, i.e., does it admit a metric that is flat in every neighborhood, even near the 'edges' of the smoothed cube?
 
 **The (non-existence of a) globally flat sphere:** Surprisingly, the answers to such questions come from algebraic geometry, having their roots in combinatorics (i.e., counting arguments). The Euler characteristic of the sphere, combined with the Gauss-Bonnet theorem can be used to show that the sphere does not admit a globally flat metric. Here's another proof that relies on a theorem that may be familiar (or at least accessible) to most readers. Let $(S^2, g)$ be a hypothesized flat metric on the sphere. There exists then, a global parallel vector field $X$.
 By metric compatibility of the corresponding Levi-Civita connection, we have
@@ -317,7 +339,7 @@ By metric compatibility of the corresponding Levi-Civita connection, we have
 \]
 </p>
 
-This means that if $\langle X, X\rangle \_p \neq 0$ at some point $p$, then $\langle X, X\rangle$ (and therefore, $X$) does not vanish anywhere on $S^2$. The [hairy ball theorem](https://en.wikipedia.org/wiki/Hairy_ball_theorem) says that this is impossible -- a contradiction.
+This means that if $\langle X, X\rangle \_p \neq 0$ at some point $p$, then $\langle X, X\rangle$ (and therefore, $X$) does not vanish anywhere on $S^2$. The [hairy ball theorem](https://en.wikipedia.org/wiki/Hairy_ball_theorem) says that this is impossible -- a contradiction!
 
 [^ortho]: I find it remarkable that this frame is orthogonal but not ortho*normal* (and moreover, not constant), and that in itself is enough to pose an obstruction to flatness.
 
@@ -325,15 +347,13 @@ This means that if $\langle X, X\rangle \_p \neq 0$ at some point $p$, then $\la
 
 ## A Word of Caution!
 
-The most confusing part of self-learning Riemannian geometry has been, for me, the conflation between frames and coordinate frames. I suggest that the reader familiarizes theirself with the definition of either (a coordinate chart induces a frame, but not every frame is the frame derived from a coordinate chart). Every time you encounter a formula, statement, or theorem, take care to check whether it only holds for a coordinate frame. 
+The most confusing part of self-learning Riemannian geometry has been, for me, the conflation between frames and coordinate frames. I suggest that the reader familiarizes theirself with the definition of either object; a coordinate chart induces a frame, but not every frame is the frame derived from a coordinate chart. Every time you encounter a formula, statement, or theorem, take care to check whether it only holds for a coordinate frame. 
 
 The following examples show why this distinction is important:
 
 - The left-invariant vector fields $(E_i)\_{i=1}^n$ of a Lie group form a global, orthonormal (after carrying out the Gram-Schmidt process) frame. Does this mean that every Lie group is globally flat? No, because the frame of left-invariant vector fields on a non-Abelian Lie group is not a *coordinate* frame; to see this, observe that $[E_i, E_j] \neq 0$, whereas the Lie brackets must vanish in a coordinate frame since the partial derivatives of $\mathbb R^n$ commute.[^coordinates] It is only an orthonormal *coordinate* frame that is indicative of flatness.
 
 - For the same reason, it is seldom possible to choose an orthonormal coordinate frame. One either gives up orthonormality (choosing to introduce a metric tensor) or gives up the coordinate frame (choosing to work with a frame that is not a coordinate frame, such as $(E_i)\_{i=1}^n$).
-
-- The Christoffel symbols of the Levi-Civita connection are symmetric in the lower indices ($\Gamma_{ij}^k = \Gamma_{ji}^k$), but this is only true in a coordinate frame.
 
 - The identity we used to compute the Christoffel symbols in this post only holds in a coordinate frame. In a non-coordinate frame, we would replace it with the appropriate formula in Corollary 5.11 of Lee's book.
 
