@@ -5,7 +5,7 @@ draft: false
 showtoc: true
 ---
 
-Despite having encountered the Lagrangian and Hamiltonian formalisms of mechanics several times in a variety of engineering and physics settings, I had never been able to retain it in my memory. I had maintained a similar dissatisfaction with the many formulae of multivariable calculus, which only really ✨clicked✨ for me once I learned about exterior derivatives and the <a href=https://youtu.be/1lGM5DEdMaw?si%3Dk9NhFF7jNBcaEoGQ class=accented>Generalized Stokes' theorem</a>. 
+Despite having encountered the Lagrangian and Hamiltonian formalisms of mechanics several times in a variety of engineering and physics settings, I had never been able to retain it in my memory. I had maintained a similar dissatisfaction with the many formulae of multivariable calculus, which only really ✨clicked✨ for me once I learned about the exterior derivative and the <a href=https://youtu.be/1lGM5DEdMaw?si%3Dk9NhFF7jNBcaEoGQ class=accented>Generalized Stokes' theorem</a>. 
 
 In this post, I would like to collect my thoughts on the differential geometric treatment of <span class=accented>Lagrangian</span> and <span class=accented>Hamiltonian mechanics</span>, which assume a very simple and memorable form once we introduce the language of [symplectic geometry](https://en.wikipedia.org/wiki/Symplectic_geometry). Of course, to have made our mathematical journey to this point, where we are able to say anything at all about symplectic geometry, was a not-so-simple task.
 
@@ -312,7 +312,7 @@ If we hold the endpoints fixed, i.e., $\gamma(a,\hspace{1pt}\cdot\hspace{1pt})$ 
 
 ## Reduction
 
-We can specialize the above to the case of a dynamical system evolving on a Lie group $G$. Since the vector bundles on $G$ can be trivialized (e.g., $T^\ast G \cong G \times \mathfrak g^\ast$), we leverage this additional structure to make the associated Hamiltonian and Lagrangian equations more "Cartesian" in flavor. This procedure, when applied to Hamiltonion mechanics on $T^\ast G$, is called <span class=accented>Lie-Poisson reduction</span>; when applied to Lagrangian mechanics/variational problems on $TG$, is called <span class=accented>Euler Poincaré reduction</span>. I get a bit into the latter in [a different post](/posts/ep). As for the former, it is explained quite well by Marsden and Ratiu in Chapter 13 of "Introduction to Mechanics and Symmetry". 
+We can specialize the above to the case of a dynamical system evolving on a Lie group $G$. Since the vector bundles on $G$ can be trivialized (e.g., $T^\ast G \cong G \times \mathfrak g^\ast$), we leverage this additional structure to make the associated Hamiltonian and Lagrangian equations more "Cartesian" in flavor. This procedure, when applied to Hamiltonion mechanics on $T^\ast G$, is called <span class=accented>Lie-Poisson reduction</span>; when applied to Lagrangian mechanics/variational problems on $TG$, it is called <span class=accented>Euler Poincaré reduction</span>. I get a bit into the latter in [a different post](/posts/ep). As for the former, it is explained quite well by Marsden and Ratiu in Chapter 13 of "Introduction to Mechanics and Symmetry". 
 
 ---
 
