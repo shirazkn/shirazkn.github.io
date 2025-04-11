@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Differentials in Lie Theory | Shiraz</title>
+<meta name="keywords" content="">
+<meta name="description" content="I collect here some results about the differentials of the $\exp$ and $\log$ maps of a Lie group. The reader must be familiar with how the differential (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of 
+    tangent vectors as equivalence classes of curves
+; Wikipedia has an excellent 
+    summary
+ of this, as does my blog (if I may say so myself).">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/lemmas/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.42ea6a4c0a68f9389cacd15de82bd17c29e095336bdc1de23c1abfcfb83d2a0c.css" integrity="sha256-QupqTApo&#43;TicrNFd6CvRfCnglTNr3B3iPBq/z7g9Kgw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/favicon.ico">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/lemmas/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="Differentials in Lie Theory" />
+<meta property="og:description" content="I collect here some results about the differentials of the $\exp$ and $\log$ maps of a Lie group. The reader must be familiar with how the differential (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of 
+    tangent vectors as equivalence classes of curves
+; Wikipedia has an excellent 
+    summary
+ of this, as does my blog (if I may say so myself)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/lemmas/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-01-13T12:46:04-05:00" />
+<meta property="article:modified_time" content="2025-01-13T12:46:04-05:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Differentials in Lie Theory"/>
+<meta name="twitter:description" content="I collect here some results about the differentials of the $\exp$ and $\log$ maps of a Lie group. The reader must be familiar with how the differential (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of 
+    tangent vectors as equivalence classes of curves
+; Wikipedia has an excellent 
+    summary
+ of this, as does my blog (if I may say so myself)."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Differentials in Lie Theory",
+      "item": "http://localhost:1313/posts/lemmas/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Differentials in Lie Theory",
+  "name": "Differentials in Lie Theory",
+  "description": "I collect here some results about the differentials of the $\\exp$ and $\\log$ maps of a Lie group. The reader must be familiar with how the differential (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of tangent vectors as equivalence classes of curves ; Wikipedia has an excellent summary of this, as does my blog (if I may say so myself).\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "I collect here some results about the differentials of the $\\exp$ and $\\log$ maps of a Lie group. The reader must be familiar with how the differential (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of tangent vectors as equivalence classes of curves ; Wikipedia has an excellent summary of this, as does my blog (if I may say so myself).\nI am interested in the differentials of the maps $\\exp: \\mathfrak g \\rightarrow G$ and $\\log:U\\rightarrow \\mathfrak g$, where $U\\subseteq G$ is a neighborhood of $e$. Let $L_g$ refer to the left-multiplication operation: $L_g(h)=gh$ for $g,h\\in G$. Given $X\\in\\mathfrak g$, $X^L_g\\coloneqq dL_g(X)$ is the corresponding left-invariant vector field. For a matrix Lie group (i.e., where $g$ is identified with some finite-dimensional matrix representation of it), $X^L_g=g X$, which makes sense because we have an external algebraic structure (namely, the multiplication of $n\\times n$ matrices, which has the structure of an associative unital algebra ) that lets us multiply group elements with Lie algebra elements. This rather convenient structure does not exist for a general Lie group.\nDifferential of $\\exp$ Suppose $\\exp(X)$ is a point on $G$. The differential of $\\exp$ provides an answer to the following question: what happens when $X$ is perturbed in the direction $Y \\in T_{X}\\mathfrak g$? The result, referred to as the pushforward of $Y$ under $\\exp$, lies in $T_{\\exp(X)} G$. That is, the differential is a linear map between vector spaces:\n\\[ d\\exp_X: T_{X}\\mathfrak g \\rightarrow T_{\\exp X} G. \\] Since $\\mathfrak g$ is a vector space, we can identify $T_X\\mathfrak g$ with $\\mathfrak g$. Similarly, we can identity $T_{\\exp X} G$ with $T_e G$, which is also just $\\mathfrak g$. A pedagogical nightmare ensues.\nLet $\\gamma(t)$ be a curve on $\\mathfrak g$. We use the notation $[\\gamma]$ to refer to the equivalence class of all the curves1 that pass through $\\gamma(0)$ with the velocity $\\dot \\gamma(0)$.2 We say that $\\gamma$ is a representative of the class $[\\gamma]$. If $\\gamma$ is chosen such that $\\gamma(0)=X\\in\\mathfrak g$ and $\\dot \\gamma(0)=Y \\in T_X\\mathfrak g$, then $[\\gamma]$ is completely characterized by $Y$ and vice versa; therefore, we can write $[\\gamma]=Y$. The curve $\\gamma$ is a representative of $Y$.\nThe image of $\\gamma$ under $\\exp$, which is $\\exp\\circ \\gamma(t)$, is a curve on $G$ which represents the pushforward of $Y$. That is, $$d\\exp_X(Y)=[\\hspace{2pt}\\exp\\circ \\hspace{1pt}\\gamma\\hspace{2pt}]$$\nis some vector in $T_{\\exp(X)} G$. But which vector?\nThe key to making these identifications concrete is to notice that we can choose any $\\gamma$ satisfying $\\gamma(0)=X$ and $\\dot {\\gamma}(0)=Y$. Any such $\\gamma$ is a representative of $Y$. So, we might as well choose a $\\gamma$ that is convenient to write down; let’s make the choice, $\\gamma(t) \\coloneqq X+tY$.\nNow, $\\exp \\circ\\hspace{2pt} \\gamma(t)=\\exp(X+tY)$ is a curve on $G$ passing through $\\exp(X)$, and it is also a member of its equivalence class $[\\exp(X+tY)]$. But consider this alternative way of writing down the same equivalence class:\n$$ \\big[\\exp(X+tY)\\big]=\\big[\\exp(X)\\exp(t\\hspace{2pt}\\square)\\big] $$\nwhere the box is a Lie algebra element: $\\square \\in \\mathfrak g$. There must be a value of $\\square$ for which these are the same equivalence class. The value of $\\square$ can therefore be used to describe the quantity $d\\exp_X(Y)$:\n$$ d\\exp_X(Y)=\\big[\\exp(X+tY)\\big]=\\big[\\exp(X)\\exp(t\\hspace{2pt}\\square)\\big]. $$\nIn conclusion, the differential of $\\exp$ takes two objects, the point $X$ and the direction $Y$, and defines the object $\\square$. Here, $\\square$ represents the direction and extent to which $\\exp(X)$ is perturbed when we nudge $X$ in the direction of $Y$.\nIn the case of matrix Lie groups, we write $d\\exp_X(Y)=\\exp(X)\\square$, although the reader should now understand what this really means and how one might go about deriving the formula for $\\square$. Section 3.2 of Jean Gallier's book has the formula for $d\\exp_X$, and the appendix of my paper \"Parameter Estimation on Homogeneous Spaces\" has $d\\log_{\\exp(X)}$. Differential of $\\log$ By the same arguments as above,\n$$ d\\log_g: T_g G \\rightarrow T_{\\log(g)}\\mathfrak g. $$\nSince $T_g G\\cong \\mathfrak g$ and $T_{\\log(g)}\\mathfrak g\\cong \\mathfrak g$, we should once again expect a formula that goes from $\\mathfrak g$ to $\\mathfrak g$. It proves to be convenient to work entirely with $\\mathfrak g$-elements and write $\\exp(X)$ in place of $g$.\nLet $\\gamma \\coloneqq \\exp(X) \\exp(tY)$ by a curve passing through $\\exp(X)$ with the velocity $Y$. We have, $$d\\log_{\\exp(X)}(Y)=\\big[\\hspace{1pt}\\log\\mathrel\\circ\\gamma\\hspace{1pt}(t)\\hspace{1pt}\\big]=\\big[\\hspace{1pt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\hspace{1pt}\\big]$$ One sees the Baker-Campbell-Hausdorff-Dynkin formula starting to appear. As before, we have an alternative way of writing down the equivalence class:\n$$ \\big[\\hspace{1pt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\hspace{1pt}\\big]= \\big[\\hspace{1pt}X + t\\hspace{1pt}\\square\\hspace{1pt}\\big]. $$\nThus, the differential of $\\log$ takes two objects, $g$ (alternatively, $X=\\log(g)$) and $Y$, and its output is characterized by $\\square$. Here, $\\square$ is the direction in which $\\log(g)$ is perturbed when we perturb its argument, $g$, in the direction $Y$.\nDifferential of … In equation $(5)$ of this paper , the authors use the result that\n\\[ \\textrm{grad}_x d^2(x,y) = -2 \\log_x (y). \\] This makes intuitive sense, and the proof of it goes through some variant of the Gauss lemma. An analogous result holds on Lie groups with the distance defined in a group-theoretic manner. The group-theoretic ‘distance’ isn’t necessarily a distance that arises from a Riemannian metric (i.e., the geodesic distance), however, so we should try to prove it without passing through the Gauss lemma.\nLet $f(g) = \\lVert \\log h^{-1} g \\rVert_2 ^2$. We want to compute its gradient w.r.t. a left-invariant Riemannian metric on $G$, $\\langle\\cdot, \\cdot \\rangle$. Let $\\tilde Z \\in \\mathfrak g$ with $Z_g \\coloneqq d L_g (\\tilde Z)$ denoting the corresponding left-invariant vector field (LIVF). Furthermore, let $\\mathfrak{grad}f_g \\coloneqq dL_{g^{-1}}\\left(\\textrm{grad}f_g\\right)$ denote the trivialization of the gradient. The gradient of $f$ can then be characterized as:\n\\[ \\begin{align*} \\langle \\mathfrak{grad}f_\\mu, \\tilde Z \\rangle = \\langle dL_{\\mu^{-1}}\\left(\\textrm{grad}f_\\mu\\right), \\tilde Z \\rangle = \\langle \\textrm{grad}f_{\\mu}, \\tilde Z \\rangle = Zf(\\mu). \\end{align*} \\] which should hold for an arbitrary $\\tilde Z$. We further decompose this function as $f= f_1 \\circ f_2$ ($f_1$ after $f_2$) where $f_1:\\mathfrak g \\rightarrow \\mathbb R_{\\geq 0}$ and $f_2:G \\rightarrow \\mathfrak g$ in the obvious way. This means that\n\\[ \\begin{align*} Zf(\\mu) \u0026= This is also what is called a $1$- jet , and this notion of an ’equivalence class of curves’ generalizes in annoying ways. ↩︎\nHere, $\\dot \\gamma(0)$ refers to the pushforward of $\\frac{\\partial}{\\partial t}\\big\\vert_{t=0}$ under $\\gamma$. ↩︎\n",
+  "wordCount" : "1039",
+  "inLanguage": "en",
+  "datePublished": "2025-01-13T12:46:04-05:00",
+  "dateModified": "2025-01-13T12:46:04-05:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/lemmas/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shiraz",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Differentials in Lie Theory
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2025-01-13 12:46:04 -0500 EST'>January 13, 2025</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>I collect here some results about the differentials of the $\exp$ and $\log$ maps of a Lie group. The reader must be familiar with how the <span class=accented>differential</span> (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of <a href="]%28/posts/vector-fields%29" class="accented">
+    tangent vectors as equivalence classes of curves
+</a>; Wikipedia has an excellent <a href="https://en.wikipedia.org/wiki/Tangent_space#Definition_via_tangent_curves" target="_blank" class="accented">
+    summary
+</a> of this, as does my blog (if I may say so myself).</p>
+<p>I am interested in the differentials of the maps $\exp: \mathfrak g \rightarrow G$<!-- (surjective if the group is connected, injective when $G=\mathbb R^n$) -->
+and $\log:U\rightarrow \mathfrak g$, where $U\subseteq G$ is a neighborhood of $e$.
+Let $L_g$ refer to the left-multiplication operation: $L_g(h)=gh$ for $g,h\in G$. Given $X\in\mathfrak g$, $X^L_g\coloneqq dL_g(X)$ is the corresponding left-invariant vector field. For a matrix Lie group (i.e., where $g$ is identified with some finite-dimensional matrix representation of it), $X^L_g=g X$, which makes sense because we have an external algebraic structure (namely, the multiplication of $n\times n$ matrices, which has the structure of an <a href="https://en.wikipedia.org/wiki/Associative_algebra" target="_blank" class="accented">
+    associative unital algebra
+</a>) that lets us multiply group elements with Lie algebra elements. This rather convenient structure does not exist for a general Lie group.</p>
+<h3 id="differential-of-exp">Differential of $\exp$<a hidden class="anchor" aria-hidden="true" href="#differential-of-exp">#</a></h3>
+<p>Suppose $\exp(X)$ is a point on $G$. The differential of $\exp$ provides an answer to the following question: what happens when $X$ is perturbed in the direction $Y \in T_{X}\mathfrak g$? The result, referred to as the <em>pushforward</em> of $Y$ under $\exp$, lies in $T_{\exp(X)} G$. That is, the differential is a linear map between vector spaces:</p>
+<p>
+\[
+    d\exp_X: T_{X}\mathfrak g \rightarrow T_{\exp X} G.
+\]
+</p>
+<p>Since $\mathfrak g$ is a vector space, we can identify $T_X\mathfrak g$ with $\mathfrak g$. Similarly, we can identity $T_{\exp X} G$ with $T_e G$, which is also just $\mathfrak g$. A pedagogical nightmare ensues.</p>
+<p>Let $\gamma(t)$ be a curve on $\mathfrak g$. We use the notation $[\gamma]$ to refer to the <a href="https://en.wikipedia.org/wiki/Equivalence_class" target="_blank" class="accented">
+    equivalence class
+</a> of all the curves<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> that pass through $\gamma(0)$ with the velocity $\dot \gamma(0)$.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> We say that $\gamma$ is a <span class=accented>representative</span> of the class $[\gamma]$.
+If $\gamma$ is chosen such that $\gamma(0)=X\in\mathfrak g$ and $\dot \gamma(0)=Y \in T_X\mathfrak g$, then $[\gamma]$ is completely characterized by $Y$ and vice versa; therefore, we can write $[\gamma]=Y$. The curve $\gamma$ is a representative of $Y$.</p>
+<p>The image of $\gamma$ under $\exp$, which is <span class=accented>$\exp\circ \gamma(t)$</span>, is a curve on $G$ which represents the pushforward of $Y$. That is,
+$$d\exp_X(Y)=[\hspace{2pt}\exp\circ \hspace{1pt}\gamma\hspace{2pt}]$$</p>
+<!-- <aside class=aside-right>
+</aside> -->
+<p>is some vector in $T_{\exp(X)} G$. But which vector?</p>
+<!-- In what follows, one can also read '$[\,\cdot\,]$' as "to the first order in $t$", resting assured that there is a precise meaning\footnote{$\ldots$either by way of *jets*, or by considering the actions of tangent vectors on functions.} for what this means. -->
+<!-- Let's simply write $Y=[\gamma]$, then $d\exp_X(Y)=[\exp\circ \gamma]$. -->
+<p>The key to making these identifications concrete is to notice that we can choose <em>any</em> $\gamma$ satisfying $\gamma(0)=X$ and $\dot {\gamma}(0)=Y$.
+<strong>Any</strong> such $\gamma$ is a representative of $Y$.
+So, we might as well choose a $\gamma$ that is convenient to write down; let&rsquo;s make the choice, $\gamma(t) \coloneqq X+tY$.</p>
+<p>Now, $\exp \circ\hspace{2pt} \gamma(t)=\exp(X+tY)$ is a curve on $G$ passing through $\exp(X)$, and it is also a member of its equivalence class $[\exp(X+tY)]$.
+But consider this alternative way of writing down the same equivalence class:</p>
+<p>$$
+\big[\exp(X+tY)\big]=\big[\exp(X)\exp(t\hspace{2pt}\square)\big]
+$$</p>
+<p>where the box is a Lie algebra element: $\square \in \mathfrak g$. There must be a value of $\square$ for which these are the same equivalence class. The value of $\square$ can therefore be used to <u>describe</u> the quantity $d\exp_X(Y)$:</p>
+<p>$$
+d\exp_X(Y)=\big[\exp(X+tY)\big]=\big[\exp(X)\exp(t\hspace{2pt}\square)\big].
+$$</p>
+<p>In conclusion, the differential of $\exp$ takes two objects, the point $X$ and the direction $Y$, and defines the object $\square$. Here, $\square$ represents the direction and extent to which $\exp(X)$ is perturbed when we nudge $X$ in the direction of $Y$.</p>
+<aside class=aside-center>
+In the case of matrix Lie groups, we write $d\exp_X(Y)=\exp(X)\square$, although the reader should now understand what this <i>really</i> means and how one might go about deriving the formula for $\square$.
+Section 3.2 of Jean Gallier's book has the formula for $d\exp_X$, and the appendix of my paper "<i>Parameter Estimation on Homogeneous Spaces</i>" has $d\log_{\exp(X)}$.
+</aside>
+<h3 id="differential-of-log">Differential of $\log$<a hidden class="anchor" aria-hidden="true" href="#differential-of-log">#</a></h3>
+<p>By the same arguments as above,</p>
+<p>$$
+d\log_g: T_g G \rightarrow T_{\log(g)}\mathfrak g.
+$$</p>
+<p>Since $T_g G\cong \mathfrak g$ and $T_{\log(g)}\mathfrak g\cong \mathfrak g$, we should once again expect a formula that goes from $\mathfrak g$ to $\mathfrak g$.
+It proves to be convenient to work entirely with $\mathfrak g$-elements and write $\exp(X)$ in place of $g$.</p>
+<p>Let $\gamma \coloneqq \exp(X) \exp(tY)$ by a curve passing through $\exp(X)$ with the velocity $Y$. We have,
+$$d\log_{\exp(X)}(Y)=\big[\hspace{1pt}\log\mathrel\circ\gamma\hspace{1pt}(t)\hspace{1pt}\big]=\big[\hspace{1pt}\log\big(\exp(X)\exp(tY)\big)\hspace{1pt}\big]$$
+One sees the Baker-Campbell-Hausdorff-Dynkin formula starting to appear. As before, we have an alternative way of writing down the equivalence class:</p>
+<p>$$
+\big[\hspace{1pt}\log\big(\exp(X)\exp(tY)\big)\hspace{1pt}\big]= \big[\hspace{1pt}X + t\hspace{1pt}\square\hspace{1pt}\big].
+$$</p>
+<p>Thus, the differential of $\log$ takes two objects, $g$ (alternatively, $X=\log(g)$) and $Y$, and its output is characterized by $\square$. Here, $\square$ is the direction in which $\log(g)$ is perturbed when we perturb its argument, $g$, in the direction $Y$.</p>
+<h3 id="differential-of-">Differential of &hellip;<a hidden class="anchor" aria-hidden="true" href="#differential-of-">#</a></h3>
+<p>In equation $(5)$ of <a href="https://ieeexplore.ieee.org/abstract/document/6160965/?casa_token=8rtZEWBp7nMAAAAA:idFlMZen0lzqi1TWCQQFt84IAnVmg8OPZGlmEaX9B3hmjYjFcqWK6oukSe26xKXm8XtWOShZOg" target="_blank" class="accented">
+    this paper
+</a>, the authors use the result that</p>
+<p>
+\[
+\textrm{grad}_x d^2(x,y) = -2 \log_x (y).
+\]
+</p>
+<p>This makes intuitive sense, and the proof of it goes through some variant of the Gauss lemma. An analogous result holds on Lie groups with the distance defined in a group-theoretic manner. The group-theoretic &lsquo;distance&rsquo; isn&rsquo;t necessarily a distance that arises from a Riemannian metric (i.e., the geodesic distance), however, so we should try to prove it without passing through the Gauss lemma.</p>
+<p>Let $f(g) = \lVert \log h^{-1} g \rVert_2 ^2$. We want to compute its gradient w.r.t. a left-invariant Riemannian metric on $G$, $\langle\cdot, \cdot \rangle$.
+Let $\tilde Z \in \mathfrak g$ with $Z_g \coloneqq d L_g (\tilde Z)$ denoting the corresponding left-invariant vector field (LIVF). Furthermore, let $\mathfrak{grad}f_g \coloneqq dL_{g^{-1}}\left(\textrm{grad}f_g\right)$ denote the trivialization of the gradient.
+The gradient of $f$ can then be characterized as:</p>
+<p>
+\[
+\begin{align*}
+\langle \mathfrak{grad}f_\mu, \tilde Z \rangle = \langle dL_{\mu^{-1}}\left(\textrm{grad}f_\mu\right), \tilde Z \rangle = \langle \textrm{grad}f_{\mu}, \tilde Z \rangle = Zf(\mu).
+\end{align*}
+\]
+</p>
+<p>which should hold for an arbitrary $\tilde Z$.
+We further decompose this function as $f= f_1 \circ f_2$ ($f_1$ <em>after</em> $f_2$) where $f_1:\mathfrak g \rightarrow \mathbb R_{\geq 0}$ and $f_2:G \rightarrow \mathfrak g$ in the obvious way. This means that</p>
+<p>
+\[
+\begin{align*}
+Zf(\mu) &= <div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>This is also what is called a $1$-<a href="https://en.wikipedia.org/wiki/Jet_%28mathematics%29#Jets_of_functions_from_the_real_line_to_a_manifold" target="_blank" class="accented">
+    jet
+</a>, and this notion of an &rsquo;equivalence class of curves&rsquo; generalizes in annoying ways.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Here, $\dot \gamma(0)$ refers to the pushforward of $\frac{\partial}{\partial t}\big\vert_{t=0}$ under $\gamma$.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+<script src="https://giscus.app/client.js"
+        data-repo="shirazkn/shirazkn.github.io"
+        data-repo-id="R_kgDOI2VbWw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOI2VbW84CWJnt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="noborder_light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    
+    <div class="signup-form">
+        <script async src="https://eocampaign1.com/form/e5dbf9e6-b891-11ee-a1b7-cdaf9e8a98be.js" data-form="e5dbf9e6-b891-11ee-a1b7-cdaf9e8a98be"></script>
+    </div>
+    
+    
+    
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="headerfooter">
+    <sub><sup><sub>&#9786;</sub></sup></sub>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

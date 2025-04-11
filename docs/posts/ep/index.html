@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Euler-Poincaré Equations | Shiraz</title>
+<meta name="keywords" content="">
+<meta name="description" content="Poincaré&rsquo;s 
+    1901 paper
+1 introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the Euler-Lagrange equations to the case where a Lie group $G$ acts on the configuration manifold $\mathcal Q$. In this case, vector fields on $\mathcal Q$ can be expressed in terms of the infinitesimal actions of the group, and the Euler-Lagrange equations reduce to the Euler-Poincaré equations.
+In what follows, I work through Poincaré&rsquo;s paper in a painful amount of detail, without making too many 
+    identifications
+.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/ep/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.42ea6a4c0a68f9389cacd15de82bd17c29e095336bdc1de23c1abfcfb83d2a0c.css" integrity="sha256-QupqTApo&#43;TicrNFd6CvRfCnglTNr3B3iPBq/z7g9Kgw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/favicon.ico">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/ep/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="Euler-Poincaré Equations" />
+<meta property="og:description" content="Poincaré&rsquo;s 
+    1901 paper
+1 introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the Euler-Lagrange equations to the case where a Lie group $G$ acts on the configuration manifold $\mathcal Q$. In this case, vector fields on $\mathcal Q$ can be expressed in terms of the infinitesimal actions of the group, and the Euler-Lagrange equations reduce to the Euler-Poincaré equations.
+In what follows, I work through Poincaré&rsquo;s paper in a painful amount of detail, without making too many 
+    identifications
+." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/ep/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-12-19T08:18:04-05:00" />
+<meta property="article:modified_time" content="2024-12-19T08:18:04-05:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Euler-Poincaré Equations"/>
+<meta name="twitter:description" content="Poincaré&rsquo;s 
+    1901 paper
+1 introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the Euler-Lagrange equations to the case where a Lie group $G$ acts on the configuration manifold $\mathcal Q$. In this case, vector fields on $\mathcal Q$ can be expressed in terms of the infinitesimal actions of the group, and the Euler-Lagrange equations reduce to the Euler-Poincaré equations.
+In what follows, I work through Poincaré&rsquo;s paper in a painful amount of detail, without making too many 
+    identifications
+."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Euler-Poincaré Equations",
+      "item": "http://localhost:1313/posts/ep/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Euler-Poincaré Equations",
+  "name": "Euler-Poincaré Equations",
+  "description": "Poincaré\u0026rsquo;s 1901 paper 1 introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the Euler-Lagrange equations to the case where a Lie group $G$ acts on the configuration manifold $\\mathcal Q$. In this case, vector fields on $\\mathcal Q$ can be expressed in terms of the infinitesimal actions of the group, and the Euler-Lagrange equations reduce to the Euler-Poincaré equations. In what follows, I work through Poincaré\u0026rsquo;s paper in a painful amount of detail, without making too many identifications .\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Poincaré’s 1901 paper 1 introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the Euler-Lagrange equations to the case where a Lie group $G$ acts on the configuration manifold $\\mathcal Q$. In this case, vector fields on $\\mathcal Q$ can be expressed in terms of the infinitesimal actions of the group, and the Euler-Lagrange equations reduce to the Euler-Poincaré equations. In what follows, I work through Poincaré’s paper in a painful amount of detail, without making too many identifications .\n⌁ Describing Paths in $\\mathcal Q$ Let $\\lbrace q^i\\rbrace_{i=1}^n$ be coordinates on a subset of $\\mathcal Q$, where $\\mathcal Q$ may be thought of as the configuration space of some dynamical system. We suppose that a Lie group $G$ acts transitively on $\\mathcal Q$, i.e., for any two points $q, q^\\prime \\in \\mathcal Q$, there exists a (not necessarily unique) $g\\in G$ such that $g\\cdot q = q^\\prime$. Given a basis $\\lbrace \\tilde E_i \\rbrace_{i=1}^r$ for $\\mathfrak g$, the group action induces a set of vector fields $\\lbrace E_i\\rbrace_{i=1}^r$ on $\\mathcal Q$, as defined via\n\\[ [E_i f](q) = \\lim_{t\\rightarrow 0} \\frac{f(\\exp(t\\tilde E_i)\\cdot q) - f(q)}{t}, \\] where $f\\in C^\\infty(\\mathcal Q)$ is an arbitrary function. For notational convenience, we will simply write\n\\[ E_{i,q} = \\frac{d}{d t} \\left(\\exp(t\\tilde E_i)\\cdot q\\right)\\Big\\rvert_{t=0} \\] to mean the same thing. We can express $E_i$ in terms of the coordinate frame as $E_i = E_i^j \\frac{\\partial}{\\partial q^j}$, where each $E_i^j \\in C^\\infty(\\mathcal Q)$ is a coordinate function. Letting this act on the coordinate function $q^j$, we get\n$$ E_i q^j = E_i^k \\frac{\\partial q^j}{\\partial q^k} = E_i^j, $$\nwhich tells us how to compute the coefficients.\nNow let $\\gamma:[a,b] \\rightarrow \\mathcal Q$ be a path in $\\mathcal Q$, possibly representing the trajectory of a dynamical system. Due to transitivity of the group action, we can express the “velocity” vectors of $\\gamma$ as follows:2\n\\[ \\dot \\gamma(s) \\coloneqq d \\gamma_s \\left(\\frac{\\partial}{\\partial t}\\Big\\rvert_{t=s}\\right) = \\eta^i(s) E_i\\rvert_{\\gamma(s)} = \\eta^i(s) E_i^j \\frac{\\partial}{\\partial q^j}\\Big\\rvert_{\\gamma(s)}, \\] where $\\eta^i(s)$ are some coefficient/component functions. But we can also express $\\dot \\gamma(s)$ in a coordinate frame: $ \\dot \\gamma(s) = [\\dot \\gamma (s)]^i \\frac{\\partial}{\\partial q^i}\\big\\rvert_{\\gamma(s)}.$ Letting this guy act on the coordinate function $q^j$, we have\n\\[ \\begin{align*} \\dot \\gamma(s)(q^j) \u0026= [\\dot \\gamma (s)]^i \\frac{\\partial}{\\partial q^i}\\Big\\rvert_{\\gamma(s)}(q^j) = [\\dot \\gamma(s)]^j \\end{align*} \\] whereas by the definition of the pushforward,\n$$ \\dot \\gamma(s)(q^j) = d \\gamma_s \\left(\\frac{\\partial}{\\partial t}\\Big\\rvert_{t=s}\\right)(q^j) = \\left(\\frac{\\partial}{\\partial t}\\Big\\rvert_{t=s}\\right)(q^j \\circ \\gamma). $$\nDenoting $q^j \\circ \\gamma$ as $\\gamma^j$, we can finally put everything together:\n\\[ \\frac{d \\gamma^j}{dt}(s) = [\\dot \\gamma(s)]^j = \\eta^i(s) E_i^j = \\eta^i(s) E_i(q^j). \\] ⌁ Variation of $\\gamma$ Denote the space of paths on $\\mathcal Q$ as $\\mathcal P\\mathcal Q$, so that $\\gamma \\in \\mathcal P\\mathcal Q$. Consider a family of paths $\\Gamma(\\ \\cdot\\ , \\lambda)$ such that $\\Gamma(t, 0) = \\gamma(t)$. As $\\lambda$ is varied, we think of $\\Gamma(\\ \\cdot\\ , \\lambda)$ as a path in $\\mathcal P \\mathcal Q$ – a path through path space! We know that the derivatives of such paths-of-paths at $\\lambda = 0$ should correspond bijectively to the tangent vectors in $T_{\\gamma}\\mathcal P \\mathcal Q$:\n\\[ \\frac{d}{d\\lambda} \\Gamma (\\ \\cdot\\ , \\lambda)\\Big\\rvert_{\\lambda=0} \\in T_{\\gamma}\\mathcal P \\mathcal Q. \\] Technically, we should write $$ \\textrm{d}\\Gamma_{(t, 0)}\\left(\\frac{\\partial}{\\partial \\lambda}\\bigg\\rvert_{\\lambda=0}\\right)\\in T_{\\gamma(t)} \\mathcal Q $$ where $\\Gamma:[a,b]\\times[c,d] \\rightarrow \\mathcal Q.$ But for each $t\\in[a,b]$, this is nothing but a tangent vector of $\\mathcal Q$:\n\\[ \\frac{d}{d\\lambda} \\Gamma (t, \\lambda)\\Big\\rvert_{\\lambda=0} \\in T_{\\gamma(t)}\\mathcal Q. \\] Thus, as we vary $t$, we obtain a vector field along $\\gamma$. Let $\\delta \\gamma \\in T_{\\gamma} \\mathcal P \\mathcal Q$ be such a vector field, although $\\delta \\gamma$ is more commonly referred to as a variation of $\\gamma$.3 Since it’s a vector field, we know that $\\delta \\gamma$ can be expressed as\n\\[ \\delta \\gamma(t) =\\xi^i(t) E_{i,\\gamma(t)}. \\] Now for the tricky part; any variation of $\\gamma$ induces a corresponding variation of $\\dot\\gamma$, which can in turn be expressed as a variation $\\delta \\eta$ of the coefficients $\\lbrace\\eta^i\\rbrace_{i=1}^r$. Since the variational principle requires us to pass from the $n$-dimensional space $\\mathcal Q$ to the $(n+r)$-dimensional space $\\mathcal Q \\times \\mathfrak g$, we need additional constraints that relate $\\delta \\gamma$ to $\\delta \\eta$ in order to ensure that these variations are compatible.4 Notice that since $\\delta \\gamma$ determines $\\delta \\eta$, we don’t have any real freedom in choosing $\\delta \\eta$.\nAnnoyingly, Poincaré considers this matter a triviality. His (translated) paper reads “… and [one] can easily find” before the end result is presented.5\n⌁ Variation of $\\lbrace\\eta^i\\rbrace_{i=1}^r$ Notice that we can choose $\\Gamma$ to be\n$$\\Gamma(t, \\lambda) = \\exp(\\lambda \\xi^i(t) \\tilde E_i)\\cdot\\gamma(t)$$\nActually, we can do something more than this; we can write $\\gamma(t)$ as $g(t) \\cdot p$, where $p\\in \\mathcal Q$ is a some distinguished point that may be called the “origin” of $\\mathcal Q$. This means that\n$$\\Gamma(t, \\lambda) = \\exp(\\lambda \\xi^i(t) \\tilde E_i)g(t)\\cdot p$$\nwhich has effectively decomposed the $\\lambda$ and $t$ parts. Near some point $s \\in \\mathbb R$ of the parameter (i.e., $t$-)space, this curve has the following linear approximation\n$$\\Gamma(t, \\lambda) \\approx \\exp(\\lambda \\xi^i(t) \\tilde E_i)\\exp({\\small (t-s)\\hspace{1pt}}\\eta^j(t) \\tilde E_j)g(s)\\cdot p$$\nThe curve $g$ that generates $\\gamma$ in this manner is not unique even after we have fixed some point $p$ (to see why, consider $G=SO(3)$ and $\\mathcal Q = S^2$, the unit vectors of $\\mathbb R^3$). Nevertheless, since we are going to probe all possible variations of $\\gamma$, we only need to worry about the \"surjectivity\" of this formulation, rather than its \"injectivity\". Its first-order partial derivative wrt $\\lambda$ gives the variation vector field:\n\\[ \\begin{align*} \\delta \\gamma(t) \u0026= \\frac{\\partial}{\\partial \\lambda} \\Gamma(t, \\lambda)\\Big\\rvert_{\\lambda=0}\\\\ \u0026= \\frac{\\partial}{\\partial \\lambda}\\exp(\\lambda \\xi^i(t) \\tilde E_i)g(t)\\cdot p\\Big\\rvert_{\\lambda=0}. \\end{align*} \\] Let $L_g(p) \\coloneqq g\\cdot p$ denote the left action of $g$ on $p$. Then, we have\n\\[ \\begin{align*} dL_{g(t)^{-1}}\\left(\\delta \\gamma (t)\\right) \u0026= \\frac{\\partial}{\\partial \\lambda}\\left(g(t)^{-1}\\exp(\\lambda \\xi^i(t) \\tilde E_i)g(t)\\right)\\cdot p\\Big\\rvert_{\\lambda=0} \\\\ \u0026= \\frac{\\partial}{\\partial \\lambda}\\exp\\left(\\lambda Ad_{g(t)^{-1}}\\left(\\xi^i(t)\\tilde E_i\\right)\\right)\\cdot p\\Big\\rvert_{\\lambda=0} = Ad_{g(t)^{-1}} \\xi^i(t) E_{i,p}. \\end{align*} \\] where $Ad_{g(t)^{-1}} E_{i,p}$ is understood as being the vector field generated by $Ad_{g(t)^{-1}}\\tilde E_{i}$, evaluated at $p$. In this sense, $p$ serves as the “identity element” of $\\mathcal Q$, such that (just like we do on Lie groups) we will pull all velocities back to $T_p\\mathcal Q$. Since $dL_{g(t)^{-1}}\\left(\\delta \\gamma (t)\\right)\\in T_p\\mathcal Q$ for all $t$, we can differentiate w.r.t. $t$ to get\n\\[ \\frac{d}{d t}\\left(dL_{g(t)^{-1}}\\left( \\frac{\\partial}{\\partial \\lambda} \\Gamma(t, \\lambda)\\Big\\rvert_{\\lambda=0}\\right)\\right) = ... \\] Using Matrix Algebra Specializing to matrix Lie groups, we have\n\\[ \\begin{align*} \\frac{d}{d t}\u0026\\left(g(t)^{-1}\\left( \\frac{\\partial}{\\partial \\lambda} \\Gamma(t, \\lambda)\\Big\\rvert_{\\lambda=0}\\right)\\right) \\\\ \u0026= \\frac{d}{d t}\\left(g(t)^{-1}\\right)\\left( \\frac{\\partial}{\\partial \\lambda} \\Gamma(t, \\lambda)\\Big\\rvert_{\\lambda=0}\\right) \\end{align*} \\] $$ \\dot \\gamma (t) = d \\gamma_t \\left(\\frac{\\partial}{\\partial t}\\Big\\rvert_{t=s}\\right) = \\eta^i(s) E_i\\rvert_{\\gamma(s)} = \\eta^i(s) E_i^j \\frac{\\partial}{\\partial q^j}\\Big\\rvert_{\\gamma(s)} $$\nI thank my colleague Jöel Bensoam for introducing me to this paper (and to variational calculus)! ↩︎\nHere, $i$ sums from $1$ to $r$ whereas $j$ sums from $1$ to $n$; henceforth, this must be inferred from context. Also observe that $r\\geq n$ due to transitivity of the group action. ↩︎\nSince the variation lives in a tangent space of $\\mathcal P \\mathcal Q$, it should act on a functional $f:\\mathcal P\\mathcal Q \\rightarrow \\mathbb R$, i.e., a function that eats a path and spits out a number: $$\\delta\\gamma\\hspace{1pt}f = \\frac{d}{d\\lambda} f\\left(\\Gamma(\\ \\cdot\\ , \\lambda)\\right)\\Big\\rvert_{\\lambda=0} = \\mathbf D f(\\gamma) \\cdot \\delta \\gamma,$$ wherein the last piece of notation is explained in Marsden and Ratiu’s books, as well as in my other post . ↩︎\nThis can be compared to how one would go about using variational calculus to show that the shortest path between two points $p,p^\\prime \\in \\mathbb R^n$ is a straight line. Perturbations of the straight line that keep the endpoints fixed can only increase the length (hence, we conclude that the straight line is indeed the shortest path). However, if we drop the constraint on $p^\\prime$, then there exists a perturbation that moves the points closer; the minimizer in this case is the “constant path” $\\gamma(t) = p$. ↩︎\nA somewhat more detailed account is given in Marsden and Ratiu’s book (Thm. 13.5.3 of Intro. to Mechanics \u0026 Symmetry), although it too uses too many identifications for my liking. Note that Marsden and Ratiu use $\\delta \\xi$ instead of $\\delta \\eta$ and $\\dot \\eta$ instead of ↩︎\n",
+  "wordCount" : "1352",
+  "inLanguage": "en",
+  "datePublished": "2024-12-19T08:18:04-05:00",
+  "dateModified": "2024-12-19T08:18:04-05:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/ep/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shiraz",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Euler-Poincaré Equations
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2024-12-19 08:18:04 -0500 EST'>December 19, 2024</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Poincaré&rsquo;s <a href="https://www.ma.ic.ac.uk/~dholm/classnotes/M3-4A16-Poincare1901.pdf" target="_blank" class="accented">
+    1901 paper
+</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the Euler-Lagrange equations to the case where <span>a Lie group $G$ acts on the configuration manifold $\mathcal Q$. In this case, vector fields on $\mathcal Q$ can be expressed in terms of the infinitesimal actions of the group, and the Euler-Lagrange equations reduce to the Euler-Poincaré equations.
+In what follows, I work through Poincaré&rsquo;s paper in a painful amount of detail, without making too many <a href="https://math.stackexchange.com/a/3415429" target="_blank" class="accented">
+    identifications
+</a>.</p>
+<h2 id="-describing-paths-in-mathcal-q">⌁ Describing Paths in $\mathcal Q$<a hidden class="anchor" aria-hidden="true" href="#-describing-paths-in-mathcal-q">#</a></h2>
+<p>Let $\lbrace q^i\rbrace_{i=1}^n$ be coordinates on a subset of $\mathcal Q$, where $\mathcal Q$ may be thought of as the <span class=accented>configuration space</span> of some dynamical system. We suppose that a Lie group $G$ acts transitively on $\mathcal Q$, i.e., for any two points $q, q^\prime \in \mathcal Q$, there exists a (not necessarily unique) $g\in G$ such that $g\cdot q = q^\prime$. Given a basis $\lbrace \tilde E_i \rbrace_{i=1}^r$ for $\mathfrak g$, the group action induces a set of <a href="/posts/vector-fields" class="accented">
+    vector fields
+</a> $\lbrace E_i\rbrace_{i=1}^r$ on $\mathcal Q$, as defined via</p>
+<p>
+\[
+[E_i f](q) = \lim_{t\rightarrow 0} \frac{f(\exp(t\tilde E_i)\cdot q) - f(q)}{t},
+\]
+</p>
+<p>where $f\in C^\infty(\mathcal Q)$ is an arbitrary function. For notational convenience, we will simply write</p>
+<p>
+\[
+E_{i,q} = \frac{d}{d t} \left(\exp(t\tilde E_i)\cdot q\right)\Big\rvert_{t=0} 
+\]
+</p>
+<p>to mean the same thing.
+We can express $E_i$ in terms of the <a href="/posts/lie-groups_calculus/#-coordinate-frames" class="accented">
+    coordinate frame
+</a> as $E_i = E_i^j \frac{\partial}{\partial q^j}$, where each $E_i^j \in C^\infty(\mathcal Q)$ is a coordinate function.
+Letting this act on the coordinate function $q^j$, we get</p>
+<!-- 
+[^1]: Note that by specifying how the vector field $E_i$ acts on an arbitrary function $f$, we have completely characterized $E_i$. -->
+<p>$$
+E_i q^j = E_i^k \frac{\partial q^j}{\partial q^k} = E_i^j,
+$$</p>
+<p>which tells us how to compute the coefficients.</p>
+<!-- ## ⌁ Trajectory -->
+<p>Now let $\gamma:[a,b] \rightarrow \mathcal Q$ be a <span class=accented>path in $\mathcal Q$</span>, possibly representing the trajectory of a dynamical system. Due to transitivity of the group action, we can express the &ldquo;velocity&rdquo; vectors of $\gamma$ as follows:<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>
+\[
+\dot \gamma(s) \coloneqq d \gamma_s \left(\frac{\partial}{\partial t}\Big\rvert_{t=s}\right) = \eta^i(s) E_i\rvert_{\gamma(s)} = \eta^i(s) E_i^j \frac{\partial}{\partial q^j}\Big\rvert_{\gamma(s)},
+\]
+</p>
+<p>where $\eta^i(s)$ are some coefficient/component functions. But we can also express $\dot \gamma(s)$ in a coordinate frame: $
+\dot \gamma(s) = [\dot \gamma (s)]^i \frac{\partial}{\partial q^i}\big\rvert_{\gamma(s)}.$ Letting this guy act on the coordinate function $q^j$, we have</p>
+<p>
+\[
+    \begin{align*}
+\dot \gamma(s)(q^j) &= [\dot \gamma (s)]^i \frac{\partial}{\partial q^i}\Big\rvert_{\gamma(s)}(q^j) = [\dot \gamma(s)]^j
+\end{align*}
+\]
+</p>
+<p>whereas by the definition of the pushforward,</p>
+<p>$$
+\dot \gamma(s)(q^j) = d \gamma_s \left(\frac{\partial}{\partial t}\Big\rvert_{t=s}\right)(q^j) = \left(\frac{\partial}{\partial t}\Big\rvert_{t=s}\right)(q^j \circ \gamma).
+$$</p>
+<p>Denoting $q^j \circ \gamma$ as $\gamma^j$, we can finally put everything together:</p>
+<p>
+\[
+\frac{d \gamma^j}{dt}(s) = [\dot \gamma(s)]^j = \eta^i(s) E_i^j = \eta^i(s) E_i(q^j).
+\]
+<h2 id="-variation-of-gamma">⌁ Variation of $\gamma$<a hidden class="anchor" aria-hidden="true" href="#-variation-of-gamma">#</a></h2>
+<p>Denote the space of <span class=accented>paths on $\mathcal Q$</span> as $\mathcal P\mathcal Q$, so that $\gamma \in \mathcal P\mathcal Q$.
+Consider a <span class=accented>family of paths</span> $\Gamma(\ \cdot\ , \lambda)$ such that $\Gamma(t, 0) = \gamma(t)$. As $\lambda$ is varied, we think of $\Gamma(\ \cdot\ , \lambda)$ as a path in $\mathcal P \mathcal Q$ &ndash; a path through path space! We know that the derivatives of such paths-of-paths at $\lambda = 0$ should correspond bijectively to the tangent vectors in $T_{\gamma}\mathcal P \mathcal Q$:</p>
+<p>
+\[
+    \frac{d}{d\lambda} \Gamma (\ \cdot\ , \lambda)\Big\rvert_{\lambda=0} \in T_{\gamma}\mathcal P \mathcal Q.
+\]
+</p>
+<aside class=aside-right>
+Technically, we should write
+$$
+\textrm{d}\Gamma_{(t, 0)}\left(\frac{\partial}{\partial \lambda}\bigg\rvert_{\lambda=0}\right)\in T_{\gamma(t)} \mathcal Q
+$$
+where $\Gamma:[a,b]\times[c,d] \rightarrow \mathcal Q.$
+</aside>
+<p>But for each $t\in[a,b]$, this is nothing but a tangent vector of $\mathcal Q$:</p>
+<p>
+\[
+    \frac{d}{d\lambda} \Gamma (t, \lambda)\Big\rvert_{\lambda=0} \in T_{\gamma(t)}\mathcal Q.
+\]
+</p>
+<!-- <aside class=aside-right>
+Note that if $\mathcal Q$ is a vector space, then we can choose the (meta) path as $\Gamma (t, \lambda)= \gamma(t) + \lambda \delta \gamma(t)$. It is important to remember that the foregoing definition relies on vector addition.
+</aside> -->
+<p>Thus, as we vary $t$, we obtain a <span class=accented>vector field along $\gamma$</span>. Let $\delta \gamma \in T_{\gamma} \mathcal P \mathcal Q$ be such a vector field, although $\delta \gamma$ is more commonly referred to as a <span class=accented>variation of $\gamma$</span>.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> Since it&rsquo;s a vector field, we know that $\delta \gamma$ can be expressed as</p>
+<p>
+\[
+\delta \gamma(t) 
+=\xi^i(t) E_{i,\gamma(t)}.
+\]
+</p>
+<p>Now for the tricky part; any variation of $\gamma$ <em>induces</em> a corresponding <span class=accented>variation of $\dot\gamma$</span>, which can in turn be expressed as a variation $\delta \eta$ of the coefficients $\lbrace\eta^i\rbrace_{i=1}^r$. Since the variational principle requires us to pass from the $n$-dimensional space $\mathcal Q$ to the $(n+r)$-dimensional space $\mathcal Q \times \mathfrak g$, we need additional constraints that relate $\delta \gamma$ to $\delta \eta$ in order to ensure that these variations are compatible.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> Notice that since $\delta \gamma$ determines $\delta \eta$, we don&rsquo;t have any real freedom in choosing $\delta \eta$.</p>
+<p>Annoyingly, Poincaré considers this matter a triviality. His (translated) paper reads &ldquo;<span class=print>&hellip; and [one] can easily find</span>&rdquo; before the end result is presented.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
+<!-- ## ⌁ ️The Induced Variation in Velocity
+
+The (meta) path can therefore be chosen as $\Gamma^i (t, \lambda)= \gamma^i(t) + \lambda [\delta \gamma]^i(t)$, where $\gamma^i \coloneqq q^i \circ \gamma$. If we modify the path, then we modify its velocity vectors as well.
+The variation in velocity that is *induced* by $\delta \gamma$ will now be calculated.[^3] First, we know that $\delta \gamma$ can be expressed in two ways:
+
+[^3]: Annoyingly, Poincaré considers this matter a triviality. His translated paper reads "*...and [one] can easily find...*" before the end result is presented.
+
+<p>
+\[
+\delta \gamma(t) = [\delta \gamma]^i(t) \frac{\partial}{\partial q^i}\bigg\rvert_{\gamma(t)} = \xi^i(t) E_{i,\gamma(t)}.
+\]
+</p>
+
+Letting either side eat a coordinate function, we get
+
+<p>
+\[
+[\delta \gamma]^j(t) = \xi^i(t) E_{i,\gamma(t)}q^j = \xi^i(t) E_i^j(\gamma(t)).
+\]
+</p>
+
+Differentiating the coordinate description of the (meta) path,
+
+<p>
+\[
+\begin{align*}
+\frac{d\Gamma^i}{dt}(s, \lambda) &= \frac{d\gamma^i}{dt}(s) + \lambda \frac{d[\delta \gamma]^i}{dt}(s)\\
+&= \frac{d\gamma^i}{dt}(s) + \lambda \left[\frac{d}{dt}\left(\xi^j(t) E_j^i(\gamma(t))\right)\right](s)\\
+&= \frac{d\gamma^i}{dt}(s) + \lambda\frac{d\xi^j}{dt}(s)E_j^i(\gamma(s)) + \lambda \xi^j(s) \frac{d (E_j^i \circ \gamma)}{dt}(s).
+\end{align*}
+\]
+</p>
+
+
+What is that derivative in the last term? It is nothing but $\dot \gamma(s)$ acting on the function $E_j^i$; use the definition of a pushforward. Now, $\dot\gamma(s) = \eta^k(s) E_{k,\gamma(s)}$, whereas $E_j^i = E_j q^i$, so 
+
+<p>
+\[
+    \begin{align*}
+    \frac{d (E_j^i \circ \gamma)}{dt}(s) &= \eta^k(s) E_{k,\gamma(s)}(E_j q^i)\\
+    &= \eta^k(s) [E_{k}, E_j]_{\gamma(s)} q^i + \eta^k(s) E_{j,\gamma(s)}(E_k q^i)\\
+     &= \eta^k(s) \kappa_{k,j}^r E_{r}^i + \eta^k(s) E_{j,\gamma(s)}(E_k q^i)
+    \end{align*}
+\]
+</p>
+
+??
+
+### Formulae: 
+
+$$E_i^j(\gamma(t)) = \[E_i q^j\](\gamma(t))$$
+
+<p>
+\[
+\dot \gamma(s) = \frac{d\gamma^i}{dt}(s) \frac{\partial}{\partial q^i}\bigg\rvert_{\gamma(s)} = 
+\eta^j(s) E_j^i \frac{\partial}{\partial q^i}\bigg\rvert_{\gamma(s)}
+\]
+</p> -->
+<!-- = [\delta \gamma]^i(t) \frac{\partial}{\partial q^i}\bigg\rvert_{\gamma(t)} =  -->
+<!-- Letting either side eat a coordinate function, we get
+
+<p>
+\[
+[\delta \gamma]^j(t) = \xi^i(t) E_{i,\gamma(t)}q^j = \xi^i(t) E_i^j(\gamma(t)). \]
+</p> -->
+<h2 id="-variation-of-lbraceetairbrace_i1r">⌁ Variation of $\lbrace\eta^i\rbrace_{i=1}^r$<a hidden class="anchor" aria-hidden="true" href="#-variation-of-lbraceetairbrace_i1r">#</a></h2>
+<p>Notice that we can choose $\Gamma$ to be</p>
+<p>$$\Gamma(t, \lambda) = \exp(\lambda \xi^i(t) \tilde E_i)\cdot\gamma(t)$$</p>
+<p>Actually, we can do something more than this; we can write $\gamma(t)$ as $g(t) \cdot p$, where $p\in \mathcal Q$ is a some distinguished point that may be called the &ldquo;origin&rdquo; of $\mathcal Q$. This means that</p>
+<p>$$\Gamma(t, \lambda) = \exp(\lambda \xi^i(t) \tilde E_i)g(t)\cdot p$$</p>
+<p>which has effectively decomposed the $\lambda$ and $t$ parts. Near some point $s \in \mathbb R$ of the parameter (i.e., $t$-)space, this curve has the following linear approximation</p>
+<p>$$\Gamma(t, \lambda) \approx \exp(\lambda \xi^i(t) \tilde E_i)\exp({\small (t-s)\hspace{1pt}}\eta^j(t) \tilde E_j)g(s)\cdot p$$</p>
+<aside class=aside-center>
+<!-- <b>Non-uniqueness of $g(t)$</b>:  -->
+The curve $g$ that generates $\gamma$ in this manner is <u>not unique</u> even after we have fixed some point $p$ (to see why, consider $G=SO(3)$ and $\mathcal Q = S^2$, the unit vectors of $\mathbb R^3$). Nevertheless, since we are going to probe <i>all</i> possible variations of $\gamma$, we only need to worry about the "surjectivity" of this formulation, rather than its "injectivity".
+</aside>
+<p>Its first-order partial derivative wrt $\lambda$ gives the variation vector field:</p>
+<p>
+\[
+\begin{align*}
+\delta \gamma(t)  &= \frac{\partial}{\partial \lambda} 
+\Gamma(t, \lambda)\Big\rvert_{\lambda=0}\\
+&= \frac{\partial}{\partial \lambda}\exp(\lambda \xi^i(t) \tilde E_i)g(t)\cdot p\Big\rvert_{\lambda=0}.
+\end{align*}
+\]
+</p>
+<p>Let $L_g(p) \coloneqq g\cdot p$ denote the left action of $g$ on $p$.
+Then, we have</p>
+<p>
+\[
+    \begin{align*}
+    dL_{g(t)^{-1}}\left(\delta \gamma (t)\right) &= \frac{\partial}{\partial \lambda}\left(g(t)^{-1}\exp(\lambda \xi^i(t) \tilde E_i)g(t)\right)\cdot p\Big\rvert_{\lambda=0} \\
+    &= \frac{\partial}{\partial \lambda}\exp\left(\lambda Ad_{g(t)^{-1}}\left(\xi^i(t)\tilde E_i\right)\right)\cdot p\Big\rvert_{\lambda=0} =  Ad_{g(t)^{-1}} \xi^i(t) E_{i,p}.
+    \end{align*}
+\]
+</p>
+<p>where $Ad_{g(t)^{-1}} E_{i,p}$ is understood as being the vector field generated by $Ad_{g(t)^{-1}}\tilde E_{i}$, evaluated at $p$. In this sense, $p$ serves as the &ldquo;identity element&rdquo; of $\mathcal Q$, such that (just like we do on Lie groups) we will pull all velocities back to $T_p\mathcal Q$. Since $dL_{g(t)^{-1}}\left(\delta \gamma (t)\right)\in T_p\mathcal Q$ for all $t$, we can differentiate w.r.t. $t$ to get</p>
+<p>
+\[
+\frac{d}{d t}\left(dL_{g(t)^{-1}}\left( \frac{\partial}{\partial \lambda} 
+\Gamma(t, \lambda)\Big\rvert_{\lambda=0}\right)\right) = ...
+\]
+</p>
+<h3 id="using-matrix-algebra">Using Matrix Algebra<a hidden class="anchor" aria-hidden="true" href="#using-matrix-algebra">#</a></h3>
+<p>Specializing to matrix Lie groups, we have</p>
+<p>
+\[
+\begin{align*}
+\frac{d}{d t}&\left(g(t)^{-1}\left( \frac{\partial}{\partial \lambda} 
+\Gamma(t, \lambda)\Big\rvert_{\lambda=0}\right)\right) \\
+&= \frac{d}{d t}\left(g(t)^{-1}\right)\left( \frac{\partial}{\partial \lambda} 
+\Gamma(t, \lambda)\Big\rvert_{\lambda=0}\right)
+\end{align*}
+\]
+</p>
+<hr>
+<p>$$
+\dot \gamma (t) = d \gamma_t \left(\frac{\partial}{\partial t}\Big\rvert_{t=s}\right) = \eta^i(s) E_i\rvert_{\gamma(s)} = \eta^i(s) E_i^j \frac{\partial}{\partial q^j}\Big\rvert_{\gamma(s)}
+$$</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>I thank my colleague <span class=accented>Jöel Bensoam</span> for introducing me to this paper (and to variational calculus)!&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Here, $i$ sums from $1$ to $r$ whereas $j$ sums from $1$ to $n$; henceforth, this must be inferred from context.<!-- The use of $i$ vs. $j$ is not a convention (i.e., does not apply to the rest of the post).  --> Also observe that $r\geq n$ due to transitivity of the group action.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Since the variation lives in a tangent space of $\mathcal P \mathcal Q$, it should act on a functional $f:\mathcal P\mathcal Q \rightarrow \mathbb R$, i.e., a function that eats a path and spits out a number:
+$$\delta\gamma\hspace{1pt}f = \frac{d}{d\lambda} f\left(\Gamma(\ \cdot\ , \lambda)\right)\Big\rvert_{\lambda=0} = \mathbf D f(\gamma) \cdot \delta \gamma,$$
+wherein the last piece of notation is explained in Marsden and Ratiu&rsquo;s books, as well as in <a href="/posts/symplectic" class="accented">
+    my other post
+</a>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>This can be compared to how one would go about using variational calculus to show that the shortest path between two points $p,p^\prime \in \mathbb R^n$ is a straight line. Perturbations of the straight line that keep the endpoints fixed can only increase the length (hence, we conclude that the straight line is indeed the shortest path). However, if we drop the constraint on $p^\prime$, then there exists a perturbation that moves the points closer; the minimizer in this case is the &ldquo;constant path&rdquo; $\gamma(t) = p$.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>A somewhat more detailed account is given in Marsden and Ratiu&rsquo;s book <span class=tertiary>(Thm. 13.5.3 of Intro. to Mechanics &amp; Symmetry)</span>, although it too uses too many identifications for my liking. Note that Marsden and Ratiu use $\delta \xi$ instead of $\delta \eta$ and $\dot \eta$ instead of&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+<script src="https://giscus.app/client.js"
+        data-repo="shirazkn/shirazkn.github.io"
+        data-repo-id="R_kgDOI2VbWw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOI2VbW84CWJnt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="noborder_light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    
+    <div class="signup-form">
+        <script async src="https://eocampaign1.com/form/e5dbf9e6-b891-11ee-a1b7-cdaf9e8a98be.js" data-form="e5dbf9e6-b891-11ee-a1b7-cdaf9e8a98be"></script>
+    </div>
+    
+    
+    
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="headerfooter">
+    <sub><sup><sub>&#9786;</sub></sup></sub>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

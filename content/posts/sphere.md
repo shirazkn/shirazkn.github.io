@@ -233,7 +233,7 @@ Even without projecting onto the sphere (recall the definition of a tangential c
 
 Before we get there, what do you think $\nabla _X X$ will turn out to be? Here's a hint: the integral curves of $X$ are said to be <span class=accented>geodesics</span> (locally length-minimizing paths) if and only if $X$ is parallel along its integral curves, i.e., $\nabla _X X = 0$. What are the geodesics of the sphere? You might know these as the paths that airplanes like to take when flying long distances.
 
-### Using a Coordinate Frame
+### Using a Coordinate Frame for $S^2$
 
 The frame $\left(\frac{\partial}{\partial y_1}, \frac{\partial}{\partial y_2}, \frac{\partial}{\partial y_3}\right)$ is a global coordinate frame for $\mathbb R^3$ derived from the standard/trivial coordinates, $(y^1,y^2, y^3) \mapsto (y^1,y^2, y^3)$. It is attractive to us because it is orthonormal (the metric tensor coefficients are $\delta_{ij}$, making the metric reduce to a dot product), and the Christoffel symbols $\lbrace\Gamma_{ij}^k\rbrace_{i,j,k=1}^3$ of the Levi-Civita connection $\overline \nabla$ are all identically $0$.
 
@@ -257,7 +257,21 @@ Let's look at the metric tensor coefficients $g_{ij}$. We have, $g_{11}=\langle 
 \]
 </p>
 
-so that $g_{11}(\varphi, \theta, r) = r^2$. Completing the metric tensor, we find that $g_{22}(\varphi, \theta, r) = r^2 \sin^2 \varphi$ and $g_{33}(\varphi, \theta, r) = 1$. Amazingly (but as expected), $g\_{12}$, $g\_{13}$, $g\_{23}$, and their symmetric counterparts are all identically $0$.[^ortho] The Christoffel symbols in a coordinate frame are given by the formula
+so that $g_{11}(\varphi, \theta, r) = r^2$. Completing the metric tensor, we find that $g_{22}(\varphi, \theta, r) = r^2 \sin^2 \varphi$ and $g_{33}(\varphi, \theta, r) = 1$. Amazingly (but as expected), $g\_{12}$, $g\_{13}$, $g\_{23}$, and their symmetric counterparts are all identically $0$.[^ortho] 
+
+<aside class=aside-center>
+Notice that we are done with the "ambient" coordinate frame of $\mathbb R^3$; we needed it in order to pull back the Euclidean metric $\bar {\textrm g}$ from $\mathbb R^3$ to $S^2$ using the inclusion map $\widehat{\psi}:S^2 \rightarrow \mathbb R^3$, which we have just done:
+
+<p>
+\[
+\big[\widehat{\psi}^* (\bar {\textrm g})\big](\partial_{\varphi}, \partial_{\theta}) = \bar {\textrm g}\big(\widehat{\psi}_* (\partial_{\varphi}), \widehat{\psi}_*(\partial_{\theta})\big).
+\]
+</p>
+
+Hereafter, we focus on our new frame $(\partial_\varphi, \partial_{\theta}, \partial_r)$ on $S^2$, which we also write as $(\partial_1, \partial_2, \partial_3)$ for the purpose of Einstein summation.
+</aside>
+
+The Christoffel symbols in a coordinate frame are given by the formula
 
 <p>
 \[
@@ -270,6 +284,18 @@ so that $g_{11}(\varphi, \theta, r) = r^2$. Completing the metric tensor, we fin
 </p>
 
 where $g^{ij}$ are coefficients of the inverse of the metric tensor (see p. 123 of Lee). So, we have
+
+<p>
+\[
+\begin{align*}
+\Gamma_{22}^1 &= \frac{1}{2} g^{11} \left(
+    \partial_2 g_{21} + \partial_2 g_{21} - \partial_1 g_{22}\right) + 0 + 0 \\
+    &= -\frac{1}{2 r^2}\partial_{\varphi}\left(r^2 \sin^2 \varphi\right) = -\sin \varphi \,\cos \varphi.
+\end{align*},
+\]
+</p>
+
+and similarly, 
 
 <p>
 \[
@@ -303,7 +329,7 @@ Lastly, we compute $\nabla _Y X$ in the new frame:
 \]
 </p>
 
-(since $\Gamma_{21}^2=\Gamma_{12}^2$ for the Levi-Civita connection). As we deduced before, $X$ is only parallel in the horizontal/latitudinal directions if $\cos \varphi =0$, i.e., at the equator. In conclusion, $\nabla X \neq 0$.
+where we used the fact that $\Gamma_{21}^2=\Gamma_{12}^2$ for the Levi-Civita connection when expressed in a coordinate frame. As we deduced before, $X$ is only parallel in the horizontal/latitudinal directions if $\cos \varphi =0$, i.e., at the equator. In conclusion, $\nabla X \neq 0$.
 
 ### Could there be another parallel frame?
 

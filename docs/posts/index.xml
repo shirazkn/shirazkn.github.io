@@ -6,8 +6,18 @@
     <description>Recent content in Posts on Shiraz</description>
     <generator>Hugo -- 0.136.4</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Mar 2024 10:43:16 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 09 Dec 2024 14:45:16 +0530</lastBuildDate>
     <atom:link href="https://shirazkn.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Classical Mechanics on Manifolds</title>
+      <link>https://shirazkn.github.io/posts/symplectic/</link>
+      <pubDate>Mon, 09 Dec 2024 14:45:16 +0530</pubDate>
+      <guid>https://shirazkn.github.io/posts/symplectic/</guid>
+      <description>&lt;p&gt;Despite having encountered the Lagrangian and Hamiltonian formalisms of mechanics several times in a variety of engineering and physics settings, I had never been able to retain it in my memory. I had maintained a similar dissatisfaction with the many formulae of multivariable calculus, which only really ✨clicked✨ for me once I learned about exterior derivatives and the &lt;a href=https://youtu.be/1lGM5DEdMaw?si%3Dk9NhFF7jNBcaEoGQ class=accented&gt;Generalized Stokes&amp;rsquo; theorem&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this post, I would like to collect my thoughts on the differential geometric treatment of &lt;span class=accented&gt;Lagrangian&lt;/span&gt; and &lt;span class=accented&gt;Hamiltonian mechanics&lt;/span&gt;, which assume a very simple and memorable form once we introduce the language of &lt;a href=&#34;https://en.wikipedia.org/wiki/Symplectic_geometry&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    symplectic geometry
+&lt;/a&gt;. Of course, to have made our mathematical journey to this point, where we are able to say anything at all about symplectic geometry, was a not-so-simple task.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>The Levi-Civita Connection</title>
       <link>https://shirazkn.github.io/posts/sphere/</link>
