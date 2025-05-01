@@ -6,8 +6,19 @@
     <description>Recent content in Posts on Shiraz</description>
     <generator>Hugo -- 0.136.4</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Dec 2024 14:45:16 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jan 2025 12:46:04 -0500</lastBuildDate>
     <atom:link href="https://shirazkn.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Differentials in Lie Theory</title>
+      <link>https://shirazkn.github.io/posts/lemmas/</link>
+      <pubDate>Mon, 13 Jan 2025 12:46:04 -0500</pubDate>
+      <guid>https://shirazkn.github.io/posts/lemmas/</guid>
+      <description>&lt;p&gt;I collect here some results about the differentials of the $\exp$ and $\log$ maps of a Lie group. The reader must be familiar with how the &lt;span class=accented&gt;differential&lt;/span&gt; (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of &lt;a href=&#34;]%28/posts/vector-fields%29&#34; class=&#34;accented&#34;&gt;
+    tangent vectors as equivalence classes of curves
+&lt;/a&gt;; Wikipedia has an excellent &lt;a href=&#34;https://en.wikipedia.org/wiki/Tangent_space#Definition_via_tangent_curves&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    summary
+&lt;/a&gt; of this, as does my blog (if I may say so myself).&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Classical Mechanics on Manifolds</title>
       <link>https://shirazkn.github.io/posts/symplectic/</link>

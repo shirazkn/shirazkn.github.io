@@ -41,16 +41,16 @@ Now, we know that smooth maps can *pull back* differential forms, whereas they *
 At any point $(q, p)$ on $T \mathcal Q^\ast$, we use $\pi$ to pull back the only linear form that we have available at hand, namely the form $p$ at $q$. Thus, we define $\tau_{(q, p)} = d\pi^\ast_{(q, p)}p$.
 Note that $\tau_{(q, p)} $ will eat vectors in $T_{(q, p)}(T^\ast\mathcal Q)$ while $p$ ate vectors in $T_q \mathcal Q$, so this is a bonafide construction and not a mere renaming of objects. The symplectic form is defined as $\omega = -d \tau$; the negative sign is just by convention as far as I can tell!
 
-Suppose we have a coordinate chart $(q^i)\_{i=1}^n$ on $U\subseteq \mathcal Q$, i.e., $q^i:U\rightarrow \mathbb R^n$. Since any differential form on $U$ can be expressed as $p = p_i dq^i$, we can think of $(q^i, p_i)\_{i=1}^n$ as being a coordinate chart on the $2n$-dimensional manifold $T^\ast\mathcal Q$. Accordingly, $(dq^i, dp_i)\_{i=1}^n$ is a basis for one-forms on $T^\ast\mathcal Q$. 
+Suppose we have a coordinate chart $(q^i)\_{i=1}^n$ on $U\subseteq \mathcal Q$, so that $q^i:U\rightarrow \mathbb R$. Since any differential form on $U$ can be expressed as $p = p_i dq^i$, we can think of $(q^i, p_i)\_{i=1}^n$ as being a coordinate chart on the $2n$-dimensional manifold $T^\ast\mathcal Q$. Accordingly, $(dq^i, dp_i)\_{i=1}^n$ is a basis for one-forms on $T^\ast\mathcal Q$. 
 It can be shown that the tautological $1$-form is 
 $$\tau = p_i \hspace{1pt}dq^i + 0\hspace{1pt} dp_i = p_i \hspace{1pt}dq^i$$ 
 in these coordinates[^4], so that the symplectic form $\omega$ becomes $\omega = - d\tau = dq^i \wedge dp_i$. Since it is an [exact form](https://en.wikipedia.org/wiki/Closed_and_exact_differential_forms), $\omega$ is *closed*: $d\omega = -d(d\tau)=0$. Letting $\Omega$ denote the matrix of coefficients corresponding to this coordinate description of $\omega$, and ordering the coordinates as $(q^1, \ldots, q^n, p_1, \ldots, p_n)$, we have 
 
 <p>
 \[
-\begin{align}
+\begin{align*}
 \Omega = \begin{bmatrix} 0 & \mathbf I \\ -\mathbf I & 0 \end{bmatrix},
-\end{align}
+\end{align*}
 \]
 <p>
 
@@ -71,9 +71,9 @@ The Hamiltonian vector field $X_H$ is defined by the equation $$\omega(X_H,{}\cd
 
 <p>
 \[
-\begin{align}
+\begin{align*}
 \begin{bmatrix} Z^i & Y^i \end{bmatrix} \begin{bmatrix} 0 & \mathbf I \\ -\mathbf I & 0 \end{bmatrix} = \begin{bmatrix} \frac{\partial H}{\partial q^i} & \frac{\partial H}{\partial p^i} \end{bmatrix},
-\end{align}
+\end{align*}
 \]
 </p>
 
@@ -81,10 +81,10 @@ and by inverting $\Omega$, we get
 
 <p>
 \[
-\begin{align}
+\begin{align*}
 \begin{bmatrix} Z^i & Y^i \end{bmatrix}  &= \begin{bmatrix} \frac{\partial H}{\partial q^i} & \frac{\partial H}{\partial p^i} \end{bmatrix} \begin{bmatrix} 0 & -\mathbf I \\ \mathbf I & 0 \end{bmatrix}\\
 &= \begin{bmatrix} \frac{\partial H}{\partial p^i} & -\frac{\partial H}{\partial q^i} \end{bmatrix}.
-\end{align}
+\end{align*}
 \]
 </p>
 
@@ -92,9 +92,9 @@ The integral curves (i.e., trajectories) of $X_H$ are given by the solutions to 
 
 <p>
 \[
-\begin{align}
+\begin{align*}
 \frac{\partial q^i}{\partial t} = \frac{\partial H}{\partial p^i}, \quad \frac{\partial p^i}{\partial t} = -\frac{\partial H}{\partial q^i},
-\end{align}
+\end{align*}
 \]
 </p>
 
@@ -126,10 +126,10 @@ It satisfies certain axioms, including versions of the Leibnitz rule and Jacobi 
 
 <p>
 \[
-    \begin{align}
+    \begin{align*}
 \lbrace f, g \rbrace &= \omega(X_f, X_g) = X_g f\\
 &= \frac{\partial g}{\partial q^i} \frac{\partial f}{\partial q^i} - \frac{\partial g}{\partial p_i} \frac{\partial f}{\partial p_i}
-\end{align}
+\end{align*}
 \]
 </p>
 which nicely captures the asymmetry between $f$ and $g$ in $\lbrace f,g\rbrace$.
@@ -209,7 +209,7 @@ $$\underset{\gamma(\cdot)\hspace{1pt}\in\hspace{1pt}\mathcal C}{\textrm{minimize
 
 where $\mathcal C$ is some set of curves and the quantity $\dot \gamma(t)$ represents a tangent vector. Similar minimization problems can be set up to describe optimal trajectories and configurations of rigid bodies, fluids, surfaces (such as soap films and cloths), etc.[^s]
 
-[^s]: For the optimization of surfaces embedded in $\mathbb R^3$, the objective function looks like $\int_{[0,1]^2} L\left(\gamma, \gamma_x, \gamma_y\right)\hspace{1pt} dx dy$ where $x$ and $y$ are two time-like variables that take values in the parameter space $[0,1]^2$. This suggests that the Lagrangian density is best thought of as a top-dimensional form on the parameter space that can be integrated. When the parameter space is one-dimensional (e.g., when a *trajectory* is parametrized by time or a *curve* by ita arc length), we get something like $\int_{0}^1 L dt$.
+[^s]: For the optimization of surfaces embedded in $\mathbb R^3$, the objective function looks like $\int_{[0,1]^2} L\left(\gamma, \gamma_x, \gamma_y\right)\hspace{1pt} dx dy$ where $x$ and $y$ are two time-like variables that take values in the parameter space $[0,1]^2$. This suggests that the Lagrangian density is best thought of as a top-dimensional form on the parameter space that can be integrated. When the parameter space is one-dimensional (e.g., when a *trajectory* is parametrized by time or a *curve* by its arc length), we get something like $\int_{0}^1 L dt$.
 
 ### Symplectic Approach
 
@@ -239,7 +239,7 @@ $$\dot \gamma(s) \coloneqq d\gamma_s \left(\frac{\partial}{\partial t}\Big\vert_
 can be thought of as the "velocity vector" corresponding to $\gamma(\cdot)$ at time $s$, i.e., the tangent vector along the curve $\gamma$ at $\gamma(s) \in \mathcal Q$. The space of all smooth curves is an infinite-dimensional manifold $\mathcal C$, whose tangent space at $\gamma$ (i.e., $T_{\gamma}\mathcal C$) is the space of all smooth vector fields along $\gamma$. To see this, notice that if $\gamma(\hspace{1pt}\cdot\hspace{1pt},\lambda)$ is a family of curves parameterized by $\lambda$ (i.e., a curve in curve-space), then the tangent to this curve at $\gamma(\hspace{1pt}\cdot\hspace{1pt},0)$ is $\frac{d}{d\lambda}\gamma(\hspace{1pt}\cdot\hspace{1pt},\lambda)\big\vert_{\lambda=0}$. This object needs to be fed an argument in $[a,b]$ before it produces an element of $T\mathcal Q$. Confusingly, many authors denote this object as $\delta \gamma$, referring to it as a <span class=accented>variation</span> of $\gamma$.
 
 We can rewrite the minimization problem mentioned earlier as follows: let $L: T\mathcal Q \rightarrow \mathbb R$ be a Lagrangian. We let $\mathfrak S$ denote the <span class=accented>functional</span> (i.e., a function which acts on other functions) defined by
-$$\mathfrak S[\gamma] = \int_a^b L\circ \gamma\hspace{3pt} dt$$
+$$\mathfrak S[\gamma] = \int_a^b L(\gamma, \dot \gamma)\hspace{3pt} dt$$
 <!-- where $\gamma^\ast(L)= L \circ \gamma$ is the pullback of $L$ under $\gamma$. -->
 We want to find the curve in some appropriate submanifold of $\mathcal C$ that minimizes $\mathfrak S$, under the pretext that $L$ could represent things such as the length or potential energy of a $\gamma$-shaped object. Just like in the finite-dimensional case of optimization, we can find the local minima of this problem by setting the exterior derivative $d\mathfrak S_{\tilde{\gamma}}$ to $\mathbf 0$ and solving for $\tilde{\gamma}$. Note that this "$\mathbf 0$" is the origin of $T\mathcal C^\ast$, as opposed to the real number $0$.
 
@@ -247,17 +247,17 @@ Let $X:[a,b]\rightarrow T\mathcal Q$ be a vector field along $\tilde{\gamma}$. S
 
 <p>
 \[
-    [d\mathfrak S_{\tilde{\gamma}}](X) = \left[d\left(\int_a^b L\circ \gamma \hspace{3pt} dt\right)\right] (X)=0.
+    [d\mathfrak S_{\tilde{\gamma}}](X) = \left[d\left(\int_a^b L(\gamma, \dot \gamma) \hspace{3pt} dt\right)\right] (X)=0.
 \]
 </p>
 
-Let $\gamma(\hspace{1pt}\cdot\hspace{1pt},\lambda)$ be a representative "curve" corresponding to $X\in T_{\gamma}\mathcal C$. We have, $\frac{d}{d\lambda}\gamma(\hspace{1pt}\cdot\hspace{1pt},\lambda)\big\vert_{\lambda=0} = X$ and $\gamma(\hspace{1pt}\cdot\hspace{1pt},0) = \tilde{\gamma}$. Also, 
+Let $\gamma(\hspace{1pt}\cdot\hspace{1pt},\lambda)$ be a representative "curve" corresponding to $X\in T_{\gamma}\mathcal C$, such that $\frac{d}{d\lambda}\gamma(\hspace{1pt}\cdot\hspace{1pt},\lambda)\big\vert_{\lambda=0} = X$ and $\gamma(\hspace{1pt}\cdot\hspace{1pt},0) = \tilde{\gamma}$. Also, 
 
 <p>
 \[
-\begin{align}
-[d\mathfrak S_{\tilde{\gamma}}](X) = \frac{d}{d\lambda}\mathfrak S(\gamma(\cdot, \lambda))\Big\vert_{\lambda=0}.
-\end{align}
+\begin{align*}
+[d\mathfrak S_{\tilde{\gamma}}](X) = \frac{d}{d\lambda}\mathfrak S(\gamma(\cdot, \lambda), \dot\gamma(\cdot, \lambda))\Big\vert_{\lambda=0}.
+\end{align*}
 \]
 </p>
 
@@ -265,24 +265,27 @@ Because the differential structure of $\mathcal Q$ does not interact whatsoever 
 
 <p>
 \[
-\begin{align}
+\begin{align*}
 [d\mathfrak S_{\tilde{\gamma}}](X) &= \frac{d}{d\lambda}\int_a^b L(\gamma(t, \lambda), \dot \gamma(t,\lambda)) \hspace{3pt} dt\ \Big\vert_{\lambda=0}\\
-&= \int_a^b \frac{\partial L}{\partial q^i}\frac{\partial q^i}{\partial \lambda}\Big\vert_{\lambda=0}(t) + \frac{\partial L}{\partial \dot q^i}\frac{\partial \dot q^i}{\partial \lambda}\Big\vert_{\lambda=0}(t) \hspace{3pt} dt.
-\end{align}
+&= \int_a^b \frac{\partial L}{\partial \gamma^i}\frac{\partial }{\partial \lambda}\gamma^i(t,\lambda)\Big\vert_{\lambda=0}\\&\qquad + \frac{\partial L}{\partial \dot \gamma^i}\frac{\partial}{\partial \lambda}\dot \gamma^i(t,\lambda)\Big\vert_{\lambda=0}\hspace{3pt} dt,
+\end{align*}
 \]
 </p>
 
-Letting $q^i(t,\lambda)$ be the coordinate expression of $\gamma(t,\lambda)$, and $X_{\tilde \gamma(t)}=X^i(t) \frac{\partial}{\partial q^i}\bigg\vert_{}$,
-we have that $\frac{\partial q^i}{\partial \lambda}\big\vert_{\lambda=0}(t)=X^i(t)$ by virtue of $\tilde \gamma(t,\lambda)$ being a representative of $X$. As for the second term, we use the fact that $\frac{\partial}{\partial \lambda}$ and $\frac{\partial}{\partial t}$ commute:
+where we have made some implicit (but hopefully, reasonable) identifications.
+In particular, we let $\gamma^i(t,\lambda)$ be the coordinate expression of $\gamma(t,\lambda)$, and write $X_{\tilde \gamma(t)}=X^i(t) \frac{\partial}{\partial q^i}\big\vert_{\tilde\gamma(t)}$.
+We have that $\frac{\partial }{\partial \lambda}\gamma^i(t,\lambda)\big\vert_{\lambda=0}=X^i(t)$ by virtue of $ \gamma(t,\lambda)$ being a representative of $X$. As for the second term, we use the fact that $\frac{\partial}{\partial \lambda}$ and $\frac{\partial}{\partial t}$ commute:
 
 <p>
 \[
-\begin{align}
+\begin{align*}
 [d\mathfrak S_{\tilde{\gamma}}](X) &= 
-\int_a^b \frac{\partial L}{\partial q^i}X^i(t) + \frac{\partial L}{\partial \dot q^i}\frac{\partial}{\partial \lambda}\left(\frac{\partial}{\partial t} q^i\right)\bigg\vert_{\lambda=0}(t) \hspace{3pt} dt \nonumber \\
+\int_a^b \frac{\partial L}{\partial \gamma^i}X^i(t) + \frac{\partial L}{\partial \dot \gamma^i}\frac{\partial}{\partial \lambda}\left(\frac{\partial}{\partial t} \gamma^i\right)\bigg\vert_{\lambda=0}(t) \hspace{3pt} dt \nonumber \\
 &= 
-\int_a^b \frac{\partial L}{\partial q^i}X^i(t) + \frac{\partial L}{\partial \dot q^i}\frac{d X^i}{d t} (t) \hspace{3pt} dt
-\end{align}
+\int_a^b \frac{\partial L}{\partial \gamma^i}X^i(t) + \frac{\partial L}{\partial \dot \gamma^i}\frac{\partial}{\partial t}\left(\frac{\partial}{\partial \lambda} \gamma^i\right)\bigg\vert_{\lambda=0}(t) \hspace{3pt} dt \nonumber \\
+&= 
+\int_a^b \frac{\partial L}{\partial \gamma^i}X^i(t) + \frac{\partial L}{\partial \dot \gamma^i}\frac{d X^i}{d t} (t) \hspace{3pt} dt
+\end{align*}
 \]
 </p>
 
@@ -290,14 +293,14 @@ and then integrate (the second term) by parts:
 
 <p>
 \[
-\begin{align}
+\begin{align*}
 [d\mathfrak S_{\tilde{\gamma}}](X) 
 &= 
-\int_a^b \frac{\partial L}{\partial q^i}X^i(t)\hspace{2pt}dt 
- + \frac{\partial L}{\partial \dot q^i}X^i(t)\bigg\rvert_a^b \hspace{2pt} \nonumber\\
+\int_a^b \frac{\partial L}{\partial \gamma^i}X^i(t)\hspace{2pt}dt 
+ + \frac{\partial L}{\partial \dot \gamma^i}X^i(t)\bigg\rvert_a^b \hspace{2pt} \nonumber\\
  &\quad 
- - \int_a^b \frac{d}{dt}\left(\frac{\partial L}{\partial \dot q^i}\right)X^i(t) \hspace{3pt} dt.
-\end{align}
+ - \int_a^b \frac{d}{dt}\left(\frac{\partial L}{\partial \dot \gamma^i}\right)X^i(t) \hspace{3pt} dt.
+\end{align*}
 \]
 </p>
 
@@ -312,7 +315,7 @@ If we hold the endpoints fixed, i.e., $\gamma(a,\hspace{1pt}\cdot\hspace{1pt})$ 
 
 ## Reduction
 
-We can specialize the above to the case of a dynamical system evolving on a Lie group $G$. Since the vector bundles on $G$ can be trivialized (e.g., $T^\ast G \cong G \times \mathfrak g^\ast$), we leverage this additional structure to make the associated Hamiltonian and Lagrangian equations more "Cartesian" in flavor. This procedure, when applied to Hamiltonion mechanics on $T^\ast G$, is called <span class=accented>Lie-Poisson reduction</span>; when applied to Lagrangian mechanics/variational problems on $TG$, it is called <span class=accented>Euler Poincaré reduction</span>. I get a bit into the latter in [a different post](/posts/ep). As for the former, it is explained quite well by Marsden and Ratiu in Chapter 13 of "Introduction to Mechanics and Symmetry". 
+We can specialize the above to the case of a dynamical system evolving on a Lie group $G$. Since the vector bundles on $G$ can be trivialized (e.g., $T^\ast G \cong G \times \mathfrak g^\ast$), we leverage this additional structure to make the associated Hamiltonian and Lagrangian equations more "Cartesian" in flavor. This procedure, when applied to Hamiltonion mechanics on $T^\ast G$, is called <span class=accented>Lie-Poisson reduction</span>; when applied to Lagrangian mechanics/variational problems on $TG$, it is called <span class=accented>Euler-Poincaré reduction</span>. I get a bit into the latter in [a different post](/posts/ep). As for the former, it is explained quite well by Marsden and Ratiu in Chapter 13 of "Introduction to Mechanics and Symmetry". 
 
 ---
 

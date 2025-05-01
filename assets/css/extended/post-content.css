@@ -12,6 +12,18 @@
     text-align: center;
 }
 
+.post-content .boxed {
+    /* background-color: white; */
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 0.25rem 0.5rem;
+    width: auto;
+    border-radius: 2px;
+    color: var(--primary);
+    display: inline-block;
+  }
+  
+  
 .post-content .tertiary {
     opacity: 0.5;
 }

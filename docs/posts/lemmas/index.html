@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -13,16 +13,16 @@
     summary
  of this, as does my blog (if I may say so myself).">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/lemmas/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.42ea6a4c0a68f9389cacd15de82bd17c29e095336bdc1de23c1abfcfb83d2a0c.css" integrity="sha256-QupqTApo&#43;TicrNFd6CvRfCnglTNr3B3iPBq/z7g9Kgw=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/favicon.ico">
+<link rel="canonical" href="https://shirazkn.github.io/posts/lemmas/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6bf9cb3ba8dbb85dbcf87028b5fbea5cc4231e0c00f888a36a6d452218da3dfb.css" integrity="sha256-a/nLO6jbuF28&#43;HAotfvqXMQjHgwA&#43;Iijam1FIhjaPfs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://shirazkn.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://shirazkn.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/lemmas/">
+<link rel="alternate" hreflang="en" href="https://shirazkn.github.io/posts/lemmas/">
 <noscript>
     <style>
         #theme-toggle,
@@ -89,7 +89,7 @@
     summary
  of this, as does my blog (if I may say so myself)." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/posts/lemmas/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://shirazkn.github.io/posts/lemmas/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-01-13T12:46:04-05:00" />
 <meta property="article:modified_time" content="2025-01-13T12:46:04-05:00" />
 
@@ -111,13 +111,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:1313/posts/"
+      "item": "https://shirazkn.github.io/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Differentials in Lie Theory",
-      "item": "http://localhost:1313/posts/lemmas/"
+      "item": "https://shirazkn.github.io/posts/lemmas/"
     }
   ]
 }
@@ -132,21 +132,21 @@
   "keywords": [
     
   ],
-  "articleBody": "I collect here some results about the differentials of the $\\exp$ and $\\log$ maps of a Lie group. The reader must be familiar with how the differential (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of tangent vectors as equivalence classes of curves ; Wikipedia has an excellent summary of this, as does my blog (if I may say so myself).\nI am interested in the differentials of the maps $\\exp: \\mathfrak g \\rightarrow G$ and $\\log:U\\rightarrow \\mathfrak g$, where $U\\subseteq G$ is a neighborhood of $e$. Let $L_g$ refer to the left-multiplication operation: $L_g(h)=gh$ for $g,h\\in G$. Given $X\\in\\mathfrak g$, $X^L_g\\coloneqq dL_g(X)$ is the corresponding left-invariant vector field. For a matrix Lie group (i.e., where $g$ is identified with some finite-dimensional matrix representation of it), $X^L_g=g X$, which makes sense because we have an external algebraic structure (namely, the multiplication of $n\\times n$ matrices, which has the structure of an associative unital algebra ) that lets us multiply group elements with Lie algebra elements. This rather convenient structure does not exist for a general Lie group.\nDifferential of $\\exp$ Suppose $\\exp(X)$ is a point on $G$. The differential of $\\exp$ provides an answer to the following question: what happens when $X$ is perturbed in the direction $Y \\in T_{X}\\mathfrak g$? The result, referred to as the pushforward of $Y$ under $\\exp$, lies in $T_{\\exp(X)} G$. That is, the differential is a linear map between vector spaces:\n\\[ d\\exp_X: T_{X}\\mathfrak g \\rightarrow T_{\\exp X} G. \\] Since $\\mathfrak g$ is a vector space, we can identify $T_X\\mathfrak g$ with $\\mathfrak g$. Similarly, we can identity $T_{\\exp X} G$ with $T_e G$, which is also just $\\mathfrak g$. A pedagogical nightmare ensues.\nLet $\\gamma(t)$ be a curve on $\\mathfrak g$. We use the notation $[\\gamma]$ to refer to the equivalence class of all the curves1 that pass through $\\gamma(0)$ with the velocity $\\dot \\gamma(0)$.2 We say that $\\gamma$ is a representative of the class $[\\gamma]$. If $\\gamma$ is chosen such that $\\gamma(0)=X\\in\\mathfrak g$ and $\\dot \\gamma(0)=Y \\in T_X\\mathfrak g$, then $[\\gamma]$ is completely characterized by $Y$ and vice versa; therefore, we can write $[\\gamma]=Y$. The curve $\\gamma$ is a representative of $Y$.\nThe image of $\\gamma$ under $\\exp$, which is $\\exp\\circ \\gamma(t)$, is a curve on $G$ which represents the pushforward of $Y$. That is, $$d\\exp_X(Y)=[\\hspace{2pt}\\exp\\circ \\hspace{1pt}\\gamma\\hspace{2pt}]$$\nis some vector in $T_{\\exp(X)} G$. But which vector?\nThe key to making these identifications concrete is to notice that we can choose any $\\gamma$ satisfying $\\gamma(0)=X$ and $\\dot {\\gamma}(0)=Y$. Any such $\\gamma$ is a representative of $Y$. So, we might as well choose a $\\gamma$ that is convenient to write down; let’s make the choice, $\\gamma(t) \\coloneqq X+tY$.\nNow, $\\exp \\circ\\hspace{2pt} \\gamma(t)=\\exp(X+tY)$ is a curve on $G$ passing through $\\exp(X)$, and it is also a member of its equivalence class $[\\exp(X+tY)]$. But consider this alternative way of writing down the same equivalence class:\n$$ \\big[\\exp(X+tY)\\big]=\\big[\\exp(X)\\exp(t\\hspace{2pt}\\square)\\big] $$\nwhere the box is a Lie algebra element: $\\square \\in \\mathfrak g$. There must be a value of $\\square$ for which these are the same equivalence class. The value of $\\square$ can therefore be used to describe the quantity $d\\exp_X(Y)$:\n$$ d\\exp_X(Y)=\\big[\\exp(X+tY)\\big]=\\big[\\exp(X)\\exp(t\\hspace{2pt}\\square)\\big]. $$\nIn conclusion, the differential of $\\exp$ takes two objects, the point $X$ and the direction $Y$, and defines the object $\\square$. Here, $\\square$ represents the direction and extent to which $\\exp(X)$ is perturbed when we nudge $X$ in the direction of $Y$.\nIn the case of matrix Lie groups, we write $d\\exp_X(Y)=\\exp(X)\\square$, although the reader should now understand what this really means and how one might go about deriving the formula for $\\square$. Section 3.2 of Jean Gallier's book has the formula for $d\\exp_X$, and the appendix of my paper \"Parameter Estimation on Homogeneous Spaces\" has $d\\log_{\\exp(X)}$. Differential of $\\log$ By the same arguments as above,\n$$ d\\log_g: T_g G \\rightarrow T_{\\log(g)}\\mathfrak g. $$\nSince $T_g G\\cong \\mathfrak g$ and $T_{\\log(g)}\\mathfrak g\\cong \\mathfrak g$, we should once again expect a formula that goes from $\\mathfrak g$ to $\\mathfrak g$. It proves to be convenient to work entirely with $\\mathfrak g$-elements and write $\\exp(X)$ in place of $g$.\nLet $\\gamma \\coloneqq \\exp(X) \\exp(tY)$ by a curve passing through $\\exp(X)$ with the velocity $Y$. We have, $$d\\log_{\\exp(X)}(Y)=\\big[\\hspace{1pt}\\log\\mathrel\\circ\\gamma\\hspace{1pt}(t)\\hspace{1pt}\\big]=\\big[\\hspace{1pt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\hspace{1pt}\\big]$$ One sees the Baker-Campbell-Hausdorff-Dynkin formula starting to appear. As before, we have an alternative way of writing down the equivalence class:\n$$ \\big[\\hspace{1pt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\hspace{1pt}\\big]= \\big[\\hspace{1pt}X + t\\hspace{1pt}\\square\\hspace{1pt}\\big]. $$\nThus, the differential of $\\log$ takes two objects, $g$ (alternatively, $X=\\log(g)$) and $Y$, and its output is characterized by $\\square$. Here, $\\square$ is the direction in which $\\log(g)$ is perturbed when we perturb its argument, $g$, in the direction $Y$.\nDifferential of … In equation $(5)$ of this paper , the authors use the result that\n\\[ \\textrm{grad}_x d^2(x,y) = -2 \\log_x (y). \\] This makes intuitive sense, and the proof of it goes through some variant of the Gauss lemma. An analogous result holds on Lie groups with the distance defined in a group-theoretic manner. The group-theoretic ‘distance’ isn’t necessarily a distance that arises from a Riemannian metric (i.e., the geodesic distance), however, so we should try to prove it without passing through the Gauss lemma.\nLet $f(g) = \\lVert \\log h^{-1} g \\rVert_2 ^2$. We want to compute its gradient w.r.t. a left-invariant Riemannian metric on $G$, $\\langle\\cdot, \\cdot \\rangle$. Let $\\tilde Z \\in \\mathfrak g$ with $Z_g \\coloneqq d L_g (\\tilde Z)$ denoting the corresponding left-invariant vector field (LIVF). Furthermore, let $\\mathfrak{grad}f_g \\coloneqq dL_{g^{-1}}\\left(\\textrm{grad}f_g\\right)$ denote the trivialization of the gradient. The gradient of $f$ can then be characterized as:\n\\[ \\begin{align*} \\langle \\mathfrak{grad}f_\\mu, \\tilde Z \\rangle = \\langle dL_{\\mu^{-1}}\\left(\\textrm{grad}f_\\mu\\right), \\tilde Z \\rangle = \\langle \\textrm{grad}f_{\\mu}, \\tilde Z \\rangle = Zf(\\mu). \\end{align*} \\] which should hold for an arbitrary $\\tilde Z$. We further decompose this function as $f= f_1 \\circ f_2$ ($f_1$ after $f_2$) where $f_1:\\mathfrak g \\rightarrow \\mathbb R_{\\geq 0}$ and $f_2:G \\rightarrow \\mathfrak g$ in the obvious way. This means that\n\\[ \\begin{align*} Zf(\\mu) \u0026= This is also what is called a $1$- jet , and this notion of an ’equivalence class of curves’ generalizes in annoying ways. ↩︎\nHere, $\\dot \\gamma(0)$ refers to the pushforward of $\\frac{\\partial}{\\partial t}\\big\\vert_{t=0}$ under $\\gamma$. ↩︎\n",
-  "wordCount" : "1039",
+  "articleBody": "I collect here some results about the differentials of the $\\exp$ and $\\log$ maps of a Lie group. The reader must be familiar with how the differential (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of tangent vectors as equivalence classes of curves ; Wikipedia has an excellent summary of this, as does my blog (if I may say so myself).\nLet $L_g$ refer to the left-multiplication operation: $L_g(h)=gh$ for $g,h\\in G$. Given $X\\in\\mathfrak g$, $X^L_g\\coloneqq dL_g(X)$ is the corresponding left-invariant vector field. For a matrix Lie group (i.e., where $g$ is identified with some finite-dimensional matrix representation of it), $X^L_g=g X$, which makes sense because we have an external algebraic structure (namely, the multiplication of $n\\times n$ matrices, which has the structure of a unital associative algebra ) that lets us multiply group elements with Lie algebra elements. This rather convenient structure does not exist for a general Lie group. I will assume that the maps $\\exp: U \\rightarrow V$ and $\\log:V\\rightarrow U$ are inverses of each other, where $U\\subseteq \\mathfrak g$ is a neighborhood of $0$ and $V\\subseteq G$ is a neighborhood of $e$.\n🀲 Differential of $\\exp$ Suppose $\\exp(X)$ is a point on $G$. The differential of $\\exp$ provides an answer to the following question: what happens when $X$ is perturbed in the direction $Y \\in T_{X}\\mathfrak g$? The result, referred to as the pushforward of $Y$ under $\\exp$, lies in $T_{\\exp(X)} G$. It is a linear map between vector spaces:\n\\[ d\\exp_X: T_{X}\\mathfrak g \\rightarrow T_{\\exp X} G. \\] Since $\\mathfrak g$ is a vector space, we can identify $T_X\\mathfrak g$ with $\\mathfrak g$. Using the map $dL_{{\\exp(X)}^{-1}}=dL_{{\\exp(X)}}^{-1}$, we can identity $T_{\\exp X} G$ with $T_e G$, which is also just $\\mathfrak g$. A pedagogical nightmare ensues.\nLet $\\gamma(t)$ be a curve on $\\mathfrak g$. We use the notation $[\\gamma]$ to refer to the equivalence class of all the curves1 that pass through $\\gamma(0)$ with the velocity $\\dot \\gamma(0)$.2 We say that $\\gamma$ is a representative of the class $[\\gamma]$. If $\\gamma$ is chosen such that $\\gamma(0)=X\\in\\mathfrak g$ and $\\dot \\gamma(0)=Y \\in T_X\\mathfrak g$, then $[\\gamma]$ is completely characterized by $Y$ and vice versa; therefore, we can write $[\\gamma]=Y$. The image of $\\gamma$ under $\\exp$, which is $\\exp\\circ \\gamma(t)$, is a curve on $G$ as well as a representative of $d\\exp_X(Y)$. That is, $$d\\exp_X(Y)=[\\hspace{2pt}\\exp\\circ \\hspace{1pt}\\gamma\\hspace{2pt}]$$\nis some vector in $T_{\\exp(X)} G$. But which vector?\nThe key to making these identifications concrete is to notice that we can choose any $\\gamma$ satisfying $\\gamma(0)=X$ and $\\dot {\\gamma}(0)=Y$. Any such $\\gamma$ is a representative of $Y$. So, we might as well choose a $\\gamma$ that is convenient to write down; let’s make the choice, $\\gamma(t) \\coloneqq X+tY$. In this case, $\\exp \\circ\\hspace{2pt} \\gamma(t)=\\exp(X+tY)$ is a curve on $G$ passing through $\\exp(X)$, and it is a representative of $d\\exp_X(Y)$. There’s two different ways of writing down the equivalence class of $d\\exp_X(Y)$:\n$$ d\\exp_X(Y) =\\big[\\exp(X+tY)\\big]=\\big[\\exp(X)\\exp(t\\hspace{2pt}\\square)\\big] $$\nwhere the box is a Lie algebra element: $\\square \\in \\mathfrak g$. There must be a value of $\\square$ for which these are indeed the same equivalence class. The value of $\\square$ can therefore be used to describe the quantity $d\\exp_X(Y)$. Hence, we define the Jacobian of $\\exp$ at $X$ as the linear map\n\\[ \\begin{align*} \\Psi_X:\\mathfrak g \u0026\\rightarrow \\mathfrak g\\\\ Y \u0026\\mapsto \\square \\end{align*} \\] In conclusion, the differential of $\\exp$ takes two objects, the point $X$ and the direction $Y$, and defines the object $\\square$. Here, $\\square$ represents the direction and extent to which $\\exp(X)$ is perturbed when we nudge $X$ in the direction of $Y$. On matrix Lie groups, $\\Psi_X$ is defined by\n\\[ \\Psi_X(Y) =\\square =\\exp(X)^{-1}\\frac{d}{dt}\\exp(X+tY)\\Big|_{t=0}, \\] and we write $d\\exp_X(Y)=\\exp(X)\\Psi_X(Y)$.\n🀳 Differential of $\\log$ By the same arguments as above,\n$$ d\\log_g: T_g G \\rightarrow T_{\\log(g)}\\mathfrak g. $$\nSince $T_g G\\cong \\mathfrak g$ and $T_{\\log(g)}\\mathfrak g\\cong \\mathfrak g$, we should once again expect a formula that goes from $\\mathfrak g$ to $\\mathfrak g$. It proves to be convenient to work entirely with $\\mathfrak g$-elements and write $\\exp(X)$ in place of $g$.\nLet $\\gamma \\coloneqq \\exp(X) \\exp(tY)$ by a curve passing through $\\exp(X)$ with the velocity $Y$. We have,\n\\[ \\begin{align*} d\\log_{\\exp(X)}(Y)\u0026=\\big[\\hspace{1pt}\\log\\mathrel\\circ\\gamma\\hspace{1pt}(t)\\hspace{1pt}\\big]\\\\\u0026=\\big[\\hspace{1pt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\hspace{1pt}\\big]. \\end{align*} \\] As before, we have an alternative way of writing down the equivalence class:\n$$ \\big[\\hspace{1pt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\hspace{1pt}\\big]= \\big[\\hspace{1pt}X + t\\hspace{1pt}\\square\\hspace{1pt}\\big]. $$\nThus, the differential of $\\log$ takes two objects, $X$ (alternatively, $g\\coloneqq \\exp(X)$) and $Y$, and its output is characterized by $\\square$. Here, $\\square$ is the direction in which $\\log(g)$ is perturbed when we perturb its argument $g$ in the direction $Y$. On matrix Lie groups, we can once again define the operator $\\Psi^{-1}_{\\exp(X)}:\\mathfrak g \\rightarrow \\mathfrak g$ using derivatives of matrix-valued functions:\n\\[ \\Psi^{-1}_{\\exp(X)}(Y) = \\frac{d}{dt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\Big|_{t=0}. \\] We write $d\\log_{g}(gY)=\\Psi^{-1}_{g}(Y)$. Alternatively, we can write $d\\log_{g}(V)=\\Psi^{-1}_{g}(g^{-1}V)$, where $V\\in T_{g} G$.\nSection 3.2 of Jean Gallier's book has the formula for $d\\exp_X$, and the appendix of my paper \"Parameter Estimation on Homogeneous Spaces\" has $d\\log_{\\exp(X)}$ (which I denote there as $\\Psi$... oh well). We should verify that $\\Psi_{\\exp(X)}^{-1}$ is indeed the inverse of $\\Psi_X$. Of course, this should be true from what we know about differentials/pushforwards of (locally) smooth maps between manifolds, but can we see this algebraically?\n\\[ \\begin{align*} \\small \u0026\\Psi_X\\left(\\Psi_{\\exp(X)}^{-1}(Y)\\right)\\\\ \u0026\\quad = \\exp(X)^{-1}\\frac{d}{ds}\\exp\\left(X+s\\frac{d}{dt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\Big|_{t=0}\\right)\\Big|_{s=0}\\\\ \\small \u0026\\quad \\overset{?}=Y,\\\\ \\small \u0026\\Psi_{\\exp(X)}^{-1}\\left(\\Psi_X(Y)\\right) \\\\\u0026\\quad = \\frac{d}{dt}\\log\\Big(\\exp(X)\\exp\\Big(t \\exp(X)^{-1}\\frac{d}{ds}\\exp\\left(X+sY\\right)\\Big|_{s=0} \\Big)\\Big)\\Big|_{t=0}\\\\ \\small \u0026\\quad \\overset{?}=Y. \\end{align*} \\] I’m not sure how to proceed… In any case, such formidable calculations should not be needed to demonstrate a simple fact. The intrinsic versions of these results are trivial:\n\\[ d\\log_{\\exp(X)}\\left(d\\exp_X(Y)\\right) = d(\\log \\circ \\exp)_X(Y)=Y. \\] \\[ d\\exp_{\\log(g)}\\left(d\\log_g(V)\\right) = d(\\exp \\circ \\log)_g(V)=V. \\] 🀴 Parametrization Another context in which differentials show up in Lie theory is in the context of parametrizations of $G$. While most of this discussion is a specialization of what happens on a general manifold, the Lie group case is special because we are especially interested in left-invariant quantities (e.g., left-invariant vector fields and volume forms).\nLet $\\varphi:C\\rightarrow D$ be a parametrization of $D\\subseteq G$ whose domain is $C\\subseteq \\mathbb R^n$, such that its inverse $\\varphi^{-1}:D \\rightarrow C$ exists (and therefore, is a smooth coordinate chart). A function $f:G\\rightarrow \\mathbb R$ can be restricted to $D$ to define $f|_D:D\\rightarrow \\mathbb R$; nevertheless, we will just write $f$ to refer to the restricted function. We can pull $f$ back under $\\varphi$ to define $\\bar f\\coloneqq {\\varphi}^\\ast f=f\\circ \\varphi$, so that $\\bar f(\\mathbf x)=f(\\varphi(\\mathbf x))$. We can differentiate $\\bar f$ using the usual rules of multivariable calculus. Let $\\frac{\\partial}{\\partial x^i}$ be the $i^{th}$ standard vector field in $C$. As vector fields do, it will map $\\bar f$ to another function:\n\\[ \\frac{\\partial}{\\partial x^i}\\big(\\,\\bar f\\,\\big):C \\rightarrow \\mathbb R. \\] As far as differential calculus on manifolds go, the story pretty much ends here. However, on a Lie group we are interested in computing derivatives along the left-invariant vector fields (LIVFs). Letting $\\lbrace E_i \\rbrace_{i=1}^n$ be a basis for $\\mathfrak g$, we can express its LIVFs using the parametrization:\n\\[ E_{i,g}^L = g E_i = {\\overline E_i^j}(g)\\frac{\\partial}{\\partial x^j}\\Big|_{g} \\] Here, $\\frac{\\partial}{\\partial x^i}\\big|_{\\varphi(\\mathbf x)}\\coloneqq d \\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^i}\\big|_{\\mathbf x}$ (by abuse of notation) is called the $i^{th}$ coordinate vector field, and $\\overline E_i^j$ are smooth functions. But what are these functions? We need to set up a commutative diagram that shows us how the action of $E_{i}^L$ on $f$ can be equated to the action of an $\\mathbb R^n$-vector field on $\\bar f$.\nLet $Z = \\mathbf z^i E_i$, where $\\mathbf z^i$ are real numbers (not functions!). Consider\n\\[ \\begin{align*} Z^L_{\\varphi(\\mathbf x)} f \u0026= \\mathbf z^i E^L_{i,\\varphi(\\mathbf x)}f =\\mathbf z^i\\frac{d}{dt}f\\left(\\varphi(\\mathbf x)\\exp(tE_i)\\right)\\Big|_{t=0}\\\\ \u0026= \\mathbf z^i{\\overline E_i^j}(\\varphi(\\mathbf x))\\frac{\\partial}{\\partial x^j}\\Big|_{\\varphi(\\mathbf x)}f\\\\ \u0026= \\mathbf z^i{\\overline E_i^j}(\\varphi(\\mathbf x))\\frac{\\partial \\bar f}{\\partial x^j}(\\mathbf x) \\end{align*} \\] where the last equality follows from the definition of the pushforward. Let $f$ be the $k^{th}$ coordinate function, ${x}^k:D \\rightarrow \\mathbb R$ (that is, $x^k\\coloneqq {\\varphi^{-1}}^k$). Then, ${{\\partial x}^k}/{\\partial x^j}=\\delta^k_j$ (with the usual identifications), and we get\n\\[ \\begin{align*} E^L_{i,\\varphi(\\mathbf x)}x^k \u0026= {\\overline E_i^k}(\\varphi(\\mathbf x)). \\end{align*} \\] Hence,\n\\[ \\begin{align*} [Z^Lf](g) \u0026= \\mathbf z^i [E_i^Lx^j](g)\\frac{\\partial \\bar f}{\\partial x^j}(\\varphi^{-1}(g)). \\end{align*} \\] We can write this in the matrix-vector form as\n\\[ \\begin{align*} \\nabla f_{g}^\\top\\mathbf z = \\nabla {\\bar f}^\\top_{\\varphi^{-1}(g)} M(g)\\,\\mathbf z \\end{align*} \\] where\n\\[ \\begin{align*} \\nabla \\bar f \u0026= \\begin{bmatrix}\\frac{\\partial \\bar f}{\\partial x^1} \\\\ \\vdots \\\\ \\frac{\\partial \\bar f}{\\partial x^n}\\end{bmatrix}\\quad\\text{and}\\quad \\nabla f \u0026= \\begin{bmatrix}E_1^Lf \\\\ \\vdots \\\\ E_n^Lf\\end{bmatrix}, \\end{align*} \\] so that $\\nabla f_{g}^\\top \\mathbf z=[Z^L f](g)$, and $M^i_j=E_j^Lx^i$. What is the inverse of $M$? Let $J(\\mathbf x) \\coloneqq \\left[M(\\varphi{\\footnotesize(\\mathbf x)})\\right]^{-1}$. It should satisfy3\n\\[ \\begin{align*} M_j^i\\, J^j_k\\, \u0026= J^j_k [E^L_{j}x^i]\\\\\u0026= [{(J^j_k E_j)}^Lx^i]\\\\ \u0026= \\delta^i_k. \\end{align*} \\] So, $J^j_k$ should be such that\n\\[ (J^j_k(\\mathbf x) E_j)^L_{\\varphi(\\mathbf x)} = \\frac{\\partial}{\\partial x^k}\\Big|_{\\varphi(\\mathbf x)}=d\\varphi_{\\mathbf x}\\left(\\frac{\\partial}{\\partial x^k}\\Big|_{\\mathbf x}\\right). \\] In the matrix-vector form, we can write\n\\[ \\nabla {\\bar f}_{\\mathbf x}^\\top\\mathbf y = \\nabla f_{\\varphi(\\mathbf x)}^\\top J(\\mathbf x)\\mathbf y. \\] Thus, the question of whether one uses $M$ or $J$ in calculations depends on whether the direction of differentiation is specified in the Lie algebra basis, or in the standard basis of $C\\subseteq \\mathbb R^n$ (i.e., it depends on whether it is $\\mathbf z$ or $\\mathbf y$ that is specified).\nWe can recover an explicit formula for $J$ that is used in the work of Chirikjian.4 On a matrix Lie group, we can view $\\varphi:\\mathbb R^n\\rightarrow \\mathbb R^{m \\times m}$ as a map between vector spaces. Letting $(\\hspace{1pt}\\cdot\\hspace{1pt})^\\vee:\\mathfrak g\\rightarrow \\mathbb R^n$ be the map $Z \\mapsto\\mathbf z$, which Chirikjian calls the vee map, we have\n\\[ J(\\mathbf x) = \\begin{bmatrix}\\big(\\varphi (\\mathbf x)^{-1}\\frac{\\partial \\varphi}{\\partial x^1}\\big)^\\vee \u0026 \\big(\\varphi (\\mathbf x)^{-1}\\frac{\\partial \\varphi}{\\partial x^2}\\big)^\\vee \u0026\\cdots \u0026 \\big(\\varphi (\\mathbf x)^{-1}\\frac{\\partial \\varphi}{\\partial x^n}\\big)^\\vee \\end{bmatrix}. \\] and\n\\[ M(g) = \\begin{bmatrix}E_1^L \\varphi^{-1}(g) \u0026 E_2^L \\varphi^{-1}(g) \u0026 \\cdots \u0026 E_n^L \\varphi^{-1}(g) \\end{bmatrix}= J(\\varphi^{-1}(g))^{-1}. \\] The map $\\varphi:\\mathbf x\\mapsto\\exp(\\mathbf x^iE_i)$ is called the exponential parametrization, whose inverse is $\\varphi^{-1}(g)=\\log(g)^\\vee$. In this case, $$ \\begin{align*} J(\\mathbf x)\\mathbf y\u0026=\\left(\\varphi(\\mathbf x)^{-1}\\left(\\mathbf y^i\\frac{\\partial \\varphi}{\\partial x^i}\\Big|_{\\mathbf x}\\right)\\right)^\\vee \\\\ \u0026= \\left(\\varphi(\\mathbf x)^{-1}\\frac{d}{d t}\\exp\\big((\\mathbf x^i + t \\mathbf y^i) E_i\\big)\\Big|_{t=0}\\right)^\\vee \\\\ \u0026= \\left(\\varphi(\\mathbf x)^{-1}\\frac{d}{d t}\\exp(X + tY)\\Big|_{t=0}\\right)^\\vee =\\big(\\Psi_X(Z)\\big)^\\vee, \\end{align*} $$ where $X^\\vee =\\mathbf x$ and $Y^\\vee =\\mathbf y$. Hence, $J(\\mathbf x)$ is nothing but the linear operator $\\Psi_X$ expressed in a specific basis. Similarly, $$ \\begin{align*} M(g)\\mathbf z\u0026= \\big[Z^L\\log^\\vee\\big](g) \\\\ \u0026= \\left(\\frac{d}{d t}\\log\\big(g\\exp(tZ)\\big)\\Big|_{t=0}\\right)^\\vee \\\\ \u0026=\\big(\\Psi^{-1}_g(Y)\\big)^\\vee. \\end{align*} $$ To put this in yet another way, $J(\\mathbf x) \\mathbf y$ expresses the vector $d\\varphi_{\\mathbf x}(\\mathbf y)$ in the basis of LIVFs, $\\lbrace E_{i,g}^L\\rbrace_{i=1}^n$ at $g=\\varphi (\\mathbf x)$. Meanwhile, $M(g) \\mathbf z$ expresses the LIVF $Z^L_g$ in the standard coordinate basis at $\\varphi^{-1}(g)$.\n🀵 Lengths and Volume In this final chapter, let’s look at how the Jacobians of a parametrization relate to the measurement of lengths and volumes on $G$. Assume that we have an inner product for $\\mathfrak g$, defined via\n\\[ \\langle{E_i},{E_j}\\rangle= W_{ij}. \\] This inner product defines a unique left-invariant Riemannian metric on $G$ (as explained in my previous posts), written as $W_{ij}\\varepsilon^i \\varepsilon^j$, where $\\lbrace \\varepsilon_{i}\\rbrace_{i=1}^n$ is the coframe that is dual to the frame of LIVFs, $\\lbrace E_{i}^L\\rbrace_{i=1}^n$. We now move to a point $\\mathbf x$ in the parameter space. There is presently no inner product for $T_{\\mathbf x}C$, since we haven’t chosen one. The key observation is that the Riemannian metric and volume form are both covariant tensor fields, so they can be pulled back (under $\\varphi$) from $D$ to $C$. For instance, if $\\langle \\cdot , \\cdot \\rangle_{\\mathbf x}$ is the pullback of the left-invariant Riemannian metric, then\n\\[ \\begin{align*} \\left\\langle \\frac{\\partial}{\\partial x^r},\\frac{\\partial}{\\partial x^s} \\right\\rangle_{\\mathbf x} \u0026= \\varphi^\\ast_{\\mathbf x}[W_{ij}\\varepsilon^i \\varepsilon^j]\\left(\\frac{\\partial}{\\partial x^r},\\frac{\\partial}{\\partial x^s}\\right)\\\\ \u0026= W_{ij}\\varepsilon^i \\varepsilon^j\\left(d\\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^r},d\\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^s}\\right)\\\\ \u0026= W_{ij}J(\\mathbf x)^i_rJ(\\mathbf x)^j_s. \\end{align*} \\] Hence, we have a weighted inner product at $\\mathbf x$: $$\\langle \\mathbf y,\\mathbf z \\rangle_{\\mathbf x}=\\mathbf y^\\top J(\\mathbf x)^\\top \\mathbf W J(\\mathbf x)\\mathbf z,$$\nand as $\\mathbf x$ varies, this defines a Riemannian metric on $C$. Unlike the left-invariant Riemannian metric on $D\\subseteq G$, the coefficients (i.e., the metric tensor) of the pullback Riemannian metric on $C\\subseteq\\mathbb R^n$ are not constant.\nThe choice of basis for $\\mathfrak g$ defines a unique density on $G$, written as $$\\omega=|\\varepsilon^1\\wedge\\varepsilon^2\\wedge\\cdots\\wedge \\varepsilon^n|.$$\nThis is an example of a left Haar measure for $G$, which is unique up to scaling. The absolute value is taken to make this a density rather than a volume form, saving us the trouble of worrying about orientation.\nBy a similar procedure, we can compute the pullback volume form on $C$. Let $\\varphi^\\ast\\omega=\\lambda(\\mathbf x) dx^1\\wedge\\cdots\\wedge dx^n$. Then,\n\\[ \\begin{align*} \\lambda(\\mathbf x) \u0026= \\varphi^\\ast\\omega\\left(\\frac{\\partial}{\\partial x^1},\\cdots, \\frac{\\partial}{\\partial x^n}\\right)\\\\ \u0026= |\\varepsilon^1\\wedge\\varepsilon^2\\wedge\\cdots\\wedge \\varepsilon^n|\\left(d\\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^1},\\cdots, d\\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^n}\\right)\\\\ \u0026= |\\varepsilon^1\\wedge\\varepsilon^2\\wedge\\cdots\\wedge \\varepsilon^n|\\left(\\,J_1^iE_i^L,\\,J_2^iE_i^L,\\cdots,\\, J_n^iE_i^L\\,\\right)\\\\ \u0026= \\left\\lvert\\det\\left(\\begin{bmatrix} J_1^1 \u0026 J_2^1 \u0026 \\cdots \u0026 J_n^1\\\\ J_1^2 \u0026 J_2^2 \u0026 \\cdots \u0026 J_n^2\\\\ \\vdots\u0026 \\vdots\u0026 \u0026\\vdots\\\\ J_1^n \u0026 J_2^n \u0026 \\cdots \u0026 J_n^n\\\\ \\end{bmatrix}\\right)\\right\\rvert \\\\ \u0026= |\\det(\\,J{\\small (\\mathbf x)}\\,)|, \\end{align*} \\] where we have omitted the argument $(\\mathbf x)$ of $J_i^j(\\mathbf x)$ for brevity. We can now integrate a function $f:D \\rightarrow \\mathbb R$ w.r.t. the Haar measure $\\omega$, by pulling the integral back to the parameter space:\n\\[ \\begin{align*} \\int_{D\\subseteq G} f \\cdot \\omega \u0026= \\int_{C\\subseteq \\mathbb R^n} \\varphi^\\ast f \\cdot\\varphi^\\ast \\omega \\\\\u0026= \\int_{C\\subseteq \\mathbb R^n} \\bar f \\cdot |\\det (J) |\\cdot dx^1\\wedge \\cdots \\wedge dx^n, \\end{align*} \\] where I use $`\\hspace{1pt}\\cdot\\hspace{1pt}’$ for clarity, to indicate the multiplication of a function with another function or $n$-form.\nThis is also what’s called a $1$- jet . This notion of an ’equivalence class of curves’ generalizes in annoying ways. ↩︎\nHere, $\\dot \\gamma(0)$ refers to the pushforward of $\\frac{\\partial}{\\partial t}\\big\\vert_{t=0}$ under $\\gamma$. ↩︎\nDon’t worry too much about which indices I place on top and which on the bottom. I just like the placement of the indices of a matrix to be consistent with those of its components. ↩︎\nNote that Chirikjian writes $J$ as “$J_r$”, although I prefer to think of $J$ as the left Jacobian due to the involvement of left-invariant vector fields. Nevertheless, our calculations agree with his. ↩︎\n",
+  "wordCount" : "2302",
   "inLanguage": "en",
   "datePublished": "2025-01-13T12:46:04-05:00",
   "dateModified": "2025-01-13T12:46:04-05:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:1313/posts/lemmas/"
+    "@id": "https://shirazkn.github.io/posts/lemmas/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Shiraz",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:1313/favicon.ico"
+      "url": "https://shirazkn.github.io/favicon.ico"
     }
   }
 }
@@ -168,7 +168,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -194,12 +194,12 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/archives/" title="archives">
+                <a href="https://shirazkn.github.io/archives/" title="archives">
                     <span>archives</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="tags">
+                <a href="https://shirazkn.github.io/tags/" title="tags">
                     <span>tags</span>
                 </a>
             </li>
@@ -213,40 +213,54 @@
     
     <h1 class="post-title entry-hint-parent">
       Differentials in Lie Theory
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
     </h1>
     <div class="post-meta"><span title='2025-01-13 12:46:04 -0500 EST'>January 13, 2025</span>
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#-differential-of-exp" aria-label="🀲 Differential of $\exp$">🀲 Differential of $\exp$</a></li>
+                <li>
+                    <a href="#-differential-of-log" aria-label="🀳 Differential of $\log$">🀳 Differential of $\log$</a></li>
+                <li>
+                    <a href="#-parametrization" aria-label="🀴 Parametrization">🀴 Parametrization</a></li>
+                <li>
+                    <a href="#-lengths-and-volume" aria-label="🀵 Lengths and Volume">🀵 Lengths and Volume</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><p>I collect here some results about the differentials of the $\exp$ and $\log$ maps of a Lie group. The reader must be familiar with how the <span class=accented>differential</span> (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of <a href="]%28/posts/vector-fields%29" class="accented">
     tangent vectors as equivalence classes of curves
 </a>; Wikipedia has an excellent <a href="https://en.wikipedia.org/wiki/Tangent_space#Definition_via_tangent_curves" target="_blank" class="accented">
     summary
 </a> of this, as does my blog (if I may say so myself).</p>
-<p>I am interested in the differentials of the maps $\exp: \mathfrak g \rightarrow G$<!-- (surjective if the group is connected, injective when $G=\mathbb R^n$) -->
-and $\log:U\rightarrow \mathfrak g$, where $U\subseteq G$ is a neighborhood of $e$.
-Let $L_g$ refer to the left-multiplication operation: $L_g(h)=gh$ for $g,h\in G$. Given $X\in\mathfrak g$, $X^L_g\coloneqq dL_g(X)$ is the corresponding left-invariant vector field. For a matrix Lie group (i.e., where $g$ is identified with some finite-dimensional matrix representation of it), $X^L_g=g X$, which makes sense because we have an external algebraic structure (namely, the multiplication of $n\times n$ matrices, which has the structure of an <a href="https://en.wikipedia.org/wiki/Associative_algebra" target="_blank" class="accented">
-    associative unital algebra
-</a>) that lets us multiply group elements with Lie algebra elements. This rather convenient structure does not exist for a general Lie group.</p>
-<h3 id="differential-of-exp">Differential of $\exp$<a hidden class="anchor" aria-hidden="true" href="#differential-of-exp">#</a></h3>
-<p>Suppose $\exp(X)$ is a point on $G$. The differential of $\exp$ provides an answer to the following question: what happens when $X$ is perturbed in the direction $Y \in T_{X}\mathfrak g$? The result, referred to as the <em>pushforward</em> of $Y$ under $\exp$, lies in $T_{\exp(X)} G$. That is, the differential is a linear map between vector spaces:</p>
+<p>Let $L_g$ refer to the left-multiplication operation: $L_g(h)=gh$ for $g,h\in G$. Given $X\in\mathfrak g$, $X^L_g\coloneqq dL_g(X)$ is the corresponding left-invariant vector field. For a matrix Lie group (i.e., where $g$ is identified with some finite-dimensional matrix representation of it), $X^L_g=g X$, which makes sense because we have an external algebraic structure (namely, the multiplication of $n\times n$ matrices, which has the structure of a <a href="https://en.wikipedia.org/wiki/Associative_algebra" target="_blank" class="accented">
+    unital associative algebra
+</a>) that lets us multiply group elements with Lie algebra elements. This rather convenient structure does not exist for a general Lie group. I will assume that the maps $\exp: U \rightarrow V$<!-- (surjective if the group is connected, injective when $G=\mathbb R^n$) -->
+and $\log:V\rightarrow U$ are inverses of each other, where $U\subseteq \mathfrak g$ is a neighborhood of $0$ and $V\subseteq G$ is a neighborhood of $e$.</p>
+<hr>
+<h2 id="-differential-of-exp">🀲 Differential of $\exp$<a hidden class="anchor" aria-hidden="true" href="#-differential-of-exp">#</a></h2>
+<p>Suppose $\exp(X)$ is a point on $G$. The differential of $\exp$ provides an answer to the following question: what happens when $X$ is perturbed in the direction $Y \in T_{X}\mathfrak g$? The result, referred to as the <em>pushforward</em> of $Y$ under $\exp$, lies in $T_{\exp(X)} G$. It is a linear map between vector spaces:</p>
 <p>
 \[
     d\exp_X: T_{X}\mathfrak g \rightarrow T_{\exp X} G.
 \]
 </p>
-<p>Since $\mathfrak g$ is a vector space, we can identify $T_X\mathfrak g$ with $\mathfrak g$. Similarly, we can identity $T_{\exp X} G$ with $T_e G$, which is also just $\mathfrak g$. A pedagogical nightmare ensues.</p>
+<p>Since $\mathfrak g$ is a vector space, we can identify $T_X\mathfrak g$ with $\mathfrak g$. Using the map $dL_{{\exp(X)}^{-1}}=dL_{{\exp(X)}}^{-1}$, we can identity $T_{\exp X} G$ with $T_e G$, which is also just $\mathfrak g$. A pedagogical nightmare ensues.</p>
 <p>Let $\gamma(t)$ be a curve on $\mathfrak g$. We use the notation $[\gamma]$ to refer to the <a href="https://en.wikipedia.org/wiki/Equivalence_class" target="_blank" class="accented">
     equivalence class
 </a> of all the curves<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> that pass through $\gamma(0)$ with the velocity $\dot \gamma(0)$.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> We say that $\gamma$ is a <span class=accented>representative</span> of the class $[\gamma]$.
-If $\gamma$ is chosen such that $\gamma(0)=X\in\mathfrak g$ and $\dot \gamma(0)=Y \in T_X\mathfrak g$, then $[\gamma]$ is completely characterized by $Y$ and vice versa; therefore, we can write $[\gamma]=Y$. The curve $\gamma$ is a representative of $Y$.</p>
-<p>The image of $\gamma$ under $\exp$, which is <span class=accented>$\exp\circ \gamma(t)$</span>, is a curve on $G$ which represents the pushforward of $Y$. That is,
+If $\gamma$ is chosen such that $\gamma(0)=X\in\mathfrak g$ and $\dot \gamma(0)=Y \in T_X\mathfrak g$, then $[\gamma]$ is completely characterized by $Y$ and vice versa; therefore, we can write $[\gamma]=Y$.
+The image of $\gamma$ under $\exp$, which is <span>$\exp\circ \gamma(t)$</span>, is a curve on $G$ as well as a representative of $d\exp_X(Y)$. That is,
 $$d\exp_X(Y)=[\hspace{2pt}\exp\circ \hspace{1pt}\gamma\hspace{2pt}]$$</p>
 <!-- <aside class=aside-right>
 </aside> -->
@@ -255,70 +269,291 @@ $$d\exp_X(Y)=[\hspace{2pt}\exp\circ \hspace{1pt}\gamma\hspace{2pt}]$$</p>
 <!-- Let's simply write $Y=[\gamma]$, then $d\exp_X(Y)=[\exp\circ \gamma]$. -->
 <p>The key to making these identifications concrete is to notice that we can choose <em>any</em> $\gamma$ satisfying $\gamma(0)=X$ and $\dot {\gamma}(0)=Y$.
 <strong>Any</strong> such $\gamma$ is a representative of $Y$.
-So, we might as well choose a $\gamma$ that is convenient to write down; let&rsquo;s make the choice, $\gamma(t) \coloneqq X+tY$.</p>
-<p>Now, $\exp \circ\hspace{2pt} \gamma(t)=\exp(X+tY)$ is a curve on $G$ passing through $\exp(X)$, and it is also a member of its equivalence class $[\exp(X+tY)]$.
-But consider this alternative way of writing down the same equivalence class:</p>
+So, we might as well choose a $\gamma$ that is convenient to write down; let&rsquo;s make the choice, $\gamma(t) \coloneqq X+tY$. In this case, $\exp \circ\hspace{2pt} \gamma(t)=\exp(X+tY)$ is a curve on $G$ passing through $\exp(X)$, and it is a representative of $d\exp_X(Y)$. There&rsquo;s two different ways of writing down the equivalence class of $d\exp_X(Y)$:</p>
 <p>$$
-\big[\exp(X+tY)\big]=\big[\exp(X)\exp(t\hspace{2pt}\square)\big]
+d\exp_X(Y) =\big[\exp(X+tY)\big]=\big[\exp(X)\exp(t\hspace{2pt}\square)\big]
 $$</p>
-<p>where the box is a Lie algebra element: $\square \in \mathfrak g$. There must be a value of $\square$ for which these are the same equivalence class. The value of $\square$ can therefore be used to <u>describe</u> the quantity $d\exp_X(Y)$:</p>
-<p>$$
-d\exp_X(Y)=\big[\exp(X+tY)\big]=\big[\exp(X)\exp(t\hspace{2pt}\square)\big].
-$$</p>
-<p>In conclusion, the differential of $\exp$ takes two objects, the point $X$ and the direction $Y$, and defines the object $\square$. Here, $\square$ represents the direction and extent to which $\exp(X)$ is perturbed when we nudge $X$ in the direction of $Y$.</p>
-<aside class=aside-center>
-In the case of matrix Lie groups, we write $d\exp_X(Y)=\exp(X)\square$, although the reader should now understand what this <i>really</i> means and how one might go about deriving the formula for $\square$.
-Section 3.2 of Jean Gallier's book has the formula for $d\exp_X$, and the appendix of my paper "<i>Parameter Estimation on Homogeneous Spaces</i>" has $d\log_{\exp(X)}$.
-</aside>
-<h3 id="differential-of-log">Differential of $\log$<a hidden class="anchor" aria-hidden="true" href="#differential-of-log">#</a></h3>
+<p>where the box is a Lie algebra element: $\square \in \mathfrak g$. There must be a value of $\square$ for which these are indeed the same equivalence class. The value of $\square$ can therefore be used to <u>describe</u> the quantity $d\exp_X(Y)$. Hence, we define the <em>Jacobian</em> of $\exp$ at $X$ as the linear map</p>
+<p>
+\[
+\begin{align*}
+\Psi_X:\mathfrak g &\rightarrow \mathfrak g\\
+Y &\mapsto \square
+\end{align*}
+\]
+</p>
+<p>In conclusion, the differential of $\exp$ takes two objects, the point $X$ and the direction $Y$, and defines the object $\square$. Here, $\square$ represents the direction and extent to which $\exp(X)$ is perturbed when we nudge $X$ in the direction of $Y$. On <span class=accented>matrix Lie groups</span>, $\Psi_X$ is defined by</p>
+<p>
+\[
+\Psi_X(Y) =\square =\exp(X)^{-1}\frac{d}{dt}\exp(X+tY)\Big|_{t=0},
+\]
+</p>
+<p>and we write $d\exp_X(Y)=\exp(X)\Psi_X(Y)$.</p>
+<hr>
+<h2 id="-differential-of-log">🀳 Differential of $\log$<a hidden class="anchor" aria-hidden="true" href="#-differential-of-log">#</a></h2>
 <p>By the same arguments as above,</p>
 <p>$$
 d\log_g: T_g G \rightarrow T_{\log(g)}\mathfrak g.
 $$</p>
 <p>Since $T_g G\cong \mathfrak g$ and $T_{\log(g)}\mathfrak g\cong \mathfrak g$, we should once again expect a formula that goes from $\mathfrak g$ to $\mathfrak g$.
 It proves to be convenient to work entirely with $\mathfrak g$-elements and write $\exp(X)$ in place of $g$.</p>
-<p>Let $\gamma \coloneqq \exp(X) \exp(tY)$ by a curve passing through $\exp(X)$ with the velocity $Y$. We have,
-$$d\log_{\exp(X)}(Y)=\big[\hspace{1pt}\log\mathrel\circ\gamma\hspace{1pt}(t)\hspace{1pt}\big]=\big[\hspace{1pt}\log\big(\exp(X)\exp(tY)\big)\hspace{1pt}\big]$$
-One sees the Baker-Campbell-Hausdorff-Dynkin formula starting to appear. As before, we have an alternative way of writing down the equivalence class:</p>
-<p>$$
-\big[\hspace{1pt}\log\big(\exp(X)\exp(tY)\big)\hspace{1pt}\big]= \big[\hspace{1pt}X + t\hspace{1pt}\square\hspace{1pt}\big].
-$$</p>
-<p>Thus, the differential of $\log$ takes two objects, $g$ (alternatively, $X=\log(g)$) and $Y$, and its output is characterized by $\square$. Here, $\square$ is the direction in which $\log(g)$ is perturbed when we perturb its argument, $g$, in the direction $Y$.</p>
-<h3 id="differential-of-">Differential of &hellip;<a hidden class="anchor" aria-hidden="true" href="#differential-of-">#</a></h3>
-<p>In equation $(5)$ of <a href="https://ieeexplore.ieee.org/abstract/document/6160965/?casa_token=8rtZEWBp7nMAAAAA:idFlMZen0lzqi1TWCQQFt84IAnVmg8OPZGlmEaX9B3hmjYjFcqWK6oukSe26xKXm8XtWOShZOg" target="_blank" class="accented">
-    this paper
-</a>, the authors use the result that</p>
-<p>
-\[
-\textrm{grad}_x d^2(x,y) = -2 \log_x (y).
-\]
-</p>
-<p>This makes intuitive sense, and the proof of it goes through some variant of the Gauss lemma. An analogous result holds on Lie groups with the distance defined in a group-theoretic manner. The group-theoretic &lsquo;distance&rsquo; isn&rsquo;t necessarily a distance that arises from a Riemannian metric (i.e., the geodesic distance), however, so we should try to prove it without passing through the Gauss lemma.</p>
-<p>Let $f(g) = \lVert \log h^{-1} g \rVert_2 ^2$. We want to compute its gradient w.r.t. a left-invariant Riemannian metric on $G$, $\langle\cdot, \cdot \rangle$.
-Let $\tilde Z \in \mathfrak g$ with $Z_g \coloneqq d L_g (\tilde Z)$ denoting the corresponding left-invariant vector field (LIVF). Furthermore, let $\mathfrak{grad}f_g \coloneqq dL_{g^{-1}}\left(\textrm{grad}f_g\right)$ denote the trivialization of the gradient.
-The gradient of $f$ can then be characterized as:</p>
+<p>Let $\gamma \coloneqq \exp(X) \exp(tY)$ by a curve passing through $\exp(X)$ with the velocity $Y$. We have,</p>
 <p>
 \[
 \begin{align*}
-\langle \mathfrak{grad}f_\mu, \tilde Z \rangle = \langle dL_{\mu^{-1}}\left(\textrm{grad}f_\mu\right), \tilde Z \rangle = \langle \textrm{grad}f_{\mu}, \tilde Z \rangle = Zf(\mu).
+d\log_{\exp(X)}(Y)&=\big[\hspace{1pt}\log\mathrel\circ\gamma\hspace{1pt}(t)\hspace{1pt}\big]\\&=\big[\hspace{1pt}\log\big(\exp(X)\exp(tY)\big)\hspace{1pt}\big].
 \end{align*}
 \]
 </p>
-<p>which should hold for an arbitrary $\tilde Z$.
-We further decompose this function as $f= f_1 \circ f_2$ ($f_1$ <em>after</em> $f_2$) where $f_1:\mathfrak g \rightarrow \mathbb R_{\geq 0}$ and $f_2:G \rightarrow \mathfrak g$ in the obvious way. This means that</p>
+<p>As before, we have an alternative way of writing down the equivalence class:</p>
+<p>$$
+\big[\hspace{1pt}\log\big(\exp(X)\exp(tY)\big)\hspace{1pt}\big]= \big[\hspace{1pt}X + t\hspace{1pt}\square\hspace{1pt}\big].
+$$</p>
+<p>Thus, the differential of $\log$ takes two objects, $X$ (alternatively, $g\coloneqq \exp(X)$) and $Y$, and its output is characterized by $\square$. Here, $\square$ is the direction in which $\log(g)$ is perturbed when we perturb its argument $g$ in the direction $Y$. On <span class=accented>matrix Lie groups</span>, we can once again define the operator $\Psi^{-1}_{\exp(X)}:\mathfrak g \rightarrow \mathfrak g$ using derivatives of matrix-valued functions:</p>
+<p>
+\[
+\Psi^{-1}_{\exp(X)}(Y) = \frac{d}{dt}\log\big(\exp(X)\exp(tY)\big)\Big|_{t=0}.
+\]
+</p>
+<p>We write $d\log_{g}(gY)=\Psi^{-1}_{g}(Y)$. Alternatively, we can write $d\log_{g}(V)=\Psi^{-1}_{g}(g^{-1}V)$, where $V\in T_{g} G$.</p>
+<aside class=aside-center>
+Section 3.2 of Jean Gallier's book has the formula for $d\exp_X$, and the appendix of my paper "<i>Parameter Estimation on Homogeneous Spaces</i>" has $d\log_{\exp(X)}$ (which I denote there as $\Psi$... oh well).
+</aside>
+<!-- ### Sanity Checks -->
+<p>We should verify that $\Psi_{\exp(X)}^{-1}$ is indeed the inverse of $\Psi_X$. Of course, this should be true from what we know about differentials/pushforwards of (locally) smooth maps between manifolds, but can we see this algebraically?</p>
 <p>
 \[
 \begin{align*}
-Zf(\mu) &= <div class="footnotes" role="doc-endnotes">
+\small
+&\Psi_X\left(\Psi_{\exp(X)}^{-1}(Y)\right)\\ &\quad  = 
+\exp(X)^{-1}\frac{d}{ds}\exp\left(X+s\frac{d}{dt}\log\big(\exp(X)\exp(tY)\big)\Big|_{t=0}\right)\Big|_{s=0}\\
+\small
+&\quad   \overset{?}=Y,\\
+\small
+&\Psi_{\exp(X)}^{-1}\left(\Psi_X(Y)\right)
+ \\&\quad  = 
+\frac{d}{dt}\log\Big(\exp(X)\exp\Big(t
+\exp(X)^{-1}\frac{d}{ds}\exp\left(X+sY\right)\Big|_{s=0}
+\Big)\Big)\Big|_{t=0}\\
+\small
+&\quad  \overset{?}=Y.
+\end{align*}
+\]
+</p>
+<p>I&rsquo;m not sure how to proceed&hellip; In any case, such formidable calculations should not be needed to demonstrate a simple fact. The intrinsic versions of these results are trivial:</p>
+<p>
+\[
+d\log_{\exp(X)}\left(d\exp_X(Y)\right) = d(\log \circ \exp)_X(Y)=Y.
+\]
+</p>
+<p>
+\[
+d\exp_{\log(g)}\left(d\log_g(V)\right) = d(\exp \circ \log)_g(V)=V.
+\]
+</p>
+<!-- Writing this using Jacobians,
+
+<p>
+\[
+\Psi^{-1}_{\exp(X)}(\left(\Psi_X(Y)\right) )
+\]
+</p> -->
+<hr>
+<h2 id="-parametrization">🀴 Parametrization<a hidden class="anchor" aria-hidden="true" href="#-parametrization">#</a></h2>
+<p>Another context in which differentials show up in Lie theory is in the context of <em>parametrizations</em> of $G$. While most of this discussion is a specialization of what happens on a general manifold, the Lie group case is special because we are especially interested in left-invariant quantities (e.g., left-invariant vector fields and volume forms).</p>
+<p>Let $\varphi:C\rightarrow D$ be a parametrization of $D\subseteq G$ whose domain is $C\subseteq \mathbb R^n$, such that its inverse $\varphi^{-1}:D \rightarrow C$ exists (and therefore, is a smooth coordinate chart). A function $f:G\rightarrow \mathbb R$ can be <em>restricted</em> to $D$ to define $f|_D:D\rightarrow \mathbb R$; nevertheless, we will just write $f$ to refer to the restricted function. We can pull $f$ back under $\varphi$ to define $\bar f\coloneqq {\varphi}^\ast f=f\circ \varphi$, so that $\bar f(\mathbf x)=f(\varphi(\mathbf x))$. We can differentiate $\bar f$ using the usual rules of multivariable calculus. Let $\frac{\partial}{\partial x^i}$ be the $i^{th}$ <a href="/posts/vector-fields" class="accented">
+    standard vector field
+</a> in $C$. As vector fields do, it will map $\bar f$ to another function:</p>
+<p>
+\[
+\frac{\partial}{\partial x^i}\big(\,\bar f\,\big):C \rightarrow \mathbb R.
+\]
+</p>
+<p>As far as differential calculus on manifolds go, the story pretty much ends here. However, on a Lie group we are interested in computing derivatives along the left-invariant vector fields (LIVFs). Letting $\lbrace E_i \rbrace_{i=1}^n$ be a basis for $\mathfrak g$, we can express its LIVFs using the parametrization:</p>
+<p>
+\[
+E_{i,g}^L = g E_i = {\overline E_i^j}(g)\frac{\partial}{\partial x^j}\Big|_{g}
+\]
+</p>
+<p>Here, $\frac{\partial}{\partial x^i}\big|_{\varphi(\mathbf x)}\coloneqq d \varphi_{\mathbf x}\frac{\partial}{\partial x^i}\big|_{\mathbf x}$ (by abuse of notation) is called the $i^{th}$ coordinate vector field, and $\overline E_i^j$ are smooth functions. But what are these functions? We need to set up a commutative diagram that shows us how the action of $E_{i}^L$ on $f$ can be equated to the action of an $\mathbb R^n$-vector field on $\bar f$.</p>
+<p>Let $Z = \mathbf z^i E_i$, where $\mathbf z^i$ are real numbers (not functions!). Consider</p>
+<p>
+\[
+    \begin{align*}
+Z^L_{\varphi(\mathbf x)} f &= \mathbf z^i E^L_{i,\varphi(\mathbf x)}f =\mathbf z^i\frac{d}{dt}f\left(\varphi(\mathbf x)\exp(tE_i)\right)\Big|_{t=0}\\
+&= \mathbf z^i{\overline E_i^j}(\varphi(\mathbf x))\frac{\partial}{\partial x^j}\Big|_{\varphi(\mathbf x)}f\\
+&= \mathbf z^i{\overline E_i^j}(\varphi(\mathbf x))\frac{\partial \bar f}{\partial x^j}(\mathbf x)
+\end{align*}
+\]
+</p>
+<p>where the last equality follows from the definition of the pushforward. Let $f$ be the $k^{th}$ coordinate function, ${x}^k:D \rightarrow \mathbb R$ (that is, $x^k\coloneqq {\varphi^{-1}}^k$). Then, ${{\partial x}^k}/{\partial x^j}=\delta^k_j$ (with the usual identifications), and we get</p>
+<p>
+\[
+    \begin{align*}
+ E^L_{i,\varphi(\mathbf x)}x^k 
+&= {\overline E_i^k}(\varphi(\mathbf x)).
+\end{align*}
+\]
+</p>
+<p>Hence,</p>
+<p>
+\[
+    \begin{align*}
+[Z^Lf](g) &= \mathbf z^i [E_i^Lx^j](g)\frac{\partial \bar f}{\partial x^j}(\varphi^{-1}(g)).
+\end{align*}
+\]
+</p>
+<p>We can write this in the <span class=accented>matrix-vector form</span> as</p>
+<p style="text-align: center">
+<span class=boxed>
+\[
+    \begin{align*}
+\nabla f_{g}^\top\mathbf z = \nabla {\bar f}^\top_{\varphi^{-1}(g)} M(g)\,\mathbf z
+\end{align*}
+\]
+</span>
+<p>
+<p>where</p>
+<p>
+\[
+\begin{align*}
+\nabla \bar f &= \begin{bmatrix}\frac{\partial \bar f}{\partial x^1} \\ \vdots \\ \frac{\partial \bar f}{\partial x^n}\end{bmatrix}\quad\text{and}\quad
+\nabla f &= \begin{bmatrix}E_1^Lf \\ \vdots \\ E_n^Lf\end{bmatrix},
+\end{align*}
+\]
+</p>
+<p>so that $\nabla f_{g}^\top \mathbf z=[Z^L f](g)$, and $M^i_j=E_j^Lx^i$.
+What is the inverse of $M$? Let $J(\mathbf x) \coloneqq \left[M(\varphi{\footnotesize(\mathbf x)})\right]^{-1}$. It should satisfy<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p>
+\[
+    \begin{align*}
+M_j^i\, J^j_k\, &=  J^j_k [E^L_{j}x^i]\\&=  [{(J^j_k E_j)}^Lx^i]\\
+&= \delta^i_k.
+\end{align*}
+\]
+</p>
+<p>So, $J^j_k$ should be such that</p>
+<p>
+\[
+(J^j_k(\mathbf x) E_j)^L_{\varphi(\mathbf x)} = \frac{\partial}{\partial x^k}\Big|_{\varphi(\mathbf x)}=d\varphi_{\mathbf x}\left(\frac{\partial}{\partial x^k}\Big|_{\mathbf x}\right).
+\]
+</p>
+<p>In the <span class=accented>matrix-vector form</span>, we can write</p>
+<p style="text-align: center">
+<span class=boxed>
+\[
+\nabla {\bar f}_{\mathbf x}^\top\mathbf y  = \nabla f_{\varphi(\mathbf x)}^\top J(\mathbf x)\mathbf y.
+\]
+</span>
+</p>
+<p>Thus, the question of whether one uses $M$ or $J$ in calculations depends on whether the <em>direction of differentiation</em> is specified in the Lie algebra basis, or in the standard basis of $C\subseteq \mathbb R^n$ (i.e., it depends on whether it is $\mathbf z$ or $\mathbf y$ that is specified).</p>
+<p>We can recover an explicit formula for $J$ that is used in the work of Chirikjian.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> On a <span class=accented>matrix Lie group</span>, we can view $\varphi:\mathbb R^n\rightarrow \mathbb R^{m \times m}$ as a map between vector spaces. Letting $(\hspace{1pt}\cdot\hspace{1pt})^\vee:\mathfrak g\rightarrow \mathbb R^n$ be the map $Z \mapsto\mathbf z$, which Chirikjian calls the <em>vee</em> map, we have</p>
+<p>
+\[
+J(\mathbf x) = \begin{bmatrix}\big(\varphi (\mathbf x)^{-1}\frac{\partial \varphi}{\partial x^1}\big)^\vee & \big(\varphi (\mathbf x)^{-1}\frac{\partial \varphi}{\partial x^2}\big)^\vee  &\cdots & \big(\varphi (\mathbf x)^{-1}\frac{\partial \varphi}{\partial x^n}\big)^\vee \end{bmatrix}.
+\]
+</p>
+<p>and</p>
+<p>
+\[
+M(g) = \begin{bmatrix}E_1^L \varphi^{-1}(g) & E_2^L \varphi^{-1}(g) & \cdots & E_n^L \varphi^{-1}(g) \end{bmatrix}= J(\varphi^{-1}(g))^{-1}.
+\]
+</p>
+<aside class=aside-center>
+The map $\varphi:\mathbf x\mapsto\exp(\mathbf x^iE_i)$ is called the <i class=accented>exponential parametrization</i>, whose inverse is $\varphi^{-1}(g)=\log(g)^\vee$. In this case,
+$$
+\begin{align*}
+J(\mathbf x)\mathbf y&=\left(\varphi(\mathbf x)^{-1}\left(\mathbf y^i\frac{\partial \varphi}{\partial x^i}\Big|_{\mathbf x}\right)\right)^\vee \\
+&= \left(\varphi(\mathbf x)^{-1}\frac{d}{d t}\exp\big((\mathbf x^i + t \mathbf y^i) E_i\big)\Big|_{t=0}\right)^\vee \\
+&=
+\left(\varphi(\mathbf x)^{-1}\frac{d}{d t}\exp(X + tY)\Big|_{t=0}\right)^\vee
+=\big(\Psi_X(Z)\big)^\vee,
+\end{align*}
+$$
+where $X^\vee =\mathbf x$ and $Y^\vee =\mathbf y$. Hence, $J(\mathbf x)$ is nothing but the linear operator $\Psi_X$ expressed in a specific basis. Similarly, 
+$$
+\begin{align*}
+M(g)\mathbf z&= \big[Z^L\log^\vee\big](g) \\
+&= \left(\frac{d}{d t}\log\big(g\exp(tZ)\big)\Big|_{t=0}\right)^\vee \\
+&=\big(\Psi^{-1}_g(Y)\big)^\vee.
+\end{align*}
+$$
+</aside>
+<p>To put this in yet another way, $J(\mathbf x) \mathbf y$ expresses the vector $d\varphi_{\mathbf x}(\mathbf y)$ in the basis of LIVFs, $\lbrace E_{i,g}^L\rbrace_{i=1}^n$ at $g=\varphi (\mathbf x)$. Meanwhile, $M(g) \mathbf z$ expresses the LIVF $Z^L_g$ in the standard coordinate basis at $\varphi^{-1}(g)$.</p>
+<hr>
+<h2 id="-lengths-and-volume">🀵 Lengths and Volume<a hidden class="anchor" aria-hidden="true" href="#-lengths-and-volume">#</a></h2>
+<p>In this final chapter, let&rsquo;s look at how the Jacobians of a parametrization relate to the measurement of lengths and volumes on $G$.
+Assume that we have an inner product for $\mathfrak g$, defined via</p>
+<p>
+\[
+\langle{E_i},{E_j}\rangle= W_{ij}.
+\]
+</p>
+<p>This inner product defines a unique <span class=accented>left-invariant Riemannian metric</span> on $G$ (as explained in my previous posts), written as $W_{ij}\varepsilon^i \varepsilon^j$, where $\lbrace \varepsilon_{i}\rbrace_{i=1}^n$ is the coframe that is dual to the frame of LIVFs, $\lbrace E_{i}^L\rbrace_{i=1}^n$. We now move to a point $\mathbf x$ in the parameter space. There is presently no inner product for $T_{\mathbf x}C$, since we haven&rsquo;t chosen one. The key observation is that the Riemannian metric and volume form are both covariant tensor fields, so they can be pulled back (under $\varphi$) from $D$ to $C$. For instance, if $\langle \cdot , \cdot \rangle_{\mathbf x}$ is the pullback of the left-invariant Riemannian metric, then</p>
+<p>
+\[
+    \begin{align*}
+\left\langle \frac{\partial}{\partial x^r},\frac{\partial}{\partial x^s} \right\rangle_{\mathbf x} 
+&=
+\varphi^\ast_{\mathbf x}[W_{ij}\varepsilon^i \varepsilon^j]\left(\frac{\partial}{\partial x^r},\frac{\partial}{\partial x^s}\right)\\
+&=
+W_{ij}\varepsilon^i \varepsilon^j\left(d\varphi_{\mathbf x}\frac{\partial}{\partial x^r},d\varphi_{\mathbf x}\frac{\partial}{\partial x^s}\right)\\
+&=
+W_{ij}J(\mathbf x)^i_rJ(\mathbf x)^j_s.
+\end{align*}
+\]
+</p>
+<p>Hence, we have a weighted inner product at $\mathbf x$:
+$$\langle \mathbf y,\mathbf z \rangle_{\mathbf x}=\mathbf y^\top J(\mathbf x)^\top \mathbf W J(\mathbf x)\mathbf z,$$</p>
+<p>and as $\mathbf x$ varies, this defines a Riemannian metric on $C$.
+Unlike the left-invariant Riemannian metric on $D\subseteq G$, the coefficients (i.e., the metric tensor) of the pullback Riemannian metric on $C\subseteq\mathbb R^n$ are not constant.</p>
+<p>The choice of basis for $\mathfrak g$ defines a unique <span class=accented>density</span> on $G$, written as $$\omega=|\varepsilon^1\wedge\varepsilon^2\wedge\cdots\wedge \varepsilon^n|.$$</p>
+<!-- If we assume (for simplicity of presentation) that $W_{ij}=\delta_{ij}$, i.e., the basis $\lbrace E_{i}\rbrace_{i=1}^n$ is orthonormal, then $\omega$ is called the canonical Riemannian density. -->
+<p>This is an example of a <span class=accented>left Haar measure</span> for $G$, which is unique up to scaling.
+The absolute value is taken to make this a <em>density</em> rather than a volume form, saving us the trouble of worrying about orientation.</p>
+<p>By a similar procedure, we can compute the pullback volume form on $C$. Let $\varphi^\ast\omega=\lambda(\mathbf x) dx^1\wedge\cdots\wedge dx^n$. Then,</p>
+<p>
+\[
+    \begin{align*}
+\lambda(\mathbf x) &= \varphi^\ast\omega\left(\frac{\partial}{\partial x^1},\cdots, \frac{\partial}{\partial x^n}\right)\\
+&= |\varepsilon^1\wedge\varepsilon^2\wedge\cdots\wedge \varepsilon^n|\left(d\varphi_{\mathbf x}\frac{\partial}{\partial x^1},\cdots, d\varphi_{\mathbf x}\frac{\partial}{\partial x^n}\right)\\
+&= |\varepsilon^1\wedge\varepsilon^2\wedge\cdots\wedge \varepsilon^n|\left(\,J_1^iE_i^L,\,J_2^iE_i^L,\cdots,\, J_n^iE_i^L\,\right)\\
+&= \left\lvert\det\left(\begin{bmatrix}
+J_1^1 & J_2^1 & \cdots & J_n^1\\
+J_1^2 & J_2^2 & \cdots & J_n^2\\
+ \vdots& \vdots& &\vdots\\
+J_1^n & J_2^n & \cdots & J_n^n\\
+\end{bmatrix}\right)\right\rvert \\
+&= |\det(\,J{\small (\mathbf x)}\,)|,
+\end{align*}
+\]
+</p>
+<p>where we have omitted the argument $(\mathbf x)$ of $J_i^j(\mathbf x)$ for brevity.
+We can now integrate a function $f:D \rightarrow \mathbb R$ w.r.t. the Haar measure $\omega$, by pulling the integral back to the parameter space:</p>
+<p>
+\[
+    \begin{align*}
+\int_{D\subseteq G} f \cdot \omega &= \int_{C\subseteq \mathbb R^n} \varphi^\ast f \cdot\varphi^\ast \omega \\&=  \int_{C\subseteq \mathbb R^n} \bar f \cdot |\det (J) |\cdot dx^1\wedge \cdots \wedge dx^n,
+\end{align*}
+\]
+</p>
+<p>where I use $`\hspace{1pt}\cdot\hspace{1pt}&rsquo;$ for clarity, to indicate the multiplication of a function with another function or $n$-form.</p>
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>This is also what is called a $1$-<a href="https://en.wikipedia.org/wiki/Jet_%28mathematics%29#Jets_of_functions_from_the_real_line_to_a_manifold" target="_blank" class="accented">
+<p>This is also what&rsquo;s called a $1$-<a href="https://en.wikipedia.org/wiki/Jet_%28mathematics%29#Jets_of_functions_from_the_real_line_to_a_manifold" target="_blank" class="accented">
     jet
-</a>, and this notion of an &rsquo;equivalence class of curves&rsquo; generalizes in annoying ways.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</a>. This notion of an &rsquo;equivalence class of curves&rsquo; generalizes in annoying ways.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
 <p>Here, $\dot \gamma(0)$ refers to the pushforward of $\frac{\partial}{\partial t}\big\vert_{t=0}$ under $\gamma$.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Don&rsquo;t worry too much about which indices I place on top and which on the bottom. I just like the placement of the indices of a matrix to be consistent with those of its components.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Note that Chirikjian writes $J$ as &ldquo;$J_r$&rdquo;, although I prefer to think of $J$ as the <em>left</em> Jacobian due to the involvement of left-invariant vector fields. Nevertheless, our calculations agree with his.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
