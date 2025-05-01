@@ -222,7 +222,7 @@ We can write this in the <span class=accented>matrix-vector form</span> as
 <span class=boxed>
 \[
     \begin{align*}
-\nabla f_{g}^\top\mathbf z = \nabla {\bar f}^\top_{\varphi^{-1}(g)} M(g)\,\mathbf z
+\ \nabla f_{g}^\top\mathbf z = \nabla {\bar f}^\top_{\varphi^{-1}(g)} M(g)\,\mathbf z\ 
 \end{align*}
 \]
 </span>
@@ -266,7 +266,7 @@ In the <span class=accented>matrix-vector form</span>, we can write
 <p style="text-align: center">
 <span class=boxed>
 \[
-\nabla {\bar f}_{\mathbf x}^\top\mathbf y  = \nabla f_{\varphi(\mathbf x)}^\top J(\mathbf x)\mathbf y.
+\ \nabla {\bar f}_{\mathbf x}^\top\mathbf y  = \nabla f_{\varphi(\mathbf x)}^\top J(\mathbf x)\mathbf y\ 
 \]
 </span>
 </p>
@@ -301,7 +301,7 @@ J(\mathbf x)\mathbf y&=\left(\varphi(\mathbf x)^{-1}\left(\mathbf y^i\frac{\part
 &= \left(\varphi(\mathbf x)^{-1}\frac{d}{d t}\exp\big((\mathbf x^i + t \mathbf y^i) E_i\big)\Big|_{t=0}\right)^\vee \\
 &=
 \left(\varphi(\mathbf x)^{-1}\frac{d}{d t}\exp(X + tY)\Big|_{t=0}\right)^\vee
-=\big(\Psi_X(Z)\big)^\vee,
+=\big(\Psi_X(Y)\big)^\vee,
 \end{align*}
 $$
 where $X^\vee =\mathbf x$ and $Y^\vee =\mathbf y$. Hence, $J(\mathbf x)$ is nothing but the linear operator $\Psi_X$ expressed in a specific basis. Similarly, 
@@ -309,7 +309,7 @@ $$
 \begin{align*}
 M(g)\mathbf z&= \big[Z^L\log^\vee\big](g) \\
 &= \left(\frac{d}{d t}\log\big(g\exp(tZ)\big)\Big|_{t=0}\right)^\vee \\
-&=\big(\Psi^{-1}_g(Y)\big)^\vee.
+&=\big(\Psi^{-1}_g(Z)\big)^\vee.
 \end{align*}
 $$
 </aside>
