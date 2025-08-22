@@ -8,7 +8,7 @@ The <span class=accented>Fourier transform</span> in $\mathbb R^n$ maps a comple
 
 $$
 \begin{align*}
-\hat f&(\mathbfsymbol \omega) \\&\coloneqq \int_{\mathbb R^n} f(\mathbf x) e^{-i\hspace{1pt} 2\pi \langle \mathbfsymbol \omega, \mathbf x\rangle} d\mathbf x\\
+\hat f&(\boldsymbol \omega) \\&\coloneqq \int_{\mathbb R^n} f(\mathbf x) e^{-i\hspace{1pt} 2\pi \langle \boldsymbol \omega, \mathbf x\rangle} d\mathbf x\\
 &= \int_{\mathbb R}\cdots\int_{\mathbb R} f(\mathbf x) \left(e^{-i \hspace{1pt}2\pi \omega^1 x^1}\cdots e^{-i \hspace{1pt}2\pi \omega^n x^n}\right) dx^1 \cdots dx^n\\
 &= \cdots \left(\int_{\mathbb R}\left(\int_{\mathbb R} f(\mathbf x) e^{-i\hspace{1pt}2\pi \omega^1 x^1}dx^1 \right) e^{-i\hspace{1pt}2\pi \omega^2 x^2} dx^2 \right)\cdots 
 \end{align*}
