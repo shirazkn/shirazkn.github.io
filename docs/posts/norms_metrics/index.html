@@ -18,7 +18,7 @@ It is nonnegative, and $0$ only at the &lsquo;zero element&rsquo; (for e.g., at 
 $\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/norms_metrics/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6bf9cb3ba8dbb85dbcf87028b5fbea5cc4231e0c00f888a36a6d452218da3dfb.css" integrity="sha256-a/nLO6jbuF28&#43;HAotfvqXMQjHgwA&#43;Iijam1FIhjaPfs=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f63ca8b26bc4bdec5a73358cc90732c3c03880bb9f674e5868ae860e17b5d924.css" integrity="sha256-9jyosmvEvexaczWMyQcyw8A4gLufZ05YaK6GDhe12SQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -66,43 +66,35 @@ $\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.">
 </noscript>
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          
-          
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '\\[', right: '\\]', display: true}
-          ],
-          
-          throwOnError : false
-        });
-    });
+  MathJax = {
+    tex: {
+      packages: {'[+]': ['mathtools']},
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['\\(', '\\)'], ['$', '$']]                  
+    },
+    loader:{
+      load: ['ui/safe', '[tex]/mathtools']
+    },
+  };
 </script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="Norms, Metrics, and Inner Products" />
-<meta property="og:description" content="This is an explainer on norms, metrics, and inner products, and their relationships to each other.
-Norms
-A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
-
-
-It is nonnegative, and $0$ only at the &lsquo;zero element&rsquo; (for e.g., at the origin of $\mathbb R^n$).
-
-
-$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://shirazkn.github.io/posts/norms_metrics/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-04-10T12:20:23-04:00" />
-<meta property="article:modified_time" content="2023-04-10T12:20:23-04:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Norms, Metrics, and Inner Products"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:url" content="https://shirazkn.github.io/posts/norms_metrics/">
+  <meta property="og:site_name" content="Shiraz">
+  <meta property="og:title" content="Norms, Metrics, and Inner Products">
+  <meta property="og:description" content="This is an explainer on norms, metrics, and inner products, and their relationships to each other.
+Norms A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
+It is nonnegative, and $0$ only at the ‘zero element’ (for e.g., at the origin of $\mathbb R^n$).
+$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-04-10T12:20:23-04:00">
+    <meta property="article:modified_time" content="2023-04-10T12:20:23-04:00">
+    <meta property="article:tag" content="Linear Algebra">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Norms, Metrics, and Inner Products">
 <meta name="twitter:description" content="This is an explainer on norms, metrics, and inner products, and their relationships to each other.
 Norms
 A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:
@@ -111,7 +103,7 @@ A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements 
 It is nonnegative, and $0$ only at the &lsquo;zero element&rsquo; (for e.g., at the origin of $\mathbb R^n$).
 
 
-$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$."/>
+$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.">
 
 
 <script type="application/ld+json">
@@ -182,7 +174,7 @@ $\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$."/>
         <div class="logo">
             <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -295,7 +287,7 @@ This is why we typically call $\mathbb R^n$ the Euclidean space; since there is 
 \lbrace 2 \rbrace \subset [1, \infty] \subset [0, \infty]
 \]</p>
 <p>An interesting observation which always trips me up is that metric spaces don&rsquo;t have to be vector spaces, or vice versa.</p>
-<h3 id="whats-so-special-about-2-anyway">What&rsquo;s so special about $2$ anyway?<a hidden class="anchor" aria-hidden="true" href="#whats-so-special-about-2-anyway">#</a></h3>
+<h3 id="whats-so-special-about--anyway">What&rsquo;s so special about $2$ anyway?<a hidden class="anchor" aria-hidden="true" href="#whats-so-special-about--anyway">#</a></h3>
 <p><a href="/posts/leastsquares" class="accented">
     Once again
 </a>, I am annoyed by the special place that $2$ takes in this hierarchy of spaces. It has a host of interesting properties (which I will link in this post if I ever decide to explore them further):</p>

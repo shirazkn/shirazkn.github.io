@@ -23,7 +23,7 @@ and, well, it usually just works. We recover something close to $x$ and has desi
 
 Well, we do indeed consider other norms sometimes. The $1$-norm is the next most commonly used, and it is called the 'absolute deviation' of the error, leading to the [least absolute deviations](https://en.wikipedia.org/wiki/Least_absolute_deviations) estimator. But the odds are, unless you're a statistician you've never heard of this estimator. Why's that?
 
-Maybe the answer lies in the [central limit theorem (CLT)](https://en.wikipedia.org/wiki/Central_limit_theorem) and the [Gaussian distribution](https://en.wikipedia.org/wiki/Multivariate_normal_distribution). The CLT says that whenever a large number of independent random variables are summed, they become (when scaled just right) Gaussian-distributed. The Gaussian distribution indeed has a (weighted version of) the $2$-norm sitting inside its exponent. Suppose the noise vector $\epsilon$ in our least squares problem was distributed according to a <span class=accented>multivariate Gaussian distribution</span> with a zero mean and the covariance matrix $\Sigma \in \mathbb R^{m \times m}$, then its probability density function is
+Maybe the answer lies in the [central limit theorem (CLT)](https://en.wikipedia.org/wiki/Central_limit_theorem) and the [Gaussian distribution](https://en.wikipedia.org/wiki/Multivariate_normal_distribution). The CLT says that whenever a large number of independent random variables are summed, their distribution is approximately Gaussian. The Gaussian distribution indeed has a (weighted version of) the $2$-norm sitting inside its exponent. Suppose the noise vector $\epsilon$ in our least squares problem was distributed according to a <span class=accented>multivariate Gaussian distribution</span> with a zero mean and the covariance matrix $\Sigma \in \mathbb R^{m \times m}$, then its probability density function is
 <p>
 \[f_\epsilon(\zeta)=\frac{1}{\sqrt{(2 \pi)^m \det{(\Sigma)}}} \exp\left(-\tfrac{1}{2}\zeta^T\Sigma^{-1}\zeta\right)
 \]</p>
@@ -41,7 +41,7 @@ But we mentioned that the CLT is on team Gaussian. It makes the remarkably unive
 
 For this section, let's only consider scalar-valued random variables. Gaussian distributions have some neat properties which can help explain their 'central' role in the CLT:
 
-> Convolutions[^1], products, and Fourier transforms of two Gaussians is Gaussian.
+> Convolutions, products, and Fourier transforms of two Gaussians is Gaussian.
 
 In particular, when we sum two independent random variables, the distribution of the sum is given by a <i>convolution</i> (which for our purposes is just some operation that takes two functions and gives another) of the individual distributions. The Gaussian distribution is essentially a <i>fixed point</i> of this iteration, so every other distribution tends to it. This is similar to how if you take a calculator, enter some number, and then mash the '$\sqrt{\   \ }$' button, then you eventually get stuck on the number $1$. This is (mostly) because $1$ is a fixed point of your iteration, $\sqrt{1} = 1$. Similarly, the (properly scaled) sum of $n$ random variables tends to a Gaussian random variable as $n\rightarrow \infty$, due to it being the fixed point of the convolution operation. This is a partial justification/intuition for why the sum of a large number of random variables has a Gaussian distribution -- the CLT.
 
@@ -74,8 +74,4 @@ e^{-\|\zeta\|_p^p} \geq \delta\quad  \Leftrightarrow \quad \|\zeta\|_p^p \leq \t
 
 The inequality on the left gives the *level sets* or the 'horizontal slices' of the pdf. The inequality on the right is called the *[norm ball](/posts/balls)* corresponding to the $p$-norm. Thus, the shape of the norm ball characterizes the *shape* of the pdf $f(\zeta)$. Since in the CLT Gaussians play the role of a *universal*, or should I say, a *normal* pdf, one can argue that its level sets should be spherical -- perfectly symmetric. There is no reason that the distribution should favor one direction over the other, because independent random variables cannot *conspire* with each other to add up in a particular direction.
 
-And what do you know, $\lVert \zeta\rVert _p^p \leq \tau$ [is spherical](/posts/balls) when and *only* when $p=2$! The $2$-norm has [some more properties](/posts/norms_metrics) which are unique to it among all the other $p$-norms. As an aside, the spherical shape of Gaussians [is also where the $\pi$ in the normalization constant comes from](https://www.youtube.com/watch?v=cy8r7WSuT1I). 
-
-This last one is a purely aesthetic argument which may or may not be in the spirit of mathematics depending on where you're coming from. Where I'm coming from, this is my favorite interpretation of them all.
-
-[^1]: Also of note -- only Gaussian distributions achieve the equality in <a href="https://en.wikipedia.org/wiki/Young's_convolution_inequality" class=accented>Young's convolution inequality</a>.
+And what do you know, $\lVert \zeta\rVert _p^p \leq \tau$ [is spherical](/posts/balls) when and *only* when $p=2$! The $2$-norm has [some more properties](/posts/norms_metrics) which are unique to it among all the other $p$-norms. As an aside, the spherical shape of Gaussians [is also where the $\pi$ in the normalization constant comes from](https://www.youtube.com/watch?v=cy8r7WSuT1I). This is a purely aesthetic argument which may or may not be in the spirit of mathematics depending on where you're coming from. Where I'm coming from, this was my favorite argument of the three!

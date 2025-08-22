@@ -186,9 +186,9 @@ for all $\mathbf v \in T_p \mathcal M$.
 Since $df$ is itself something that operates on vectors, we define $df$ such that its operation on the vectors is given by $df(\mathbf v) = \mathbf v(f)$, where the $f$ can be any representative from the equivalence class of $df$.
 The set of all covectors at $p$ make up the <span class=accented>cotangent space of $\mathcal M$ at $p$</span>, which is denoted as $T^\*_p\mathcal M$ on account of its duality to $T_p\mathcal M$. 
 
-For example, if $\mathcal M=\mathbb R$, then $T_p \mathbb R$ is a one-dimensional vector space that encapsulates how fast we are moving past $p\in \mathbb R$, and whether our movement is to the left or to the right; the directions *left* and *right* are related by a change of sign. In this case, $T^\*\_p \mathbb R$ can be identified with the set of all slopes that a Taylor series approximation of some function (at $p\in\mathbb R$) could have. Its dimension is also one, as the only choice of freedom here is the slope of the line. Observe that
+For example, if $\mathcal M=\mathbb R$, then $T_p \mathbb R$ is a one-dimensional vector space that encapsulates how fast we are moving past $p\in \mathbb R$, and whether our movement is to the left or to the right; the directions *left* and *right* are related by a change of sign. In this case, $T^\*_p \mathbb R$ can be identified with the set of all slopes that a Taylor series approximation of some function (at $p\in\mathbb R$) could have. Its dimension is also one, as the only choice of freedom here is the slope of the line. Observe that
 $$
-T\_p \mathbb R \cong T^*\_p \mathbb R \cong (-\infty, \infty) = \mathbb R.
+T_p \mathbb R \cong T^*_p \mathbb R \cong (-\infty, \infty) = \mathbb R.
 $$
 The first isomorphism holds for all (finite-dimensional) tangent spaces, but the second isomorphism generally only holds for Euclidean spaces. It is certainly NOT the case that $T_p \mathcal M \cong \mathcal M$ in general.
 Before moving on from the above example, reflect upon what a path $\gamma :[-1,1]\rightarrow \mathbb R$ on the manifold $\mathbb R$ might look like.
@@ -197,7 +197,7 @@ Before moving on from the above example, reflect upon what a path $\gamma :[-1,1
 
 ## Partial Derivatives and Differentials
 
-In the [diagram](#fig:paths) above (which must be consulted repeatedly during the forthcoming discussion), we depict the standard basis on $\mathbb R^n$ by the black rays. Since $h$ is a homeomorphism, we can use $h^{-1}$ to lift the black rays onto $\mathcal M$. These gives us 'coordinate paths' on $\mathcal M$ whose equivalence classes (at each $p\in U$) may be defined as a basis of $T_p \mathcal M$ (for each $p\in U$). The basis thus obtained at $p$ is commonly denoted as $\big(\frac{\partial}{\partial x^i}\big\rvert_p\big)\_{i=1}^n$, whereas $\big(\frac{\partial}{\partial x^i}\big)\_{i=1}^n$ defines a set of $n$ vector fields on $U$, called as a *local coordinate frame*. The discussion of frames is deferred to [a later post](/posts/lie-groups_calculus/#frames). 
+In the [diagram](#fig:paths) above (which must be consulted repeatedly during the forthcoming discussion), we depict the standard basis on $\mathbb R^n$ by the black rays. Since $h$ is a homeomorphism, we can use $h^{-1}$ to lift the black rays onto $\mathcal M$. These gives us 'coordinate paths' on $\mathcal M$ whose equivalence classes (at each $p\in U$) may be defined as a basis of $T_p \mathcal M$ (for each $p\in U$). The basis thus obtained at $p$ is commonly denoted as $\big(\frac{\partial}{\partial x^i}\big\rvert_p\big)_{i=1}^n$, whereas $\big(\frac{\partial}{\partial x^i}\big)_{i=1}^n$ defines a set of $n$ vector fields on $U$, called as a *local coordinate frame*. The discussion of frames is deferred to [a later post](/posts/lie-groups_calculus/#frames). 
 
 An arbitrary vector $\mathbf v \in T_p \mathcal M$ can therefore be expressed as 
 
@@ -218,7 +218,7 @@ The distinction between the two is clear once we consider what a directional der
 </aside>
 
 <!-- Suppose we are given an inner product $\langle \cdot, \cdot \rangle:T_p\mathcal M \times T_p\mathcal M \rightarrow \mathbb R$. Recall that the inner product allows us to turn vectors into covectors via the musical isomorphism '$\flat$'. -->
-The basis $\left\lbrace \frac{\partial}{\partial x^1}\big\rvert_p, \dots, \frac{\partial}{\partial x^n }\big\rvert_p\right\rbrace$ of $T_p \mathcal M$ gives rise to a corresponding basis of $T^*\_p \mathcal M$, called the <a class=accented>dual basis</a>. The dual basis is denoted as $\left\lbrace dx^1_p, \dots, dx^n_p\right\rbrace$ and defined such that the following identity holds:
+The basis $\left\lbrace \frac{\partial}{\partial x^1}\big\rvert_p, \dots, \frac{\partial}{\partial x^n }\big\rvert_p\right\rbrace$ of $T_p \mathcal M$ gives rise to a corresponding basis of $T^*_p \mathcal M$, called the <a class=accented>dual basis</a>. The dual basis is denoted as $\left\lbrace dx^1_p, \dots, dx^n_p\right\rbrace$ and defined such that the following identity holds:
 
 <p>
 \[
@@ -228,7 +228,7 @@ The basis $\left\lbrace \frac{\partial}{\partial x^1}\big\rvert_p, \dots, \frac{
     \]
 </p>
 
-where $\delta_{ij}$ is the [Kroenecker delta](https://en.wikipedia.org/wiki/Kronecker_delta). A covector $df_p \in T^\*\_p \mathcal M$ can therefore represented as 
+where $\delta_{ij}$ is the [Kroenecker delta](https://en.wikipedia.org/wiki/Kronecker_delta). A covector $df_p \in T^\*_p \mathcal M$ can therefore represented as 
 <!-- In other words, $\langle d x^j, \frac{\partial}{\partial x^k} \rangle= \delta_k^j$ (which is the [Kronecker delta](https://en.wikipedia.org/wiki/Kronecker_delta)).  -->
 
 <p>
@@ -343,7 +343,7 @@ However, we do need an inner product to be able to make sense of the musical iso
 While it's always possible to choose a chart $(U, h)$ containing $p$ such that $\frac{\partial}{\partial x^i}\big\rvert_p$ is orthonormal, it is seldom possible to choose an 'orthonormal coordinate system' whose coordinate vector fields are orthonormal at all points of $U$. Alternatively, the existence of such a chart would imply that the manifold is of a very special type: it is *flat*. Cylinders, cones, and other objects that can be wrapped with a sheet of paper without tearing, wrinkling, or folding the paper are examples of flat manifolds.
 I touch upon this point in [a later post](/posts/sphere). Such considerations will only arise when we try to extend the basis of $T_p \mathcal M$ into a *frame*, so the reader need not dwell on this point too much right now, and may skip comfortably to the next section.
 
-A <span class=accented>Riemannian metric</span> $g_{(\cdot)}$ is an object that takes as input a point $p\in \mathcal M$ to become an inner product on $T_p \mathcal M$, written as $g_{p}(\cdot, \cdot)$ or $\langle \cdot,\cdot\rangle\_p$ depending on the author. What we have done above is to stipulate that $g_{p}(\frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j})=\delta_{ij}$. More generally, one introduces a convenient coordinate system on $U\subseteq \mathcal M$ (for instance, [the spherical polar coordinates of a sphere](/posts/sphere#the-sphere)) and then specifies (or when there is some natural choice of metric, computes) the 'components of the metric tensor', collected into a matrix of numbers, $g_{ij}(p)$. Each of these components is required to be a smooth function of $p$ -- a requirement that marries the differential structure of $\mathcal M$ to its geometric structure. In the general case, we write
+A <span class=accented>Riemannian metric</span> $g_{(\cdot)}$ is an object that takes as input a point $p\in \mathcal M$ to become an inner product on $T_p \mathcal M$, written as $g_{p}(\cdot, \cdot)$ or $\langle \cdot,\cdot\rangle_p$ depending on the author. What we have done above is to stipulate that $g_{p}(\frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j})=\delta_{ij}$. More generally, one introduces a convenient coordinate system on $U\subseteq \mathcal M$ (for instance, [the spherical polar coordinates of a sphere](/posts/sphere#the-sphere)) and then specifies (or when there is some natural choice of metric, computes) the 'components of the metric tensor', collected into a matrix of numbers, $g_{ij}(p)$. Each of these components is required to be a smooth function of $p$ -- a requirement that marries the differential structure of $\mathcal M$ to its geometric structure. In the general case, we write
 
 <p>
 \[
@@ -386,7 +386,7 @@ A section of $T\mathcal M$ is a map that assigns to each point $p\in \mathcal M$
 
 Now to unpack the newly introduced objects. A smooth vector field is a function $X:\mathcal M \rightarrow T\mathcal M$ such that $X(p)\in T_p\mathcal M$. One can imagine $X$ as representing the motion of water on $\mathcal M$. After dropping a paper boat at some point on $\mathcal  M$, we may sit back and observe where the motion of the water takes it. Once the boat traces out a path on $\mathcal M$, the resulting path is called an <span class=accented>integral curve</span> or (rather suitably) a <span class=accented>flow</span> on $\mathcal M$ generated by $X$.[^6] The set of smooth vector fields is itself a vector space, and is denoted as $\mathfrak X(\mathcal M)$. I'll let you check that the addition and scalar multiplication operations can be defined suitably. It is not so obvious what a basis for $\mathfrak X(\mathcal M)$ should be; it's infinite-dimensional as a vector space (think about how one might show this!).
 
-A differential one-form $\alpha:\mathcal M \rightarrow T^\*\mathcal M$ maps each point to a covector (i.e., a measuring stick) on that fiber. This is like placing a 'speed sensor' at every point of the manifold on which water is flowing. The orientation and calibration parameters of the sensors vary smoothly as one moves about the manifold. Note that if $p^\prime \neq p$, then a covector $\alpha(p^\prime) \in T^\*\_{p^\prime} M$ cannot measure a vector $X(p)\in T_{p} M$, as there is no relationship between these vector spaces in general. In other words, each of the speed sensors has nothing to say about the flow of water at some distance away from it. 
+A differential one-form $\alpha:\mathcal M \rightarrow T^\*\mathcal M$ maps each point to a covector (i.e., a measuring stick) on that fiber. This is like placing a 'speed sensor' at every point of the manifold on which water is flowing. The orientation and calibration parameters of the sensors vary smoothly as one moves about the manifold. Note that if $p^\prime \neq p$, then a covector $\alpha(p^\prime) \in T^\*_{p^\prime} M$ cannot measure a vector $X(p)\in T_{p} M$, as there is no relationship between these vector spaces in general. In other words, each of the speed sensors has nothing to say about the flow of water at some distance away from it. 
 
 With some reflection, it should be obvious how we should define the operation of a differential one-form on a vector field. At each point $p\in \mathcal M$, the covector $\alpha(p)$ measures the vector $X(p)$ to produce a real number. The resulting scalar-valued function '$\alpha(\cdot)\left(X(\cdot)\right)$' is called a differential $0$-form on account of it being a scalar-valued function.
 

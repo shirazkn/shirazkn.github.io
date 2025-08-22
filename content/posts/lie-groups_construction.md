@@ -48,7 +48,7 @@ Let $S$ be some topological space and $\sim$ an [equivalence relation](https://e
 </p>
 
 $S/\sim$ is the set of all such (distinct) equivalence classes.
-We say that $s_0\in S$ is a *representative* of the equivalence class $[s_0]\_\sim$. 
+We say that $s_0\in S$ is a *representative* of the equivalence class $[s_0]_\sim$. 
 It's easy to see that the equivalence classes satisfy a property similar to <span class=accented>(2)</span>. In particular, 
 
 <p>
@@ -62,7 +62,7 @@ It's easy to see that the equivalence classes satisfy a property similar to <spa
 
 A corresponding 'quotient topology' can be inherited by $S/\sim$ from $S$ (that's what makes this a *topological* quotient), but we need not get into the details of that right now. 
 
-A special type of equivalence relation, $\sim\_H$, is one that is given by the action of some group $H$ on $S$. Let $H$ act on $S$ as $h(s)\in S$, then $[s]_{\sim_H} $ is defined as the orbit of $s$ under $H$:
+A special type of equivalence relation, $\sim_H$, is one that is given by the action of some group $H$ on $S$. Let $H$ act on $S$ as $h(s)\in S$, then $[s]_{\sim_H} $ is defined as the orbit of $s$ under $H$:
 
 <p>
 \[
@@ -74,7 +74,7 @@ A special type of equivalence relation, $\sim\_H$, is one that is given by the a
 
 $S/\sim_H$ is called an <span class=accented>orbit space</span>.
 
-If we replace $S$ by a Lie group $G$, we get (at least in terms of the notation) the concept of a coset space, $G/\sim\_H$. As mentioned earlier, $G/\sim_H$ need not constitute a group (i.e., we will not necessarily define a group operation between the equivalence classes), so it should suffice to think about it topologically. Let $H$ *act* on the Lie group $G$ by right multiplication, i.e., $h(g) = g\odot h$. Then, the orbit space $G/\sim_H$ is the set of all left cosets of $H$ in $G$, which is precisely the left coset space, $G/H$. Thus,
+If we replace $S$ by a Lie group $G$, we get (at least in terms of the notation) the concept of a coset space, $G/\sim_H$. As mentioned earlier, $G/\sim_H$ need not constitute a group (i.e., we will not necessarily define a group operation between the equivalence classes), so it should suffice to think about it topologically. Let $H$ *act* on the Lie group $G$ by right multiplication, i.e., $h(g) = g\odot h$. Then, the orbit space $G/\sim_H$ is the set of all left cosets of $H$ in $G$, which is precisely the left coset space, $G/H$. Thus,
 
 <p>
 \[
@@ -98,17 +98,17 @@ It can be shown that this characterization of a coset space works just as well a
 
 ## Homogenous Spaces
 
-While $G/H$ need not have a group operation associated with it, it is possible to let $G$ act on $G/H$ by left multiplication, i.e., $g\odot [g^\prime]\_{\sim_H} = [g\odot g^\prime]\_{\sim_H}$. Since this action can be shown to be transitive, $G/H$ is a [homogeneous space](https://en.wikipedia.org/wiki/Homogeneous_space). The stabilizer of $[g]\_{\sim_H}\in G/H$ is $H$, which is to say that $H$ is the subgroup of actions in $G$ that act trivially (by the identity map) on $[g]_{\sim_H}$. 
+While $G/H$ need not have a group operation associated with it, it is possible to let $G$ act on $G/H$ by left multiplication, i.e., $g\odot [g^\prime]_{\sim_H} = [g\odot g^\prime]_{\sim_H}$. Since this action can be shown to be transitive, $G/H$ is a [homogeneous space](https://en.wikipedia.org/wiki/Homogeneous_space). The stabilizer of $[e]_{\sim_H}\in G/H$ is $H$, which is to say that $H$ is the subgroup of actions in $G$ that act trivially (by the identity map) on $[e]_{\sim_H}$. 
 
 Conversely, given a homogenous space $X$ on which a group $G$ acts, we can construct a coset space by choosing a distinguished point $x\in X$. Letting $H$ denote the stabilizer of $x$ in $G$, $X$ is shown to be isomorphic to $G/H$. Thus, a homogenous space is obtained after we (i) equip a coset space of a Lie group with the appropriate action, and (ii)
-"<i>forget</i>" the identity coset $[e]\_{\sim_H}$ of $G/H$. The last point is similar to how an [affine space](https://en.wikipedia.org/wiki/Affine_space) is obtained after we forget the origin of $\mathbb R^n$. Another way of stating the above is that there is no distinguished point in a homogenous space, so the identity coset should be treated the same as any other. 
+"<i>forget</i>" the identity coset $[e]_{\sim_H}$ of $G/H$. The last point is similar to how an [affine space](https://en.wikipedia.org/wiki/Affine_space) is obtained after we forget the origin of $\mathbb R^n$. Another way of stating the above is that there is no distinguished point in a homogenous space, so the identity coset should be treated the same as any other. 
 <!-- These are subtle differences between homogenous spaces and coset spaces, though the two objects are topologically identical. -->
 
 <!-- When $G/H$ is connected, it is also what's called a [Klein geometry](https://en.wikipedia.org/wiki/Klein_geometry). --> 
 
 ## Quotient Groups
 
-The quotient of topological spaces is distinct from the quotient of groups, for the same reason as why topological homomorphisms (i.e., continuous maps) are different from Lie group homomorphisms. While $G/H$ is always a topological quotient space (in the sense of $G/\sim\_H$), it is a <span class=accented>quotient group</span> when $H$ is a normal subgroup of $G$ -- written as $H \trianglelefteq G$. In other words, the fact that $H$ happens to be a normal subgroup enables us to come up with a well-defined group operation on $G/H$.
+The quotient of topological spaces is distinct from the quotient of groups, for the same reason as why topological homomorphisms (i.e., continuous maps) are different from Lie group homomorphisms. While $G/H$ is always a topological quotient space (in the sense of $G/\sim_H$), it is a <span class=accented>quotient group</span> when $H$ is a normal subgroup of $G$ -- written as $H \trianglelefteq G$. In other words, the fact that $H$ happens to be a normal subgroup enables us to come up with a well-defined group operation on $G/H$.
 
 By the defining property of a normal subgroup, we have that $g\odot H \odot g^{-1}= H$ for all $g\in G$ (i.e., $H$ is invariant under conjugation). The group operation $\star$ of $G/H$ is then given by
 
@@ -309,7 +309,7 @@ A <span class=accented>bi-invariant metric</span> is one that is simultaneously 
 
 <p class=equation-like>
 <span class=print>
-<b>Lemma 7.1</b> A left invariant metric on $\small{G}$ is also right invariant if and only if, for each $\small{g\in G}$, $\small{\textrm{Ad}}_g$ is an isometry with respect to the induced metric on $\small{\mathfrak g}$.
+<b>Lemma 7.1</b> A left-invariant metric on $\small{G}$ is also right invariant if and only if, for each $\small{g\in G}$, $\small{\textrm{Ad}}_g$ is an isometry of the inner product on $\small{\mathfrak g}$ [that generates said left-invariant metric].
 </span>
 </p>
 
@@ -328,7 +328,7 @@ This follows as a consequence of Lemma 7.1, since $\mathfrak o(n)$ are precisely
 
 <p class=equation-like>
 <span class=print>
-<b>Lemma 7.5</b> A connected Lie group admits a bi-invariant metric if and only if it is isomorphic to the [direct] product of a compact group and a commutative group.
+<b>Lemma 7.5</b> A connected Lie group admits a bi-invariant metric if and only if it is isomorphic to the direct product of a compact group and a commutative group.
 </span>
 </p>
 
@@ -347,11 +347,11 @@ While metrics help assign values to the lengths of tangent vectors (and by exten
 $$gA \coloneqq \lbrace ga\ \vert\ a\in A \rbrace.$$
 
 The Lebesgue measure is a special case of the Haar measure on $\mathbb R^n$; the latter generalizes what we mean by *translation* to include any group operation. Like the Lebesgue measure, the left Haar measure can be shown to be unique up to scaling.
-In a compact group, a unique Haar measure can be found by normalizing the scaling factor to $1$ so that $\int_G d\mu_G=\mu(G)=1$. If $\mu_G$ is a left Haar measure and $g\in G$, then $\tilde \mu^{(g)}\_G \coloneqq \mu_G\circ \mathcal R_{g}$ is also a left Haar measure, since 
+In a compact group, a unique Haar measure can be found by normalizing the scaling factor to $1$ so that $\int_G d\mu_G=\mu(G)=1$. If $\mu_G$ is a left Haar measure and $g\in G$, then $\tilde \mu^{(g)}_G \coloneqq \mu_G\circ \mathcal R_{g}$ is also a left Haar measure, since 
 
 $$\tilde \mu^{(g)}_G(hA) = \mu_G(hAg) = \mu_G(Ag) = \tilde \mu^{(g)}_G(A)$$
 
-for all $h\in G$. But since the left Haar measure is unique up to scalar multiplication, it must be the case that $\tilde \mu^{(g)}_G = \Delta (g) \mu_G$ where $\Delta (g)$ is a scalar-valued function that only depends on $g$. This is called the <span class=accented>modular function</span> of $G$ -- once computed, it is independent of the choice of the Haar measure $\mu_G$ that is used to compute it. It relates the left Haar measure to the right Haar measure. A lot of the properties and implications of $\Delta(\ \cdot\ )$ follow from showing that it is a group homomorphism from $G$ to $\mathbb R^\times\_{>0}$.
+for all $h\in G$. But since the left Haar measure is unique up to scalar multiplication, it must be the case that $\tilde \mu^{(g)}_G = \Delta (g) \mu_G$ where $\Delta (g)$ is a scalar-valued function that only depends on $g$. This is called the <span class=accented>modular function</span> of $G$ -- once computed, it is independent of the choice of the Haar measure $\mu_G$ that is used to compute it. It relates the left Haar measure to the right Haar measure. A lot of the properties and implications of $\Delta(\ \cdot\ )$ follow from showing that it is a group homomorphism from $G$ to $\mathbb R^\times_{>0}$.
 
 <!-- ## Unimodularity and Bi-invariance -->
 
@@ -371,7 +371,7 @@ The absolute value of this determinant [is precisely the modular function](https
 
 Compare the relationship between these lemmas with the fact that $\textrm{det}(e^A) = e^{\textrm{tr}(A)}$ for any matrix $A$.
 
-Note that for matrix Lie groups, $\textrm{ad}_X(Y)$ is always trace zero, since $\textrm{ad}_X(Y) = XY - YX$ and $\textrm{tr}(XY) = \textrm{tr}(YX)$. Lemma 6.3 is talking of the trace of $\textrm{ad}_X$ as a linear transformation on $\mathfrak g$ (as opposed to the trace of $\textrm{ad}\_X(Y)$). Moreover, for computing the trace of $\textrm{ad}_X$ it does not matter what basis of $\mathfrak g$ we choose, since the trace is a property of the underlying linear transformation rather than of the matrix. As a special case of Lemma 6.3, the $\textrm{ad}_X$ matrices corresponding to a [nilpotent](https://en.wikipedia.org/wiki/Nilpotent_Lie_algebra) Lie algebra [are given by nilpotent matrices](https://en.wikipedia.org/wiki/Engel%27s_theorem), which have trace zero. Thus, every nilpotent Lie group is unimodular. Moreover, compact Lie groups are unimodular because $\Delta(g)$ is a homomorphism into the non-compact group $\mathbb R^\times\_{>0}$, whereas the only compact subgroup of $\mathbb R^\times\_{>0}$ is $\lbrace 1 \rbrace$.
+Note that for matrix Lie groups, $\textrm{ad}_X(Y)$ is always trace zero, since $\textrm{ad}_X(Y) = XY - YX$ and $\textrm{tr}(XY) = \textrm{tr}(YX)$. Lemma 6.3 is talking of the trace of $\textrm{ad}_X$ as a linear transformation on $\mathfrak g$ (as opposed to the trace of $\textrm{ad}_X(Y)$). Moreover, for computing the trace of $\textrm{ad}_X$ it does not matter what basis of $\mathfrak g$ we choose, since the trace is a property of the underlying linear transformation rather than of the matrix. As a special case of Lemma 6.3, the $\textrm{ad}_X$ matrices corresponding to a [nilpotent](https://en.wikipedia.org/wiki/Nilpotent_Lie_algebra) Lie algebra [are given by nilpotent matrices](https://en.wikipedia.org/wiki/Engel%27s_theorem), which have trace zero. Thus, every nilpotent Lie group is unimodular. Moreover, compact Lie groups are unimodular because $\Delta(g)$ is a homomorphism into the non-compact group $\mathbb R^\times_{>0}$, whereas the only compact subgroup of $\mathbb R^\times_{>0}$ is $\lbrace 1 \rbrace$.
 
 Bi-invariant Haar measures are incredibly useful because they offer a way to integrate on Lie groups (as well as to define probability densities, Fourier transforms, etc.) while retaining the intuitive and attractive properties of the Lebesgue integral:
 

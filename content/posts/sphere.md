@@ -96,7 +96,7 @@ The first of these is a $C^\infty(M)$-linear transformation of $Y$, so $\nabla _
 
 ## Tangential Connection
 
-In general, the connection is given with respect to a smooth local frame $(\{E_i\})\_{i=1}^n$ on $U\subseteq M$ by $\nabla \_{E\_i} E\_j = \Gamma_{ij}^k E_k$, where $\Gamma_{ij}^k$ are called the <span class=accented>Christoffel symbols</span> of the connection with respect to $(E\_i)\_{i=1}^n$, and Einstein summation is implied. The Christoffel symbols specify the action of $\nabla$ on arbitrary vector fields on $U$:
+In general, the connection is given with respect to a smooth local frame $(\{E_i\})_{i=1}^n$ on $U\subseteq M$ by $\nabla _{E_i} E_j = \Gamma_{ij}^k E_k$, where $\Gamma_{ij}^k$ are called the <span class=accented>Christoffel symbols</span> of the connection with respect to $(E_i)_{i=1}^n$, and Einstein summation is implied. The Christoffel symbols specify the action of $\nabla$ on arbitrary vector fields on $U$:
 
 <p>
 \[
@@ -104,7 +104,7 @@ In general, the connection is given with respect to a smooth local frame $(\{E_i
     \]
 </p>
 
-where $Y = Y^i E_i$ is the expansion of $Y$ in the frame $(E_i)\_{i=1}^n$.
+where $Y = Y^i E_i$ is the expansion of $Y$ in the frame $(E_i)_{i=1}^n$.
 The Christoffel symbols $\Gamma_{ij}^k$ of the Levi-Civita connection can be expressed using the *second Christoffel identity* (which relies on coordinates) or by using the *Koszul formula* (which is coordinate-free); see Corollary $5.11$ in Lee's book (on Riemannian manifolds).
 
 <aside class=aside-right>
@@ -162,7 +162,7 @@ where $U\subseteq S^2$ is an open set on the sphere and $(x^1, x^2)$ are the usu
 </figure>
 
 In the illustration, we use a 'wobbly sphere' to remind us that $S^2$ does not necessarily come endowed with geometry. Rather, by treating $\hat \psi$ as an isometry, we will 'pull back' the geometry of $\mathbb R^3$ onto $S^2$. 
-To this end, consider the frame $\big(\frac{\partial}{\partial x^1}, \frac{\partial}{\partial x^2}\big)$ on $\mathbb R^2$[^coordinate-frame]. We know that $\varphi ^{-1}$ pushes this forward, yielding the local coordinate frame $(\varphi ^{-1}\_\*\frac{\partial}{\partial x^1},\varphi ^{-1}\_\*\frac{\partial}{\partial x^2})$ on $S^2$. 
+To this end, consider the frame $\big(\frac{\partial}{\partial x^1}, \frac{\partial}{\partial x^2}\big)$ on $\mathbb R^2$[^coordinate-frame]. We know that $\varphi ^{-1}$ pushes this forward, yielding the local coordinate frame $(\varphi ^{-1}_*\frac{\partial}{\partial x^1},\varphi ^{-1}_*\frac{\partial}{\partial x^2})$ on $S^2$. 
 It can then be pushed forward to $\mathbb R^3$, giving us 
 
 <p>
@@ -176,9 +176,9 @@ Denote the standard frame in $\mathbb R^3$ by $(\frac{\partial}{\partial y^1}, \
 <p>
 \[
     \begin{aligned}
-        X \coloneqq \psi_* \frac{\partial}{\partial x^1} &= \cos x^1 \cos x^2 \frac{\partial}{\partial y^1} + \cos x^1 \sin x^2 \frac{\partial}{\partial y^2} - \sin x^1 \frac{\partial}{\partial y^3},
+        X \coloneq \psi_* \frac{\partial}{\partial x^1} &= \cos x^1 \cos x^2 \frac{\partial}{\partial y^1} + \cos x^1 \sin x^2 \frac{\partial}{\partial y^2} - \sin x^1 \frac{\partial}{\partial y^3},
         \\
-        Y \coloneqq \psi_* \frac{\partial}{\partial x^2} &= -\sin x^1 \sin x^2 \frac{\partial}{\partial y^1} + \sin x^1 \cos x^2 \frac{\partial}{\partial y^2}.
+        Y \coloneq \psi_* \frac{\partial}{\partial x^2} &= -\sin x^1 \sin x^2 \frac{\partial}{\partial y^1} + \sin x^1 \cos x^2 \frac{\partial}{\partial y^2}.
     \end{aligned}
     \]
 </p>
@@ -237,15 +237,15 @@ Before we get there, what do you think $\nabla _X X$ will turn out to be? Here's
 
 The frame $\left(\frac{\partial}{\partial y_1}, \frac{\partial}{\partial y_2}, \frac{\partial}{\partial y_3}\right)$ is a global coordinate frame for $\mathbb R^3$ derived from the standard/trivial coordinates, $(y^1,y^2, y^3) \mapsto (y^1,y^2, y^3)$. It is attractive to us because it is orthonormal (the metric tensor coefficients are $\delta_{ij}$, making the metric reduce to a dot product), and the Christoffel symbols $\lbrace\Gamma_{ij}^k\rbrace_{i,j,k=1}^3$ of the Levi-Civita connection $\overline \nabla$ are all identically $0$.
 
-Let's construct a different coordinate frame for $\mathbb R^3$. We consider the spherical polar parametrization of $\mathbb R^3$, $(\varphi, \theta, r) \mapsto (r \sin \varphi \cos \theta, r \sin \varphi \sin \theta, r \cos \varphi)$. This induces a coordinate frame $(\partial\_\varphi, \partial\_\theta, \partial\_r)$ with $\partial\_\varphi\vert\_{r=1}=X$ and $\partial\_\theta\vert\_{r=1}=Y$; the vertical line '$\vert$' is read as 'restricted to'. This frame is not defined along the $y^3$ axis, but that's okay -- it suffices as a *local* coordinate frame. 
+Let's construct a different coordinate frame for $\mathbb R^3$. We consider the spherical polar parametrization of $\mathbb R^3$, $(\varphi, \theta, r) \mapsto (r \sin \varphi \cos \theta, r \sin \varphi \sin \theta, r \cos \varphi)$. This induces a coordinate frame $(\partial_\varphi, \partial_\theta, \partial_r)$ with $\partial_\varphi\vert_{r=1}=X$ and $\partial_\theta\vert_{r=1}=Y$; the vertical line '$\vert$' is read as 'restricted to'. This frame is not defined along the $y^3$ axis, but that's okay -- it suffices as a *local* coordinate frame. 
 
-It seems as if this should simplify the calculation greatly, so (by an application of the [no free lunch theorem](https://en.wikipedia.org/wiki/No_free_lunch_theorem)) there must be a catch. The catch is that the frame $(\partial\_\varphi, \partial\_\theta, \partial\_r)$ is not orthonormal, so we need to compute the Christoffel symbols of the Levi-Civita connection with respect to this frame. 
+It seems as if this should simplify the calculation greatly, so (by an application of the [no free lunch theorem](https://en.wikipedia.org/wiki/No_free_lunch_theorem)) there must be a catch. The catch is that the frame $(\partial_\varphi, \partial_\theta, \partial_r)$ is not orthonormal, so we need to compute the Christoffel symbols of the Levi-Civita connection with respect to this frame. 
 
 <aside class=aside-center>
 Chapter 7 of Lee shows that a (local) orthonormal coordinate frame can exist if and only if the manifold is (locally) flat, so $X$ and $Y$ could not possibly be orthonormal (on some open set). This is yet another way of demonstrating the non-flatness of the sphere; we just happen to be pursuing the equivalent condition of the existence of a parallel frame.
 </aside>
 
-Let's look at the metric tensor coefficients $g_{ij}$. We have, $g_{11}=\langle \partial\_\varphi, \partial\_\varphi \rangle$, with
+Let's look at the metric tensor coefficients $g_{ij}$. We have, $g_{11}=\langle \partial_\varphi, \partial_\varphi \rangle$, with
 
 <p>
 \[
@@ -257,7 +257,7 @@ Let's look at the metric tensor coefficients $g_{ij}$. We have, $g_{11}=\langle 
 \]
 </p>
 
-so that $g_{11}(\varphi, \theta, r) = r^2$. Completing the metric tensor, we find that $g_{22}(\varphi, \theta, r) = r^2 \sin^2 \varphi$ and $g_{33}(\varphi, \theta, r) = 1$. Amazingly (but as expected), $g\_{12}$, $g\_{13}$, $g\_{23}$, and their symmetric counterparts are all identically $0$.[^ortho] 
+so that $g_{11}(\varphi, \theta, r) = r^2$. Completing the metric tensor, we find that $g_{22}(\varphi, \theta, r) = r^2 \sin^2 \varphi$ and $g_{33}(\varphi, \theta, r) = 1$. Amazingly (but as expected), $g_{12}$, $g_{13}$, $g_{23}$, and their symmetric counterparts are all identically $0$.[^ortho] 
 
 <aside class=aside-center>
 Notice that we are done with the "ambient" coordinate frame of $\mathbb R^3$; we needed it in order to pull back the Euclidean metric $\bar {\textrm g}$ from $\mathbb R^3$ to $S^2$ using the inclusion map $\widehat{\psi}:S^2 \rightarrow \mathbb R^3$, which we have just done:
@@ -315,7 +315,7 @@ giving us
 \]
 </p>
 
-Since $\overline \nabla\_{\overline X} \overline X$ is purely in the radial direction, we have that $\nabla _X X = \pi \left(\overline \nabla\_{\overline X} \overline X\right) =0$. Thus, $X$ is indeed parallel along its own integral curves; the integral curves of $X$ are segments of the geodesics (i.e., great circles) passing through the poles. 
+Since $\overline \nabla_{\overline X} \overline X$ is purely in the radial direction, we have that $\nabla _X X = \pi \left(\overline \nabla_{\overline X} \overline X\right) =0$. Thus, $X$ is indeed parallel along its own integral curves; the integral curves of $X$ are segments of the geodesics (i.e., great circles) passing through the poles. 
 
 Lastly, we compute $\nabla _Y X$ in the new frame:
 
@@ -365,7 +365,7 @@ By metric compatibility of the corresponding Levi-Civita connection, we have
 \]
 </p>
 
-This means that if $\langle X, X\rangle \_p \neq 0$ at some point $p$, then $\langle X, X\rangle$ (and therefore, $X$) does not vanish anywhere on $S^2$. The [hairy ball theorem](https://en.wikipedia.org/wiki/Hairy_ball_theorem) says that this is impossible -- a contradiction!
+This means that if $\langle X, X\rangle _p \neq 0$ at some point $p$, then $\langle X, X\rangle$ (and therefore, $X$) does not vanish anywhere on $S^2$. The [hairy ball theorem](https://en.wikipedia.org/wiki/Hairy_ball_theorem) says that this is impossible -- a contradiction!
 
 [^ortho]: I find it remarkable that this frame is orthogonal but not ortho*normal* (and moreover, not constant), and that in itself is enough to pose an obstruction to flatness.
 
@@ -377,9 +377,9 @@ The most confusing part of self-learning Riemannian geometry has been, for me, t
 
 The following examples show why this distinction is important:
 
-- The left-invariant vector fields $(E_i)\_{i=1}^n$ of a Lie group form a global, orthonormal (after carrying out the Gram-Schmidt process) frame. Does this mean that every Lie group is globally flat? No, because the frame of left-invariant vector fields on a non-Abelian Lie group is not a *coordinate* frame; to see this, observe that $[E_i, E_j] \neq 0$, whereas the Lie brackets must vanish in a coordinate frame since the partial derivatives of $\mathbb R^n$ commute.[^coordinates] It is only an orthonormal *coordinate* frame that is indicative of flatness.
+- The left-invariant vector fields $(E_i)_{i=1}^n$ of a Lie group form a global, orthonormal (after carrying out the Gram-Schmidt process) frame. Does this mean that every Lie group is globally flat? No, because the frame of left-invariant vector fields on a non-Abelian Lie group is not a *coordinate* frame; to see this, observe that $[E_i, E_j] \neq 0$, whereas the Lie brackets must vanish in a coordinate frame since the partial derivatives of $\mathbb R^n$ commute.[^coordinates] It is only an orthonormal *coordinate* frame that is indicative of flatness.
 
-- For the same reason, it is seldom possible to choose an orthonormal coordinate frame. One either gives up orthonormality (choosing to introduce a metric tensor) or gives up the coordinate frame (choosing to work with a frame that is not a coordinate frame, such as $(E_i)\_{i=1}^n$).
+- For the same reason, it is seldom possible to choose an orthonormal coordinate frame. One either gives up orthonormality (choosing to introduce a metric tensor) or gives up the coordinate frame (choosing to work with a frame that is not a coordinate frame, such as $(E_i)_{i=1}^n$).
 
 - The identity we used to compute the Christoffel symbols in this post only holds in a coordinate frame. In a non-coordinate frame, we would replace it with the appropriate formula in Corollary 5.11 of Lee's book.
 

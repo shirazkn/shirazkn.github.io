@@ -14,39 +14,39 @@ Let the basis for $\mathfrak{so}(3)$ be given by
 <p>
 \[
 \begin{align*}
-\tilde E_1 &= \begin{bmatrix*}[r] 0 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0 
-\end{bmatrix*} \\
-\tilde E_2 &= \begin{bmatrix*}[r] 0 & 0 & 1 \\ 0 & 0 & 0 \\ -1 & 0 & 0 
-\end{bmatrix*} \\
-\tilde E_3 &= \begin{bmatrix*}[r] 0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 
-\end{bmatrix*}
+\tilde E_1 &= \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0 
+\end{bmatrix} \\
+\tilde E_2 &= \begin{bmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ -1 & 0 & 0 
+\end{bmatrix} \\
+\tilde E_3 &= \begin{bmatrix} 0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 
+\end{bmatrix}
 \end{align*}
 \]
 </p>
 
 and the corresponding dual basis of $\mathfrak{so}(3)^*$ be given by $\lbrace \tilde \varepsilon^1, \tilde  \varepsilon^2, \tilde  \varepsilon^3\rbrace$, where we recall that $\tilde \varepsilon^i$ is like the `row vector' counterpart to $E_i$. In particular, $\tilde \varepsilon^i(\tilde E_j) = \delta_{ij}$. As usual, we will push these vectors and covectors around using the left-multiplication maps of the group to generate $\lbrace E_i\rbrace_{i=1}^3$ and $\lbrace \varepsilon^i\rbrace_{i=1}^3$. Once again, $\varepsilon^i(E_j) = \delta_{ij}$, but now $\delta_{ij}$ must be thought of as a smooth function on $SO(3)$ that is constant-valued.
 
-The Haar measure on $SO(3)$ is denoted by $\mu$. It is (up to scaling) the canonical[^canonical] Riemannian volume form on $SO(3)$ determined by the left-invariant metric on $SO(3)$:
+The Haar measure on $SO(3)$ is denoted by $\mu$. It is (up to scaling) the canonical Riemannian volume form[^canonical] on $SO(3)$ determined by the left-invariant metric on $SO(3)$:
 
 $$
 \mu = \textrm c\cdot \varepsilon^1\wedge\varepsilon^2\wedge\varepsilon^3
 $$
 
-[^canonical]: A *canonical* object in mathematics is one that is uniquely determined by the structure of the object it is associated with. It is in a certain (context-dependent) sense the most natural choice of object to consider -- there is the implication that no arbitrary choices were made in its construction. If any arbitrary choices were made, then we admit to it explicitly. This is why we qualify the introduction of $\mu$ with "up to scaling".
+[^canonical]: A *canonical* object in mathematics is one that is uniquely determined by the structure of the object it is associated with. It is in a certain (context-dependent) sense the most natural choice of object to consider. 
 
 <aside class=aside-right>
 In the Lie group sense, $\mu$ is the <span id="fnref:1"><a href="#fn:1" class="footnote-ref accented" role="doc-noteref">canonical</a></span> volume form (up to a choice of left/right invariance) since it respects the group structure. In the Riemannian geometric sense, $\mu$ is only canonical after we have chosen a metric on $SO(3)$, namely the left/right invariant metric.
 </aside>
 
-where $\textrm c\in \mathbb R_{>0}$ is a normalizing constant (that we will compute later) satisfying 
+where $\textrm c\in \mathbb R_{>0}$ is a normalizing constant that can be chosen such that
 
 $$
 \int_{SO(3)}\mu = 1.
 $$
 
-This normalization procedure makes sense precisely because $SO(3)$ is a compact manifold. Note that $\mu$ is also a [probability measure](https://en.wikipedia.org/wiki/Probability_measure) and defines a 'uniform distribution' over the space of rotations.
+This normalization procedure makes sense precisely because $SO(3)$ is a compact manifold; we cannot normalize the Haar measure of, say, $SE(3)$, and must instead make do with an arbitrary choice of scaling. Note that $\mu$ is also a [probability measure](https://en.wikipedia.org/wiki/Probability_measure) and defines a 'uniform distribution' over the space of rotations.
 
-As an engineer by training, my goal is to do calculations involving $\mu$. Sadly, this often requires us to step away from the intrinsic formulation and work with coordinate charts instead. The good news is that we can come back to the intrinsic formulation when we want to prove theorems and do manipulations that are intrinsic to $SO(3)$. It is important to remember that the coordinate-based approach that will embark on will be oblivious to many of the topological and group-theoretic properties of $SO(3)$. It will of course respect the local Riemannian structure of $SO(3)$... it better!
+As an engineer by training, my goal is to do calculations involving $\mu$. Sadly, this often requires us to step away from the intrinsic formulation and work with coordinate charts instead. The good news is that we can come back to the intrinsic formulation when we want to prove theorems and do manipulations that are intrinsic to $SO(3)$. It is important to remember that the coordinate-based approach that we will embark on will be oblivious to many of the topological and group-theoretic properties of $SO(3)$. It will of course respect the local Riemannian structure of $SO(3)$... it better!
 
 ---
 
@@ -72,8 +72,13 @@ $$
 $$
 
 <aside class=aside-right>
-Generally, the maps $(\ \cdot\ )^\wedge$ and $(\ \cdot\ )^\vee$ refer to the linear isomorphism between $\mathbb R^3$ and $\mathfrak{g}$ as vector spaces. In the case of $\mathfrak g = \mathfrak{so}(3)$, $\mathbb R^3$ can be turned into a Lie algebra using the cross product: $$[\mathbf u^\wedge, \mathbf v^\wedge] = (\mathbf u \times \mathbf v)^\wedge$$
-and so in fact we have a Lie algebra isomorphism on our hands.
+Generally, the maps $(\ \cdot\ )^\wedge$ and $(\ \cdot\ )^\vee$ refer to the linear isomorphism between $\mathbb R^n$ and $\mathfrak{g}$ as vector spaces, with $\mathbf u^\wedge~=~u^i~\tilde E_i$. In the case of $\mathfrak{so}(3)$, the Lie bracket is related to the cross product of $\mathbb R^3$: 
+<p>
+\[
+[\mathbf u^\wedge, \mathbf v^\wedge] = (\mathbf u \times \mathbf v)^\wedge
+\]
+</p>
+and so is in fact a Lie algebra isomorphism.
 </aside>
 
 The following trick will greatly simplify our presentation. What prevents us from calling the above as the axis-angle *coordinates* (as opposed to *parametrization*) is that it fails bijectivity when $\theta = 0$ and $\theta = \pi$; all $0$-angle rotations are the same regardless of the axis of rotation, and $\pi$-angle rotations about $\mathbf u$ and $-\mathbf u$ are the same rotation. Either case, $\theta = 0$ and $\theta = \pi$, determines a $2$-dimensional submanifold of $S^2\times [0, \pi]$: 
@@ -83,18 +88,13 @@ The following trick will greatly simplify our presentation. What prevents us fro
 <figcaption>$S^2\times [0, \pi]$ is (homeomorphic to) a thick spherical shell</figcaption>
 </figure>
 
-Topologically, the axis-angle parametrization (i) collapses the inner surface of this shell into a single point, and (ii) glues together each pair of antipodal points on the outer surface.
+Of course, I have greatly exaggerated the hole at the origin, but this is arguably a good thing since we want to emphasize the topological (rather than geometric) structure of this space.
+Topologically, the axis-angle parametrization (i) glues the inner surface of this shell into a single point, and (ii) glues together each pair of antipodal points on the outer surface.
 So, while the image of the $\theta = 0$ points is a single point in $SO(3)$ (namely, the identity element $e\in G$), the image of the $\theta = \pi$ points is a $2$-dimensional submanifold of $SO(3)$. 
 The aforementioned *trick* which we will use is that these lower-dimensional sets have measure zero under $\mu$, so we can peel them away from the spherical shell before doing integration and probability. No longer would we have an obstruction to bijectivity.
 
-Let $\widetilde {SO}(3) \subseteq SO(3)$ denote the image of the axis-angle parametrization when restricted to $S^2\times (0, \pi) \subseteq S^2\times [0, \pi]$, so that 
-
-$$
-\int_{SO(3)} \mu = \int_{\widetilde{SO}(3)}\mu 
-$$
-
-Moreover, we can consider the spherical polar parametrization for $S^2$, which takes values in $[0,2 \pi) \times (0, \pi)$ (after neglecting a similar measure-zero subset!).
-At long last, we have a bijection on our hands:
+For the $S^2$ part, we will use the spherical polar parametrization for the sphere. Let 
+$U = [0, 2\pi)\times(0, \pi)\times (0, \pi) \subseteq \mathbb R^3$ be the domain of a parametrization, $\psi$, of $SO(3)$, so that
 
 <p>
 \[
@@ -105,7 +105,9 @@ At long last, we have a bijection on our hands:
 \]
 </p>
 
-where $U = [0, 2\pi)\times(0, \pi)\times (0, \pi) \subseteq \mathbb R^3$. From here on, we will treat the set $U$ as a cube in $\mathbb R^3$ with all but one of its faces removed, i.e., we will quite literally think of it as the set $[0, 2\pi)\times(0, \pi)\times (0, \pi)$ rather than a 'spherical shell'.
+CO?NT. HERE
+
+From here on, we will treat the set $U$ as a cube in $\mathbb R^3$ with all but one of its faces removed, i.e., we will quite literally think of it as the set $[0, 2\pi)\times(0, \pi)\times (0, \pi)$ rather than a 'spherical shell'.
 
 If we blur the technical details that must be checked, then $\psi$ may be called a diffeomorphism, and we can think about pulling back the Riemannian structure of $\widetilde{SO}(3)$ through $\psi$ in order to establish an (almost-global) isometry from $U$ to $SO(3)$[^submanifold].
 

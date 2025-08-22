@@ -16,7 +16,7 @@ Some interesting Hilbert spaces are given below. Each of these spaces has a corr
 | Real Vectors $x$, $y\in \mathbb R^n$ | $x^\intercal y$ |
 | Complex Vectors $x$, $y\in \mathbb C^n$ | $x^\dagger y$ |
 | Matrices $A$, $B\in \mathbb R^{m\times n}$ | $\ \text{Trace}(A^{\intercal}B)$
-| Sequences $(x_i)\_{i=1}^{\infty}, (y_i)\_{i=1}^{\infty}\in \ell ^2(\mathbb R) \ $ | $\sum_{i=1}^{\infty} x_i y_i$ |
+| Sequences $(x_i)_{i=1}^{\infty}, (y_i)_{i=1}^{\infty}\in \ell ^2(\mathbb R) \ $ | $\sum_{i=1}^{\infty} x_i y_i$ |
 | Square-Integrable Functions $f,g \in L^2(\mathbb R)$ | $\int_{-\infty}^{\infty}f(x)\overline{g(x)}dx$
 
 <sub><sub>
@@ -36,11 +36,11 @@ where if the first equality holds we say $x$ and $y$ are *orthogonal* to each ot
 We can define the *projection* of an element $x\in \mathcal X$ onto a subspace $S\subseteq \mathcal X$:
 
 <p>
-\[ \text{P}_S(x) = \argmin_{y\in S}\|x-y\|_{\mathcal X}\]
+\[ \text{P}_S(x) = \mathrm{argmin}_{y\in S}\|x-y\|_{\mathcal X}\]
 </p>
 
 where $\lVert v \rVert_{\mathcal X} = \sqrt{\langle v, v\rangle}_{\mathcal X}$ is the induced norm.
-The remarkable by-product of these definitions of angles, orthogonality, and projection, is that it is consistent with our Euclidean intuition: $x-\text{P}_S(x)$ is always orthogonal to $S$. A [related theorem](https://en.wikipedia.org/wiki/Hilbert_projection_theorem) says that $\text P\_{\tilde S}(x)$ is well-defined and unique even if $\tilde S \subseteq \mathcal X$ is a closed convex set, although in this case we do not have orthogonality of $x-\text{P}\_{\tilde S}(x)$ to the other elements in $\tilde S$.
+The remarkable by-product of these definitions of angles, orthogonality, and projection, is that it is consistent with our Euclidean intuition: $x-\text{P}_S(x)$ is always orthogonal to $S$. A [related theorem](https://en.wikipedia.org/wiki/Hilbert_projection_theorem) says that $\text P_{\tilde S}(x)$ is well-defined and unique even if $\tilde S \subseteq \mathcal X$ is a closed convex set, although in this case we do not have orthogonality of $x-\text{P}_{\tilde S}(x)$ to the other elements in $\tilde S$.
 
 <div>
 <!-- <figure class=invertible style="max-width: 25%;"> -->

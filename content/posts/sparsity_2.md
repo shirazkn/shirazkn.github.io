@@ -42,7 +42,7 @@ a <span class=accented>sub-gradient</span> of $f(x)$ at $x^\star$ is a vector $w
 
 holds for all $x$ in the domain of $f$. The sub-gradient $w$ is not unique in general. However, if $f$ is differentiable at $x^\star$, then $w$ takes the unique value of $\nabla f(x^\star)$. A convex function has at least one sub-gradient at every point of its domain; we can prove that fact using [this theorem](https://en.wikipedia.org/wiki/Supporting_hyperplane). Observe that sub-gradients can be thought of as hyperplanes that *touch* or *support* the function from below, similar to how the gradient of a differentiable convex function touches it from below.
 
-Since the sub-gradient is non-unique, we define the <span class=accented>sub-differential</span> of $f$ at $x^\star$, denoted as $\partial f(x^\star)$, as the set of all sub-gradients of $f$ at $x^\star$. We can now do gradient descent, but instead of *the* gradient, we pick *a* sub-gradient direction to descend towards. This procedure of <span class=accented>sub-gradient descent</span> is motivated by the following fact: $x^\star$ is the global minimizer of $f(x)$ if and only if $\bold 0 \in \partial f(x^\star)$. 
+Since the sub-gradient is non-unique, we define the <span class=accented>sub-differential</span> of $f$ at $x^\star$, denoted as $\partial f(x^\star)$, as the set of all sub-gradients of $f$ at $x^\star$. We can now do gradient descent, but instead of *the* gradient, we pick *a* sub-gradient direction to descend towards. This procedure of <span class=accented>sub-gradient descent</span> is motivated by the following fact: $x^\star$ is the global minimizer of $f(x)$ if and only if $\mathbf 0 \in \partial f(x^\star)$. 
 For differentiable functions, sub-gradient descent reduces to gradient descent.
 
 Similar to how, for differentiable functions,
@@ -90,9 +90,9 @@ where the green lines show the sub-gradients of the two functions at $x^\star$. 
 \[f+g\text{ is minimized at }x^\star\\
 \Updownarrow
 \\
-\bold 0 \in \partial (f+g)(x^\star) \\
+\mathbf 0 \in \partial (f+g)(x^\star) \\
 \Updownarrow\\
-\exists w \in \partial f (x^\star) \text{ \ such that \ } w+ \nabla g(x^\star) =\bold 0\]
+\exists w \in \partial f (x^\star) \text{ \ such that \ } w+ \nabla g(x^\star) =\mathbf 0\]
 </p>
 
 At the differentiable points ($x\neq x^\star$), neither function has much freedom in picking a sub-gradient. But at $x^\star$, $f(x)$ has a range of sub-gradients to pick from; it can choose one that 'cancels out' the corresponding (sub-)gradient of $g(x)$ at $x^\star$. This is why a convex, non-differentiable regularization term is likely to pull the solution towards its non-differentiable points!
@@ -120,14 +120,14 @@ The function <span class=accented>$\lVert x \rVert_2$</span> looks like an ice-c
 </figure>
 </div>
 
-since it's only non-differentiable at the origin, it tries to snap the solution towards the origin. This is different from ridge regression, which instead uses <span class=accented>$\lVert x\rVert_2 ^2$</span>. The function $\lVert x\rVert_2 ^2$ is differentiable everywhere; it is 'bowl-shaped'. It pulls the solution towards the origin, but does not particularly demand that the solution be exactly $\bold 0$. So is there a use for $\lVert x \rVert_2$? Yes! It can be used to promote the [block-sparsity](https://www.sciencedirect.com/science/article/pii/S0165168417300683) of a vector, where the $0$'s of the vector appear in blocks. Consider
+since it's only non-differentiable at the origin, it tries to snap the solution towards the origin. This is different from ridge regression, which instead uses <span class=accented>$\lVert x\rVert_2 ^2$</span>. The function $\lVert x\rVert_2 ^2$ is differentiable everywhere; it is 'bowl-shaped'. It pulls the solution towards the origin, but does not particularly demand that the solution be exactly $\mathbf 0$. So is there a use for $\lVert x \rVert_2$? Yes! It can be used to promote the [block-sparsity](https://www.sciencedirect.com/science/article/pii/S0165168417300683) of a vector, where the $0$'s of the vector appear in blocks. Consider
 
 <p>
 \[ x^\intercal = \left[\ x_1^\intercal\ x_2^\intercal\ x_3^\intercal \dots x_n^\intercal\ \right] \]
 </p>
 
 where $x_i \in \mathbb R^{d_i}$, and $x \in \mathbb R^{\sum_{i=1}^n d_i}$. Suppose we know that the sparsity of $x$ occurs in blocks, i.e., some of the $x_i$ are full of zeros.
-Then, the regularization term $\sum_{i=1}^{n}\lVert x_i \rVert_2$ is what we want to use since it sets some of the $x_i$ to $\bold 0$ but does not promote sparsity *within* each block. (I used this fact to solve an engineering problem in my [PhD dissertation](https://hammer.purdue.edu/articles/thesis/Robustness_Resilience_and_Scalability_of_State_Estimation_Algorithms/24658653).)
+Then, the regularization term $\sum_{i=1}^{n}\lVert x_i \rVert_2$ is what we want to use since it sets some of the $x_i$ to $\mathbf 0$ but does not promote sparsity *within* each block. (I used this fact to solve an engineering problem in my [PhD dissertation](https://hammer.purdue.edu/articles/thesis/Robustness_Resilience_and_Scalability_of_State_Estimation_Algorithms/24658653).)
 
 #### Closing Note
 

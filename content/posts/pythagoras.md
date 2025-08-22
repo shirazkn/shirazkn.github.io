@@ -120,7 +120,7 @@ If we can write the norm-squared function $f(x)=\lVert x\rVert^2$ as an inner pr
 </p> -->
 
 
-Notice that a degree $2$ polynomial is characterized by the fact that its second derivative is constant everywhere. Suppose, this constant (which is the Hessian) is $c\cdot\bold I$, where $c$ is some number and $\bold I$ is the identity matrix. Let's take the Taylor series expansion of $f$ at $x$, sticking to the Euclidean space $\mathbb R^n$ for simplicity.
+Notice that a degree $2$ polynomial is characterized by the fact that its second derivative is constant everywhere. Suppose, this constant (which is the Hessian) is $c\cdot\mathbf I$, where $c$ is some number and $\mathbf I$ is the identity matrix. Let's take the Taylor series expansion of $f$ at $x$, sticking to the Euclidean space $\mathbb R^n$ for simplicity.
 
 <p>
 \[
@@ -143,7 +143,7 @@ Adding these,
 \[ f(x+y) + f(x-y) = 2 f(x) + c f(y) \]
 </p>
 
-Naturally, we set $c=2$. Thus, we could potentially simplify the parallelogram law to: <span class=accented> The norm-squared function is a polynomial of degree $2$</span>, which sounds more fundamental and less arbitrary than the parallelogram law to me, let alone the Pythagoras theorem. But we need to do more work to generalize this math to hold outside of Euclidean spaces. Someone more knowledgeable than me in differential geometry should explore the connection between inner products and [metric tensors on Riemannian manifolds](https://en.wikipedia.org/wiki/Metric_tensor)!
+Naturally, we set $c=2$. Thus, we could potentially simplify the parallelogram law to: <span class=accented> The norm-squared function is a polynomial of degree $2$</span>, which sounds more fundamental and less arbitrary than the parallelogram law to me, let alone the Pythagoras theorem. But we need to do more work to generalize this math to hold outside of Euclidean spaces. 
 
 <!-- Please reach out to me if you have a neat/natural intuition for where the parallelogram law *really* comes from! -->
 

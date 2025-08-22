@@ -10,7 +10,7 @@
 <meta name="description" content="Let&rsquo;s look at the norm balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/balls/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6bf9cb3ba8dbb85dbcf87028b5fbea5cc4231e0c00f888a36a6d452218da3dfb.css" integrity="sha256-a/nLO6jbuF28&#43;HAotfvqXMQjHgwA&#43;Iijam1FIhjaPfs=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f63ca8b26bc4bdec5a73358cc90732c3c03880bb9f674e5868ae860e17b5d924.css" integrity="sha256-9jyosmvEvexaczWMyQcyw8A4gLufZ05YaK6GDhe12SQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -58,36 +58,34 @@
 </noscript>
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          
-          
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '\\[', right: '\\]', display: true}
-          ],
-          
-          throwOnError : false
-        });
-    });
+  MathJax = {
+    tex: {
+      packages: {'[+]': ['mathtools']},
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['\\(', '\\)'], ['$', '$']]                  
+    },
+    loader:{
+      load: ['ui/safe', '[tex]/mathtools']
+    },
+  };
 </script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="Norm Balls" />
-<meta property="og:description" content="Let&rsquo;s look at the norm balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://shirazkn.github.io/posts/balls/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-04-18T21:32:10-04:00" />
-<meta property="article:modified_time" content="2023-04-18T21:32:10-04:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Norm Balls"/>
-<meta name="twitter:description" content="Let&rsquo;s look at the norm balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:url" content="https://shirazkn.github.io/posts/balls/">
+  <meta property="og:site_name" content="Shiraz">
+  <meta property="og:title" content="Norm Balls">
+  <meta property="og:description" content="Let’s look at the norm balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-04-18T21:32:10-04:00">
+    <meta property="article:modified_time" content="2023-04-18T21:32:10-04:00">
+    <meta property="article:tag" content="Linear Algebra">
+    <meta property="article:tag" content="Optimization">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Norm Balls">
+<meta name="twitter:description" content="Let&rsquo;s look at the norm balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is">
 
 
 <script type="application/ld+json">
@@ -158,7 +156,7 @@
         <div class="logo">
             <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -229,16 +227,16 @@
 <p>The figure may indicate that $\lVert{}\cdot{}\rVert_p$ gets bigger as $p$ increases, but it&rsquo;s the other way around:</p>
 <p>\[\|x\|_1 \geq \|x\|_2 \geq \dots \geq \|x\|_\infty\]</p>
 <p>because you need to go <em>further</em> from the origin to get to the $\infty$ ball. This is similar to how a car with a <em>poorer</em> mileage would need to expend <em>more</em> fuel to get to the same point. So the balls get bigger, but the &lsquo;mileage&rsquo; gets smaller.</p>
-<p>If $p&lt;1$, then the corresponding &ldquo;$p$-norm&rdquo; is not actually a norm, as it is guaranteed to violate <a href="/posts/norms_metrics" class="accented">
+<p>If $p<1$, then the corresponding &ldquo;$p$-norm&rdquo; is not actually a norm, as it is guaranteed to violate <a href="/posts/norms_metrics" class="accented">
     the conditions
-</a> which we usually place on a norm. What feature do we see appearing in the $p$-balls, when $p&lt;1$? They answer is that they curve inwards (are <em>non-convex</em>). In particular, the $0$-ball is quite bizarre, it is exactly the axes! (<a href="/posts/norms_metrics" class="accented">
+</a> which we usually place on a norm. What feature do we see appearing in the $p$-balls, when $p<1$? They answer is that they curve inwards (are <em>non-convex</em>). In particular, the $0$-ball is quite bizarre, it is exactly the axes! (<a href="/posts/norms_metrics" class="accented">
     Recall
 </a> that the &ldquo;$0$-norm&rdquo; counts the number of non-zero elements in a vector, which is $1$ for each point on the axes). Let&rsquo;s not talk about the $0$-ball for now.</p>
-<h3 id="the-2-ball">The $2$-Ball<a hidden class="anchor" aria-hidden="true" href="#the-2-ball">#</a></h3>
+<h3 id="the--ball">The $2$-Ball<a hidden class="anchor" aria-hidden="true" href="#the--ball">#</a></h3>
 <p>When $n=2$ the $2$-ball is a circle, and when $n=3$ the $2$-ball is a sphere. What&rsquo;s less obvious is the case of $n=1$, in which case each of the $p$-norm unit balls is just the line segment from $-1$ to $1$.</p>
 <p>We may or may not remember from high-school physics that spheres (i.e., $2$-balls) minimize the ratio of the surface area to volume of a shape. It is why bubbles take spherical shapes, in order to minimize their potential energy. A defining feature of the $2$-ball is that it has continuous rotational symmetry &ndash; we can rotate the $2$-ball without changing its shape, something we cannot do for any of the other $p$-balls.</p>
 <!-- We looked at the $2$-norm in detail in [earlier posts](/posts/leastsquares). Specifically, we observe that we can rotate the $2$-balls without changing its shape, something we cannot do for any of the other $p$-balls. -->
-<h3 id="the-infty-ball">The $\infty$-Ball<a hidden class="anchor" aria-hidden="true" href="#the-infty-ball">#</a></h3>
+<h3 id="the--ball-1">The $\infty$-Ball<a hidden class="anchor" aria-hidden="true" href="#the--ball-1">#</a></h3>
 <p>Recall that the $\infty$-norm is evaluated by taking the limit $p\rightarrow \infty$ in the definition of the $p$-norm, giving</p>
 <p>
 \[
@@ -265,7 +263,7 @@ As such, it has $2n$ faces in dimension $n$. This is because</p>
  \]
 </p>
 <p>which gives us $2n$ linear constraints, with each linear constraint adding a face.</p>
-<h3 id="the-1-ball">The $1$-Ball<a hidden class="anchor" aria-hidden="true" href="#the-1-ball">#</a></h3>
+<h3 id="the--ball-2">The $1$-Ball<a hidden class="anchor" aria-hidden="true" href="#the--ball-2">#</a></h3>
 <p>The $1$-Ball in $2$ dimensions seems like a rotated square, or a diamond, and it appears like this should generalize. Let&rsquo;s count its faces.</p>
 <p>
 \[

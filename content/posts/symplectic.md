@@ -41,7 +41,7 @@ Now, we know that smooth maps can *pull back* differential forms, whereas they *
 At any point $(q, p)$ on $T \mathcal Q^\ast$, we use $\pi$ to pull back the only linear form that we have available at hand, namely the form $p$ at $q$. Thus, we define $\tau_{(q, p)} = d\pi^\ast_{(q, p)}p$.
 Note that $\tau_{(q, p)} $ will eat vectors in $T_{(q, p)}(T^\ast\mathcal Q)$ while $p$ ate vectors in $T_q \mathcal Q$, so this is a bonafide construction and not a mere renaming of objects. The symplectic form is defined as $\omega = -d \tau$; the negative sign is just by convention as far as I can tell!
 
-Suppose we have a coordinate chart $(q^i)\_{i=1}^n$ on $U\subseteq \mathcal Q$, so that $q^i:U\rightarrow \mathbb R$. Since any differential form on $U$ can be expressed as $p = p_i dq^i$, we can think of $(q^i, p_i)\_{i=1}^n$ as being a coordinate chart on the $2n$-dimensional manifold $T^\ast\mathcal Q$. Accordingly, $(dq^i, dp_i)\_{i=1}^n$ is a basis for one-forms on $T^\ast\mathcal Q$. 
+Suppose we have a coordinate chart $(q^i)_{i=1}^n$ on $U\subseteq \mathcal Q$, so that $q^i:U\rightarrow \mathbb R$. Since any differential form on $U$ can be expressed as $p = p_i dq^i$, we can think of $(q^i, p_i)_{i=1}^n$ as being a coordinate chart on the $2n$-dimensional manifold $T^\ast\mathcal Q$. Accordingly, $(dq^i, dp_i)_{i=1}^n$ is a basis for one-forms on $T^\ast\mathcal Q$. 
 It can be shown that the tautological $1$-form is 
 $$\tau = p_i \hspace{1pt}dq^i + 0\hspace{1pt} dp_i = p_i \hspace{1pt}dq^i$$ 
 in these coordinates[^4], so that the symplectic form $\omega$ becomes $\omega = - d\tau = dq^i \wedge dp_i$. Since it is an [exact form](https://en.wikipedia.org/wiki/Closed_and_exact_differential_forms), $\omega$ is *closed*: $d\omega = -d(d\tau)=0$. Letting $\Omega$ denote the matrix of coefficients corresponding to this coordinate description of $\omega$, and ordering the coordinates as $(q^1, \ldots, q^n, p_1, \ldots, p_n)$, we have 
@@ -112,7 +112,7 @@ More broadly, we say that $f \in C^\infty(T^\ast\mathcal Q)$ is a <span class=ac
 
 $$\text{Conserved Quantities} \longleftrightarrow \text{Infinitesimal Symmetries}$$
 
-are in one-to-one correspondence (when $H_{\textrm{dR}}^1=0$). Notice the symmetry between the roles of $H$ and $f$; we could have begun our investigation by considering $f$ to be the Hamiltonian and $H$ the conserved quantity.
+are in one-to-one correspondence (when $H_{\textrm{dR}}^1=0$). The [Poincaré lemma](https://en.wikipedia.org/wiki/Poincar%C3%A9_lemma) shows that both directions of Noether's theorem hold when $\mathcal Q$ is (diffeomorphic to) an open ball of $\mathbb R^n$. By the way, notice the symmetry between the roles of $H$ and $f$; we could have begun our investigation by considering $f$ to be the Hamiltonian and $H$ the conserved quantity.
 
 ### Poisson Structure 
 
@@ -133,16 +133,21 @@ It satisfies certain axioms, including versions of the Leibnitz rule and Jacobi 
 \]
 </p>
 which nicely captures the asymmetry between $f$ and $g$ in $\lbrace f,g\rbrace$.
-Notice that since $\lbrace f, H\rbrace=X_H f$, the evolution of $f$ under the flow of $X_H$ is given by the Poisson bracket too:
+Notice that since $\lbrace f, H\rbrace=X_H f$, the evolution of $f$ under the flow of $X_H$ is given by the Poisson bracket too. Letting $\alpha\in T^\ast Q$,
 
-$$
-\frac{d}{dt}(f\circ \Psi_t) = X_H f \circ \Psi_t =\lbrace f, H\rbrace \circ \Psi_t = \lbrace f \circ \Psi_t, H\rbrace,
-$$
+<p>
+\[
+\begin{align*}
+\left[\lbrace f, H\rbrace \circ \Psi_t\right](\alpha) &= X_H f \left(\Psi_t(\alpha)\right)\\
+&=\frac{d}{ds}f\left(\Psi_s(\Psi_t(\alpha))\right)\vert_{s=0}=\frac{d}{ds}f\left(\Psi_s(\alpha))\right\vert_{s=t},
+\end{align*}
+\]
+</p>
 
 where $\Psi_t$ is the flow of $X_H$. Thus, a conserved quantity satisfies $\lbrace f, H\rbrace = 0$ and vice versa (Prop. 22.21, Lee ISM). 
 
 Previously, we used the symplectic form to define the <span class=accented>Hamiltonian vector field of $H$</span>. However, we could consider a more general definition that only uses the Poisson structure: 
-$X_H \coloneqq \lbrace \hspace{1pt}\cdot\hspace{1pt}, H \rbrace.$ Returning to the special case of a symplectic manifold (note that symplectic structure $\Rightarrow$ Poisson structure), we have
+$X_H \coloneqq \lbrace \hspace{1pt}\cdot\hspace{1pt}, H \rbrace.$ Hence, in the case of a symplectic manifold, we have
 $$
 dH(X_f)= \omega(X_H,X_f)=\lbrace H,f \rbrace = -\lbrace f,H \rbrace =-df (X_H)=-X_H(f)
 $$
@@ -156,16 +161,16 @@ There appears to be a confusing <i>asymmetry</i> in the way we define the Hamilt
 in the symplectic definition, $H$ is the object being differentiated, whereas in the Poisson algebraic definition, $H$ assumes the role of the differentiator.
 </aside>
 
-Thus, we see that what we *really* need is a Poisson structure, rather than a symplectic structure on a manifold. A Poisson manifold is a manifold $\mathcal M$ for whose space of smooth functions, $C^\infty(\mathcal M)$, we endow the structure of a [Poisson algebra](https://en.wikipedia.org/wiki/Poisson_algebra).
+Thus, we see that what we *really* need is a Poisson structure, rather than a symplectic structure on a manifold (note that symplectic structure $\Rightarrow$ Poisson structure, but not vice versa). A Poisson manifold is a manifold $\mathcal M$ for whose space of smooth functions, $C^\infty(\mathcal M)$, we endow the structure of a [Poisson algebra](https://en.wikipedia.org/wiki/Poisson_algebra).
 
 <aside class=aside-right>
 A Poisson algebra is a vector space (e.g., $C^\infty(\mathcal M)$ with pointwise addition and scalar multiplication) with two <i>products</i>: $(i)$ a bilinear product (e.g., pointwise multiplication of $C^\infty(\mathcal M)$-functions) and $(ii)$ the Poisson bracket, $\lbrace\cdot,\cdot\rbrace$, satisfying certain axioms. In particular, we require that $C^\infty(\mathcal M)$ is a Lie algebra under $\lbrace\cdot,\cdot\rbrace$, and that $\lbrace\cdot,\cdot\rbrace$ satisfies a compatibility condition with the other product.
 </aside>
 
 Given a <span>general Poisson bracket</span> (i.e., one that is *not* defined in terms of a symplectic form), there may exist a function $f$ that makes $\lbrace \cdot, f\rbrace$ vanish on all the other functions. This is not allowed in the symplectic case by virtue of the non-degeneracy of $\omega$.
-An $f$ that has this property is called a <span class=accented>Casimir function</span>. For instance, the total angular momentum is a Casimir function for the Hamiltonian system describing rigid body dynamics. Due to the details given above, Casimir functions are invariant along all Hamiltonian systems on $T^\ast Q$; the angular momentum must and will be conserved! 
+An $f$ that has this property is called a <span class=accented>Casimir function</span>. For instance, the total angular momentum is a Casimir function for the Hamiltonian system describing rigid body dynamics. Due to the details given above, Casimir functions are invariant along all Hamiltonian systems on $T^\ast Q$; the angular momentum must and will be conserved! Conversely, the flow of a Casimir function preserves other functions. For instance, the Hamiltonian flow of the angular momentum function is a rotation, signifying the invariance of physical phenomena to rotation of 3D space. 
 
-Conversely, the flow of a Casimir function preserves other functions. For instance, the Hamiltonian flow of the angular momentum function is a rotation, signifying the invariance of physical phenomena to rotation of 3D space. 
+In this setting, a proof of Noether's theorem is as follows: $\lbrace f, H \rbrace = X_H f = 0$ (i.e., $f$ is a conserved quantity) implies $\lbrace H, f \rbrace = X_f H = 0$ (i.e., $X_f$ is an infinitesimal symmetry). If the reader knows or learns more about de Rham cohomology, it will become clear why cohomology plays a role in proving one of the directions of the theorem (that is, the direction in which we start with an infinitesimal symmetry $X$).
 
 ### Momentum Maps
 

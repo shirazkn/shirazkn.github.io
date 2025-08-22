@@ -1,6 +1,3 @@
-.katex-display>.katex>.katex-html>.tag {
-    /* float: right; position: static;  */
-    color: var(--accent);}
 
 body.dark figure.invertible img {
     filter: invert(0.875) hue-rotate(180deg);

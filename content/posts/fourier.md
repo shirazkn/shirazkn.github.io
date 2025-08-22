@@ -7,10 +7,10 @@ draft: false
 The <span class=accented>Fourier transform </span>takes a (absolutely integrable) function $f:\mathbb R \rightarrow \mathbb R$ and outputs a different (possibly complex-valued) function. If the first is interpreted as a *signal* (e.g., the waveform of an audio that is parameterized by time), then its Fourier transform has its 'peaks' at the dominant frequencies of the signal. I will not expound too much on the Fourier transform itself, but its computation looks something like this[^convention]:
 
 $$
-\mathcal F \[f](\omega) \coloneqq \int_{-\infty}^\infty f(t) e^{-i \omega t} dt
+\mathcal F [f](\omega) \coloneqq \int_{-\infty}^\infty f(t) e^{-i \omega t} dt
 $$
 
-which we will also write as $\hat f(\omega) \coloneqq \mathcal F \[f](\omega)$. Here's what the Fourier transform of a rectangular 'pulse' signal looks like; the one on the right is called as the $\textrm{sinc}$ function:
+which we will also write as $\hat f(\omega) \coloneqq \mathcal F [f](\omega)$. Here's what the Fourier transform of a rectangular 'pulse' signal looks like; the one on the right is called as the $\textrm{sinc}$ function:
 
 <div>
 <figure class=invertible style="max-width: 100%;">
@@ -63,7 +63,7 @@ Let $f(t)$ be a $2\pi$-periodic function. We want to make sense of what its Four
 
 $$``\mathcal F^{-1}\Big[\mathcal F\big[ f\big]\Big] (t)"$$ 
 
-does end up looking like a Fourier series representation of $f$ (where we used the quotes to remind ourselves that the usual Fourier and inverse Fourier transforms aren't defined when $f(t)$ has a finite period). In fact, it will turn out that $\mathcal F\[f](\omega)$ has the following form[^illustration]:
+does end up looking like a Fourier series representation of $f$ (where we used the quotes to remind ourselves that the usual Fourier and inverse Fourier transforms aren't defined when $f(t)$ has a finite period). In fact, it will turn out that $\mathcal F[f](\omega)$ has the following form[^illustration]:
 
 [^illustration]: This is not an actual Fourier transform pair, just an illustration.
 
@@ -90,7 +90,7 @@ There's multiple ways of doing this. A very mechanical way of getting from the F
 where the $e^{-\epsilon t^2}$ term tapers off the plot of $f(t)$ in either direction ($t\rightarrow \infty$ and $t\rightarrow -\infty$), making the function absolutely integrable. As $\epsilon \rightarrow 0$, the factor $e^{-\epsilon t^2}$ disappears, and we should recover the Fourier series representation of $f(t)$ by expressing it as $\mathcal F^{-1}\big[ \hat f_0 \big] (t)$. In fact, as $e^{-\epsilon t^2}$ disappears, the function becomes truly periodic, and its Fourier transform tends towards non-existence. This coincides with the appearance of the Dirac delta functions in the Fourier domain, which are technically not functions, but [distributions](https://en.wikipedia.org/wiki/Distribution_(mathematics)).
 
 #### Approach #2:
-We can also use the [Fourier transform tables](https://engineering.purdue.edu/~mikedz/ee301/FourierTransformTable.pdf) and their properties to do this. These tables and properties (which are easily found through a quick Google search) ignore the intricacies related to distributions (in particular, the Dirac delta function) and that's what we'll do too. So in the true spirit of engineering, let's assume that $\hat f(\omega)\coloneqq\mathcal F\big\[f\big\](\omega)$ is well defined. We have,
+We can also use the [Fourier transform tables](https://engineering.purdue.edu/~mikedz/ee301/FourierTransformTable.pdf) and their properties to do this. These tables and properties (which are easily found through a quick Google search) ignore the intricacies related to distributions (in particular, the Dirac delta function) and that's what we'll do too. So in the true spirit of engineering, let's assume that $\hat f(\omega)\coloneqq\mathcal F\big[f\big](\omega)$ is well defined. We have,
 
 $$
 \hat f(\omega) = \int_{-\infty}^\infty f(\tau) e^{-i\omega \tau} d\tau,
@@ -119,7 +119,7 @@ f(t) &= \sum_{k=-\infty}^{\infty}\int_{0}^{2\pi} f(\tau) \left[ \frac{1}{2\pi} \
 \]
 </p>
 
-Focusing on the term inside the '$\[\ \cdot\ \]$', and letting $a \coloneqq 2\pi k + \tau$, we have
+Focusing on the term inside the '$[\ \cdot\ ]$', and letting $a \coloneqq 2\pi k + \tau$, we have
 
 $$
 \frac{1}{2\pi} \int_{-\infty}^\infty  e^{-i\omega a} e^{i\omega t} d\omega 
@@ -156,7 +156,7 @@ f(t) &=  \int_{0}^{2\pi} f(\tau) \delta\big(\tau - (t - 2 \pi k_0) \big) d\tau\\
 
 This is because $\sum_{k=-\infty}^{\infty}\delta\big(\tau - (t - 2 \pi k) \big)$ is a 'comb' of Dirac delta functions that are spaced $2\pi$ apart from each other, so that only one of these Dirac deltas is picked out by the integral $\int_0^{2\pi} \star\ d\tau$. 
 
-But wait a second! We went around in a circle (pun intended) to show that $f(t) = \mathcal F^{-1}\Big\[\mathcal F[f] \Big\](t)$. Well, at least now we know that the calculation that we did above checks out, even though we are scarcely able to define $\mathcal F[f] (\omega)$ and despite the fact that we swapped summations and integrals around like it's nothing!
+But wait a second! We went around in a circle (pun intended) to show that $f(t) = \mathcal F^{-1}\Big[\mathcal F[f] \Big](t)$. Well, at least now we know that the calculation that we did above checks out, even though we are scarcely able to define $\mathcal F[f] (\omega)$ and despite the fact that we swapped summations and integrals around like it's nothing!
 
 #### Approach #2 (Revisited):
 <!-- In the math we did above, we used the fact that $\mathcal F\[\delta(t)\](\omega) = 1$. We combined this with the so-called "time-shift" property to conclude that $\mathcal F\[\delta(t-a)\](\omega) = e^{-i\omega a}$. -->

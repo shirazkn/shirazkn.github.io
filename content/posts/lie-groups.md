@@ -66,19 +66,19 @@ Let <span class=accented>$[$</span>$\gamma$<span class=accented>$]$</span> denot
     \]
 </p>
 
-[^curve]: Typically, $\mathbf v $ is given to us in the local coordinates of the chart $(U,h)$, as $(h\_\*)\_p \mathbf v \in \mathbb R^n$.
-One way to go about computing $(f\_\*)\_p \mathbf v$ is to pick any representative curve $\gamma$ such that $\frac{d}{dt}\left[h\circ \gamma (t)\right]\big\vert_{t=0} = (h\_\*)\_p \mathbf v$.
-Thereafter, we have $(f\_\*)\_p \mathbf v$=<span class=accented>$[$</span>$f \circ \gamma$<span class=accented>$]$</span>. <br>
+[^curve]: Typically, $\mathbf v $ is given to us in the local coordinates of the chart $(U,h)$, as $(h_\*)_p \mathbf v \in \mathbb R^n$.
+One way to go about computing $(f_\*)_p \mathbf v$ is to pick any representative curve $\gamma$ such that $\frac{d}{dt}\left[h\circ \gamma (t)\right]\big\vert_{t=0} = (h_\*)_p \mathbf v$.
+Thereafter, we have $(f_\*)_p \mathbf v$=<span class=accented>$[$</span>$f \circ \gamma$<span class=accented>$]$</span>. <br>
 Yet another way to do this computation is to pick a chart $(U^\prime,h^\prime)$ at $f(p)$ and determine the Jacobian of $h^\prime \circ f \circ h^{-1}$ at $h(p)$.
 
-In practice, $(f\_\*)\_p$ ends up looking something like the Jacobian of $f$ evaluated at $p$. The caveat is that a Jacobian (matrix) maps vectors in $\mathbb R^n$ to vectors in $\mathbb R^m$, whereas $(f\_\*)\_p$ does the more general job of mapping vectors in $T_p \mathcal M$ to vectors in $T_{f (p)} \mathcal N$.
+In practice, $(f_\*)_p$ ends up looking something like the Jacobian of $f$ evaluated at $p$. The caveat is that a Jacobian (matrix) maps vectors in $\mathbb R^n$ to vectors in $\mathbb R^m$, whereas $(f_\*)_p$ does the more general job of mapping vectors in $T_p \mathcal M$ to vectors in $T_{f (p)} \mathcal N$.
 
 Given $g\in G$, let $\mathcal L_g:G\rightarrow G$ denote <span class=accented>left-multiplication by $g$</span>, i.e., $\mathcal L_g(h) = g\odot h$ for all $h\in G$. Here's how a tangent vector at the identity $e\in G$ can be 'pushed forward' by the left-multiplication map $\mathcal L_g$:
 <figure class=invertible style="max-width: 100%;">
 <img src=/post-images/lie_groups/left-multiplication.png>
 </figure>
 
-where the curve passing through $g$ was obtained by composing $\gamma$ with $\mathcal L_g$. Since $T_eG$ is going to be identified[^ident] with $\mathfrak g$ (as a vector space), the above illustration is going to play a key role in the forthcoming discussion. It shows that $(\mathcal L_{g^{-1}*})\_g$$=(\mathcal L_{g\*})\_e ^{-1}$ will reduce a tangent vector at $g$ to an element of the Lie algebra.
+where the curve passing through $g$ was obtained by composing $\gamma$ with $\mathcal L_g$. Since $T_eG$ is going to be identified[^ident] with $\mathfrak g$ (as a vector space), the above illustration is going to play a key role in the forthcoming discussion. It shows that $(\mathcal L_{g^{-1}*})_g$$=(\mathcal L_{g\*})_e ^{-1}$ will reduce a tangent vector at $g$ to an element of the Lie algebra.
 
 [^ident]: The word *identified* is used here in the sense of 'made identical to'. I remember being amused when I first came across this usage of it, now I love how resolute it sounds.
 
@@ -188,14 +188,14 @@ For example, we have for $h\in G$,
     \]
 </p>
 
-$=X(g\odot h)$. An important consequence of this definition is that just by knowing $X(e) \in T_e G$, we can determine the value of $X$ at all the other points, since $X(g) = (\mathcal L_{g*})\_e X(e)$. In fact, one can construct a left-invariant vector field by picking any vector $\tilde X \in T_eG$ and defining $X(g) \coloneqq (\mathcal L_{g*})\_e \tilde X$. Conversely, given a left-invariant vector field $X$, we can simply evaluate it at the identity $e$ to determine the $\tilde X$ that generated it. Thus, the space of left-invariant vector fields on $G$, written as <span class=accented>$\mathfrak X^{\mathcal L}(G)$</span>, is isomorphic to $T_eG$ as a vector space (the fact that $\mathfrak X^{\mathcal L}(G)$ can be given a vector space structure is for the reader to deduce). The word 'left-invariant' comes from the fact that $\mathcal L_{g*}X= X$.
+$=X(g\odot h)$. An important consequence of this definition is that just by knowing $X(e) \in T_e G$, we can determine the value of $X$ at all the other points, since $X(g) = (\mathcal L_{g*})_e X(e)$. In fact, one can construct a left-invariant vector field by picking any vector $\tilde X \in T_eG$ and defining $X(g) \coloneqq (\mathcal L_{g*})_e \tilde X$. Conversely, given a left-invariant vector field $X$, we can simply evaluate it at the identity $e$ to determine the $\tilde X$ that generated it. Thus, the space of left-invariant vector fields on $G$, written as <span class=accented>$\mathfrak X^{\mathcal L}(G)$</span>, is isomorphic to $T_eG$ as a vector space (the fact that $\mathfrak X^{\mathcal L}(G)$ can be given a vector space structure is for the reader to deduce). The word 'left-invariant' comes from the fact that $\mathcal L_{g*}X= X$.
 
 A left-invariant vector field $X\in \mathfrak X^{\mathcal L}(G)$ is special because it represents 'water' flowing along the surface of $G$ in perfect concordance with the group structure of $G$. The fact that such an object can be related to $T_eG$ bodes well for the establishment of $T_eG$ as an object that *corresponds* to the Lie group $G$. However, some reflection will show that we need to do more work to recover the group structure of $G$ at $T_eG$. For starters, the group multiplication operation $\odot$ need not be commutative, whereas the vector addition operation $+$ in $T_eG$ is commutative by definition. This is where the Lie bracket comes in; it is a multiplication-like operation that can be imposed on $T_e G$ to in some sense 'measure the failure of commutativity' in $G$. We will revisit this point a little later.
 
 ## The Exponential Map
 
 If the Lie algebra is to correspond to the Lie group, the elements of the Lie algebra should be somehow *associated* with the elements of the Lie group. How do we associate $\tilde X \in T_eG$ to a unique group element of $G$?
-First, we extend $\tilde X$ to the unique left-invariant vector field $X$ that satisfies $X(g) = (\mathcal L_{g*})\_e \tilde X$. Thereafter -- and this is going to sound silly -- we place a 'boat' at the identity $e$ and let it flow along the surface of $G$ in the direction of $X$ for exactly *one* unit of time! 
+First, we extend $\tilde X$ to the unique left-invariant vector field $X$ that satisfies $X(g) = (\mathcal L_{g*})_e \tilde X$. Thereafter -- and this is going to sound silly -- we place a 'boat' at the identity $e$ and let it flow along the surface of $G$ in the direction of $X$ for exactly *one* unit of time! 
 
 Let's unpack what that means. The boat is going to trace out a path/curve on $G$, which we denote by $\gamma :[0, 1] \rightarrow G$, such that $\gamma (0)=e$. At time $t\in[0,1]$, the boat's position is given by $\gamma(t)\in G$. Its velocity at time $t$ is given by $\gamma ^\prime(t)=X(\gamma(t))$. Thus, we require that
 
@@ -315,7 +315,7 @@ where $\tau \in \mathbb R$. The exponential map is then given by
     \]
 </p>
 
-[^ddt]: Let $\gamma(a) \coloneqq S^a$ be a smooth curve on $G$ such that $\gamma (0) = S^0$. Then $\frac{d}{da}\left[S^a f(t)\right]\big\vert\_{a=0} = \lim_{\Delta a \rightarrow 0}\frac{f(t+\Delta a) - f(t)}{\Delta a} = \frac{df}{dt}(t)$. This is for a unit tangent vector; a scaled tangent vector is obtained by considering a curve of the form $\gamma(a) \coloneqq S^{\tau a}$ instead.
+[^ddt]: Let $\gamma(a) \coloneqq S^a$ be a smooth curve on $G$ such that $\gamma (0) = S^0$. Then $\frac{d}{da}\left[S^a f(t)\right]\big\vert_{a=0} = \lim_{\Delta a \rightarrow 0}\frac{f(t+\Delta a) - f(t)}{\Delta a} = \frac{df}{dt}(t)$. This is for a unit tangent vector; a scaled tangent vector is obtained by considering a curve of the form $\gamma(a) \coloneqq S^{\tau a}$ instead.
 
 It cannot be understated just how remarkable the above result is. Letting the left-hand side of <span class=accented>$(15)$</span>
  operate on a function $f$ and evaluating the resulting function at $t_0$, we get
@@ -502,7 +502,7 @@ In the very special case where $X,Y \in \mathcal X^{\mathcal L}(G)$, we have
     \]
 </p>
 
-where $\gamma(t) = \Phi(t,e) = \exp(t\tilde X)$, and we used the fact that $\mathcal L\_{(\ \cdot\ )}$ always commutes with $\mathcal R\_{(\ \cdot\ )}$ (as they act from opposite directions).
+where $\gamma(t) = \Phi(t,e) = \exp(t\tilde X)$, and we used the fact that $\mathcal L_{(\ \cdot\ )}$ always commutes with $\mathcal R_{(\ \cdot\ )}$ (as they act from opposite directions).
 In particular, 
 
 <p>
@@ -513,7 +513,7 @@ In particular,
 \]
 </p>
 
-where $\textrm{Ad}\_{(\cdot)}$ and $\textrm{ad}\_{(\cdot)}$ are the adjoint representations of $G$ and $\mathfrak g$ (which I will assume you've seen before). 
+where $\textrm{Ad}_{(\cdot)}$ and $\textrm{ad}_{(\cdot)}$ are the adjoint representations of $G$ and $\mathfrak g$ (which I will assume you've seen before). 
 
 ---
 
@@ -577,5 +577,5 @@ where $\mathcal R_g (h) = h \odot g$ is the right multiplication by $g$. We said
     \]
 </p>
 
-This is a bundle endomorphism of $G\times \mathfrak g$ (a homomorphism from it to itself). By construction, it is placing the non-commutativity of $G$ under scrutiny. For each tuple of the form $(g,\tilde X )$, $\mathcal R \circ \mathcal L^{-1}$ makes $\tilde X$ take a 'round-trip' by sending it to $T_gG$ via $\mathcal L_{g*}$ and back to $\mathfrak g$ via $\mathcal R_{g^{-1}*}$. Note that $\mathcal R\_{g^{-1}\*} \mathcal L\_{g\*} \tilde X=\textrm{Ad}_g\tilde X$.
+This is a bundle endomorphism of $G\times \mathfrak g$ (a homomorphism from it to itself). By construction, it is placing the non-commutativity of $G$ under scrutiny. For each tuple of the form $(g,\tilde X )$, $\mathcal R \circ \mathcal L^{-1}$ makes $\tilde X$ take a 'round-trip' by sending it to $T_gG$ via $\mathcal L_{g*}$ and back to $\mathfrak g$ via $\mathcal R_{g^{-1}*}$. Note that $\mathcal R_{g^{-1}\*} \mathcal L_{g\*} \tilde X=\textrm{Ad}_g\tilde X$.
 The departure of $\textrm{Ad}_g\tilde X$ from $\tilde X$ is a measure of the non-commutativity of multiplication by $g$. Not all group elements are equally non-commutative; for instance, $e$ commutes with all the other group elements.

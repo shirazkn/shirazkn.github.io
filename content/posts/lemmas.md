@@ -7,7 +7,7 @@ draft: false
 
 I collect here some results about the differentials of the $\exp$ and $\log$ maps of a Lie group. The reader must be familiar with how the <span class=accented>differential</span> (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of [tangent vectors as equivalence classes of curves](](/posts/vector-fields)); Wikipedia has an excellent [summary](https://en.wikipedia.org/wiki/Tangent_space#Definition_via_tangent_curves) of this, as does my blog (if I may say so myself).
 
-Let $L_g$ refer to the left-multiplication operation: $L_g(h)=gh$ for $g,h\in G$. Given $X\in\mathfrak g$, $X^L_g\coloneqq dL_g(X)$ is the corresponding left-invariant vector field. For a matrix Lie group (i.e., where $g$ is identified with some finite-dimensional matrix representation of it), $X^L_g=g X$, which makes sense because we have an external algebraic structure (namely, the multiplication of $n\times n$ matrices, which has the structure of a [unital associative algebra](https://en.wikipedia.org/wiki/Associative_algebra)) that lets us multiply group elements with Lie algebra elements. This rather convenient structure does not exist for a general Lie group. I will assume that the maps $\exp: U \rightarrow V$<!-- (surjective if the group is connected, injective when $G=\mathbb R^n$) -->
+Let $L_g$ refer to the left-multiplication operation: $L_g(h)=gh$ for $g,h\in G$. Given $X\in\mathfrak g$, $X^L_g\coloneq dL_g(X)$ is the corresponding left-invariant vector field. For a matrix Lie group (i.e., where $g$ is identified with some finite-dimensional matrix representation of it), $X^L_g=g X$, which makes sense because we have an external algebraic structure (namely, the multiplication of $n\times n$ matrices, which has the structure of a [unital associative algebra](https://en.wikipedia.org/wiki/Associative_algebra)) that lets us multiply group elements with Lie algebra elements. This rather convenient structure does not exist for a general Lie group. I will assume that the maps $\exp: U \rightarrow V$<!-- (surjective if the group is connected, injective when $G=\mathbb R^n$) -->
 and $\log:V\rightarrow U$ are inverses of each other, where $U\subseteq \mathfrak g$ is a neighborhood of $0$ and $V\subseteq G$ is a neighborhood of $e$.
 
 ---
@@ -31,7 +31,7 @@ $$d\exp_X(Y)=[\hspace{2pt}\exp\circ \hspace{1pt}\gamma\hspace{2pt}]$$
 
 [^gamma]: Here, $\dot \gamma(0)$ refers to the pushforward of $\frac{\partial}{\partial t}\big\vert_{t=0}$ under $\gamma$.
 
-[^jet]: This is also what's called a $1$-[jet](https://en.wikipedia.org/wiki/Jet_(mathematics)#Jets_of_functions_from_the_real_line_to_a_manifold). This notion of an 'equivalence class of curves' generalizes in annoying ways.
+[^jet]: This is also what's called a $1$-[jet](https://en.wikipedia.org/wiki/Jet_(mathematics)#Jets_of_functions_from_the_real_line_to_a_manifold). This notion of an 'equivalence class of curves' generalizes in confusing ways.
 
 <!-- <aside class=aside-right>
 </aside> -->
@@ -43,7 +43,7 @@ $$d\exp_X(Y)=[\hspace{2pt}\exp\circ \hspace{1pt}\gamma\hspace{2pt}]$$
 <!-- Let's simply write $Y=[\gamma]$, then $d\exp_X(Y)=[\exp\circ \gamma]$. -->
 The key to making these identifications concrete is to notice that we can choose *any* $\gamma$ satisfying $\gamma(0)=X$ and $\dot {\gamma}(0)=Y$.
 **Any** such $\gamma$ is a representative of $Y$.
-So, we might as well choose a $\gamma$ that is convenient to write down; let's make the choice, $\gamma(t) \coloneqq X+tY$. In this case, $\exp \circ\hspace{2pt} \gamma(t)=\exp(X+tY)$ is a curve on $G$ passing through $\exp(X)$, and it is a representative of $d\exp_X(Y)$. There's two different ways of writing down the equivalence class of $d\exp_X(Y)$:
+So, we might as well choose a $\gamma$ that is convenient to write down; let's make the choice, $\gamma(t) \coloneq X+tY$. In this case, $\exp \circ\hspace{2pt} \gamma(t)=\exp(X+tY)$ is a curve on $G$ passing through $\exp(X)$, and it is a representative of $d\exp_X(Y)$. There's two different ways of writing down the equivalence class of $d\exp_X(Y)$:
 
 $$
 d\exp_X(Y) =\big[\exp(X+tY)\big]=\big[\exp(X)\exp(t\hspace{2pt}\square)\big]
@@ -83,7 +83,7 @@ $$
 Since $T_g G\cong \mathfrak g$ and $T_{\log(g)}\mathfrak g\cong \mathfrak g$, we should once again expect a formula that goes from $\mathfrak g$ to $\mathfrak g$.
 It proves to be convenient to work entirely with $\mathfrak g$-elements and write $\exp(X)$ in place of $g$.
 
-Let $\gamma \coloneqq \exp(X) \exp(tY)$ by a curve passing through $\exp(X)$ with the velocity $Y$. We have,
+Let $\gamma \coloneq \exp(X) \exp(tY)$ by a curve passing through $\exp(X)$ with the velocity $Y$. We have,
 
 <p>
 \[
@@ -99,7 +99,7 @@ $$
 \big[\hspace{1pt}\log\big(\exp(X)\exp(tY)\big)\hspace{1pt}\big]= \big[\hspace{1pt}X + t\hspace{1pt}\square\hspace{1pt}\big].
 $$
 
-Thus, the differential of $\log$ takes two objects, $X$ (alternatively, $g\coloneqq \exp(X)$) and $Y$, and its output is characterized by $\square$. Here, $\square$ is the direction in which $\log(g)$ is perturbed when we perturb its argument $g$ in the direction $Y$. On <span class=accented>matrix Lie groups</span>, we can once again define the operator $\Psi^{-1}_{\exp(X)}:\mathfrak g \rightarrow \mathfrak g$ using derivatives of matrix-valued functions:
+Thus, the differential of $\log$ takes two objects, $X$ (alternatively, $g\coloneq \exp(X)$) and $Y$, and its output is characterized by $\square$. Here, $\square$ is the direction in which $\log(g)$ is perturbed when we perturb its argument $g$ in the direction $Y$. On <span class=accented>matrix Lie groups</span>, we can once again define the operator $\Psi^{-1}_{\exp(X)}:\mathfrak g \rightarrow \mathfrak g$ using derivatives of matrix-valued functions:
 
 <p>
 \[
@@ -107,14 +107,14 @@ Thus, the differential of $\log$ takes two objects, $X$ (alternatively, $g\colon
 \]
 </p>
 
-We write $d\log_{g}(gY)=\Psi^{-1}_{g}(Y)$. Alternatively, we can write $d\log\_{g}(V)=\Psi^{-1}\_{g}(g^{-1}V)$, where $V\in T\_{g} G$.
+We write $d\log_{g}(gY)=\Psi^{-1}_{g}(Y)$. Alternatively, we can write $d\log_{g}(V)=\Psi^{-1}_{g}(g^{-1}V)$, where $V\in T_{g} G$.
 
 <aside class=aside-center>
 Section 3.2 of Jean Gallier's book has the formula for $d\exp_X$, and the appendix of my paper "<i>Parameter Estimation on Homogeneous Spaces</i>" has $d\log_{\exp(X)}$ (which I denote there as $\Psi$... oh well).
 </aside>
 
 <!-- ### Sanity Checks -->
-We should verify that $\Psi_{\exp(X)}^{-1}$ is indeed the inverse of $\Psi_X$. Of course, this should be true from what we know about differentials/pushforwards of (locally) smooth maps between manifolds, but can we see this algebraically?
+We should verify that $\Psi_{\exp(X)}^{-1}$ is indeed the inverse of $\Psi_X$. Can we show this algebraically?
 
 <p>
 \[
@@ -164,7 +164,7 @@ d\exp_{\log(g)}\left(d\log_g(V)\right) = d(\exp \circ \log)_g(V)=V.
 
 Another context in which differentials show up in Lie theory is in the context of *parametrizations* of $G$. While most of this discussion is a specialization of what happens on a general manifold, the Lie group case is special because we are especially interested in left-invariant quantities (e.g., left-invariant vector fields and volume forms).
 
-Let $\varphi:C\rightarrow D$ be a parametrization of $D\subseteq G$ whose domain is $C\subseteq \mathbb R^n$, such that its inverse $\varphi^{-1}:D \rightarrow C$ exists (and therefore, is a smooth coordinate chart). A function $f:G\rightarrow \mathbb R$ can be *restricted* to $D$ to define $f|_D:D\rightarrow \mathbb R$; nevertheless, we will just write $f$ to refer to the restricted function. We can pull $f$ back under $\varphi$ to define $\bar f\coloneqq {\varphi}^\ast f=f\circ \varphi$, so that $\bar f(\mathbf x)=f(\varphi(\mathbf x))$. We can differentiate $\bar f$ using the usual rules of multivariable calculus. Let $\frac{\partial}{\partial x^i}$ be the $i^{th}$ [standard vector field](/posts/vector-fields) in $C$. As vector fields do, it will map $\bar f$ to another function:
+Let $\varphi:C\rightarrow D$ be a parametrization of $D\subseteq G$ whose domain is $C\subseteq \mathbb R^n$, such that its inverse $\varphi^{-1}:D \rightarrow C$ exists (and therefore, is a smooth coordinate chart). A function $f:G\rightarrow \mathbb R$ can be *restricted* to $D$ to define $f|_D:D\rightarrow \mathbb R$; nevertheless, we will just write $f$ to refer to the restricted function. We can pull $f$ back under $\varphi$ to define $\bar f\coloneq {\varphi}^\ast f=f\circ \varphi$, so that $\bar f(\mathbf x)=f(\varphi(\mathbf x))$. We can differentiate $\bar f$ using the usual rules of multivariable calculus. Let $\frac{\partial}{\partial x^i}$ be the $i^{th}$ [standard vector field](/posts/vector-fields) in $C$. As vector fields do, it will map $\bar f$ to another function:
 
 <p>
 \[
@@ -180,7 +180,7 @@ E_{i,g}^L = g E_i = {\overline E_i^j}(g)\frac{\partial}{\partial x^j}\Big|_{g}
 \]
 </p>
 
-Here, $\frac{\partial}{\partial x^i}\big|_{\varphi(\mathbf x)}\coloneqq d \varphi\_{\mathbf x}\frac{\partial}{\partial x^i}\big|\_{\mathbf x}$ (by abuse of notation) is called the $i^{th}$ coordinate vector field, and $\overline E_i^j$ are smooth functions. But what are these functions? We need to set up a commutative diagram that shows us how the action of $E\_{i}^L$ on $f$ can be equated to the action of an $\mathbb R^n$-vector field on $\bar f$. 
+Here, $\frac{\partial}{\partial x^i}\big|_{\varphi(\mathbf x)}\coloneq d \varphi_{\mathbf x}\frac{\partial}{\partial x^i}\big|_{\mathbf x}$ (by abuse of notation) is called the $i^{th}$ coordinate vector field, and $\overline E_i^j$ are smooth functions. But what are these functions? We need to set up a commutative diagram that shows us how the action of $E_{i}^L$ on $f$ can be equated to the action of an $\mathbb R^n$-vector field on $\bar f$. 
 
 Let $Z = \mathbf z^i E_i$, where $\mathbf z^i$ are real numbers (not functions!). Consider
 
@@ -194,7 +194,7 @@ Z^L_{\varphi(\mathbf x)} f &= \mathbf z^i E^L_{i,\varphi(\mathbf x)}f =\mathbf z
 \]
 </p>
 
-where the last equality follows from the definition of the pushforward. Let $f$ be the $k^{th}$ coordinate function, ${x}^k:D \rightarrow \mathbb R$ (that is, $x^k\coloneqq {\varphi^{-1}}^k$). Then, ${{\partial x}^k}/{\partial x^j}=\delta^k_j$ (with the usual identifications), and we get
+where the last equality follows from the definition of the pushforward. Let $f$ be the $k^{th}$ coordinate function, ${x}^k:D \rightarrow \mathbb R$ (that is, $x^k\coloneq {\varphi^{-1}}^k$). Then, ${{\partial x}^k}/{\partial x^j}=\delta^k_j$ (with the usual identifications), and we get
 
 <p>
 \[
@@ -239,8 +239,8 @@ where
 \]
 </p>
 
-so that $\nabla f\_{g}^\top \mathbf z=\[Z^L f\](g)$, and $M^i_j=E_j^Lx^i$.
-What is the inverse of $M$? Let $J(\mathbf x) \coloneqq \left[M(\varphi{\footnotesize(\mathbf x)})\right]^{-1}$. It should satisfy[^indices]
+so that $\nabla f_{g}^\top \mathbf z=[Z^L f](g)$, and $M^i_j=E_j^Lx^i$.
+What is the inverse of $M$? Let $J(\mathbf x) \coloneq \left[M(\varphi{\small(\mathbf x)})\right]^{-1}$. It should satisfy[^indices] 
 
 [^indices]: Don't worry too much about which indices I place on top and which on the bottom. I just like the placement of the indices of a matrix to be consistent with those of its components.
 

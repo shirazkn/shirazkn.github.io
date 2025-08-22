@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.136.4"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.148.1"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6bf9cb3ba8dbb85dbcf87028b5fbea5cc4231e0c00f888a36a6d452218da3dfb.css" integrity="sha256-a/nLO6jbuF28&#43;HAotfvqXMQjHgwA&#43;Iijam1FIhjaPfs=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f63ca8b26bc4bdec5a73358cc90732c3c03880bb9f674e5868ae860e17b5d924.css" integrity="sha256-9jyosmvEvexaczWMyQcyw8A4gLufZ05YaK6GDhe12SQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -60,34 +60,28 @@
 </noscript>
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          
-          
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '\\[', right: '\\]', display: true}
-          ],
-          
-          throwOnError : false
-        });
-    });
+  MathJax = {
+    tex: {
+      packages: {'[+]': ['mathtools']},
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['\\(', '\\)'], ['$', '$']]                  
+    },
+    loader:{
+      load: ['ui/safe', '[tex]/mathtools']
+    },
+  };
 </script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="Shiraz" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://shirazkn.github.io/" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Shiraz"/>
-<meta name="twitter:description" content=""/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:url" content="https://shirazkn.github.io/">
+  <meta property="og:site_name" content="Shiraz">
+  <meta property="og:title" content="Shiraz">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shiraz">
+<meta name="twitter:description" content="">
 
 <script type="application/ld+json">
 {
@@ -96,7 +90,7 @@
   "name": "Shiraz",
   "url": "https://shirazkn.github.io/",
   "description": "",
-  "thumbnailUrl": "https://shirazkn.github.io/favicon.ico",
+  "logo": "https://shirazkn.github.io/favicon.ico",
   "sameAs": [
       "https://www.github.com/shirazkn", "https://www.linkedin.com/in/shiraz-k/"
   ]
@@ -121,7 +115,7 @@
         <div class="logo">
             <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -157,7 +151,7 @@
         </ul>
     </nav>
 </header>
-<main class="main"> <script type="application/javascript" src="https://shirazkn.github.io/js/logo.min.5072687c4d897962b110dede42e582fa73f55559c5094cb511092ce80f9551f4.js"></script>
+<main class="main"> <script type="application/javascript" src="https://shirazkn.github.io/js/logo.min.509d69555ed044d4df2953040b60832592c2ad56c9bc53b5ad612654c15b677e.js"></script>
 
 <article class="first-entry home-info">
     <header class="entry-header">
@@ -231,6 +225,20 @@
   </div>
   <footer class="entry-footer"><span title='2025-01-13 12:46:04 -0500 EST'>January 13, 2025</span></footer>
   <a class="entry-link" aria-label="post link to Differentials in Lie Theory" href="https://shirazkn.github.io/posts/lemmas/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Harmonic Analysis
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The Fourier transform in $\mathbb R^n$ maps a complex-valued function $f:\mathbb R^n \rightarrow \mathbb C$ to a function of its Pontryagin dual space (which is in this case also $\mathbb R^n$), $\ \hat f:\mathbb R^n \rightarrow \mathbb C$, given by
+$$ \begin{align*} \hat f&amp;(\mathbfsymbol \omega) \\&amp;\coloneqq \int_{\mathbb R^n} f(\mathbf x) e^{-i\hspace{1pt} 2\pi \langle \mathbfsymbol \omega, \mathbf x\rangle} d\mathbf x\\ &amp;= \int_{\mathbb R}\cdots\int_{\mathbb R} f(\mathbf x) \left(e^{-i \hspace{1pt}2\pi \omega^1 x^1}\cdots e^{-i \hspace{1pt}2\pi \omega^n x^n}\right) dx^1 \cdots dx^n\\ &amp;= \cdots \left(\int_{\mathbb R}\left(\int_{\mathbb R} f(\mathbf x) e^{-i\hspace{1pt}2\pi \omega^1 x^1}dx^1 \right) e^{-i\hspace{1pt}2\pi \omega^2 x^2} dx^2 \right)\cdots \end{align*} $$That is, it performs the Fourier transform (FT) along each dimension, in succession. On compact quotients of $\mathbb R^n$, like $\mathbb T^n \cong \mathbb R^n/\mathbb Z^n$ (where each $\mathbb T\cong S^1$ is the one-dimensional torus ), this becomes a Fourier series .
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-12-12 13:02:50 +0530 +0530'>December 12, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to Harmonic Analysis" href="https://shirazkn.github.io/posts/fft/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -337,19 +345,6 @@ Connections First, I go over the technical tools needed to state (let alone solv
   </div>
   <footer class="entry-footer"><span title='2023-05-28 10:35:07 -0400 EDT'>May 28, 2023</span></footer>
   <a class="entry-link" aria-label="post link to Matrix Multiplication" href="https://shirazkn.github.io/posts/matrix/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>What is a Vector?
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>A running gag in engineering colleges is that a lot of instructors begin their first class of the semester with this question: “What is a vector?”. I used to find this ritual almost pointless because to me, every answer to this question felt either like a non-answer or a matter of context. I mean it depends, right? A structural engineer should have a different answer to this question than, say, a data scientist. To a structural engineer, a vector is a physical measurement that has a magnitude and a direction, whereas a data scientist may not necessarily think of a vector as having a direction. Indeed, in its full generality, a vector does not need to have geometric notions such as directions and angles associated with it. Today, I no longer think that this is a matter of context. By virtue of how we phrase the question “What is a vector?”, we may be asking (without ambiguity) the question: “If I call some mathematical object a vector, what does that tell you about it?”
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-05-20 15:26:18 -0700 -0700'>May 20, 2023</span></footer>
-  <a class="entry-link" aria-label="post link to What is a Vector?" href="https://shirazkn.github.io/posts/vector/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

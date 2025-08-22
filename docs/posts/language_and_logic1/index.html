@@ -20,7 +20,7 @@ You&rsquo;ve probably come across logical fallacies such as the
 , which goes something like this:">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/language_and_logic1/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6bf9cb3ba8dbb85dbcf87028b5fbea5cc4231e0c00f888a36a6d452218da3dfb.css" integrity="sha256-a/nLO6jbuF28&#43;HAotfvqXMQjHgwA&#43;Iijam1FIhjaPfs=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f63ca8b26bc4bdec5a73358cc90732c3c03880bb9f674e5868ae860e17b5d924.css" integrity="sha256-9jyosmvEvexaczWMyQcyw8A4gLufZ05YaK6GDhe12SQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -68,45 +68,33 @@ You&rsquo;ve probably come across logical fallacies such as the
 </noscript>
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          
-          
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '\\[', right: '\\]', display: true}
-          ],
-          
-          throwOnError : false
-        });
-    });
+  MathJax = {
+    tex: {
+      packages: {'[+]': ['mathtools']},
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['\\(', '\\)'], ['$', '$']]                  
+    },
+    loader:{
+      load: ['ui/safe', '[tex]/mathtools']
+    },
+  };
 </script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:title" content="Misuse as a Use of Language" />
-<meta property="og:description" content="
-This is my first post! It discusses the question of whether spoken and written languages like English could be &rsquo;logical&rsquo; by design. I will break this post up into two parts. The first one does not require a mathematical background whatsoever, whereas 
-    the second
- touches on the concepts of axioms, theorems and proofs.
-Fallacies
-The word logic as it is used in everyday parlance refers to informal logic (as opposed to 
-    formal logic
-, which is instead a rigorous mathematical construct).
-You&rsquo;ve probably come across logical fallacies such as the 
-    false dilemma
-, which goes something like this:" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://shirazkn.github.io/posts/language_and_logic1/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-01-27T13:48:49-05:00" />
-<meta property="article:modified_time" content="2023-01-27T13:48:49-05:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Misuse as a Use of Language"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:url" content="https://shirazkn.github.io/posts/language_and_logic1/">
+  <meta property="og:site_name" content="Shiraz">
+  <meta property="og:title" content="Misuse as a Use of Language">
+  <meta property="og:description" content=" This is my first post! It discusses the question of whether spoken and written languages like English could be ’logical’ by design. I will break this post up into two parts. The first one does not require a mathematical background whatsoever, whereas the second touches on the concepts of axioms, theorems and proofs.
+Fallacies The word logic as it is used in everyday parlance refers to informal logic (as opposed to formal logic , which is instead a rigorous mathematical construct). You’ve probably come across logical fallacies such as the false dilemma , which goes something like this:">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-01-27T13:48:49-05:00">
+    <meta property="article:modified_time" content="2023-01-27T13:48:49-05:00">
+    <meta property="article:tag" content="General">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Misuse as a Use of Language">
 <meta name="twitter:description" content="
 This is my first post! It discusses the question of whether spoken and written languages like English could be &rsquo;logical&rsquo; by design. I will break this post up into two parts. The first one does not require a mathematical background whatsoever, whereas 
     the second
@@ -117,7 +105,7 @@ The word logic as it is used in everyday parlance refers to informal logic (as o
 , which is instead a rigorous mathematical construct).
 You&rsquo;ve probably come across logical fallacies such as the 
     false dilemma
-, which goes something like this:"/>
+, which goes something like this:">
 
 
 <script type="application/ld+json">
@@ -188,7 +176,7 @@ You&rsquo;ve probably come across logical fallacies such as the
         <div class="logo">
             <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -269,8 +257,7 @@ Trans people are in need of better mental health infrastructure.<br>
 <p>The second sentence may be excluding the possibility that cis people need better mental health infrastructure. It suggests that, if there is a box labeled &ldquo;people who need better mental health infrastructure,&rdquo; then it has room only for trans people. Whatever else you might have put into that box earlier is now gone.</p>
 <p>The Wikipedia page for the false dilemma fallacy hints at why natural (spoken and written) languages are so amenable to misinterpretation:</p>
 <blockquote>
-<p>Our liability to commit false dilemmas may be due to the tendency to simplify reality by ordering it through either-or-statements, which is to some extent already built into our language.</p>
-</blockquote>
+<p>Our liability to commit false dilemmas may be due to the tendency to simplify reality by ordering it through either-or-statements, which is to some extent already built into our language.</p></blockquote>
 <p>Whoever wrote this sentence suggests that fallacies are <span class=print>built into our language</span>.</p>
 <p>As a bit of a sidebar, last month, my mom demonstrated a mastery of the false dilemma, using it to win an argument that we were having over something silly. I couldn&rsquo;t help but marvel at how natural her suggestion seemed to me at the moment, when conveyed in the language we were conversing in – Urdu.
 If only we had been speaking English instead, I would have seen right through her ploy.
@@ -279,14 +266,12 @@ Maybe it&rsquo;s because I use English and not Urdu to reason in my daily life. 
     After Babel
 </a> by George Steiner offers a possible explanation for <em>why</em> fallacies might be built into languages. On page $231$, he gives his perspective on how languages are shaped over time:</p>
 <blockquote>
-<p>We speak first to ourselves, then to those nearest us in kinship and locale. We turn only gradually to the outsider, and we do so with every safeguard of obliqueness, of reservation, of conventional flatness or outright misguidance.</p>
-</blockquote>
+<p>We speak first to ourselves, then to those nearest us in kinship and locale. We turn only gradually to the outsider, and we do so with every safeguard of obliqueness, of reservation, of conventional flatness or outright misguidance.</p></blockquote>
 <p>As human communities manufactured their languages, they did so with the express intent of obscuring any meaning to outsiders, to maintain secrecy. If anything, <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2016.01485/full" target="_blank" class="accented">
     the ability to lie and misdirect with language has been critical to its popularization
 </a>. Just as the politicians today use the false dilemma to garner support, so have those in power used logical fallacies to their advantage for thousands of years. The honest working-class person seldom wrote seminal historical texts, their language has not propagated through time quite as well. Only those with money, time, and/or inflated egos have had the luxury of writing influential texts. The punchline comes from page $224$ of Steiner:</p>
 <blockquote>
-<p>&hellip; the uses of language for &lsquo;alternity&rsquo;, for mis-construction, for illusion and play, are the greatest of man&rsquo;s tools by far.</p>
-</blockquote>
+<p>&hellip; the uses of language for &lsquo;alternity&rsquo;, for mis-construction, for illusion and play, are the greatest of man&rsquo;s tools by far.</p></blockquote>
 <p>It is certainly one of my mom&rsquo;s greatest tools.</p>
 <!-- ### <span class=tertiary>Outro</span> &nbsp;Proof by No Contradiction -->
 <h3 id="truth-is-subjective">Truth is Subjective<a hidden class="anchor" aria-hidden="true" href="#truth-is-subjective">#</a></h3>
