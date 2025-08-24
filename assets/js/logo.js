@@ -58,7 +58,22 @@ function get_keyframed_value(mean, variation, keyframe, symmetric=false) {
 }
 
 // -------- EVENT STUFF -------- //
-window.onload = function(){
+if(window.attachEvent) {
+    window.attachEvent('onload', loadFunction);
+} else {
+    if(window.onload) {
+        var curronload = window.onload;
+        var newonload = function(evt) {
+            curronload(evt);
+            loadFunction(evt);
+        };
+        window.onload = newonload;
+    } else {
+        window.onload = loadFunction;
+    }
+}
+
+function loadFunction(){
   set_visual_centre();
   [posX, posY] = [centreX, centreY];
   // Fade the logo into view
