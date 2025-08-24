@@ -104,8 +104,8 @@ function getScrollSpeed(callback) {
   if (isMobileDevice()) {
       let lastScrollTop = 0;
       let lastTimestamp = 0;
-      const maxScrollSpeed = 10000;
-      const scrollEndTimeout = 10;
+      const maxScrollSpeed = 4000;
+      const scrollEndTimeout = 50;
 
 
       function handleScroll() {
@@ -122,7 +122,7 @@ function getScrollSpeed(callback) {
           var distance = scrollTop - lastScrollTop;
           distance = distance*distance*Math.sign(distance);
 
-          const speed = (distance / timeDiff) * 2000; // pixels per second
+          const speed = (distance / timeDiff) * 400; // pixels per second
           scrollSpeed = 1.4*Math.max(Math.min(speed / maxScrollSpeed, 1), -1);
 
           // Reset values for the next iteration
