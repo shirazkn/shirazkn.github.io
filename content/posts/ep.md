@@ -21,7 +21,7 @@ We will also use $\Phi(g, q) \coloneq g\cdot q$ and $\Phi^{(q)}(g) \coloneq \Phi
 
 <!-- ## ⌁ Trajectory -->
 
-Let the map $\gamma:[0,1] \rightarrow \mathcal Q$ describe a <span class=accented>path in $\mathcal Q$</span> (e.g., the trajectory of a dynamical system whose state at time $t$ is $\gamma(t)$), starting at time $t=0$ and ending at time $t=1$. Due to transitivity of the group action, we can express the "velocity" vectors of $\gamma$ as follows:[^4]
+Let the map $\gamma:[0,1] \rightarrow \mathcal Q$ describe a <span class=accented>path in $\mathcal Q$</span> (e.g., the trajectory of a dynamical system whose state at time $t$ is $\gamma(t)$), starting at time $t=0$ and ending at time $t=1$. Due to transitivity of the group action, we can express the "velocity" vectors of $\gamma$ as follows:
 
 $$
 \begin{align*}
@@ -30,7 +30,7 @@ $$
 $$
 
 
-$\in T_{\gamma(s)}\mathcal Q$, where <span class=accented>$\eta^i(s)$</span> are some coefficient/component functions that describe the velocity of $\gamma$. Note that the coefficients $\left\lbrace  \eta^i\right\rbrace_{i=1}^n$ are not unique when $n<r$, since $\left\lbrace  \overline E_{i,\gamma(s)}\right\rbrace_{i=1}^r$ may then be an over-complete basis for $T_{\gamma(s)}\mathcal Q$.
+$\in T_{\gamma(s)}\mathcal Q$, where <span class=accented>$\eta^i(s)$</span> are some coefficient/component functions that describe the velocity of $\gamma$. Note that the coefficients $\left\lbrace  \eta^i\right\rbrace_{i=1}^n$ are not unique when $n < r$, since $\left\lbrace  \overline E_{i,\gamma(s)}\right\rbrace_{i=1}^r$ may then be an over-complete basis for $T_{\gamma(s)}\mathcal Q$.
 
 
 
