@@ -4,7 +4,7 @@
     <title>Posts on Shiraz</title>
     <link>https://shirazkn.github.io/posts/</link>
     <description>Recent content in Posts on Shiraz</description>
-    <generator>Hugo -- 0.148.1</generator>
+    <generator>Hugo -- 0.148.2</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 13 Jan 2025 12:46:04 -0500</lastBuildDate>
     <atom:link href="https://shirazkn.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
@@ -18,6 +18,20 @@
 &lt;/a&gt;; Wikipedia has an excellent &lt;a href=&#34;https://en.wikipedia.org/wiki/Tangent_space#Definition_via_tangent_curves&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
     summary
 &lt;/a&gt; of this, as does my blog (if I may say so myself).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Euler-Poincaré Equations</title>
+      <link>https://shirazkn.github.io/posts/ep/</link>
+      <pubDate>Thu, 19 Dec 2024 08:18:04 -0500</pubDate>
+      <guid>https://shirazkn.github.io/posts/ep/</guid>
+      <description>&lt;p&gt;Poincaré&amp;rsquo;s &lt;a href=&#34;https://www.ma.ic.ac.uk/~dholm/classnotes/M3-4A16-Poincare1901.pdf&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    1901 paper
+&lt;/a&gt;&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the &lt;a href=&#34;https://shirazkn.github.io/posts/symplectic/#variational-approach&#34; class=&#34;accented&#34;&gt;
+    Euler-Lagrange equations
+&lt;/a&gt; to the case where &lt;span&gt;a Lie group $G$ acts on the manifold $\mathcal Q$. In this case, vector fields on $\mathcal Q$ can be expressed in terms of the infinitesimal actions of the group, and the Euler-Lagrange equations reduce to the Euler-Poincaré equations.
+In what follows, I work through Poincaré&amp;rsquo;s paper without making too many &lt;a href=&#34;https://math.stackexchange.com/a/3415429&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    identifications
+&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Harmonic Analysis</title>

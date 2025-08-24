@@ -6,41 +6,43 @@
     --header-height: 60px;
     --footer-height: 60px;
     --radius: 8px;
-    --theme: rgb(255, 255, 255);
-    --entry: rgb(255, 255, 255);
+    --theme: rgb(254, 254, 254);
+    --landing-page: rgb(240, 241, 241);
+    --entry: rgb(251, 251, 251);
     --primary: rgb(30, 30, 30);
-    --secondary: rgb(108, 108, 108);
-    --tertiary: rgb(210, 210, 210);
+    --secondary: rgb(120, 121, 121); /* Post entry blurb */
+    --tertiary: rgb(195, 194, 194);  /* Post entry shadow */
     --content: rgb(31, 31, 31);
     --hljs-bg: rgb(28, 29, 33);
-    --code-bg: rgb(242, 242, 242);
-    --border: rgb(238, 238, 238);
-    --accent: rgb(160, 10, 87);
+    --code-bg: rgb(224, 223, 223); /* ToC */
+    --border: rgb(229, 228, 229);
+    --accent: rgb(188, 10, 92);
     --aside-border: rgb(255, 255, 255);
     --aside-border-bottom: var(--code-bg);
-    --darker: rgb(223, 223, 223);
+    --darker: rgb(203, 198, 195); /* The shadow for asides */
 }
 
 .dark {
-    --theme: rgb(29, 30, 32);
-    --entry: rgb(46, 46, 51);
-    --primary: rgb(218, 218, 219);
-    --secondary: rgb(155, 156, 157);
-    --tertiary: rgb(65, 66, 68);
-    --content: rgb(196, 196, 197);
+    --theme: rgb(05, 05, 05);
+    --entry: rgb(35, 35, 37);
+    --primary: rgb(229, 229, 229);
+    --secondary: rgb(125, 126, 125);
+    --tertiary: rgb(65, 66, 71);
+    --content: rgb(204, 204, 205);
     --hljs-bg: rgb(46, 46, 51);
     --code-bg: rgb(55, 56, 62);
-    --border: rgb(51, 51, 51);
+    --border: rgb(44, 44, 46);
     --accent: rgb(251, 152, 204);
-    --aside-border: rgb(65, 66, 68);
+    --aside-border: rgb(62, 61, 68);
     --aside-border-bottom: var(--aside-border);
-    --darker: rgb(0, 0, 0);
+    --darker: rgb(21, 17, 18);
+    --landing-page: rgb(13, 15, 12);
 }
 
 .list {
-    background: var(--code-bg);
+    background: var(--landing-page);
 }
 
 .dark.list {
-    background: var(--theme);
+    background: var(--landing-page);
 }

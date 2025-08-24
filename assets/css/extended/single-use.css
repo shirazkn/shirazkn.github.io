@@ -1,7 +1,8 @@
 div#logo-s {
     margin: auto;
-    height: 40vh;
-    width: 100hw;
+    height: 100%;
+    width: 20hw;
+    overflow: hidden;
 }
 
 div#logo-s svg .cls-black {
@@ -21,8 +22,8 @@ div#logo-s svg .cls-darkpink {
 }
 
 #black-gradient {
-    --color-1: #232323;
-    --color-2: #343434;
+    --color-1: #101010;
+    --color-2: #242424;
 }
 
 #darkpink-gradient {
@@ -60,7 +61,7 @@ div#logo-s svg {
     transform: translateY(0.1em) translateX(-0.25em);
     background: var(--primary);
     display: inline-block;
-    animation: cursor-blink 1.2s steps(1) infinite;
+    animation: cursor-blink 1.1s steps(1) infinite;
 }
 
 .inline-link {

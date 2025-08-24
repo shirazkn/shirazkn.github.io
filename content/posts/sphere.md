@@ -335,10 +335,6 @@ where we used the fact that $\Gamma_{21}^2=\Gamma_{12}^2$ for the Levi-Civita co
 
 We have only shown that $(X,Y)$ is not a parallel frame, which does not preclude the existence of another parallel coordinate frame.  Lee asks us to consider the point $(y^1, y^2, y^3)=(1,0,0)$ in $\mathbb R^3$, and show that there is no parallel coordinate frame near this point. By symmetry, the argument would extend to other points on the sphere. I omit the arguments here, but page $194$ of Lee's book outlines the process of constructing a parallel frame near $p=(1,0,0)$. The key idea is that such an attempt to construct a parallel vector field would both (i) coincide with $X$, and (ii) fail to be parallel.
 
-<aside class=aside-center>
-The insistence of the frame being a <i>coordinate frame</i> (i.e., pushforwards of coordinate vector fields) is crucial. There may exist local orthonormal frames on non-flat manifolds that are orthonormal or parallel but are not coordinate frames. See the last section of this post for further discussion.
-</aside>
-
 ---
 
 ## Some Stronger Claims

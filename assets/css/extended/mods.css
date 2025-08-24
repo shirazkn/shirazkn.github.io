@@ -20,7 +20,7 @@ body.dark figure.invertible img {
 }
 
 .post-entry {
-    border: 2.0px solid var(--border);
+    border: 1.4px solid var(--border);
     box-shadow: 0.5px 1.0px 0 0 var(--tertiary);
     transition: transform 0.03s;
 }

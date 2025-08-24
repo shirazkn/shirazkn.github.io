@@ -393,7 +393,7 @@ Higher-order derivatives are given by
 
 <!-- ### The Functional Derivative -->
 
-**[Functional Derivative](https://web.archive.org/web/20170217025324/https://www2.ee.washington.edu/techsite/papers/documents/UWEETR-2008-0001.pdf)**: This is yet another one of those unfortunately named (and notated) objects that in my opinion could simply be called the <span class=accented>differential</span>. Given $f:\mathbf E \rightarrow \mathbb R$, let ${\delta f}/{\delta x} \coloneqq df_{x}$ be the unique element of $T_x^*\mathbf E \cong \mathbf E^\ast$ that satisfies
+**[Functional Derivative](https://web.archive.org/web/20170217025324/https://www2.ee.washington.edu/techsite/papers/documents/UWEETR-2008-0001.pdf)**: This is yet another one of those unfortunately named (and notated) objects that in my opinion could simply be called the *differential* (or with some care, the *gradient*). Given $f:\mathbf E \rightarrow \mathbb R$, let ${\delta f}/{\delta x} \coloneqq df_{x}$ be the unique element of $T_x^*\mathbf E \cong \mathbf E^\ast$ that satisfies
 $$
 \mathbf D f(x)\cdot e =  \frac{\delta f}{\delta x} (e)
 $$
@@ -406,15 +406,14 @@ Again, I would have just written $df_x(e)$ for this, with $e$ interpreted as an 
 Thus, the functional derivative is a sort of "gradient" under the duality pairing, while the colloquial notion of a "gradient vector" uses the inner product pairing of $\mathbf E$ with itself.
 
 
-**Gradient (of a Functional)**: Let $(\mathcal M, \mu)$ be a measure space and $\mathbf E = C^0(\mathcal S)$ the vector space of continuous real-valued functions on $S\subseteq \mathcal M$, where $\mathcal S$ satisfies all of the assumptions that will be needed of it. A point $\varphi \in \mathbf E$ is a function of the form $\varphi:\mathcal S \rightarrow \mathbb R$. Let $f: \mathbf E \rightarrow \mathbb R$ be a <span class=accented>functional</span>, i.e., a meta function that eats lesser functions and spits out real numbers, so that $f(\varphi) \in \mathbb R$. We can let $\mathbf E = \mathbf F$ and consider the usual $L^2$ inner product on $\mathbf E$ when defining the gradient. Since $T_{\varphi} \mathbf E \cong \mathbf E$, the gradient of $f$ at $\varphi$,
-$$\frac{\delta f}{\delta \varphi}: \mathcal S \rightarrow \mathbb R,$$
-is itself viewed as (a vector in $\mathbf E$, and therefore) a function.
+**Gradient (of a Functional)**: Let $(\mathcal M, \mu)$ be a measure space and $\mathbf E = C^0(\mathcal S)$ the vector space of continuous real-valued functions on $\mathcal S\subseteq \mathcal M$, where $\mathcal S$ satisfies all of the assumptions that will be needed of it. A point $\varphi \in \mathbf E$ is a function of the form $\varphi:\mathcal S \rightarrow \mathbb R$. Let $f: \mathbf E \rightarrow \mathbb R$ be a <span class=accented>functional</span>, i.e., a meta function that eats lesser functions and spits out real numbers, so that $f(\varphi) \in \mathbb R$. We can let $\mathbf E = \mathbf F$ and consider the usual $L^2$ inner product on $\mathbf E$ when defining the gradient. 
 
-We see that the functional derivative takes the form
-
+When defining the functional derivative above, we used the duality pairing, which meant that the "gradient" ${\delta f}/{\delta \varphi}$ was a point in $\mathbf E^\ast$. But here, we want to use the $L^2$ inner product, so the gradient is instead a point in $\mathbf E$ defined by the following equality:
 $$
-\mathbf D f(\varphi)\cdot e = \int_{\mathcal S} \frac{\delta f}{\delta x}{\small(}s{\small)}\ e{\small(}s{\small)} \ d\mu{\small(}s{\small)}.
+\mathbf D f(\varphi)\cdot e = \int_{\mathcal S} \frac{\delta f}{\delta \varphi}{\small(}s{\small)}\ e{\small(}s{\small)} \ d\mu{\small(}s{\small)}
 $$
 
-Thus, the Euler-Lagrange equations are simply the conditions under which the gradient (i.e., functional derivative) of $f$ vanishes, as it must at critical points. 
+where we used the fact that $T_{\varphi} \mathbf E \cong \mathbf E$ to view $e$ as both, a tangent vector in $T_{\varphi} \mathbf E$ and a vector in $\mathbf E$ (which is in turn a function on $\mathcal S$). 
+
+Thus, the Euler-Lagrange equations are simply the conditions under which the gradient (i.e., functional derivative) of $f$ vanishes, as it must at critical points. However, be warned that the identifications we made above only work because the codomain of $\varphi$ has addition and multiplication.
 
