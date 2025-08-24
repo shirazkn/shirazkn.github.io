@@ -3,6 +3,7 @@ div#logo-s {
     height: 100%;
     width: 20hw;
     overflow: hidden;
+    opacity: 0;
 }
 
 div#logo-s svg .cls-black {
@@ -10,6 +11,7 @@ div#logo-s svg .cls-black {
   fill: url(#black-gradient);
   fill-rule: evenodd;
 }
+
 
 div#logo-s svg .cls-pink {
     fill: url(#pink-gradient);
@@ -21,21 +23,43 @@ div#logo-s svg .cls-darkpink {
     fill-rule: nonzero;
 }
 
+/* #black-gradient {
+    --color-1: var(--landing-page);
+    --color-2: #dfe8ed;
+} */
+
 #black-gradient {
-    --color-1: #101010;
-    --color-2: #242424;
+    --color-1: #626464;
+    --color-2: #171312;
+}
+
+.dark #black-gradient {
+    --color-1: #121212;
+    --color-2: #282828;
 }
 
 #darkpink-gradient {
-    --color-1: #5b193b;
-    --color-2: #b41a6a;
+    --color-1: #6a204a;
+    --color-2: #c64e81;
 }
+
 
 #pink-gradient {
     --color-1: #db327e99;
     --color-2: #ff51af;
+    --color-3: #fedeed;
+    --color-4: #f9a1cc;
+}
+
+.dark #darkpink-gradient {
+    --color-1: #5b193b;
+    --color-2: #b41a6a;
+}
+.dark #pink-gradient {
+    --color-1: #db327e99;
+    --color-2: #ff51af;
     --color-3: #f19dca;
-    --color-4: #f96bb7;
+    --color-4: #f161ac;
 }
 
 div#logo-s svg {

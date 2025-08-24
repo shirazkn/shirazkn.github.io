@@ -61,6 +61,15 @@ function get_keyframed_value(mean, variation, keyframe, symmetric=false) {
 window.onload = function(){
   set_visual_centre();
   [posX, posY] = [centreX, centreY];
+  // Fade the logo into view
+  var logo_elem = document.getElementById('logo-s');
+  if (logo_elem) {
+    logo_elem.style.opacity = 0;
+    logo_elem.style.transition = 'opacity 0.7s ease';
+    setTimeout(function() {
+      logo_elem.style.opacity = 1;
+    }, 10);
+  }
   set_keyframes();
   velX = 0.0;
   velY = 0.0;
@@ -95,7 +104,7 @@ function getScrollSpeed(callback) {
   if (isMobileDevice()) {
       let lastScrollTop = 0;
       let lastTimestamp = 0;
-      const maxScrollSpeed = 3000;
+      const maxScrollSpeed = 10000;
       const scrollEndTimeout = 10;
 
 
@@ -113,8 +122,8 @@ function getScrollSpeed(callback) {
           var distance = scrollTop - lastScrollTop;
           distance = distance*distance*Math.sign(distance);
 
-          const speed = (distance / timeDiff) * 1000; // pixels per second
-          scrollSpeed = Math.max(Math.min(speed / maxScrollSpeed, 1), -1);
+          const speed = (distance / timeDiff) * 2000; // pixels per second
+          scrollSpeed = 1.4*Math.max(Math.min(speed / maxScrollSpeed, 1), -1);
 
           // Reset values for the next iteration
           lastTimestamp = timestamp;
@@ -151,10 +160,10 @@ setInterval(function(){
     keyframeY = (keyframeY - 1)*1.2 + 1;
   }
   else if(scrollSpeed){
-    accelerate_towards(centreX, centreY + scrollSpeed*(centreY))
+    accelerate_towards(centreX - scrollSpeed*(centreX*0.3), centreY + scrollSpeed*(centreY))
     set_keyframes();
     if (scrollEnded){
-      scrollSpeed = scrollSpeed*0.1;
+      scrollSpeed = scrollSpeed*0.01;
     }
     keyframeX = (keyframeX - 1)*1.75 + 1;
     keyframeY = (keyframeY - 1)*1.75 + 1;
