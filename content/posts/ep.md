@@ -254,8 +254,8 @@ The object ${d\mathscr A}_\gamma $ [is written](/posts/symplectic#appendix) by M
 $$
 \begin{align}
 &\int_0^1 \left[\frac{\partial \mathscr L'}{\partial\,\gamma^i\,}\xi^j \overline  E_j^i + \frac{\partial \mathscr L'}{\partial\,\eta^j\,}\dot\xi^j  \ +\ \frac{\partial \mathscr L'}{\partial\,\eta^i\,}{\delta\hspace{-1.5pt}\eta}^{k} \xi^j c_{jk}^i\right]\hspace{1pt} dt,\\
-&=\int_0^1 \xi^j \left[\frac{\partial \mathscr L'}{\partial\,\gamma^i\,} \overline  E_j^i + \frac{d}{dt}\left(\frac{\partial \mathscr L'}{\partial\,\eta^j\,}\right)+ \frac{\partial \mathscr L'}{\partial\,\eta^i\,} {\delta\hspace{-1.5pt}\eta}^{k}c_{jk}^i\right]\hspace{1pt} dt\\
-&\qquad\qquad\qquad \int_0^1  \frac{d}{dt}\left(\frac{\partial \mathscr L'}{\partial\,\eta^j\,} \xi^j\right) dt =0.
+&=\int_0^1 \xi^j \left[\frac{\partial \mathscr L'}{\partial\,\gamma^i\,} \overline  E_j^i - \frac{d}{dt}\left(\frac{\partial \mathscr L'}{\partial\,\eta^j\,}\right)+ \frac{\partial \mathscr L'}{\partial\,\eta^i\,} {\delta\hspace{-1.5pt}\eta}^{k}c_{jk}^i\right]\hspace{1pt} dt\\
+&\qquad\qquad\qquad +\int_0^1  \frac{d}{dt}\left(\frac{\partial \mathscr L'}{\partial\,\eta^j\,} \xi^j\right) dt =0.
 \end{align}
 $$
 
@@ -269,7 +269,7 @@ For variations that fix the endpoints (I explain in the footnotes why we need th
 
 $$
 \begin{align}
-\frac{d}{dt}\left(\frac{\partial \mathscr L'}{\partial\,\eta^j\,}\right) = \frac{\partial \mathscr L'}{\partial\,\eta^i\,} {\delta\hspace{-1.5pt}\eta}^{k}c_{kj}^i - \frac{\partial \mathscr L'}{\partial\,\gamma^i\,} \overline  E_j^i .
+\frac{d}{dt}\left(\frac{\partial \mathscr L'}{\partial\,\eta^j\,}\right) = \frac{\partial \mathscr L'}{\partial\,\eta^i\,} {\delta\hspace{-1.5pt}\eta}^{k}c_{jk}^i + \frac{\partial \mathscr L'}{\partial\,\gamma^i\,} \overline  E_j^i .
 \end{align}
 $$
 
