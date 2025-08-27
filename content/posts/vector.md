@@ -14,9 +14,9 @@ To skip ahead to the punchline of this post, <span class=accented>a vector is an
 
 Before defining a vector space, we need to define a <span class=accented>field</span>. To jump ahead a bit, $\mathbb R$ and $\mathbb C$ (the real and complex numbers, respectively) are examples of fields. Data scientists typically use $\mathbb R$ as the underlying field for the vector spaces they are dealing with, but [control theorists](https://en.wikipedia.org/wiki/Control_theory) may work in a complex vector space, where the field under consideration may be $\mathbb C$.
 
-A field, $K$, is a set of objects, together with two binary operations -- <span class=accented>addition</span> and <span class=accented>multiplication</span> (which we denote by '$+$' and '$\times$'), that satisfy the so-called [field axioms](https://mathworld.wolfram.com/FieldAxioms.html). The field axioms are a set of rules that establish the associativity, commutativity, and distributivity of addition and multipication. For example, the addition operation is said to be associative if, for elements $a,b,$ and $c$ in $K$, $(a+b)+c=a+(b+c)$.  
+A field, $K$, is a set of objects, together with two binary operations -- <span class=accented>addition</span> and <span class=accented>multiplication</span> (which we denote by '$+$' and '$\times$'), that satisfy the so-called [field axioms](https://mathworld.wolfram.com/FieldAxioms.html). The field axioms are a set of rules that establish the associativity, commutativity, and distributivity of addition and multiplication. For example, the addition operation is said to be associative if, for elements $a,b,$ and $c$ in $K$, $(a+b)+c=a+(b+c)$.  
 
-In addition, the field axioms stipulate that there be (distinct) identity elements for '$+$' and '$\times$'. In the field $\mathbb R$, we have for $a\in \mathbb R$, $a+0=a$ and $a\times 1=a$, which make $0$ and $1$ the identity elements of addition and multiplication, respectively.
+In addition, the field axioms stipulate that there be (distinct) identity elements for '$+$' and '$\times$'. In the field $\mathbb R$, we have for $a\in \mathbb R$, $a+0=a$ and $a\times 1=a$, which make $0$ and $1$ the identity elements of addition and multiplication, respectively. Addition is invertible; multiplication is invertible with one exception -- multiplication by the additive inverse [is not invertible](https://math.stackexchange.com/questions/2375545/in-a-field-why-does-the-multiplicative-identity-have-an-additive-inverse-wherea).
 
 <h3 id="Vector-Space">Vector Space</h3>
 
@@ -51,7 +51,7 @@ We can add more ingredients to a vector space to give it more *structure*. I exp
 
 Thus, a vector may neither have a magnitude nor an direction! Someone who claims otherwise is perhaps referring to the inner product space $\mathbb R ^n$ (where the inner product is the so-called 'dot product'), which is a very specific example of a vector space.
 
-#### When does any of this matter?
+#### Does any of this matter?
 
 What we have done is developed an axiomatic characterization of a vector space. All of your favorite properties of vectors are now *theorems* that follow from these axioms. A key motivation for doing so is that it allows us to define a lot of useful vector spaces where the *vectors* can be anything from *functions* to *random variables*. Elements of these vector spaces behave like vectors ought to, so we can do linear algebra with them, for e.g., we can construct bases and linear transformations for them. Importantly, we can extend them to more "structured" spaces by adding additional ingredients such as norms and inner products.
 
