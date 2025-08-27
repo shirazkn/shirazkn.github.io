@@ -3,6 +3,7 @@ title: "Classical Mechanics on Manifolds"
 date: 2024-12-09T14:45:16+05:30
 draft: false
 showtoc: true
+tags: ["Mechanics"]
 ---
 
 Despite having encountered the Lagrangian and Hamiltonian formalisms of mechanics several times in a variety of engineering and physics settings, I had never been able to retain it in my memory. I had maintained a similar dissatisfaction with the many formulae of multivariable calculus, which only really ✨clicked✨ for me once I learned about the exterior derivative and the <a href=https://youtu.be/1lGM5DEdMaw?si%3Dk9NhFF7jNBcaEoGQ class=accented>generalized Stokes' theorem</a>. 
@@ -23,7 +24,7 @@ The non-degeneracy condition says that the skew-symmetric matrix $\Omega \colone
 Interestingly, since the skew symmetric matrices are singular (i.e., rank deficient) in odd dimensions, symplectic forms only exist on even-dimensional manifolds. We will say more about symplectic forms after considering a specific type of an even-dimensional manifold, namely the cotangent bundle (i.e., the "momentum phase-space").
 
 <!-- <aside class=aside-center> -->
-[^1]: [Recall](/posts/lie-groups_calculus) that the notation "$dx^i dx^j$" implicitly refers to the symmetric $2$-tensor, $\frac{1}{2}(dx^i \otimes dx^j + dx^j \otimes dx^i)$. 
+[^1]: [Recall](/posts/lie-groups_riemannian) that the notation "$dx^i dx^j$" implicitly refers to the symmetric $2$-tensor, $\frac{1}{2}(dx^i \otimes dx^j + dx^j \otimes dx^i)$. 
 <!-- </aside> -->
 
 ----

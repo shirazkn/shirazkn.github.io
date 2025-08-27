@@ -6,7 +6,7 @@ tags: ["Differential Geometry"]
 ---
 
 I will construct the Haar measure for $SO(3)$ and pull it back to the axis-angle parametrization of orthogonal matrices. The goal is to be able to integrate (and thereby define probability densities) on $SO(3)$.
-My [earlier post](/posts/lie-groups_calculus) on the Riemannian volume form is a prerequisite, though you could also just skip over any equations involving exterior calculus (distinguished by the use of the "$\wedge$" operation) and focus on the computations done in axis-angle coordinates.
+My [earlier post](/posts/lie-groups_riemannian) on the Riemannian volume form is a prerequisite, though you could also just skip over any equations involving exterior calculus (distinguished by the use of the "$\wedge$" operation) and focus on the computations done in axis-angle coordinates.
 
 ## The Riemannian Volume Form 🪐
 Let the basis for $\mathfrak{so}(3)$ be given by 

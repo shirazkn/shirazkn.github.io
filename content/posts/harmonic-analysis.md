@@ -2,6 +2,8 @@
 title: "Harmonic Analysis"
 date: 2024-12-12T13:02:50+05:30
 draft: false
+tags: ["Harmonic Analysis"]
+summary: The Fourier transform maps a complex-valued function to a function on its Pontryagin dual space. Generalizations of this concept to non-Abelian compact and locally compact Lie groups are reviewed.
 ---
 
 The <span class=accented>Fourier transform</span> in $\mathbb R^n$ maps a complex-valued function $f:\mathbb R^n \rightarrow \mathbb C$ to a function of its [Pontryagin dual](https://en.wikipedia.org/wiki/Pontryagin_duality) space (which is in this case also $\mathbb R^n$), $\ \hat f:\mathbb R^n \rightarrow \mathbb C$, given by

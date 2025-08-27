@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Harmonic Analysis | Shiraz</title>
+<meta name="keywords" content="Harmonic Analysis">
+<meta name="description" content="The Fourier transform maps a complex-valued function to a function on its Pontryagin dual space. Generalizations of this concept to non-Abelian compact and locally compact Lie groups are reviewed.">
+<meta name="author" content="">
+<link rel="canonical" href="https://shirazkn.github.io/posts/harmonic-analysis/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f5ca332d9091b7acc64659019f3dba91ed18f43a44cfe3b30391a96170c1399b.css" integrity="sha256-9cozLZCRt6zGRlkBnz26ke0Y9DpEz&#43;OzA5GpYXDBOZs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://shirazkn.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://shirazkn.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://shirazkn.github.io/posts/harmonic-analysis/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      packages: {'[+]': ['mathtools']},
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['\\(', '\\)'], ['$', '$']]  
+    },
+    loader:{
+      load: ['ui/safe', '[tex]/mathtools']
+    },
+  };
+</script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:url" content="https://shirazkn.github.io/posts/harmonic-analysis/">
+  <meta property="og:site_name" content="Shiraz">
+  <meta property="og:title" content="Harmonic Analysis">
+  <meta property="og:description" content="The Fourier transform maps a complex-valued function to a function on its Pontryagin dual space. Generalizations of this concept to non-Abelian compact and locally compact Lie groups are reviewed.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-12-12T13:02:50+05:30">
+    <meta property="article:modified_time" content="2024-12-12T13:02:50+05:30">
+    <meta property="article:tag" content="Harmonic Analysis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Harmonic Analysis">
+<meta name="twitter:description" content="The Fourier transform maps a complex-valued function to a function on its Pontryagin dual space. Generalizations of this concept to non-Abelian compact and locally compact Lie groups are reviewed.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://shirazkn.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Harmonic Analysis",
+      "item": "https://shirazkn.github.io/posts/harmonic-analysis/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Harmonic Analysis",
+  "name": "Harmonic Analysis",
+  "description": "The Fourier transform maps a complex-valued function to a function on its Pontryagin dual space. Generalizations of this concept to non-Abelian compact and locally compact Lie groups are reviewed.",
+  "keywords": [
+    "Harmonic Analysis"
+  ],
+  "articleBody": "The Fourier transform in $\\mathbb R^n$ maps a complex-valued function $f:\\mathbb R^n \\rightarrow \\mathbb C$ to a function of its Pontryagin dual space (which is in this case also $\\mathbb R^n$), $\\ \\hat f:\\mathbb R^n \\rightarrow \\mathbb C$, given by\n$$ \\begin{align*} \\hat f\u0026(\\boldsymbol \\omega) \\\\\u0026\\coloneqq \\int_{\\mathbb R^n} f(\\mathbf x) e^{-i\\hspace{1pt} 2\\pi \\langle \\boldsymbol \\omega, \\mathbf x\\rangle} d\\mathbf x\\\\ \u0026= \\int_{\\mathbb R}\\cdots\\int_{\\mathbb R} f(\\mathbf x) \\left(e^{-i \\hspace{1pt}2\\pi \\omega^1 x^1}\\cdots e^{-i \\hspace{1pt}2\\pi \\omega^n x^n}\\right) dx^1 \\cdots dx^n\\\\ \u0026= \\cdots \\left(\\int_{\\mathbb R}\\left(\\int_{\\mathbb R} f(\\mathbf x) e^{-i\\hspace{1pt}2\\pi \\omega^1 x^1}dx^1 \\right) e^{-i\\hspace{1pt}2\\pi \\omega^2 x^2} dx^2 \\right)\\cdots \\end{align*} $$That is, it performs the Fourier transform (FT) along each dimension, in succession. On compact quotients of $\\mathbb R^n$, like $\\mathbb T^n \\cong \\mathbb R^n/\\mathbb Z^n$ (where each $\\mathbb T\\cong S^1$ is the one-dimensional torus ), this becomes a Fourier series .\nDiscretization \u0026 Computation Since we know that the $n$-dimensional FT is really just the one-dimensional FT iterated, let’s restrict to the latter. Consider a function $f: \\mathbb R \\rightarrow \\mathbb C$ that has been sampled on a regularly-spaced lattice in $\\mathbb R$, i.e., a set of points $(x_j)_{j\\in \\mathbb Z}$ with $\\Delta \\coloneqq(x_j - x_{j-1})$ denoting the “sampling period”. For simplicity, let $x_0 = 0$ so that $x_j = j \\Delta$. The Fourier transform integral can be discretized such that the resulting summation only depends on the information we have access to:\n$$ \\tilde f(\\omega) \\coloneqq \\sum_{j\\in \\mathbb Z} f(x_j) e^{-i\\hspace{1pt}2\\pi \\omega x_j} \\Delta \\approx \\int_{\\mathbb R} f(x) e^{-i\\hspace{1pt}2\\pi \\omega x}dx = \\hat f(\\omega). $$Now,\n$$ \\begin{align*} \\tilde f(\\omega + \\tfrac{1}{\\Delta}) \u0026= \\sum_{j\\in \\mathbb Z} f(x_j) e^{-i\\hspace{1pt}2\\pi \\left(\\omega + \\tfrac{1}{\\Delta} \\right)j\\Delta} \\Delta\\\\ \u0026= \\sum_{j\\in \\mathbb Z} f(x_j) e^{-i\\hspace{1pt}2\\pi \\omega j \\Delta} \\Delta \\\\ \u0026= \\tilde f(\\omega), \\end{align*} $$showing that $\\tilde f$ is periodic with period $\\tfrac{1}{\\Delta}$. The transform $f \\mapsto \\tilde f$ is called the Discrete-Time Fourier Transform (DTFT). The periodicity of $\\tilde f$ introduces limits in the inverse transform.\nIf we have only a finite number of samples $(x_i)_{i=0}^{N-1}$, then we obtain the (rather confusingly named) Discrete Fourier Transform (DFT) . To do this, we assume that the samples are periodic with period $N$; either this periodicity is due to the underlying periodicity of $f$, or we naively let the function be periodic outside $[0, N\\Delta] \\subseteq \\mathbb Z$ because we do not care about the behavior of $f$ outside of this domain. In either case,\n$$ \\begin{align} \\tilde f(\\omega) \u0026= \\sum_{j\\in \\mathbb Z} f(x_j) e^{-i\\hspace{1pt}2\\pi \\omega j \\Delta} \\Delta \\\\ \u0026= \\sum_{k\\in \\mathbb Z}\\sum_{j=0}^{N-1} f(x_j) e^{-i\\hspace{1pt}2\\pi \\omega (k N + j) \\Delta} \\Delta\\\\ \u0026= \\sum_{j=0}^{N-1} f(x_j) \\left(\\sum_{k\\in \\mathbb Z}e^{-i\\hspace{1pt}2\\pi \\omega k N \\Delta}\\right) e^{-i\\hspace{1pt}2\\pi \\omega j \\Delta}\\Delta \\end{align} $$Using the (rather mysterious) Poisson summation formula , we get\n$$ \\begin{align} \\tilde f(\\omega) \u0026= \\sum_{j=0}^{N-1} f(x_j) \\left(2\\pi \\sum_{k\\in \\mathbb Z} \\delta(\\omega N \\Delta + k) \\right) e^{-i\\hspace{1pt}2\\pi \\omega j \\Delta}\\Delta \\end{align} $$Thus, the DTFT of a periodic sequence is non-zero precisely when $\\omega N \\Delta$ is an integer, i.e., $\\omega = \\ell/N\\Delta$ for some $\\ell \\in\\mathbb Z$. Since\n$$\\tilde f\\left(\\frac{\\ell + N}{N\\Delta}\\right) = \\tilde f\\left(\\frac{\\ell}{N\\Delta} + \\frac{1}{\\Delta}\\right) = \\tilde f\\left(\\frac{\\ell}{N\\Delta}\\right),$$it is $N$-periodic in the Fourier domain; we only need to compute $N$ coefficients to realize this transform. In summary, the DFT can be thought of as “the DTFT of a finite sequence of samples”, as computed under the assumption that the function is periodic outside the domain of the observed samples. In turn, the DTFT is simply a discretization of the FT. I present this table from Wikipedia :\nTime/Spatial Domain Frequency Domain Transform Name Discrete / Periodic Discrete / Periodic Discrete Fourier Transform (DFT) Continuous / Periodic Discrete / Aperiodic Fourier Series Discrete / Aperiodic Continuous / Periodic Discrete-Time Fourier Transform (DTFT) Continuous / Aperiodic Continuous / Aperiodic Fourier Transform (FT) Finally, the Fast Fourier Transform (FFT) is just a way to compute the DFT efficiently by exploiting the underlying redundancy of the computations. MATLAB has a function for computing the $n$-dimensional FFT, whose documentation mentions that this is mathematically just the one-dimensional FFT iterated.\nThe Compact, Non-Abelian Case So we know how the FT works on locally compact (which essentially means noncompact) abelian groups. Now, the theory of Pontryagin duality breaks down on non-abelian groups.1 We can nonetheless ask whether a function $f:G \\rightarrow \\mathbb C$ may be transformed, without loss of information, into another function $\\hat f: \\hat G \\rightarrow \\mathbb C$, where $\\hat G$ is some sort of a dual space. The answer is yes, but the details are intricate.\nInstead of things like $e^{-i \\omega x}$, one needs to introduce the so-called irreducible unitary representations (IURs) of $G$ (in the abelian case, these are called characters and constitute a group). A representation $U:G \\rightarrow GL(V)$ is a group homomorphism from $G$ to the invertible linear operators on some vector space $V$. It is said to be unitary if ($V$ comes with an inner product, and) $U(g)$ is a unitary operator for all $g \\in G$. We won’t worry about what irreducible means, here, but it is a crucial ingredient in this theory. Note that $U(g^{-1}) = U(g)^{-1} = U(g)^{\\dagger}$. For instance, $e^{i\\omega x}$ is an IUR of $\\mathbb R$, whose complex conjugate is $e^{-i\\omega x}$. For $SU(2)$, the IURs act on homogeneous polynomials (which can be given a vector space structure). A subset of the $SU(2)$ IURs become the IURs for $SO(3)$ (see Unitary Representations by Mitsuo Sugiora, Thm. 7.1).\nThe dual space $\\hat G$ is the space of all (equivalence classes of) IURs of $G$ (the details are outside of our scope). Let’s say that the equivalence classes of IURs can be parameterized by some $\\lambda$, so that $\\big(\\hspace{1pt} U^\\lambda \\mathrel\\vert \\lambda \\in \\hat G \\big)$ represents all the distinct IURs (i.e., does not double-count any that are equivalent). The Fourier transform of $f$ (square-integrable function on $G$) is then given by2\n$$\\hat f(\\lambda) = \\int_G f(g) U^\\lambda(g^{-1}) dg= \\int_G f(g) \\left(U^\\lambda(g)\\right)^{\\dagger} dg,$$where $dg$ is the Haar measure on $G$ and $\\hat f(\\lambda)$ is an operator. If we choose a basis $(\\mathbf e_i)_{i=1}^{\\textrm{dim}(V^\\lambda)}$ for $V^\\lambda$ (i.e., the vector space that $U^\\lambda$ acts on), then we can compute the $(i,j)^{th}$ component of $\\hat f(\\lambda)$ as\n$$\\hat f(\\lambda)_{ij} = \\int_G f(g) \\left[\\left(U^\\lambda(g)\\right)^{\\dagger}\\right]_{ij} dg. $$The inverse Fourier transform (which hinges on the Peter-Weyl theorem) is given by (Thm. 8.1 of Sugiura)\n$$ \\begin{align} f(g) \u0026= \\sum_{\\lambda \\in \\hat G} \\textrm{dim}(V^\\lambda) \\left(\\sum_{i,j=1}^{\\textrm{dim}(V^\\lambda)} \\hat f(\\lambda) _{ji}U^\\lambda(g)_{ij}\\right)\\\\ \u0026= \\sum_{\\lambda \\in \\hat G} \\textrm{dim}(V^\\lambda) \\,\\mathrm{Trace}\\left( \\hat f(\\lambda)U^\\lambda(g)\\right). \\end{align} $$In the case of $SO(3)$, the IURs $U^\\lambda(g)$ are the Wigner $D$-matrices, $\\lambda$ ranges over the nonnegative integers, and $\\textrm{dim}(V^\\lambda) = 2\\lambda + 1$. As in the case of the classical Fourier transform, compactness of the original domain implies that the IUR-space (i.e., frequency domain) is discrete.\nAny representation of the group yields a corresponding representation of the Lie algebra:\n$$ u^\\lambda(X) \\coloneqq \\frac{d}{dt}U^\\lambda\\left(\\exp(tX)\\right)\\bigg\\vert_{t=0}. $$This object gives a commutative diagram for the actions of the left-invariant vector fields (LIVFs) on $f$. If $X^L$ is the LIVF generated by $X\\in \\mathfrak g$, then\n$$ \\widehat{X^L f}(\\lambda) = -u^\\lambda(X)\\hat f(\\lambda), $$$$ \\widehat{X^R f}(\\lambda) = -\\hat f(\\lambda)u^\\lambda(X). $$Other classical results, like the Parseval/Plancheral identity and the convolution theorem hold, but the convolution is generally non-commutative.\nThe Locally Compact, Non-Abelian Case The theory gets more complicated here, and the literature sparse. The IURs are parametrized by the positive real numbers (i.e., $\\lambda \u003e0$). As we are no longer on a compact domain, the space of (equivalence classes of) IURs is continuous.\nThe IURs of $SE(2)$ act on the $L^2$ space of functions on the circle; or rather, we will think of these as functions on $SO(2)$. Letting $\\phi \\in SO(2)$ a point and $\\zeta\\in L^2(SO(2))$ a function on the circle, respectively, we define\n$$ \\left[U^\\lambda (g) \\zeta\\right](\\phi)\\coloneqq e^{-i \\lambda \\hspace{1pt}(\\hspace{1pt}{\\mathbf t}_x\\cos \\phi \\hspace{1pt}+\\hspace{1pt} {\\mathbf t}_y \\sin \\phi)} \\zeta(\\phi - \\theta) $$where $g\\coloneq(\\theta, \\mathbf t) \\in SE(2)$ is the element being represented. Here, $U^\\lambda(g) \\zeta$ represents the action of $U^\\lambda(g)$ on $\\zeta$, whose result is another function on $SO(2)$. With these definitions, the Fourier transform of $SE(2)$ looks identical to the one in the compact case. To find the component-wise description of the transform, consider the basis $(e^{ik\\phi})_{k\\in \\mathbb Z}$ for functions on the circle (with the circle identified with $\\mathbb R/2\\pi\\mathbb Z$), and let $\\left[U^\\lambda(g)\\right]_{mn} = \\langle e^{im\\phi}, U^\\lambda(g)e^{in\\phi}\\rangle$. The $SE(2)$ Fourier transform then becomes (see Chirikjian \u0026 Kyatkin, Sec. 11.2) $$ \\begin{align} \\hat f_{mn}(\\lambda) = \u0026\\int_{\\mathbb R^2} \\int_0^{2\\pi} \\int_0^{2\\pi} f(\\theta, \\mathbf t) e^{in\\phi} \\nonumber \\\\\u0026e^{i \\lambda \\hspace{1pt}(\\hspace{1pt}{\\mathbf t}_x\\cos \\phi \\hspace{1pt}+\\hspace{1pt} {\\mathbf t}_y \\sin \\phi)}e^{-im(\\phi - \\theta)} \\hspace{1pt}d\\phi \\hspace{1pt}d\\theta \\hspace{1pt}d {\\mathbf t}_x d{\\mathbf t}_y. \\end{align} $$However, the inverse Fourier transform given above doesn’t make sense since $V^\\lambda$ is infinite-dimensional. Rather, we have\n$$ \\begin{align} f(g) \u0026= \\int_0^\\infty \\left(\\sum_{i,j\\in \\mathbb Z} \\hat f(\\lambda) _{ji}U^\\lambda(g)_{ij}\\right) \\lambda\\, d\\lambda\\\\ \u0026= \\int_0^\\infty \\mathrm{Trace}\\big(\\hat f(\\lambda)U^\\lambda(g)\\big) \\lambda\\, d\\lambda. \\end{align} $$When I first saw this, I wondered if the extra $\\lambda$ in “$\\lambda\\,d\\lambda$” was a typo!\nIn the $SE(3)$ case, the IURs act on functions on the sphere, which can be expanded in the basis of spherical harmonics. We incur a `$\\lambda^2 d\\lambda$’ term in the inverse transform. Rather than repeating the details, I recommend the tutorial article GS Chirikjian, Degenerate Diffusions and Harmonic Analysis on SE(3): A Tutorial (2015) written by my postdoc advisor.\nAn extension of it does exist for the compact non-abelian case. Locally compact non-abelian groups (like $SE(n)$) are out of the question. ↩︎\nSee A Course an Abstract Harmonic Analysis by Folland (Sec. 4.2) or Chirikjian and Kyatkin (Sec. 8.3.2). ↩︎\n",
+  "wordCount" : "1565",
+  "inLanguage": "en",
+  "datePublished": "2024-12-12T13:02:50+05:30",
+  "dateModified": "2024-12-12T13:02:50+05:30",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://shirazkn.github.io/posts/harmonic-analysis/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shiraz",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://shirazkn.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://shirazkn.github.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shirazkn.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shirazkn.github.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Harmonic Analysis
+    </h1>
+    <div class="post-meta"><span title='2024-12-12 13:02:50 +0530 +0530'>December 12, 2024</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>The <span class=accented>Fourier transform</span> in $\mathbb R^n$ maps a complex-valued function $f:\mathbb R^n \rightarrow \mathbb C$ to a function of its <a href="https://en.wikipedia.org/wiki/Pontryagin_duality" target="_blank" class="accented">
+    Pontryagin dual
+</a> space (which is in this case also $\mathbb R^n$), $\ \hat f:\mathbb R^n \rightarrow \mathbb C$, given by</p>
+$$
+\begin{align*}
+\hat f&(\boldsymbol \omega) \\&\coloneqq \int_{\mathbb R^n} f(\mathbf x) e^{-i\hspace{1pt} 2\pi \langle \boldsymbol \omega, \mathbf x\rangle} d\mathbf x\\
+&= \int_{\mathbb R}\cdots\int_{\mathbb R} f(\mathbf x) \left(e^{-i \hspace{1pt}2\pi \omega^1 x^1}\cdots e^{-i \hspace{1pt}2\pi \omega^n x^n}\right) dx^1 \cdots dx^n\\
+&= \cdots \left(\int_{\mathbb R}\left(\int_{\mathbb R} f(\mathbf x) e^{-i\hspace{1pt}2\pi \omega^1 x^1}dx^1 \right) e^{-i\hspace{1pt}2\pi \omega^2 x^2} dx^2 \right)\cdots 
+\end{align*}
+$$<p>That is, it performs the Fourier transform (FT) along each dimension, in succession. On compact quotients of $\mathbb R^n$, like $\mathbb T^n \cong \mathbb R^n/\mathbb Z^n$ (where each $\mathbb T\cong S^1$ is the one-dimensional <a href="https://en.wikipedia.org/wiki/Torus" target="_blank" class="accented">
+    torus
+</a>), this becomes a <a href="/posts/fourier" class="accented">
+    Fourier series
+</a>.</p>
+<h2 id="discretization--computation">Discretization &amp; Computation<a hidden class="anchor" aria-hidden="true" href="#discretization--computation">#</a></h2>
+<p>Since we know that the $n$-dimensional FT is really just the one-dimensional FT iterated, let&rsquo;s restrict to the latter. Consider a function $f: \mathbb R \rightarrow \mathbb C$ that has been sampled on a regularly-spaced <span class=accented>lattice</span> in $\mathbb R$, i.e., a set of points $(x_j)_{j\in \mathbb Z}$ with $\Delta \coloneqq(x_j - x_{j-1})$ denoting the &ldquo;sampling period&rdquo;. For simplicity, let $x_0 = 0$ so that $x_j = j \Delta$.
+The Fourier transform integral can be discretized such that the resulting summation only depends on the information we have access to:</p>
+$$ \tilde f(\omega) \coloneqq \sum_{j\in \mathbb Z} f(x_j) e^{-i\hspace{1pt}2\pi \omega x_j} \Delta  \approx \int_{\mathbb R} f(x) e^{-i\hspace{1pt}2\pi \omega x}dx = \hat f(\omega). $$<p>Now,</p>
+<!-- 
+<p>
+\[
+    \begin{align*}
+
+    \end{align*}
+\]
+</p> 
+-->
+$$
+    \begin{align*}
+\tilde f(\omega + \tfrac{1}{\Delta}) &= \sum_{j\in \mathbb Z} f(x_j) e^{-i\hspace{1pt}2\pi \left(\omega + \tfrac{1}{\Delta} \right)j\Delta} \Delta\\
+&= \sum_{j\in \mathbb Z} f(x_j) e^{-i\hspace{1pt}2\pi \omega j \Delta} \Delta
+    \\
+    &= \tilde f(\omega),
+    \end{align*}
+$$<p>showing that $\tilde f$ is periodic with period $\tfrac{1}{\Delta}$. The transform $f \mapsto \tilde f$ is called the <a href="https://en.wikipedia.org/wiki/Discrete-time_Fourier_transform" target="_blank" class="accented">
+    Discrete-Time Fourier Transform
+</a> (DTFT). The periodicity of $\tilde f$ introduces limits in the inverse transform.</p>
+<p>If we have only a finite number of samples $(x_i)_{i=0}^{N-1}$, then we obtain the (rather confusingly named) <a href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform#Definition" target="_blank" class="accented">
+    Discrete Fourier Transform (DFT)
+</a>. To do this, we assume that the samples are periodic with period $N$; either this periodicity is due to the underlying periodicity of $f$, or we naively let the function be periodic outside $[0, N\Delta] \subseteq \mathbb Z$ because we do not care about the behavior of $f$ outside of this domain. In either case,</p>
+$$
+    \begin{align}
+\tilde f(\omega) &= \sum_{j\in \mathbb Z} f(x_j) e^{-i\hspace{1pt}2\pi \omega j \Delta} \Delta \\
+&= \sum_{k\in \mathbb Z}\sum_{j=0}^{N-1} f(x_j) e^{-i\hspace{1pt}2\pi \omega (k N + j) \Delta} \Delta\\
+&= \sum_{j=0}^{N-1} f(x_j) \left(\sum_{k\in \mathbb Z}e^{-i\hspace{1pt}2\pi \omega k N  \Delta}\right) e^{-i\hspace{1pt}2\pi \omega j \Delta}\Delta
+\end{align}
+$$<p>Using the (rather mysterious) <a href="/posts/fourier#the-poisson-summation-formula" class="accented">
+    Poisson summation formula
+</a>, we get</p>
+$$
+    \begin{align}
+\tilde f(\omega) 
+&= \sum_{j=0}^{N-1} f(x_j) \left(2\pi \sum_{k\in \mathbb Z} \delta(\omega N \Delta + k) \right) e^{-i\hspace{1pt}2\pi  \omega j \Delta}\Delta
+\end{align}
+$$<p>Thus, the DTFT of a periodic sequence is non-zero precisely when $\omega N \Delta$ is an integer, i.e., $\omega = \ell/N\Delta$ for some $\ell \in\mathbb Z$. Since</p>
+$$\tilde f\left(\frac{\ell + N}{N\Delta}\right) = \tilde f\left(\frac{\ell}{N\Delta} + \frac{1}{\Delta}\right) = \tilde f\left(\frac{\ell}{N\Delta}\right),$$<p>it is $N$-periodic in the Fourier domain; we only need to compute $N$ coefficients to realize this transform. In summary, the DFT can be thought of as &ldquo;the DTFT of a finite sequence of samples&rdquo;, as computed under the assumption that the function is periodic outside the domain of the observed samples. In turn, the DTFT is simply a discretization of the FT. I present this table from <a href="https://en.wikipedia.org/wiki/Harmonic_analysis#Fourier_analysis" target="_blank" class="accented">
+    Wikipedia
+</a>:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Time/Spatial Domain</th>
+          <th>Frequency Domain</th>
+          <th>Transform Name</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Discrete / Periodic</td>
+          <td>Discrete / Periodic</td>
+          <td>Discrete Fourier Transform (DFT)</td>
+      </tr>
+      <tr>
+          <td>Continuous / Periodic</td>
+          <td>Discrete / Aperiodic</td>
+          <td>Fourier Series</td>
+      </tr>
+      <tr>
+          <td>Discrete / Aperiodic</td>
+          <td>Continuous / Periodic</td>
+          <td>Discrete-Time Fourier Transform (DTFT)</td>
+      </tr>
+      <tr>
+          <td>Continuous / Aperiodic</td>
+          <td>Continuous / Aperiodic</td>
+          <td>Fourier Transform (FT)</td>
+      </tr>
+  </tbody>
+</table>
+<p>Finally, the <a href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform#Definition" target="_blank" class="accented">
+    Fast Fourier Transform (FFT)
+</a> is just a way to compute the DFT efficiently by exploiting the underlying redundancy of the computations. MATLAB has <a href="https://www.mathworks.com/help/matlab/ref/fftn.html" target="_blank" class="accented">
+    a function
+</a> for computing the $n$-dimensional FFT, whose documentation mentions that this is mathematically just the one-dimensional FFT iterated.</p>
+<h2 id="the-compact-non-abelian-case">The Compact, Non-Abelian Case<a hidden class="anchor" aria-hidden="true" href="#the-compact-non-abelian-case">#</a></h2>
+<p>So we know how the FT works on locally compact (which essentially means noncompact) abelian groups.
+Now, the theory of Pontryagin duality breaks down on non-abelian groups.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> We can nonetheless ask whether a function $f:G \rightarrow \mathbb C$
+may be transformed, without loss of information, into another function $\hat f: \hat G \rightarrow \mathbb C$, where $\hat G$ is some sort of a <em>dual space</em>. The answer is yes, but the details are intricate.</p>
+<p>Instead of things like $e^{-i \omega x}$, one needs to introduce the so-called <span class=accented>irreducible unitary representations</span> (IURs) of $G$ (in the abelian case, these are called <em>characters</em> and constitute a group). A <span class=accented>representation</span> $U:G \rightarrow GL(V)$ is a group homomorphism from $G$ to the invertible linear operators on some vector space $V$. It is said to be <span class=accented>unitary</span> if ($V$ comes with an inner product, and) $U(g)$ is a unitary operator for all $g \in G$. We won&rsquo;t worry about what <em>irreducible</em> means, here, but it is a crucial ingredient in this theory. Note that $U(g^{-1}) = U(g)^{-1} = U(g)^{\dagger}$. For instance, $e^{i\omega x}$ is an IUR of $\mathbb R$, whose complex conjugate is $e^{-i\omega x}$. For $SU(2)$, the IURs act on homogeneous polynomials (which can be given a vector space structure). A subset of the $SU(2)$ IURs become the IURs for $SO(3)$ (see <em>Unitary Representations</em> by Mitsuo Sugiora, Thm. 7.1).</p>
+<p>The dual space $\hat G$ is the space of all (equivalence classes of) IURs of $G$ (the details are outside of our scope). Let&rsquo;s say that the equivalence classes of IURs can be parameterized by some $\lambda$, so that $\big(\hspace{1pt} U^\lambda \mathrel\vert \lambda \in \hat G \big)$ represents all the distinct IURs (i.e., does not double-count any that are equivalent). The <span class=accented>Fourier transform</span> of $f$ (square-integrable function on $G$) is then given by<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+$$\hat f(\lambda) = \int_G f(g) U^\lambda(g^{-1}) dg= \int_G f(g) \left(U^\lambda(g)\right)^{\dagger} dg,$$<p>where $dg$ is the Haar measure on $G$ and $\hat f(\lambda)$ is an operator.
+If we choose a basis $(\mathbf e_i)_{i=1}^{\textrm{dim}(V^\lambda)}$ for $V^\lambda$ (i.e., the vector space that $U^\lambda$ acts on), then we can compute the $(i,j)^{th}$ component of $\hat f(\lambda)$ as</p>
+$$\hat f(\lambda)_{ij} = \int_G f(g) \left[\left(U^\lambda(g)\right)^{\dagger}\right]_{ij} dg.
+$$<p>The <span class=accented>inverse Fourier transform</span> (which hinges on the Peter-Weyl theorem) is given by (Thm. 8.1 of Sugiura)</p>
+$$
+\begin{align}
+    f(g) &=  \sum_{\lambda \in \hat G} \textrm{dim}(V^\lambda) \left(\sum_{i,j=1}^{\textrm{dim}(V^\lambda)} \hat f(\lambda) _{ji}U^\lambda(g)_{ij}\right)\\
+    &=  \sum_{\lambda \in \hat G} \textrm{dim}(V^\lambda) \,\mathrm{Trace}\left( \hat f(\lambda)U^\lambda(g)\right).
+    \end{align}
+$$<p>In the case of $SO(3)$, the IURs $U^\lambda(g)$ are the Wigner $D$-matrices, $\lambda$ ranges over the nonnegative integers, and $\textrm{dim}(V^\lambda) = 2\lambda + 1$.
+As in the case of the classical Fourier transform, compactness of the original domain implies that the IUR-space (i.e., frequency domain) is discrete.</p>
+<p>Any representation of the group yields a corresponding representation of the Lie algebra:</p>
+$$
+u^\lambda(X) \coloneqq \frac{d}{dt}U^\lambda\left(\exp(tX)\right)\bigg\vert_{t=0}.
+$$<p>This object gives a commutative diagram for the actions of the left-invariant vector fields (LIVFs) on $f$. If $X^L$ is the LIVF generated by $X\in \mathfrak g$, then</p>
+$$
+\widehat{X^L f}(\lambda) = -u^\lambda(X)\hat f(\lambda),
+$$$$
+\widehat{X^R f}(\lambda) = -\hat f(\lambda)u^\lambda(X).
+$$<p>Other classical results, like the Parseval/Plancheral identity and the convolution theorem hold, but the convolution is generally non-commutative.</p>
+<!-- Since a Lie algebra homomorphism shoud preserve the bracket,
+
+$$
+\widehat{[X^L, Y^L] f}(\lambda) = ...
+$$ -->
+<h2 id="the-locally-compact-non-abelian-case">The Locally Compact, Non-Abelian Case<a hidden class="anchor" aria-hidden="true" href="#the-locally-compact-non-abelian-case">#</a></h2>
+<p>The theory gets more complicated here, and the literature sparse. The IURs are parametrized by the positive real numbers (i.e., $\lambda >0$). As we are no longer on a compact domain, the space of (equivalence classes of) IURs is continuous.</p>
+<p>The IURs of $SE(2)$ act on the $L^2$ space of functions on the circle; or rather, we will think of these as functions on $SO(2)$. Letting $\phi \in  SO(2)$ a point and $\zeta\in L^2(SO(2))$ a function on the circle, respectively, we define</p>
+$$
+\left[U^\lambda 
+(g) \zeta\right](\phi)\coloneqq e^{-i \lambda \hspace{1pt}(\hspace{1pt}{\mathbf t}_x\cos \phi \hspace{1pt}+\hspace{1pt} {\mathbf t}_y \sin \phi)} \zeta(\phi - \theta)
+$$<p>where $g\coloneq(\theta, \mathbf t) \in SE(2)$ is the element being represented. Here, $U^\lambda(g) \zeta$ represents the action of $U^\lambda(g)$ on $\zeta$, whose result is another function on $SO(2)$. With these definitions, the <span class=accented>Fourier transform</span> of $SE(2)$ looks identical to the one in the compact case. To find the component-wise description of the transform, consider the basis $(e^{ik\phi})_{k\in \mathbb Z}$ for functions on the circle (with the circle identified with $\mathbb R/2\pi\mathbb Z$), and let $\left[U^\lambda(g)\right]_{mn} = \langle e^{im\phi}, U^\lambda(g)e^{in\phi}\rangle$. The $SE(2)$ Fourier transform then becomes (see Chirikjian &amp; Kyatkin, Sec. 11.2)
+</p>
+$$
+    \begin{align}
+\hat f_{mn}(\lambda) = &\int_{\mathbb R^2} \int_0^{2\pi} \int_0^{2\pi} f(\theta, \mathbf t) e^{in\phi} \nonumber
+\\&e^{i \lambda \hspace{1pt}(\hspace{1pt}{\mathbf t}_x\cos \phi \hspace{1pt}+\hspace{1pt} {\mathbf t}_y \sin \phi)}e^{-im(\phi - \theta)} \hspace{1pt}d\phi \hspace{1pt}d\theta \hspace{1pt}d {\mathbf t}_x d{\mathbf t}_y.
+\end{align}
+$$<p>However, the <span class=accented>inverse Fourier transform</span> given above doesn&rsquo;t make sense since $V^\lambda$ is infinite-dimensional. Rather, we have</p>
+$$
+    \begin{align}
+f(g) &= \int_0^\infty \left(\sum_{i,j\in \mathbb Z} \hat f(\lambda) _{ji}U^\lambda(g)_{ij}\right) \lambda\, d\lambda\\
+ &= \int_0^\infty \mathrm{Trace}\big(\hat f(\lambda)U^\lambda(g)\big) \lambda\, d\lambda.
+\end{align}
+$$<p>When I first saw this, I wondered if the extra $\lambda$ in &ldquo;$\lambda\,d\lambda$&rdquo; was a typo!</p>
+<p>In the $SE(3)$ case, the IURs act on functions on the sphere, which can be expanded in the basis of <em>spherical harmonics</em>. We incur a `$\lambda^2 d\lambda$&rsquo; term in the inverse transform. Rather than repeating the details, I recommend the tutorial article <em>GS Chirikjian, Degenerate Diffusions and Harmonic Analysis on SE(3): A Tutorial (2015)</em> written by my postdoc advisor.</p>
+<!-- ### Can we use FFT here?
+
+Interchanging the order of integration, we can first do the computation
+
+$$
+    \begin{align*}
+\int_{\mathbb R^2} f(\theta, \mathbf t) 
+e^{i \lambda \hspace{1pt}(\hspace{1pt}{\mathbf t}_x\cos \phi \hspace{1pt}+\hspace{1pt} {\mathbf t}_y \sin \phi)} d {\mathbf t}_x d{\mathbf t}_y \mapsto g(\theta, \phi)
+\end{align*}
+$$
+
+since this is exactly the kind of product integral handled by the $2$-dimensional FFT. -->
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>An <a href="https://en.wikipedia.org/wiki/Tannaka%E2%80%93Krein_duality" target="_blank" class="accented">
+    extension
+</a> of it does exist for the compact non-abelian case. Locally compact non-abelian groups (like $SE(n)$) are out of the question.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>See <em>A Course an Abstract Harmonic Analysis</em> by Folland (Sec. 4.2) or Chirikjian and Kyatkin (Sec. 8.3.2).&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://shirazkn.github.io/tags/harmonic-analysis/">Harmonic Analysis</a></li>
+    </ul>
+  </footer>
+<script src="https://giscus.app/client.js"
+        data-repo="shirazkn/shirazkn.github.io"
+        data-repo-id="R_kgDOI2VbWw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOI2VbW84CWJnt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="noborder_light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    
+    <div class="signup-form">
+        <script async src="https://eocampaign1.com/form/e5dbf9e6-b891-11ee-a1b7-cdaf9e8a98be.js" data-form="e5dbf9e6-b891-11ee-a1b7-cdaf9e8a98be"></script>
+    </div>
+    
+    
+    
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="headerfooter">
+    <sub><sup><sub>..</sub></sup></sub>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

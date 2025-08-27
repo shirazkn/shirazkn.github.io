@@ -2,6 +2,8 @@
 title: "Euler-Poincaré Equations"
 date: 2024-12-19T08:18:04-05:00
 draft: false
+tags: ["Mechanics"]
+summary: Poincaré's 1901 paper introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the Euler-Lagrange equations to the case where a Lie group acts on the configuration manifold. I work through Poincaré's paper without making too many identifications.
 ---
 
 Poincaré's [1901 paper](https://www.ma.ic.ac.uk/~dholm/classnotes/M3-4A16-Poincare1901.pdf)[^0] introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the [Euler-Lagrange equations](/posts/symplectic/#variational-approach) to the case where <span>a Lie group $G$ acts on the manifold $\mathcal Q$. In this case, vector fields on $\mathcal Q$ can be expressed in terms of the infinitesimal actions of the group, and the Euler-Lagrange equations reduce to the Euler-Poincaré equations.
@@ -180,7 +182,7 @@ D_{\lambda} &\left[\eta^i(s, \lambda)\overline  E_{i,\Gamma(s,\lambda)}\right](0
 \end{align*}
 $$
 
-wherein, the last equality (as well as the symmetry lemma itself) follows from the connection being torsion-free. Note that $[{\overline  E_{i}}, \overline  E_{j} ] = L_{\overline  E_{i}} \overline  E_{j}$ is the Lie derivative; we will return to this point shortly.
+The last equality (as well as the symmetry lemma itself) follows from the connection being torsion-free. Note that $[{\overline  E_{i}}, \overline  E_{j} ] = L_{\overline  E_{i}} \overline  E_{j}$ is the Lie derivative; we will return to this point shortly.
 For now, we observe that the symmetry lemma yields
 
 $$
@@ -277,12 +279,13 @@ And there it is,
 <span class=print> 
 une forme nouvelle des équations de la mécanique</span>. As Poincaré points out, this is especially of interest when $\mathscr L'$ only depends on $\eta$ (e.g., when computing geodesic motion).
 
+---
 
 ## Appendices
 
 ### <span class=gray>A.</span> Computation in Coordinates
 
-Let $\lbrace q^i\rbrace_{i=1}^n$ be coordinates on a subset of $\mathcal Q$. We can express $\overline  E_i$ in terms of the [coordinate frame](/posts/lie-groups_calculus/#coordinate-frames) $\lbrace {\partial}/{\partial q^i}\rbrace_{i=1}^n$, as 
+Let $\lbrace q^i\rbrace_{i=1}^n$ be coordinates on a subset of $\mathcal Q$. We can express $\overline  E_i$ in terms of the [coordinate frame](/posts/lie-groups_riemannian/#coordinate-frames) $\lbrace {\partial}/{\partial q^i}\rbrace_{i=1}^n$, as 
 $$\overline  E_i = \overline  E_i^j \frac{\partial}{\partial q^j},$$
 where each $\overline  E_i^j \in C^\infty(\mathcal Q)$ is a coordinate function.
 Letting $\overline  E_i$ act on the coordinate function $q^j$, we get

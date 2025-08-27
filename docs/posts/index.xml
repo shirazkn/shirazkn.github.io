@@ -13,45 +13,21 @@
       <link>https://shirazkn.github.io/posts/lemmas/</link>
       <pubDate>Mon, 13 Jan 2025 12:46:04 -0500</pubDate>
       <guid>https://shirazkn.github.io/posts/lemmas/</guid>
-      <description>&lt;p&gt;I collect here some results about the differentials of the $\exp$ and $\log$ maps of a Lie group. The reader must be familiar with how the &lt;span class=accented&gt;differential&lt;/span&gt; (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of &lt;a href=&#34;]%28/posts/vector-fields%29&#34; class=&#34;accented&#34;&gt;
-    tangent vectors as equivalence classes of curves
-&lt;/a&gt;; Wikipedia has an excellent &lt;a href=&#34;https://en.wikipedia.org/wiki/Tangent_space#Definition_via_tangent_curves&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    summary
-&lt;/a&gt; of this, as does my blog (if I may say so myself).&lt;/p&gt;</description>
+      <description>Some results about the differentials (i.e., pushforwards) of the exponential and logarithm maps of a Lie group. I rely extensively on the interpretation of tangent vectors as equivalence classes of curves.</description>
     </item>
     <item>
       <title>Euler-Poincaré Equations</title>
       <link>https://shirazkn.github.io/posts/ep/</link>
       <pubDate>Thu, 19 Dec 2024 08:18:04 -0500</pubDate>
       <guid>https://shirazkn.github.io/posts/ep/</guid>
-      <description>&lt;p&gt;Poincaré&amp;rsquo;s &lt;a href=&#34;https://www.ma.ic.ac.uk/~dholm/classnotes/M3-4A16-Poincare1901.pdf&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    1901 paper
-&lt;/a&gt;&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the &lt;a href=&#34;https://shirazkn.github.io/posts/symplectic/#variational-approach&#34; class=&#34;accented&#34;&gt;
-    Euler-Lagrange equations
-&lt;/a&gt; to the case where &lt;span&gt;a Lie group $G$ acts on the manifold $\mathcal Q$. In this case, vector fields on $\mathcal Q$ can be expressed in terms of the infinitesimal actions of the group, and the Euler-Lagrange equations reduce to the Euler-Poincaré equations.
-In what follows, I work through Poincaré&amp;rsquo;s paper without making too many &lt;a href=&#34;https://math.stackexchange.com/a/3415429&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    identifications
-&lt;/a&gt;.&lt;/p&gt;</description>
+      <description>Poincaré&amp;rsquo;s 1901 paper introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the Euler-Lagrange equations to the case where a Lie group acts on the configuration manifold. I work through Poincaré&amp;rsquo;s paper without making too many identifications.</description>
     </item>
     <item>
       <title>Harmonic Analysis</title>
-      <link>https://shirazkn.github.io/posts/fft/</link>
+      <link>https://shirazkn.github.io/posts/harmonic-analysis/</link>
       <pubDate>Thu, 12 Dec 2024 13:02:50 +0530</pubDate>
-      <guid>https://shirazkn.github.io/posts/fft/</guid>
-      <description>&lt;p&gt;The &lt;span class=accented&gt;Fourier transform&lt;/span&gt; in $\mathbb R^n$ maps a complex-valued function $f:\mathbb R^n \rightarrow \mathbb C$ to a function of its &lt;a href=&#34;https://en.wikipedia.org/wiki/Pontryagin_duality&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    Pontryagin dual
-&lt;/a&gt; space (which is in this case also $\mathbb R^n$), $\ \hat f:\mathbb R^n \rightarrow \mathbb C$, given by&lt;/p&gt;
-$$
-\begin{align*}
-\hat f&amp;(\boldsymbol \omega) \\&amp;\coloneqq \int_{\mathbb R^n} f(\mathbf x) e^{-i\hspace{1pt} 2\pi \langle \boldsymbol \omega, \mathbf x\rangle} d\mathbf x\\
-&amp;= \int_{\mathbb R}\cdots\int_{\mathbb R} f(\mathbf x) \left(e^{-i \hspace{1pt}2\pi \omega^1 x^1}\cdots e^{-i \hspace{1pt}2\pi \omega^n x^n}\right) dx^1 \cdots dx^n\\
-&amp;= \cdots \left(\int_{\mathbb R}\left(\int_{\mathbb R} f(\mathbf x) e^{-i\hspace{1pt}2\pi \omega^1 x^1}dx^1 \right) e^{-i\hspace{1pt}2\pi \omega^2 x^2} dx^2 \right)\cdots 
-\end{align*}
-$$&lt;p&gt;That is, it performs the Fourier transform (FT) along each dimension, in succession. On compact quotients of $\mathbb R^n$, like $\mathbb T^n \cong \mathbb R^n/\mathbb Z^n$ (where each $\mathbb T\cong S^1$ is the one-dimensional &lt;a href=&#34;https://en.wikipedia.org/wiki/Torus&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    torus
-&lt;/a&gt;), this becomes a &lt;a href=&#34;https://shirazkn.github.io/posts/fourier&#34; class=&#34;accented&#34;&gt;
-    Fourier series
-&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid>https://shirazkn.github.io/posts/harmonic-analysis/</guid>
+      <description>The Fourier transform maps a complex-valued function to a function on its Pontryagin dual space. Generalizations of this concept to non-Abelian compact and locally compact Lie groups are reviewed.</description>
     </item>
     <item>
       <title>Classical Mechanics on Manifolds</title>
@@ -68,40 +44,28 @@ $$&lt;p&gt;That is, it performs the Fourier transform (FT) along each dimension,
       <link>https://shirazkn.github.io/posts/sphere/</link>
       <pubDate>Sun, 24 Mar 2024 10:43:16 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/sphere/</guid>
-      <description>&lt;p&gt;Here, I solve Problem $5-5$ from John Lee&amp;rsquo;s book on &lt;em&gt;Riemannian Manifolds&lt;/em&gt;, which demonstrates the non-flatness of the ($2$-)sphere. This problem is particularly interesting because it serves as the motivating example for a later chapter in the book on &lt;span class=accented&gt;curvature&lt;/span&gt;.
-As a by-product, we will put to rest the concerns of flat-Earthers.&lt;/p&gt;
-&lt;h1 id=&#34;connections&#34;&gt;Connections&lt;/h1&gt;
-&lt;p&gt;First, I go over the technical tools needed to state (let alone solve) the problem.
-A &lt;em&gt;connection&lt;/em&gt; $\nabla$ on a smooth manifold $M$ is a way of differentiating &lt;a href=&#34;https://shirazkn.github.io/posts/vector-fields&#34; class=&#34;accented&#34;&gt;
-    vector fields
-&lt;/a&gt; (and more generally, tensor fields) along curves in $M$:&lt;/p&gt;</description>
+      <description>Here, I solve Problem 5-5 from John Lee&amp;rsquo;s book on &lt;em&gt;Riemannian Manifolds&lt;/em&gt;, which demonstrates the non-flatness of the 2-sphere. This problem is particularly interesting because it serves as the motivating example for a later chapter in the book on curvature.</description>
     </item>
     <item>
       <title>Lie Groups as Riemannian Manifolds</title>
-      <link>https://shirazkn.github.io/posts/lie-groups_calculus/</link>
+      <link>https://shirazkn.github.io/posts/lie-groups_riemannian/</link>
       <pubDate>Tue, 30 Jan 2024 09:53:05 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/lie-groups_calculus/</guid>
-      <description>&lt;p&gt;A &lt;span class=accented&gt;Lie group&lt;/span&gt; $G$ is a group that is also a (continuous, differentiable) topological space. An example to keep in mind is $G=\mathbb R^n$ which is a group under vector addition and has well-defined notions of continuity and differentiation. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow $G$ with additional structure so that it is not merely a manifold, but a &lt;span class=accented&gt;Riemannian manifold&lt;/span&gt;. Luckily for us, we only need to define an inner product for the Lie algebra, after which there is a natural definition of length and volume that can be made for the entire group manifold. I say that the resulting choice of volume (called the &lt;span class=accented&gt;Haar measure&lt;/span&gt;) is &lt;em&gt;natural&lt;/em&gt; because it is compatible with the group structure of $G$ as well as its differential structure as a manifold. This can be compared to how the standard notion of volume for $\mathbb R^n$, the Lebesgue measure, is compatible with vector addition; we have for a (measurable) set $A\subseteq \mathbb R^n$ and for every $\mathbf x_0 \in \mathbb R^n$,&lt;/p&gt;</description>
+      <guid>https://shirazkn.github.io/posts/lie-groups_riemannian/</guid>
+      <description>A &lt;span class=accented&gt;Lie group&lt;/span&gt; is a group that is also a (continuous, differentiable) topological space. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow the group with additional structure so that it is not merely a manifold, but a &lt;span class=accented&gt;Riemannian manifold&lt;/span&gt;.</description>
     </item>
     <item>
       <title>Lie Groups: Construction and Geometry</title>
       <link>https://shirazkn.github.io/posts/lie-groups_construction/</link>
       <pubDate>Wed, 24 Jan 2024 14:20:59 -0500</pubDate>
       <guid>https://shirazkn.github.io/posts/lie-groups_construction/</guid>
-      <description>&lt;p&gt;There are multiple ways to construct new groups from old ones. For instance, the semidirect product $SO(3) \ltimes \mathbb R^3$ is the Special Euclidean group $SE(3)$, which is composed of all the rigid transformations of $\mathbb R^3$ (minus reflections). Here, I provide an intuition for how these constructions work. I will also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups. While the word &lt;em&gt;geometry&lt;/em&gt; implies the presence of an inner product/Riemannian metric, the word &lt;em&gt;calculus&lt;/em&gt; hints at the possibility of differentiation and integration on Lie groups.&lt;/p&gt;</description>
+      <description>There are multiple ways to construct new groups from old ones. I provide an intuition for how these constructions work, and also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups.</description>
     </item>
     <item>
       <title>The Lie Group-Lie Algebra Correspondence</title>
       <link>https://shirazkn.github.io/posts/lie-groups/</link>
       <pubDate>Mon, 15 Jan 2024 07:24:59 -0500</pubDate>
       <guid>https://shirazkn.github.io/posts/lie-groups/</guid>
-      <description>&lt;p&gt;A &lt;span class=accented&gt;topological group&lt;/span&gt; is a set of elements $G$ that has both a group operation $\odot$ and a &lt;a href=&#34;https://www.youtube.com/watch?v=62WNNkoRCLE&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    topology
-&lt;/a&gt;. The group operation satisfies the usual axioms (same as &lt;a href=&#34;https://youtu.be/g7L_r6zw4-c?si=Y2Zit5muzZrCciaQ&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    those of finite groups
-&lt;/a&gt;), and the presence of a topology lets us say things like &amp;rsquo;the group is connected&amp;rsquo; and &amp;rsquo;the group operation is continuous&amp;rsquo;. $G$ is called a &lt;span class=accented&gt;Lie group&lt;/span&gt; if it is also a smooth manifold. The smooth structure of the manifold must be &lt;em&gt;compatible&lt;/em&gt; with the group operation in the following sense: $\odot$ is differentiable with respect to either of its arguments &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. The compatibility of its constituent structures is what makes a Lie group so special, enabling it to capture the essence of a &lt;a href=&#34;https://en.wikipedia.org/wiki/Noether%27s_theorem&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    continuous symmetry
-&lt;/a&gt;.&lt;/p&gt;</description>
+      <description>A &lt;span class=accented&gt;topological group&lt;/span&gt; is a set of elements that has both a group operation and a topology. The group operation satisfies the usual axioms (same as those of finite groups), and the presence of a topology lets us say things like &amp;rsquo;the group is connected&amp;rsquo; and &amp;rsquo;the group operation is continuous&#39;.</description>
     </item>
     <item>
       <title>Vector Fields on Manifolds</title>
@@ -179,16 +143,14 @@ This is because many (if not all) of the problems we&amp;rsquo;re interested in 
       <description>&lt;p&gt;Let&amp;rsquo;s look at the norm balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is&lt;/p&gt;</description>
     </item>
     <item>
-      <title>The Real World is a Special Case</title>
+      <title>The Parallelogram Law</title>
       <link>https://shirazkn.github.io/posts/pythagoras/</link>
       <pubDate>Fri, 14 Apr 2023 15:53:46 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/pythagoras/</guid>
-      <description>&lt;p&gt;The title is a quote from &lt;a href=&#34;https://theartofmathematicspodcast.com&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+      <description>&lt;p&gt;To quote &lt;a href=&#34;https://theartofmathematicspodcast.com&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
     this math podcast
-&lt;/a&gt;. I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are &amp;rsquo;tangible&amp;rsquo; to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.&lt;/p&gt;
-&lt;!-- [^huge_footnote] --&gt;
-&lt;!-- [^huge_footnote]: I think the real world just manifests as a $3$ dimensional Euclidean space in particular, and it is our ability to project this space into lower dimensions that imparts to us our intuition about $1$ and $2$ dimensional Euclidean spaces. You could argue that *time* is a $1$ dimensional space which we can observe directly, but I don&#39;t think humans have a good internal perception of time. --&gt;
-&lt;p&gt;In this post I&amp;rsquo;m showing how the &lt;span class=accented&gt;Pythagoras theorem&lt;/span&gt; is a special case of a more general feature of inner product spaces. Contents of &lt;a href=&#34;https://shirazkn.github.io/posts/norms_metrics&#34; class=&#34;accented&#34;&gt;
+&lt;/a&gt;, &amp;ldquo;the real world is a special case&amp;rdquo;. I mentioned in the last post that Euclidean geometry arises by taking $\mathbb R^2$ or $\mathbb R^3$ and endowing with an inner product, at which point it satisfies the Pythagoras theorem.
+In this post I will talk about how the &lt;span class=accented&gt;Pythagoras theorem&lt;/span&gt; is a special case of a more general feature of inner product spaces. Contents of &lt;a href=&#34;https://shirazkn.github.io/posts/norms_metrics&#34; class=&#34;accented&#34;&gt;
     the last post
 &lt;/a&gt; are pre-requisites for this one.&lt;/p&gt;</description>
     </item>
@@ -219,7 +181,7 @@ This is because many (if not all) of the problems we&amp;rsquo;re interested in 
 &lt;/a&gt; instructor at Purdue why this was so, and he told me that I ask too many (but good) questions. I have since then accumulated a variety of answers for why the number $2$ is, in some sense, ✨special✨ During our journey through this post and the next, we will visit the central limit theorem, Gaussian distributions, and Euclidean geometry.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>😼egory Theory</title>
+      <title>Category Theory</title>
       <link>https://shirazkn.github.io/posts/cat_theory_1/</link>
       <pubDate>Sat, 18 Mar 2023 21:07:38 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/cat_theory_1/</guid>

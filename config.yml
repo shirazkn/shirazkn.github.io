@@ -21,9 +21,23 @@ params:
     favicon32x32: "/favicon-32x32.png"
     apple_touch_icon: "apple-touch-icon.png"
     safari_pinned_tab: "/favicon.ico"
+  
   math: true
 
   comments: true
+
+  fuseOpts:
+    isCaseSensitive: false
+    ignoreDiacritics: true
+    shouldSort: true
+    findAllMatches: false
+    # location: 0
+    # distance: 1000
+    threshold: 0.1
+    minMatchCharLength: 3
+    limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
+    keys: ["title", "content"]
+
   
 menu:
   main:
@@ -35,7 +49,11 @@ menu:
       name: tags
       url: /tags/
       weight: 20
-      
+    - identifier: search
+      name: search
+      url: /search/
+      weight: 30
+
 markup:
   goldmark:
     extensions:
@@ -49,6 +67,14 @@ markup:
           inline:
           - - $
             - $
+          - - \(
+            - \)
         enable: true
     renderer:
       unsafe: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON

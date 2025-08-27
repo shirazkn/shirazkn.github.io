@@ -3,6 +3,8 @@ title: "Differentials in Lie Theory"
 date: 2025-01-13T12:46:04-05:00
 showtoc: true
 draft: false
+tags: ["Differential Geometry"]
+summary: Some results about the differentials (i.e., pushforwards) of the exponential and logarithm maps of a Lie group. I rely extensively on the interpretation of tangent vectors as equivalence classes of curves.
 ---
 
 I collect here some results about the differentials of the $\exp$ and $\log$ maps of a Lie group. The reader must be familiar with how the <span class=accented>differential</span> (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of [tangent vectors as equivalence classes of curves](](/posts/vector-fields)); Wikipedia has an excellent [summary](https://en.wikipedia.org/wiki/Tangent_space#Definition_via_tangent_curves) of this, as does my blog (if I may say so myself).

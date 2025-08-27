@@ -5,6 +5,7 @@ showToc: true
 TocOpen: false
 draft: false
 tags: ["Differential Geometry"]
+summary: A <span class=accented>Lie group</span> is a group that is also a (continuous, differentiable) topological space. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow the group with additional structure so that it is not merely a manifold, but a <span class=accented>Riemannian manifold</span>.
 ---
 
 A <span class=accented>Lie group</span> $G$ is a group that is also a (continuous, differentiable) topological space. An example to keep in mind is $G=\mathbb R^n$ which is a group under vector addition and has well-defined notions of continuity and differentiation. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow $G$ with additional structure so that it is not merely a manifold, but a <span class=accented>Riemannian manifold</span>. Luckily for us, we only need to define an inner product for the Lie algebra, after which there is a natural definition of length and volume that can be made for the entire group manifold. I say that the resulting choice of volume (called the <span class=accented>Haar measure</span>) is *natural* because it is compatible with the group structure of $G$ as well as its differential structure as a manifold. This can be compared to how the standard notion of volume for $\mathbb R^n$, the Lebesgue measure, is compatible with vector addition; we have for a (measurable) set $A\subseteq \mathbb R^n$ and for every $\mathbf x_0 \in \mathbb R^n$,
@@ -259,7 +260,7 @@ The tangent space at the identity of a Lie group $G$ can be given one of infinit
 Yet another useful property of Lie groups is that there is a way to construct global orthonormal frames for it: we choose an orthonormal basis of $T_e G$ and extend it to a set of left/right-invariant vector fields. Even among Lie groups, orthonormal *coordinate* frames are a rare occurrence;
 if $G$ is non-Abelian, then an orthonormal frame could not possibly come from a coordinate system (also see [this](/posts/sphere/#a-word-of-caution)). Nevertheless, the fact that a global orthonormal frame exists is already quite a special property.
 
-### Preliminaries
+### Left-Invariant Vector Fields
 Let $G$ be a Lie group, $e\in G$ its identity element, and $\mathfrak g$ its Lie algebra.[^conflation]
 Consider an inner product on $\mathfrak g$, $\langle \cdot, \cdot \rangle_e$, and use the Gram-Schmidt process to construct an orthonormal basis for $\mathfrak g$. Denote one such orthonormal basis by $(\tilde E_i)_{i=1}^n$, where $\tilde E_i \in \mathfrak g$ and $\langle \tilde E_i, \tilde E_j \rangle_e = \delta_{ij}$. Its corresponding dual basis is denoted as $(\tilde \varepsilon^i)_{i=1}^n$, where $\tilde \varepsilon^i \in \mathfrak g^*$.
  We can then express $\langle \cdot, \cdot \rangle_e$ by the tensor $\delta_{ij} \tilde \varepsilon^i \tilde \varepsilon^j$.
@@ -301,8 +302,7 @@ Immediately, we have the following property at all $g\in G$:
 In the following, we assume that $(E_i)_{i=1}^n$ and $(\varepsilon^i)_{i=1}^n$ are left-invariant. Analogous arguments follow for the right-invariant case. The only caveat is that the left-invariant and right-invariant metrics and volume forms may or may not turn out to be the same, as discussed in [my previous post](/posts/lie-groups_construction/#geometry).
 <!-- In short, we say that Lie groups are [parallelizable](https://en.wikipedia.org/wiki/Parallelizable_manifold) manifolds; also see [this](/posts/lie-groups/#representation-theory).  -->
 
-### Left-Invariance of Vector Fields
-
+### What is Left-Invariance?
 
 Let's scrutinize the left-invariance of $E_i$. Pretend that the left-multiplication map $L_g$ sends $G$ to another copy of itself, denoted as $G^💧$! 
 
@@ -425,11 +425,8 @@ The notation may seem cumbersome, but given how light-yet-powerful the notation 
 
 A left-invariant volume form can be defined as $\omega = \varepsilon^1 \wedge \varepsilon^2 \wedge \cdots \wedge \varepsilon^n$, and has analogous invariance properties.
 
----
-
-### Some Actual Examples
-
-We could also have chosen to work with a coordinate coframe on an open set $U$ containing $g$ in order to express $\langle \cdot, \cdot \rangle$. In this case, we should compute the metric tensor coefficients since they will no longer be trivial. In [this post](/posts/sphere/#the-sphere), I computed the metric tensor coefficients for the sphere (not a Lie group!) in spherical polar coordinates. In [the next one](/posts/so3), I pull back the geometric structure of $SO(3)$ to its [axis-angle parametrization](https://en.wikipedia.org/wiki/Axis–angle_representation).
+Note that we could also have chosen to work with a coordinate coframe on an open set $U\subseteq G$ containing $g$ in order to express $\langle \cdot, \cdot \rangle$. In this case, we would need to compute the metric tensor coefficients since they will no longer be trivial. Evidently, if we work with coordinates on a Lie group, then we are not taking advantage of the group structure. In [the next post](/posts/sphere/#the-sphere), I compute the metric tensor coefficients for the sphere (which is not a Lie group!) in spherical polar coordinates. Some important comments about the Levi-Civita connection are made as well.
+<!-- In [the next one](/posts/so3), I pull back the geometric structure of $SO(3)$ to its [axis-angle parametrization](https://en.wikipedia.org/wiki/Axis–angle_representation). -->
 
 <!-- Let's see an example of why such a pullback can be helpful for computations.
 

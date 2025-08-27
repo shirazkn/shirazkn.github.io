@@ -5,6 +5,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 tags: ["Differential Geometry"]
+summary: There are multiple ways to construct new groups from old ones. I provide an intuition for how these constructions work, and also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups.
 ---
 
 There are multiple ways to construct new groups from old ones. For instance, the semidirect product $SO(3) \ltimes \mathbb R^3$ is the Special Euclidean group $SE(3)$, which is composed of all the rigid transformations of $\mathbb R^3$ (minus reflections). Here, I provide an intuition for how these constructions work. I will also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups. While the word *geometry* implies the presence of an inner product/Riemannian metric, the word *calculus* hints at the possibility of differentiation and integration on Lie groups.
@@ -389,5 +390,5 @@ where $f:G\rightarrow \mathbb R$ is a function, and $g \mapsto hg$ is to be view
 
 ---
 
-In [the next post](/posts/lie-groups_calculus), I use the machinery developed in the book [Introduction to Smooth Manifolds](https://link.springer.com/book/10.1007/978-1-4419-9982-5) by John M. Lee to study the properties of Riemannian metrics and measures. If you would rather skip ahead to the actual calculations, 
+In [the next post](/posts/lie-groups_riemannian), I use the machinery developed in the book [Introduction to Smooth Manifolds](https://link.springer.com/book/10.1007/978-1-4419-9982-5) by John M. Lee to study the properties of Riemannian metrics and measures. If you would rather skip ahead to the actual calculations, 
 I point you toward the books by [G.S. Chirikjian](https://link.springer.com/book/10.1007/978-0-8176-4944-9). It contains formulae for differentiation and integration on the (matrix) Lie groups that are commonly encountered in engineering applications.

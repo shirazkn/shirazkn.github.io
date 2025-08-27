@@ -1,15 +1,12 @@
 ---
-title: "The Real World is a Special Case"
+title: "The Parallelogram Law"
 date: 2023-04-14T15:53:46-04:00
 tags: ["Linear Algebra"]
 draft: false
 ---
 
-The title is a quote from [this math podcast](https://theartofmathematicspodcast.com). I mentioned in the last post that Euclidean geometry arises as a special case of the geometry of inner product spaces. And yet, the only spaces that are 'tangible' to us humans are the $1$, $2$, and $3$ dimensional Euclidean spaces. No other inner product spaces feel nearly as intuitive.
-
-<!-- [^huge_footnote] -->
-<!-- [^huge_footnote]: I think the real world just manifests as a $3$ dimensional Euclidean space in particular, and it is our ability to project this space into lower dimensions that imparts to us our intuition about $1$ and $2$ dimensional Euclidean spaces. You could argue that *time* is a $1$ dimensional space which we can observe directly, but I don't think humans have a good internal perception of time. -->
-In this post I'm showing how the <span class=accented>Pythagoras theorem</span> is a special case of a more general feature of inner product spaces. Contents of [the last post](/posts/norms_metrics) are pre-requisites for this one.
+To quote [this math podcast](https://theartofmathematicspodcast.com), "the real world is a special case". I mentioned in the last post that Euclidean geometry arises by taking $\mathbb R^2$ or $\mathbb R^3$ and endowing with an inner product, at which point it satisfies the Pythagoras theorem.
+In this post I will talk about how the <span class=accented>Pythagoras theorem</span> is a special case of a more general feature of inner product spaces. Contents of [the last post](/posts/norms_metrics) are pre-requisites for this one.
 <!-- When I want to think about $1$ dimensional spaces, I'm instead picturing a ruler in my head, or one of those high-school physics problems involving a train moving at constant velocity. -->
 
 <!-- Anyway, now I will generalize the Pythagoras theorem, which in its most common form is a theorem for $\mathbb R^2$. It is more generally a statement about inner product spaces. -->
@@ -108,16 +105,6 @@ Finally, in $\mathbb R$, the law takes its most plausible form:
 <hr>
 
 **Update**: Someone on Mathstodon pointed out to me that what the parallelogram law is *really* saying is that the norm-squared function $f(x)=\lVert x\rVert^2$ is a degree $2$ polynomial. Let's explore this real quick.
-<!-- 
-If we can write the norm-squared function $f(x)=\lVert x\rVert^2$ as an inner product, $\langle x, x\rangle$, then we can differentiate it twice to get
-
-<p>
-\[ \frac{\partial ^2 }{\partial x ^2} \|x\|^2 = 
-\frac{\partial }{\partial x} 2\|x\|  =
-\frac{\partial }{\partial x} 2\sqrt{\langle x, x\rangle} = 
-\frac{\frac{\partial }{\partial x}\|x\|}{\sqrt{\langle x, x\rangle}}
- \]
-</p> -->
 
 
 Notice that a degree $2$ polynomial is characterized by the fact that its second derivative is constant everywhere. Suppose, this constant (which is the Hessian) is $c\cdot\mathbf I$, where $c$ is some number and $\mathbf I$ is the identity matrix. Let's take the Taylor series expansion of $f$ at $x$, sticking to the Euclidean space $\mathbb R^n$ for simplicity.

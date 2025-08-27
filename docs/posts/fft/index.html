@@ -1,37 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>Harmonic Analysis | Shiraz</title>
 <meta name="keywords" content="">
-<meta name="description" content="The Fourier transform in $\mathbb R^n$ maps a complex-valued function $f:\mathbb R^n \rightarrow \mathbb C$ to a function of its 
-    Pontryagin dual
- space (which is in this case also $\mathbb R^n$), $\ \hat f:\mathbb R^n \rightarrow \mathbb C$, given by
-$$
-\begin{align*}
-\hat f&(\boldsymbol \omega) \\&\coloneqq \int_{\mathbb R^n} f(\mathbf x) e^{-i\hspace{1pt} 2\pi \langle \boldsymbol \omega, \mathbf x\rangle} d\mathbf x\\
-&= \int_{\mathbb R}\cdots\int_{\mathbb R} f(\mathbf x) \left(e^{-i \hspace{1pt}2\pi \omega^1 x^1}\cdots e^{-i \hspace{1pt}2\pi \omega^n x^n}\right) dx^1 \cdots dx^n\\
-&= \cdots \left(\int_{\mathbb R}\left(\int_{\mathbb R} f(\mathbf x) e^{-i\hspace{1pt}2\pi \omega^1 x^1}dx^1 \right) e^{-i\hspace{1pt}2\pi \omega^2 x^2} dx^2 \right)\cdots 
-\end{align*}
-$$That is, it performs the Fourier transform (FT) along each dimension, in succession. On compact quotients of $\mathbb R^n$, like $\mathbb T^n \cong \mathbb R^n/\mathbb Z^n$ (where each $\mathbb T\cong S^1$ is the one-dimensional 
-    torus
-), this becomes a 
-    Fourier series
-.">
+<meta name="description" content="The Fourier transform maps a complex-valued function to a function on its Pontryagin dual space. Generalizations of this concept to non-Abelian compact and locally compact Lie groups are reviewed.">
 <meta name="author" content="">
-<link rel="canonical" href="https://shirazkn.github.io/posts/fft/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d1c059f75e52229946eff4c97360f1e5513d2438b002e4c23df01cb62cd6bc59.css" integrity="sha256-0cBZ915SIplG7/TJc2Dx5VE9JDiwAuTCPfActizWvFk=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://shirazkn.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://shirazkn.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
+<link rel="canonical" href="http://localhost:1313/posts/fft/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.33ba1a0de988edc9b44193f9a95fd03bda0497c55b57601bde157ef7b3c7a963.css" integrity="sha256-M7oaDemI7cm0QZP5qV/QO9oEl8VbV2Ab3hV&#43;97PHqWM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://shirazkn.github.io/posts/fft/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/fft/">
 <noscript>
     <style>
         #theme-toggle,
@@ -83,11 +70,10 @@ $$That is, it performs the Fourier transform (FT) along each dimension, in succe
   };
 </script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:url" content="https://shirazkn.github.io/posts/fft/">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:url" content="http://localhost:1313/posts/fft/">
   <meta property="og:site_name" content="Shiraz">
   <meta property="og:title" content="Harmonic Analysis">
-  <meta property="og:description" content="The Fourier transform in $\mathbb R^n$ maps a complex-valued function $f:\mathbb R^n \rightarrow \mathbb C$ to a function of its Pontryagin dual space (which is in this case also $\mathbb R^n$), $\ \hat f:\mathbb R^n \rightarrow \mathbb C$, given by
-$$ \begin{align*} \hat f&amp;(\boldsymbol \omega) \\&amp;\coloneqq \int_{\mathbb R^n} f(\mathbf x) e^{-i\hspace{1pt} 2\pi \langle \boldsymbol \omega, \mathbf x\rangle} d\mathbf x\\ &amp;= \int_{\mathbb R}\cdots\int_{\mathbb R} f(\mathbf x) \left(e^{-i \hspace{1pt}2\pi \omega^1 x^1}\cdots e^{-i \hspace{1pt}2\pi \omega^n x^n}\right) dx^1 \cdots dx^n\\ &amp;= \cdots \left(\int_{\mathbb R}\left(\int_{\mathbb R} f(\mathbf x) e^{-i\hspace{1pt}2\pi \omega^1 x^1}dx^1 \right) e^{-i\hspace{1pt}2\pi \omega^2 x^2} dx^2 \right)\cdots \end{align*} $$That is, it performs the Fourier transform (FT) along each dimension, in succession. On compact quotients of $\mathbb R^n$, like $\mathbb T^n \cong \mathbb R^n/\mathbb Z^n$ (where each $\mathbb T\cong S^1$ is the one-dimensional torus ), this becomes a Fourier series .">
+  <meta property="og:description" content="The Fourier transform maps a complex-valued function to a function on its Pontryagin dual space. Generalizations of this concept to non-Abelian compact and locally compact Lie groups are reviewed.">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -95,20 +81,7 @@ $$ \begin{align*} \hat f&amp;(\boldsymbol \omega) \\&amp;\coloneqq \int_{\mathbb
     <meta property="article:modified_time" content="2024-12-12T13:02:50+05:30">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Harmonic Analysis">
-<meta name="twitter:description" content="The Fourier transform in $\mathbb R^n$ maps a complex-valued function $f:\mathbb R^n \rightarrow \mathbb C$ to a function of its 
-    Pontryagin dual
- space (which is in this case also $\mathbb R^n$), $\ \hat f:\mathbb R^n \rightarrow \mathbb C$, given by
-$$
-\begin{align*}
-\hat f&(\boldsymbol \omega) \\&\coloneqq \int_{\mathbb R^n} f(\mathbf x) e^{-i\hspace{1pt} 2\pi \langle \boldsymbol \omega, \mathbf x\rangle} d\mathbf x\\
-&= \int_{\mathbb R}\cdots\int_{\mathbb R} f(\mathbf x) \left(e^{-i \hspace{1pt}2\pi \omega^1 x^1}\cdots e^{-i \hspace{1pt}2\pi \omega^n x^n}\right) dx^1 \cdots dx^n\\
-&= \cdots \left(\int_{\mathbb R}\left(\int_{\mathbb R} f(\mathbf x) e^{-i\hspace{1pt}2\pi \omega^1 x^1}dx^1 \right) e^{-i\hspace{1pt}2\pi \omega^2 x^2} dx^2 \right)\cdots 
-\end{align*}
-$$That is, it performs the Fourier transform (FT) along each dimension, in succession. On compact quotients of $\mathbb R^n$, like $\mathbb T^n \cong \mathbb R^n/\mathbb Z^n$ (where each $\mathbb T\cong S^1$ is the one-dimensional 
-    torus
-), this becomes a 
-    Fourier series
-.">
+<meta name="twitter:description" content="The Fourier transform maps a complex-valued function to a function on its Pontryagin dual space. Generalizations of this concept to non-Abelian compact and locally compact Lie groups are reviewed.">
 
 
 <script type="application/ld+json">
@@ -120,13 +93,13 @@ $$That is, it performs the Fourier transform (FT) along each dimension, in succe
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://shirazkn.github.io/posts/"
+      "item": "http://localhost:1313/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Harmonic Analysis",
-      "item": "https://shirazkn.github.io/posts/fft/"
+      "item": "http://localhost:1313/posts/fft/"
     }
   ]
 }
@@ -137,7 +110,7 @@ $$That is, it performs the Fourier transform (FT) along each dimension, in succe
   "@type": "BlogPosting",
   "headline": "Harmonic Analysis",
   "name": "Harmonic Analysis",
-  "description": "The Fourier transform in $\\mathbb R^n$ maps a complex-valued function $f:\\mathbb R^n \\rightarrow \\mathbb C$ to a function of its Pontryagin dual space (which is in this case also $\\mathbb R^n$), $\\ \\hat f:\\mathbb R^n \\rightarrow \\mathbb C$, given by\n$$ \\begin{align*} \\hat f\u0026(\\boldsymbol \\omega) \\\\\u0026\\coloneqq \\int_{\\mathbb R^n} f(\\mathbf x) e^{-i\\hspace{1pt} 2\\pi \\langle \\boldsymbol \\omega, \\mathbf x\\rangle} d\\mathbf x\\\\ \u0026= \\int_{\\mathbb R}\\cdots\\int_{\\mathbb R} f(\\mathbf x) \\left(e^{-i \\hspace{1pt}2\\pi \\omega^1 x^1}\\cdots e^{-i \\hspace{1pt}2\\pi \\omega^n x^n}\\right) dx^1 \\cdots dx^n\\\\ \u0026= \\cdots \\left(\\int_{\\mathbb R}\\left(\\int_{\\mathbb R} f(\\mathbf x) e^{-i\\hspace{1pt}2\\pi \\omega^1 x^1}dx^1 \\right) e^{-i\\hspace{1pt}2\\pi \\omega^2 x^2} dx^2 \\right)\\cdots \\end{align*} $$That is, it performs the Fourier transform (FT) along each dimension, in succession. On compact quotients of $\\mathbb R^n$, like $\\mathbb T^n \\cong \\mathbb R^n/\\mathbb Z^n$ (where each $\\mathbb T\\cong S^1$ is the one-dimensional torus ), this becomes a Fourier series .\n",
+  "description": "The Fourier transform maps a complex-valued function to a function on its Pontryagin dual space. Generalizations of this concept to non-Abelian compact and locally compact Lie groups are reviewed.",
   "keywords": [
     
   ],
@@ -148,14 +121,14 @@ $$That is, it performs the Fourier transform (FT) along each dimension, in succe
   "dateModified": "2024-12-12T13:02:50+05:30",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://shirazkn.github.io/posts/fft/"
+    "@id": "http://localhost:1313/posts/fft/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Shiraz",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://shirazkn.github.io/favicon.ico"
+      "url": "http://localhost:1313/favicon.ico"
     }
   }
 }
@@ -177,7 +150,7 @@ $$That is, it performs the Fourier transform (FT) along each dimension, in succe
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <a href="http://localhost:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -203,13 +176,18 @@ $$That is, it performs the Fourier transform (FT) along each dimension, in succe
         </div>
         <ul id="menu">
             <li>
-                <a href="https://shirazkn.github.io/archives/" title="archives">
+                <a href="http://localhost:1313/archives/" title="archives">
                     <span>archives</span>
                 </a>
             </li>
             <li>
-                <a href="https://shirazkn.github.io/tags/" title="tags">
+                <a href="http://localhost:1313/tags/" title="tags">
                     <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
                 </a>
             </li>
         </ul>
@@ -438,7 +416,7 @@ since this is exactly the kind of product integral handled by the $2$-dimensiona
         <path d="M12 6H0l6-6z" />
     </svg>
 </a><div class="headerfooter">
-    <sub><sup><sub>&#9786;</sub></sup></sub>
+    <sub><sup><sub>..</sub></sup></sub>
 </div>
 
 <script>

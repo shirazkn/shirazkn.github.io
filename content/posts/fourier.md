@@ -2,6 +2,7 @@
 title: "Fourier Transforms of Periodic Functions"
 date: 2023-10-02T14:59:15-04:00
 draft: false
+tags: ["Harmonic Analysis"]
 ---
 
 The <span class=accented>Fourier transform </span>takes a (absolutely integrable) function $f:\mathbb R \rightarrow \mathbb R$ and outputs a different (possibly complex-valued) function. If the first is interpreted as a *signal* (e.g., the waveform of an audio that is parameterized by time), then its Fourier transform has its 'peaks' at the dominant frequencies of the signal. I will not expound too much on the Fourier transform itself, but its computation looks something like this[^convention]:
@@ -200,7 +201,7 @@ $$
 
 to show that the Fourier transform resolves to the Fourier series in the case of a periodic function? Observe that the function $\sum_{k=-\infty}^\infty\delta (\tilde \tau + 2 \pi k)$ is a [Dirac comb](https://en.wikipedia.org/wiki/Dirac_comb), which is a series of 'needles' (Dirac delta functions) spaced apart by a distance of $2\pi$. Its Fourier transform is also a Dirac comb (see [this blog post](https://dspillustrations.com/pages/posts/misc/the-dirac-comb-and-its-fourier-transform.html); another way to see this is to consider the Dirac comb as a sampled/'discrete-time' periodic signal whose [discrete-time Fourier transform](https://en.wikipedia.org/wiki/Discrete-time_Fourier_transform#Periodic_data) is being sought). Equating $\sum_{k=-\infty}^\infty\delta (\tilde \tau + 2 \pi k)$ to its corresponding inverse Fourier transform gives us $(*)$. The inverse Fourier transform integrates over the Dirac comb, and the comb turns the integral into a summation.
 
-Equation $(*)$ is a special case of the Poisson summation formula (which is in turn a special case of the [convolution theorem](https://en.wikipedia.org/wiki/Convolution_theorem)) applied to the Dirac comb. Proofs of the summation formula can be found on its [Wikipedia page](https://en.wikipedia.org/wiki/Poisson_summation_formula), though I haven't looked at it hard enough to see if there's an intuitive explanation of it that warrants repeating here. We could always prove $(\*)$ using **Approach #1** outlined above.
+Equation $(*)$ is a special case of the Poisson summation formula (which is in turn a special case of the [convolution theorem](https://en.wikipedia.org/wiki/Convolution_theorem)) applied to the Dirac comb. Proofs of the summation formula can be found on its [Wikipedia page](https://en.wikipedia.org/wiki/Poisson_summation_formula), though I haven't looked at it hard enough to see if there's an intuitive explanation of it that warrants repeating here. We could always prove $(*)$ using **Approach #1** outlined above.
 <!-- It appears that the Fourier transform on a circle is connected to the Fourier transform on $\mathbb Z$. -->
 
 

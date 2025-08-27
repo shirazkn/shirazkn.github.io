@@ -7,10 +7,10 @@
 <meta name="robots" content="index, follow">
 <title>Lie Groups: Construction and Geometry | Shiraz</title>
 <meta name="keywords" content="Differential Geometry">
-<meta name="description" content="There are multiple ways to construct new groups from old ones. For instance, the semidirect product $SO(3) \ltimes \mathbb R^3$ is the Special Euclidean group $SE(3)$, which is composed of all the rigid transformations of $\mathbb R^3$ (minus reflections). Here, I provide an intuition for how these constructions work. I will also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups. While the word geometry implies the presence of an inner product/Riemannian metric, the word calculus hints at the possibility of differentiation and integration on Lie groups.">
+<meta name="description" content="There are multiple ways to construct new groups from old ones. I provide an intuition for how these constructions work, and also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/lie-groups_construction/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d1c059f75e52229946eff4c97360f1e5513d2438b002e4c23df01cb62cd6bc59.css" integrity="sha256-0cBZ915SIplG7/TJc2Dx5VE9JDiwAuTCPfActizWvFk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f5ca332d9091b7acc64659019f3dba91ed18f43a44cfe3b30391a96170c1399b.css" integrity="sha256-9cozLZCRt6zGRlkBnz26ke0Y9DpEz&#43;OzA5GpYXDBOZs=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -73,7 +73,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:url" content="https://shirazkn.github.io/posts/lie-groups_construction/">
   <meta property="og:site_name" content="Shiraz">
   <meta property="og:title" content="Lie Groups: Construction and Geometry">
-  <meta property="og:description" content="There are multiple ways to construct new groups from old ones. For instance, the semidirect product $SO(3) \ltimes \mathbb R^3$ is the Special Euclidean group $SE(3)$, which is composed of all the rigid transformations of $\mathbb R^3$ (minus reflections). Here, I provide an intuition for how these constructions work. I will also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups. While the word geometry implies the presence of an inner product/Riemannian metric, the word calculus hints at the possibility of differentiation and integration on Lie groups.">
+  <meta property="og:description" content="There are multiple ways to construct new groups from old ones. I provide an intuition for how these constructions work, and also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups.">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -82,7 +82,7 @@
     <meta property="article:tag" content="Differential Geometry">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lie Groups: Construction and Geometry">
-<meta name="twitter:description" content="There are multiple ways to construct new groups from old ones. For instance, the semidirect product $SO(3) \ltimes \mathbb R^3$ is the Special Euclidean group $SE(3)$, which is composed of all the rigid transformations of $\mathbb R^3$ (minus reflections). Here, I provide an intuition for how these constructions work. I will also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups. While the word geometry implies the presence of an inner product/Riemannian metric, the word calculus hints at the possibility of differentiation and integration on Lie groups.">
+<meta name="twitter:description" content="There are multiple ways to construct new groups from old ones. I provide an intuition for how these constructions work, and also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups.">
 
 
 <script type="application/ld+json">
@@ -111,7 +111,7 @@
   "@type": "BlogPosting",
   "headline": "Lie Groups: Construction and Geometry",
   "name": "Lie Groups: Construction and Geometry",
-  "description": "There are multiple ways to construct new groups from old ones. For instance, the semidirect product $SO(3) \\ltimes \\mathbb R^3$ is the Special Euclidean group $SE(3)$, which is composed of all the rigid transformations of $\\mathbb R^3$ (minus reflections). Here, I provide an intuition for how these constructions work. I will also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups. While the word geometry implies the presence of an inner product/Riemannian metric, the word calculus hints at the possibility of differentiation and integration on Lie groups.\n",
+  "description": "There are multiple ways to construct new groups from old ones. I provide an intuition for how these constructions work, and also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups.",
   "keywords": [
     "Differential Geometry"
   ],
@@ -184,6 +184,11 @@
             <li>
                 <a href="https://shirazkn.github.io/tags/" title="tags">
                     <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shirazkn.github.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
                 </a>
             </li>
         </ul>
@@ -538,7 +543,7 @@ $$\tilde \mu^{(g)}_G(hA) = \mu_G(hAg) = \mu_G(Ag) = \tilde \mu^{(g)}_G(A)$$<p>fo
 </p> 
 <p>where $f:G\rightarrow \mathbb R$ is a function, and $g \mapsto hg$ is to be viewed as the analogue of translation in $\mathbb R^n$. By requiring $f$ to be compactly supported and/or an integrable function and normalizing it, one is able to define a probability density function on $G$.</p>
 <hr>
-<p>In <a href="/posts/lie-groups_calculus" class="accented">
+<p>In <a href="/posts/lie-groups_riemannian" class="accented">
     the next post
 </a>, I use the machinery developed in the book <a href="https://link.springer.com/book/10.1007/978-1-4419-9982-5" target="_blank" class="accented">
     Introduction to Smooth Manifolds
@@ -604,7 +609,7 @@ I point you toward the books by <a href="https://link.springer.com/book/10.1007/
         <path d="M12 6H0l6-6z" />
     </svg>
 </a><div class="headerfooter">
-    <sub><sup><sub>&#9786;</sub></sup></sub>
+    <sub><sup><sub>..</sub></sup></sub>
 </div>
 
 <script>

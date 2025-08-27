@@ -4,6 +4,8 @@ date: 2024-03-24T10:43:16-04:00
 draft: false
 showtoc: true
 tags: ["Differential Geometry"]
+summary: Here, I solve Problem 5-5 from John Lee's book on *Riemannian Manifolds*, which demonstrates the non-flatness of the 2-sphere. This problem is particularly interesting because it serves as the motivating example for a later chapter in the book on curvature.
+
 ---
 
 Here, I solve Problem $5-5$ from John Lee's book on *Riemannian Manifolds*, which demonstrates the non-flatness of the ($2$-)sphere. This problem is particularly interesting because it serves as the motivating example for a later chapter in the book on <span class=accented>curvature</span>.
@@ -138,7 +140,7 @@ We are ready to attempt Problem $5-5$ from Lee's book.
 
 # The Sphere
 
-A vector field $X$ is said to be a *parallel* vector field if $\nabla X$ is identically $0$. A (local) parallel coordinate frame (see [my other post](/posts/lie-groups_calculus) for an introduction to coordinate frames) exists on (an open set of) a manifold $M$ if and only if $M$ is (locally) flat. Here, local or global flatness refers to the property of being locally or globally isometric, resp., to an open set of the Euclidean space of the same dimension. 
+A vector field $X$ is said to be a *parallel* vector field if $\nabla X$ is identically $0$. A (local) parallel coordinate frame (see [my other post](/posts/lie-groups_riemannian) for an introduction to coordinate frames) exists on (an open set of) a manifold $M$ if and only if $M$ is (locally) flat. Here, local or global flatness refers to the property of being locally or globally isometric, resp., to an open set of the Euclidean space of the same dimension. 
 <!-- There are other ways to show that a piece (i.e., an open set) of a manifold is flat, but the existence of a parallel frame is what we will focus on in this post. -->
 
 A $2$-dimensional manifold is locally flat if and only if a small piece (i.e., an open set) cut out from it can be laid flat on the table without stretching, tearing, or crumpling it. The surface of a Cylinder and the Möbius strip (with a certain, natural choice of metric for it) are examples of locally flat surfaces; this is exactly why one can construct these surfaces from a piece of paper. The crux of Problem $5-5$ is to show that such a local parallel vector field does not exist on the sphere $S^2$. (This can be compared to the difficulty of drawing a map of the Earth that does not introduce distortions of some sort.)

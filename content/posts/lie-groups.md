@@ -5,6 +5,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 tags: ["Differential Geometry"]
+summary: A <span class=accented>topological group</span> is a set of elements that has both a group operation and a topology. The group operation satisfies the usual axioms (same as those of finite groups), and the presence of a topology lets us say things like 'the group is connected' and 'the group operation is continuous'.
 ---
 
 A <span class=accented>topological group</span> is a set of elements $G$ that has both a group operation $\odot$ and a [topology](https://www.youtube.com/watch?v=62WNNkoRCLE). The group operation satisfies the usual axioms (same as [those of finite groups](https://youtu.be/g7L_r6zw4-c?si=Y2Zit5muzZrCciaQ)), and the presence of a topology lets us say things like 'the group is connected' and 'the group operation is continuous'. $G$ is called a <span class=accented>Lie group</span> if it is also a smooth manifold. The smooth structure of the manifold must be *compatible* with the group operation in the following sense: $\odot$ is differentiable with respect to either of its arguments [^1]. The compatibility of its constituent structures is what makes a Lie group so special, enabling it to capture the essence of a [continuous symmetry](https://en.wikipedia.org/wiki/Noether's_theorem).

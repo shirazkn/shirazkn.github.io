@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://shirazkn.github.io/tags/differential-geometry/</loc>
+    <lastmod>2025-01-13T12:46:04-05:00</lastmod>
+  </url><url>
     <loc>https://shirazkn.github.io/posts/lemmas/</loc>
     <lastmod>2025-01-13T12:46:04-05:00</lastmod>
   </url><url>
@@ -11,25 +14,28 @@
     <loc>https://shirazkn.github.io/</loc>
     <lastmod>2025-01-13T12:46:04-05:00</lastmod>
   </url><url>
+    <loc>https://shirazkn.github.io/tags/</loc>
+    <lastmod>2025-01-13T12:46:04-05:00</lastmod>
+  </url><url>
     <loc>https://shirazkn.github.io/posts/ep/</loc>
     <lastmod>2024-12-19T08:18:04-05:00</lastmod>
   </url><url>
-    <loc>https://shirazkn.github.io/posts/fft/</loc>
+    <loc>https://shirazkn.github.io/tags/mechanics/</loc>
+    <lastmod>2024-12-19T08:18:04-05:00</lastmod>
+  </url><url>
+    <loc>https://shirazkn.github.io/posts/harmonic-analysis/</loc>
+    <lastmod>2024-12-12T13:02:50+05:30</lastmod>
+  </url><url>
+    <loc>https://shirazkn.github.io/tags/harmonic-analysis/</loc>
     <lastmod>2024-12-12T13:02:50+05:30</lastmod>
   </url><url>
     <loc>https://shirazkn.github.io/posts/symplectic/</loc>
     <lastmod>2024-12-09T14:45:16+05:30</lastmod>
   </url><url>
-    <loc>https://shirazkn.github.io/tags/differential-geometry/</loc>
-    <lastmod>2024-03-24T10:43:16-04:00</lastmod>
-  </url><url>
-    <loc>https://shirazkn.github.io/tags/</loc>
-    <lastmod>2024-03-24T10:43:16-04:00</lastmod>
-  </url><url>
     <loc>https://shirazkn.github.io/posts/sphere/</loc>
     <lastmod>2024-03-24T10:43:16-04:00</lastmod>
   </url><url>
-    <loc>https://shirazkn.github.io/posts/lie-groups_calculus/</loc>
+    <loc>https://shirazkn.github.io/posts/lie-groups_riemannian/</loc>
     <lastmod>2024-01-30T09:53:05-05:00</lastmod>
   </url><url>
     <loc>https://shirazkn.github.io/posts/lie-groups_construction/</loc>
@@ -74,9 +80,6 @@
     <loc>https://shirazkn.github.io/posts/norms_metrics/</loc>
     <lastmod>2023-04-10T12:20:23-04:00</lastmod>
   </url><url>
-    <loc>https://shirazkn.github.io/tags/probability/</loc>
-    <lastmod>2023-04-09T12:20:39-04:00</lastmod>
-  </url><url>
     <loc>https://shirazkn.github.io/posts/leastsquares/</loc>
     <lastmod>2023-04-09T12:20:39-04:00</lastmod>
   </url><url>
@@ -95,5 +98,9 @@
     <loc>https://shirazkn.github.io/archives/</loc>
   </url><url>
     <loc>https://shirazkn.github.io/categories/</loc>
+  </url><url>
+    <loc>https://shirazkn.github.io/about/</loc>
+  </url><url>
+    <loc>https://shirazkn.github.io/search/</loc>
   </url>
 </urlset>

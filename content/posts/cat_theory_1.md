@@ -1,5 +1,5 @@
 ---
-title: "😼egory Theory"
+title: "Category Theory"
 date: 2023-03-18T21:07:38-04:00
 tags: ["General"]
 draft: false
