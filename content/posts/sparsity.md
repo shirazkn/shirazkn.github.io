@@ -43,7 +43,7 @@ Instead of solving $Ax=b$, we can solve
 
 [^conditions]: In addition, $A$ needs to satisfy one of certain properties, such as the *restricted isometry property*. It essentially ensures that the measurements are somewhat orthogonal to each other, i.e., that we aren't wasting the few measurements we *do* have by making redundant measurements.
 
-which picks out the sparsest solution (in terms of the number of $0$'s in $x$). The notation '$\\|x\\|_0$' is introduced [here](/posts/norms_metrics).
+which picks out the sparsest solution (in terms of the number of $0$'s in $x$). The notation '$\vert x\vert_0$' is introduced [here](/posts/norms_metrics).
 In this way, we can uniquely reconstruct $x$ with a comically small number of measurements. (In fact, it can even beat the [Nyquist sampling theorem](https://en.wikipedia.org/wiki/Nyquist–Shannon_sampling_theorem).) The simple trick of searching for sparse solutions now allows us to do things like MRI imaging much more efficiently.
 
 ### Why are sparse solutions special?

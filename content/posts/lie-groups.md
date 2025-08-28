@@ -67,19 +67,19 @@ Let <span class=accented>$[$</span>$\gamma$<span class=accented>$]$</span> denot
     \]
 </p>
 
-[^curve]: Typically, $\mathbf v $ is given to us in the local coordinates of the chart $(U,h)$, as $(h_\*)_p \mathbf v \in \mathbb R^n$.
-One way to go about computing $(f_\*)_p \mathbf v$ is to pick any representative curve $\gamma$ such that $\frac{d}{dt}\left[h\circ \gamma (t)\right]\big\vert_{t=0} = (h_\*)_p \mathbf v$.
-Thereafter, we have $(f_\*)_p \mathbf v$=<span class=accented>$[$</span>$f \circ \gamma$<span class=accented>$]$</span>. <br>
+[^curve]: Typically, $\mathbf v $ is given to us in the local coordinates of the chart $(U,h)$, as $(h_{\ast})_p \mathbf v \in \mathbb R^n$.
+One way to go about computing $(f_{\ast})_p \mathbf v$ is to pick any representative curve $\gamma$ such that $\frac{d}{dt}\left[h\circ \gamma (t)\right]\big\vert_{t=0} = (h_{\ast})_p \mathbf v$.
+Thereafter, we have $(f_{\ast})_p \mathbf v$=<span class=accented>$[$</span>$f \circ \gamma$<span class=accented>$]$</span>. <br>
 Yet another way to do this computation is to pick a chart $(U^\prime,h^\prime)$ at $f(p)$ and determine the Jacobian of $h^\prime \circ f \circ h^{-1}$ at $h(p)$.
 
-In practice, $(f_\*)_p$ ends up looking something like the Jacobian of $f$ evaluated at $p$. The caveat is that a Jacobian (matrix) maps vectors in $\mathbb R^n$ to vectors in $\mathbb R^m$, whereas $(f_\*)_p$ does the more general job of mapping vectors in $T_p \mathcal M$ to vectors in $T_{f (p)} \mathcal N$.
+In practice, $(f_{\ast})_p$ ends up looking something like the Jacobian of $f$ evaluated at $p$. The caveat is that a Jacobian (matrix) maps vectors in $\mathbb R^n$ to vectors in $\mathbb R^m$, whereas $(f_{\ast})_p$ does the more general job of mapping vectors in $T_p \mathcal M$ to vectors in $T_{f (p)} \mathcal N$.
 
 Given $g\in G$, let $\mathcal L_g:G\rightarrow G$ denote <span class=accented>left-multiplication by $g$</span>, i.e., $\mathcal L_g(h) = g\odot h$ for all $h\in G$. Here's how a tangent vector at the identity $e\in G$ can be 'pushed forward' by the left-multiplication map $\mathcal L_g$:
 <figure class=invertible style="max-width: 100%;">
 <img src=/post-images/lie_groups/left-multiplication.png>
 </figure>
 
-where the curve passing through $g$ was obtained by composing $\gamma$ with $\mathcal L_g$. Since $T_eG$ is going to be identified[^ident] with $\mathfrak g$ (as a vector space), the above illustration is going to play a key role in the forthcoming discussion. It shows that $(\mathcal L_{g^{-1}*})_g$$=(\mathcal L_{g\*})_e ^{-1}$ will reduce a tangent vector at $g$ to an element of the Lie algebra.
+where the curve passing through $g$ was obtained by composing $\gamma$ with $\mathcal L_g$. Since $T_eG$ is going to be identified[^ident] with $\mathfrak g$ (as a vector space), the above illustration is going to play a key role in the forthcoming discussion. It shows that $(\mathcal L_{g^{-1}*})_g$$=(\mathcal L_{g{\ast}})_e ^{-1}$ will reduce a tangent vector at $g$ to an element of the Lie algebra.
 
 [^ident]: The word *identified* is used here in the sense of 'made identical to'. I remember being amused when I first came across this usage of it, now I love how resolute it sounds.
 
@@ -578,5 +578,5 @@ where $\mathcal R_g (h) = h \odot g$ is the right multiplication by $g$. We said
     \]
 </p>
 
-This is a bundle endomorphism of $G\times \mathfrak g$ (a homomorphism from it to itself). By construction, it is placing the non-commutativity of $G$ under scrutiny. For each tuple of the form $(g,\tilde X )$, $\mathcal R \circ \mathcal L^{-1}$ makes $\tilde X$ take a 'round-trip' by sending it to $T_gG$ via $\mathcal L_{g*}$ and back to $\mathfrak g$ via $\mathcal R_{g^{-1}*}$. Note that $\mathcal R_{g^{-1}\*} \mathcal L_{g\*} \tilde X=\textrm{Ad}_g\tilde X$.
+This is a bundle endomorphism of $G\times \mathfrak g$ (a homomorphism from it to itself). By construction, it is placing the non-commutativity of $G$ under scrutiny. For each tuple of the form $(g,\tilde X )$, $\mathcal R \circ \mathcal L^{-1}$ makes $\tilde X$ take a 'round-trip' by sending it to $T_gG$ via $\mathcal L_{g*}$ and back to $\mathfrak g$ via $\mathcal R_{g^{-1}*}$. Note that $\mathcal R_{g^{-1}{\ast}} \mathcal L_{g{\ast}} \tilde X=\textrm{Ad}_g\tilde X$.
 The departure of $\textrm{Ad}_g\tilde X$ from $\tilde X$ is a measure of the non-commutativity of multiplication by $g$. Not all group elements are equally non-commutative; for instance, $e$ commutes with all the other group elements.

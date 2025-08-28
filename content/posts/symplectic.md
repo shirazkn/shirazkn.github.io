@@ -215,7 +215,7 @@ $$\underset{\gamma(\cdot)\hspace{1pt}\in\hspace{1pt}\mathcal C}{\textrm{minimize
 
 where $\mathcal C$ is some set of curves and the quantity $\dot \gamma(t)$ represents a tangent vector. Similar minimization problems can be set up to describe optimal trajectories and configurations of rigid bodies, fluids, surfaces (such as soap films and cloths), etc.[^s]
 
-[^s]: For the optimization of surfaces embedded in $\mathbb R^3$, the objective function looks like $\int_{[0,1]^2} L\left(\gamma, \gamma_x, \gamma_y\right)\hspace{1pt} dx dy$ where $x$ and $y$ are two time-like variables that take values in the parameter space $[0,1]^2$. This suggests that the Lagrangian density is best thought of as a top-dimensional form on the parameter space that can be integrated. When the parameter space is one-dimensional (e.g., when a *trajectory* is parametrized by time or a *curve* by its arc length), we get something like $\int_{0}^1 L dt$.
+[^s]: For the optimization of surfaces embedded in $\mathbb R^3$, the objective function looks like $\int_{[0,1]^2} L\left(\gamma, \gamma_x, \gamma_y\right)\hspace{1pt} dx dy$ where $x$ and $y$ are two time-like variables that take values in the parameter space $[0,1]^2$. This suggests that the Lagrangian density is best thought of as a top-degree form on the parameter space that can be integrated. When the parameter space is one-dimensional (e.g., when a *trajectory* is parametrized by time or a *curve* by its arc length), we get something like $\int_{0}^1 L dt$.
 
 ### Symplectic Approach
 

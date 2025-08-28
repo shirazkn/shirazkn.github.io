@@ -28,15 +28,13 @@ A vector space, $(V, K, $ +$, *)$, has the following ingredients:
     - '+' is called the <span class=accented>vector addition</span> operator; it operates on two vectors to give another vector
     - '$*$' is called the <span class=accented>scalar multiplication</span> operator; it combines a scalar and a vector to give another vector
 
-While $K$ satisfies the field axioms (by definition), the vector space $(V, K,$ +$, \*)$ satisfies [additional axioms](https://mathworld.wolfram.com/VectorSpace.html). In addition to commutativity and associativity of '+', it has some interesting axioms which may look trivial unless we distinguish the operations '$+$' and '$\times$' (which belong to the field, $K$) from '+' and '$*$'. For instance, one of these axioms is that, for $a, b \in K$ and $v \in V$,
+While $K$ satisfies the field axioms (by definition), the vector space $(V, K,$ +$, {\ast})$ satisfies [additional axioms](https://mathworld.wolfram.com/VectorSpace.html). In addition to commutativity and associativity of '+', it has some interesting axioms which may look trivial unless we distinguish the operations '$+$' and '$\times$' (which belong to the field, $K$) from '+' and '$*$'. For instance, one of these axioms is that, for $a, b \in K$ and $v \in V$,
 
-<p>
-\[(a + b)* v = a*v \char"FE62 b*v\]
-</p>
+$$(a + b)* v = a*v\, \char"FE62 \,b*v$$
 
 which is not obvious or trivial, because we haven't stipulated anything else so far that requires '$+$' and '+' to behave anything like each other. 
 
-An obvious example of a vector space is $(\mathbb R^n, \mathbb R, $ +$, *)$, where $n$ is a positive integer. A less obvious example is [the vector space of functions](https://en.wikipedia.org/wiki/Function_space) having a common domain (say, $\mathbb R$), whose codomain is a vector space. In this case, the operations '+' and '$\*$' are pointwise addition and multiplication of functions. For instance, for a scalar $\alpha$ and a vector $f$, the scalar-vector multiplication $\alpha * f$ yields the vector $g$, where $g(x)=\alpha \times f(x)$.
+An obvious example of a vector space is $(\mathbb R^n, \mathbb R, $ +$, *)$, where $n$ is a positive integer. A less obvious example is [the vector space of functions](https://en.wikipedia.org/wiki/Function_space) having a common domain (say, $\mathbb R$), whose codomain is a vector space. In this case, the operations '+' and '${\ast}$' are pointwise addition and multiplication of functions. For instance, for a scalar $\alpha$ and a vector $f$, the scalar-vector multiplication $\alpha * f$ yields the vector $g$, where $g(x)=\alpha \times f(x)$.
 We looked at this vector space in [an earlier post](/posts/hilbert-spaces).
 
 Note that $R^n$ is a vector space even if $n=1$. I've put together some examples of vector spaces in a table [here](/posts/hilbert-spaces).
@@ -45,9 +43,9 @@ Note that $R^n$ is a vector space even if $n=1$. I've put together some examples
 
 We can add more ingredients to a vector space to give it more *structure*. I explore this in [other posts](/posts/norms_metrics), but in summary,
 
-- A <span class=accented>normed vector space</span> is a vector space, $(V, K,$ +$, \*)$, along with an operation, $\Vert \cdot\Vert : V \rightarrow \mathbb R$, which is called the <span class=accented>norm</span>. The norm should satisfy certain axioms. The norm is useful for defining the notion of a *length* or *magnitude* of a vector $v\in V$ as being equal to $\Vert v \Vert$ units.
+- A <span class=accented>normed vector space</span> is a vector space, $(V, K,$ +$, {\ast})$, along with an operation, $\Vert \cdot\Vert : V \rightarrow \mathbb R$, which is called the <span class=accented>norm</span>. The norm should satisfy certain axioms. The norm is useful for defining the notion of a *length* or *magnitude* of a vector $v\in V$ as being equal to $\Vert v \Vert$ units.
 
-- An <span class=accented>inner product space</span> is a vector space, $(V, K,$ +$, \*)$, along with an <span class=accented>inner product</span> operation, $\langle \cdot,\cdot \rangle : V\times V \rightarrow K$, which is a binary operation that takes two vectors to its field. The inner product comes with its own set of axioms. In $\mathbb R^n$, we can define $\langle x, y\rangle = x^\top y$ as an inner product. Inner products are necessary to define geometric concepts such as *directions* and *angles*.
+- An <span class=accented>inner product space</span> is a vector space, $(V, K,$ +$, {\ast})$, along with an <span class=accented>inner product</span> operation, $\langle \cdot,\cdot \rangle : V\times V \rightarrow K$, which is a binary operation that takes two vectors to its field. The inner product comes with its own set of axioms. In $\mathbb R^n$, we can define $\langle x, y\rangle = x^\top y$ as an inner product. Inner products are necessary to define geometric concepts such as *directions* and *angles*.
 
 Thus, a vector may neither have a magnitude nor an direction! Someone who claims otherwise is perhaps referring to the inner product space $\mathbb R ^n$ (where the inner product is the so-called 'dot product'), which is a very specific example of a vector space.
 
