@@ -5,15 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Infinite-Dimensional Lie Groups | Shiraz</title>
-<meta name="keywords" content="">
-<meta name="description" content="Lie Algebra Extension
-I introduced short exact sequences (SESs) in my discussion of 
-    semi-direct products
- of Lie groups. Specifically, we discussed the more general concept of a group extension. If you have read that post, then you might already know how to define a Lie algebra extension. It is also defined via an SES, but one consisting of Lie algebras and morphisms (i.e., structure-preserving maps) between them:
-$$
-\mathbf 0 \to \mathfrak h \to \mathfrak e \to \mathfrak g \to \mathbf 0
-$$where $\mathfrak e$ is called the extension of $\mathfrak g$ by $\mathfrak h$. The map $\mathfrak h \hookrightarrow \mathfrak e$ is the (injective) inclusion of $\mathfrak h$ into $\mathfrak e$, and the map $\mathfrak e \twoheadrightarrow \mathfrak g$ is the (surjective)1 projection of $\mathfrak e$ onto $\mathfrak g$. Since morphisms that preserve the Lie algebra structure should also preserve the vector space structure, we have that $\mathfrak e = \mathfrak h \oplus \mathfrak g$ as a vector space.2 So we have taken two Lie algebras $\mathfrak h$ and $\mathfrak g$ and combined them into a larger Lie algebra, $\mathfrak e$.">
+<title>An Invitation to Infinite Dimensions | Shiraz</title>
+<meta name="keywords" content="Linear Algebra">
+<meta name="description" content="Most students&rsquo; first time seeing an infinite-dimensional space is when they learn about the 
+    Fourier transform
+. Specifically, the inverse Fourier transform can be viewed as the expansion of a vector (in this case, a function) in a particular choice of basis, with the Fourier coefficients playing the role of the components of that vector in our basis. So, infinite-dimensional spaces are in some sense quite familiar. Yet, I always hesitate to play around with them because I do not know how (and moreover, whether!) the theorems that I know from finite-dimensional linear algebra can be extended to the infinite-dimensional setting.">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/infinite/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f5ca332d9091b7acc64659019f3dba91ed18f43a44cfe3b30391a96170c1399b.css" integrity="sha256-9cozLZCRt6zGRlkBnz26ke0Y9DpEz&#43;OzA5GpYXDBOZs=" rel="preload stylesheet" as="style">
@@ -78,23 +74,19 @@ $$where $\mathfrak e$ is called the extension of $\mathfrak g$ by $\mathfrak h$.
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"><meta property="og:url" content="http://localhost:1313/posts/infinite/">
   <meta property="og:site_name" content="Shiraz">
-  <meta property="og:title" content="Infinite-Dimensional Lie Groups">
-  <meta property="og:description" content="Lie Algebra Extension I introduced short exact sequences (SESs) in my discussion of semi-direct products of Lie groups. Specifically, we discussed the more general concept of a group extension. If you have read that post, then you might already know how to define a Lie algebra extension. It is also defined via an SES, but one consisting of Lie algebras and morphisms (i.e., structure-preserving maps) between them:
-$$ \mathbf 0 \to \mathfrak h \to \mathfrak e \to \mathfrak g \to \mathbf 0 $$where $\mathfrak e$ is called the extension of $\mathfrak g$ by $\mathfrak h$. The map $\mathfrak h \hookrightarrow \mathfrak e$ is the (injective) inclusion of $\mathfrak h$ into $\mathfrak e$, and the map $\mathfrak e \twoheadrightarrow \mathfrak g$ is the (surjective)1 projection of $\mathfrak e$ onto $\mathfrak g$. Since morphisms that preserve the Lie algebra structure should also preserve the vector space structure, we have that $\mathfrak e = \mathfrak h \oplus \mathfrak g$ as a vector space.2 So we have taken two Lie algebras $\mathfrak h$ and $\mathfrak g$ and combined them into a larger Lie algebra, $\mathfrak e$.">
+  <meta property="og:title" content="An Invitation to Infinite Dimensions">
+  <meta property="og:description" content="Most students’ first time seeing an infinite-dimensional space is when they learn about the Fourier transform . Specifically, the inverse Fourier transform can be viewed as the expansion of a vector (in this case, a function) in a particular choice of basis, with the Fourier coefficients playing the role of the components of that vector in our basis. So, infinite-dimensional spaces are in some sense quite familiar. Yet, I always hesitate to play around with them because I do not know how (and moreover, whether!) the theorems that I know from finite-dimensional linear algebra can be extended to the infinite-dimensional setting.">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-11-01T16:16:40-04:00">
-    <meta property="article:modified_time" content="2024-11-01T16:16:40-04:00">
+    <meta property="article:published_time" content="2025-09-01T16:16:40-04:00">
+    <meta property="article:modified_time" content="2025-09-01T16:16:40-04:00">
+    <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Infinite-Dimensional Lie Groups">
-<meta name="twitter:description" content="Lie Algebra Extension
-I introduced short exact sequences (SESs) in my discussion of 
-    semi-direct products
- of Lie groups. Specifically, we discussed the more general concept of a group extension. If you have read that post, then you might already know how to define a Lie algebra extension. It is also defined via an SES, but one consisting of Lie algebras and morphisms (i.e., structure-preserving maps) between them:
-$$
-\mathbf 0 \to \mathfrak h \to \mathfrak e \to \mathfrak g \to \mathbf 0
-$$where $\mathfrak e$ is called the extension of $\mathfrak g$ by $\mathfrak h$. The map $\mathfrak h \hookrightarrow \mathfrak e$ is the (injective) inclusion of $\mathfrak h$ into $\mathfrak e$, and the map $\mathfrak e \twoheadrightarrow \mathfrak g$ is the (surjective)1 projection of $\mathfrak e$ onto $\mathfrak g$. Since morphisms that preserve the Lie algebra structure should also preserve the vector space structure, we have that $\mathfrak e = \mathfrak h \oplus \mathfrak g$ as a vector space.2 So we have taken two Lie algebras $\mathfrak h$ and $\mathfrak g$ and combined them into a larger Lie algebra, $\mathfrak e$.">
+<meta name="twitter:title" content="An Invitation to Infinite Dimensions">
+<meta name="twitter:description" content="Most students&rsquo; first time seeing an infinite-dimensional space is when they learn about the 
+    Fourier transform
+. Specifically, the inverse Fourier transform can be viewed as the expansion of a vector (in this case, a function) in a particular choice of basis, with the Fourier coefficients playing the role of the components of that vector in our basis. So, infinite-dimensional spaces are in some sense quite familiar. Yet, I always hesitate to play around with them because I do not know how (and moreover, whether!) the theorems that I know from finite-dimensional linear algebra can be extended to the infinite-dimensional setting.">
 
 
 <script type="application/ld+json">
@@ -111,7 +103,7 @@ $$where $\mathfrak e$ is called the extension of $\mathfrak g$ by $\mathfrak h$.
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Infinite-Dimensional Lie Groups",
+      "name": "An Invitation to Infinite Dimensions",
       "item": "http://localhost:1313/posts/infinite/"
     }
   ]
@@ -121,17 +113,17 @@ $$where $\mathfrak e$ is called the extension of $\mathfrak g$ by $\mathfrak h$.
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Infinite-Dimensional Lie Groups",
-  "name": "Infinite-Dimensional Lie Groups",
-  "description": "Lie Algebra Extension I introduced short exact sequences (SESs) in my discussion of semi-direct products of Lie groups. Specifically, we discussed the more general concept of a group extension. If you have read that post, then you might already know how to define a Lie algebra extension. It is also defined via an SES, but one consisting of Lie algebras and morphisms (i.e., structure-preserving maps) between them:\n$$ \\mathbf 0 \\to \\mathfrak h \\to \\mathfrak e \\to \\mathfrak g \\to \\mathbf 0 $$where $\\mathfrak e$ is called the extension of $\\mathfrak g$ by $\\mathfrak h$. The map $\\mathfrak h \\hookrightarrow \\mathfrak e$ is the (injective) inclusion of $\\mathfrak h$ into $\\mathfrak e$, and the map $\\mathfrak e \\twoheadrightarrow \\mathfrak g$ is the (surjective)1 projection of $\\mathfrak e$ onto $\\mathfrak g$. Since morphisms that preserve the Lie algebra structure should also preserve the vector space structure, we have that $\\mathfrak e = \\mathfrak h \\oplus \\mathfrak g$ as a vector space.2 So we have taken two Lie algebras $\\mathfrak h$ and $\\mathfrak g$ and combined them into a larger Lie algebra, $\\mathfrak e$.\n",
+  "headline": "An Invitation to Infinite Dimensions",
+  "name": "An Invitation to Infinite Dimensions",
+  "description": "Most students\u0026rsquo; first time seeing an infinite-dimensional space is when they learn about the Fourier transform . Specifically, the inverse Fourier transform can be viewed as the expansion of a vector (in this case, a function) in a particular choice of basis, with the Fourier coefficients playing the role of the components of that vector in our basis. So, infinite-dimensional spaces are in some sense quite familiar. Yet, I always hesitate to play around with them because I do not know how (and moreover, whether!) the theorems that I know from finite-dimensional linear algebra can be extended to the infinite-dimensional setting.\n",
   "keywords": [
-    
+    "Linear Algebra"
   ],
-  "articleBody": "Lie Algebra Extension I introduced short exact sequences (SESs) in my discussion of semi-direct products of Lie groups. Specifically, we discussed the more general concept of a group extension. If you have read that post, then you might already know how to define a Lie algebra extension. It is also defined via an SES, but one consisting of Lie algebras and morphisms (i.e., structure-preserving maps) between them:\n$$ \\mathbf 0 \\to \\mathfrak h \\to \\mathfrak e \\to \\mathfrak g \\to \\mathbf 0 $$where $\\mathfrak e$ is called the extension of $\\mathfrak g$ by $\\mathfrak h$. The map $\\mathfrak h \\hookrightarrow \\mathfrak e$ is the (injective) inclusion of $\\mathfrak h$ into $\\mathfrak e$, and the map $\\mathfrak e \\twoheadrightarrow \\mathfrak g$ is the (surjective)1 projection of $\\mathfrak e$ onto $\\mathfrak g$. Since morphisms that preserve the Lie algebra structure should also preserve the vector space structure, we have that $\\mathfrak e = \\mathfrak h \\oplus \\mathfrak g$ as a vector space.2 So we have taken two Lie algebras $\\mathfrak h$ and $\\mathfrak g$ and combined them into a larger Lie algebra, $\\mathfrak e$.\nBut surely the Lie bracket on $\\mathfrak e$ should satisfy additional properties (otherwise, we have done no better than to write down an SES involving vector spaces). What are these properties? Let’s call the inclusion and projection maps, $\\iota$ and $\\pi$, respectively. Since the morphisms are structure-preserving, we have\n$$ \\begin{align} [\\iota(H_1), \\iota(H_2)] \u0026= \\iota([H_1, H_2])\\\\ \\quad [\\pi(X_1), \\pi(X_2)] \u0026= \\pi([X_1, X_2]) \\end{align} $$where $H_1, H_2 \\in \\mathfrak h$ and $X_1, X_2 \\in \\mathfrak e$. Now let $H,G \\in \\mathfrak e$ based on the vector space decomposition of $\\mathfrak e$. We have\n$$ \\begin{align} \\Big[\\pi(H), \\pi(G)\\Big] \u0026= \\pi\\big([H, G]\\big) \\end{align} $$But $\\pi(H) = 0$ since $\\pi$ is a projection onto $G$, which means that $\\pi\\big([H, G]\\big)=0$, that is, $[H,G]\\in \\mathfrak h$. This means that $\\mathfrak h$ is an ideal of $\\mathfrak e$, i.e., $[\\mathfrak h, \\mathfrak e] \\subseteq \\mathfrak h$. Intuitively, I like to think that $\\mathfrak h$ “absorbs” the vectors that it is bracketed against.\nCentral Extension A central extension of $\\mathfrak{g}$ by $\\mathfrak h$ is one where $\\mathfrak h$ commutes with everything in $\\mathfrak e$ under the Lie bracket of $\\mathfrak e$, i.e., $[\\mathfrak h, \\mathfrak e] = 0$. Since $\\mathfrak h$ commutes in particular with itself, this means that $\\mathfrak h$ must be an Abelian (i.e., commutative) Lie algebra.\nA trivial example is as follows: let $(H, G)$ denote an arbitrary element of $\\mathfrak e$, similar to how $(1, 3, 4)$ represents a vector in $\\mathbb R^3$. Since $\\mathfrak h$ should be Abelian, we let\n$$ \\mathfrak h \\coloneqq \\lbrace k \\cdot X \\mid k \\in \\mathbb R \\rbrace $$for some vector $X$, i.e., it’s a one-dimensional Lie subalgebra of $\\mathfrak e$. Define the Lie bracket on $\\mathfrak e$ as\n$$ \\begin{align} \\big[(H_1, G_1), (H_2, G_2)\\big] \u0026\\coloneqq \\big([H_1, H_2], [G_1, G_2]\\big)\\\\ \u0026= \\big(0, [G_1, G_2]\\big), \\end{align} $$that is, the product Lie bracket. It is easy to see that elements of the form $(H, 0)$ commute with everything in $\\mathfrak e$, so $\\mathfrak e$ is a central extension of $\\mathfrak g$ by $\\mathfrak h$.\nActually, the injectivity and surjectivity follow automatically from the presence of the $\\mathbf 0's$ on either end, combined with the requirement that each arrow of the sequence be a morphism. ↩︎\nRecall that a short exact sequence is one where the image of each map is the kernel of the next. Using the first isomorphism theorem, we can show that $\\mathfrak g \\cong \\mathfrak e/\\mathfrak h$. Because of the short exact sequence property, we also have that $\\mathfrak h \\cong \\textrm{Im}(\\hookrightarrow) = \\textrm{Ker}(\\twoheadrightarrow)$. Putting the pieces together, we see that $\\mathfrak h$ and $\\mathfrak g$ represent mutually exclusive parts of $\\mathfrak e$. ↩︎\n",
-  "wordCount" : "619",
+  "articleBody": "Most students’ first time seeing an infinite-dimensional space is when they learn about the Fourier transform . Specifically, the inverse Fourier transform can be viewed as the expansion of a vector (in this case, a function) in a particular choice of basis, with the Fourier coefficients playing the role of the components of that vector in our basis. So, infinite-dimensional spaces are in some sense quite familiar. Yet, I always hesitate to play around with them because I do not know how (and moreover, whether!) the theorems that I know from finite-dimensional linear algebra can be extended to the infinite-dimensional setting.\nFinite and Countable Dimensions The passage from finite to countable dimensions is easy enough. Let $V$ be an $n$-dimensional vector space, and $\\lbrace e_i \\rbrace_{i=1}^n$ a basis for it. We can express a vector $v\\in V$ as $\\sum_{i=1}^n v^i e_i$. We now take $V$ to be the space $L^2(S^1)$ to be the space of functions on the circle. Wait, what?\nFourier analysis The idea of change of basis also works in infinite dimensions. Functions on $S^1$ can be decomposed in terms of wavelets or bump functions instead of the trigonometric functions. The spherical harmonics are similarly an orthonormal basis for the space $L^2(S^2)$ (square-integrable functions on the sphere); also countably infinite.\n",
+  "wordCount" : "212",
   "inLanguage": "en",
-  "datePublished": "2024-11-01T16:16:40-04:00",
-  "dateModified": "2024-11-01T16:16:40-04:00",
+  "datePublished": "2025-09-01T16:16:40-04:00",
+  "dateModified": "2025-09-01T16:16:40-04:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "http://localhost:1313/posts/infinite/"
@@ -212,7 +204,7 @@ $$where $\mathfrak e$ is called the extension of $\mathfrak g$ by $\mathfrak h$.
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Infinite-Dimensional Lie Groups
+      An Invitation to Infinite Dimensions
       <span class="entry-hint" title="Draft">
         <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
           <path
@@ -220,66 +212,31 @@ $$where $\mathfrak e$ is called the extension of $\mathfrak g$ by $\mathfrak h$.
         </svg>
       </span>
     </h1>
-    <div class="post-meta"><span title='2024-11-01 16:16:40 -0400 EDT'>November 1, 2024</span>
+    <div class="post-meta"><span title='2025-09-01 16:16:40 -0400 EDT'>September 1, 2025</span>
 
 </div>
   </header> 
-  <div class="post-content"><h2 id="lie-algebra-extension">Lie Algebra Extension<a hidden class="anchor" aria-hidden="true" href="#lie-algebra-extension">#</a></h2>
-<p>I introduced short exact sequences (SESs) in my discussion of <a href="/posts/lie-groups_construction" class="accented">
-    semi-direct products
-</a> of Lie groups. Specifically, we discussed the more general concept of a group extension. If you have read that post, then you might already know how to define a Lie algebra extension. It is also defined via an SES, but one consisting of <em>Lie algebras</em> and morphisms (i.e., structure-preserving maps) between them:</p>
-$$
-\mathbf 0 \to \mathfrak h \to \mathfrak e \to \mathfrak g \to \mathbf 0
-$$<p>where $\mathfrak e$ is called the <span class=accented>extension</span> of $\mathfrak g$ by $\mathfrak h$. The map $\mathfrak h \hookrightarrow \mathfrak e$ is the (injective) <em>inclusion</em> of $\mathfrak h$ into $\mathfrak e$, and the map $\mathfrak e \twoheadrightarrow \mathfrak g$ is the (surjective)<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> <em>projection</em> of $\mathfrak e$ onto $\mathfrak g$. Since morphisms that preserve the Lie algebra structure should also preserve the vector space structure, we have that $\mathfrak e = \mathfrak h \oplus \mathfrak g$ as a vector space.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> So we have taken two Lie algebras $\mathfrak h$ and $\mathfrak g$ and combined them into a larger Lie algebra, $\mathfrak e$.</p>
-<p>But surely the Lie bracket on $\mathfrak e$ should satisfy additional properties (otherwise, we have done no better than to write down an SES involving vector spaces). What are these properties? Let&rsquo;s call the inclusion and projection maps, $\iota$ and $\pi$, respectively. Since the morphisms are structure-preserving, we have</p>
-$$
-\begin{align}
-[\iota(H_1), \iota(H_2)] &= \iota([H_1, H_2])\\
-\quad [\pi(X_1), \pi(X_2)] &= \pi([X_1, X_2])
-\end{align}
-$$<p>where $H_1, H_2 \in \mathfrak h$ and $X_1, X_2 \in \mathfrak e$. Now let $H,G \in \mathfrak e$ based on the vector space decomposition of $\mathfrak e$. We have</p>
-<!-- $$
-\begin{align}
-\Big[&\pi\big(\,\iota(H_1) + G_1\,\big),\ \pi\big(\,\iota(H_2) + G_2\,\big)\Big] \\
-&= \pi\big([\iota(H_1) + G_1, \iota(H_2) + G_2]\big) \\
-&= \pi\big(\iota([H_1, H_2]) + [G_1, G_2]\big)
-\end{align}
-$$ -->
-$$
-\begin{align}
-\Big[\pi(H),  \pi(G)\Big] &= \pi\big([H, G]\big)
-\end{align}
-$$<p>But $\pi(H) = 0$ since $\pi$ is a projection onto $G$, which means that $\pi\big([H, G]\big)=0$, that is, $[H,G]\in \mathfrak h$. This means that $\mathfrak h$ is an <span class=accented>ideal</span> of $\mathfrak e$, i.e., $[\mathfrak h, \mathfrak e] \subseteq \mathfrak h$. Intuitively, I like to think that $\mathfrak h$ &ldquo;absorbs&rdquo; the vectors that it is bracketed against.</p>
-<h3 id="central-extension">Central Extension<a hidden class="anchor" aria-hidden="true" href="#central-extension">#</a></h3>
-<p>A central extension of $\mathfrak{g}$ by $\mathfrak h$ is one where $\mathfrak h$ commutes with everything in $\mathfrak e$ under the Lie bracket of $\mathfrak e$, i.e., $[\mathfrak h, \mathfrak e] = 0$. Since $\mathfrak h$ commutes in particular with itself, this means that $\mathfrak h$ must be an Abelian (i.e., commutative) Lie algebra.</p>
-<p>A trivial example is as follows: let $(H, G)$ denote an arbitrary element of $\mathfrak e$, similar to how $(1, 3, 4)$ represents a vector in $\mathbb R^3$. Since $\mathfrak h$ should be Abelian, we let</p>
-$$
-\mathfrak h \coloneqq \lbrace k \cdot X \mid k \in \mathbb R \rbrace
-$$<p>for some vector $X$, i.e., it&rsquo;s a one-dimensional Lie subalgebra of $\mathfrak e$. Define the Lie bracket on $\mathfrak e$ as</p>
-$$
-\begin{align}
-\big[(H_1, G_1), (H_2, G_2)\big] &\coloneqq \big([H_1, H_2], [G_1, G_2]\big)\\
- &= \big(0, [G_1, G_2]\big),
-\end{align}
-$$<p>that is, the product Lie bracket.
-It is easy to see that elements of the form $(H, 0)$ commute with everything in $\mathfrak e$, so $\mathfrak e$ is a central extension of $\mathfrak g$ by $\mathfrak h$.</p>
-<div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>Actually, the injectivity and surjectivity follow automatically from the presence of the $\mathbf 0's$ on either end, combined with the requirement that each arrow of the sequence be a morphism.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2">
-<p>Recall that a <em>short exact sequence</em> is one where the image of each map is the kernel of the next. Using the first isomorphism theorem, we can show that $\mathfrak g \cong  \mathfrak e/\mathfrak h$. Because of the short exact sequence property, we also have that $\mathfrak h \cong \textrm{Im}(\hookrightarrow) = \textrm{Ker}(\twoheadrightarrow)$. Putting the pieces together, we see that $\mathfrak h$ and $\mathfrak g$ represent mutually exclusive parts of $\mathfrak e$.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</div>
+  <div class="post-content"><p>Most students&rsquo; first time seeing an infinite-dimensional space is when they learn about the <a href="/posts/harmonic-analysis" class="accented">
+    Fourier transform
+</a>. Specifically, the <span>inverse Fourier transform</span> can be viewed as the expansion of a vector (in this case, a function) in a particular choice of basis, with the Fourier coefficients playing the role of the components of that vector in our basis. So, infinite-dimensional spaces are in some sense quite familiar. Yet, I always hesitate to play around with them because I do not know how (and moreover, whether!) the theorems that I know from finite-dimensional linear algebra can be extended to the infinite-dimensional setting.</p>
+<h2 id="finite-and-countable-dimensions">Finite and Countable Dimensions<a hidden class="anchor" aria-hidden="true" href="#finite-and-countable-dimensions">#</a></h2>
+<p>The passage from finite to countable dimensions is easy enough. Let $V$ be an $n$-dimensional vector space, and $\lbrace e_i \rbrace_{i=1}^n$ a basis for it. We can express a vector $v\in V$ as $\sum_{i=1}^n v^i e_i$. We now take $V$ to be the space $L^2(S^1)$ to be the space of functions on the circle. Wait, what?</p>
+<p><a href="https://en.wikipedia.org/wiki/Hilbert_space#Fourier_analysis" target="_blank" class="accented">
+    Fourier analysis
+</a></p>
+<p>The idea of change of basis also works in infinite dimensions. Functions on $S^1$ can be decomposed in terms of <a href="https://en.wikipedia.org/wiki/Wavelet" target="_blank" class="accented">
+    wavelets
+</a> or bump functions instead of the trigonometric functions.
+The <a href="https://en.wikipedia.org/wiki/Spherical_harmonics" target="_blank" class="accented">
+    spherical harmonics
+</a> are similarly an orthonormal basis for the space $L^2(S^2)$ (square-integrable functions on the sphere); also countably infinite.</p>
 
 
   </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/linear-algebra/">Linear Algebra</a></li>
     </ul>
   </footer>
 <script src="https://giscus.app/client.js"
@@ -302,9 +259,7 @@ It is easy to see that elements of the form $(H, 0)$ commute with everything in 
     
 <footer class="footer">
     
-    <div class="signup-form">
-        <script async src="https://eocampaign1.com/form/e5dbf9e6-b891-11ee-a1b7-cdaf9e8a98be.js" data-form="e5dbf9e6-b891-11ee-a1b7-cdaf9e8a98be"></script>
-    </div>
+    
     
     
     

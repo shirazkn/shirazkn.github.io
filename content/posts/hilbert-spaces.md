@@ -5,7 +5,7 @@ tags: ["Linear Algebra"]
 draft: false
 ---
 
-Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an <span class=accented>inner product</span> (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is <span class=accented>complete</span>, i.e., it doesn't have er... holes in it. [Recall](/posts/norms_metrics) that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product. Mathematicians sometimes use 'Hilbert space' to refer specifically to infinite-dimensional inner product spaces, but for our purposes, we will conflate the usage of 'Hilbert space' to include the finite-dimensional case.
+Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an <span class=accented>inner product</span> (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is <span class=accented>complete</span>, i.e., it doesn't have er... holes in it. [Recall](/posts/norms_metrics) that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product. Mathematicians sometimes use 'Hilbert space' to refer specifically to infinite-dimensional inner product spaces, but for our purposes, we will let 'Hilbert space' include the finite-dimensional case.
 
 Some interesting Hilbert spaces are given below. Each of these spaces has a corresponding norm, $\lVert x \rVert_{\mathcal X}=\sqrt{\langle x, x\rangle}_{\mathcal X}$, which we call as the norm that is *induced* by the inner product.
 
@@ -13,9 +13,9 @@ Some interesting Hilbert spaces are given below. Each of these spaces has a corr
 | -------------------------------| ---------------------------------------------|
 | Numbers $a$, $b\in \mathbb R$ | $ab$ |
 | Random Variables $X,Y\in \mathbb R$ | $\mathbb E \left[XY \right]$ |
-| Real Vectors $x$, $y\in \mathbb R^n$ | $x^\intercal y$ |
-| Complex Vectors $x$, $y\in \mathbb C^n$ | $x^\dagger y$ |
-| Matrices $A$, $B\in \mathbb R^{m\times n}$ | $\ \text{Trace}(A^{\intercal}B)$
+| Real Vectors $x$, $y\in \mathbb R^n$ | $\mathbf x^\intercal \mathbf y$ |
+| Complex Vectors $x$, $y\in \mathbb C^n$ | $\mathbf x^\dagger \mathbf y$ |
+| Matrices $\mathbf A$, $\mathbf B\in \mathbb R^{m\times n}$ | $\ \text{Trace}(\mathbf A^{\intercal}\mathbf B)$
 | Sequences $(x_i)_{i=1}^{\infty}, (y_i)_{i=1}^{\infty}\in \ell ^2(\mathbb R) \ $ | $\sum_{i=1}^{\infty} x_i y_i$ |
 | Square-Integrable Functions $f,g \in L^2(\mathbb R)$ | $\int_{-\infty}^{\infty}f(x)\overline{g(x)}dx$
 
@@ -27,11 +27,12 @@ Here, $\overline{({}\cdot{})}$ is the conjugate of a complex number (where you r
 
 A defining feature of Hilbert Spaces is their geometry. Because they have [notions of angles](/posts/norms_metrics), we have 
 
-<p>
-\[0 \leq {|\langle x, y\rangle_{\mathcal X} |} \leq {\|x\|\|y\|}\]
-</p>
+$$
+0 \leq {|\langle x, y\rangle_{\mathcal X} |} \leq {\|x\|\|y\|}
+$$
 
-where if the first equality holds we say $x$ and $y$ are *orthogonal* to each other, and the second equality holds if and only if they are linearly dependent: $x = a y$ for $a \in \mathbb R$.
+
+where if the first equality holds we say $x$ and $y$ are *orthogonal* to each other, and the second equality holds if and only if they are linearly dependent: $x = a y$ for $a \in \mathbb R$ (or $\mathbb C$, when $\mathcal X$ is a complex vector space).
 
 We can define the *projection* of an element $x\in \mathcal X$ onto a subspace $S\subseteq \mathcal X$:
 
@@ -40,7 +41,7 @@ We can define the *projection* of an element $x\in \mathcal X$ onto a subspace $
 </p>
 
 where $\lVert v \rVert_{\mathcal X} = \sqrt{\langle v, v\rangle}_{\mathcal X}$ is the induced norm.
-The remarkable by-product of these definitions of angles, orthogonality, and projection, is that it is consistent with our Euclidean intuition: $x-\text{P}_S(x)$ is always orthogonal to $S$. A [related theorem](https://en.wikipedia.org/wiki/Hilbert_projection_theorem) says that $\text P_{\tilde S}(x)$ is well-defined and unique even if $\tilde S \subseteq \mathcal X$ is a closed convex set, although in this case we do not have orthogonality of $x-\text{P}_{\tilde S}(x)$ to the other elements in $\tilde S$.
+A remarkable by-product of these definitions of angles, orthogonality, and projection, is that it is consistent with our Euclidean intuition: $x-\text{P}_S(x)$ is always orthogonal to $S$. A [related theorem](https://en.wikipedia.org/wiki/Hilbert_projection_theorem) says that $\text P_{\tilde S}(x)$ is well-defined and unique even if $\tilde S \subseteq \mathcal X$ is a closed convex set, although in this case we do not have orthogonality of $x-\text{P}_{\tilde S}(x)$ to the other elements in $\tilde S$.
 
 <div>
 <!-- <figure class=invertible style="max-width: 25%;"> -->
@@ -49,22 +50,23 @@ The remarkable by-product of these definitions of angles, orthogonality, and pro
 </figure>
 </div>
 
-As an example, in the Hilbert space of random variables, for its elements $X$ and $Y$, orthogonality corresponds to $\mathbb E\left[X Y\right] =  0$, the norm becomes the variance, and (orthogonal) [projection gives the least-squares estimator of given a random variable](https://inst.eecs.berkeley.edu/~ee126/sp18/projection.pdf). More generally, projection can be used to [best approximate](https://math.stackexchange.com/questions/3000704/orthogonal-projection-on-a-polynomial-space) an element of a Hilbert space using a finite set of basis vectors of that (or another) Hilbert space.
+As an example, given two 'vectors' $X$ and $Y$ in the Hilbert space of random variables, orthogonality corresponds to $\mathbb E\left[X Y\right] =  0$ and the norm becomes the variance. In this case, orthogonal projection actually gives the least-squares estimator of given a random variable ([Lec. 22, p. 85](https://aditya-sengupta.github.io/notes/eecs126.pdf)). More generally, a projection can be used to compute the [best approximation](https://math.stackexchange.com/questions/3000704/orthogonal-projection-on-a-polynomial-space) of an element of a Hilbert space (namely, the point being projected), with the approximation constrained to lie on a subspace (or a closed convex set).
 
 <hr> 
 
 ### The $(\mathbb R^N, \lVert{}\cdot{}\rVert_2)$ Space of Sequences
 
-This looks just like the Euclidean space of $N$-dimensional vectors. I mean, a vector is a set of $N$ coefficients (real numbers) where each coefficient describes the vector's distance along the corresponding standard basis vector (or 'axis', if you will).
+Given a vector in the Euclidean space $\mathbb R^N$ (equipped with a basis), we can view it as a set of $N$ coefficients. 
+Each coefficient (a real number) describes the vector's distance along the corresponding basis vector (or 'axis', if you will).
 <!-- Instead of axis, we should say orthonormal basis. -->
 
-Now, let's ignore all of that and our geometric intuition of vectors, and consider that $\mathbb R^N = \mathbb R \times \mathbb  R \times \dots \times \mathbb R$ is just a set-theoretic definition. An element $x$ of this space is a sequence of real numbers,
+Taking a few steps back, let's begin by viewing $\mathbb R^N$ as the set-theoretic product $\mathbb R \times \mathbb  R \times \dots \times \mathbb R$. An element $x$ of this space is a sequence of real numbers,
 
 <p>
-\[x = (x_1, x_2, \dots, x_N)\]
+\[x = (x_1, x_2, \dots, x_N)\].
 </p>
 
-and the norm can be defined as $\left(\sum_{i=1}^N |x_i|^2\right)^{1/2}$. So, nowhere did we have to talk about vectors or matrices. We can generalize this to $N\rightarrow \infty$.
+Once we define notions of *addition* and *scalar multiplication* for such $N$-coefficient sequences, we are allowed to call $\mathbb R^N$ a vector space. A norm for $\mathbb R^N$ can be defined as $\left(\sum_{i=1}^N |x_i|^2\right)^{1/2}$, which automatically induces a topology (notion of open and closed sets) on $\mathbb R^N$. We can generalize all of this to $N\rightarrow \infty$.
 
 ### The $\ell^2$ Space of Sequences
 $\ell^2(\mathbb R)$ consists of countable sequences of real numbers. 'Countable' here means that we can count them like we can count the natural numbers, but they are infinitely long nonetheless. We denote this sequence as $(x_i)_{i=1}^{\infty}$.
@@ -81,8 +83,8 @@ $\left(\frac{1}{\sqrt{1}}, \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{3}}, \dots\right)$
 
 ### (Separable) Hilbert Spaces are Isomorphic
 
-<span class=accented>Isomorpshisms</span> are maps from one type of mathematical object to another that preserve its structure. 
-[All (separable) infinite-dimensional Hilbert spaces are isomorphic to the $\ell^2$ space](http://mathonline.wikidot.com/separable-hilbert-spaces-are-isometrically-isomorphic-to-2), which is a fancy way of saying that we can do the following: We first construct a countable orthonormal basis for $\mathcal X$ (e.g., using the [Gram-Schmidt process](https://en.wikipedia.org/wiki/Gram–Schmidt_process)), denoted as $(e_i)_{i=1}^{\infty}$. Then, we define an isometric isomorphism (a distance-preserving, [structure-preserving](/posts/cat_theory_1) mapping) from $\mathcal X$ to $\ell^2$, as follows:
+<span class=accented>Isomorphisms</span> are maps from one type of mathematical object to another that preserve its structure. 
+[All (separable) infinite-dimensional Hilbert spaces are isomorphic to the $\ell^2$ space](http://mathonline.wikidot.com/separable-hilbert-spaces-are-isometrically-isomorphic-to-2), which is a fancy way of saying that we can do the following: We first construct a countable orthonormal basis for $\mathcal X$ (e.g., using the [Gram-Schmidt process](https://en.wikipedia.org/wiki/Gram–Schmidt_process) and perhaps [Zorn's lemma](https://en.wikipedia.org/wiki/Zorn's_lemma)), denoted as $(e_i)_{i=1}^{\infty}$. Then, we define an isometric isomorphism (a distance-preserving, [structure-preserving](/posts/cat_theory_1) mapping) from $\mathcal X$ to $\ell^2$, as follows:
 
 <p>
 \[T: \mathcal X \rightarrow \ell^2\]
@@ -101,47 +103,39 @@ Here, $T^{*}$ is called the *adjoint* of $T$; it is an operator that satisfies
 
 <p>\[\langle y,T(x)\rangle _{\ell^2} = \langle T^*(y),x\rangle _{\mathcal X}\]</p>
 
-It can be shown that the map $T({}\cdot{})$ [is necessarily linear](https://proofwiki.org/wiki/Surjection_that_Preserves_Inner_Product_is_Linear), and that [$T^*$ is also the inverse of $T$](https://proofwiki.org/wiki/Linear_Transformation_is_Isomorphism_iff_Inverse_Equals_Adjoint).
-The discussion thus far should be reminding us of linear transformations in undergraduate linear algebra. Indeed, the mapping $T({}\cdot{})$ can always be represented via a matrix, although this matrix can be infinite dimensional in general.
+The map $T({}\cdot{})$ [is necessarily linear](https://proofwiki.org/wiki/Surjection_that_Preserves_Inner_Product_is_Linear), and it can be shown that [$T^*$ is the inverse of $T$](https://proofwiki.org/wiki/Linear_Transformation_is_Isomorphism_iff_Inverse_Equals_Adjoint) (i.e., $T^\ast = T^{-1}$, something which is not true for general linear transformations!). The mapping $T({}\cdot{})$ can be represented via a matrix, although this matrix has infinitely many rows and columns.
 
 
-Using a similar reasoning as above in the finite-dimensional case, we see that all (separable) Hilbert spaces with dimension $N$ are isomorphic to the $(\mathbb R^N, \lVert{}\cdot{}\rVert_2)$ space.
-The condition that $T^*=T^{-1}$ might remind you of [unitary matrices](https://en.wikipedia.org/wiki/Unitary_matrix) ($U^\dagger = U^{-1}$, where $U^\dagger$ is the conjugate transpose of $U$), which are exactly the distance-preserving, structure-preserving matrices in $\mathbb C^N$. 
+Using a similar reasoning as above in the finite-dimensional case, we see that all (separable) complex Hilbert spaces with dimension $N$ are isomorphic to the $(\mathbb C^N, \lVert{}\cdot{}\rVert_2)$ space.
+The condition that $T^*=T^{-1}$ might remind you of [unitary matrices](https://en.wikipedia.org/wiki/Unitary_matrix) ($U^\dagger = U^{-1}$, where $U^\dagger$ is the conjugate transpose of $U$), which are exactly the distance-preserving, structure-preserving matrices in $\mathbb C^N$. When we're working with real Hilbert spaces we replace $\mathbb C^N$ with $\mathbb R^N$ and 'unitary' with 'orthogonal'. Recall that $Q^\intercal = Q^{-1}$ for an orthogonal matrix $Q$. Orthogonal matrices are an isometry (distance-preserving) because $\lVert Qx\rVert_2 = \lVert x \rVert_2$, and they are an isomorphism (structure-preserving) because $\langle Qx, Qy \rangle =\langle x, Q^\intercal Qy \rangle = \langle x, y\rangle$. Note that isomorphisms also preserve the angles between vectors.
 
-When we're working in $\mathbb R^N$, we replace 'unitary' with 'orthonormal', and we have $Q^\intercal = Q^{-1}$ for an orthonormal matrix $Q$. They are an isometry (distance-preserving) because $\lVert Qx\rVert_2 = \lVert x \rVert_2$, and they are an isomorphism (structure-preserving) because $\langle Qx, Qy \rangle =\langle x, Q^\intercal Qy \rangle = \langle x, y\rangle$. (Note that isomorphisms preserve 'right angles.')
-
-Thus, we always have a (non-unique) unitary matrix (or a [unitary operator](https://en.wikipedia.org/wiki/Unitary_operator), in the infinite-dimensional case) which will take us from one vector space to 'another' (but actually, it takes us to a rotated version of the same space 🙃) in a distance-preserving, structure-preserving manner.
+<!-- Thus, we always have a unitary matrix (or a [unitary operator](https://en.wikipedia.org/wiki/Unitary_operator) in the infinite-dimensional case) which takes us from one Hilbert space to another of the same dimension, in a distance-preserving, structure-preserving manner. -->
 
 <hr> 
 
 ### The $L^p$ Space of Functions
 
 Let's move onwards to function spaces.
-The space $L^1(\mathbb R)$ is the space of <span class=accented>absolutely integrable</span> functions:
+The space $L^1(\mathbb R)$ is the space of <span class=accented>absolutely integrable</span> functions. And element $f\in L^1(\mathbb R)$ is a function of the form $f:\mathbb R\rightarrow \mathbb C$ and satisfies
 
-<p>
-\[ \| f\|_{L^1} =\int_{\mathbb R} | f(x)| dx < \infty
-\]</p>
+$$ \| f\|_{L^1} =\int_{\mathbb R} | f(x)| dx < \infty.$$
 
-where $f:\mathbb R\rightarrow \mathbb C$ (so yeah, its codomain can be complex-valued). It is not a Hilbert space, because we have not yet defined an inner product for this space. The space $L^2(\mathbb R)$ has functions which are <span class=accented>square-integrable</span>:
 
-<p>
-\[ \| f\|_{L^2} =\left(\int_{\mathbb R} | f(x)|^2dx\right)^{1/2} < \infty
-\]</p>
+It is clear how to add and (pointwise) multiply functions, so $L^1(\mathbb R)$ is indeed a vector space. The space $L^2(\mathbb R)$ consists of functions which are <span class=accented>square-integrable</span>:
 
-which is a Hilbert space because it has the following inner product + norm combination:
+$$ \| f\|_{L^2} =\left(\int_{\mathbb R} | f(x)|^2dx\right)^{1/2} < \infty$$
 
-<p>
-\[ \langle f, g \rangle_{L^2} = \int_{\mathbb R} f(x) \overline{g(x)} dx\]
-\[ \| f\|_{L^2} = \sqrt{ \langle f, f \rangle_{L^2}}\]
-</p>
+and is a Hilbert space because it has the following inner product + norm combination:
 
-where $\overline {z}$ is the complex conjugate of $z\in \mathbb C$. Can we use the above as an inner product for $L^1$ as well? It turns out that we can't, because even if $f$ is in $L^1$, the integral of '$f(x)f(x)$' can be unbounded if $f$ is not also in $L^2$. 
+$$ \langle f, g \rangle_{L^2} = \int_{\mathbb R} f(x) \overline{g(x)} dx$$
+$$ \| f\|_{L^2} = \sqrt{ \langle f, f \rangle_{L^2}}.$$
+
+Can we use the above as an inner product for $L^1$ as well? It turns out that we can't, because even if $f$ is in $L^1$, the integral of $f(x)\overline{f(x)}$ can be unbounded if $f$ is not also in $L^2$. 
 <!-- Other $L^p$ spaces are defined analogously. -->
 <!-- This would violate the Cauchy-Schwarz inequality for any valid inner product, $| \langle x, y\rangle| \leq \lVert x \rVert \lVert y \rVert$. -->
 
 <aside class=aside-center>
-Observe that we always require some sort of 'boundedness of norm' when defining Hilbert spaces... it is related to the requirement of <i>completeness</i> of the space, which we so conveniently glossed over. 
+Observe that we always require some sort of 'boundedness of norm' when defining Hilbert spaces... it is related to the requirement of <i>completeness</i> of the space, which we have conveniently glossed over in this article. 
 </aside>
 
 
