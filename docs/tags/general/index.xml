@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>General on Shiraz</title>
-    <link>https://shirazkn.github.io/tags/general/</link>
+    <link>http://localhost:1313/tags/general/</link>
     <description>Recent content in General on Shiraz</description>
     <generator>Hugo -- 0.148.2</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 18 Mar 2023 21:07:38 -0400</lastBuildDate>
-    <atom:link href="https://shirazkn.github.io/tags/general/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/general/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Category Theory</title>
-      <link>https://shirazkn.github.io/posts/cat_theory_1/</link>
+      <link>http://localhost:1313/posts/cat_theory_1/</link>
       <pubDate>Sat, 18 Mar 2023 21:07:38 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/cat_theory_1/</guid>
+      <guid>http://localhost:1313/posts/cat_theory_1/</guid>
       <description>&lt;p&gt;One of my motivations for starting a blog was Eugenia Cheng&amp;rsquo;s book &lt;a href=&#34;https://www.amazon.com/Joy-Abstraction-Exploration-Category-Theory/dp/1108477224&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
     The Joy of Abstraction
 &lt;/a&gt;&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. It&amp;rsquo;s a surprisingly accessible, gentle introduction to &lt;span class=accented&gt;category theory&lt;/span&gt;, a topic that is usually only taught to graduate students in math. She compiled part of the book using notes from a class that she teaches at the Art Institute of Chicago, which is a testament to the aesthetic appreciation that one can expect to gain of category theory irrespective of their academic background! In this post, I will introduce the main ideas in category theory (as I best understand it) and show that it offers an elegant way of thinking about mathematics.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Incompleteness Theorems</title>
-      <link>https://shirazkn.github.io/posts/language_and_logic2/</link>
+      <link>http://localhost:1313/posts/language_and_logic2/</link>
       <pubDate>Sun, 05 Feb 2023 08:46:18 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/language_and_logic2/</guid>
-      <description>&lt;p&gt;In &lt;a href=&#34;https://shirazkn.github.io/posts/language_and_logic1&#34; class=&#34;accented&#34;&gt;
+      <guid>http://localhost:1313/posts/language_and_logic2/</guid>
+      <description>&lt;p&gt;In &lt;a href=&#34;http://localhost:1313/posts/language_and_logic1&#34; class=&#34;accented&#34;&gt;
     my earlier post
 &lt;/a&gt; I suggested that there is no objective notion of logical truth, that whether a statement is &amp;rsquo;true&amp;rsquo; can depend on the system of truth that one is operating in.
 Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I&amp;rsquo;m excited to talk about it!&lt;/p&gt;
@@ -34,19 +34,19 @@ The choice of axioms dictates the degree of expressiveness that one has within t
     </item>
     <item>
       <title>Misuse as a Use of Language</title>
-      <link>https://shirazkn.github.io/posts/language_and_logic1/</link>
+      <link>http://localhost:1313/posts/language_and_logic1/</link>
       <pubDate>Fri, 27 Jan 2023 13:48:49 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/language_and_logic1/</guid>
+      <guid>http://localhost:1313/posts/language_and_logic1/</guid>
       <description>&lt;!-- 
 Design ideas:
 clickable footnotes
 sidebar box
 --&gt;
-&lt;p&gt;This is my first post! It discusses the question of whether spoken and written languages like English could be &amp;rsquo;logical&amp;rsquo; by design. I will break this post up into two parts. The first one does not require a mathematical background whatsoever, whereas &lt;a href=&#34;https://shirazkn.github.io/posts/language_and_logic2&#34; class=&#34;accented&#34;&gt;
+&lt;p&gt;This is my first post! It discusses the question of whether spoken and written languages like English could be &amp;rsquo;logical&amp;rsquo; by design. I will break this post up into two parts. The first one does not require a mathematical background whatsoever, whereas &lt;a href=&#34;http://localhost:1313/posts/language_and_logic2&#34; class=&#34;accented&#34;&gt;
     the second
 &lt;/a&gt; touches on the concepts of axioms, theorems and proofs.&lt;/p&gt;
 &lt;h3 id=&#34;fallacies&#34;&gt;Fallacies&lt;/h3&gt;
-&lt;p&gt;The word &lt;em&gt;logic&lt;/em&gt; as it is used in everyday parlance refers to &lt;span class=accented&gt;informal logic&lt;/span&gt; (as opposed to &lt;a href=&#34;https://shirazkn.github.io/posts/language_and_logic2&#34; class=&#34;accented&#34;&gt;
+&lt;p&gt;The word &lt;em&gt;logic&lt;/em&gt; as it is used in everyday parlance refers to &lt;span class=accented&gt;informal logic&lt;/span&gt; (as opposed to &lt;a href=&#34;http://localhost:1313/posts/language_and_logic2&#34; class=&#34;accented&#34;&gt;
     formal logic
 &lt;/a&gt;, which is instead a rigorous mathematical construct).
 You&amp;rsquo;ve probably come across logical fallacies such as the &lt;a href=&#34;https://en.m.wikipedia.org/wiki/False_dilemma&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;

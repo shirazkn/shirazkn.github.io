@@ -63,13 +63,13 @@ Each coefficient (a real number) describes the vector's distance along the corre
 Taking a few steps back, let's begin by viewing $\mathbb R^N$ as the set-theoretic product $\mathbb R \times \mathbb  R \times \dots \times \mathbb R$. An element $x$ of this space is a sequence of real numbers,
 
 <p>
-\[x = (x_1, x_2, \dots, x_N)\].
+\[x = (x_1, x_2, \dots, x_N).\]
 </p>
 
-Once we define notions of *addition* and *scalar multiplication* for such $N$-coefficient sequences, we are allowed to call $\mathbb R^N$ a vector space. A norm for $\mathbb R^N$ can be defined as $\left(\sum_{i=1}^N |x_i|^2\right)^{1/2}$, which automatically induces a topology (notion of open and closed sets) on $\mathbb R^N$. We can generalize all of this to $N\rightarrow \infty$.
+Once we define notions of *addition* and *scalar multiplication* for such $N$-coefficient sequences, we are allowed to call $\mathbb R^N$ a vector space. A norm for $\mathbb R^N$ can be defined as $\left(\sum_{i=1}^N |x_i|^2\right)^{1/2}$, which automatically induces a topology (notion of open and closed sets) on $\mathbb R^N$. We can generalize all of this as $N\rightarrow \infty$.
 
 ### The $\ell^2$ Space of Sequences
-$\ell^2(\mathbb R)$ consists of countable sequences of real numbers. 'Countable' here means that we can count them like we can count the natural numbers, but they are infinitely long nonetheless. We denote this sequence as $(x_i)_{i=1}^{\infty}$.
+$\ell^2(\mathbb R)$ consists of countable sequences of real numbers. 'Countable' here means that we can count them like we can count the natural numbers, but they are infinitely long nonetheless. We denote one such sequence as $(x_i)_{i=1}^{\infty}$.
 A sequence is in $\ell^2$ if and only if it is <span class=accented>square-summable</span>, which means
 
 <p>\[
@@ -91,7 +91,7 @@ $\left(\frac{1}{\sqrt{1}}, \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{3}}, \dots\right)$
 \[T(x) = (\langle e_i,x \rangle_{\mathcal X})_{i=1}^{\infty} \]
 </p>
 
-which is the set of coefficients of $x$ along each basis vector. Note that $T$ is basis-dependent, we could pick a different basis and get a different $T$.
+which is the sequence of coefficients of $x$ along each basis vector. Note that $T$ is basis-dependent, we could pick a different basis and get a different $T$.
 Since $T$ is an isomorphism (i.e., does not 'destroy' information during the mapping), we may hope to be able to go back from $\ell^2$ to $\mathcal X$:
 
 <p>
@@ -127,8 +127,11 @@ $$ \| f\|_{L^2} =\left(\int_{\mathbb R} | f(x)|^2dx\right)^{1/2} < \infty$$
 
 and is a Hilbert space because it has the following inner product + norm combination:
 
-$$ \langle f, g \rangle_{L^2} = \int_{\mathbb R} f(x) \overline{g(x)} dx$$
-$$ \| f\|_{L^2} = \sqrt{ \langle f, f \rangle_{L^2}}.$$
+$$ 
+\begin{align}
+\langle f, g \rangle_{L^2} &= \int_{\mathbb R} f(x) \overline{g(x)} dx\\
+ \| f\|_{L^2} &= \sqrt{ \langle f, f \rangle_{L^2}}.
+\end{align}$$
 
 Can we use the above as an inner product for $L^1$ as well? It turns out that we can't, because even if $f$ is in $L^1$, the integral of $f(x)\overline{f(x)}$ can be unbounded if $f$ is not also in $L^2$. 
 <!-- Other $L^p$ spaces are defined analogously. -->
@@ -154,36 +157,31 @@ But since $L^2$ and $\ell^2$ are supposed to be isomorphic, this suggests that w
 
 #### [Fourier Transforms](https://en.m.wikipedia.org/wiki/Hilbert_space#Fourier_analysis)
 
-This section is for people who might have encountered the Fourier transform before, and want to see the Hilbert space interpretation of it.
-
-Suppose $f\in L^2([0,1])$ is a *signal*, which means that $f(t)$ is the amplitude of the signal at time $t$. The sinusoid is everybody's favorite example of a signal, given by $f(t)=\sin
+This section is for people who might have encountered the Fourier transform before, and want to see the Hilbert space interpretation of it. Consider a function $f\in L^2([0,1])$, such that $f(t)$ represents the amplitude of a *signal* at time $t$. The sinusoid is one such signal: $f(t)=\sin
 (t)$.
 An orthogonal basis for $L^2([0, 1])$ is $(e_k)_{k\in \mathbb Z}$, where 
 
-<p>\[e_k(t)=\frac{1}{\sqrt{2 \pi}}e^{2 \pi i k{t}}\]</p>
+$$e_k(t)=\frac{1}{\sqrt{2 \pi}}e^{2 \pi i k{t}}.$$
 
 Here, $\mathbb Z$ are the integers, which is still a countable set because we can count them as $(0, 1, -1, 2, -2, \dots)$.
 In this case, our isomorphism $T$ from $L^2([0,1])$ to $\ell^2$ is given by:
 
-<p>
-\[T(f) = \left(\langle f, e_k \rangle \right)_{k\in \mathbb Z}\]
-</p>
-<p>
-\[T(f) = \left( \frac{1}{\sqrt{2\pi}}\int_{0}^1 f(t)e^{-2\pi i kt} dt\right)_{k\in \mathbb Z}\]
-</p>
+$$\begin{align}
+T(f) &= \left(\langle f, e_k \rangle \right)_{k\in \mathbb Z}\\
+ &= \left( \frac{1}{\sqrt{2\pi}}\int_{0}^1 f(t)e^{-2\pi i kt} dt\right)_{k\in \mathbb Z}
+\end{align}$$
 
 These are exactly the Fourier coefficients (up to a constant factor, depending on how you define them)! Each coefficient tells you how much of a certain frequency is present in a signal. The way we have defined them (with proper normalization of the basis vectors) ensures that the Fourier transform $T$ is an isometric isomorphism. In fact, the observation that 
 
-<p>\[\langle f, g\rangle_{L^2([0,1])} = \langle T(f), T(g)\rangle_{\ell^2}\]
-</p>
+$$\langle f, g\rangle_{L^2([0,1])} = \langle T(f), T(g)\rangle_{\ell^2}$$
 
-has a special name in the signal processing community: it's called <a href="https://en.wikipedia.org/wiki/Parseval's_theorem" class=accented>Parseval's theorem</a>. We can also truncate the small Fourier coefficients to *[compress](https://www.dspguide.com/ch27/6.htm)* (or *de-noise*) a signal by ignoring its weak (or bothersome) frequencies -- be it an audio signal or an image. This truncation is a special case of the projection in Hilbert spaces, so it's in fact the best approximation in terms of the $L^2$ norm of the approximation error. 
+has a special name in the signal processing community: it's called <a href="https://en.wikipedia.org/wiki/Parseval's_theorem" class=accented>Parseval's</a> (or <a href="https://en.wikipedia.org/wiki/Plancherel_theorem" class=accented>Plancheral's</a>) theorem. We can also discard some of the Fourier coefficients to *[compress](https://www.dspguide.com/ch27/6.htm)* (or *de-noise*) a signal by ignoring its weak (or bothersome) frequencies -- be it an audio signal or an image. Such a truncation of the sequence is a special case of the projection operation in Hilbert spaces, so it's the best approximation in terms of the $L^2$ norm of the approximation error.
 
 <hr> 
 
 One of the motivations for defining the map $T$ is that we can now represent objects in an arbitrary Hilbert space using a (countable) set of numbers (in $\ell^2$). Aside from being a powerful theoretical tool, it lets us store and manipulate these objects on computers efficiently, as evidenced by the example of the Fourier transform. 
 
-All that said, the reason I love typing out posts like these is because it's so gratifying to see all of these different mathematical objects be unified under a single concept. The interplay between vectors, sequences, and functions is something that was never taught or emphasized to me in school. All throughout college, my instructors usually pulled the Fourier transform out of their hat, just to use it for 2 lectures and then put it back in before I ever figured out what it was. Maybe I'm just a slow learner, so it's a good thing I have (hopefully) a long life ahead of me to keep learning.
+All that said, the reason I love typing out posts like these is because it's so gratifying to see all of these different mathematical objects be unified under a single concept. The interplay between vectors, sequences, and functions is something that was never taught or emphasized to me in school. All throughout college, my instructors usually pulled the Fourier transform out of their hat, just to use it for 2 lectures and then put it back in before I ever figured out what it was. Maybe I'm just a slow learner, so it's a good thing I have (one would hope) a long life ahead of me to keep learning!
 
 <!-- Aha! I'm now beginning to understand some of the things that were kept hidden from me... -->
 

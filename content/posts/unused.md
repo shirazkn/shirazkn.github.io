@@ -9,7 +9,7 @@ $$
 
 where $\mathfrak e$ is called the <span class=accented>extension</span> of $\mathfrak g$ by $\mathfrak h$. The map $\mathfrak h \hookrightarrow \mathfrak e$ is the (injective) *inclusion* of $\mathfrak h$ into $\mathfrak e$, and the map $\mathfrak e \twoheadrightarrow \mathfrak g$ is the (surjective)[^2] *projection* of $\mathfrak e$ onto $\mathfrak g$. Since morphisms that preserve the Lie algebra structure should also preserve the vector space structure, we have that $\mathfrak e = \mathfrak h \oplus \mathfrak g$ as a vector space.[^1] So we have taken two Lie algebras $\mathfrak h$ and $\mathfrak g$ and combined them into a larger Lie algebra, $\mathfrak e$. 
 
-But surely the Lie bracket on $\mathfrak e$ should satisfy additional properties (otherwise, we have done no better than to write down an SES involving vector spaces). What are these properties? Let's call the inclusion and projection maps, $\iota$ and $\pi$, respectively. Since the morphisms are structure-preserving, we have
+But surely the Lie bracket on $\mathfrak e$ should satisfy additional properties (otherwise, we have done no better than to write down an SES involving vector spaces). What are these properties? Let's call the inclusion and projection maps $\iota$ and $\pi$, respectively. Since the morphisms are structure-preserving, we have
 
 $$
 \begin{align}
@@ -34,11 +34,11 @@ $$
 \end{align}
 $$
 
-But $\pi(H) = 0$ since $\pi$ is a projection onto $G$, which means that $\pi\big([H, G]\big)=0$, that is, $[H,G]\in \mathfrak h$. This means that $\mathfrak h$ is an <span class=accented>ideal</span> of $\mathfrak e$, i.e., $[\mathfrak h, \mathfrak e] \subseteq \mathfrak h$. Intuitively, I like to think that $\mathfrak h$ "absorbs" the vectors that it is bracketed against.
+But $\pi(H) = 0$ since $\pi$ is a projection onto $G$, which means that $\pi\big([H, G]\big)=0$, that is, $[H,G]\in \mathfrak h$. This means that $\mathfrak h$ is an <span class=accented>ideal</span> of $\mathfrak e$, i.e., $[\mathfrak h, \mathfrak e] \subseteq \mathfrak h$. Intuitively, $\mathfrak h$ "absorbs" the vectors that it is bracketed against.
 
 [^1]: Recall that a *short exact sequence* is one where the image of each map is the kernel of the next. Using the first isomorphism theorem, we can show that $\mathfrak g \cong  \mathfrak e/\mathfrak h$. Because of the short exact sequence property, we also have that $\mathfrak h \cong \textrm{Im}(\hookrightarrow) = \textrm{Ker}(\twoheadrightarrow)$. Putting the pieces together, we see that $\mathfrak h$ and $\mathfrak g$ represent mutually exclusive parts of $\mathfrak e$.
 
-[^2]: Actually, the injectivity and surjectivity follow automatically from the presence of the $\mathbf 0's$ on either end, combined with the requirement that each arrow of the sequence be a morphism.
+[^2]: Actually, the injectivity and surjectivity follow automatically from the presence of the $\mathbf 0's$ on either end, combined with the requirement that this sequence be exact.
 
 ### Central Extension
 
