@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>On the Monogram Notation | Shiraz</title>
+<meta name="keywords" content="robotics, lie-groups, geometry">
+<meta name="description" content="I&rsquo;ve been going through Russ Tedrake&rsquo;s 
+    notes
+ on robotics, which got me thinking about their so-called monogram notation. Basically, this is the notation that represents an $SE(3)$ transformation as $^aX^b$ — more on that shortly. There is a recent 
+    review paper
+ that points to several variations on this notation, and my postdoc advisor 
+    Gregory Chirikjian
+ wrote a 
+    paper
+ on it as well. Tedrake&rsquo;s monogram notation looks very elegant until you get to spatial velocities, at which point strange artifacts such as the &ldquo;cross product&rdquo; will appear.
+$\newcommand{\mf}[1]{\mathbf{#1}}$ $\newcommand{\mono}[4]{ { ^{#2} #1 ^{#3} _{#4} } }$">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/robotics/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4dea143071e80a661ece3346f323b09d825fb9d7adc7c071af21feecd3174d45.css" integrity="sha256-TeoUMHHoCmYezjNG8yOwnYJfudetx8BxryH&#43;7NMXTUU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/favicon.ico">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/robotics/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      packages: {'[+]': ['mathtools']},
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['\\(', '\\)'], ['$', '$']]  
+    },
+    loader:{
+      load: ['ui/safe', '[tex]/mathtools']
+    },
+  };
+</script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
+
+<meta property="og:url" content="http://localhost:1313/posts/robotics/">
+  <meta property="og:site_name" content="Shiraz">
+  <meta property="og:title" content="On the Monogram Notation">
+  <meta property="og:description" content="I’ve been going through Russ Tedrake’s notes on robotics, which got me thinking about their so-called monogram notation. Basically, this is the notation that represents an $SE(3)$ transformation as $^aX^b$ — more on that shortly. There is a recent review paper that points to several variations on this notation, and my postdoc advisor Gregory Chirikjian wrote a paper on it as well. Tedrake’s monogram notation looks very elegant until you get to spatial velocities, at which point strange artifacts such as the “cross product” will appear. $\newcommand{\mf}[1]{\mathbf{#1}}$ $\newcommand{\mono}[4]{ { ^{#2} #1 ^{#3} _{#4} } }$">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-13T21:23:17-05:00">
+    <meta property="article:modified_time" content="2025-11-13T21:23:17-05:00">
+    <meta property="article:tag" content="Robotics">
+    <meta property="article:tag" content="Lie-Groups">
+    <meta property="article:tag" content="Geometry">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="On the Monogram Notation">
+<meta name="twitter:description" content="I&rsquo;ve been going through Russ Tedrake&rsquo;s 
+    notes
+ on robotics, which got me thinking about their so-called monogram notation. Basically, this is the notation that represents an $SE(3)$ transformation as $^aX^b$ — more on that shortly. There is a recent 
+    review paper
+ that points to several variations on this notation, and my postdoc advisor 
+    Gregory Chirikjian
+ wrote a 
+    paper
+ on it as well. Tedrake&rsquo;s monogram notation looks very elegant until you get to spatial velocities, at which point strange artifacts such as the &ldquo;cross product&rdquo; will appear.
+$\newcommand{\mf}[1]{\mathbf{#1}}$ $\newcommand{\mono}[4]{ { ^{#2} #1 ^{#3} _{#4} } }$">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "On the Monogram Notation",
+      "item": "http://localhost:1313/posts/robotics/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "On the Monogram Notation",
+  "name": "On the Monogram Notation",
+  "description": "I\u0026rsquo;ve been going through Russ Tedrake\u0026rsquo;s notes on robotics, which got me thinking about their so-called monogram notation. Basically, this is the notation that represents an $SE(3)$ transformation as $^aX^b$ — more on that shortly. There is a recent review paper that points to several variations on this notation, and my postdoc advisor Gregory Chirikjian wrote a paper on it as well. Tedrake\u0026rsquo;s monogram notation looks very elegant until you get to spatial velocities, at which point strange artifacts such as the \u0026ldquo;cross product\u0026rdquo; will appear. $\\newcommand{\\mf}[1]{\\mathbf{#1}}$ $\\newcommand{\\mono}[4]{ { ^{#2} #1 ^{#3} _{#4} } }$\n",
+  "keywords": [
+    "robotics", "lie-groups", "geometry"
+  ],
+  "articleBody": "I’ve been going through Russ Tedrake’s notes on robotics, which got me thinking about their so-called monogram notation. Basically, this is the notation that represents an $SE(3)$ transformation as $^aX^b$ — more on that shortly. There is a recent review paper that points to several variations on this notation, and my postdoc advisor Gregory Chirikjian wrote a paper on it as well. Tedrake’s monogram notation looks very elegant until you get to spatial velocities, at which point strange artifacts such as the “cross product” will appear. $\\newcommand{\\mf}[1]{\\mathbf{#1}}$ $\\newcommand{\\mono}[4]{ { ^{#2} #1 ^{#3} _{#4} } }$\nThis got me thinking about what the theory hiding behind this notation looks like. What is the connection between the monogram notation and the abstract Lie groups that I have taken so much pain to study on this blog? The result of this deliberation was a new notation for spatial velocities that bridges the gap between abstract Lie groups and their applications.\nChapter 1. The Frame Bundle First, let’s think about the space in which frames live. Given a point $\\mf p\\in \\mathbb R^3$, a frame $f$ at $\\mf p$ is an ordered set of $3$ linearly independent vectors, $(\\mf f_1, \\mf f_2, \\mf f_3)$, along with the base point $\\mf p^f$. The frame is visualized as arrows starting at $\\mf p$ and facing outwards.1 The collection of all frames of $\\mathbb R^3$ makes up the frame bundle, $\\mathrm F\\mathbb R^3$. There is a map $\\pi:\\mathrm F\\mathbb R^3\\rightarrow \\mathbb R^3$ that maps the frame $f$ to its base point $\\mf p^f$, giving us a fiber bundle structure.\nThe contents of the frame $f\\in\\mathrm F\\mathbb R^3$ can be stacked into a matrix as follows: $$ f=\\begin{bmatrix} \\mf f_1 \u0026 \\mf f_2 \u0026 \\mf f_3 \u0026 \\mf p^f\\\\ 0 \u0026 0 \u0026 0 \u0026 1 \\end{bmatrix}. $$ Meanwhile, an element $(A, \\mf t)$ of the semi-direct product group $G\\coloneq GL(3)\\ltimes\\mathbb R^3$ can be written as\n$$ (A, \\mf t) = \\begin{bmatrix} A \u0026 \\mf t\\\\ \\mf 0 \u0026 1 \\end{bmatrix}. $$ The group $G$ acts on the frame bundle $\\mathrm F\\mathbb R^3$ by matrix multiplication on the left: $$ (A, \\mf t)\\cdot f = \\begin{bmatrix} A \u0026 \\mf t\\\\ \\mf 0 \u0026 1 \\end{bmatrix} \\begin{bmatrix} \\mf f_1 \u0026 \\mf f_2 \u0026 \\mf f_3 \u0026 \\mf p^f\\\\ 0 \u0026 0 \u0026 0 \u0026 1 \\end{bmatrix} \\eqcolon \\begin{bmatrix} \\mf g_1 \u0026 \\mf g_2 \u0026 \\mf g_3 \u0026 \\mf p^g\\\\ 0 \u0026 0 \u0026 0 \u0026 1 \\end{bmatrix} = g $$ so that $\\mf g_i = A \\mf f_i$ and $\\mf p^g = A \\mf p^f + \\mf t$. The action of $G$ is transitive and free (it doesn’t really matter what these words mean, but I have included a handy guide in the appendix). In particular, $SE(3)=SO(3)\\ltimes \\mathbb R^3$ is a subgroup of $G$ that acts on $\\mathrm F\\mathbb R^3$, and it leaves the subset $\\mathrm O\\mathbb R^3\\subseteq \\mathrm F\\mathbb R^3$ of positively-oriented orthogonal frames invariant! We will later specialize our discussion to the action of $SE(3)$ on $\\mathrm O\\mathbb R^3$.\nThe fact that $g={^fX^g} f$ might seem strange, but we will see that this is precisely the monogram notation. We just need to be careful about the fact that the action of ${^fX^g}$ on basis vectors is opposite to its action on the coefficients of vectors expressed w.r.t. that basis. Let ${^fX^g}\\coloneq(A, \\mf t)$ be the transformation in $G$. We write it as ${^fX^g}$ to indicate that it takes the frame $f$ to the frame $g$. Equivalently, ${^fX^g}$ is the frame $g$ as seen from $f$. Because the action is free and transitive, we can identify each transformation with an ordered pair of frames $(f,g)$, where $f$ is the “from” frame and $g$ is the “to” frame.\n${^fX^g}$ is the transformation that takes frame $f$ to frame $g$\nEquivalently, it is frame $g$ as seen from frame $f$ You may have noticed that the frames $f$ and $g$ themselves look like elements of $G$. This confusion between points on a homogeneous space and elements of the group acting on that space is one of the pitfalls that the monogram notation seeks to address.\nChapter 2. Transformation Rules In the last chapter, we implicitly assumed that there is a well-defined “origin frame”, which we will call $e$. This is the frame that is described by the identity matrix, when concatenated into a matrix. For our purposes, we can assume that this is a frame that is stationary with respect to Earth 🌏, and located at a convenient location (perhaps the lower-left corner of my desk).\nLet $f$ be the frame attached to the fan on my ceiling (which is currently stationary). We can describe the vector that goes from $e$ to $f$ as $\\mono{\\mf p}{e}{f}{~}$. Expressing this vector in the basis of $f$, we have $$ \\mono{\\mf p}{e}{f}{~} = \\mono{\\mf p}{e}{f}{\\mf f_1} \\mf f_1 + \\mono{\\mf p}{e}{f}{\\mf f_2} \\mf f_2 + \\mono{\\mf p}{e}{f}{\\mf f_3} \\mf f_3, $$ whose coefficients we can represent as a vector: $$ \\mono{\\mf p}{e}{f}{f}\\coloneq\\begin{bmatrix} \\mono{\\mf p}{e}{f}{\\mf f_1}\\\\ \\mono{\\mf p}{e}{f}{\\mf f_2}\\\\ \\mono{\\mf p}{e}{f}{\\mf f_3} \\end{bmatrix}. $$ We could also represent $\\mono{\\mf p}{e}{f}{~}$ in the origin (i.e., Earth) frame: $$ \\begin{align} \\mono{\\mf p}{e}{f}{~} \u0026= \\mono{\\mf p}{e}{f}{\\mf e_1} \\mf e_1 + \\mono{\\mf p}{e}{f}{\\mf e_2} \\mf e_2 + \\mono{\\mf p}{e}{f}{\\mf e_3} \\mf e_3\\\\ \u0026= \\begin{bmatrix} \\mono{\\mf p}{e}{f}{\\mf e_1}\\\\ \\mono{\\mf p}{e}{f}{\\mf e_2}\\\\ \\mono{\\mf p}{e}{f}{\\mf e_3} \\end{bmatrix} \\ \\\\ \u0026\\eqcolon \\mono{\\mf p}{e}{f}{e}. \\end{align} $$ As in Tedrake’s notes, if we omit a supercript/subscript, we mean the origin (or Earth) frame: $\\mono{\\mf p}{}{f}{}\\coloneq\\mono{\\mf p}{e}{f}{e}$. This means that $\\mono{\\mf p}{}{}{f}$ is the zero vector, and $\\mono{X}{}{}{f}$ the identity matrix!\nNotice that $f$ has the same matrix as $\\mono{X}{}{f}{}$. We can view $f$ both as a frame and as a transformation from $e$ to $f$. Similarly, $\\mf p^f$ can be viewed both as a point in $\\mathbb R^3$ and as the vector going from the origin to $\\mf p^f$. The underlying reason is that, in order to describe to you which point (or frame) I am talking about, I need to first choose an origin (or Earth frame).2\nWe have the following identities for frames $f,g,h,$ and $k$.\n(Vector Addition) $\\mono{\\mf p}{f}{h}{k} = \\mono{\\mf p}{f}{g}{k} + \\mono{\\mf p}{g}{h}{k}$\n(Additive Inverse) $\\mono{\\mf p}{f}{g}{k} = - \\mono{\\mf p}{g}{f}{k}$\n(Inverse Transformation) $\\mono{X}{f}{g}{} = (\\mono{X}{g}{f}{})^{-1}$ Using these facts, we can derive the transformation rules for points. Let’s relate how the frames $e$ and $f$ see the point $\\mf p^g$: $$ \\begin{align} \\mono{\\mf p}~g~ \u0026= \\mono{\\mf p}~f~ + \\mono{\\mf p}fg e\\\\ \u0026= \\mono{\\mf p}~f~ + \\mono{\\mf p}fg{\\mf f_1}\\mf f_1 + \\mono{\\mf p}fg{\\mf f_2}\\mf f_2 + \\mono{\\mf p}fg{\\mf f_3}\\mf f_3\\\\ \u0026= \\mono{\\mf p}~f~ + \\mono{A}~f~ \\mono{\\mf p}fg{f}, \\end{align} $$ $$ \\text{or}\\quad \\begin{bmatrix} \\mono{\\mf p}e g e\\\\ 1 \\end{bmatrix} = \\mono{X}~f~ \\begin{bmatrix} \\mono{\\mf p}fg{f}\\\\ 1 \\end{bmatrix} $$where $\\mono{X}~f~=(\\mono{A}~f~, \\mono{\\mf p}~f~)$ and $\\mono{A}~f~\\in GL(3)$ is the matrix $$ \\mono{A}~f~ = \\begin{bmatrix} \\mf f_1 \u0026 \\mf f_2 \u0026 \\mf f_3 \\end{bmatrix}. $$ What we wrote above is just the last column of the formula…\n(Composition) $\\mono{X}eg~ = \\mono{X}ef~ \\mono{X}fg~$ which generalizes to arbitrary frames. While $\\mono{X}ef~$ translates between how $e$ and $f$ each see the frame $g$, we may be interested in translating between how $e$ and $f$ see the vector going from $f$ to $g$, which is $\\mono{\\mf p}fg~=\\mono{\\mf p}~g~ - \\mono{\\mf p}~f~$. We already know what this looks like: $$ \\mono{\\mf p}fge = \\mono{A}ef~\\mono{\\mf p}fgf. $$When $e$ and $f$ are both positively-oriented orthogonal frames, $\\mono{A}ef~$ is an orthogonal matrix, so we will write it as $\\mono{R}ef~$ instead:\n(Rotation-of-Basis) $\\mono{\\mf p}fge = \\mono{R}ef~\\mono{\\mf p}fgf$ In this case, $\\mono{X}ef~=(\\mono{R}ef~, \\mono{\\mf p}eff)\\in SE(3)$. These formulae hold if we replace $e$ with $h$; I just used $e$ to simplify the presentation.\nChapter 3. Velocities Suppose we have curves $f :\\mathbb R\\rightarrow \\mathrm F\\mathbb R^3$ and $g :\\mathbb R\\rightarrow \\mathrm F\\mathbb R^3$, such that $f(t)$ and $g(t)$ are moving w.r.t. the origin frame $e$. Our task it to describe their velocities at time $t$.\nSetting up the notation. I introduce the following notation for derivatives:\n$$ \\begin{align} (\\mono{X}{f}{g}~)' \u0026\\coloneq \\frac{d}{d\\tau}{\\mono{X}{f(t+\\tau)}{g(t+\\tau)}~}\\Big\\vert_{\\tau=0}\\\\ \\mono{X}{f}{g'}~ \u0026\\coloneq \\frac{d}{d\\tau}{\\mono{X}{f(t)}{g(t+\\tau)}~}\\Big\\vert_{\\tau=0}\\\\ \\mono{X}{f'}{g}~ \u0026\\coloneq \\frac{d}{d\\tau}{\\mono{X}{f(t+\\tau)}{g(t)}~}\\Big\\vert_{\\tau=0} \\end{align} $$which means that $(\\mono{X}gg~)' = \\mf 0$, and so on. Each of these quantities is the component-wise derivative of a time-dependent matrix. By differentiating the identity $$ \\mono{X}{f(t)}{g(t+\\tau)}~ \\mono{X}{g(t+\\tau)}{f(t)}~ = \\mf I, $$we get $\\mono{X}f{g'}~=-\\mono{X}fg~\\,\\mono{X}{g'}f~\\,\\mono{X}fg~$. In particular, $\\mono{X}g{g'}~=-\\mono{X}{g'}g~$.\nBasic physics tells us that, in order to even define what velocity is, we need to decide which frame we consider to be stationary. We will write $\\mono{\\Lambda}fgk$ to denote the velocity of $g$ as seen from $k$, with $f$ considered to be the stationary frame. It is of the form $$ \\mono{\\Lambda}fgk = \\begin{bmatrix} \\mono{\\Omega}fgk \u0026 \\mono{\\mf v}fgk\\\\ \\mf 0 \u0026 0 \\end{bmatrix}\\in \\mathfrak{se}(3), $$ where $\\mono{\\Omega}fgk\\in\\mathfrak{so}(3)$ is a $3\\times 3$ skew-symmetric matrix. We can also call $f$ the reference frame, or the observer frame.\nUsing the notation. We denote the velocity of $g$ as seen from itself, with $e$ considered as the stationary frame, as\n(Left-Invariant Velocity) $ \\mono{\\Lambda}egg\\coloneq \\mono{X}g{g'}~ $ It follows that $\\mono{X}{g'}g~ = - \\mono{\\Lambda}~gg$. Similar to how left-invariant vector fields work on abstract Lie groups, we have $$ \\begin{align} \\mono{X}e{g'}~=\\frac{d}{d\\tau}{\\mono{X}{e}{g(t)}~ \\mono{X}{g(t)}{g(t+\\tau)}~}\\Big\\vert_{\\tau=0} = \\mono{X}{e}{g}~ \\mono{\\Lambda}~gg. \\end{align} $$ Thus, $\\mono{\\Lambda}~gg=(\\mono{X}eg~)^{-1}\\,\\mono{X}e{g'}~$ is indeed the left-invariant velocity of $g$. What is then the right-invariant velocity? It is the velocity of $g$ as seen from $e$, with $e$ considered the stationary frame:\n(Right-Invariant Velocity) $ \\mono{\\Lambda}ege\\coloneq \\mono{X}{e}{g}~ \\mono{\\Lambda}{}gg \\,\\mono{X}ge~=\\mathrm{Ad}_{\\mono{X}{e}{g}{}}(\\mono{\\Lambda}{}gg) $ The nice symmetric notation in the middle helps us remember this formula, although I like the $\\mathrm{Ad}$ notation since it makes the transformation rules look like those of vectors and frames. Recall the definition of the adjoint representation , $\\mathrm{Ad}_X:\\mathfrak{se}(3)\\rightarrow\\mathfrak{se}(3)$ for each $X\\in SE(3)$.\nThe left-invariant velocity is the velocity of $g$ as seen from $g$, while the right-invariant velocity is the velocity of $g$ as seen from $e$. I have been cheeky in choosing $e$ and $g$ as the notation for these frames, since I want $e$ to remind you of the identity element of $SE(3)$! Here is the big payoff of this notation. Velocities add like vectors, as long as they are expressed in the same frame:\n(Addition of Velocities) $ \\mono{\\Lambda}fhk = \\mono{\\Lambda}fgk + \\mono{\\Lambda}ghk $ You are encouraged to prove this! As a hint, notice that it is sufficient to prove this for the case of $k=f$.\nChapter 4. Hat \u0026 Vee Maps For an introduction to the hat and vee maps, see the books by Chirikjian or Barfoot, or Appendix A of my preprint . Basically, $\\mathfrak{so}(3)$ has a particular choice of basis which lets us map skew-symmetric matrices to vectors in $\\mathbb R^3$, as $$\nAppendix. Group Actions An action of $G$ on $X$ is said to be…\neffective (or faithful) if $g\\cdot x=x$ for all $x \\in X$ implies $g=e$. Equivalently, the mapping $G\\mapsto \\textrm{Aut}(X)$ is injective. “Everyone (in $G$) is doing something somewhere (in $X$)\" free if $g\\cdot x=x$ for some $x$ already implies that $g=e$. Given an element $g\\in G\\backslash\\lbrace e\\rbrace$, its action has no fixed points (is fixed-point free!) “Everyone's doing something everywhere\" transitive if any two points are connected by a group action. Consider the task of taking $x_1\\in X$ to $x_2\\in X$… (Given an arbitrary task) “It will be done by someone\" regular if transitive and free. This makes $X$ a principal homogeneous $G$-space or a $G$-torsor ; the group element in the definition of transitivity is unique (Given an arbitrary task) “I know just the person!\" It turns out that such a frame can have one of two parities — it can either be positively or negatively oriented. Our usual choice of the $\\mathrm{xyz}$ axes is positively oriented, so you can use that fact to come up with your own “right-hand rule” for positive orientation. ↩︎\nAbstractly speaking, a group has a distinguished point (the identity), while on a homogeneous space we need to choose a reference point. In the context of my previous post , the Earth frame $e$ can be seen as a choice of a distinguished point in $\\mathrm F\\mathbb R^3$. It identifies $\\mathrm F\\mathbb R^3$ with $GL(3)\\ltimes \\mathbb R^3$. Similarly, we can identify $\\mathrm O\\mathbb R^3$ with $SE(3)$; given a frame $f\\in\\mathrm O\\mathbb R^3$, we associate it to the $SE(3)$ transformation $\\mono{X}~f~ = \\mono{X}efe$. In other words, $\\mathrm O\\mathbb R^3$ is an $SE(3)$-torsor. ↩︎\n",
+  "wordCount" : "2029",
+  "inLanguage": "en",
+  "datePublished": "2025-11-13T21:23:17-05:00",
+  "dateModified": "2025-11-13T21:23:17-05:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/robotics/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shiraz",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      On the Monogram Notation
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2025-11-13 21:23:17 -0500 EST'>November 13, 2025</span>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#chapter-1-the-frame-bundle" aria-label="Chapter 1. The Frame Bundle">Chapter 1. The Frame Bundle</a></li>
+                <li>
+                    <a href="#chapter-2-transformation-rules" aria-label="Chapter 2. Transformation Rules">Chapter 2. Transformation Rules</a></li>
+                <li>
+                    <a href="#chapter-3-velocities" aria-label="Chapter 3. Velocities">Chapter 3. Velocities</a></li>
+                <li>
+                    <a href="#chapter-4-hat--vee-maps" aria-label="Chapter 4. Hat &amp; Vee Maps">Chapter 4. Hat &amp; Vee Maps</a></li>
+                <li>
+                    <a href="#appendix-group-actions" aria-label="Appendix. Group Actions">Appendix. Group Actions</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>I&rsquo;ve been going through Russ Tedrake&rsquo;s <a href="https://manipulation.csail.mit.edu/pick.html" target="_blank" class="accented">
+    notes
+</a> on robotics, which got me thinking about their so-called <span class=accented>monogram notation</span>. Basically, this is the notation that represents an $SE(3)$ transformation as $^aX^b$ — more on that shortly. There is a recent <a href="https://arxiv.org/html/2405.07351v1" target="_blank" class="accented">
+    review paper
+</a> that points to several variations on this notation, and my postdoc advisor <a href="https://en.wikipedia.org/wiki/Gregory_S._Chirikjian" target="_blank" class="accented">
+    Gregory Chirikjian
+</a> wrote a <a href="https://trumpf.id.au/pubs/Chirikjian_Mahony_Ruan_Trumpf_JMR2017.pdf?utm_source=chatgpt.com" target="_blank" class="accented">
+    paper
+</a> on it as well. Tedrake&rsquo;s monogram notation looks very elegant until you get to spatial velocities, at which point strange artifacts such as the &ldquo;cross product&rdquo; will appear.
+$\newcommand{\mf}[1]{\mathbf{#1}}$ $\newcommand{\mono}[4]{ { ^{#2} #1 ^{#3} _{#4} } }$</p>
+<p>This got me thinking about what the theory hiding behind this notation looks like. What is the connection between the monogram notation and the abstract Lie groups that I have taken so much pain to study on this blog? The result of this deliberation was a new notation for spatial velocities that bridges the gap between abstract Lie groups and their applications.</p>
+<h2 id="chapter-1-the-frame-bundle"><span class=tertiary>Chapter 1.</span> The Frame Bundle<a hidden class="anchor" aria-hidden="true" href="#chapter-1-the-frame-bundle">#</a></h2>
+<p>First, let&rsquo;s think about the space in which frames live. Given a point $\mf p\in \mathbb R^3$, a <span class=accented>frame</span> $f$ at $\mf p$ is an ordered set of $3$ linearly independent vectors, $(\mf f_1, \mf f_2, \mf f_3)$, along with the base point $\mf p^f$.
+The frame is visualized as arrows starting at $\mf p$ and facing outwards.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> The collection of all frames of $\mathbb R^3$ makes up the frame bundle, $\mathrm F\mathbb R^3$.
+There is a map $\pi:\mathrm F\mathbb R^3\rightarrow \mathbb R^3$ that maps the frame $f$ to its base point $\mf p^f$, giving us a <a href="/posts/bundles/#-the-frame-bundle" class="accented">
+    fiber bundle
+</a> structure.</p>
+<p>The contents of the frame $f\in\mathrm F\mathbb R^3$ can be stacked into a matrix as follows:
+</p>
+$$
+f=\begin{bmatrix}
+\mf f_1 & \mf f_2 & \mf f_3 & \mf p^f\\
+0 & 0 & 0 & 1
+\end{bmatrix}.
+$$<p>
+Meanwhile, an element $(A, \mf t)$ of the semi-direct product group $G\coloneq GL(3)\ltimes\mathbb R^3$ can be written as</p>
+$$
+(A, \mf t) = \begin{bmatrix}
+A & \mf t\\
+\mf 0 & 1
+\end{bmatrix}.
+$$<p>
+The group $G$ acts on the frame bundle $\mathrm F\mathbb R^3$ by matrix multiplication on the left:
+</p>
+$$
+(A, \mf t)\cdot f = \begin{bmatrix}
+A & \mf t\\
+\mf 0 & 1
+\end{bmatrix} \begin{bmatrix}
+\mf f_1 & \mf f_2 & \mf f_3 & \mf p^f\\
+0 & 0 & 0 & 1
+\end{bmatrix} \eqcolon \begin{bmatrix}
+\mf g_1 & \mf g_2 & \mf g_3 & \mf p^g\\
+0 & 0 & 0 & 1
+\end{bmatrix} = g
+$$<p>
+so that $\mf g_i = A \mf f_i$ and $\mf p^g = A \mf p^f + \mf t$. The action of $G$ is transitive and free (it doesn&rsquo;t really matter what these words mean, but I have included a handy guide in the appendix). In particular, $SE(3)=SO(3)\ltimes \mathbb R^3$ is a subgroup of $G$ that acts on $\mathrm F\mathbb R^3$, and it leaves the subset $\mathrm O\mathbb R^3\subseteq \mathrm F\mathbb R^3$ of positively-oriented orthogonal frames invariant! We will later specialize our discussion to the action of $SE(3)$ on $\mathrm O\mathbb R^3$.</p>
+<aside class=aside-right>
+The fact that $g={^fX^g} f$ might seem strange, but we will see that this is precisely the <a class=accented href=https://manipulation.csail.mit.edu/pick.html>monogram notation</a>. We just need to be careful about the fact that the action of ${^fX^g}$ on basis vectors is <i>opposite</i> to its action on the coefficients of vectors expressed w.r.t. that basis.
+</aside>
+<p>Let ${^fX^g}\coloneq(A, \mf t)$ be the transformation in $G$. We write it as ${^fX^g}$ to indicate that it takes the frame $f$ to the frame $g$. Equivalently, ${^fX^g}$ is the frame $g$ as seen from $f$. Because the action is free and transitive, we can identify each transformation with an ordered pair of frames $(f,g)$, where $f$ is the &ldquo;from&rdquo; frame and $g$ is the &ldquo;to&rdquo; frame.</p>
+<p style="text-align: center">
+<span class=boxed>
+${^fX^g}$ is the transformation that takes frame $f$ to frame $g$<br> Equivalently, it is frame $g$ as seen from frame $f$
+</span>
+</p>
+<p>You may have noticed that the frames $f$ and $g$ themselves look like elements of $G$. This confusion between points on a homogeneous space and elements of the group acting on that space is one of the pitfalls that the monogram notation seeks to address.</p>
+<h2 id="chapter-2-transformation-rules"><span class=tertiary>Chapter 2.</span> Transformation Rules<a hidden class="anchor" aria-hidden="true" href="#chapter-2-transformation-rules">#</a></h2>
+<p>In the last chapter, we implicitly assumed that there is a well-defined &ldquo;<span class=accented>origin frame</span>&rdquo;, which we will call $e$. This is the frame that is described by the identity matrix, when concatenated into a matrix. For our purposes, we can assume that this is a frame that is stationary with respect to Earth 🌏, and located at a convenient location (perhaps the lower-left corner of my desk).</p>
+<p>Let $f$ be the frame attached to the fan on my ceiling (which is currently stationary).
+We can describe the vector that goes from $e$ to $f$ as $\mono{\mf p}{e}{f}{~}$. Expressing this vector in the basis of $f$, we have
+</p>
+$$
+\mono{\mf p}{e}{f}{~} = \mono{\mf p}{e}{f}{\mf f_1} \mf f_1 + \mono{\mf p}{e}{f}{\mf f_2} \mf f_2 + \mono{\mf p}{e}{f}{\mf f_3} \mf f_3,
+$$<p>
+whose coefficients we can represent as a vector:
+</p>
+$$
+\mono{\mf p}{e}{f}{f}\coloneq\begin{bmatrix}
+\mono{\mf p}{e}{f}{\mf f_1}\\
+\mono{\mf p}{e}{f}{\mf f_2}\\
+\mono{\mf p}{e}{f}{\mf f_3}
+\end{bmatrix}.
+$$<p>
+We could also represent $\mono{\mf p}{e}{f}{~}$ in the origin (i.e., Earth) frame:
+</p>
+$$
+\begin{align}
+\mono{\mf p}{e}{f}{~} &= \mono{\mf p}{e}{f}{\mf e_1} \mf e_1 + \mono{\mf p}{e}{f}{\mf e_2} \mf e_2 + \mono{\mf p}{e}{f}{\mf e_3} \mf e_3\\
+&= \begin{bmatrix}
+\mono{\mf p}{e}{f}{\mf e_1}\\
+\mono{\mf p}{e}{f}{\mf e_2}\\
+\mono{\mf p}{e}{f}{\mf e_3}
+\end{bmatrix} \ \\
+&\eqcolon \mono{\mf p}{e}{f}{e}.
+\end{align}
+$$<p>
+As in Tedrake&rsquo;s notes, if we omit a supercript/subscript, we mean the origin (or Earth) frame: $\mono{\mf p}{}{f}{}\coloneq\mono{\mf p}{e}{f}{e}$.
+This means that $\mono{\mf p}{}{}{f}$ is the zero vector, and $\mono{X}{}{}{f}$ the identity matrix!</p>
+<p>Notice that $f$ has the same matrix as $\mono{X}{}{f}{}$. We can view $f$ both as a frame and as a transformation from $e$ to $f$. Similarly, $\mf p^f$ can be viewed both as a point in $\mathbb R^3$ and as the vector going from the origin to $\mf p^f$.
+The underlying reason is that, in order to describe to you which point (or frame) I am talking about, I need to first choose an origin (or Earth frame).<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>We have the following identities for frames $f,g,h,$ and $k$.</p>
+<p style="text-align: center">
+<span class=boxed style="text-align: left">
+<span class=secondary>(Vector Addition)</span> $\mono{\mf p}{f}{h}{k} = \mono{\mf p}{f}{g}{k} + \mono{\mf p}{g}{h}{k}$<br>
+<span class=secondary>(Additive Inverse)</span> $\mono{\mf p}{f}{g}{k} = - \mono{\mf p}{g}{f}{k}$<br>
+<span class=secondary>(Inverse Transformation)</span> $\mono{X}{f}{g}{} = (\mono{X}{g}{f}{})^{-1}$
+</span>
+</p>
+<p>Using these facts, we can derive the transformation rules for points. Let&rsquo;s relate how the frames $e$ and $f$ see the point $\mf p^g$:
+</p>
+$$
+\begin{align}
+\mono{\mf p}~g~ &= \mono{\mf p}~f~ + \mono{\mf p}fg e\\
+&= \mono{\mf p}~f~ + \mono{\mf p}fg{\mf f_1}\mf f_1 + \mono{\mf p}fg{\mf f_2}\mf f_2 + \mono{\mf p}fg{\mf f_3}\mf f_3\\
+&= \mono{\mf p}~f~ + \mono{A}~f~ \mono{\mf p}fg{f},
+\end{align}
+$$<p>
+</p>
+$$
+\text{or}\quad
+\begin{bmatrix}
+\mono{\mf p}e g e\\
+1
+\end{bmatrix}
+= \mono{X}~f~ \begin{bmatrix}
+\mono{\mf p}fg{f}\\
+1
+\end{bmatrix}
+$$<p>where $\mono{X}~f~=(\mono{A}~f~, \mono{\mf p}~f~)$ and $\mono{A}~f~\in GL(3)$ is the matrix
+</p>
+$$
+\mono{A}~f~ = \begin{bmatrix}
+\mf f_1 & \mf f_2 & \mf f_3
+\end{bmatrix}.
+$$<p>
+What we wrote above is just the last column of the formula&hellip;</p>
+<p style="text-align: center">
+<span class=boxed style="text-align: left">
+<span class=secondary>(Composition)</span> $\mono{X}eg~ = \mono{X}ef~ \mono{X}fg~$
+</span>
+</p>
+<p>which generalizes to arbitrary frames.
+While $\mono{X}ef~$ translates between how $e$ and $f$ each see the <span class=accented>frame</span> $g$, we may be interested in translating between how $e$ and $f$ see the <span class=accented>vector</span> going from $f$ to $g$, which is $\mono{\mf p}fg~=\mono{\mf p}~g~ - \mono{\mf p}~f~$. We already know what this looks like:
+</p>
+$$
+\mono{\mf p}fge = \mono{A}ef~\mono{\mf p}fgf.
+$$<p>When $e$ and $f$ are both positively-oriented orthogonal frames, $\mono{A}ef~$ is an orthogonal matrix, so we will write it as $\mono{R}ef~$ instead:</p>
+<p style="text-align: center">
+<span class=boxed style="text-align: left">
+<span class=secondary>(Rotation-of-Basis)</span> $\mono{\mf p}fge = \mono{R}ef~\mono{\mf p}fgf$
+</span>
+</p>
+<p>In this case, $\mono{X}ef~=(\mono{R}ef~, \mono{\mf p}eff)\in SE(3)$. These formulae hold if we replace $e$ with $h$; I just used $e$ to simplify the presentation.</p>
+<h2 id="chapter-3-velocities"><span class=tertiary>Chapter 3.</span> Velocities<a hidden class="anchor" aria-hidden="true" href="#chapter-3-velocities">#</a></h2>
+<p>Suppose we have curves $f :\mathbb R\rightarrow \mathrm F\mathbb R^3$ and $g :\mathbb R\rightarrow \mathrm F\mathbb R^3$, such that $f(t)$ and $g(t)$ are moving w.r.t. the origin frame $e$. Our task it to describe their velocities at time $t$.</p>
+<p><em><span class=tertiary>Setting up the notation.</span></em> I introduce the following notation for derivatives:</p>
+$$
+\begin{align}
+(\mono{X}{f}{g}~)' &\coloneq \frac{d}{d\tau}{\mono{X}{f(t+\tau)}{g(t+\tau)}~}\Big\vert_{\tau=0}\\
+\mono{X}{f}{g'}~ &\coloneq \frac{d}{d\tau}{\mono{X}{f(t)}{g(t+\tau)}~}\Big\vert_{\tau=0}\\
+\mono{X}{f'}{g}~ &\coloneq \frac{d}{d\tau}{\mono{X}{f(t+\tau)}{g(t)}~}\Big\vert_{\tau=0}
+\end{align}
+$$<p>which means that $(\mono{X}gg~)' = \mf 0$, and so on. Each of these quantities is the component-wise derivative of a time-dependent matrix. By differentiating the identity
+</p>
+$$
+\mono{X}{f(t)}{g(t+\tau)}~ \mono{X}{g(t+\tau)}{f(t)}~ = \mf I,
+$$<p>we get $\mono{X}f{g'}~=-\mono{X}fg~\,\mono{X}{g'}f~\,\mono{X}fg~$. In particular, $\mono{X}g{g'}~=-\mono{X}{g'}g~$.</p>
+<p>Basic physics tells us that, in order to even define what <em>velocity</em> is, we need to decide which frame we consider to be <em>stationary</em>. We will write $\mono{\Lambda}fgk$ to denote the velocity of $g$ as seen from $k$, with $f$ considered to be the stationary frame. It is of the form
+</p>
+$$
+\mono{\Lambda}fgk = \begin{bmatrix}
+\mono{\Omega}fgk & \mono{\mf v}fgk\\
+\mf 0 & 0
+\end{bmatrix}\in \mathfrak{se}(3),
+$$<p>
+where $\mono{\Omega}fgk\in\mathfrak{so}(3)$ is a $3\times 3$ skew-symmetric matrix. We can also call $f$ the <em>reference</em> frame, or the <em>observer</em> frame.</p>
+<p><em><span class=tertiary>Using the notation.</span></em>
+We denote the velocity of $g$ as seen from itself, with $e$ considered as the stationary frame, as</p>
+<p style="text-align: center">
+<span class=boxed style="text-align: left">
+<span class=secondary>(Left-Invariant Velocity)</span>
+$
+\mono{\Lambda}egg\coloneq \mono{X}g{g'}~
+$
+</span>
+</p>
+<p>It follows that $\mono{X}{g'}g~ = - \mono{\Lambda}~gg$. Similar to how left-invariant vector fields work on abstract Lie groups, we have
+</p>
+$$
+\begin{align}
+\mono{X}e{g'}~=\frac{d}{d\tau}{\mono{X}{e}{g(t)}~ \mono{X}{g(t)}{g(t+\tau)}~}\Big\vert_{\tau=0} = \mono{X}{e}{g}~ \mono{\Lambda}~gg.
+\end{align}
+$$<!-- $$
+\begin{align}
+\frac{d}{d\tau}{\mono{X}{g(t+\tau)}f~}\Big\vert_{\tau=0}=\frac{d}{d\tau}{\mono{X}{g(t+\tau)}{g(t)}~ \mono{X}{g(t)}f~}\Big\vert_{\tau=0} = \mono{\Lambda}{\dot g}~~ \mono{X}{g}f~
+\end{align}
+$$ -->
+<p>Thus, $\mono{\Lambda}~gg=(\mono{X}eg~)^{-1}\,\mono{X}e{g'}~$ is indeed the <span class=accented>left-invariant velocity</span> of $g$. What is then the right-invariant velocity? It is the velocity of $g$ as seen from $e$, with $e$ considered the stationary frame:</p>
+<p style="text-align: center">
+<span class=boxed style="text-align: left">
+<span class=secondary>(Right-Invariant Velocity)</span>
+$
+\mono{\Lambda}ege\coloneq  \mono{X}{e}{g}~ \mono{\Lambda}{}gg \,\mono{X}ge~=\mathrm{Ad}_{\mono{X}{e}{g}{}}(\mono{\Lambda}{}gg)
+$
+</span>
+</p>
+<p>The nice symmetric notation in the middle helps us remember this formula, although I like the $\mathrm{Ad}$ notation since it makes the transformation rules look like those of vectors and frames. Recall the definition of the <a href="https://en.wikipedia.org/wiki/Adjoint_representation" target="_blank" class="accented">
+    adjoint representation
+</a>, $\mathrm{Ad}_X:\mathfrak{se}(3)\rightarrow\mathfrak{se}(3)$ for each $X\in SE(3)$.</p>
+<aside class=aside-center>
+The left-invariant velocity is the velocity of $g$ as seen from $g$, while the right-invariant velocity is the velocity of $g$ as seen from $e$. I have been cheeky in choosing $e$ and $g$ as the notation for these frames, since I want $e$ to remind you of the identity element of $SE(3)$! 
+</aside>
+<p>Here is the big payoff of this notation. Velocities add like vectors, as long as they are expressed in the same frame:</p>
+<p style="text-align: center">
+<span class=boxed style="text-align: left">
+<span class=secondary>(Addition of Velocities)</span>
+$
+\mono{\Lambda}fhk = \mono{\Lambda}fgk + \mono{\Lambda}ghk
+$
+</span>
+</p>
+<p>You are encouraged to prove this! As a hint, notice that it is sufficient to prove this for the case of $k=f$.</p>
+<h2 id="chapter-4-hat--vee-maps"><span class=tertiary>Chapter 4.</span> Hat &amp; Vee Maps<a hidden class="anchor" aria-hidden="true" href="#chapter-4-hat--vee-maps">#</a></h2>
+<p>For an introduction to the hat and vee maps, see the books by Chirikjian or Barfoot, or Appendix A of my <a href="https://arxiv.org/abs/2508.12030" target="_blank" class="accented">
+    preprint
+</a>. Basically, $\mathfrak{so}(3)$ has a particular choice of basis which lets us map skew-symmetric matrices to vectors in $\mathbb R^3$, as $$</p>
+<hr>
+<h2 id="appendix-group-actions"><span class=tertiary>Appendix.</span> Group Actions<a hidden class="anchor" aria-hidden="true" href="#appendix-group-actions">#</a></h2>
+<p>An action of $G$ on $X$ is said to be&hellip;</p>
+<ul>
+<li><span class=accented>effective</span> (or <span class=accented>faithful</span>) if $g\cdot x=x$ for all $x \in X$ implies $g=e$.
+Equivalently, the mapping $G\mapsto \textrm{Aut}(X)$ is injective.
+  <p class=equation-like>
+              <span class="print tertiary"> 
+              “Everyone (in $G$) is doing something <i>somewhere</i> (in $X$)"
+              </span>
+      </p>
+</li>
+<li><span class=accented>free</span> if $g\cdot x=x$ for some $x$ already implies that $g=e$.
+Given an element $g\in G\backslash\lbrace e\rbrace$, its action has no fixed points (is fixed-point free!)
+  <p class=equation-like>
+              <span class="print tertiary"> 
+              “Everyone's doing something <i>everywhere</i>"
+              </span>
+      </p>
+</li>
+<li><span class=accented>transitive</span> if any two points are connected by a group action. Consider the task of taking $x_1\in X$ to $x_2\in X$&hellip;
+  <p class=equation-like>
+              <span class="print tertiary"> 
+              (Given an arbitrary task) “It will be done by someone"
+              </span>
+      </p>
+</li>
+<li><span class=accented>regular</span> if transitive and free. This makes
+$X$ a principal homogeneous $G$-space or a <a href="/posts/bundles" class="accented">
+    $G$-torsor
+</a>; the group element in the definition of transitivity is unique
+  <p class=equation-like>
+              <span class="print tertiary"> 
+              (Given an arbitrary task) “I know just the person!"
+              </span>
+      </p></li>
+</ul>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>It turns out that such a frame can have one of two parities — it can either be <em>positively</em> or <em>negatively</em> oriented. Our usual choice of the $\mathrm{xyz}$ axes is positively oriented, so you can use that fact to come up with your own &ldquo;right-hand rule&rdquo; for positive orientation.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Abstractly speaking, a group has a distinguished point (the identity), while on a homogeneous space we need to <i>choose</i> a reference point. In the context of <a href="/posts/bundles" class="accented">
+    my previous post
+</a>, the Earth frame $e$ can be seen as a choice of a distinguished point in $\mathrm F\mathbb R^3$. It identifies $\mathrm F\mathbb R^3$ with $GL(3)\ltimes \mathbb R^3$. Similarly, we can identify $\mathrm O\mathbb R^3$ with $SE(3)$; given a frame $f\in\mathrm O\mathbb R^3$, we associate it to the $SE(3)$ transformation $\mono{X}~f~ = \mono{X}efe$. In other words, $\mathrm O\mathbb R^3$ is an $SE(3)$-torsor.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/robotics/">Robotics</a></li>
+      <li><a href="http://localhost:1313/tags/lie-groups/">Lie-Groups</a></li>
+      <li><a href="http://localhost:1313/tags/geometry/">Geometry</a></li>
+    </ul>
+  </footer>
+<script src="https://giscus.app/client.js"
+        data-repo="shirazkn/shirazkn.github.io"
+        data-repo-id="R_kgDOI2VbWw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOI2VbW84CWJnt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="noborder_light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    
+    
+    
+    
+    
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="headerfooter">
+    <sub><sup><sub>..</sub></sup></sub>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

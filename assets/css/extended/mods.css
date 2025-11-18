@@ -3,6 +3,33 @@ body.dark figure.invertible img {
     filter: invert(0.875) hue-rotate(180deg);
 }
 
+body.dark img.invertible {
+    filter: invert(0.875) hue-rotate(180deg);
+}
+
+.tikz-wrapper {
+  display: flex;
+  justify-content: center;   /* centers horizontally */
+  align-items: center;       /* centers vertically if container has height */
+  overflow: visible;
+  margin-bottom: 1.0em;
+}
+
+body.dark .tikz-wrapper svg {
+  filter: invert(0.875) hue-rotate(180deg);
+}
+
+
+/* TikZjax typically places an SVG immediately after the <script>.
+   Target that SVG and scale it cleanly. */
+.tikz-wrapper > script[type="text/tikz"] + svg,
+.tikz-wrapper svg {
+  transform: scale(1.50);            /* change scale factor here */
+  transform-origin: center center;
+  transform-box: fill-box;           /* ensures the origin is the SVG bbox */
+  display: block;                    /* remove inline-baseline offsets */
+}
+
 .headerfooter {
     color: var(--tertiary);
     opacity: 0.5;

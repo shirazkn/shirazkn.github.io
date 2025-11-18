@@ -8,6 +8,8 @@ params:
   
   homeInfoParams:
     Title:
+  
+  defaultTheme: "auto"
 
   socialIcons: # optional
     - name: "Github"

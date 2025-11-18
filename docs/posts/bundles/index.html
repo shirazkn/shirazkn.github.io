@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Principal Bundles | Shiraz</title>
+<meta name="keywords" content="">
+<meta name="description" content="A principal bundle is a fiber bundle, that additionally has the right-action of a group that preserves fibers. Beginning with coset spaces, we look at some interesting examples of principal bundles and the things we can do with them.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/bundles/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4dea143071e80a661ece3346f323b09d825fb9d7adc7c071af21feecd3174d45.css" integrity="sha256-TeoUMHHoCmYezjNG8yOwnYJfudetx8BxryH&#43;7NMXTUU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/favicon.ico">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/bundles/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      packages: {'[+]': ['mathtools']},
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['\\(', '\\)'], ['$', '$']]  
+    },
+    loader:{
+      load: ['ui/safe', '[tex]/mathtools']
+    },
+  };
+</script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
+
+
+<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+<meta property="og:url" content="http://localhost:1313/posts/bundles/">
+  <meta property="og:site_name" content="Shiraz">
+  <meta property="og:title" content="Principal Bundles">
+  <meta property="og:description" content="A principal bundle is a fiber bundle, that additionally has the right-action of a group that preserves fibers. Beginning with coset spaces, we look at some interesting examples of principal bundles and the things we can do with them.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-10-24T20:55:32-04:00">
+    <meta property="article:modified_time" content="2025-10-24T20:55:32-04:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Principal Bundles">
+<meta name="twitter:description" content="A principal bundle is a fiber bundle, that additionally has the right-action of a group that preserves fibers. Beginning with coset spaces, we look at some interesting examples of principal bundles and the things we can do with them.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Principal Bundles",
+      "item": "http://localhost:1313/posts/bundles/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Principal Bundles",
+  "name": "Principal Bundles",
+  "description": "A principal bundle is a fiber bundle, that additionally has the right-action of a group that preserves fibers. Beginning with coset spaces, we look at some interesting examples of principal bundles and the things we can do with them.",
+  "keywords": [
+    
+  ],
+  "articleBody": "␥ Fiber Bundles A fiber bundle is a sequence of maps of the form\nwhere $\\mathcal F$ is the fiber, $\\mathcal E$ is the total space, and $\\mathcal M$ is the base space. As the notation suggests, $\\iota$ is an injective map referred to as the inclusion which “places” the fiber $\\mathcal F$ vertically inside $\\mathcal E$. Meanwhile, $\\pi$ is a surjective map known as the projection — given a point $q\\in\\mathcal E$, the point $\\pi(q)\\in\\mathcal M$ is the shadow cast by $q$ down on the base space.\nThe preimage under $\\pi$ of the point $p\\in\\mathcal M$ is diffeomorphic to $\\mathcal F$, and is called “the fiber above $p$”. The job of $\\iota$ is to tell us what “a typical fiber” in $\\mathcal E$ looks like. The typical fiber of the Hopf fibration is a circle:\nErr.. your browser doesn't support the video tag! The Hopf Fibration is the fiber bundle, $S^1\\hookrightarrow S^3 \\rightarrow S^2$. Here, I visualize points on $S^2$ and the corresponding fibers sitting above in $S^3$. The total space $\\mathcal E$ locally looks like $\\mathcal M \\times \\mathcal F$, but globally it can look quite different. For instance, a Möbius strip can be viewed as a fiber bundle over the circle, $\\mathcal M=S^1$, whose fiber is the closed unit interval $\\mathcal F=[0,1]$. Infinitely many copies of this fiber are glued together to create a fiber bundle. However, the Möbius strip is quite different from $S^1\\times[0,1]$, which is a cylinder. The latter is called a trivial fiber bundle. A formal definition of a fiber bundle can be found on Wikipedia — it relates the manifold structures (i.e., open sets and charts) of $\\mathcal F$, $\\mathcal E$, and $\\mathcal M$. See Qfwfq's explanation of how a principal bundle can be constructed by gluing charts; Stephen Bruce Sontz's book (which I thoroughly enjoyed!) takes a similar approach. Also see Frederic Schuller. A principal $G$-bundle is one whose fiber $\\mathcal F = G$ is a Lie group, and where each fiber has a right $G$-action that is compatible with the fiber bundle structure in a certain way. The reason why we consider a right action is that we can create principal bundles out of homogeneous spaces , and in doing so, the right-action on the fiber must play nice with the left-action of the homogeneous space. Let’s assume you know a bit about homogeneous spaces, and begin our story there.\n␥ Coset Spaces A homogeneous space refers to a smooth manifold $\\mathcal M$ equipped with a left $G$-action (satisfying some axioms). We let $g\\in G$ act on $p\\in\\mathcal M$ to yield $g\\cdot p\\in \\mathcal M$. A homogeneous space does not have a distinguished point (think of a sphere, on which no point is more special than the other). However, if we do choose a special point $p_0\\in\\mathcal M$ (sort of like choosing the origin of a coordinate system), we can view $\\mathcal M$ as a coset space . We do so by considering the subgroup $G_{p_0} \u003c G$ of group actions that leave the point $p_0$ fixed — the stabilizer subgroup of $p_0$ in $G$. Denoting the subgroup $G_{p_0}$ as $H$, we have the following picture:\nwhich is that of a principal $H$-bundle. The map $\\pi$ sends $g\\in G$ to the point $g \\cdot p_0$, and we observe that $\\pi(g)=\\pi(gh)$ for any $g\\in G$ and $h\\in H$. We define a section (think cross-section) of this bundle to be a map $\\sigma$ that is a right-inverse of $\\pi$, i.e., $\\pi \\circ \\sigma=\\mathrm{id}_{G/H}$ is the identity map on $G/H$.1\nExample 1 (Spheres). $SO(3)$ acts on the sphere $S^2$. Given a point $p\\in S^2$, the rotations about the axis passing through $-p$ and $p$ are the stabilizer subgroup $SO(3)_p$. Then, $SO(3)/SO(3)_p$ is isomorphic to $S^2$, and we get a fiber bundle $$ SO(2) \\hookrightarrow SO(3) \\rightarrow S^2. $$ Observe that $SO(3)_p\\cong SO(2)$. Due to this isomorphism, you will often see the claim $SO(3)/SO(2) \\cong S^2$. However, it is important to note that there is no unique map $SO(2) \\overset{\\iota}{\\rightarrow} SO(3)$ (any one-parameter subgroup of $SO(3)$ is isomorphic to $SO(2)$)!\nExample 2 (Hopf Fibration). The set of unit quaternions2 $\\mathbb Q_S$ can be identified with the matrix Lie group $SU(2)$. Quaternions act on points in $\\mathbb R^3$ via rotations, with the quaternions $q,-q$ representing the same rotation. Suppose $H\\leq SU(2)$ is all the rotations about a fixed axis, let’s say the rotations about the $\\mathrm{z}$-axis. The resulting bundle $H\\hookrightarrow SU(2) \\rightarrow S^2$ is what is visualized in the video above (also see the appendix)! Note that $H\\cong SO(2)\\cong S^1$.\nExample 3 (SPD Matrices). Let the set of $n\\times n$ symmetric positive-definite matrices be written as $\\mathrm{SPD}(n)$. Given a matrix $g\\in GL(n)$, it acts on $\\boldsymbol\\Sigma\\in\\mathrm{SPD}(n)$ as $\\boldsymbol\\Sigma \\mapsto \\mathbf g\\boldsymbol\\Sigma \\mathbf g^\\top$, where $g\\mapsto \\mathbf g$ is the standard representation of $GL(n)$ as $n\\times n$ matrices. To see the coset space structure of $\\mathrm{SPD}(n)$, we need to choose a distinguished point on it, and the fiber sitting above it will be the group of elements that leave the distinguished point fixed. I leave this as an exercise, with a hint in the footnotes!3\nConversely, given a Lie group $G$ and a subgroup $H\\leq G$, we can view $G/H$ as a homogeneous space. A point in $G/H$ is of the form $gH$. The fiber sitting above $gH$ may also be denoted as $gH$, but technically refers to the subset $$\\pi^{-1}[\\lbrace gH\\rbrace] = \\lbrace g h \\mathrel| h\\in H \\rbrace \\subseteq G,$$ a left coset of $H$ in $G$. The map $\\pi$ projects $g$ to its coset $gH\\in G/H$ (as explained in one of my earlier posts ), with the identity coset $eH$ viewed as being a distinguished point on $G/H$. Importantly, we also have a right $H$-action on the group. This right-action preserves fibers, since for every $gh_1\\in gH$ and $h_2\\in H$, we have $(gh_1)h_2 \\in gH.$ Thus, given a subgroup $H \u003c G$ we not only get a homogeneous space $G/H$, but we can also endow $G$ with the structure of a principal $H$-bundle. The homogeneous space structure lets us move “horizontally” in $G$ using the left $G$-action, while the principal bundle structure lets us move “vertically” using the right $H$-action. The following examples are the two extreme cases where we can only move horizontally or vertically. In Example 4, the fiber is trivial, and all of the content of the total space $G$ is in the base space — vice versa for Example 5.\nExample 4 ($G$-Torsor). This is the principal $\\lbrace e\\rbrace$-bundle where $G$ sits “horizontally”, defined by $e\\hookrightarrow G \\rightarrow G/\\lbrace e \\rbrace$. When $G=(\\mathbb R^n, +)$ (where the group operation is vector addition) and $e=\\mathbf 0$ (the zero vector of $\\mathbb R^n$), the principal $\\mathbb R^n$-torsor we constructed above is the $n$-dimensional affine space (without the scalar multiplication operation). In other words, this is $\\mathbb R^n$ with the origin “forgotten”.\nExample 5 (Principal $G$-Bundle over a Point). This is the fiber bundle where $G$ sits “vertically” over a single point, defined by $G\\hookrightarrow G \\rightarrow \\lbrace 🐈 \\rbrace$. We can replace 🐈 by any other object, doesn’t matter.\nPrincipal Bundles In the above, we constructed the fiber bundle $H\\hookrightarrow G \\rightarrow G/H$. We showed that we can then view $G/H$ as being a homogeneous space with a left $G$-action, and $G$ as a principal $H$-bundle with a right $H$-action that preserves fibers. Turns out that these objects carry too much information, and we need to discard some of this information to narrow our focus. For instance, $G/H$ is technically only a homogeneous space after we stop viewing the identity coset $eH$ as being a special point. As Example 4 shows, every Lie group can itself be viewed as a homogeneous space once we “forget” the identity element. Similarly, a general principal $H$-bundle may not come with a left $G$-action, as exemplified in the next section.\nExample 6 (Tangent Bundle). Let $\\mathcal M$ be a smooth $n$-dimensional manifold. The tangent space at a point $p\\in \\mathcal M$ is denoted as $T_p\\mathcal M$, and the union of these tangent spaces is written as $T\\mathcal M$. We can define a unique smooth structure on $T\\mathcal M$ that makes the following maps smooth:\n$${\\mathbb R}^n \\hookrightarrow T\\mathcal M \\rightarrow \\mathcal M. $$This fiber bundle has a fiber-preserving $GL(n)$ action — matrix-vector multiplication. However, $T\\mathcal M$ is not a principal $GL(n)$-bundle since its fibers are not isomorphic to $GL(n)$. Nevertheless, there is indeed a principal $GL(n)$-bundle closely related to $T\\mathcal M$, which is…\n␥ The Frame Bundle Consider an ordered set of $n$ linearly independent vectors in $T_p\\mathcal M$. One such set is called a frame. The space of all the frames at $p$ make up the fiber, and the union of these fibers leads to the notion of a frame bundle $F\\mathcal M$. More formally, we can view a frame at $p\\in\\mathcal M$ as being a linear isomorphism from $\\mathbb R^n$ to $T_p\\mathcal M$. The frame bundle is then (as a set) the following object: $$ F\\mathcal M = \\left\\lbrace (\\hspace{1pt}p, f)\\,\\mathrel|\\,p\\in\\mathcal M,\\ f:\\mathbb R^n \\rightarrow T_p\\mathcal M \\textup{ is an isomorphism}\\right\\rbrace $$The frame bundle has an action of $GL(n)$. We need to take care that this is a right-action and not a left-action, the difference being that the group element $gh \\in GL(n)$ should act on a vector $(p,v)\\in T\\mathcal M$ as $$(\\hspace{1pt}p,v)\\cdot gh= \\left((\\hspace{1pt}p,v)\\cdot g\\right)\\cdot\\, h$$ On the other hand, a left-action of $gh$ would look different — $h$ will act first, then $g$.\nDo we have a group action on $F\\mathcal M$ that moves between fibers, like we did on a coset space? That is, is there some map $\\Phi$ that takes $(p_1,f_1)$ to $(p_2,f_2)$ with $p_1 \\neq p_2$? Not necessarily. If such a map did exist, then $\\pi \\circ \\Phi$ would be a group action on $\\mathcal M$. This is where the linear-isomorphisms interpretation of the frame bundle comes in handy; given an $n\\times n$ matrix $\\mathbf A\\in GL(n)$, we let $$(\\hspace{1pt}p,f)\\mathrel\\cdot\\mathbf A = (\\hspace{1pt}p,f\\circ \\mathbf A),$$ where $[f\\circ \\mathbf A](\\mathbf v) = f(\\mathbf A \\mathbf v)$. There is a way to view $T\\mathcal M$ as a fiber bundle that is “ associated ” to the frame bundle. We say that $GL(n)$ is the structure group of $T\\mathcal M$, and we call $T\\mathcal M$ a $GL(n)$-bundle. An associated bundle has a left action of its structure group. If that is confusing as hell, then you’re on the right track.\n␥ Ehresmann Connections Think of the fibers as trees in a forest. Consider the plight of our monkey, Ehresmann . It is clear to him how to climb up and down a tree (using the right $H$-action), but Ehresmann wants to jump from one tree to another. He needs to decide what constitutes horizontal movement! Will he jump such that his height off the ground is the same before and after the jump? Will he jump so that the tree length $\\ell$ (as measured from the ground) is the same? Perhaps he will jump in a direction perpendicular to his tree?\nAssume Ehresmann the monkey is at the point $q \\in \\mathcal E$. The space of all the directions in which he could jump constitute the tangent space, $T_{q}\\mathcal E$. The vertical subspace $\\text{Ver}_q\\mathcal E$ is all the directions that keep Ehresmann on the same tree. It is precisely the vectors $v$ that satisfy $d\\pi_q(v)=0$; these directions do not change Ehresmann’s coordinates as measured along the ground. The vertical subspaces, collectively called the vertical subbundle $\\text{Ver}\\mathcal E$, are well-defined as soon as we define a principal bundle.\nThe horizontal subbundle is something that must be chosen, similar to how we choose an inner product on a vector space. Turns out that there are a few different, equivalent ways of specify a horzontal subbundle for a principal $H$-bundle:\nspecify a horizontal subspace $\\text{Hor}_q\\mathcal E \\subseteq T_{q}\\mathcal E$ for each $q\\in\\mathcal E$ such that $$T_q\\mathcal E =\\text{Hor}_q\\mathcal E\\oplus \\text{Ver}_q\\mathcal E,$$ choose a linear projection $\\Gamma:T\\mathcal E \\rightarrow \\text{Ver}\\mathcal E$ and define $\\text{Hor}\\mathcal E \\coloneq \\mathrm{ker}(\\Gamma)$,4 write down a $T\\mathcal E$-valued one-form $\\Gamma$ on $\\mathcal E$ that satisfies $\\Gamma\\vert_{\\text{Ver}\\mathcal E}=\\mathrm{id}_{\\text{Ver}\\mathcal E}$ (i.e., $\\Gamma$ restricted to $\\text{Ver}\\mathcal E$ is the identity map on $\\text{Ver}\\mathcal E$), or write down an $\\mathfrak h$-valued one-form $\\Gamma$ on $\\mathcal E$. It takes some self-introspection and a few dozen cups of coffee to see why these are indeed equivalent objects (i.e., neither of them specifies too much or too little structure!). An Ehresmann connection is a choice of horizontal subbundle that satisfies a few additional properties (cf. Sec. 10.1), most notably the $H$-invariance condition: $$ (R_g)_*\\text{Hor}_q\\mathcal E = \\text{Hor}_{qg}\\mathcal E \\quad \\forall q\\in\\mathcal E, g\\in H, $$ where $R_g:\\mathcal E \\rightarrow \\mathcal E$ is the right-action of $g\\in H$ on $\\mathcal E$, and $(R_g)_*$ is the corresponding pushforward map on tangent spaces. This condition ensures that the right $H$-action on $\\mathcal E$ preserves all the horizontal subspaces. Note that we can write an analogous condition for $\\text{Ver}\\mathcal E$, but since the vertical subbundle does not depend on a choice of connection, it is automatically satisfied!\nThe $H$-invariance condition can also be written in terms of the connection form: $$ R_g^* \\Gamma = \\mathrm{Ad}_{g^{-1}} \\circ \\Gamma \\quad \\forall g\\in H. $$ It's easy for me to say \"$\\mathfrak h$-valued one-form\" and leave the rest to your imagination. However, there is a crucial aspect of the exterior algebra that must be modified when moving from $\\mathbb R$-valued one forms to Lie-algebra valued one-forms. Can you figure out what it is before clicking on the link? ␥ The Maurer-Cartan Form When we used a coset space to create a principal $H$-bundle, we used the sequence of smooth maps $H\\hookrightarrow G \\rightarrow G/H.$ This gives us a corresponding sequence of linear maps: $$\\mathfrak h \\,\\hookrightarrow \\,\\mathfrak g \\,\\rightarrow \\,\\mathfrak g/\\mathfrak h,$$ which is a short exact sequence in the category of vector spaces. Here, $\\mathfrak g/\\mathfrak h$ does not necessarily have a canonically defined Lie bracket for the same reason that $G/H$ is not necessarily a Lie group. Furthermore, there is generally no canonical way of viewing the quotient vector space $\\mathfrak g/\\mathfrak h$ as a subspace of $\\mathfrak g$ — this is a choice that must be made. It is precisely the choice that is made by an Ehresmann connection.\nBut that is not the topic of this section… in this section, we will consider the “completely vertical” bundle $G\\hookrightarrow G \\rightarrow \\lbrace 🐈 \\rbrace$ from Example 5. This is the principal $G$-bundle that has a single fiber sitting above 🐈. You might say that there is no choice of horizontal subspace to be made here, since $TG=VG$. But there is indeed a choice of horizontal subspace, it just happens to be the trivial choice of $HG=\\lbrace \\mathbf 0 \\rbrace$. Since there is exactly one Ehresmann connection on this bundle, and given the various equivalent ways of defining a connection, what is the corresponding $\\mathfrak g$-valued one-form?\nGiven a vector $X\\in\\mathfrak g$, we can drop a vector field $\\widetilde X$ on $G$ using its right-action on itself: $$\\widetilde X_g = \\frac{d}{dt}g\\exp(tX)\\Big|_{t=0}.$$ This happens to be the left-invariant vector field (LIVF) of $X$. The Ehresmann connection is then the map $\\omega:TG \\rightarrow \\mathfrak g$ that sends $\\widetilde X$ to $X$: $$ \\omega(\\widetilde X) = X, $$ and is called the Maurer-Cartan form of $G$. Observe that $\\omega_g=L_{g^{-1}*}$. It is an exercise for the reader to verify that the Maurer-Cartan form satisfies the $G$-invariance condition $$ R_h^* \\omega_g = \\mathrm{Ad}_{h^{-1}} \\omega_{gh^{-1}} $$ for all $g\\in G$.5 The uniqueness of the Maurer-Cartan form (as an Ehresmann connection on the Example 5 bundle) is shown in Theorem 10.3 of Sontz . At the 22 minute mark , Schuller shows a connection between $\\omega$ and local representations of connections.\nThe exterior derivative of an Ehresmann connection is related to the curvature of the horizontal subbundle; I characterize the exterior derivative of $\\omega$ in Appendix B.\n␥ The Christoffel Symbols What we call “a connection” in differential geometry can be viewed as an Ehresmann connection on the frame bundle. Given a coordinate chart $(U, x^i)$ on $\\mathcal M$, we get a local section $\\sigma$ of $F\\mathcal M$ over $U$, defined by $$ \\sigma(p) = \\left(\\hspace{1pt}p, \\frac{\\partial}{\\partial x^1}\\Big|_p, \\cdots, \\frac{\\partial}{\\partial x^n}\\Big|_p\\right). $$ Given a connection form $\\boldsymbol\\Gamma$ on $F\\mathcal M$, we can pull it back under $\\sigma$ to get $\\boldsymbol{\\overline\\Gamma}\\coloneq \\sigma^\\ast \\boldsymbol\\Gamma$. We can then express it in the coordinate frame as $\\boldsymbol{\\overline\\Gamma}=(\\boldsymbol{\\overline\\Gamma})_{i}dx^i$. But ${\\overline\\Gamma}$ takes values in $\\mathfrak {gl}(n)$, which means that we can write $\\boldsymbol{\\overline\\Gamma} = {{\\overline\\Gamma}}^m_{ni}dx^i$. The coefficients ${{\\overline\\Gamma}}^m_{ni}$ are precisely the Christoffel symbols of the connection in the coordinate chart $(U,x^i)$. This formulation of the Christoffel symbols shows why they are not tensorial quantities; the $m$ and $n$ indices correspond to the $\\mathfrak{gl}(n)$-valued nature of the connection form, while the $i$ index is tensorial.\nA choice of horizontal subbundle lets us parallel transport vectors along curves on $\\mathcal M$. Given a curve $\\gamma:[0,1]\\rightarrow \\mathcal M$ and a frame $e\\in F_{\\gamma(0)}\\mathcal M$, we can lift $\\gamma$ to a curve $\\widetilde \\gamma:[0,1]\\rightarrow F\\mathcal M$ such that $\\pi \\circ \\widetilde\\gamma = \\gamma$, $\\widetilde\\gamma(0)=e$, and $\\widetilde\\gamma'(t) \\in \\text{Hor}_{\\widetilde\\gamma(t)}F\\mathcal M$ for all $t\\in[0,1]$. This is called the horizontal lift of $\\gamma$ starting at $e$. The frame at $\\widetilde\\gamma(1)$ is then the parallel transport of the frame at $\\widetilde\\gamma(0)$ along $\\gamma$. The illustration at the top of this post also explains holonomy: the observation that parallel transporting a vector along a loop may not return the vector to its original position.\nAppendix A. Visualizing the Hopf Fibration Here are some functions in Julia that I used to animate the Hopf fibration:\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 # section σ:S²→S³ function σ(p₁,p₂,p₃) 1/sqrt(2*(1+p₃)) * quat(1 + p₃, -p₂, p₁, 0) end # stabilizer subgroup of (0,0,1) H = [quat(cos(angle), 0, 0, sin(angle)) for angle in range(0, 2π, 1000)] # preimage of {p} under π:S³→S² function π⁻¹(p) p₁,p₂,p₃ = p f_quat = σ(p₁,p₂,p₃) .* H map(f_quat) do q r = real(q) (acos(r)/(π * sqrt(1-r^2)) .* imag_part(q) .+ (0, 0, 1.6)) .* 1.5 end end # parametrization of the sphere Ψ:ℝ²→S³ function sphere(ϕ,θ) (sin(ϕ)*cos(θ), sin(ϕ)*sin(θ), cos(ϕ)) end Appendix B. Maurer-Cartan Structure Equation Given a basis $(E_i)_{i=1}^n$ for $\\mathfrak g$, the Maurer-Cartan form can be expressed as $$\\omega\\coloneqq E_i \\varepsilon^i,$$which eats a vector field and returns a function from $G$ to $\\mathfrak g$, i.e., $\\omega:\\mathfrak X(TG)\\rightarrow C^\\infty(G,\\mathfrak g)$. Some of its properties are:\nIt is left-invariant since its components in the left-invariant coframe are constants (rather than functions). If it eats a LIVF, then the resulting function is a constant: $\\omega(\\widetilde X)=X^i E_i=X$. An arbitrary vector field can be written as $f^i\\widetilde E_i$, where $f^i:G\\rightarrow \\mathbb R$ need not be constant. We have, $\\omega(f^i\\widetilde E_i)=f^i\\omega(\\widetilde E_i)=f^i E_i.$ Basically, $\\omega$ trivializes the tangent bundle $TG$ into $G\\times \\mathfrak g$. The exterior derivative of $\\omega$ is defined via the formula in Prop. 14.29 of Lee ISM : $$d\\omega(\\widetilde X,\\widetilde Y)=E_i d\\varepsilon^i(\\widetilde X,\\widetilde Y)=E_i\\Big(\\widetilde X\\big(\\varepsilon^i(\\widetilde Y)\\big)- \\widetilde Y\\big(\\varepsilon^i(\\widetilde X)\\big)-\\varepsilon^i([\\widetilde X,\\widetilde Y])\\Big).$$ Because $\\varepsilon^i(\\widetilde X)$ and $\\varepsilon^i(\\widetilde Y)$ are constant, we have $$ \\begin{align} d\\omega(\\widetilde X,\\widetilde Y)\u0026=-E_i\\varepsilon^i([\\widetilde X,\\widetilde Y])\\\\ \u0026=-X^j Y^k c_{jk}^i E_i\\\\ \u0026=-[\\omega(\\widetilde X), \\omega(\\widetilde Y)], \\end{align} $$ where $c_{jk}^i$ are the structure constants of $\\mathfrak g$ in the basis $(E_i)_{i=1}^n$. This equation is called the Maurer-Cartan structure equation. For any two $\\mathfrak g$-valued forms, we can define $$ \\begin{align} \\big(\\,\\omega\\wedge \\eta\\,\\big)(\\widetilde X,\\widetilde Y)\u0026\\coloneqq[\\omega(\\widetilde X),\\eta(\\widetilde Y)]-[\\omega(\\widetilde Y),\\eta(\\widetilde X)]\\\\ \u0026=[\\omega(\\widetilde X),\\eta(\\widetilde Y)]+[\\eta(\\widetilde X),\\omega(\\widetilde Y)]. \\end{align} $$ Setting $\\eta=\\omega$, we get $$ \\begin{align} \\big(\\,\\omega\\wedge \\omega\\,\\big)(\\widetilde X,\\widetilde Y)=2[\\omega(\\widetilde X),\\omega(\\widetilde Y)]. \\end{align} $$Hence, we can write $d\\omega=-\\frac{1}{2}\\omega\\wedge \\omega=-\\frac{1}{2}E_ic^i_{jk}\\varepsilon^j\\wedge \\varepsilon^k$.6\nSuppose we choose a matrix representation $\\boldsymbol\\Phi:G\\rightarrow GL(m,\\mathbb R)$. Then, $d\\boldsymbol\\Phi_e$ is a representation of $\\mathfrak g$. Let $\\boldsymbol\\omega\\coloneqq d\\boldsymbol\\Phi_e\\circ\\omega$ be a $\\mathfrak{gl}(m)$-valued one-form on $G$. We have, $$ \\newcommand{\\mf}[1]{\\mathbf{#1}} \\begin{align} \\boldsymbol\\omega \u0026=\\big(d\\boldsymbol\\Phi_eE_i\\big)\\varepsilon^i=\\mf E_i \\varepsilon^i,\\\\ d\\boldsymbol\\omega(\\widetilde X,\\widetilde Y) \u0026=-[\\boldsymbol\\omega(\\widetilde X), \\boldsymbol\\omega(\\widetilde Y)]=-\\big(\\boldsymbol\\omega(\\widetilde X) \\boldsymbol\\omega(\\widetilde Y)-\\boldsymbol\\omega(\\widetilde Y) \\boldsymbol\\omega(\\widetilde X)\\big). \\end{align} $$Finally, we will choose a parametrization $\\psi:\\mathbb R^n\\rightarrow G$ and pull back $\\boldsymbol\\omega$ and $d\\boldsymbol\\omega$ under $\\psi$. First, we do this for $\\boldsymbol\\omega$: $$ \\begin{align} \\psi^\\ast\\boldsymbol\\omega \u0026=\\mf E_i\\big(\\psi^\\ast\\varepsilon^i\\big) \\end{align} $$Let $\\psi^\\ast\\varepsilon^i=\\epsilon_{i}dx^i$. Then $$\\big(\\psi^\\ast \\varepsilon^i\\big)\\left(\\frac{\\partial}{\\partial x^k}\\right)=\\epsilon_k=\\varepsilon^i\\left(\\psi_\\ast \\frac{\\partial}{\\partial x^k}\\right)=\\left((\\psi)^{-1}\\psi_\\ast \\frac{\\partial}{\\partial x^k}\\right)^{\\vee^i}=\\mf J^i_k$$ in the notation of my previous post . Hence, $$ \\begin{align} \\psi^\\ast\\boldsymbol\\omega \u0026= (\\boldsymbol\\psi)^{-1}\\frac{\\partial\\,\\boldsymbol\\psi}{\\partial x^k}dx^k, \\end{align} $$which is a $d\\boldsymbol\\Phi_e(\\mathfrak{g})$-valued one-form on the parameter space $\\mathbb R^n$, where $\\boldsymbol\\psi\\coloneqq\\boldsymbol\\Phi \\circ \\psi$.\n% [^appendix-eq]:The last equality can be shown by choosing a point $g$ and using the fact that $\\varepsilon^i_g=dL_{g^{-1}}^\\ast\\varepsilon^i_e$. Also, note that $(\\psi)^{-1}$ is the inverse of a group element and not the inverse of a function.\nLet $\\boldsymbol\\omega^\\vee \\coloneqq (\\,\\cdot\\,)^\\vee\\circ d\\boldsymbol\\Phi_e\\circ\\omega$. Then, we have $\\psi^\\ast \\boldsymbol\\omega^\\vee(\\mf y)=J(\\mf x)\\mf y$ for all $\\mf y\\in T_{\\mf x}\\mathbb R^n$, or in terms of components, $\\psi^\\ast \\boldsymbol\\omega^\\vee=\\mf J_jdx^j$, where $\\mf J_j$ is the $j^{th}$ column of $\\mf J$.\nPullbacks commute with the exterior derivative and linear transformations, which simplifies the pullback of $d\\boldsymbol\\omega$:\n$$ \\begin{align} \\psi^\\ast d\\boldsymbol\\omega^\\vee \u0026=d \\left(\\psi^\\ast \\boldsymbol\\omega^\\vee\\right)\\\\ \u0026 = \\frac{\\partial\\mf J_j }{\\partial x^i}dx^i\\wedge dx^j\\\\ \u0026=\\frac{\\partial}{\\partial x^i}\\left((\\boldsymbol\\psi)^{-1}\\frac{\\partial\\,\\boldsymbol\\psi}{\\partial x^j}\\right)dx^i\\wedge dx^j\\\\ \u0026=\\left(-(\\boldsymbol\\psi)^{-1}\\frac{\\partial\\,\\boldsymbol\\psi}{\\partial x^i}(\\boldsymbol\\psi)^{-1}\\frac{\\partial\\,\\boldsymbol\\psi}{\\partial x^j}+(\\boldsymbol\\psi)^{-1}\\frac{\\partial^2\\,\\boldsymbol\\psi}{\\partial x^i\\partial x^j}\\right)dx^i\\wedge dx^j \\end{align}$$ On the other hand, we can also move $d$ ‘inwards’ past the linear operators: $$ \\begin{align} \\psi^\\ast d\\boldsymbol\\omega^\\vee \u0026= \\psi^\\ast d\\left((\\,\\cdot\\,)^\\vee\\circ d\\boldsymbol\\Phi_e\\circ\\omega\\right)\\\\ \u0026=\\psi^\\ast\\big(d\\boldsymbol\\Phi_e(d\\omega)\\big)^\\vee \\\\ \u0026= -\\frac{1}{2}\\mf e_ic^i_{jk}\\psi^\\ast(\\varepsilon^j\\wedge \\varepsilon^k)\\\\ % \u0026= -\\frac{1}{2}\\mf e_ic^i_{jk}(\\psi^\\ast\\varepsilon^j\\wedge \\psi^\\ast\\varepsilon^k)\\\\ \u0026=-\\frac{1}{2}\\mf e_ic^i_{jk}(\\mf J^j_\\ell dx^\\ell\\wedge \\mf J^k_m dx^m). % \\\\ % \u0026=-\\frac{1}{2}\\mf e_ic^i_{jk}\\mf J^j_\\ell\\mf J^k_m\\, dx^\\ell\\wedge dx^m \\end{align} $$Hence, $$ \\begin{align} \\frac{\\partial\\mf J_i}{\\partial x^j} - \\frac{\\partial\\mf J_j}{\\partial x^i}\u0026=\\,\\mf e_\\ell c^\\ell_{mk}\\mf J^k_j\\mf J^m_i. \\end{align} $$ Theorem 21.17 of John M. Lee’s Smooth Manifolds describes the sense in which $G/H$ is a smooth manifold — there is a unique smooth structure on it that makes $\\pi$ a smooth map. ↩︎\nI denote $\\mathbb Q_S$ as such partly because reads “quaternion sphere”, and partly because the ‘$S$’ in the Special Linear group $SL(n)$ corresponds to an analogous constraint — that of restriction to the determinant one matrices. ↩︎\nChoose the distinguished point as the $n\\times n$ identity matrix. What is the set of matrices that leaves this matrix unchanged under the group action, $\\boldsymbol\\Sigma \\mapsto \\mathbf g\\boldsymbol\\Sigma \\mathbf g^\\top$? This is a well-known subgroup of $GL(n)$! With this choice of the distinguished point, $\\pi$ is given by $\\mathbf g \\mapsto \\mathbf g \\mathbf g^\\top$. ↩︎\nIt is a subtle point that, even thought he vertical subbundle $\\text{Ver}\\mathcal E$ is well-defined, the projection of an arbitrary vector $v\\in T_q\\mathcal E$ onto $\\text{Ver}_q\\mathcal E$ depends on the choice of horizontal subbundle/connection. ↩︎\nThe action of the left-hand side on an arbirary vector $v\\in T_{gh^{-1}} G$ is $$ R_h^* L_{g^{-1}*}(v) = L_{g^{-1}*} R_{h*}(v), $$ while the action of the right-hand side is $$ \\mathrm{Ad}_{h^{-1}} L_{(gh^{-1})^{-1} *}(v) = L_{h^{-1}*} R_{h*} L_{h*}L_{g^{-1}*}(v), $$ and the fact that the $L$ and $R$ maps commute gives us the desired equality. ↩︎\nThe usual definition of a wedge product does not work for $\\mathfrak g$-valued one-forms. In fact, $\\alpha \\wedge \\alpha=0$ for the ordinary wedge product, which uses scalar multiplication! For $\\mathfrak g$-valued one-forms, we replace scalar multiplication with the only other bilinear operation available to us, the Lie bracket. ↩︎\n",
+  "wordCount" : "3812",
+  "inLanguage": "en",
+  "datePublished": "2025-10-24T20:55:32-04:00",
+  "dateModified": "2025-10-24T20:55:32-04:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/bundles/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shiraz",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Principal Bundles
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2025-10-24 20:55:32 -0400 EDT'>October 24, 2025</span>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul><ul><ul>
+                <li>
+                    <a href="#-fiber-bundles" aria-label="␥ Fiber Bundles">␥ Fiber Bundles</a></li>
+                <li>
+                    <a href="#-coset-spaces" aria-label="␥ Coset Spaces">␥ Coset Spaces</a></li></ul>
+                    </ul>
+                    
+                <li>
+                    <a href="#principal-bundles" aria-label="Principal Bundles">Principal Bundles</a><ul>
+                        <ul>
+                        
+                <li>
+                    <a href="#-the-frame-bundle" aria-label="␥ The Frame Bundle">␥ The Frame Bundle</a></li>
+                <li>
+                    <a href="#-ehresmann-connections" aria-label="␥ Ehresmann Connections">␥ Ehresmann Connections</a></li>
+                <li>
+                    <a href="#-the-maurer-cartan-form" aria-label="␥ The Maurer-Cartan Form">␥ The Maurer-Cartan Form</a></li>
+                <li>
+                    <a href="#-the-christoffel-symbols" aria-label="␥ The Christoffel Symbols">␥ The Christoffel Symbols</a></li>
+                <li>
+                    <a href="#appendix-a-visualizing-the-hopf-fibration" aria-label="Appendix A. Visualizing the Hopf Fibration">Appendix A. Visualizing the Hopf Fibration</a></li>
+                <li>
+                    <a href="#appendix-b-maurer-cartan-structure-equation" aria-label="Appendix B. Maurer-Cartan Structure Equation">Appendix B. Maurer-Cartan Structure Equation</a>
+                </li>
+            </ul>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h3 id="-fiber-bundles">␥ Fiber Bundles<a hidden class="anchor" aria-hidden="true" href="#-fiber-bundles">#</a></h3>
+<p>A <a href="https://en.wikipedia.org/wiki/Fiber_bundle" target="_blank" class="accented">
+    fiber bundle
+</a> is a sequence of maps of the form</p>
+<!-- $$\mathcal F \overset{\iota}{\hookrightarrow} \mathcal E \overset{\pi}{\twoheadrightarrow \twoheadrightarrow} \mathcal M$$ -->
+<div class="tikz-wrapper">
+<script type="text/tikz">
+  \begin{tikzcd}
+    \mathcal F \arrow[r, hook, "\iota"] & \mathcal E \arrow[d, "\pi"] \\
+    & \mathcal M
+  \end{tikzcd}
+</script>
+</div>
+<p>where $\mathcal F$ is the <span class=accented>fiber</span>, $\mathcal E$ is the <span class=accented>total space</span>, and $\mathcal M$ is the <span class=accented>base space</span>. As the notation suggests, $\iota$ is an injective map referred to as the <span class=accented><em>inclusion</em></span> which &ldquo;places&rdquo; the fiber $\mathcal F$ vertically inside $\mathcal E$. Meanwhile, $\pi$ is a surjective map known as the <span class=accented><em>projection</em></span> — given a point $q\in\mathcal E$, the point $\pi(q)\in\mathcal M$ is the shadow cast by $q$ down on the base space.</p>
+<p>The preimage under $\pi$ of the point $p\in\mathcal M$ is diffeomorphic to $\mathcal F$, and is called &ldquo;the fiber above $p$&rdquo;. The job of $\iota$ is to tell us what &ldquo;a typical fiber&rdquo; in $\mathcal E$ looks like. The typical fiber of the Hopf fibration is a circle:</p>
+ <!-- [^1]: I'm tempted to call this a short exact sequence, but apparently we only call it that when we're working in an abelian category (a category where the morphisms themselves have an additive structure — as in the case of $\mathrm{Vect}$). -->
+<div style="margin-bottom: 0.0em; display: flex; justify-content: center;">
+<figure>
+ <video autoplay width="70%" loop class=inverted>
+  <source src="/post-images/videos/hopf4.webm" type="video/webm">
+  Err.. your browser doesn't support the video tag!
+</video>
+<figcaption>The <a href="https://samuelj.li/hopf-fibration/" class=accented>Hopf Fibration</a> is the fiber bundle, $S^1\hookrightarrow S^3 \rightarrow S^2$. Here, I visualize points on $S^2$ and the corresponding fibers sitting above in $S^3$.</figcaption>
+<figure>
+</div>
+<div style="display:flex; align-items:center; justify-content:center; gap:0.5em; margin-bottom: 1em">
+  <span>The total space $\mathcal E$ locally looks like $\mathcal M \times \mathcal F$, but globally it can look quite different. For instance, a Möbius strip can be viewed as a fiber bundle over the circle, $\mathcal M=S^1$, whose fiber is the closed unit interval $\mathcal F=[0,1]$. Infinitely many copies of this fiber are glued together to create a fiber bundle. However, the Möbius strip is quite different from $S^1\times[0,1]$, which is a cylinder. The latter is called a <i>trivial</i> fiber bundle.</span><img src="/post-images/geometry/mobius.png" style="height:10em;" class=invertible>
+</div>
+<div>
+<aside class=aside-right>
+A formal definition of a fiber bundle can be found on Wikipedia — it relates the manifold structures (i.e., open sets and charts) of $\mathcal F$, $\mathcal E$, and $\mathcal M$.
+See <a href="https://mathoverflow.net/questions/50473/why-does-the-group-act-on-the-right-on-the-principal-bundle" class=accented>Qfwfq's explanation</a> of how a principal bundle can be constructed by gluing charts; <a href="https://link.springer.com/book/10.1007/978-3-319-14765-9" class=accented>Stephen Bruce Sontz's book</a> (which I thoroughly enjoyed!) takes a similar approach. Also see <a href="https://www.youtube.com/watch?v=vYAXjTGr_eM&t=8345s" class=accented>Frederic Schuller</a>. <br>
+</aside>
+</div>
+<p>A <a href="https://en.wikipedia.org/wiki/Principal_bundle" target="_blank" class="accented">
+    principal $G$-bundle
+</a> is one whose fiber $\mathcal F = G$ is a Lie group, and where each fiber has a right $G$-action that is compatible with the fiber bundle structure in a certain way. The reason why we consider a <em>right</em> action is that we can create principal bundles out of <a href="https://en.wikipedia.org/wiki/Homogeneous_space" target="_blank" class="accented">
+    homogeneous spaces
+</a>, and in doing so, the right-action on the fiber must play nice with the left-action of the homogeneous space. Let&rsquo;s assume you know a bit about homogeneous spaces, and begin our story there.</p>
+<h3 id="-coset-spaces">␥ Coset Spaces<a hidden class="anchor" aria-hidden="true" href="#-coset-spaces">#</a></h3>
+<p>A homogeneous space refers to a smooth manifold $\mathcal M$ equipped with a left $G$-action (satisfying some axioms). We let $g\in G$ act on $p\in\mathcal M$ to yield $g\cdot p\in \mathcal M$. A homogeneous space does not have a distinguished point (think of a sphere, on which no point is more special than the other). However, if we <em>do</em> choose a special point $p_0\in\mathcal M$ (sort of like choosing the origin of a coordinate system), we can view $\mathcal M$ as a <a href="https://en.wikipedia.org/wiki/Homogeneous_space" target="_blank" class="accented">
+    coset space
+</a>. We do so by considering the subgroup $G_{p_0} < G$ of group actions that leave the point $p_0$ fixed — the <em><a href="https://ncatlab.org/nlab/show/stabilizer&#43;group" target="_blank" class="accented">
+    stabilizer
+</a></em> subgroup of $p_0$ in $G$. Denoting the subgroup $G_{p_0}$ as $H$, we have the following picture:</p>
+<div>
+<!-- <figure class=invertible style="max-width: 25%;"> -->
+<figure class=invertible style="max-width: 70%;">
+<img src=/post-images/geometry/fiber_bundle.png>
+</figure>
+</div>
+<p>which is that of a principal $H$-bundle.
+The map $\pi$ sends $g\in G$ to the point $g \cdot p_0$, and we observe that $\pi(g)=\pi(gh)$ for any $g\in G$ and $h\in H$.
+We define a <em>section</em> (think <em>cross-section</em>) of this bundle to be a map $\sigma$ that is a right-inverse of $\pi$, i.e., $\pi \circ \sigma=\mathrm{id}_{G/H}$ is the identity map on $G/H$.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p><strong>Example 1</strong> (<em>Spheres</em>). $SO(3)$ acts on the sphere $S^2$. Given a point $p\in S^2$, the rotations about the axis passing through $-p$ and $p$ are the stabilizer subgroup $SO(3)_p$. Then, $SO(3)/SO(3)_p$ is isomorphic to $S^2$, and we get a fiber bundle
+</p>
+$$
+SO(2) \hookrightarrow SO(3) \rightarrow S^2.
+$$<p>
+Observe that $SO(3)_p\cong SO(2)$. Due to this isomorphism, you will often see the claim $SO(3)/SO(2) \cong S^2$. However, it is important to note that there is no unique map $SO(2) \overset{\iota}{\rightarrow} SO(3)$ (any one-parameter subgroup of $SO(3)$ is isomorphic to $SO(2)$)!</p>
+<p><strong>Example 2</strong> (<em>Hopf Fibration</em>). The set of unit quaternions<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> $\mathbb Q_S$ can be identified with the matrix Lie group $SU(2)$. Quaternions act on points in $\mathbb R^3$ via rotations, with the quaternions $q,-q$ representing the same rotation. Suppose $H\leq SU(2)$ is all the rotations about a fixed axis, let&rsquo;s say the rotations about the $\mathrm{z}$-axis. The resulting bundle $H\hookrightarrow SU(2) \rightarrow S^2$ is what is visualized in the video above (also see the appendix)! Note that $H\cong SO(2)\cong S^1$.</p>
+<p><strong>Example 3</strong> (<em>SPD Matrices</em>). Let the set of $n\times n$ symmetric positive-definite matrices be written as $\mathrm{SPD}(n)$. Given a matrix $g\in GL(n)$, it acts on $\boldsymbol\Sigma\in\mathrm{SPD}(n)$ as $\boldsymbol\Sigma \mapsto \mathbf g\boldsymbol\Sigma \mathbf g^\top$, where $g\mapsto \mathbf g$ is the standard representation of $GL(n)$ as $n\times n$ matrices. To see the coset space structure of $\mathrm{SPD}(n)$, we need to choose a distinguished point on it, and the fiber sitting above it will be the group of elements that leave the distinguished point fixed. I leave this as an exercise, with a hint in the footnotes!<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p>Conversely, given a Lie group $G$ and a subgroup $H\leq G$, we can view $G/H$ as a homogeneous space.
+A point in $G/H$ is of the form $gH$. The fiber sitting above $gH$ may also be denoted as $gH$, but technically refers to the subset </p>
+$$\pi^{-1}[\lbrace gH\rbrace] = \lbrace g h \mathrel| h\in H \rbrace \subseteq G,$$<p> a <em>left coset</em> of $H$ in $G$. The map $\pi$ projects $g$ to its coset $gH\in G/H$ (as explained in one of my <a href="/posts/lie-groups_construction" class="accented">
+    earlier posts
+</a>), with the identity coset $eH$ viewed as being a distinguished point on $G/H$. Importantly, we also have a right $H$-action on the group. This right-action preserves fibers, since for every $gh_1\in gH$ and $h_2\in H$, we have $(gh_1)h_2 \in gH.$ Thus, given a subgroup $H < G$ we not only get a homogeneous space $G/H$, but we can also endow $G$ with the structure of a principal $H$-bundle. The homogeneous space structure lets us move &ldquo;horizontally&rdquo; in $G$ using the left $G$-action, while the principal bundle structure lets us move &ldquo;vertically&rdquo; using the right $H$-action. The following examples are the two extreme cases where we can <em>only</em> move horizontally or vertically. In <strong>Example 4</strong>, the fiber is trivial, and all of the content of the total space $G$ is in the base space — vice versa for <strong>Example 5</strong>.</p>
+<p><strong>Example 4</strong> (<em>$G$-Torsor</em>). This is the principal $\lbrace e\rbrace$-bundle where $G$ sits &ldquo;horizontally&rdquo;, defined by $e\hookrightarrow G \rightarrow G/\lbrace e \rbrace$. When $G=(\mathbb R^n, +)$ (where the group operation is vector addition) and $e=\mathbf 0$ (the zero vector of $\mathbb R^n$), the principal $\mathbb R^n$-torsor we constructed above is the $n$-dimensional affine space (without the scalar multiplication operation). In other words, this is $\mathbb R^n$ with the origin &ldquo;forgotten&rdquo;.</p>
+<p><strong>Example 5</strong> (<em>Principal $G$-Bundle over a Point</em>). This is the fiber bundle where $G$ sits &ldquo;vertically&rdquo; over a single point, defined by $G\hookrightarrow G \rightarrow \lbrace 🐈 \rbrace$. We can replace 🐈 by any other object, doesn&rsquo;t matter.</p>
+<h1 id="principal-bundles">Principal Bundles<a hidden class="anchor" aria-hidden="true" href="#principal-bundles">#</a></h1>
+<p>In the above, we constructed the fiber bundle $H\hookrightarrow G \rightarrow G/H$. We showed that we can then view $G/H$ as being a homogeneous space with a left $G$-action, and $G$ as a principal $H$-bundle with a right $H$-action that preserves fibers. Turns out that these objects carry too much information, and we need to discard some of this information to narrow our focus. For instance, $G/H$ is technically only a homogeneous space after we stop viewing the identity coset $eH$ as being a special point. As <strong>Example 4</strong> shows, every Lie group can itself be viewed as a homogeneous space once we &ldquo;forget&rdquo; the identity element.
+Similarly, a general <span class=accented>principal $H$-bundle</span> may not come with a left $G$-action, as exemplified in the next section.</p>
+<p><strong>Example 6</strong> (<em>Tangent Bundle</em>). Let $\mathcal M$ be a smooth $n$-dimensional manifold.
+The tangent space at a point $p\in \mathcal M$ is denoted as $T_p\mathcal M$, and the union of these tangent spaces is written as $T\mathcal M$. We can define a unique smooth structure on $T\mathcal M$ that makes the following maps smooth:</p>
+$${\mathbb R}^n \hookrightarrow T\mathcal M \rightarrow \mathcal M.
+  $$<p>This fiber bundle has a fiber-preserving $GL(n)$ action — matrix-vector multiplication. However, $T\mathcal M$ is <em>not</em> a principal $GL(n)$-bundle since its fibers are not isomorphic to $GL(n)$. Nevertheless, there is indeed a principal $GL(n)$-bundle closely related to $T\mathcal M$, which is&hellip;</p>
+<!-- https://math.stackexchange.com/questions/4796658/what-is-a-simple-way-of-understanding-associated-bundles 
+
+-->
+<h3 id="-the-frame-bundle">␥ The Frame Bundle<a hidden class="anchor" aria-hidden="true" href="#-the-frame-bundle">#</a></h3>
+<p>Consider an ordered set of $n$ linearly independent vectors in $T_p\mathcal M$. One such set is called a <em>frame</em>. The space of all the frames at $p$ make up the fiber, and the union of these fibers leads to the notion of a <a href="https://en.wikipedia.org/wiki/Frame_bundle" target="_blank" class="accented">
+    frame bundle
+</a> $F\mathcal M$. More formally, we can view a frame at $p\in\mathcal M$ as being a linear isomorphism from $\mathbb R^n$ to $T_p\mathcal M$. The frame bundle is then (as a set) the following object:
+</p>
+$$
+F\mathcal M = \left\lbrace (\hspace{1pt}p, f)\,\mathrel|\,p\in\mathcal M,\ f:\mathbb R^n \rightarrow T_p\mathcal M \textup{ is an isomorphism}\right\rbrace
+$$<p>The frame bundle has an action of $GL(n)$. We need to take care that this is a <em>right</em>-action and not a <em>left</em>-action, the difference being that the group element $gh \in GL(n)$ should act on a vector $(p,v)\in T\mathcal M$ as </p>
+$$(\hspace{1pt}p,v)\cdot gh= \left((\hspace{1pt}p,v)\cdot g\right)\cdot\, h$$<p>
+On the other hand, a left-action of $gh$ would look different — $h$ will act first, then $g$.</p>
+<aside class=aside-right>
+Do we have a group action on $F\mathcal M$ that moves between fibers, like we did on a coset space? That is, is there some map $\Phi$ that takes $(p_1,f_1)$ to $(p_2,f_2)$ with $p_1 \neq p_2$? Not necessarily. If such a map did exist, then $\pi \circ \Phi$ would be a group action on $\mathcal M$.
+</aside>
+<p>This is where the linear-isomorphisms interpretation of the frame bundle comes in handy; given an $n\times n$ matrix $\mathbf A\in GL(n)$, we let
+</p>
+$$(\hspace{1pt}p,f)\mathrel\cdot\mathbf A = (\hspace{1pt}p,f\circ \mathbf A),$$<p>
+where $[f\circ \mathbf A](\mathbf v) = f(\mathbf A \mathbf v)$.
+There is a way to view $T\mathcal M$ as a fiber bundle that is &ldquo;<a href="https://www.youtube.com/watch?v=q2GYZz6q3QI&amp;t=6s" target="_blank" class="accented">
+    associated
+</a>&rdquo; to the frame bundle. We say that $GL(n)$ is the <i>structure group</i> of $T\mathcal M$, and we call $T\mathcal M$ a $GL(n)$-bundle. An associated bundle has a <em>left</em> action of its structure group. If that is confusing as hell, then you&rsquo;re on the right track.</p>
+<h3 id="-ehresmann-connections">␥ Ehresmann Connections<a hidden class="anchor" aria-hidden="true" href="#-ehresmann-connections">#</a></h3>
+<p>Think of the fibers as trees in a forest. Consider the plight of our monkey, <a href="https://en.wikipedia.org/wiki/Charles_Ehresmann" target="_blank" class="accented">
+    Ehresmann
+</a>. It is clear to him how to climb up and down a tree (using the right $H$-action), but Ehresmann wants to jump from one tree to another. He needs to decide what constitutes horizontal movement! Will he jump such that his height off the ground is the same before and after the jump? Will he jump so that the tree length $\ell$ (as measured from the ground) is the same? Perhaps he will jump in a direction perpendicular to his tree?</p>
+ <div>
+<!-- <figure class=invertible style="max-width: 25%;"> -->
+<figure class=invertible style="max-width: 95%;">
+<img src=/post-images/geometry/connections.png>
+</figure>
+</div>
+<p>Assume Ehresmann the monkey is at the point $q \in \mathcal E$. The space of all the directions in which he could jump constitute the tangent space, $T_{q}\mathcal E$. The <em>vertical subspace</em> $\text{Ver}_q\mathcal E$ is all the directions that keep Ehresmann on the same tree. It is precisely the vectors $v$ that satisfy $d\pi_q(v)=0$; these directions do not change Ehresmann&rsquo;s coordinates as measured along the ground. The vertical subspaces, collectively called the <span class=accented>vertical subbundle</span> $\text{Ver}\mathcal E$, are well-defined as soon as we define a principal bundle.</p>
+<p>The <span class=accented>horizontal subbundle</span> is something that must be chosen, similar  to how we <em>choose</em> an inner product on a vector space. Turns out that there are a few different, equivalent ways of specify a horzontal subbundle for a principal $H$-bundle:</p>
+<ol>
+<li>specify a horizontal subspace $\text{Hor}_q\mathcal E \subseteq T_{q}\mathcal E$ for each $q\in\mathcal E$ such that $$T_q\mathcal E =\text{Hor}_q\mathcal E\oplus \text{Ver}_q\mathcal E,$$</li>
+<li>choose a linear projection $\Gamma:T\mathcal E \rightarrow  \text{Ver}\mathcal E$ and define $\text{Hor}\mathcal E \coloneq \mathrm{ker}(\Gamma)$,<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></li>
+<li>write down a $T\mathcal E$-valued one-form $\Gamma$ on $\mathcal E$ that satisfies $\Gamma\vert_{\text{Ver}\mathcal E}=\mathrm{id}_{\text{Ver}\mathcal E}$ (i.e., $\Gamma$ restricted to $\text{Ver}\mathcal E$ is the identity map on $\text{Ver}\mathcal E$), or</li>
+<li>write down an $\mathfrak h$-valued one-form $\Gamma$ on $\mathcal E$.</li>
+</ol>
+<p>It takes some self-introspection and a few dozen cups of coffee to see why these are indeed equivalent objects (i.e., neither of them specifies too much or too little structure!). An <span class=accented>Ehresmann connection</span> is a choice of horizontal subbundle that satisfies a few additional properties (cf. <a href="https://link.springer.com/book/10.1007/978-3-319-14765-9" class=accented>Sec. 10.1</a>), most notably the <span class=accented>$H$-invariance</span> condition:
+</p>
+$$
+(R_g)_*\text{Hor}_q\mathcal E = \text{Hor}_{qg}\mathcal E \quad \forall q\in\mathcal E, g\in H,
+$$<p>
+where $R_g:\mathcal E \rightarrow \mathcal E$ is the right-action of $g\in H$ on $\mathcal E$, and $(R_g)_*$ is the corresponding pushforward map on tangent spaces. This condition ensures that the right $H$-action on $\mathcal E$ preserves all the horizontal subspaces. Note that we can write an analogous condition for $\text{Ver}\mathcal E$, but since the vertical subbundle does not depend on a choice of connection, it is automatically satisfied!</p>
+<p>The $H$-invariance condition can also be written in terms of the connection form:
+</p>
+$$
+R_g^* \Gamma = \mathrm{Ad}_{g^{-1}} \circ \Gamma \quad \forall g\in H.
+$$<aside class=aside-center> 
+It's easy for me to say "$\mathfrak h$-valued one-form" and leave the rest to your imagination. However, there is a crucial aspect of the exterior algebra that must be <span class=accented>modified</span> when moving from $\mathbb R$-valued one forms to <a class=accented href=https://en.wikipedia.org/wiki/Lie_algebra–valued_differential_form>Lie-algebra valued one-forms</a>. Can you figure out what it is before clicking on the link?
+</aside> 
+<h3 id="-the-maurer-cartan-form">␥ The Maurer-Cartan Form<a hidden class="anchor" aria-hidden="true" href="#-the-maurer-cartan-form">#</a></h3>
+<p>When we used a coset space to create a principal $H$-bundle, we used the sequence of smooth maps $H\hookrightarrow G \rightarrow G/H.$
+This gives us a corresponding sequence of linear maps:
+</p>
+$$\mathfrak h \,\hookrightarrow \,\mathfrak g \,\rightarrow \,\mathfrak g/\mathfrak h,$$<p>
+which is a <a href="https://en.wikipedia.org/wiki/Exact_sequence#Short_exact_sequence" target="_blank" class="accented">
+    short exact sequence
+</a> in the category of vector spaces.
+Here, $\mathfrak g/\mathfrak h$ does not necessarily have a canonically defined Lie bracket for the same reason that $G/H$ is <a href="/posts/lie-groups_construction" class="accented">
+    not necessarily
+</a> a Lie group. Furthermore, there is generally no canonical way of viewing the quotient vector space $\mathfrak g/\mathfrak h$ as a subspace of $\mathfrak g$ — this is a choice that must be made. It is precisely the choice that is made by an Ehresmann connection.</p>
+<p>But that is not the topic of this section&hellip; in this section, we will consider the &ldquo;completely vertical&rdquo; bundle $G\hookrightarrow G \rightarrow \lbrace 🐈 \rbrace$ from <strong>Example 5</strong>. This is the principal $G$-bundle that has a single fiber sitting above 🐈. You might say that there is no choice of horizontal subspace to be made here, since $TG=VG$. But there is indeed a choice of horizontal subspace, it just happens to be the trivial choice of $HG=\lbrace \mathbf 0 \rbrace$. Since there is exactly one Ehresmann connection on this bundle, and given the various equivalent ways of defining a connection, what is the corresponding $\mathfrak g$-valued one-form?</p>
+<p>Given a vector $X\in\mathfrak g$, we can drop a vector field $\widetilde X$ on $G$ using its right-action on itself:
+</p>
+$$\widetilde X_g = \frac{d}{dt}g\exp(tX)\Big|_{t=0}.$$<p>
+This happens to be the <a href="/posts/lie-groups/#invariant-vector-fields" class="accented">
+    left-invariant vector field
+</a> (LIVF) of $X$. The Ehresmann connection is then the map $\omega:TG \rightarrow \mathfrak g$ that sends $\widetilde X$ to $X$:
+</p>
+$$
+\omega(\widetilde X) = X,
+$$<p>
+and is called the <span class=accented>Maurer-Cartan form</span> of $G$.
+Observe that $\omega_g=L_{g^{-1}*}$. It is an exercise for the reader to verify that the Maurer-Cartan form satisfies the $G$-invariance condition
+</p>
+$$
+R_h^* \omega_g = \mathrm{Ad}_{h^{-1}} \omega_{gh^{-1}}
+$$<p>
+for all $g\in G$.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> The uniqueness of the Maurer-Cartan form (as an Ehresmann connection on the <strong>Example 5</strong> bundle) is shown in Theorem 10.3 of <a href="https://link.springer.com/book/10.1007/978-3-319-14765-9" target="_blank" class="accented">
+    Sontz
+</a>. At the <a href="https://www.youtube.com/watch?v=KhagmmNvOvQ&amp;t=4s" target="_blank" class="accented">
+    22 minute mark
+</a>, Schuller shows a connection between $\omega$ and local representations of connections.</p>
+<p>The exterior derivative of an Ehresmann connection is related to the curvature of the horizontal subbundle; I characterize the exterior derivative of $\omega$ in Appendix B.</p>
+<h3 id="-the-christoffel-symbols">␥ The Christoffel Symbols<a hidden class="anchor" aria-hidden="true" href="#-the-christoffel-symbols">#</a></h3>
+<p>What we call &ldquo;a connection&rdquo; in differential geometry can be viewed as an Ehresmann connection on the frame bundle. Given a coordinate chart $(U, x^i)$ on $\mathcal M$, we get a local section $\sigma$ of $F\mathcal M$ over $U$, defined by
+</p>
+$$
+  \sigma(p) = \left(\hspace{1pt}p, \frac{\partial}{\partial x^1}\Big|_p, \cdots, \frac{\partial}{\partial x^n}\Big|_p\right).
+ $$<p>
+Given a connection form $\boldsymbol\Gamma$ on $F\mathcal M$, we can pull it back under $\sigma$ to get $\boldsymbol{\overline\Gamma}\coloneq \sigma^\ast \boldsymbol\Gamma$. We can then express it in the coordinate frame as $\boldsymbol{\overline\Gamma}=(\boldsymbol{\overline\Gamma})_{i}dx^i$. But ${\overline\Gamma}$ takes values in $\mathfrak {gl}(n)$, which means that we can write $\boldsymbol{\overline\Gamma} = {{\overline\Gamma}}^m_{ni}dx^i$. The coefficients ${{\overline\Gamma}}^m_{ni}$ are precisely the <span class=accented>Christoffel symbols</span> of the connection in the coordinate chart $(U,x^i)$. This formulation of the Christoffel symbols shows why they are not tensorial quantities; the $m$ and $n$ indices correspond to the $\mathfrak{gl}(n)$-valued nature of the connection form, while the $i$ index is tensorial.</p>
+<p>A choice of horizontal subbundle lets us <span class=accented>parallel transport</span> vectors along curves on $\mathcal M$. Given a curve $\gamma:[0,1]\rightarrow \mathcal M$ and a frame $e\in F_{\gamma(0)}\mathcal M$, we can lift $\gamma$ to a curve $\widetilde \gamma:[0,1]\rightarrow F\mathcal M$ such that $\pi \circ \widetilde\gamma = \gamma$, $\widetilde\gamma(0)=e$, and $\widetilde\gamma'(t) \in \text{Hor}_{\widetilde\gamma(t)}F\mathcal M$ for all $t\in[0,1]$. This is called the <em>horizontal lift</em> of $\gamma$ starting at $e$. The frame at $\widetilde\gamma(1)$ is then the parallel transport of the frame at $\widetilde\gamma(0)$ along $\gamma$. The illustration at the top of this post also explains <em>holonomy</em>: the observation that parallel transporting a vector along a loop may not return the vector to its original position.</p>
+<hr>
+<h3 id="appendix-a-visualizing-the-hopf-fibration"><span class=tertiary>Appendix A.</span> Visualizing the Hopf Fibration<a hidden class="anchor" aria-hidden="true" href="#appendix-a-visualizing-the-hopf-fibration">#</a></h3>
+<p>Here are some functions in Julia that I used to animate the Hopf fibration:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-julia" data-lang="julia"><span style="display:flex;"><span><span style="color:#75715e"># section σ:S²→S³</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> σ(p₁,p₂,p₃)
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>sqrt(<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">+</span>p₃)) <span style="color:#f92672">*</span> quat(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> p₃, <span style="color:#f92672">-</span>p₂, p₁, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># stabilizer subgroup of (0,0,1)</span>
+</span></span><span style="display:flex;"><span>H <span style="color:#f92672">=</span> [quat(cos(angle), <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, sin(angle)) <span style="color:#66d9ef">for</span> angle <span style="color:#66d9ef">in</span> range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>π, <span style="color:#ae81ff">1000</span>)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># preimage of {p} under π:S³→S²</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> π⁻¹(p)
+</span></span><span style="display:flex;"><span>    p₁,p₂,p₃ <span style="color:#f92672">=</span> p
+</span></span><span style="display:flex;"><span>    f_quat <span style="color:#f92672">=</span> σ(p₁,p₂,p₃) <span style="color:#f92672">.*</span> H
+</span></span><span style="display:flex;"><span>    map(f_quat) <span style="color:#66d9ef">do</span> q
+</span></span><span style="display:flex;"><span>        r <span style="color:#f92672">=</span> real(q)
+</span></span><span style="display:flex;"><span>        (acos(r)<span style="color:#f92672">/</span>(π <span style="color:#f92672">*</span> sqrt(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>r<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>)) <span style="color:#f92672">.*</span> imag_part(q) <span style="color:#f92672">.+</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1.6</span>)) <span style="color:#f92672">.*</span> <span style="color:#ae81ff">1.5</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># parametrization of the sphere Ψ:ℝ²→S³</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> sphere(ϕ,θ)
+</span></span><span style="display:flex;"><span>    (sin(ϕ)<span style="color:#f92672">*</span>cos(θ), sin(ϕ)<span style="color:#f92672">*</span>sin(θ), cos(ϕ))
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="appendix-b-maurer-cartan-structure-equation"><span class=tertiary>Appendix B.</span> Maurer-Cartan Structure Equation<a hidden class="anchor" aria-hidden="true" href="#appendix-b-maurer-cartan-structure-equation">#</a></h3>
+<p>Given a basis $(E_i)_{i=1}^n$ for $\mathfrak g$, the Maurer-Cartan form <a href="/posts/lie-groups_riemannian" class="accented">
+    can be expressed as
+</a> </p>
+$$\omega\coloneqq E_i \varepsilon^i,$$<p>which eats a vector field and returns a function from $G$ to $\mathfrak g$, i.e., $\omega:\mathfrak X(TG)\rightarrow C^\infty(G,\mathfrak g)$. Some of its properties are:</p>
+<ul>
+<li>It is <em>left-invariant</em> since its components in the left-invariant coframe are constants (rather than functions).</li>
+<li>If it eats a LIVF, then the resulting function is a constant: $\omega(\widetilde X)=X^i E_i=X$.</li>
+<li>An arbitrary vector field can be written as $f^i\widetilde E_i$, where $f^i:G\rightarrow \mathbb R$ need not be constant. We have, $\omega(f^i\widetilde E_i)=f^i\omega(\widetilde E_i)=f^i E_i.$</li>
+</ul>
+<p>Basically, $\omega$ trivializes the tangent bundle $TG$ into $G\times \mathfrak g$. The <strong>exterior derivative</strong> of $\omega$ is defined via the formula in Prop. 14.29 of <a href="https://link.springer.com/book/10.1007/978-1-4419-9982-5" target="_blank" class="accented">
+    Lee ISM
+</a>:
+</p>
+$$d\omega(\widetilde X,\widetilde Y)=E_i d\varepsilon^i(\widetilde X,\widetilde Y)=E_i\Big(\widetilde X\big(\varepsilon^i(\widetilde Y)\big)- \widetilde Y\big(\varepsilon^i(\widetilde X)\big)-\varepsilon^i([\widetilde X,\widetilde Y])\Big).$$<p>
+Because $\varepsilon^i(\widetilde X)$ and $\varepsilon^i(\widetilde Y)$ are constant, we have
+</p>
+$$
+\begin{align}
+d\omega(\widetilde X,\widetilde Y)&=-E_i\varepsilon^i([\widetilde X,\widetilde Y])\\
+&=-X^j Y^k c_{jk}^i E_i\\
+&=-[\omega(\widetilde X), \omega(\widetilde Y)],
+\end{align}
+$$<p>
+where $c_{jk}^i$ are the structure constants of $\mathfrak g$ in the basis $(E_i)_{i=1}^n$. This equation is called the <span class=accented>Maurer-Cartan structure equation</span>.
+For any two $\mathfrak g$-valued forms, <a href="https://en.wikipedia.org/wiki/Lie_algebra%e2%80%93valued_differential_form" target="_blank" class="accented">
+    we can define
+</a>
+</p>
+$$
+\begin{align}
+\big(\,\omega\wedge \eta\,\big)(\widetilde X,\widetilde Y)&\coloneqq[\omega(\widetilde X),\eta(\widetilde Y)]-[\omega(\widetilde Y),\eta(\widetilde X)]\\
+&=[\omega(\widetilde X),\eta(\widetilde Y)]+[\eta(\widetilde X),\omega(\widetilde Y)].
+\end{align}
+$$<p>
+Setting $\eta=\omega$, we get
+</p>
+$$
+\begin{align}
+\big(\,\omega\wedge \omega\,\big)(\widetilde X,\widetilde Y)=2[\omega(\widetilde X),\omega(\widetilde Y)].
+\end{align}
+$$<p>Hence, we can write $d\omega=-\frac{1}{2}\omega\wedge \omega=-\frac{1}{2}E_ic^i_{jk}\varepsilon^j\wedge \varepsilon^k$.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></p>
+<p>Suppose we choose a <span class=accented>matrix representation</span> $\boldsymbol\Phi:G\rightarrow GL(m,\mathbb R)$. Then, $d\boldsymbol\Phi_e$ is a representation of $\mathfrak g$. Let $\boldsymbol\omega\coloneqq d\boldsymbol\Phi_e\circ\omega$ be a $\mathfrak{gl}(m)$-valued one-form on $G$. We have, </p>
+$$
+\newcommand{\mf}[1]{\mathbf{#1}}
+\begin{align}
+\boldsymbol\omega &=\big(d\boldsymbol\Phi_eE_i\big)\varepsilon^i=\mf E_i \varepsilon^i,\\
+d\boldsymbol\omega(\widetilde X,\widetilde Y)
+&=-[\boldsymbol\omega(\widetilde X), \boldsymbol\omega(\widetilde Y)]=-\big(\boldsymbol\omega(\widetilde X) \boldsymbol\omega(\widetilde Y)-\boldsymbol\omega(\widetilde Y) \boldsymbol\omega(\widetilde X)\big).
+\end{align}
+$$<p>Finally, we will choose a <span class=accented>parametrization</span> $\psi:\mathbb R^n\rightarrow G$ and pull back $\boldsymbol\omega$ and $d\boldsymbol\omega$ under $\psi$. First, we do this for $\boldsymbol\omega$: </p>
+$$
+\begin{align}
+\psi^\ast\boldsymbol\omega &=\mf E_i\big(\psi^\ast\varepsilon^i\big)
+\end{align}
+$$<p>Let $\psi^\ast\varepsilon^i=\epsilon_{i}dx^i$. Then </p>
+$$\big(\psi^\ast \varepsilon^i\big)\left(\frac{\partial}{\partial x^k}\right)=\epsilon_k=\varepsilon^i\left(\psi_\ast \frac{\partial}{\partial x^k}\right)=\left((\psi)^{-1}\psi_\ast \frac{\partial}{\partial x^k}\right)^{\vee^i}=\mf J^i_k$$<p>
+in the notation of my <a href="https://shiraz-k.com/posts/lemmas/" target="_blank" class="accented">
+    previous post
+</a>. Hence, </p>
+$$
+\begin{align}
+\psi^\ast\boldsymbol\omega &= (\boldsymbol\psi)^{-1}\frac{\partial\,\boldsymbol\psi}{\partial x^k}dx^k,
+\end{align}
+$$<p>which is a $d\boldsymbol\Phi_e(\mathfrak{g})$-valued one-form on the parameter space $\mathbb R^n$, where $\boldsymbol\psi\coloneqq\boldsymbol\Phi \circ \psi$.</p>
+<p>% [^appendix-eq]:The last equality can be shown by choosing a point $g$ and using the fact that $\varepsilon^i_g=dL_{g^{-1}}^\ast\varepsilon^i_e$. Also, note that $(\psi)^{-1}$ is the inverse of a group element and not the inverse of a function.</p>
+<p>Let $\boldsymbol\omega^\vee \coloneqq (\,\cdot\,)^\vee\circ d\boldsymbol\Phi_e\circ\omega$. Then, we have $\psi^\ast \boldsymbol\omega^\vee(\mf y)=J(\mf x)\mf y$ for all $\mf y\in T_{\mf x}\mathbb R^n$, or in terms of components, $\psi^\ast \boldsymbol\omega^\vee=\mf J_jdx^j$, where $\mf J_j$ is the $j^{th}$ column of $\mf J$.</p>
+<p>Pullbacks commute with the exterior derivative and linear transformations, which simplifies the pullback of $d\boldsymbol\omega$:</p>
+$$
+\begin{align}
+\psi^\ast d\boldsymbol\omega^\vee &=d \left(\psi^\ast \boldsymbol\omega^\vee\right)\\
+& = \frac{\partial\mf J_j }{\partial x^i}dx^i\wedge dx^j\\
+&=\frac{\partial}{\partial x^i}\left((\boldsymbol\psi)^{-1}\frac{\partial\,\boldsymbol\psi}{\partial x^j}\right)dx^i\wedge dx^j\\
+&=\left(-(\boldsymbol\psi)^{-1}\frac{\partial\,\boldsymbol\psi}{\partial x^i}(\boldsymbol\psi)^{-1}\frac{\partial\,\boldsymbol\psi}{\partial x^j}+(\boldsymbol\psi)^{-1}\frac{\partial^2\,\boldsymbol\psi}{\partial x^i\partial x^j}\right)dx^i\wedge dx^j
+\end{align}$$<p> On the other hand, we can also move $d$ &lsquo;inwards&rsquo; past the linear operators:
+</p>
+$$
+\begin{align}
+\psi^\ast d\boldsymbol\omega^\vee &= \psi^\ast d\left((\,\cdot\,)^\vee\circ d\boldsymbol\Phi_e\circ\omega\right)\\
+&=\psi^\ast\big(d\boldsymbol\Phi_e(d\omega)\big)^\vee \\
+&= -\frac{1}{2}\mf e_ic^i_{jk}\psi^\ast(\varepsilon^j\wedge \varepsilon^k)\\
+% &= -\frac{1}{2}\mf e_ic^i_{jk}(\psi^\ast\varepsilon^j\wedge \psi^\ast\varepsilon^k)\\
+&=-\frac{1}{2}\mf e_ic^i_{jk}(\mf J^j_\ell dx^\ell\wedge \mf J^k_m dx^m).
+% \\
+% &=-\frac{1}{2}\mf e_ic^i_{jk}\mf J^j_\ell\mf J^k_m\, dx^\ell\wedge  dx^m
+\end{align}
+$$<p>Hence, </p>
+$$
+\begin{align}
+\frac{\partial\mf J_i}{\partial x^j} - \frac{\partial\mf J_j}{\partial x^i}&=\,\mf e_\ell c^\ell_{mk}\mf J^k_j\mf J^m_i.
+\end{align}
+$$<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Theorem 21.17 of John M. Lee&rsquo;s <em>Smooth Manifolds</em> describes the sense in which $G/H$ is a smooth manifold — there is a unique smooth structure on it that makes $\pi$ a smooth map.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>I denote $\mathbb Q_S$ as such partly because reads &ldquo;quaternion sphere&rdquo;, and partly because the &lsquo;$S$&rsquo; in the Special Linear group $SL(n)$ corresponds to an analogous constraint — that of restriction to the determinant one matrices.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Choose the distinguished point as the $n\times n$ identity matrix. What is the set of matrices that leaves this matrix unchanged under the group action, $\boldsymbol\Sigma \mapsto \mathbf g\boldsymbol\Sigma \mathbf g^\top$? This is a well-known subgroup of $GL(n)$! With this choice of the distinguished point, $\pi$ is given by $\mathbf g \mapsto \mathbf g \mathbf g^\top$.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>It is a subtle point that, even thought he vertical subbundle $\text{Ver}\mathcal E$ is well-defined, the projection of an arbitrary vector $v\in T_q\mathcal E$ onto $\text{Ver}_q\mathcal E$ depends on the choice of horizontal subbundle/connection.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>The action of the left-hand side on an arbirary vector $v\in T_{gh^{-1}} G$ is
+</p>
+$$
+R_h^* L_{g^{-1}*}(v) = L_{g^{-1}*} R_{h*}(v),
+$$<p>
+while the action of the right-hand side is
+</p>
+$$
+\mathrm{Ad}_{h^{-1}} L_{(gh^{-1})^{-1}
+*}(v) = L_{h^{-1}*} R_{h*} L_{h*}L_{g^{-1}*}(v),
+$$<p>
+and the fact that the $L$ and $R$ maps commute gives us the desired equality.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>The usual definition of a wedge product does not work for $\mathfrak g$-valued one-forms. In fact, $\alpha \wedge \alpha=0$ for the ordinary wedge product, which uses scalar multiplication! For $\mathfrak g$-valued one-forms, we replace scalar multiplication with the only other bilinear operation available to us, the Lie bracket.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+<script src="https://giscus.app/client.js"
+        data-repo="shirazkn/shirazkn.github.io"
+        data-repo-id="R_kgDOI2VbWw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOI2VbW84CWJnt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="noborder_light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    
+    
+    
+    
+    
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="headerfooter">
+    <sub><sup><sub>..</sub></sup></sub>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

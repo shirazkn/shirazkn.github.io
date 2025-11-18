@@ -2,3 +2,8 @@
 {{ partial "math.html" . }}
 {{ end }}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
+
+{{ if or (.Params.tikzjax) (.Site.Params.tikzjax) }}
+<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+{{ end }}

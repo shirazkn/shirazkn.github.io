@@ -1,9 +1,8 @@
 ---
 title: "The Unreasonable Effectiveness of '2' in Statistics"
 date: 2023-04-09T12:20:39-04:00
-tags: ["Probability"]
+tags: ["Probability", "Linear Algebra", "Optimization"]
 draft: false
-tags: ["Linear Algebra", "Optimization"]
 ---
 
 The title is a reference to [The Unreasonable Effectiveness of Mathematics in the Natural Sciences](https://web.njit.edu/~akansu/PAPERS/The%20Unreasonable%20Effectiveness%20of%20Mathematics%20(EP%20Wigner).pdf), a very popular paper by Eugene Wigner which explores how mathematics is <i>unreasonably</i> effective at not only explaining, but also predicting scientific phenomena. I had a similar question about the number $2$ which repeatedly shows up in engineering and science, specifically in the form of the $2$-norm of a vector, and seems surprisingly effective at doing what it's supposed to do. I asked my [Estimation Theory](https://engineering.purdue.edu/ECE/Academics/Undergraduates/UGO/CourseInfo/courseInfo?courseid=175&show=true&type=grad) instructor at Purdue why this was so, and he told me that I ask too many (but good) questions. I have since then accumulated a variety of answers for why the number $2$ is, in some sense, ✨special✨ During our journey through this post and the next, we will visit the central limit theorem, Gaussian distributions, and Euclidean geometry.

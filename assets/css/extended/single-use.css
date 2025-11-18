@@ -96,3 +96,11 @@ div#logo-s svg {
     color: var(--accent);
     /* font-family: monospace; */
 }
+
+video.inverted {
+    filter: invert(1.0) hue-rotate(180deg) contrast(125%);
+}
+
+body.dark video.inverted {
+    filter: contrast(118%) saturate(95%);
+}

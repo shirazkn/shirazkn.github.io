@@ -16,7 +16,8 @@
     /* background-color: white; */
     border: 1px solid #ccc;
     text-align: center;
-    padding: 0.25rem 0.5rem;
+    /* top right bottom left */
+    padding: 0.25rem 0.75rem 0.5rem 0.75rem;
     width: auto;
     border-radius: 2px;
     color: var(--primary);
@@ -26,6 +27,10 @@
   
 .post-content .tertiary {
     opacity: 0.5;
+}
+
+.post-content .secondary {
+    opacity: 0.7;
 }
 
 .post-content .accented {
@@ -60,12 +65,24 @@
     text-align: justify;
 }
 
+body.dark .post-content aside {
+    /* border-left: 1.2px solid var(--aside-border); */
+    border-color: rgba(49, 49, 49, 0.625);
+    border-right: 0.5px solid rgba(38, 37, 38, 0.54);
+    border-top: 0.8px solid rgba(47, 44, 46, 0.628);
+    border-bottom: 0.5px solid rgba(42, 39, 41, 0.7);
+    box-shadow: inset 0.1em 0.075em 0.5em 0.001em rgba(19, 12, 19, 0.895), -0.1em 0.05em 0.5em 0.05em rgba(35, 35, 35, 0.724);
+    color: var(--secondary);
+    border-radius: 25px;
+    background-color: rgba(11, 11, 11, 0.307);
+}
+
 .post-content aside :not(b) {
     word-spacing: -1.0px;
 }
 
 .post-content aside.aside-right {
-    margin: 0 -0.4rem 0 0.95rem ;
+    margin: 0 -0.4rem 0.3em 0.95rem ;
     float: right;
     padding-bottom: 1em;
     border-right: 0 solid var(--aside-border);
@@ -74,9 +91,12 @@
 }
 
 .post-content aside.aside-center {
-    width: 100%;
+    width: 102%;
     float: fit-content;
-    margin-bottom: 1.2em;
+    margin-left: -0.5em;
+    margin-right: 0em;
+    margin-top: 1em;
+    margin-bottom: 1em;
     border-right: 0 solid var(--aside-border);
     border-left: 1px solid var(--aside-border);
     padding-bottom: 1em;
