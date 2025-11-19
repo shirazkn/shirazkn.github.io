@@ -6,8 +6,31 @@
     <description>Recent content on Shiraz</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Jan 2025 12:46:04 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 13 Nov 2025 21:23:17 -0500</lastBuildDate>
     <atom:link href="https://shirazkn.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Representing Spatial Velocities</title>
+      <link>https://shirazkn.github.io/posts/robotics/</link>
+      <pubDate>Thu, 13 Nov 2025 21:23:17 -0500</pubDate>
+      <guid>https://shirazkn.github.io/posts/robotics/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been going through Russ Tedrake&amp;rsquo;s &lt;a href=&#34;https://manipulation.csail.mit.edu/pick.html&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    notes
+&lt;/a&gt; on robotics, which got me thinking about their so-called &lt;span class=accented&gt;monogram notation&lt;/span&gt;. Basically, this is the notation that represents an $SE(3)$ transformation as $^aX^b$ — more on that shortly. There is a recent &lt;a href=&#34;https://arxiv.org/html/2405.07351v1&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    review paper
+&lt;/a&gt; that points to several variations on this notation, and my postdoc advisor &lt;a href=&#34;https://en.wikipedia.org/wiki/Gregory_S._Chirikjian&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    Gregory Chirikjian
+&lt;/a&gt; wrote a &lt;a href=&#34;https://trumpf.id.au/pubs/Chirikjian_Mahony_Ruan_Trumpf_JMR2017.pdf?utm_source=chatgpt.com&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    paper
+&lt;/a&gt; on it as well. Tedrake&amp;rsquo;s monogram notation looks very elegant until you get to spatial velocities, at which point strange artifacts such as the &amp;ldquo;cross product&amp;rdquo; will appear.
+$\newcommand{\mf}[1]{\mathbf{#1}}$ $\newcommand{\mono}[4]{ { ^{#2} #1 ^{#3} _{#4} } }$&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Principal Bundles</title>
+      <link>https://shirazkn.github.io/posts/bundles/</link>
+      <pubDate>Fri, 24 Oct 2025 20:55:32 -0400</pubDate>
+      <guid>https://shirazkn.github.io/posts/bundles/</guid>
+      <description>A principal bundle is a fiber bundle, that additionally has the right-action of a group that preserves fibers. Beginning with coset spaces, we look at some interesting examples of principal bundles and the things we can do with them.</description>
+    </item>
     <item>
       <title>Differentials in Lie Theory</title>
       <link>https://shirazkn.github.io/posts/lemmas/</link>

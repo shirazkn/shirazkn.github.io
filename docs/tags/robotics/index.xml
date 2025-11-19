@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Robotics on Shiraz</title>
-    <link>http://localhost:1313/tags/robotics/</link>
+    <link>https://shirazkn.github.io/tags/robotics/</link>
     <description>Recent content in Robotics on Shiraz</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 13 Nov 2025 21:23:17 -0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/robotics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://shirazkn.github.io/tags/robotics/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>On the Monogram Notation</title>
-      <link>http://localhost:1313/posts/robotics/</link>
+      <title>Representing Spatial Velocities</title>
+      <link>https://shirazkn.github.io/posts/robotics/</link>
       <pubDate>Thu, 13 Nov 2025 21:23:17 -0500</pubDate>
-      <guid>http://localhost:1313/posts/robotics/</guid>
+      <guid>https://shirazkn.github.io/posts/robotics/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been going through Russ Tedrake&amp;rsquo;s &lt;a href=&#34;https://manipulation.csail.mit.edu/pick.html&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
     notes
 &lt;/a&gt; on robotics, which got me thinking about their so-called &lt;span class=accented&gt;monogram notation&lt;/span&gt;. Basically, this is the notation that represents an $SE(3)$ transformation as $^aX^b$ — more on that shortly. There is a recent &lt;a href=&#34;https://arxiv.org/html/2405.07351v1&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
