@@ -31,7 +31,7 @@ f=\begin{bmatrix}
 $$
 Meanwhile, an element $(A, \mf p)$ of the semi-direct product group $G\coloneq GL(3)\ltimes\mathbb R^3$[^think] can be written as
 
-[^think]: This of this as the group of homogeneous transformations, $SE(3)$, but with the rotation part generalized to an arbitrary $3\times 3$ invertible matrix.
+[^think]: Think of this as the group of homogeneous transformations, $SE(3)$, but with the rotation part generalized to an arbitrary $3\times 3$ invertible matrix.
 
 $$
 (A, \mf p) = \begin{bmatrix}
