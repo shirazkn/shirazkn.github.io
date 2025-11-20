@@ -3,6 +3,7 @@ title: "Representing Spatial Velocities"
 date: 2025-11-13T21:23:17-05:00
 showtoc: true
 tags: ["robotics", "lie-groups", "geometry"]
+summary: I've been going through Russ Tedrake's notes on robotics, which got me thinking about their so-called monogram notation. The result of this deliberation was a new notation for spatial velocities that bridges the gap between abstract Lie groups and their applications to robotics and computer graphics.
 ---
 
 I've been going through Russ Tedrake's [notes](https://manipulation.csail.mit.edu/pick.html) on robotics, which got me thinking about their so-called <span class=accented>monogram notation</span>. Basically, this is the notation that represents an $SE(3)$ transformation as $^aX^b$ — more on that shortly. There is a recent [review paper](https://arxiv.org/html/2405.07351v1) that points to several variations on this notation, and my postdoc advisor [Gregory Chirikjian](https://en.wikipedia.org/wiki/Gregory_S._Chirikjian) wrote a [paper](https://trumpf.id.au/pubs/Chirikjian_Mahony_Ruan_Trumpf_JMR2017.pdf?utm_source=chatgpt.com) on it as well. Tedrake's monogram notation looks very elegant until you get to spatial velocities, at which point strange artifacts such as the "cross product" will appear.
