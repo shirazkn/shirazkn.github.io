@@ -193,7 +193,7 @@ $$
 \mono X{f(t)}{g(t+\tau)}~ \mono X{g(t+\tau)}{f(t)}~ = \mf I,
 $$
 
-we get $\mono Xf{g'}~=-\mono Xfg~\,\mono X{g'}f~\,\mono Xfg~$. In particular, $\mono Xg{g'}~=-\mono X{g'}g~$.
+we get $\mono Xf{g'}~=-\mono Xfg~\,\mono X{g'}f~\,\mono Xfg~$. In particular, $\mono Xg{g'}~=-\mono X{g'}g~$. I will not be using this notation much, but I found it to be very useful for deriving the forthcoming results.
 
 Basic physics tells us that, in order to even define what *velocity* is, we need to decide which frame we consider to be *stationary*. We will write $\mono{\Lambda}fgk$ to denote the velocity of $g$ as seen from $k$, with $f$ considered to be the stationary frame. It is of the form
 $$
@@ -290,15 +290,11 @@ $$
 $$
 and the hat map is its inverse, so that $\mono{\Omega}efg^\vee = \mono{\boldsymbol\omega}efg$ and $\mono{\boldsymbol\omega}efg^\wedge = \mono{\Omega}efg$. The reason for this peculiar choice of basis is that it defines a Lie algebra isomorphism from $\mathfrak{so}(3)$ to $(\mathbb R^3, \times)$, where $\times$ is the cross product:
 
-<p style="text-align: center">
-<span class=boxed style="text-align: center">
 $$
 \begin{align}
 \Omega_1 \Omega_2 - \Omega_2 \Omega_1 = ({\boldsymbol\omega}_1 \times {\boldsymbol\omega}_2)^\wedge
 \end{align}
 $$
-</span>
-</p>
 
 and has interesting properties, such as $(\boldsymbol\omega^\wedge) \mf p = {\boldsymbol\omega}\times \mf p$. We can extend this to define hat and vee maps for $\mathfrak{se}(3)$:
 $$
