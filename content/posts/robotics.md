@@ -29,7 +29,9 @@ f=\begin{bmatrix}
 0 & 0 & 0 & 1
 \end{bmatrix}.
 $$
-Meanwhile, an element $(A, \mf p)$ of the semi-direct product group $G\coloneq GL(3)\ltimes\mathbb R^3$ can be written as
+Meanwhile, an element $(A, \mf p)$ of the semi-direct product group $G\coloneq GL(3)\ltimes\mathbb R^3$[^think] can be written as
+
+[^think]: This of this as the group of homogeneous transformations, $SE(3)$, but with the rotation part generalized to an arbitrary $3\times 3$ invertible matrix.
 
 $$
 (A, \mf p) = \begin{bmatrix}
@@ -59,12 +61,12 @@ $$
 The fact that ${^fX^g}$ acts from the <i>right</i> might seem strange, but we will see that this is precisely the <a class=accented href=https://manipulation.csail.mit.edu/pick.html>monogram notation</a>. It's just that the action of ${^fX^g}$ on basis vectors is <i>opposite</i> to its action on the coefficients of vectors expressed w.r.t. that basis.
 </aside> -->
 
-Conversely, given a pair of frames $f,g$, there is a unique transformation ${\mono Xfg~}\coloneq(\mono Afg~, \mono {\mf p}fgf)$ in $G$ that takes $f$ to $g$. Equivalently, ${^fX^g}$ is the frame $g$ as seen from $f$. With this notation, we can write the transformation rule for frames as $\mono Xeg~ = \mono Xef~ \mono Xfg~$.
+Conversely, given a pair of frames $f,g$, there is a unique transformation ${\mono Xfg~}\coloneq(\mono Afg~, \mono {\mf p}fgf)$ in $G$ that takes $f$ to $g$. Equivalently, ${^fX^g}$ is the frame $g$ as seen from $f$. As we will see, this notation lets us write the transformation rule for frames as $\mono Xeg~ = \mono Xef~ \mono Xfg~$.
 <!-- Because the action is free and transitive, we can identify each transformation with an ordered pair of frames $(f,g)$, where $f$ is the "from" frame and $g$ is the "to" frame. -->
 
 <p style="text-align: center">
 <span class=boxed>
-${^fX^g}$ is the transformation that takes frame $f$ to frame $g$<br> Equivalently, it's frame $g$ as seen from frame $f$
+${^fX^g}$ is the transformation that takes $f$ to $g$<br> equivalently, it's $g$ "as seen from" $f$
 </span>
 </p>
 
@@ -82,9 +84,8 @@ The action of $G$ is transitive and free (it doesn't really matter what these wo
 </figure>
 </div>
 
-In the last chapter, we implicitly assumed that there is a well-defined "<span class=accented>origin frame</span>", which we will call $e$. This is the frame that is described by the identity matrix, when concatenated into a matrix. For our purposes, we can assume that this is a frame that is stationary with respect to Earth 🌏, and located at a convenient location (perhaps the lower-left corner of my desk).
+In the last chapter, we implicitly assumed that there is a well-defined "<span class=accented>origin frame</span>", which we will call $e$. This is the frame that, when represented as a $4\times 4$ matrix, becomes the identity matrix. For our purposes, we can assume that this is a frame that is stationary with respect to Earth 🌏, and located at a convenient location. Perhaps $e$ is located at (and aligned with) the lower-left corner of my desk. Let $f$ be another frame that is attached to the fan on my ceiling.
 
-Let $f$ be the frame attached to the fan on my ceiling (which is currently stationary).
 We can describe the vector that goes from $e$ to $f$ as $\mono {\mf p}{e}{f}{~}$. Expressing this vector in the basis of $f$, we have
 $$
 \mono {\mf p}{e}{f}{~} = \mono {\mf p}{e}{f}{\mf f_1} \mf f_1 + \mono {\mf p}{e}{f}{\mf f_2} \mf f_2 + \mono {\mf p}{e}{f}{\mf f_3} \mf f_3,
@@ -110,7 +111,7 @@ $$
 \end{align}
 $$
 As in Tedrake's notes, if we omit a supercript/subscript, we mean the origin (or Earth) frame: $\mono {\mf p}{}{f}{}\coloneq\mono {\mf p}{e}{f}{e}$. 
-This means that $\mono {\mf p}{}{}{f}$ is the zero vector, and $\mono X{}{}{f}$ the identity matrix!
+This means that $\mono {\mf p}{}{}{f}$ is the zero vector, and $\mono X{}{}{}$ the identity matrix!
 
 Notice that $f$ has the same matrix as $\mono X{}{f}{}$. We can view $f$ both as a frame and as a transformation from $e$ to $f$. Similarly, $\mf p^f$ can be viewed both as a point in $\mathbb R^3$ and as the vector going from the origin to $\mf p^f$. 
 The underlying reason is that, in order to describe to you which point (or frame) I am talking about, I need to first choose an origin (or Earth frame).[^dist] 
@@ -195,14 +196,15 @@ $$
 
 we get $\mono Xf{g'}~=-\mono Xfg~\,\mono X{g'}f~\,\mono Xfg~$. In particular, $\mono Xg{g'}~=-\mono X{g'}g~$. I will not be using this notation much, but I found it to be very useful for deriving the forthcoming results.
 
-Basic physics tells us that, in order to even define what *velocity* is, we need to decide which frame we consider to be *stationary*. We will write $\mono{\Lambda}fgk$ to denote the velocity of $g$ as seen from $k$, with $f$ considered to be the stationary frame. It is of the form
+Basic physics tells us that, in order to even define what *velocity* is, we need to decide which frame we consider to be *stationary*. We will write $\mono{\Lambda}fgk$ to denote the velocity of $g$ as seen from $k$, with $f$ considered to be the stationary/reference frame. It is of the form
 $$
 \mono{\Lambda}fgk = \begin{bmatrix}
 \mono{\Omega}fgk & \mono{\mf v}fgk\\
 \mf 0 & 0
 \end{bmatrix}\in \mathfrak{se}(3),
 $$
-where $\mono{\Omega}fgk\in\mathfrak{so}(3)$ is a $3\times 3$ skew-symmetric matrix. We can also call $f$ the *reference* frame, or the *observer* frame.
+where $\mono{\Omega}fgk\in\mathfrak{so}(3)$ is a $3\times 3$ skew-symmetric matrix. 
+<!-- We can also call $f$ the *reference* frame, or the *observer* frame. -->
 
 *<span class=tertiary>Using the notation.</span>*
 We denote the velocity of $g$ as seen from itself, with $e$ considered as the stationary frame, as
