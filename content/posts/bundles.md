@@ -131,7 +131,6 @@ There is a way to view $T\mathcal M$ as a fiber bundle that is "[associated](htt
 Think of the fibers as trees in a forest. Consider the plight of our monkey, [Ehresmann](https://en.wikipedia.org/wiki/Charles_Ehresmann). It is clear to him how to climb up and down a tree (using the right $H$-action), but Ehresmann wants to jump from one tree to another. He needs to decide what constitutes horizontal movement! Will he jump such that his height off the ground is the same before and after the jump? Will he jump so that the tree length $\ell$ (as measured from the ground) is the same? Perhaps he will jump in a direction perpendicular to his tree? 
 
  <div>
-<!-- <figure class=invertible style="max-width: 25%;"> -->
 <figure class=invertible style="max-width: 95%;">
 <img src=/post-images/geometry/connections.png>
 </figure>
