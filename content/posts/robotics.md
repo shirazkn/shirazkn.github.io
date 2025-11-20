@@ -359,7 +359,7 @@ $
 \mono{\mf v}{A}{C_A}A = \mono{\mf v}{A}{B_A}A + \mono{\mf v}{B}{C_B}A
 $, which is true! In other words, my <span style="color:var(--primary)">$\mono{\mf v}{A}{B}A$</span> is what Tedrake writes as $\mono{\mf v}{A}{B_A}A$. Note that $\mono{\boldsymbol\omega}ABA=\mono{\boldsymbol\omega}A{B_A}A$ in both of our notations, but
 
-<div style="text-align: center">
+<div style="text-align: center; padding-bottom:1em">
 <span class=tertiary>$\mono{\mf v}A{B}A\,$</span>$= \mono{\mf v}A{B_A}A + \mono{\boldsymbol\omega}A{B}A \times \mono{\mf p}A{B}A $.
 </div>
 
