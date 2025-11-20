@@ -102,5 +102,5 @@ video.inverted {
 }
 
 body.dark video.inverted {
-    filter: contrast(118%) saturate(95%);
+    filter: contrast(117%) saturate(90%);
 }

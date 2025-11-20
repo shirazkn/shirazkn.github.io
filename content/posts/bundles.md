@@ -29,7 +29,7 @@ The preimage under $\pi$ of the point $p\in\mathcal M$ is diffeomorphic to $\mat
 
 <div style="margin-bottom: 0.0em; display: flex; justify-content: center;">
 <figure>
- <video autoplay loop muted playsinline width="70%" class=inverted>
+ <video autoplay loop muted playsinline width="80%" class=inverted>
   <source src="/post-images/videos/hopf4.webm" type="video/webm">
   Err.. your browser doesn't support the video tag!
 </video>
