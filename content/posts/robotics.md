@@ -36,37 +36,42 @@ A & \mf p\\
 \mf 0 & 1
 \end{bmatrix}.
 $$
-The transformation $(A, \mf p)$ acts on $f$ from the left, giving us another frame that we denote as $g$:
+The transformation $(A, \mf p)$ acts on $f$ from the *right*, giving us another frame that we denote as $g$:
 $$
 \begin{align}
-(A, \mf p)\cdot f &= \begin{bmatrix}
-A & \mf p\\
-\mf 0 & 1
-\end{bmatrix} \begin{bmatrix}
+f \cdot (A, \mf p) &=  \begin{bmatrix}
 \mf f_1 & \mf f_2 & \mf f_3 & \mf p^f\\
 0 & 0 & 0 & 1
+\end{bmatrix}\begin{bmatrix}
+A & \mf p\\
+\mf 0 & 1
 \end{bmatrix}\\
  &\eqcolon \begin{bmatrix}
 \mf g_1 & \mf g_2 & \mf g_3 & \mf p^g\\
 0 & 0 & 0 & 1
-\end{bmatrix}
+\end{bmatrix}\\
+&=g.
 \end{align}
 $$
-so that $\mf g_i = A \mf f_i$ and $\mf p^g = A \mf p^f + \mf p$. The action of $G$ is transitive and free (it doesn't really matter what these words mean, but I have included a handy guide in the [appendix](/posts/robotics/#appendix-b-group-actions)). In particular, $SE(3)=SO(3)\ltimes \mathbb R^3$ is a subgroup of $G$ that acts on $\mathrm F\mathbb R^3$, and it leaves the subset $\mathrm O\mathbb R^3\subseteq \mathrm F\mathbb R^3$ of positively-oriented orthogonal frames invariant! We will later specialize our discussion to the action of $SE(3)$ on $\mathrm O\mathbb R^3$.
 
-<aside class=aside-right>
-The fact that $g={^fX^g} f$ might seem strange, but we will see that this is precisely the <a class=accented href=https://manipulation.csail.mit.edu/pick.html>monogram notation</a>. We just need to be careful about the fact that the action of ${^fX^g}$ on basis vectors is <i>opposite</i> to its action on the coefficients of vectors expressed w.r.t. that basis.
-</aside>
+<!-- <aside class=aside-right>
+The fact that ${^fX^g}$ acts from the <i>right</i> might seem strange, but we will see that this is precisely the <a class=accented href=https://manipulation.csail.mit.edu/pick.html>monogram notation</a>. It's just that the action of ${^fX^g}$ on basis vectors is <i>opposite</i> to its action on the coefficients of vectors expressed w.r.t. that basis.
+</aside> -->
 
-Let ${\mono Xgf~}\coloneq(\mono Agf~, \mono {\mf p}gfg)$ be the transformation in $G$. We write it as ${^fX^g}$ to indicate that it takes the frame $f$ to the frame $g$. Equivalently, ${^fX^g}$ is the frame $g$ as seen from $f$. Because the action is free and transitive, we can identify each transformation with an ordered pair of frames $(f,g)$, where $f$ is the "from" frame and $g$ is the "to" frame.
+Conversely, given a pair of frames $f,g$, there is a unique transformation ${\mono Xfg~}\coloneq(\mono Afg~, \mono {\mf p}fgf)$ in $G$ that takes $f$ to $g$. Equivalently, ${^fX^g}$ is the frame $g$ as seen from $f$. With this notation, we can write the transformation rule for frames as $\mono Xeg~ = \mono Xef~ \mono Xfg~$.
+<!-- Because the action is free and transitive, we can identify each transformation with an ordered pair of frames $(f,g)$, where $f$ is the "from" frame and $g$ is the "to" frame. -->
 
 <p style="text-align: center">
 <span class=boxed>
-${^fX^g}$ is the transformation that takes frame $f$ to frame $g$<br> Equivalently, it is frame $g$ as seen from frame $f$
+${^fX^g}$ is the transformation that takes frame $f$ to frame $g$<br> Equivalently, it's frame $g$ as seen from frame $f$
 </span>
 </p>
 
-You may have noticed that the frames $f$ and $g$ themselves look like elements of $G$. This confusion between points on a homogeneous space and elements of the group acting on that space is one of the pitfalls that the monogram notation seeks to address.
+<!-- You may have noticed that the frames $f$ and $g$ themselves look like elements of $G$. This confusion between points on a homogeneous space and elements of the group acting on that space is one of the pitfalls that the monogram notation seeks to address. -->
+
+<aside class=aside-center>
+The action of $G$ is transitive and free (it doesn't really matter what these words mean, but I have included a handy guide in the <a href=/posts/robotics/#appendix-b-group-actions class=accented>appendix</a>). In particular, $SE(3)=SO(3)\ltimes \mathbb R^3$ is a subgroup of $G$ that acts on $\mathrm F\mathbb R^3$, and it leaves the subset $\mathrm O\mathbb R^3\subseteq \mathrm F\mathbb R^3$ of positively-oriented orthogonal frames invariant! We will later specialize our discussion to the action of $SE(3)$ on $\mathrm O\mathbb R^3$.
+</aside>
 
 ## <span class=tertiary>Chapter 2.</span> Transformation Rules
 
