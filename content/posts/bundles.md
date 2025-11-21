@@ -37,9 +37,10 @@ The preimage under $\pi$ of the point $p\in\mathcal M$ is diffeomorphic to $\mat
 <figure>
 </div>
 
-<div style="display:flex; align-items:center; justify-content:center; gap:0.5em; margin-bottom: 1em">
-  <span>The total space $\mathcal E$ locally looks like $\mathcal M \times \mathcal F$, but globally it can look quite different. For instance, a Möbius strip can be viewed as a fiber bundle over the circle, $\mathcal M=S^1$, whose fiber is the closed unit interval $\mathcal F=[0,1]$. Infinitely many copies of this fiber are glued together to create a fiber bundle. However, the Möbius strip is quite different from $S^1\times[0,1]$, which is a cylinder. The latter is called a <i>trivial</i> fiber bundle.</span><img src="/post-images/geometry/mobius.png" style="height:10em;" class=invertible>
+<div style="float:right; align-items:right; justify-content:right; gap:4.5em; margin-bottom: 0em; margin-left: 0.5em">
+<img src="/post-images/geometry/mobius.png" style="height:10em;" class=invertible>
 </div>
+The total space $\mathcal E$ locally looks like $\mathcal M \times \mathcal F$, but globally it can look quite different. For instance, a Möbius strip can be viewed as a fiber bundle over the circle, $\mathcal M=S^1$, whose fiber is the closed unit interval $\mathcal F=[0,1]$. Infinitely many copies of this fiber are glued together to create a fiber bundle. However, the Möbius strip is quite different from $S^1\times[0,1]$, which is a cylinder. The latter is called a <i>trivial</i> fiber bundle.
 
 <div>
 <aside class=aside-right>
@@ -291,6 +292,7 @@ in the notation of my [previous post](https://shiraz-k.com/posts/lemmas/). Hence
 \psi^\ast\boldsymbol\omega &= (\boldsymbol\psi)^{-1}\frac{\partial\,\boldsymbol\psi}{\partial x^k}dx^k,
 \end{align}
 $$which is a $d\boldsymbol\Phi_e(\mathfrak{g})$-valued one-form on the parameter space $\mathbb R^n$, where $\boldsymbol\psi\coloneqq\boldsymbol\Phi \circ \psi$.
+
 
 Let $\boldsymbol\omega^\vee \coloneqq (\,\cdot\,)^\vee\circ d\boldsymbol\Phi_e\circ\omega$. Then, we have $\psi^\ast \boldsymbol\omega^\vee(\mf y)=J(\mf x)\mf y$ for all $\mf y\in T_{\mf x}\mathbb R^n$, or in terms of components, $\psi^\ast \boldsymbol\omega^\vee=\mf J_jdx^j$, where $\mf J_j$ is the $j^{th}$ column of $\mf J$.
 

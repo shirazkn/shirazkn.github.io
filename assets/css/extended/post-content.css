@@ -82,7 +82,7 @@ body.dark .post-content aside {
 }
 
 .post-content aside.aside-right {
-    margin: 0 -0.4rem 0.3em 0.95rem ;
+    margin: 0.5em -0.4rem 0.5em 0.75rem ;
     float: right;
     padding-bottom: 1em;
     border-right: 0 solid var(--aside-border);
