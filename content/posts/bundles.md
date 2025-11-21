@@ -292,8 +292,6 @@ in the notation of my [previous post](https://shiraz-k.com/posts/lemmas/). Hence
 \end{align}
 $$which is a $d\boldsymbol\Phi_e(\mathfrak{g})$-valued one-form on the parameter space $\mathbb R^n$, where $\boldsymbol\psi\coloneqq\boldsymbol\Phi \circ \psi$.
 
-% [^appendix-eq]:The last equality can be shown by choosing a point $g$ and using the fact that $\varepsilon^i_g=dL_{g^{-1}}^\ast\varepsilon^i_e$. Also, note that $(\psi)^{-1}$ is the inverse of a group element and not the inverse of a function.
-
 Let $\boldsymbol\omega^\vee \coloneqq (\,\cdot\,)^\vee\circ d\boldsymbol\Phi_e\circ\omega$. Then, we have $\psi^\ast \boldsymbol\omega^\vee(\mf y)=J(\mf x)\mf y$ for all $\mf y\in T_{\mf x}\mathbb R^n$, or in terms of components, $\psi^\ast \boldsymbol\omega^\vee=\mf J_jdx^j$, where $\mf J_j$ is the $j^{th}$ column of $\mf J$.
 
 Pullbacks commute with the exterior derivative and linear transformations, which simplifies the pullback of $d\boldsymbol\omega$:$$
