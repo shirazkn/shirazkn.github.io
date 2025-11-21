@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://shirazkn.github.io/tags/geometry/</loc>
+    <loc>https://shirazkn.github.io/tags/differential-geometry/</loc>
     <lastmod>2025-11-13T21:23:17-05:00</lastmod>
   </url><url>
-    <loc>https://shirazkn.github.io/tags/lie-groups/</loc>
+    <loc>https://shirazkn.github.io/tags/linear-algebra/</loc>
+    <lastmod>2025-11-13T21:23:17-05:00</lastmod>
+  </url><url>
+    <loc>https://shirazkn.github.io/tags/mechanics/</loc>
     <lastmod>2025-11-13T21:23:17-05:00</lastmod>
   </url><url>
     <loc>https://shirazkn.github.io/posts/</loc>
     <lastmod>2025-11-13T21:23:17-05:00</lastmod>
   </url><url>
     <loc>https://shirazkn.github.io/posts/robotics/</loc>
-    <lastmod>2025-11-13T21:23:17-05:00</lastmod>
-  </url><url>
-    <loc>https://shirazkn.github.io/tags/robotics/</loc>
     <lastmod>2025-11-13T21:23:17-05:00</lastmod>
   </url><url>
     <loc>https://shirazkn.github.io/</loc>
@@ -26,16 +26,10 @@
     <loc>https://shirazkn.github.io/posts/bundles/</loc>
     <lastmod>2025-10-24T20:55:32-04:00</lastmod>
   </url><url>
-    <loc>https://shirazkn.github.io/tags/differential-geometry/</loc>
-    <lastmod>2025-01-13T12:46:04-05:00</lastmod>
-  </url><url>
     <loc>https://shirazkn.github.io/posts/lemmas/</loc>
     <lastmod>2025-01-13T12:46:04-05:00</lastmod>
   </url><url>
     <loc>https://shirazkn.github.io/posts/ep/</loc>
-    <lastmod>2024-12-19T08:18:04-05:00</lastmod>
-  </url><url>
-    <loc>https://shirazkn.github.io/tags/mechanics/</loc>
     <lastmod>2024-12-19T08:18:04-05:00</lastmod>
   </url><url>
     <loc>https://shirazkn.github.io/posts/harmonic-analysis/</loc>
@@ -58,9 +52,6 @@
   </url><url>
     <loc>https://shirazkn.github.io/posts/lie-groups/</loc>
     <lastmod>2024-01-15T07:24:59-05:00</lastmod>
-  </url><url>
-    <loc>https://shirazkn.github.io/tags/linear-algebra/</loc>
-    <lastmod>2024-01-03T11:22:28-05:00</lastmod>
   </url><url>
     <loc>https://shirazkn.github.io/posts/vector-fields/</loc>
     <lastmod>2024-01-03T11:22:28-05:00</lastmod>

@@ -2,7 +2,7 @@
 title: "Representing Spatial Velocities"
 date: 2025-11-13T21:23:17-05:00
 showtoc: true
-tags: ["robotics", "lie-groups", "geometry"]
+tags: ["Mechanics", "Differential Geometry", "Linear Algebra"]
 summary: I've been going through Russ Tedrake's notes on robotics, which got me thinking about their so-called monogram notation. The result of this deliberation was a new notation for spatial velocities that bridges the gap between abstract Lie groups and their applications to robotics and computer graphics.
 ---
 
