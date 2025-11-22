@@ -177,7 +177,7 @@ When $e$ and $f$ are both positively-oriented orthogonal frames, $\mono{A}ef~$ i
 In this case, $\mono Xef~=(\mono{R}ef~, \mono {\mf p}efe)\in SE(3)$. These formulae hold if we replace $e$ with $h$; I just used $e$ to simplify the presentation.
 
 ## <span class=tertiary>Chapter 3.</span> Velocities
-Suppose we have curves $f :\mathbb R\rightarrow \mathrm F\mathbb R^3$ and $g :\mathbb R\rightarrow \mathrm F\mathbb R^3$, such that $f(t)$ and $g(t)$ are moving w.r.t. the origin frame $e$. Our task it to describe their velocities at time $t$. 
+Suppose we have curves $f :\mathbb R\rightarrow \mathrm F\mathbb R^3$ and $g :\mathbb R\rightarrow \mathrm F\mathbb R^3$, such that $f(t)$ and $g(t)$ are moving w.r.t. the origin frame $e$. Our task is to describe their velocities at time $t$. 
 
 *<span class=tertiary>Setting up the notation.</span>* I introduce the following notation for derivatives:
 
