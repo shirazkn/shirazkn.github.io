@@ -203,7 +203,7 @@ $$
 \mf 0 & 0
 \end{bmatrix}\in \mathfrak{se}(3),
 $$
-where $\mono{\Omega}fgk\in\mathfrak{so}(3)$ is a $3\times 3$ skew-symmetric matrix. 
+where $\mono{\Omega}fgk\in\mathfrak{so}(3)$ is a $3\times 3$ skew-symmetric matrix. As we will see, $\mono{\mf v}fgk$ is *not* the same as Tedrake's <span class=secondary>$\mono{\mf v}{f}{g}{k}$</span>; what I write as $\mono{\mf v}fgk$ is what Tedrake writes as <span class=secondary>$\mono{\mf v}{f}{g_f}{k}$</span>. I will justify my choice of notation shortly.
 <!-- We can also call $f$ the *reference* frame, or the *observer* frame. -->
 
 *<span class=tertiary>Using the notation.</span>*
@@ -305,7 +305,7 @@ $$
 \mono{\mf v}{f}{g}{k}
 \end{bmatrix}
 $$
-which is the vector that Tedrake writes as <span class=secondary>$\mono{\mathrm V}{f}{g_f}{k}$</span> (as we will shortly see, my $\mono{\mf v}{f}{g}{k}$ is Tedrake's <span class=secondary>$\mono{\mf v}{f}{g_f}{k}$</span>). This vee map satisfies the following property; basically the choice of basis for $\mathfrak{se}(3)$ lets us write the adjoint action as a matrix:
+which is the vector that Tedrake writes as <span class=secondary>$\mono{\mathrm V}{f}{g_f}{k}$</span> (recall that my $\mono{\mf v}{f}{g}{k}$ is Tedrake's <span class=secondary>$\mono{\mf v}{f}{g_f}{k}$</span>). This vee map satisfies the following property; basically the choice of basis for $\mathfrak{se}(3)$ lets us write the adjoint action as a matrix:
 <p style="text-align: center">
 <span class=boxed style="text-align: center">
 $$
