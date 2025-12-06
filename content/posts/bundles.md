@@ -138,22 +138,22 @@ Think of the fibers as trees in a forest. Consider the plight of our monkey, [Eh
 </figure>
 </div>
 
-Assume Ehresmann the monkey is at the point $q \in \mathcal E$. The space of all the directions in which he could jump constitute the tangent space, $T_{q}\mathcal E$. The *vertical subspace* $\text{Ver}_q\mathcal E$ is all the directions that keep Ehresmann on the same tree. It is precisely the vectors $v$ that satisfy $d\pi_q(v)=0$; these directions do not change Ehresmann's coordinates as measured along the ground. The vertical subspaces, collectively called the <span class=accented>vertical subbundle</span> $\text{Ver}\mathcal E$, are well-defined as soon as we define a principal bundle.
+Assume Ehresmann the monkey is at the point $q \in \mathcal E$. The space of all the directions in which he could jump constitute the tangent space, $T_{q}\mathcal E$. The *vertical subspace* $\mathrm{Ver}_q\mathcal E$ is all the directions that keep Ehresmann on the same tree. It is precisely the vectors $v$ that satisfy $d\pi_q(v)=0$; these directions do not change Ehresmann's coordinates as measured along the ground. The vertical subspaces, collectively called the <span class=accented>vertical subbundle</span> $\mathrm{Ver}\mathcal E$, are well-defined as soon as we define a principal bundle.
 
 The <span class=accented>horizontal subbundle</span> is something that must be chosen, similar  to how we *choose* an inner product on a vector space. Turns out that there are a few different, equivalent ways of specify a horzontal subbundle for a principal $H$-bundle:
 
-1. specify a horizontal subspace $\text{Hor}_q\mathcal E \subseteq T_{q}\mathcal E$ for each $q\in\mathcal E$ such that $$T_q\mathcal E =\text{Hor}_q\mathcal E\oplus \text{Ver}_q\mathcal E,$$
-2. choose a linear projection $\Gamma:T\mathcal E \rightarrow  \text{Ver}\mathcal E$ and define $\text{Hor}\mathcal E \coloneq \mathrm{ker}(\Gamma)$,[^subtle] 
-3. write down a $T\mathcal E$-valued one-form $\Gamma$ on $\mathcal E$ that satisfies $\Gamma\vert_{\text{Ver}\mathcal E}=\mathrm{id}_{\text{Ver}\mathcal E}$ (i.e., $\Gamma$ restricted to $\text{Ver}\mathcal E$ is the identity map on $\text{Ver}\mathcal E$), or
+1. specify a horizontal subspace $\mathrm{Hor}_q\mathcal E \subseteq T_{q}\mathcal E$ for each $q\in\mathcal E$ such that $$T_q\mathcal E =\mathrm{Hor}_q\mathcal E\oplus \mathrm{Ver}_q\mathcal E,$$
+2. choose a linear projection $\Gamma:T\mathcal E \rightarrow  \mathrm{Ver}\mathcal E$ and define $\mathrm{Hor}\mathcal E \coloneq \mathrm{ker}(\Gamma)$,[^subtle] 
+3. write down a $T\mathcal E$-valued one-form $\Gamma$ on $\mathcal E$ that satisfies $\Gamma\vert_{\mathrm{Ver}\mathcal E}=\mathrm{id}_{\mathrm{Ver}\mathcal E}$ (i.e., $\Gamma$ restricted to $\mathrm{Ver}\mathcal E$ is the identity map on $\mathrm{Ver}\mathcal E$), or
 4. write down an $\mathfrak h$-valued one-form $\Gamma$ on $\mathcal E$.
 
-[^subtle]: It is a subtle point that, even thought he vertical subbundle $\text{Ver}\mathcal E$ is well-defined, the projection of an arbitrary vector $v\in T_q\mathcal E$ onto $\text{Ver}_q\mathcal E$ depends on the choice of horizontal subbundle/connection.
+[^subtle]: It is a subtle point that, even thought he vertical subbundle $\mathrm{Ver}\mathcal E$ is well-defined, the projection of an arbitrary vector $v\in T_q\mathcal E$ onto $\mathrm{Ver}_q\mathcal E$ depends on the choice of horizontal subbundle/connection.
 
 It takes some self-introspection and a few dozen cups of coffee to see why these are indeed equivalent objects (i.e., neither of them specifies too much or too little structure!). An <span class=accented>Ehresmann connection</span> is a choice of horizontal subbundle that satisfies a few additional properties (cf. <a href="https://link.springer.com/book/10.1007/978-3-319-14765-9" class=accented>Sec. 10.1</a>), most notably the <span class=accented>$H$-invariance</span> condition:
 $$
-(R_g)_*\text{Hor}_q\mathcal E = \text{Hor}_{qg}\mathcal E \quad \forall q\in\mathcal E, g\in H,
+(R_g)_*\mathrm{Hor}_q\mathcal E = \mathrm{Hor}_{qg}\mathcal E \quad \forall q\in\mathcal E, g\in H,
 $$
-where $R_g:\mathcal E \rightarrow \mathcal E$ is the right-action of $g\in H$ on $\mathcal E$, and $(R_g)_*$ is the corresponding pushforward map on tangent spaces. This condition ensures that the right $H$-action on $\mathcal E$ preserves all the horizontal subspaces. Note that we can write an analogous condition for $\text{Ver}\mathcal E$, but since the vertical subbundle does not depend on a choice of connection, it is automatically satisfied! 
+where $R_g:\mathcal E \rightarrow \mathcal E$ is the right-action of $g\in H$ on $\mathcal E$, and $(R_g)_*$ is the corresponding pushforward map on tangent spaces. This condition ensures that the right $H$-action on $\mathcal E$ preserves all the horizontal subspaces. Note that we can write an analogous condition for $\mathrm{Ver}\mathcal E$, but since the vertical subbundle does not depend on a choice of connection, it is automatically satisfied! 
 
 The $H$-invariance condition can also be written in terms of the connection form:
 $$
@@ -207,7 +207,7 @@ What we call "a connection" in differential geometry can be viewed as an Ehresma
  $$
  Given a connection form $\boldsymbol\Gamma$ on $F\mathcal M$, we can pull it back under $\sigma$ to get $\boldsymbol{\overline\Gamma}\coloneq \sigma^\ast \boldsymbol\Gamma$. We can then express it in the coordinate frame as $\boldsymbol{\overline\Gamma}=(\boldsymbol{\overline\Gamma})_{i}dx^i$. But ${\overline\Gamma}$ takes values in $\mathfrak {gl}(n)$, which means that we can write $\boldsymbol{\overline\Gamma} = {{\overline\Gamma}}^m_{ni}dx^i$. The coefficients ${{\overline\Gamma}}^m_{ni}$ are precisely the <span class=accented>Christoffel symbols</span> of the connection in the coordinate chart $(U,x^i)$. This formulation of the Christoffel symbols shows why they are not tensorial quantities; the $m$ and $n$ indices correspond to the $\mathfrak{gl}(n)$-valued nature of the connection form, while the $i$ index is tensorial.
 
- A choice of horizontal subbundle lets us <span class=accented>parallel transport</span> vectors along curves on $\mathcal M$. Given a curve $\gamma:[0,1]\rightarrow \mathcal M$ and a frame $e\in F_{\gamma(0)}\mathcal M$, we can lift $\gamma$ to a curve $\widetilde \gamma:[0,1]\rightarrow F\mathcal M$ such that $\pi \circ \widetilde\gamma = \gamma$, $\widetilde\gamma(0)=e$, and $\widetilde\gamma'(t) \in \text{Hor}_{\widetilde\gamma(t)}F\mathcal M$ for all $t\in[0,1]$. This is called the *horizontal lift* of $\gamma$ starting at $e$. The frame at $\widetilde\gamma(1)$ is then the parallel transport of the frame at $\widetilde\gamma(0)$ along $\gamma$. The illustration at the top of this post also explains *holonomy*: the observation that parallel transporting a vector along a loop may not return the vector to its original position.
+ A choice of horizontal subbundle lets us <span class=accented>parallel transport</span> vectors along curves on $\mathcal M$. Given a curve $\gamma:[0,1]\rightarrow \mathcal M$ and a frame $e\in F_{\gamma(0)}\mathcal M$, we can lift $\gamma$ to a curve $\widetilde \gamma:[0,1]\rightarrow F\mathcal M$ such that $\pi \circ \widetilde\gamma = \gamma$, $\widetilde\gamma(0)=e$, and $\widetilde\gamma'(t) \in \mathrm{Hor}_{\widetilde\gamma(t)}F\mathcal M$ for all $t\in[0,1]$. This is called the *horizontal lift* of $\gamma$ starting at $e$. The frame at $\widetilde\gamma(1)$ is then the parallel transport of the frame at $\widetilde\gamma(0)$ along $\gamma$. The illustration at the top of this post also explains *holonomy*: the observation that parallel transporting a vector along a loop may not return the vector to its original position.
 
 -----
 
