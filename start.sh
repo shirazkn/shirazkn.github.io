@@ -1,5 +1,5 @@
 #!/bin/bash
 
 code .
-open -a "Brave Browser" "http://localhost:1313/"
+open -a "Hugo Server"
 hugo -D server

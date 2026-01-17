@@ -24,6 +24,9 @@
     display: inline-block;
   }
   
+.post-content .faded {
+    opacity: 0.25;
+}
   
 .post-content .tertiary {
     opacity: 0.5;

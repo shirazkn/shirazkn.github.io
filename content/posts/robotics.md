@@ -16,8 +16,8 @@ This got me thinking about the connections between the monogram notation and abs
 
 ## <span class=tertiary>Chapter 1.</span> The Frame Bundle
 
-First, let's think about the space in which frames live. Given a point $\mf p\in \mathbb R^3$, a <span class=accented>frame</span> $f$ at $\mf p^f$ is an ordered set of $3$ linearly independent vectors, $(\mf f_1, \mf f_2, \mf f_3)$, along with the base point $\mf p^f$.
-The frame is visualized as arrows starting at $\mf p$ and facing outwards.[^orientation] The collection of all frames of $\mathbb R^3$ makes up the frame bundle, $\mathrm F\mathbb R^3$. 
+First, let's think about the space in which frames live. Given a point $\mf p\in \mathbb R^3$, a <span class=accented>frame</span> $f$ at $\mf p^f$ is an ordered set of $3$ linearly independent vectors $(\mf f_1, \mf f_2, \mf f_3)$ along with the base point $\mf p^f$.
+The frame is visualized as arrows starting at $\mf p$ and facing outwards.[^orientation] The collection of all frames of $\mathbb R^3$ makes up the frame bundle $\mathrm F\mathbb R^3$. 
 There is a map $\pi:\mathrm F\mathbb R^3\rightarrow \mathbb R^3$ that maps $f$ to its base point $\mf p^f$, giving us a [fiber bundle](/posts/bundles/#-the-frame-bundle) structure.
 
 [^orientation]: It turns out that such a frame can have one of two parities — it can either be *positively* or *negatively* oriented. Our usual choice of the $\mathrm{xyz}$ axes is positively oriented, so you can use that fact to come up with your own "right-hand rule" for positive orientation.
@@ -31,7 +31,7 @@ f=\begin{bmatrix}
 $$
 Meanwhile, an element $(A, \mf p)$ of the semi-direct product group $G\coloneq GL(3)\ltimes\mathbb R^3$[^think] can be written as
 
-[^think]: Think of this as the group of homogeneous transformations, $SE(3)$, but with the rotation part generalized to an arbitrary $3\times 3$ invertible matrix.
+[^think]: Think of this as the group of homogeneous transformations $SE(3)$, but with the rotation part generalized to an arbitrary $3\times 3$ invertible matrix.
 
 $$
 (A, \mf p) = \begin{bmatrix}
@@ -84,7 +84,7 @@ The action of $G$ is transitive and free (it doesn't really matter what these wo
 </figure>
 </div>
 
-In the last chapter, we implicitly assumed that there is a well-defined "<span class=accented>origin frame</span>", which we will call $e$. This is the frame that, when represented as a $4\times 4$ matrix, becomes the identity matrix. For our purposes, we can assume that this is a frame that is stationary with respect to Earth 🌏, and located at a convenient location. Perhaps $e$ is located at (and aligned with) the lower-left corner of my desk. Let $f$ be another frame that is attached to the fan on my ceiling.
+In the last chapter, we implicitly assumed that there is a well-defined "<span class=accented>origin frame</span>" that we will refer to as $e$. This is the frame that, when represented as a $4\times 4$ matrix, becomes the identity matrix. For our purposes, we can assume that this is a frame that is stationary with respect to Earth 🌏 and located at a convenient location. Perhaps $e$ is located at (and aligned with) the lower-left corner of my desk. Let $f$ be another frame that is attached to the fan on my ceiling.
 
 We can describe the vector that goes from $e$ to $f$ as $\mono {\mf p}{e}{f}{~}$. Expressing this vector in the basis of $f$, we have
 $$
