@@ -57,6 +57,8 @@ function isTouchPrimary() {
 }
 
 // Gyroscope handling for mobile (only works on HTTPS)
+let gyroPermissionRequested = false;
+
 function initGyroscope() {
   if (!isTouchPrimary()) return;
   if (!isSecureContext) return; // Gyroscope requires HTTPS
@@ -64,19 +66,26 @@ function initGyroscope() {
 
   // iOS 13+ requires permission - must be triggered by user gesture
   if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-    // Add a visible button or use first touch to request permission
-    const requestPermission = () => {
+    // Request on any user interaction
+    const requestPermission = (e) => {
+      if (gyroPermissionRequested) return;
+      gyroPermissionRequested = true;
+
       DeviceOrientationEvent.requestPermission()
         .then(state => {
           if (state === 'granted') {
             enableGyroscope();
           }
         })
-        .catch(() => {});
+        .catch((err) => {
+          gyroPermissionRequested = false; // Allow retry on error
+        });
     };
-    // Try on first user interaction
-    document.addEventListener('touchend', requestPermission, { once: true });
-    document.addEventListener('click', requestPermission, { once: true });
+
+    // Listen on multiple events to catch user interaction
+    window.addEventListener('touchstart', requestPermission, { once: true });
+    window.addEventListener('touchend', requestPermission, { once: true });
+    window.addEventListener('click', requestPermission, { once: true });
   } else {
     // Android and other devices - just enable directly
     enableGyroscope();
@@ -110,7 +119,8 @@ function initScrollTracking() {
   let isScrolling = false;
 
   function handleScroll() {
-    // On mobile, scroll should work even during touch (user is swiping to scroll)
+    // Don't use scroll if gyroscope is active
+    if (useGyroscope) return;
     isScrolling = true;
 
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -156,6 +166,8 @@ function initPointerTracking() {
     let logoStartX, logoStartY;
 
     document.addEventListener('touchstart', (e) => {
+      // Don't track touch if gyroscope is active
+      if (useGyroscope) return;
       const touch = e.touches[0];
       touchStartX = touch.clientX;
       touchStartY = touch.clientY;
