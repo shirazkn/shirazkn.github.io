@@ -2,7 +2,7 @@
 title: "The Levi-Civita Connection"
 date: 2024-03-24T10:43:16-04:00
 draft: false
-showtoc: true
+showToc: true
 tags: ["Differential Geometry"]
 summary: Here, I solve Problem 5-5 from John Lee's book on *Riemannian Manifolds*, which demonstrates the non-flatness of the 2-sphere. This problem is particularly interesting because it serves as the motivating example for a later chapter in the book on curvature.
 

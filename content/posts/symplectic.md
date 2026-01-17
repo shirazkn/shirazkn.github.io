@@ -2,7 +2,7 @@
 title: "Classical Mechanics on Manifolds"
 date: 2024-12-09T14:45:16+05:30
 draft: false
-showtoc: true
+showToc: true
 tags: ["Mechanics"]
 ---
 

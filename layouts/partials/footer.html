@@ -79,9 +79,11 @@
     document.getElementById("theme-toggle").addEventListener("click", () => {
         if (document.body.className.includes("dark")) {
             document.body.classList.remove('dark');
+            document.documentElement.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
             document.body.classList.add('dark');
+            document.documentElement.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

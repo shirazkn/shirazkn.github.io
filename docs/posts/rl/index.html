@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,16 +9,16 @@
 <meta name="keywords" content="Mechanics, Optimization, Probability">
 <meta name="description" content="Shiraz looks at the latest paper from physical intelligence, which should already be obsolete by the time this blog post gets done.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/rl/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a95e16b7a5077c23a935708630dd7a1a2a4b4406a842e9726937b0c7ac6a6c7f.css" integrity="sha256-qV4Wt6UHfCOpNXCGMN16GipLRAaoQulyaTewx6xqbH8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/favicon.ico">
+<link rel="canonical" href="http://10.0.0.26:1313/posts/rl/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.51368834b2859694365eca53b5d3a6075765260aa28ce04db3cbd865c256d61c.css" integrity="sha256-UTaINLKFlpQ2XspTtdOmB1dlJgqijOBNs8vYZcJW1hw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://10.0.0.26:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://10.0.0.26:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://10.0.0.26:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://10.0.0.26:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://10.0.0.26:1313/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/rl/">
+<link rel="alternate" hreflang="en" href="http://10.0.0.26:1313/posts/rl/">
 <noscript>
     <style>
         #theme-toggle,
@@ -39,23 +39,38 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 <script>
   MathJax = {
@@ -72,7 +87,7 @@
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
 
-<meta property="og:url" content="http://localhost:1313/posts/rl/">
+<meta property="og:url" content="http://10.0.0.26:1313/posts/rl/">
   <meta property="og:site_name" content="Shiraz">
   <meta property="og:title" content="A Pedantic Introduction to VLA Models">
   <meta property="og:description" content="Shiraz looks at the latest paper from physical intelligence, which should already be obsolete by the time this blog post gets done.">
@@ -98,13 +113,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:1313/posts/"
+      "item": "http://10.0.0.26:1313/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "A Pedantic Introduction to VLA Models",
-      "item": "http://localhost:1313/posts/rl/"
+      "item": "http://10.0.0.26:1313/posts/rl/"
     }
   ]
 }
@@ -126,36 +141,24 @@
   "dateModified": "2025-12-06T18:56:12-05:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:1313/posts/rl/"
+    "@id": "http://10.0.0.26:1313/posts/rl/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Shiraz",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:1313/favicon.ico"
+      "url": "http://10.0.0.26:1313/favicon.ico"
     }
   }
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <a href="http://10.0.0.26:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -181,17 +184,17 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/archives/" title="archives">
+                <a href="http://10.0.0.26:1313/archives/" title="archives">
                     <span>archives</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="tags">
+                <a href="http://10.0.0.26:1313/tags/" title="tags">
                     <span>tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/search/" title="search (Alt &#43; /)" accesskey=/>
+                <a href="http://10.0.0.26:1313/search/" title="search (Alt &#43; /)" accesskey=/>
                     <span>search</span>
                 </a>
             </li>
@@ -279,9 +282,9 @@ In practice, the roboticist may only be able to specify $p_{A_{t+\varepsilon}|X_
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/mechanics/">Mechanics</a></li>
-      <li><a href="http://localhost:1313/tags/optimization/">Optimization</a></li>
-      <li><a href="http://localhost:1313/tags/probability/">Probability</a></li>
+      <li><a href="http://10.0.0.26:1313/tags/mechanics/">Mechanics</a></li>
+      <li><a href="http://10.0.0.26:1313/tags/optimization/">Optimization</a></li>
+      <li><a href="http://10.0.0.26:1313/tags/probability/">Probability</a></li>
     </ul>
   </footer>
 <script src="https://giscus.app/client.js"
@@ -363,9 +366,11 @@ In practice, the roboticist may only be able to specify $p_{A_{t+\varepsilon}|X_
     document.getElementById("theme-toggle").addEventListener("click", () => {
         if (document.body.className.includes("dark")) {
             document.body.classList.remove('dark');
+            document.documentElement.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
             document.body.classList.add('dark');
+            document.documentElement.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

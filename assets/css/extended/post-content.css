@@ -53,7 +53,6 @@
 }
 
 .post-content aside {
-    display: inline;
     width: 46%;
     margin: 0 0.95rem 0 -0.4rem ;
     padding: 0.8em 1.3em 0.0rem 1.3em;
@@ -95,7 +94,7 @@ body.dark .post-content aside {
 
 .post-content aside.aside-center {
     width: 102%;
-    float: fit-content;
+    float: none;
     margin-left: -0.5em;
     margin-right: 0em;
     margin-top: 1em;
@@ -114,7 +113,7 @@ body.dark .post-content aside {
 .post-content blockquote, .post-content .print {
     opacity: 0.9;
     font-family: 'IM Fell DW Pica', Times, serif;
-    font-size: 1.1em
+    font-size: 1.1em;
 }
 
 .post-content blockquote {

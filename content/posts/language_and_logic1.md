@@ -6,7 +6,7 @@ draft: false
 tags: ["General"]
 # categories: ["general"]
 # series: ["Language and Logic"]
-ShowToc: false
+showToc: false
 TocOpen: false
 ---
 

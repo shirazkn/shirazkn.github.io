@@ -1,7 +1,7 @@
 ---
 title: "Lie Groups: Construction and Geometry"
 date: 2024-01-24T14:20:59-05:00
-ShowToc: true
+showToc: true
 TocOpen: false
 draft: false
 tags: ["Differential Geometry"]

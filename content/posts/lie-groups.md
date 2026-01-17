@@ -1,7 +1,7 @@
 ---
 title: "The Lie Group-Lie Algebra Correspondence"
 date: 2024-01-15T07:24:59-05:00
-ShowToc: true
+showToc: true
 TocOpen: false
 draft: false
 tags: ["Differential Geometry"]

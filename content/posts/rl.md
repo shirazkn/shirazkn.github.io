@@ -3,7 +3,7 @@ title: A Pedantic Introduction to VLA Models
 date: 2025-12-06T18:56:12-05:00
 draft: true
 summary: Shiraz looks at the latest paper from physical intelligence, which should already be obsolete by the time this blog post gets done. 
-showtoc: true
+showToc: true
 tags: ["Mechanics", "Optimization", "Probability"]
 ---
 

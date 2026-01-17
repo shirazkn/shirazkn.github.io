@@ -1,7 +1,7 @@
 ---
 title: "Differentials in Lie Theory"
 date: 2025-01-13T12:46:04-05:00
-showtoc: true
+showToc: true
 draft: false
 tags: ["Differential Geometry"]
 summary: Some results about the differentials (i.e., pushforwards) of the exponential and logarithm maps of a Lie group. I rely extensively on the interpretation of tangent vectors as equivalence classes of curves.

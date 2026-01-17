@@ -1,7 +1,7 @@
 div#logo-s {
     margin: auto;
-    height: 100%;
-    width: 20hw;
+    width: min(35vw, 280px);
+    min-width: 180px;
     overflow: hidden;
     opacity: 0;
 }
@@ -22,11 +22,6 @@ div#logo-s svg .cls-darkpink {
     fill: url(#darkpink-gradient);
     fill-rule: nonzero;
 }
-
-/* #black-gradient {
-    --color-1: var(--landing-page);
-    --color-2: #dfe8ed;
-} */
 
 #black-gradient {
     --color-1: #626464;
@@ -63,9 +58,9 @@ div#logo-s svg .cls-darkpink {
 }
 
 div#logo-s svg {
-    padding-left: 10%;
-    width: 92%;
-    height: 75%;
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 @keyframes cursor-blink {
@@ -79,9 +74,8 @@ div#logo-s svg {
 
 .entry-content-2::after {
     content: "";
-    width: 1.0px;
+    width: 1px;
     height: 1em;
-    /* margin-bottom: 1000px; */
     transform: translateY(0.1em) translateX(-0.25em);
     background: var(--primary);
     display: inline-block;
@@ -90,11 +84,7 @@ div#logo-s svg {
 
 .inline-link {
     display: inline-block;
-    /* padding: 0px 5px;
-    border-radius: 3px; */
-    /* background-color: var(--theme); */
     color: var(--accent);
-    /* font-family: monospace; */
 }
 
 video.inverted {
