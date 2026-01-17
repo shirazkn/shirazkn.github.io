@@ -93,8 +93,8 @@ function handleOrientation(event) {
   const tiltX = Math.max(-30, Math.min(30, gamma));
   const tiltY = Math.max(-30, Math.min(30, beta - 45));
 
-  targetX = centreX + (tiltX / 30) * centreX * 0.8;
-  targetY = centreY + (tiltY / 30) * centreY * 0.6;
+  targetX = centreX + (tiltX / 30) * centreX * 1.5;
+  targetY = centreY + (tiltY / 30) * centreY * 1.2;
 }
 
 // Scroll handling - works on all devices
@@ -117,9 +117,10 @@ function initScrollTracking() {
       scrollVelocity = scrollVelocity * 0.7 + instantVelocity * 0.3;
 
       const normalizedSpeed = Math.max(-1, Math.min(1, scrollVelocity / 2));
+      const scrollMultiplier = isTouchPrimary() ? 1.5 : 1.0;
 
-      targetX = centreX - normalizedSpeed * centreX * 0.4;
-      targetY = centreY + normalizedSpeed * centreY * 0.8;
+      targetX = centreX - normalizedSpeed * centreX * 0.4 * scrollMultiplier;
+      targetY = centreY + normalizedSpeed * centreY * 0.8 * scrollMultiplier;
     }
 
     lastTimestamp = timestamp;
@@ -163,8 +164,8 @@ function initPointerTracking() {
       const deltaY = touch.clientY - touchStartY;
 
       // Scale the movement for more pronounced effect
-      targetX = logoStartX + deltaX * 2;
-      targetY = logoStartY + deltaY * 2;
+      targetX = logoStartX + deltaX * 4;
+      targetY = logoStartY + deltaY * 4;
     }, { passive: true });
 
     logoElem.addEventListener('touchend', () => {
