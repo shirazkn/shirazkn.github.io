@@ -62,9 +62,10 @@ function initGyroscope() {
   if (!isSecureContext) return; // Gyroscope requires HTTPS
   if (!('DeviceOrientationEvent' in window)) return;
 
-  // iOS 13+ requires permission
+  // iOS 13+ requires permission - must be triggered by user gesture
   if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-    document.addEventListener('touchstart', function requestGyro() {
+    // Add a visible button or use first touch to request permission
+    const requestPermission = () => {
       DeviceOrientationEvent.requestPermission()
         .then(state => {
           if (state === 'granted') {
@@ -72,8 +73,12 @@ function initGyroscope() {
           }
         })
         .catch(() => {});
-    }, { once: true });
+    };
+    // Try on first user interaction
+    document.addEventListener('touchend', requestPermission, { once: true });
+    document.addEventListener('click', requestPermission, { once: true });
   } else {
+    // Android and other devices - just enable directly
     enableGyroscope();
   }
 }
@@ -100,40 +105,42 @@ function handleOrientation(event) {
 // Scroll handling - works on all devices
 function initScrollTracking() {
   let lastScrollTop = window.scrollY || 0;
-  let lastTimestamp = performance.now();
   let scrollVelocity = 0;
   let scrollEndTimeoutId;
+  let isScrolling = false;
 
   function handleScroll() {
-    if (useGyroscope || hasPointerInput) return;
+    // On mobile, scroll should work even during touch (user is swiping to scroll)
+    isScrolling = true;
 
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const timestamp = performance.now();
-    const timeDiff = timestamp - lastTimestamp;
+    const distance = scrollTop - lastScrollTop;
 
-    if (timeDiff > 0) {
-      const distance = scrollTop - lastScrollTop;
-      const instantVelocity = distance / timeDiff;
-      scrollVelocity = scrollVelocity * 0.7 + instantVelocity * 0.3;
+    // Accumulate velocity with momentum
+    scrollVelocity = scrollVelocity * 0.6 + distance * 0.4;
 
-      const normalizedSpeed = Math.max(-1, Math.min(1, scrollVelocity / 2));
-      const scrollMultiplier = isTouchPrimary() ? 1.5 : 1.0;
+    // Clamp and normalize - mobile gets bigger effect
+    const maxVel = isTouchPrimary() ? 80 : 50;
+    const clampedVel = Math.max(-maxVel, Math.min(maxVel, scrollVelocity));
+    const normalizedSpeed = clampedVel / maxVel;
 
-      targetX = centreX - normalizedSpeed * centreX * 0.4 * scrollMultiplier;
-      targetY = centreY + normalizedSpeed * centreY * 0.8 * scrollMultiplier;
-    }
+    // Much more pronounced movement on mobile
+    const multiplier = isTouchPrimary() ? 2.5 : 1.0;
 
-    lastTimestamp = timestamp;
+    targetX = centreX - normalizedSpeed * centreX * 0.5 * multiplier;
+    targetY = centreY + normalizedSpeed * centreY * multiplier;
+
     lastScrollTop = scrollTop;
 
     clearTimeout(scrollEndTimeoutId);
     scrollEndTimeoutId = setTimeout(() => {
+      isScrolling = false;
       scrollVelocity = 0;
       if (!hasPointerInput && !useGyroscope) {
         targetX = centreX;
         targetY = centreY;
       }
-    }, 150);
+    }, 200);
   }
 
   window.addEventListener('scroll', handleScroll, { passive: true });
@@ -143,33 +150,34 @@ function initScrollTracking() {
 function initPointerTracking() {
   const logoElem = document.getElementById('logo-s');
 
-  // For touch devices, track touch on the logo itself for a more direct feel
-  if (isTouchPrimary() && logoElem) {
+  // For touch devices, track touch anywhere on the page
+  if (isTouchPrimary()) {
     let touchStartX, touchStartY;
     let logoStartX, logoStartY;
 
-    logoElem.addEventListener('touchstart', (e) => {
+    document.addEventListener('touchstart', (e) => {
       const touch = e.touches[0];
       touchStartX = touch.clientX;
       touchStartY = touch.clientY;
-      logoStartX = targetX;
-      logoStartY = targetY;
+      logoStartX = posX;
+      logoStartY = posY;
       hasPointerInput = true;
     }, { passive: true });
 
-    logoElem.addEventListener('touchmove', (e) => {
-      if (!hasPointerInput) return;
+    document.addEventListener('touchmove', (e) => {
+      if (!hasPointerInput || useGyroscope) return;
       const touch = e.touches[0];
       const deltaX = touch.clientX - touchStartX;
       const deltaY = touch.clientY - touchStartY;
 
       // Scale the movement for more pronounced effect
-      targetX = logoStartX + deltaX * 4;
-      targetY = logoStartY + deltaY * 4;
+      targetX = logoStartX + deltaX * 3;
+      targetY = logoStartY + deltaY * 3;
     }, { passive: true });
 
-    logoElem.addEventListener('touchend', () => {
+    document.addEventListener('touchend', () => {
       hasPointerInput = false;
+      // Only reset to center if gyroscope isn't controlling
       if (!useGyroscope) {
         targetX = centreX;
         targetY = centreY;
@@ -247,8 +255,8 @@ function animate(timestamp) {
   keyframeX = posX / centreX;
   keyframeY = posY / centreY;
 
-  // Amplify effect
-  const amplify = 1.2;
+  // Amplify effect - stronger on mobile
+  const amplify = isTouchPrimary() ? 1.8 : 1.2;
   const kfX = (keyframeX - 1) * amplify + 1;
   const kfY = (keyframeY - 1) * amplify + 1;
 
