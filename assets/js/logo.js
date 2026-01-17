@@ -92,8 +92,18 @@ function initGyroscope() {
   }
 }
 
+// Gyroscope calibration
+let gyroBaselineBeta = null;
+let gyroBaselineGamma = null;
+const GYRO_RECALIBRATE_THRESHOLD = 50; // Recalibrate if tilt exceeds this
+
 function enableGyroscope() {
   window.addEventListener('deviceorientation', handleOrientation, { passive: true });
+}
+
+function calibrateGyroscope(beta, gamma) {
+  gyroBaselineBeta = beta;
+  gyroBaselineGamma = gamma;
 }
 
 function handleOrientation(event) {
@@ -102,10 +112,27 @@ function handleOrientation(event) {
 
   if (beta === null || gamma === null) return;
 
+  // Calibrate on first reading
+  if (gyroBaselineBeta === null) {
+    calibrateGyroscope(beta, gamma);
+  }
+
   useGyroscope = true;
 
-  const tiltX = Math.max(-30, Math.min(30, gamma));
-  const tiltY = Math.max(-30, Math.min(30, beta - 45));
+  // Calculate relative tilt from baseline
+  let relativeBeta = beta - gyroBaselineBeta;
+  let relativeGamma = gamma - gyroBaselineGamma;
+
+  // Recalibrate if values are extreme (user likely moved phone significantly)
+  if (Math.abs(relativeBeta) > GYRO_RECALIBRATE_THRESHOLD ||
+      Math.abs(relativeGamma) > GYRO_RECALIBRATE_THRESHOLD) {
+    calibrateGyroscope(beta, gamma);
+    relativeBeta = 0;
+    relativeGamma = 0;
+  }
+
+  const tiltX = Math.max(-30, Math.min(30, relativeGamma));
+  const tiltY = Math.max(-30, Math.min(30, relativeBeta));
 
   targetX = centreX + (tiltX / 30) * centreX * 1.5;
   targetY = centreY + (tiltY / 30) * centreY * 1.2;
