@@ -3,6 +3,8 @@ title: "Hilbert Spaces"
 date: 2023-04-21T12:09:09-04:00
 tags: ["Linear Algebra"]
 draft: false
+bgImage: /post-images/linear_algebra/projection.png
+summary: A Hilbert space is a vector space that has an inner product and that it is complete, i.e., it doesn't have holes in it. Inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space is an obvious example, where the inner product is just the dot product.
 ---
 
 Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an <span class=accented>inner product</span> (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is <span class=accented>complete</span>, i.e., it doesn't have er... holes in it. [Recall](/posts/norms_metrics) that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product. Mathematicians sometimes use 'Hilbert space' to refer specifically to infinite-dimensional inner product spaces, but for our purposes, we will let 'Hilbert space' include the finite-dimensional case.

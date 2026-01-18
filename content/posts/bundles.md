@@ -4,6 +4,7 @@ date: 2025-10-24T20:55:32-04:00
 showToc: true
 tags: ["Differential Geometry"]
 summary: A principal bundle is a fiber bundle, that additionally has the right-action of a group that preserves fibers. Beginning with coset spaces, we look at some interesting examples of principal bundles and the things we can do with them.
+bgImage: /post-images/geometry/fiber_bundle.png
 ---
 
 ### ␥ Fiber Bundles

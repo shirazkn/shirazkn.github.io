@@ -5,6 +5,12 @@
 /* --------------------------------------------------------------------------
    Logo
    -------------------------------------------------------------------------- */
+.first-entry.home-info {
+    margin-top: 0;
+    margin-bottom: var(--gap);
+    min-height: 240px;
+}
+
 div#logo-s {
     margin: auto;
     width: min(35vw, 280px);
@@ -146,6 +152,51 @@ sub {
     border: 1.4px solid var(--border);
     box-shadow: 0.5px 1.0px 0 0 var(--tertiary);
     transition: transform 0.03s;
+    overflow: hidden;
+}
+
+.entry-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    pointer-events: none;
+    filter: blur(4px);
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 2%,
+        black 98%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 2%,
+        black 98%,
+        transparent 100%
+    );
+}
+
+.dark .entry-bg {
+    opacity: 0.14;
+    filter: blur(4px) invert(1) hue-rotate(180deg);
+}
+
+.post-entry .entry-content {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+    text-shadow:
+        0 0 1px var(--entry),
+        0 0 2px var(--entry),
+        0 0 3px var(--entry),
+        0 0 5px var(--entry),
+        0 0 8px var(--entry);
 }
 
 .post-entry:active {

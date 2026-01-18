@@ -2,6 +2,7 @@
 title: "Measure-theoretic Probability"
 date: 2024-05-11T07:40:56-07:00
 draft: true
+summary: Probability theory is one of those subjects that's both easy to get started with and hard to master. What follows is a semi-rigorous review of the framework upon which modern-day probability theory is built. The goal here is to demystify what it means for a mathematical object to be random.
 ---
 
 Probability theory is one of those subjects that's both -- easy to get started with and hard to master. For instance, the conditional expectation operation $\mathbb E[\,\cdot\,|\,\cdot\,]$ can be notoriously tricky to work with, and its properties are not well-understood by researchers in my field who might *want* and *need* to use it to prove important results. What follows is a semi-rigorous review of the framework upon which modern-day probability theory is built. I personally find this to be an illuminating way to think about randomness.

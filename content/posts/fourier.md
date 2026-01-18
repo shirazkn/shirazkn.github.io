@@ -3,6 +3,8 @@ title: "Fourier Transforms of Periodic Functions"
 date: 2023-10-02T14:59:15-04:00
 draft: false
 tags: ["Harmonic Analysis"]
+bgImage: /post-images/fourier/periodic.png
+summary: The Fourier transform takes a function and outputs a different (possibly complex-valued) function. We also have something called the Fourier series, which takes a periodic function and gives a summation rather than an integral. I want to derive the Fourier series using the Fourier transform for anyone who is interested in connecting the two concepts with each other.
 ---
 
 The <span class=accented>Fourier transform </span>takes a (absolutely integrable) function $f:\mathbb R \rightarrow \mathbb R$ and outputs a different (possibly complex-valued) function. If the first is interpreted as a *signal* (e.g., the waveform of an audio that is parameterized by time), then its Fourier transform has its 'peaks' at the dominant frequencies of the signal. I will not expound too much on the Fourier transform itself, but its computation looks something like this[^convention]:

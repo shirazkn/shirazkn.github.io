@@ -3,6 +3,7 @@ title: "What is a Vector?"
 date: 2023-05-20T15:26:18-07:00
 draft: false
 tags: ["Linear Algebra"]
+summary: A running gag in engineering colleges is that a lot of instructors begin their first class of the semester with this question -- "What is a vector?". I used to find this ritual almost pointless because every answer felt either like a non-answer or a matter of context. Today, I no longer think that this is a matter of context.
 ---
 
 A running gag in engineering colleges is that a lot of instructors begin their first class of the semester with this question: "<span class=accented>What is a vector?</span>".

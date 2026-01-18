@@ -1,10 +1,9 @@
 ---
 title: "The Incompleteness Theorems"
 date: 2023-02-05T08:46:18-05:00
-# series: ["Language and Logic"]
-# description: ""
 tags: ["General"]
-# draft: true
+bgImage: /post-images/axioms_structure.png
+summary: I suggested that there is no objective notion of logical truth, that whether a statement is 'true' can depend on the system of truth that one is operating in. Here we will develop that argument further using the concept of axiomatic systems.
 ---
 In [my earlier post](/posts/language_and_logic1) I suggested that there is no objective notion of logical truth, that whether a statement is 'true' can depend on the system of truth that one is operating in.
 Here we will develop that argument further using the concept of axiomatic systems. This is a long one, but I'm excited to talk about it!

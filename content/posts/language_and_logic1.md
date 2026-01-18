@@ -2,12 +2,10 @@
 title: Misuse as a Use of Language
 date: 2023-01-27T13:48:49-05:00
 draft: false
-# description: "We look at why natural languages allow us to say illogical things. This is part 1 of 2."
 tags: ["General"]
-# categories: ["general"]
-# series: ["Language and Logic"]
 showToc: false
 TocOpen: false
+summary: This post discusses the question of whether spoken and written languages like English could be 'logical' by design. The first part does not require a mathematical background, whereas the second touches on the concepts of axioms, theorems and proofs.
 ---
 
 <!-- 

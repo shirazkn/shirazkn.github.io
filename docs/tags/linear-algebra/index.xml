@@ -20,90 +20,63 @@
       <link>https://shirazkn.github.io/posts/vector-fields/</link>
       <pubDate>Wed, 03 Jan 2024 11:22:28 -0500</pubDate>
       <guid>https://shirazkn.github.io/posts/vector-fields/</guid>
-      <description>&lt;p&gt;Over the past year, I have struggled to pin down what the scope of my blog should be. There is plenty of exposition out there on just about every aspect of modern mathematics, but especially on &lt;span class=accented&gt;exterior calculus&lt;/span&gt; and &lt;span class=accented&gt;differential geometry&lt;/span&gt; due to their situation at the intersection of several areas in theoretical and applied mathematics. So then what is the scope of my blog? Maybe it is for me to catalog the process of self-learning mathematics as an engineering major who lacks a curricular background in modern mathematics. Maybe it is to assure others like me (who are also privileged enough to learn mathematics in isolation of such material concerns as its &amp;lsquo;&lt;em&gt;job prospects&lt;/em&gt;&amp;rsquo;) that it can be done. This post will do a bit of both; it serves in part the purpose of organizing my own thoughts on these matters, and in part the purpose of providing a roadmap for others who are interested in embarking on a similar journey.&lt;/p&gt;</description>
+      <description>Over the past year, I have struggled to pin down what the scope of my blog should be. Maybe it is for me to catalog the process of self-learning mathematics as an engineering major who lacks a curricular background in modern mathematics. This post serves in part the purpose of organizing my own thoughts on these matters, and in part the purpose of providing a roadmap for others who are interested in embarking on a similar journey.</description>
     </item>
     <item>
       <title>Matrix Multiplication</title>
       <link>https://shirazkn.github.io/posts/matrix/</link>
       <pubDate>Sun, 28 May 2023 10:35:07 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/matrix/</guid>
-      <description>&lt;p&gt;In this post, &lt;!-- I will summarize some of the linear algebra concepts I discussed over the past few weeks, and paint a useful *picture* of linear algebra based on the &lt;span class=accented&gt;singular value decomposition&lt;/span&gt;. By a *picture*, I mean that it can serve as an aid for thinking about a variety of concepts in linear algebra. Additionally --&gt; I want to bridge the gap between &lt;span class=accented&gt;abstract vector spaces&lt;/span&gt; (which are the mathematical foundation of linear algebra) and &lt;span class=accented&gt;matrix multiplication&lt;/span&gt; (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space &amp;ndash; the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about &lt;a href=&#34;https://en.wikipedia.org/wiki/System_of_linear_equations&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    solving systems of equations
-&lt;/a&gt; in this post. While &lt;span class=accented&gt;solving systems of equations&lt;/span&gt; served as the historical precedent&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; for mathematicians to begin work on linear algebra, it is today an &lt;em&gt;application&lt;/em&gt;, and not the foundation of linear algebra.&lt;/p&gt;</description>
+      <description>In this post I want to bridge the gap between abstract vector spaces (which are the mathematical foundation of linear algebra) and matrix multiplication (which is the linear algebra most of us are familiar with). Unlike the typical 101 course in linear algebra, I will avoid talking about solving systems of equations.</description>
     </item>
     <item>
       <title>What is a Vector?</title>
       <link>https://shirazkn.github.io/posts/vector/</link>
       <pubDate>Sat, 20 May 2023 15:26:18 -0700</pubDate>
       <guid>https://shirazkn.github.io/posts/vector/</guid>
-      <description>&lt;p&gt;A running gag in engineering colleges is that a lot of instructors begin their first class of the semester with this question: &amp;ldquo;&lt;span class=accented&gt;What is a vector?&lt;/span&gt;&amp;rdquo;.
-I used to find this ritual almost pointless because to me, every answer to this question felt either like a non-answer or a matter of context. I mean it depends, right? A structural engineer should have a different answer to this question than, say, a data scientist. To a structural engineer, a vector is a physical measurement that has a magnitude and a direction, whereas a data scientist may not necessarily think of a vector as having a direction. Indeed, in its full generality, a vector does not need to have geometric notions such as &lt;em&gt;directions&lt;/em&gt; and &lt;em&gt;angles&lt;/em&gt; associated with it. Today, I no longer think that this is a matter of context. By virtue of how we phrase the question  &amp;ldquo;&lt;span class=accented&gt;What is a vector?&lt;/span&gt;&amp;rdquo;, we may be asking (without ambiguity) the question: &amp;ldquo;If I call some mathematical object a vector, what does that tell you about it?&amp;rdquo;&lt;/p&gt;</description>
+      <description>A running gag in engineering colleges is that a lot of instructors begin their first class of the semester with this question &amp;ndash; &amp;ldquo;What is a vector?&amp;rdquo;. I used to find this ritual almost pointless because every answer felt either like a non-answer or a matter of context. Today, I no longer think that this is a matter of context.</description>
     </item>
     <item>
       <title>Sparsity</title>
       <link>https://shirazkn.github.io/posts/sparsity/</link>
       <pubDate>Sat, 22 Apr 2023 11:05:58 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/sparsity/</guid>
-      <description>&lt;p&gt;The so called &lt;a href=&#34;https://shirazkn.github.io/posts/balls&#34; class=&#34;accented&#34;&gt;
-    curse of dimensionality
-&lt;/a&gt; in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant.
-This is because many (if not all) of the problems we&amp;rsquo;re interested in solving as engineers have some inherent &lt;span class=accented&gt;sparsity&lt;/span&gt;. Steve Brunton has an &lt;a href=&#34;https://www.youtube.com/watch?v=Dt2WYkqZfbs&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    excellent video
-&lt;/a&gt; explaining why this is so.&lt;/p&gt;</description>
+      <description>The so called curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. This is because many (if not all) of the problems we&amp;rsquo;re interested in solving as engineers have some inherent sparsity.</description>
     </item>
     <item>
       <title>Hilbert Spaces</title>
       <link>https://shirazkn.github.io/posts/hilbert-spaces/</link>
       <pubDate>Fri, 21 Apr 2023 12:09:09 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/hilbert-spaces/</guid>
-      <description>&lt;p&gt;Let $\mathcal X$ be a Hilbert space, which means that it is a vector space that has an &lt;span class=accented&gt;inner product&lt;/span&gt; (denoted by $\langle \cdot, \cdot\rangle _\mathcal X$) and that it is &lt;span class=accented&gt;complete&lt;/span&gt;, i.e., it doesn&amp;rsquo;t have er&amp;hellip; holes in it. &lt;a href=&#34;https://shirazkn.github.io/posts/norms_metrics&#34; class=&#34;accented&#34;&gt;
-    Recall
-&lt;/a&gt; that inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space $\mathbb R^n$ is an obvious example, where the inner product is just the dot product. Mathematicians sometimes use &amp;lsquo;Hilbert space&amp;rsquo; to refer specifically to infinite-dimensional inner product spaces, but for our purposes, we will let &amp;lsquo;Hilbert space&amp;rsquo; include the finite-dimensional case.&lt;/p&gt;</description>
+      <description>A Hilbert space is a vector space that has an inner product and that it is complete, i.e., it doesn&amp;rsquo;t have holes in it. Inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space is an obvious example, where the inner product is just the dot product.</description>
     </item>
     <item>
       <title>Norm Balls</title>
       <link>https://shirazkn.github.io/posts/balls/</link>
       <pubDate>Tue, 18 Apr 2023 21:32:10 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/balls/</guid>
-      <description>&lt;p&gt;Let&amp;rsquo;s look at the norm balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is&lt;/p&gt;</description>
+      <description>Let&amp;rsquo;s look at the norm balls corresponding to the different p-norms. When p equals 2 this is the usual Euclidean distance. The corresponding ball is what we think of when someone says &amp;lsquo;ball&amp;rsquo;, it is all the points that are within a given distance from the origin.</description>
     </item>
     <item>
       <title>The Parallelogram Law</title>
       <link>https://shirazkn.github.io/posts/pythagoras/</link>
       <pubDate>Fri, 14 Apr 2023 15:53:46 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/pythagoras/</guid>
-      <description>&lt;p&gt;To quote &lt;a href=&#34;https://theartofmathematicspodcast.com&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    this math podcast
-&lt;/a&gt;, &amp;ldquo;the real world is a special case&amp;rdquo;. I mentioned in the last post that Euclidean geometry arises by taking $\mathbb R^2$ or $\mathbb R^3$ and endowing with an inner product, at which point it satisfies the Pythagoras theorem.
-In this post I will talk about how the &lt;span class=accented&gt;Pythagoras theorem&lt;/span&gt; is a special case of a more general feature of inner product spaces. Contents of &lt;a href=&#34;https://shirazkn.github.io/posts/norms_metrics&#34; class=&#34;accented&#34;&gt;
-    the last post
-&lt;/a&gt; are pre-requisites for this one.&lt;/p&gt;</description>
+      <description>I mentioned in the last post that Euclidean geometry arises by taking the real numbers and endowing with an inner product, at which point it satisfies the Pythagoras theorem. In this post I will talk about how the Pythagoras theorem is a special case of a more general feature of inner product spaces.</description>
     </item>
     <item>
       <title>Norms, Metrics, and Inner Products</title>
       <link>https://shirazkn.github.io/posts/norms_metrics/</link>
       <pubDate>Mon, 10 Apr 2023 12:20:23 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/norms_metrics/</guid>
-      <description>&lt;p&gt;This is an explainer on norms, metrics, and inner products, and their relationships to each other.&lt;/p&gt;
-&lt;h3 id=&#34;norms&#34;&gt;Norms&lt;/h3&gt;
-&lt;p&gt;A norm is any real-valued function $\lVert{}\cdot{}\rVert$ (taking the elements of a corresponding vector space as its arguments), which has the following properties:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;It is nonnegative, and $0$ only at the &amp;lsquo;zero element&amp;rsquo; (for e.g., at the origin of $\mathbb R^n$).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$\lVert \alpha x \rVert = |\alpha| \lVert x \rVert$ for any scalar $\alpha$.&lt;/p&gt;</description>
+      <description>An explainer on norms, metrics, and inner products, and their relationships to each other.</description>
     </item>
     <item>
       <title>The Unreasonable Effectiveness of &#39;2&#39; in Statistics</title>
       <link>https://shirazkn.github.io/posts/leastsquares/</link>
       <pubDate>Sun, 09 Apr 2023 12:20:39 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/leastsquares/</guid>
-      <description>&lt;p&gt;The title is a reference to &lt;a href=&#34;https://web.njit.edu/~akansu/PAPERS/The%20Unreasonable%20Effectiveness%20of%20Mathematics%20%28EP%20Wigner%29.pdf&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    The Unreasonable Effectiveness of Mathematics in the Natural Sciences
-&lt;/a&gt;, a very popular paper by Eugene Wigner which explores how mathematics is &lt;i&gt;unreasonably&lt;/i&gt; effective at not only explaining, but also predicting scientific phenomena. I had a similar question about the number $2$ which repeatedly shows up in engineering and science, specifically in the form of the $2$-norm of a vector, and seems surprisingly effective at doing what it&amp;rsquo;s supposed to do. I asked my &lt;a href=&#34;https://engineering.purdue.edu/ECE/Academics/Undergraduates/UGO/CourseInfo/courseInfo?courseid=175&amp;amp;show=true&amp;amp;type=grad&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    Estimation Theory
-&lt;/a&gt; instructor at Purdue why this was so, and he told me that I ask too many (but good) questions. I have since then accumulated a variety of answers for why the number $2$ is, in some sense, ✨special✨ During our journey through this post and the next, we will visit the central limit theorem, Gaussian distributions, and Euclidean geometry.&lt;/p&gt;</description>
+      <description>The title is a reference to The Unreasonable Effectiveness of Mathematics in the Natural Sciences. I had a similar question about the number 2 which repeatedly shows up in engineering and science, specifically in the form of the 2-norm of a vector, and seems surprisingly effective at doing what it&amp;rsquo;s supposed to do.</description>
     </item>
   </channel>
 </rss>

@@ -3,6 +3,7 @@ title: "Norms, Metrics, and Inner Products"
 date: 2023-04-10T12:20:23-04:00
 tags: ["Linear Algebra"]
 draft: false
+summary: An explainer on norms, metrics, and inner products, and their relationships to each other.
 ---
 
 This is an explainer on norms, metrics, and inner products, and their relationships to each other.

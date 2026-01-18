@@ -4,6 +4,7 @@ date: 2024-12-19T08:18:04-05:00
 draft: false
 tags: ["Mechanics"]
 summary: Poincaré's 1901 paper introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the Euler-Lagrange equations to the case where a Lie group acts on the configuration manifold. I work through Poincaré's paper without making too many identifications.
+bgImage: /post-images/lie_groups/Calculus_of_Variations.png
 ---
 
 Poincaré's [1901 paper](https://www.ma.ic.ac.uk/~dholm/classnotes/M3-4A16-Poincare1901.pdf)[^0] introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the [Euler-Lagrange equations](/posts/symplectic/#variational-approach) to the case where <span>a Lie group $G$ acts on the manifold $\mathcal Q$. In this case, vector fields on $\mathcal Q$ can be expressed in terms of the infinitesimal actions of the group, and the Euler-Lagrange equations reduce to the Euler-Poincaré equations.

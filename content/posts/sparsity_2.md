@@ -3,11 +3,13 @@ title: "Understanding Sparsity through Sub-Gradients"
 date: 2023-04-28T17:15:26-04:00
 tags: ["Optimization"]
 draft: false
+bgImage: /post-images/optimization/L1Norm.png
+summary: We talked about why sparsity plays an important role in many of the inverse problems that we encounter in engineering. To actually find the sparse solutions to these problems, we add 'sparsity-promoting' terms to our optimization problems; the machine learning community calls this approach regularization.
 ---
 
 <!-- This post will require some familiarity with optimization (or least-squares, if you will). -->
 
-[We talked about](/posts/sparsity) why sparsity plays an important role in many of the [inverse problems](https://en.wikipedia.org/wiki/Inverse_problem) that we encounter in engineering. To actually find the sparse solutions to these problems, we add 'sparsity-promoting' terms to our optimization problems; the machine learning community calls this approach *regularization*. <!--more-->
+[We talked about](/posts/sparsity) why sparsity plays an important role in many of the [inverse problems](https://en.wikipedia.org/wiki/Inverse_problem) that we encounter in engineering. To actually find the sparse solutions to these problems, we add 'sparsity-promoting' terms to our optimization problems; the machine learning community calls this approach *regularization*.
 
 ### Regularization
 

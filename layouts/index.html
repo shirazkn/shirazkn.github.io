@@ -64,6 +64,9 @@
 <article class="{{ $class }}">
   {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
   {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
+  {{- with .Params.bgImage }}
+  <div class="entry-bg" style="background-image: url('{{ . }}');"></div>
+  {{- end }}
   <header class="entry-header">
     <h2>
       {{- .Title }}

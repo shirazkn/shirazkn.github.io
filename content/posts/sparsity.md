@@ -3,6 +3,7 @@ title: "Sparsity"
 date: 2023-04-22T11:05:58-04:00
 tags: ["Linear Algebra", "Optimization"]
 draft: false
+summary: The so called curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. This is because many (if not all) of the problems we're interested in solving as engineers have some inherent sparsity.
 ---
 
 

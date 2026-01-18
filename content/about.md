@@ -32,10 +32,17 @@ In the distant future, I'd like to get into the business of making math visualiz
          C40 190 30 185 30 160
          Z" />
 </clipPath>
+            <filter id="darken">
+                <feComponentTransfer>
+                    <feFuncR type="linear" slope="0.9"/>
+                    <feFuncG type="linear" slope="0.84"/>
+                    <feFuncB type="linear" slope="0.9"/>
+                </feComponentTransfer>
+            </filter>
         </defs>
-        <g clip-path="url(#blobClipAbout)" filter="url(#softShadow)">
-            <image href="/post-images/me.jpeg" x="-22" y="-18" width="245" height="245" 
-            preserveAspectRatio="xMidYMid slice"/>
+        <g clip-path="url(#blobClipAbout)">
+            <image href="/post-images/me.jpeg" x="-22" y="-18" width="245" height="245"
+            preserveAspectRatio="xMidYMid slice" filter="url(#darken)"/>
         </g>   
     </svg>
 </div>

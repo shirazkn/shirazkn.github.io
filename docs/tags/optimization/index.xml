@@ -13,42 +13,28 @@
       <link>https://shirazkn.github.io/posts/sparsity_2/</link>
       <pubDate>Fri, 28 Apr 2023 17:15:26 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/sparsity_2/</guid>
-      <description>&lt;!-- This post will require some familiarity with optimization (or least-squares, if you will). --&gt;
-&lt;p&gt;&lt;a href=&#34;https://shirazkn.github.io/posts/sparsity&#34; class=&#34;accented&#34;&gt;
-    We talked about
-&lt;/a&gt; why sparsity plays an important role in many of the &lt;a href=&#34;https://en.wikipedia.org/wiki/Inverse_problem&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    inverse problems
-&lt;/a&gt; that we encounter in engineering. To actually find the sparse solutions to these problems, we add &amp;lsquo;sparsity-promoting&amp;rsquo; terms to our optimization problems; the machine learning community calls this approach &lt;em&gt;regularization&lt;/em&gt;.&lt;/p&gt;</description>
+      <description>We talked about why sparsity plays an important role in many of the inverse problems that we encounter in engineering. To actually find the sparse solutions to these problems, we add &amp;lsquo;sparsity-promoting&amp;rsquo; terms to our optimization problems; the machine learning community calls this approach regularization.</description>
     </item>
     <item>
       <title>Sparsity</title>
       <link>https://shirazkn.github.io/posts/sparsity/</link>
       <pubDate>Sat, 22 Apr 2023 11:05:58 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/sparsity/</guid>
-      <description>&lt;p&gt;The so called &lt;a href=&#34;https://shirazkn.github.io/posts/balls&#34; class=&#34;accented&#34;&gt;
-    curse of dimensionality
-&lt;/a&gt; in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. Another issue that arises in practice is that most of the neural network does not do anything, as a lot of its weights turn out to be redundant.
-This is because many (if not all) of the problems we&amp;rsquo;re interested in solving as engineers have some inherent &lt;span class=accented&gt;sparsity&lt;/span&gt;. Steve Brunton has an &lt;a href=&#34;https://www.youtube.com/watch?v=Dt2WYkqZfbs&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    excellent video
-&lt;/a&gt; explaining why this is so.&lt;/p&gt;</description>
+      <description>The so called curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. This is because many (if not all) of the problems we&amp;rsquo;re interested in solving as engineers have some inherent sparsity.</description>
     </item>
     <item>
       <title>Norm Balls</title>
       <link>https://shirazkn.github.io/posts/balls/</link>
       <pubDate>Tue, 18 Apr 2023 21:32:10 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/balls/</guid>
-      <description>&lt;p&gt;Let&amp;rsquo;s look at the norm balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is&lt;/p&gt;</description>
+      <description>Let&amp;rsquo;s look at the norm balls corresponding to the different p-norms. When p equals 2 this is the usual Euclidean distance. The corresponding ball is what we think of when someone says &amp;lsquo;ball&amp;rsquo;, it is all the points that are within a given distance from the origin.</description>
     </item>
     <item>
       <title>The Unreasonable Effectiveness of &#39;2&#39; in Statistics</title>
       <link>https://shirazkn.github.io/posts/leastsquares/</link>
       <pubDate>Sun, 09 Apr 2023 12:20:39 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/leastsquares/</guid>
-      <description>&lt;p&gt;The title is a reference to &lt;a href=&#34;https://web.njit.edu/~akansu/PAPERS/The%20Unreasonable%20Effectiveness%20of%20Mathematics%20%28EP%20Wigner%29.pdf&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    The Unreasonable Effectiveness of Mathematics in the Natural Sciences
-&lt;/a&gt;, a very popular paper by Eugene Wigner which explores how mathematics is &lt;i&gt;unreasonably&lt;/i&gt; effective at not only explaining, but also predicting scientific phenomena. I had a similar question about the number $2$ which repeatedly shows up in engineering and science, specifically in the form of the $2$-norm of a vector, and seems surprisingly effective at doing what it&amp;rsquo;s supposed to do. I asked my &lt;a href=&#34;https://engineering.purdue.edu/ECE/Academics/Undergraduates/UGO/CourseInfo/courseInfo?courseid=175&amp;amp;show=true&amp;amp;type=grad&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    Estimation Theory
-&lt;/a&gt; instructor at Purdue why this was so, and he told me that I ask too many (but good) questions. I have since then accumulated a variety of answers for why the number $2$ is, in some sense, ✨special✨ During our journey through this post and the next, we will visit the central limit theorem, Gaussian distributions, and Euclidean geometry.&lt;/p&gt;</description>
+      <description>The title is a reference to The Unreasonable Effectiveness of Mathematics in the Natural Sciences. I had a similar question about the number 2 which repeatedly shows up in engineering and science, specifically in the form of the 2-norm of a vector, and seems surprisingly effective at doing what it&amp;rsquo;s supposed to do.</description>
     </item>
   </channel>
 </rss>

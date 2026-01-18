@@ -3,6 +3,8 @@ title: "The Parallelogram Law"
 date: 2023-04-14T15:53:46-04:00
 tags: ["Linear Algebra"]
 draft: false
+bgImage: /post-images/linear_algebra/parallelogram_1.png
+summary: I mentioned in the last post that Euclidean geometry arises by taking the real numbers and endowing with an inner product, at which point it satisfies the Pythagoras theorem. In this post I will talk about how the Pythagoras theorem is a special case of a more general feature of inner product spaces.
 ---
 
 To quote [this math podcast](https://theartofmathematicspodcast.com), "the real world is a special case". I mentioned in the last post that Euclidean geometry arises by taking $\mathbb R^2$ or $\mathbb R^3$ and endowing with an inner product, at which point it satisfies the Pythagoras theorem.

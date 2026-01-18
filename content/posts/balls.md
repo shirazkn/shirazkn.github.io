@@ -3,9 +3,11 @@ title: "Norm Balls"
 date: 2023-04-18T21:32:10-04:00
 draft: false
 tags: ["Linear Algebra", "Optimization"]
+bgImage: /post-images/linear_algebra/sphere_in_cube.png
+summary: Let's look at the norm balls corresponding to the different p-norms. When p equals 2 this is the usual Euclidean distance. The corresponding ball is what we think of when someone says 'ball', it is all the points that are within a given distance from the origin.
 ---
 
-Let's look at the norm balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is <!--more-->
+Let's look at the norm balls corresponding to the different $p$-norms in $\mathbb R^n$, where $n$ is the dimension of the space. For a vector $v\in \mathbb R^n$, the $p$-norm is
 
 <p>
 \[

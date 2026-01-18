@@ -3,6 +3,7 @@ title: "An Invitation to Infinite Dimensions"
 date: 2025-09-01T16:16:40-04:00
 draft: true
 tags: ["Linear Algebra"]
+summary: Most students' first time seeing an infinite-dimensional space is when they learn about the Fourier transform. Yet, I always hesitate to play around with them because I do not know how (and moreover, whether!) the theorems that I know from finite-dimensional linear algebra can be extended to the infinite-dimensional setting.
 ---
 
 Most students' first time seeing an infinite-dimensional space is when they learn about the [Fourier transform](/posts/harmonic-analysis). Specifically, the <span>inverse Fourier transform</span> can be viewed as the expansion of a vector (in this case, a function) in a particular choice of basis, with the Fourier coefficients playing the role of the components of that vector in our basis. So, infinite-dimensional spaces are in some sense quite familiar. Yet, I always hesitate to play around with them because I do not know how (and moreover, whether!) the theorems that I know from finite-dimensional linear algebra can be extended to the infinite-dimensional setting.

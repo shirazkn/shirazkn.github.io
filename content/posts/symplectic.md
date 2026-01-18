@@ -4,6 +4,7 @@ date: 2024-12-09T14:45:16+05:30
 draft: false
 showToc: true
 tags: ["Mechanics"]
+summary: Despite having encountered the Lagrangian and Hamiltonian formalisms of mechanics several times in a variety of engineering and physics settings, I had never been able to retain it in my memory. In this post, I would like to collect my thoughts on their differential geometric treatment, which assumes a very simple and memorable form once we introduce the language of symplectic geometry.
 ---
 
 Despite having encountered the Lagrangian and Hamiltonian formalisms of mechanics several times in a variety of engineering and physics settings, I had never been able to retain it in my memory. I had maintained a similar dissatisfaction with the many formulae of multivariable calculus, which only really ✨clicked✨ for me once I learned about the exterior derivative and the <a href=https://youtu.be/1lGM5DEdMaw?si%3Dk9NhFF7jNBcaEoGQ class=accented>generalized Stokes' theorem</a>. 

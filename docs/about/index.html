@@ -10,7 +10,7 @@
 <meta name="description" content="About my blog.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/about/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.05929664bad1843e2a6ecdf2027ade7534ece873c5d97efdded31397c1d46881.css" integrity="sha256-BZKWZLrRhD4qbs3yAnredTTs6HPF2X793tMTl8HUaIE=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e1f004d2a49bbf35ded80503e046eb80360b17025881d5952ecf3ba1e5e7fc92.css" integrity="sha256-4fAE0qSbvzXe2AUD4EbrgDYLFwJYgdWVLs87oeXn/JI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -252,10 +252,17 @@ In the distant future, I&rsquo;d like to get into the business of making math vi
          C40 190 30 185 30 160
          Z" />
 </clipPath>
+            <filter id="darken">
+                <feComponentTransfer>
+                    <feFuncR type="linear" slope="0.9"/>
+                    <feFuncG type="linear" slope="0.84"/>
+                    <feFuncB type="linear" slope="0.9"/>
+                </feComponentTransfer>
+            </filter>
         </defs>
-        <g clip-path="url(#blobClipAbout)" filter="url(#softShadow)">
-            <image href="/post-images/me.jpeg" x="-22" y="-18" width="245" height="245" 
-            preserveAspectRatio="xMidYMid slice"/>
+        <g clip-path="url(#blobClipAbout)">
+            <image href="/post-images/me.jpeg" x="-22" y="-18" width="245" height="245"
+            preserveAspectRatio="xMidYMid slice" filter="url(#darken)"/>
         </g>   
     </svg>
 </div>

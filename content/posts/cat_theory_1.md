@@ -3,6 +3,8 @@ title: "Category Theory"
 date: 2023-03-18T21:07:38-04:00
 tags: ["General"]
 draft: false
+bgImage: /post-images/cat_theory/epic.png
+summary: One of my motivations for starting a blog was Eugenia Cheng's book The Joy of Abstraction. It's a surprisingly accessible, gentle introduction to category theory, a topic that is usually only taught to graduate students in math. In this post, I will introduce the main ideas in category theory and show that it offers an elegant way of thinking about mathematics.
 ---
 
 One of my motivations for starting a blog was Eugenia Cheng's book [The Joy of Abstraction](https://www.amazon.com/Joy-Abstraction-Exploration-Category-Theory/dp/1108477224)[^bookclub]. It's a surprisingly accessible, gentle introduction to <span class=accented>category theory</span>, a topic that is usually only taught to graduate students in math. She compiled part of the book using notes from a class that she teaches at the Art Institute of Chicago, which is a testament to the aesthetic appreciation that one can expect to gain of category theory irrespective of their academic background! In this post, I will introduce the main ideas in category theory (as I best understand it) and show that it offers an elegant way of thinking about mathematics.

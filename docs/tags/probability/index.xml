@@ -13,11 +13,7 @@
       <link>https://shirazkn.github.io/posts/leastsquares/</link>
       <pubDate>Sun, 09 Apr 2023 12:20:39 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/leastsquares/</guid>
-      <description>&lt;p&gt;The title is a reference to &lt;a href=&#34;https://web.njit.edu/~akansu/PAPERS/The%20Unreasonable%20Effectiveness%20of%20Mathematics%20%28EP%20Wigner%29.pdf&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    The Unreasonable Effectiveness of Mathematics in the Natural Sciences
-&lt;/a&gt;, a very popular paper by Eugene Wigner which explores how mathematics is &lt;i&gt;unreasonably&lt;/i&gt; effective at not only explaining, but also predicting scientific phenomena. I had a similar question about the number $2$ which repeatedly shows up in engineering and science, specifically in the form of the $2$-norm of a vector, and seems surprisingly effective at doing what it&amp;rsquo;s supposed to do. I asked my &lt;a href=&#34;https://engineering.purdue.edu/ECE/Academics/Undergraduates/UGO/CourseInfo/courseInfo?courseid=175&amp;amp;show=true&amp;amp;type=grad&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
-    Estimation Theory
-&lt;/a&gt; instructor at Purdue why this was so, and he told me that I ask too many (but good) questions. I have since then accumulated a variety of answers for why the number $2$ is, in some sense, ✨special✨ During our journey through this post and the next, we will visit the central limit theorem, Gaussian distributions, and Euclidean geometry.&lt;/p&gt;</description>
+      <description>The title is a reference to The Unreasonable Effectiveness of Mathematics in the Natural Sciences. I had a similar question about the number 2 which repeatedly shows up in engineering and science, specifically in the form of the 2-norm of a vector, and seems surprisingly effective at doing what it&amp;rsquo;s supposed to do.</description>
     </item>
   </channel>
 </rss>

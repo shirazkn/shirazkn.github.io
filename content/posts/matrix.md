@@ -3,6 +3,8 @@ title: "Matrix Multiplication"
 date: 2023-05-28T10:35:07-04:00
 draft: false
 tags: ["Linear Algebra"]
+bgImage: /post-images/linear_algebra/linear_tfm.png
+summary: In this post I want to bridge the gap between abstract vector spaces (which are the mathematical foundation of linear algebra) and matrix multiplication (which is the linear algebra most of us are familiar with). Unlike the typical 101 course in linear algebra, I will avoid talking about solving systems of equations.
 ---
 
 In this post, <!-- I will summarize some of the linear algebra concepts I discussed over the past few weeks, and paint a useful *picture* of linear algebra based on the <span class=accented>singular value decomposition</span>. By a *picture*, I mean that it can serve as an aid for thinking about a variety of concepts in linear algebra. Additionally --> I want to bridge the gap between <span class=accented>abstract vector spaces</span> (which are the mathematical foundation of linear algebra) and <span class=accented>matrix multiplication</span> (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space -- the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about [solving systems of equations](https://en.wikipedia.org/wiki/System_of_linear_equations) in this post. While <span class=accented>solving systems of equations</span> served as the historical precedent[^h] for mathematicians to begin work on linear algebra, it is today an *application*, and not the foundation of linear algebra.

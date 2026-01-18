@@ -5,7 +5,7 @@ draft: false
 showToc: true
 tags: ["Differential Geometry"]
 summary: Here, I solve Problem 5-5 from John Lee's book on *Riemannian Manifolds*, which demonstrates the non-flatness of the 2-sphere. This problem is particularly interesting because it serves as the motivating example for a later chapter in the book on curvature.
-
+bgImage: /post-images/differential_forms/sphere.png
 ---
 
 Here, I solve Problem $5-5$ from John Lee's book on *Riemannian Manifolds*, which demonstrates the non-flatness of the ($2$-)sphere. This problem is particularly interesting because it serves as the motivating example for a later chapter in the book on <span class=accented>curvature</span>.
