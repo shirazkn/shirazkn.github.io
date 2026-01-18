@@ -10,16 +10,16 @@
 <meta name="description" content="Probability theory is one of those subjects that&rsquo;s both &ndash; easy to get started with and hard to master. For instance, the conditional expectation operation $\mathbb E[\,\cdot\,|\,\cdot\,]$ can be notoriously tricky to work with, and its properties are not well-understood by researchers in my field who might want and need to use it to prove important results. What follows is a semi-rigorous review of the framework upon which modern-day probability theory is built. I personally find this to be an illuminating way to think about randomness.
 The goal here is to demystify what it means for a mathematical object to be random, and to have a rigorous axiomatic understanding of operations such as the conditional expectation.">
 <meta name="author" content="">
-<link rel="canonical" href="http://10.0.0.26:1313/posts/cond_expectation/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.51368834b2859694365eca53b5d3a6075765260aa28ce04db3cbd865c256d61c.css" integrity="sha256-UTaINLKFlpQ2XspTtdOmB1dlJgqijOBNs8vYZcJW1hw=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://10.0.0.26:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://10.0.0.26:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://10.0.0.26:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://10.0.0.26:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://10.0.0.26:1313/favicon.ico">
+<link rel="canonical" href="http://localhost:1313/posts/cond_expectation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.05929664bad1843e2a6ecdf2027ade7534ece873c5d97efdded31397c1d46881.css" integrity="sha256-BZKWZLrRhD4qbs3yAnredTTs6HPF2X793tMTl8HUaIE=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://10.0.0.26:1313/posts/cond_expectation/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/cond_expectation/">
 <noscript>
     <style>
         #theme-toggle,
@@ -88,7 +88,7 @@ The goal here is to demystify what it means for a mathematical object to be rand
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
 
-<meta property="og:url" content="http://10.0.0.26:1313/posts/cond_expectation/">
+<meta property="og:url" content="http://localhost:1313/posts/cond_expectation/">
   <meta property="og:site_name" content="Shiraz">
   <meta property="og:title" content="Measure-theoretic Probability">
   <meta property="og:description" content="Probability theory is one of those subjects that’s both – easy to get started with and hard to master. For instance, the conditional expectation operation $\mathbb E[\,\cdot\,|\,\cdot\,]$ can be notoriously tricky to work with, and its properties are not well-understood by researchers in my field who might want and need to use it to prove important results. What follows is a semi-rigorous review of the framework upon which modern-day probability theory is built. I personally find this to be an illuminating way to think about randomness. The goal here is to demystify what it means for a mathematical object to be random, and to have a rigorous axiomatic understanding of operations such as the conditional expectation.">
@@ -112,13 +112,13 @@ The goal here is to demystify what it means for a mathematical object to be rand
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://10.0.0.26:1313/posts/"
+      "item": "http://localhost:1313/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Measure-theoretic Probability",
-      "item": "http://10.0.0.26:1313/posts/cond_expectation/"
+      "item": "http://localhost:1313/posts/cond_expectation/"
     }
   ]
 }
@@ -140,14 +140,14 @@ The goal here is to demystify what it means for a mathematical object to be rand
   "dateModified": "2024-05-11T07:40:56-07:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://10.0.0.26:1313/posts/cond_expectation/"
+    "@id": "http://localhost:1313/posts/cond_expectation/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Shiraz",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://10.0.0.26:1313/favicon.ico"
+      "url": "http://localhost:1313/favicon.ico"
     }
   }
 }
@@ -157,7 +157,7 @@ The goal here is to demystify what it means for a mathematical object to be rand
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://10.0.0.26:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <a href="http://localhost:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -183,17 +183,17 @@ The goal here is to demystify what it means for a mathematical object to be rand
         </div>
         <ul id="menu">
             <li>
-                <a href="http://10.0.0.26:1313/archives/" title="archives">
+                <a href="http://localhost:1313/archives/" title="archives">
                     <span>archives</span>
                 </a>
             </li>
             <li>
-                <a href="http://10.0.0.26:1313/tags/" title="tags">
+                <a href="http://localhost:1313/tags/" title="tags">
                     <span>tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://10.0.0.26:1313/search/" title="search (Alt &#43; /)" accesskey=/>
+                <a href="http://localhost:1313/search/" title="search (Alt &#43; /)" accesskey=/>
                     <span>search</span>
                 </a>
             </li>

@@ -66,8 +66,11 @@ function initGyroscope() {
 
   // iOS 13+ requires permission - must be triggered by user gesture
   if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-    // Request on any user interaction
-    const requestPermission = (e) => {
+    // Try enabling immediately - works if permission was already granted
+    enableGyroscope();
+
+    // Also set up gesture-based permission request as fallback for first-time visitors
+    const requestPermission = () => {
       if (gyroPermissionRequested) return;
       gyroPermissionRequested = true;
 
@@ -77,15 +80,15 @@ function initGyroscope() {
             enableGyroscope();
           }
         })
-        .catch((err) => {
+        .catch(() => {
           gyroPermissionRequested = false; // Allow retry on error
         });
     };
 
     // Listen on multiple events to catch user interaction
-    window.addEventListener('touchstart', requestPermission, { once: true });
-    window.addEventListener('touchend', requestPermission, { once: true });
-    window.addEventListener('click', requestPermission, { once: true });
+    document.addEventListener('touchstart', requestPermission, { once: true, passive: true });
+    document.addEventListener('touchend', requestPermission, { once: true, passive: true });
+    document.addEventListener('click', requestPermission, { once: true, passive: true });
   } else {
     // Android and other devices - just enable directly
     enableGyroscope();
