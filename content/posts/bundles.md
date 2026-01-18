@@ -2,7 +2,6 @@
 title: "Principal Bundles"
 date: 2025-10-24T20:55:32-04:00
 showToc: true
-tikzjax: true
 tags: ["Differential Geometry"]
 summary: A principal bundle is a fiber bundle, that additionally has the right-action of a group that preserves fibers. Beginning with coset spaces, we look at some interesting examples of principal bundles and the things we can do with them.
 ---
@@ -11,16 +10,13 @@ summary: A principal bundle is a fiber bundle, that additionally has the right-a
 
 A [fiber bundle](https://en.wikipedia.org/wiki/Fiber_bundle) is a sequence of maps of the form 
 
-<!-- $$\mathcal F \overset{\iota}{\hookrightarrow} \mathcal E \overset{\pi}{\twoheadrightarrow \twoheadrightarrow} \mathcal M$$ -->
-
-<div class="tikz-wrapper">
-<script type="text/tikz">
-  \begin{tikzcd}
-    \mathcal F \arrow[r, hook, "\iota"] & \mathcal E \arrow[d, "\pi"] \\
-    & \mathcal M
-  \end{tikzcd}
-</script>
-</div>
+$$
+\begin{array}{@{}c@{\ }c@{\,}c@{}}
+\mathcal F & \xhookrightarrow{\quad\iota\quad} & \mathcal E \\
+& & \bigg\downarrow\rlap{\scriptstyle\pi} \\[0.3ex]
+& & \mathcal M
+\end{array}
+$$
 
 where $\mathcal F$ is the <span class=accented>fiber</span>, $\mathcal E$ is the <span class=accented>total space</span>, and $\mathcal M$ is the <span class=accented>base space</span>. As the notation suggests, $\iota$ is an injective map referred to as the <span class=accented>*inclusion*</span> which "places" the fiber $\mathcal F$ vertically inside $\mathcal E$. Meanwhile, $\pi$ is a surjective map known as the <span class=accented>*projection*</span> — given a point $q\in\mathcal E$, the point $\pi(q)\in\mathcal M$ is the shadow cast by $q$ down on the base space.
 

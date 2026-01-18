@@ -85,12 +85,12 @@ You&rsquo;ve probably come across logical fallacies such as the
 <script>
   MathJax = {
     tex: {
-      packages: {'[+]': ['mathtools']},
+      packages: {'[+]': ['mathtools', 'amscd']},
       displayMath: [['\\[', '\\]'], ['$$', '$$']],  
       inlineMath: [['\\(', '\\)'], ['$', '$']]  
     },
     loader:{
-      load: ['ui/safe', '[tex]/mathtools']
+      load: ['ui/safe', '[tex]/mathtools', '[tex]/amscd']
     },
   };
 </script>

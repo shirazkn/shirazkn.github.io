@@ -2,12 +2,12 @@
 <script>
   MathJax = {
     tex: {
-      packages: {'[+]': ['mathtools']},
+      packages: {'[+]': ['mathtools', 'amscd']},
       displayMath: [['\\[', '\\]'], ['$$', '$$']],  // block
       inlineMath: [['\\(', '\\)'], ['$', '$']]  // inline
     },
     loader:{
-      load: ['ui/safe', '[tex]/mathtools']
+      load: ['ui/safe', '[tex]/mathtools', '[tex]/amscd']
     },
   };
 </script>

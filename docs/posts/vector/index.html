@@ -76,12 +76,12 @@ I used to find this ritual almost pointless because to me, every answer to this 
 <script>
   MathJax = {
     tex: {
-      packages: {'[+]': ['mathtools']},
+      packages: {'[+]': ['mathtools', 'amscd']},
       displayMath: [['\\[', '\\]'], ['$$', '$$']],  
       inlineMath: [['\\(', '\\)'], ['$', '$']]  
     },
     loader:{
-      load: ['ui/safe', '[tex]/mathtools']
+      load: ['ui/safe', '[tex]/mathtools', '[tex]/amscd']
     },
   };
 </script>

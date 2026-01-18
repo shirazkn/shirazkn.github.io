@@ -80,12 +80,12 @@ This is because many (if not all) of the problems we&rsquo;re interested in solv
 <script>
   MathJax = {
     tex: {
-      packages: {'[+]': ['mathtools']},
+      packages: {'[+]': ['mathtools', 'amscd']},
       displayMath: [['\\[', '\\]'], ['$$', '$$']],  
       inlineMath: [['\\(', '\\)'], ['$', '$']]  
     },
     loader:{
-      load: ['ui/safe', '[tex]/mathtools']
+      load: ['ui/safe', '[tex]/mathtools', '[tex]/amscd']
     },
   };
 </script>
