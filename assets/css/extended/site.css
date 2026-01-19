@@ -298,42 +298,69 @@ sub {
     top: 0;
 }
 
-.hover-letter:hover {
-    top: -0.08em;
-    transition: top 0.05s ease-out, color 0s;
+@media (hover: hover) {
+    .hover-letter:hover {
+        top: -0.08em;
+        transition: top 0.05s ease-out, color 0s;
+    }
 }
 
 /* --------------------------------------------------------------------------
    Header menu links hover effect
    -------------------------------------------------------------------------- */
-#menu a:hover,
-#theme-toggle:hover {
-    color: var(--accent);
-}
+@media (hover: hover) {
+    #menu a:hover,
+    #theme-toggle:hover {
+        color: var(--accent);
+    }
 
-.social-icons a:hover svg {
-    fill: var(--accent-light);
+    .social-icons a:hover svg {
+        fill: var(--accent-light);
+    }
+
+    #theme-toggle:hover {
+        transform: translateY(-1px);
+    }
 }
 
 #theme-toggle {
     transition: transform 0.05s;
 }
 
-#theme-toggle:hover {
-    transform: translateY(-1px);
-}
-
 /* --------------------------------------------------------------------------
    Table of contents
    -------------------------------------------------------------------------- */
+.toc {
+    cursor: pointer;
+}
+
 .toc details summary {
     cursor: pointer;
     transition: transform 0.05s;
     display: inline-block;
+    list-style: none;
 }
 
-.toc details summary:hover {
-    transform: translateY(-1px);
+.toc details summary::-webkit-details-marker {
+    display: none;
+}
+
+.toc details summary::before {
+    content: '▶ ';
+    font-size: 0.7em;
+    margin-right: 0.3em;
+    transition: transform 0.15s ease-out;
+    display: inline-block;
+}
+
+.toc details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+@media (hover: hover) {
+    .toc details summary:hover {
+        transform: translateY(-1px);
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -344,8 +371,10 @@ a {
     transition: transform 0.05s;
 }
 
-a:hover {
-    transform: translateY(-1px);
+@media (hover: hover) {
+    a:hover {
+        transform: translateY(-1px);
+    }
 }
 
 /* Preserve default behavior for heading anchor links */

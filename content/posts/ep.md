@@ -37,7 +37,7 @@ $\in T_{\gamma(s)}\mathcal Q$, where <span class=accented>$\eta^i(s)$</span> are
 
 
 
-## ⌁ Variation of $\gamma$
+## Variation of $\gamma$
 
 Denote the space of <span class=accented>paths on $\mathcal Q$</span> as $\mathcal P\mathcal Q$, so that $\gamma \in \mathcal P\mathcal Q$.
 Consider a <span class=accented>family of paths</span> $\Gamma(\ \cdot\ , \lambda)$ such that $\Gamma(t, 0) = \gamma(t)$. As $\lambda$ is varied, we think of $\Gamma(\ \cdot\ , \lambda)$ as a path in $\mathcal P \mathcal Q$, i.e., a path through path space! We know that the derivatives of such paths-of-paths at $\lambda = 0$ should correspond bijectively to the tangent vectors in $T_{\gamma}\mathcal P \mathcal Q$:
@@ -135,7 +135,7 @@ wherein the last piece of notation is explained in Marsden and Ratiu's books, as
 
 
 
-## ⌁ Variation of $\dot\gamma$
+## Variation of $\dot\gamma$
 
 
 The reader may want to specialize to matrix Lie groups and finish the argument algebraically, as done in Theorem 13.5.3 of *Introduction to Mechanics and Symmetry* by Marsden \& Ratiu. Here, I will do a slightly more general version of the proof. What follows can be supplemented with Lee's *Introduction to Riemannian Manifolds* (*Lee IRM*). 
@@ -192,7 +192,7 @@ $$
 \end{align*}
 $$
 
-## ⌁ Returning to $\mathfrak g$
+## Returning to $\mathfrak g$
 
 We are not quite done; the reader will notice that our expression appears to agree with Marsden and Ratiu's, but has a sign-difference when compared to Poincaré's. Actually, our equations are closer to Poincaré's. The apparent discrepancy is due to the fact that the vector fields $\lbrace \overline  E_i\rbrace_{i=1}^r$ are more closely related to the right-invariant vector fields (RIVFs) on $G$ than they are to the left-invariant vector fields (LIVFs). In particular, there is a Lie algebra anti-homomorphism: $[{\overline  E_i, \overline  E_j}] = -\overline{[  E_i,   E_j]}$ (proven in the appendix), since the usual Lie bracket on $\mathfrak g$ is also defined via LIVFs. Our urge to make everything "act from the left" in mathematical notation has led us to consider left group actions on $\mathcal Q$, and I suppose the same urge has made LIVFs the predominant choice on $G$.
 

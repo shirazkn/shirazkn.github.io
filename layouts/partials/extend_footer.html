@@ -241,6 +241,21 @@ if (isHomePage) {
         }, 400);
     }, 800);
 }
+
+// Make clicking anywhere on TOC box toggle it
+const tocBox = document.querySelector('.toc');
+if (tocBox) {
+    const tocDetails = tocBox.querySelector('details');
+    if (tocDetails) {
+        tocBox.addEventListener('click', (e) => {
+            // Don't toggle if clicking on a link inside the TOC
+            if (e.target.tagName === 'A') return;
+            // Don't toggle if clicking on the summary (it handles itself)
+            if (e.target.closest('summary')) return;
+            tocDetails.open = !tocDetails.open;
+        });
+    }
+}
 </script>
 <div class="headerfooter">
     <sub><sup><sub>..</sub></sup></sub>

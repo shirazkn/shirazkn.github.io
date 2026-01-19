@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,16 +9,16 @@
 <meta name="keywords" content="Mechanics, Optimization, Probability">
 <meta name="description" content="I look at some of the central ideas that go into designing and training VLA models, using the latest papers by Physical Intelligence as reference.">
 <meta name="author" content="">
-<link rel="canonical" href="https://10.0.0.26:1313/posts/rl/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.685832d02538cb95971e497bda225bf7aabf15975468afb503ea3f1bed42fffe.css" integrity="sha256-aFgy0CU4y5WXHkl72iJb96q/FZdUaK&#43;1A&#43;o/G&#43;1C//4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://10.0.0.26:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://10.0.0.26:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://10.0.0.26:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://10.0.0.26:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="https://10.0.0.26:1313/favicon.ico">
+<link rel="canonical" href="http://localhost:1313/posts/rl/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e150a9308943c96db7a04da2d3c2cfc65f8f6bdf60a8495e630a39fd37bfaf93.css" integrity="sha256-4VCpMIlDyW23oE2i08LPxl&#43;Pa99gqEleYwo5/Te/r5M=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://10.0.0.26:1313/posts/rl/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/rl/">
 <noscript>
     <style>
         #theme-toggle,
@@ -95,7 +95,7 @@
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
 
-<meta property="og:url" content="https://10.0.0.26:1313/posts/rl/">
+<meta property="og:url" content="http://localhost:1313/posts/rl/">
   <meta property="og:site_name" content="Shiraz">
   <meta property="og:title" content="VLA Models">
   <meta property="og:description" content="I look at some of the central ideas that go into designing and training VLA models, using the latest papers by Physical Intelligence as reference.">
@@ -121,13 +121,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://10.0.0.26:1313/posts/"
+      "item": "http://localhost:1313/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "VLA Models",
-      "item": "https://10.0.0.26:1313/posts/rl/"
+      "item": "http://localhost:1313/posts/rl/"
     }
   ]
 }
@@ -142,21 +142,21 @@
   "keywords": [
     "Mechanics", "Optimization", "Probability"
   ],
-  "articleBody": "␥ States \u0026 Observations Let $\\mathscr S$ be the state space of a robot and $\\mathscr O$ the observation space. The state at time $t$ is written as $S_t$, which is an $\\mathscr S$-valued random variable. For example, $S_t$ may be the robot’s joint angles at times $$ \\begin{array}{c@{\\,,\\ }c@{\\,,\\ }c@{\\,,\\ }c@{\\,,\\ }c@{}c} t-(\\mathrm n - 1)\\tau \u0026 \\cdots \\,\u0026 t-2\\tau \u0026 t-\\tau \u0026 t \\end{array} $$ where $\\tau$ is a timestep. In this example, $\\mathscr S=(SO(2))^{\\mathrm j\\mathrm n}$, where $\\mathrm j$ the number of joints and $\\mathrm n$ is the number of timesteps. The observation $O_t$ could be the last $\\mathrm n$ image frames seen by the robot’s camera(s). The state $S_t$ and observation $O_t$ are both random variables. Let the state-observation pair be written as $X_t\\coloneq(S_t, O_t)$, which we will simply call the “state” for simplicity. The $\\pi_{0.6}^\\ast$ paper refers to $X_t$ as the “observation”. The augmented state-space is $\\mathscr X\\coloneq\\mathscr S\\times \\mathscr O$.\nThe state $X_t$ does not merely represent noisy/partial information about our robot, but also includes information about the environment and objects that our robot interacts with. The goal of learning-based control is to learn a mapping that takes $X_t$ and outputs an action $A_t$, enabling the robot to interact with (and respond to) its environment.\nI will use the following notation to represent a family of random variables indexed by time, called a stochastic process: $$ X_{[0,\\infty)}\\coloneq (X_s)_{s\\in[0,\\infty)} $$ The family $X_{[0,\\infty)}$ is assumed to satisfy a Markov property: $$ p_{X_{t+s}| X_{[0,t]}}(x|\\chi)=p_{X_{t+s}|X_t}\\big(x|\\chi(t)\\big), $$ where $\\chi: [0,t] \\rightarrow \\mathscr X$ is a state trajectory. Maybe this sick-looking notation unsettles you, but I find it to be much cleaner than what is typically used in the reinforcement learning (RL) literature. Firstly, the subscripts for “$p$” indicate that two different functions are used on either side — on the left, and we are evaluating the conditional pdf of $X_{t+s}$ (a random variable) conditioned on $X_{[0,t]}$ (a random variable), and we are evaluating this pdf at $(x,\\chi)$. Secondly, $X_t$ is a random variable while $x$ represents an arbitrary point in $\\mathscr X$, making it clear that the above equality is assumed to hold for any point $x\\in\\mathscr X$. Similarly, it is assumed to hold for any trajectory $\\chi$. In practice, we can augment the state with additional information to ensure a Markov-like property.\nWe can replace $[0,t]$ with $\\lbrace 0, \\tau, \\cdots, {t-\\tau}, t\\rbrace$ to recover the discrete-time formulation. For instance, a discrete-time trajectory may be viewed as a function from the integers to $\\mathscr X$ (or a section of a fiber bundle with base space the integers). ␥ Trajectories \u0026 Policies So, $X_{[0,t]}$ is a random state trajectory (from $0$ to $t$), and $\\chi$ is an example of a value that it can take. This implies the existence of a pdf $p_{X_{[0,t]}}(\\chi)$ that should somehow “integrate to $1$”. What is its domain? To simplify things, we can write the trajectory-space as $C([0, t],\\mathscr X)$, assuming without much loss of generality that the trajectory $\\chi\\in C([0, t],\\mathscr X)$ is continuous.1\nThe goal of learning-based control is to learn a policy $p_{A_t|X_t}(a|x)$ — a conditional pdf that specifies the probability density of the robot taking action $a$ given that it is at the state $x$. This is something that a roboticist designs and implements, e.g., using behavior cloning or RL. Let’s assume that the policy is time-invariant: $$p_{A_t|X_t}=p_{A_s|X_s}\\eqcolon \\pi$$ for all $t,s\\in[0,\\infty)$. We can always cheat and add $t$ to the state to make this simplification hold.\nNow, suppose there is some underlying distribution of initial conditions (represented by $X_0$) and we fix a policy $\\pi$, then we get a combined stochastic process $(X_t,A_t)_{t\\in[0,\\infty)}$, which is the random state-action trajectory. Conversely, if we have a dataset of state-action trajectories, we can learn the $\\pi$ that would generate them; this is behavior cloning. We can also make small perturbations to $\\pi$ to see if the resulting trajectories improve upon some reward function (in expectation); this is reinforcement learning. Regularization can be introduced to ensure that the perturbed policy doesn’t deviate too far from some baseline policy (as done in TRPO and PPO). The regularization term is typically an information-theoretic divergence between $(X_t,A_t)_{t\\in[0,\\infty)}$ and the baseline policy; the divergence between two distributions measures how much they differ from each other, statistically.\n␥ Action Chunking Do you (presumably a human) also operate on such a latency? In your case, $\\delta$ is perhaps the time delay between when your Team Fortress 2 enemy first appears on-screen to when you begin moving the reticle towards their head. It is impressively small! In practice, the roboticist may only be able to specify $p_{A_{t+\\delta}|X_t}(a|x)$ due to latency issues! Since doing model inference takes an $\\delta \u003e0$ amount of time, it is impossible to act at time $t$ based on the information at $t$.2 Inference is expensive; if we inferenced at each (discretized) timestep, then the frequency of our outputs to the robot will be inherently limited by how fast we can do inference. The (currently) most well-known workaround is to ensure that each inference call produces a chunk of actions, i.e., a sequence of actions to be executed over the next $\\mathrm h$ timesteps, where $\\mathrm h$ is called the horizon. This is action chunking. In practice, it is common to execute only $\\mathrm e \u003c \\mathrm h$ actions from the chunk before requesting a new chunk of actions from the model, where $\\mathrm e \\approx \\mathrm h/2$.3\nHowever, what happens at the end of the chunk? There are two issues here:\nAfter executing a chunk, we still need to wait $\\delta$ milliseconds to get the next chunk of actions. Our robot hasn’t been told what to do during this time; if $\\delta \u003e \\tau$, then there will be a noticeable pause in the robot’s motion. Our VLA model doesn’t remember what it spat out during the last chunk, so the next chunk it produces will not continuously or smoothly align with the previous chunk. In my opinion, these aren’t very serious issues; as long as you have a robust VLA model you can tell your robot to do the dishes and go to bed – the robot will do the dishes overnight in all of its jerky, jittery glory. However, these are serious issues for robotics labs like Physical Intelligence because it makes for some seriously unimpressive demos. Recent papers from Physical Intelligence have attempted to address these issues.\nThe idea of real-time chunking (RTC) is to do the following. Let $\\mathrm d \\coloneq \\lfloor \\delta / \\tau \\rfloor$ be the number of timesteps that the model takes to do its inference, i.e., the inference delay. Suppose we already have this sequence of actions at timestep $t$: $$ \\begin{array}{ccccc} a_{t} \u0026 a_{t + \\tau} \u0026 a_{t + 2\\tau} \u0026 \\cdots \u0026 a_{t + (\\mathrm h-1) \\tau} \\end{array} $$ Then, in two parallel threads, do the following (assuming $\\mathrm h\\geq \\mathrm e + \\mathrm d$):\nexecute the first $\\mathrm e$ actions in the chunk as $a_{t + \\mathrm e \\tau}$ is being executed, initiate another call for inference; condition this inference on the next $\\mathrm d$ actions in the chunk: $$ \\begin{array}{cccc} a_{t+\\mathrm e \\tau} \u0026 a_{t +(\\mathrm e + 1)\\tau} \u0026 \\cdots \u0026 a_{t + (\\mathrm e+\\mathrm d - 1) \\tau} \\end{array} $$ as these actions will be executed while the inference is happening! The conditioning step can be viewed as freezing the next $\\mathrm d$ actions of the previous chunk and inpainting the rest of the action chunk, using the same algorithms as those used for image inpainting. This way, we have new chunk of actions waiting for us at time $t+(\\mathrm e+\\mathrm d)\\tau$, and this new chunk will (due to the conditioning) smoothly continue from the previous chunk. The robot doesn’t have to stop moving, and the chunks are smoothly stitched together.\nThe paper I linked above is actually better-described as inference-time RTC . It uses a gradient-based inpainting method to fill in the missing actions. Basically, the score (or velocity) vector in the diffusion (or flow-matching) process incurs an additional term calculated via a vector-Jacobian product, ensuring that the denoised (or flow-matched) chunk begins with the $\\mathrm d$ frozen actions. So “conditioning” here refers to the gradient-based correction term.\nTraining-time RTC is concerned with the problem that the gradient-based inpainting is expensive. Their solution is to simply not denoise the first $\\mathrm d$ actions during inference, but to pass these as observations to the denoising process (e.g., as part of the FiLM conditioning module). So the main difference is in how the conditioning is done. The adjectives inference-time vs. training-time is a bit misleading; both algorithms require some inference-time modifications over the vanilla diffusion (or flow matching) VLA policy, but IT-RTC doesn’t require any training-time changes.\nAnother possibility is to consider the trivial fiber bundle $\\mathscr X \\times \\mathbb R\\rightarrow \\mathbb R$. The space of trajectories is then the space of sections of this bundle. ↩︎\nOpenVLA has $\\delta \\approx 320\\,ms$ after accounting for model inference, network latency, and other overheads. ↩︎\nIf only $\\mathrm e \u003c \\mathrm h$ actions are executed, then why do we predict the remaining $\\mathrm h - \\mathrm e$ actions at all? My understanding is that this encourages the model to think long-term (a la model-predictive control) rather than resorting to a greedy policy. ↩︎\n",
-  "wordCount" : "1545",
+  "articleBody": "States \u0026 Observations Let $\\mathscr S$ be the state space of a robot and $\\mathscr O$ the observation space. The state at time $t$ is written as $S_t$, which is an $\\mathscr S$-valued random variable. For example, $S_t$ may be the robot’s joint angles at times $$ \\begin{array}{c@{\\,,\\ }c@{\\,,\\ }c@{\\,,\\ }c@{\\,,\\ }c@{}c} t-(\\mathrm n - 1)\\tau \u0026 \\cdots \\,\u0026 t-2\\tau \u0026 t-\\tau \u0026 t \\end{array} $$ where $\\tau$ is a timestep. In this example, $\\mathscr S=(SO(2))^{\\mathrm j\\mathrm n}$, where $\\mathrm j$ the number of joints and $\\mathrm n$ is the number of timesteps. The observation $O_t$ could be the last $\\mathrm n$ image frames seen by the robot’s camera(s). The state $S_t$ and observation $O_t$ are both random variables. Let the state-observation pair be written as $X_t\\coloneq(S_t, O_t)$, which we will simply call the “state” for simplicity. The $\\pi_{0.6}^\\ast$ paper refers to $X_t$ as the “observation”. The augmented state-space is $\\mathscr X\\coloneq\\mathscr S\\times \\mathscr O$.\nThe state $X_t$ does not merely represent noisy/partial information about our robot, but also includes information about the environment and objects that our robot interacts with. The goal of learning-based control is to learn a mapping that takes $X_t$ and outputs an action $A_t$, enabling the robot to interact with (and respond to) its environment.\nI will use the following notation to represent a family of random variables indexed by time, called a stochastic process: $$ X_{[0,\\infty)}\\coloneq (X_s)_{s\\in[0,\\infty)} $$ The family $X_{[0,\\infty)}$ is assumed to satisfy a Markov property: $$ p_{X_{t+s}| X_{[0,t]}}(x|\\chi)=p_{X_{t+s}|X_t}\\big(x|\\chi(t)\\big), $$ where $\\chi: [0,t] \\rightarrow \\mathscr X$ is a state trajectory. Maybe this sick-looking notation unsettles you, but I find it to be much cleaner than what is typically used in the reinforcement learning (RL) literature. Firstly, the subscripts for “$p$” indicate that two different functions are used on either side — on the left, and we are evaluating the conditional pdf of $X_{t+s}$ (a random variable) conditioned on $X_{[0,t]}$ (a random variable), and we are evaluating this pdf at $(x,\\chi)$. Secondly, $X_t$ is a random variable while $x$ represents an arbitrary point in $\\mathscr X$, making it clear that the above equality is assumed to hold for any point $x\\in\\mathscr X$. Similarly, it is assumed to hold for any trajectory $\\chi$. In practice, we can augment the state with additional information to ensure a Markov-like property.\nWe can replace $[0,t]$ with $\\lbrace 0, \\tau, \\cdots, {t-\\tau}, t\\rbrace$ to recover the discrete-time formulation. For instance, a discrete-time trajectory may be viewed as a function from the integers to $\\mathscr X$ (or a section of a fiber bundle with base space the integers). Trajectories \u0026 Policies So, $X_{[0,t]}$ is a random state trajectory (from $0$ to $t$), and $\\chi$ is an example of a value that it can take. This implies the existence of a pdf $p_{X_{[0,t]}}(\\chi)$ that should somehow “integrate to $1$”. What is its domain? To simplify things, we can write the trajectory-space as $C([0, t],\\mathscr X)$, assuming without much loss of generality that the trajectory $\\chi\\in C([0, t],\\mathscr X)$ is continuous.1\nThe goal of learning-based control is to learn a policy $p_{A_t|X_t}(a|x)$ — a conditional pdf that specifies the probability density of the robot taking action $a$ given that it is at the state $x$. This is something that a roboticist designs and implements, e.g., using behavior cloning or RL. Let’s assume that the policy is time-invariant: $$p_{A_t|X_t}=p_{A_s|X_s}\\eqcolon \\pi$$ for all $t,s\\in[0,\\infty)$. We can always cheat and add $t$ to the state to make this simplification hold.\nNow, suppose there is some underlying distribution of initial conditions (represented by $X_0$) and we fix a policy $\\pi$, then we get a combined stochastic process $(X_t,A_t)_{t\\in[0,\\infty)}$, which is the random state-action trajectory. Conversely, if we have a dataset of state-action trajectories, we can learn the $\\pi$ that would generate them; this is behavior cloning. We can also make small perturbations to $\\pi$ to see if the resulting trajectories improve upon some reward function (in expectation); this is reinforcement learning. Regularization can be introduced to ensure that the perturbed policy doesn’t deviate too far from some baseline policy (as done in TRPO and PPO). The regularization term is typically an information-theoretic divergence between $(X_t,A_t)_{t\\in[0,\\infty)}$ and the baseline policy; the divergence between two distributions measures how much they differ from each other, statistically.\nAction Chunking Do you (presumably a human) also operate on such a latency? In your case, $\\delta$ is perhaps the time delay between when your Team Fortress 2 enemy first appears on-screen to when you begin moving the reticle towards their head. It is impressively small! In practice, the roboticist may only be able to specify $p_{A_{t+\\delta}|X_t}(a|x)$ due to latency issues! Since doing model inference takes an $\\delta \u003e0$ amount of time, it is impossible to act at time $t$ based on the information at $t$.2 Inference is expensive; if we inferenced at each (discretized) timestep, then the frequency of our outputs to the robot will be inherently limited by how fast we can do inference. The (currently) most well-known workaround is to ensure that each inference call produces a chunk of actions, i.e., a sequence of actions to be executed over the next $\\mathrm h$ timesteps, where $\\mathrm h$ is called the horizon. This is action chunking. In practice, it is common to execute only $\\mathrm e \u003c \\mathrm h$ actions from the chunk before requesting a new chunk of actions from the model, where $\\mathrm e \\approx \\mathrm h/2$.3\nHowever, what happens at the end of the chunk? There are two issues here:\nAfter executing a chunk, we still need to wait $\\delta$ milliseconds to get the next chunk of actions. Our robot hasn’t been told what to do during this time; if $\\delta \u003e \\tau$, then there will be a noticeable pause in the robot’s motion. Our VLA model doesn’t remember what it spat out during the last chunk, so the next chunk it produces will not continuously or smoothly align with the previous chunk. In my opinion, these aren’t very serious issues; as long as you have a robust VLA model you can tell your robot to do the dishes and go to bed – the robot will do the dishes overnight in all of its jerky, jittery glory. However, these are serious issues for robotics labs like Physical Intelligence because it makes for some seriously unimpressive demos. Recent papers from Physical Intelligence have attempted to address these issues.\nThe idea of real-time chunking (RTC) is to do the following. Let $\\mathrm d \\coloneq \\lfloor \\delta / \\tau \\rfloor$ be the number of timesteps that the model takes to do its inference, i.e., the inference delay. Suppose we already have this sequence of actions at timestep $t$: $$ \\begin{array}{ccccc} a_{t} \u0026 a_{t + \\tau} \u0026 a_{t + 2\\tau} \u0026 \\cdots \u0026 a_{t + (\\mathrm h-1) \\tau} \\end{array} $$ Then, in two parallel threads, do the following (assuming $\\mathrm h\\geq \\mathrm e + \\mathrm d$):\nexecute the first $\\mathrm e$ actions in the chunk as $a_{t + \\mathrm e \\tau}$ is being executed, initiate another call for inference; condition this inference on the next $\\mathrm d$ actions in the chunk: $$ \\begin{array}{cccc} a_{t+\\mathrm e \\tau} \u0026 a_{t +(\\mathrm e + 1)\\tau} \u0026 \\cdots \u0026 a_{t + (\\mathrm e+\\mathrm d - 1) \\tau} \\end{array} $$ as these actions will be executed while the inference is happening! The conditioning step can be viewed as freezing the next $\\mathrm d$ actions of the previous chunk and inpainting the rest of the action chunk, using the same algorithms as those used for image inpainting. This way, we have new chunk of actions waiting for us at time $t+(\\mathrm e+\\mathrm d)\\tau$, and this new chunk will (due to the conditioning) smoothly continue from the previous chunk. The robot doesn’t have to stop moving, and the chunks are smoothly stitched together.\nThe paper I linked above is actually better-described as inference-time RTC . It uses a gradient-based inpainting method to fill in the missing actions. Basically, the score (or velocity) vector in the diffusion (or flow-matching) process incurs an additional term calculated via a vector-Jacobian product, ensuring that the denoised (or flow-matched) chunk begins with the $\\mathrm d$ frozen actions. So “conditioning” here refers to the gradient-based correction term.\nTraining-time RTC is concerned with the problem that the gradient-based inpainting is expensive. Their solution is to simply not denoise the first $\\mathrm d$ actions during inference, but to pass these as observations to the denoising process (e.g., as part of the FiLM conditioning module). So the main difference is in how the conditioning is done. The adjectives inference-time vs. training-time is a bit misleading; both algorithms require some inference-time modifications over the vanilla diffusion (or flow matching) VLA policy, but IT-RTC doesn’t require any training-time changes.\nAnother possibility is to consider the trivial fiber bundle $\\mathscr X \\times \\mathbb R\\rightarrow \\mathbb R$. The space of trajectories is then the space of sections of this bundle. ↩︎\nOpenVLA has $\\delta \\approx 320\\,ms$ after accounting for model inference, network latency, and other overheads. ↩︎\nIf only $\\mathrm e \u003c \\mathrm h$ actions are executed, then why do we predict the remaining $\\mathrm h - \\mathrm e$ actions at all? My understanding is that this encourages the model to think long-term (a la model-predictive control) rather than resorting to a greedy policy. ↩︎\n",
+  "wordCount" : "1542",
   "inLanguage": "en",
   "datePublished": "2025-12-06T18:56:12-05:00",
   "dateModified": "2025-12-06T18:56:12-05:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://10.0.0.26:1313/posts/rl/"
+    "@id": "http://localhost:1313/posts/rl/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Shiraz",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://10.0.0.26:1313/favicon.ico"
+      "url": "http://localhost:1313/favicon.ico"
     }
   }
 }
@@ -166,7 +166,7 @@
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://10.0.0.26:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <a href="http://localhost:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -192,17 +192,17 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://10.0.0.26:1313/archives/" title="archives">
+                <a href="http://localhost:1313/archives/" title="archives">
                     <span>archives</span>
                 </a>
             </li>
             <li>
-                <a href="https://10.0.0.26:1313/tags/" title="tags">
+                <a href="http://localhost:1313/tags/" title="tags">
                     <span>tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://10.0.0.26:1313/search/" title="search (Alt &#43; /)" accesskey=/>
+                <a href="http://localhost:1313/search/" title="search (Alt &#43; /)" accesskey=/>
                     <span>search</span>
                 </a>
             </li>
@@ -234,18 +234,18 @@
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#-states--observations" aria-label="␥ States &amp; Observations">␥ States &amp; Observations</a></li>
+                    <a href="#states--observations" aria-label="States &amp; Observations">States &amp; Observations</a></li>
                 <li>
-                    <a href="#-trajectories--policies" aria-label="␥ Trajectories &amp; Policies">␥ Trajectories &amp; Policies</a></li>
+                    <a href="#trajectories--policies" aria-label="Trajectories &amp; Policies">Trajectories &amp; Policies</a></li>
                 <li>
-                    <a href="#-action-chunking" aria-label="␥ Action Chunking">␥ Action Chunking</a>
+                    <a href="#action-chunking" aria-label="Action Chunking">Action Chunking</a>
                 </li>
             </ul>
         </div>
     </details>
 </div>
 
-  <div class="post-content"><h2 id="-states--observations"><span class=tertiary>␥</span> States &amp; Observations<a hidden class="anchor" aria-hidden="true" href="#-states--observations">#</a></h2>
+  <div class="post-content"><h2 id="states--observations">States &amp; Observations<a hidden class="anchor" aria-hidden="true" href="#states--observations">#</a></h2>
 <p>Let $\mathscr S$ be the state space of a robot and $\mathscr O$ the observation space. The state at time $t$ is written as $S_t$, which is an $\mathscr S$-valued random variable. For example, $S_t$ may be the robot&rsquo;s joint angles at times
 </p>
 $$
@@ -273,7 +273,7 @@ Firstly, the subscripts for &ldquo;$p$&rdquo; indicate that two different functi
 <aside class=aside-right>
 We can replace $[0,t]$ with $\lbrace 0, \tau, \cdots, {t-\tau}, t\rbrace$ to recover the discrete-time formulation. For instance, a discrete-time trajectory may be viewed as a function from the integers to $\mathscr X$ (or a section of a fiber bundle with base space the integers).
 </aside>
-<h2 id="-trajectories--policies"><span class=tertiary>␥</span> Trajectories &amp; Policies<a hidden class="anchor" aria-hidden="true" href="#-trajectories--policies">#</a></h2>
+<h2 id="trajectories--policies">Trajectories &amp; Policies<a hidden class="anchor" aria-hidden="true" href="#trajectories--policies">#</a></h2>
 <p>So, $X_{[0,t]}$ is a random state trajectory (from $0$ to $t$), and $\chi$ is an example of a value that it can take. This implies the existence of a pdf $p_{X_{[0,t]}}(\chi)$ that should somehow &ldquo;integrate to $1$&rdquo;. What is its domain? To simplify things, we can write the trajectory-space as $C([0, t],\mathscr X)$, assuming without much loss of generality that the trajectory $\chi\in C([0, t],\mathscr X)$ is continuous.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <p>The goal of learning-based control is to learn a <span class=accented>policy</span> $p_{A_t|X_t}(a|x)$ — a conditional pdf that specifies the probability density of the robot taking action $a$ given that it is at the state $x$. This is something that a roboticist <em>designs</em> and <em>implements</em>, e.g., using behavior cloning or RL. Let&rsquo;s assume that the policy is time-invariant: </p>
 $$p_{A_t|X_t}=p_{A_s|X_s}\eqcolon \pi$$<p>
@@ -282,7 +282,7 @@ We can always cheat and add $t$ to the state to make this simplification hold.</
 <p>Now, suppose there is some underlying distribution of initial conditions (represented by $X_0$) and we fix a policy $\pi$, then we get a combined stochastic process $(X_t,A_t)_{t\in[0,\infty)}$, which is the random state-action trajectory. Conversely, if we have a dataset of state-action trajectories, we can learn the $\pi$ that would generate them; this is <span class=accented>behavior cloning</span>. We can also make small perturbations to $\pi$ to see if the resulting trajectories improve upon some reward function (in expectation); this is <span class=accented>reinforcement learning</span>. Regularization can be introduced to ensure that the perturbed policy doesn&rsquo;t deviate too far from some baseline policy (as done in TRPO and PPO). The regularization term is typically an information-theoretic <a href="https://en.wikipedia.org/wiki/Divergence_%28statistics%29" target="_blank" class="accented">
     divergence
 </a> between $(X_t,A_t)_{t\in[0,\infty)}$ and the baseline policy; the divergence between two distributions measures how much they differ from each other, statistically.</p>
-<h2 id="-action-chunking"><span class=tertiary>␥</span> Action Chunking<a hidden class="anchor" aria-hidden="true" href="#-action-chunking">#</a></h2>
+<h2 id="action-chunking">Action Chunking<a hidden class="anchor" aria-hidden="true" href="#action-chunking">#</a></h2>
 <aside class=aside-right>
 Do you (presumably a human) also operate on such a latency? In your case, $\delta$ is perhaps the time delay between when your <a href=https://www.teamfortress.com class=accented>Team Fortress 2</a> enemy first appears on-screen to when you begin moving the reticle towards their head. It is impressively small!
 </aside>
@@ -349,9 +349,9 @@ as these actions will be executed while the inference is happening!</li>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://10.0.0.26:1313/tags/mechanics/">Mechanics</a></li>
-      <li><a href="https://10.0.0.26:1313/tags/optimization/">Optimization</a></li>
-      <li><a href="https://10.0.0.26:1313/tags/probability/">Probability</a></li>
+      <li><a href="http://localhost:1313/tags/mechanics/">Mechanics</a></li>
+      <li><a href="http://localhost:1313/tags/optimization/">Optimization</a></li>
+      <li><a href="http://localhost:1313/tags/probability/">Probability</a></li>
     </ul>
   </footer>
 <script src="https://giscus.app/client.js"
@@ -471,7 +471,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     
     let gyroBaselineBeta = null;
     let gyroBaselineGamma = null;
-    const GYRO_DRIFT_RATE = 0.008;
+    const GYRO_DRIFT_RATE = 0.012;
     let gyroRafId = null;
     let latestBeta = null, latestGamma = null;
     let cardGyroPermissionRequested = false;
@@ -525,8 +525,8 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 }
 
                 
-                const rotateY = Math.max(-6, Math.min(6, relativeGamma * 0.4));
-                const rotateX = Math.max(-6, Math.min(6, relativeBeta * -0.4));
+                const rotateY = Math.max(-8, Math.min(8, relativeGamma * 0.35));
+                const rotateX = Math.max(-8, Math.min(8, relativeBeta * -0.35));
 
                 postCards.forEach(card => {
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.003)`;
@@ -625,6 +625,21 @@ if (isHomePage) {
             setTimeout(triggerRandomScan, 4000 + Math.random() * 6000);
         }, 400);
     }, 800);
+}
+
+
+const tocBox = document.querySelector('.toc');
+if (tocBox) {
+    const tocDetails = tocBox.querySelector('details');
+    if (tocDetails) {
+        tocBox.addEventListener('click', (e) => {
+            
+            if (e.target.tagName === 'A') return;
+            
+            if (e.target.closest('summary')) return;
+            tocDetails.open = !tocDetails.open;
+        });
+    }
 }
 </script>
 <div class="headerfooter">

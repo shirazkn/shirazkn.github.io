@@ -8,7 +8,7 @@ tags: ["Mechanics", "Optimization", "Probability"]
 tikzjax: false
 ---
 
-## <span class=tertiary>␥</span> States \& Observations
+## States \& Observations
 Let $\mathscr S$ be the state space of a robot and $\mathscr O$ the observation space. The state at time $t$ is written as $S_t$, which is an $\mathscr S$-valued random variable. For example, $S_t$ may be the robot's joint angles at times 
 $$
 \begin{array}{c@{\,,\ }c@{\,,\ }c@{\,,\ }c@{\,,\ }c@{}c}
@@ -35,7 +35,7 @@ Firstly, the subscripts for "$p$" indicate that two different functions are used
 We can replace $[0,t]$ with $\lbrace 0, \tau, \cdots, {t-\tau}, t\rbrace$ to recover the discrete-time formulation. For instance, a discrete-time trajectory may be viewed as a function from the integers to $\mathscr X$ (or a section of a fiber bundle with base space the integers).
 </aside>
 
-## <span class=tertiary>␥</span> Trajectories \& Policies
+## Trajectories \& Policies
 
 So, $X_{[0,t]}$ is a random state trajectory (from $0$ to $t$), and $\chi$ is an example of a value that it can take. This implies the existence of a pdf $p_{X_{[0,t]}}(\chi)$ that should somehow "integrate to $1$". What is its domain? To simplify things, we can write the trajectory-space as $C([0, t],\mathscr X)$, assuming without much loss of generality that the trajectory $\chi\in C([0, t],\mathscr X)$ is continuous.[^trajspace]
 
@@ -47,7 +47,7 @@ We can always cheat and add $t$ to the state to make this simplification hold.
 
 Now, suppose there is some underlying distribution of initial conditions (represented by $X_0$) and we fix a policy $\pi$, then we get a combined stochastic process $(X_t,A_t)_{t\in[0,\infty)}$, which is the random state-action trajectory. Conversely, if we have a dataset of state-action trajectories, we can learn the $\pi$ that would generate them; this is <span class=accented>behavior cloning</span>. We can also make small perturbations to $\pi$ to see if the resulting trajectories improve upon some reward function (in expectation); this is <span class=accented>reinforcement learning</span>. Regularization can be introduced to ensure that the perturbed policy doesn't deviate too far from some baseline policy (as done in TRPO and PPO). The regularization term is typically an information-theoretic [divergence](https://en.wikipedia.org/wiki/Divergence_(statistics)) between $(X_t,A_t)_{t\in[0,\infty)}$ and the baseline policy; the divergence between two distributions measures how much they differ from each other, statistically.
 
-## <span class=tertiary>␥</span> Action Chunking
+## Action Chunking
 
 <aside class=aside-right>
 Do you (presumably a human) also operate on such a latency? In your case, $\delta$ is perhaps the time delay between when your <a href=https://www.teamfortress.com class=accented>Team Fortress 2</a> enemy first appears on-screen to when you begin moving the reticle towards their head. It is impressively small!

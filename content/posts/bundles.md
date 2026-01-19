@@ -7,7 +7,7 @@ summary: A principal bundle is a fiber bundle, that additionally has the right-a
 bgImage: /post-images/geometry/fiber_bundle.png
 ---
 
-### ␥ Fiber Bundles
+### Fiber Bundles
 
 A [fiber bundle](https://en.wikipedia.org/wiki/Fiber_bundle) is a sequence of maps of the form 
 
@@ -50,7 +50,7 @@ See <a href="https://mathoverflow.net/questions/50473/why-does-the-group-act-on-
 
 A [principal $G$-bundle](https://en.wikipedia.org/wiki/Principal_bundle) is one whose fiber $\mathcal F = G$ is a Lie group, and where each fiber has a right $G$-action that is compatible with the fiber bundle structure in a certain way. The reason why we consider a *right* action is that we can create principal bundles out of [homogeneous spaces](https://en.wikipedia.org/wiki/Homogeneous_space), and in doing so, the right-action on the fiber must play nice with the left-action of the homogeneous space. Let's assume you know a bit about homogeneous spaces, and begin our story there.
 
-### ␥ Coset Spaces
+### Coset Spaces
 
 A homogeneous space refers to a smooth manifold $\mathcal M$ equipped with a left $G$-action (satisfying some axioms). We let $g\in G$ act on $p\in\mathcal M$ to yield $g\cdot p\in \mathcal M$. A homogeneous space does not have a distinguished point (think of a sphere, on which no point is more special than the other). However, if we *do* choose a special point $p_0\in\mathcal M$ (sort of like choosing the origin of a coordinate system), we can view $\mathcal M$ as a [coset space](https://en.wikipedia.org/wiki/Homogeneous_space). We do so by considering the subgroup $G_{p_0} < G$ of group actions that leave the point $p_0$ fixed — the *[stabilizer](https://ncatlab.org/nlab/show/stabilizer+group)* subgroup of $p_0$ in $G$. Denoting the subgroup $G_{p_0}$ as $H$, we have the following picture:
 
@@ -107,7 +107,7 @@ This fiber bundle has a fiber-preserving $GL(n)$ action — matrix-vector multip
 
 -->
 
-### ␥ The Frame Bundle
+### The Frame Bundle
 Consider an ordered set of $n$ linearly independent vectors in $T_p\mathcal M$. One such set is called a *frame*. The space of all the frames at $p$ make up the fiber, and the union of these fibers leads to the notion of a [frame bundle](https://en.wikipedia.org/wiki/Frame_bundle) $F\mathcal M$. More formally, we can view a frame at $p\in\mathcal M$ as being a linear isomorphism from $\mathbb R^n$ to $T_p\mathcal M$. The frame bundle is then (as a set) the following object:
 $$
 F\mathcal M = \left\lbrace (\hspace{1pt}p, f)\,\mathrel|\,p\in\mathcal M,\ f:\mathbb R^n \rightarrow T_p\mathcal M \textup{ is an isomorphism}\right\rbrace
@@ -126,7 +126,7 @@ where $[f\circ \mathbf A](\mathbf v) = f(\mathbf A \mathbf v)$.
 There is a way to view $T\mathcal M$ as a fiber bundle that is "[associated](https://www.youtube.com/watch?v=q2GYZz6q3QI&t=6s)" to the frame bundle. We say that $GL(n)$ is the <i>structure group</i> of $T\mathcal M$, and we call $T\mathcal M$ a $GL(n)$-bundle. An associated bundle has a *left* action of its structure group. If that is confusing as hell, then you're on the right track.
 
 
-### ␥ Ehresmann Connections
+### Ehresmann Connections
 Think of the fibers as trees in a forest. Consider the plight of our monkey, [Ehresmann](https://en.wikipedia.org/wiki/Charles_Ehresmann). It is clear to him how to climb up and down a tree (using the right $H$-action), but Ehresmann wants to jump from one tree to another. He needs to decide what constitutes horizontal movement! Will he jump such that his height off the ground is the same before and after the jump? Will he jump so that the tree length $\ell$ (as measured from the ground) is the same? Perhaps he will jump in a direction perpendicular to his tree? 
 
  <div>
@@ -162,7 +162,7 @@ $$
 It's easy for me to say "$\mathfrak h$-valued one-form" and leave the rest to your imagination. However, there is a crucial aspect of the exterior algebra that must be <span class=accented>modified</span> when moving from $\mathbb R$-valued one forms to <a class=accented href=https://en.wikipedia.org/wiki/Lie_algebra–valued_differential_form>Lie-algebra valued one-forms</a>. Can you figure out what it is before clicking on the link?
 </aside> 
 
-### ␥ The Maurer-Cartan Form
+### The Maurer-Cartan Form
 When we used a coset space to create a principal $H$-bundle, we used the sequence of smooth maps $H\hookrightarrow G \rightarrow G/H.$
 This gives us a corresponding sequence of linear maps:
 $$\mathfrak h \,\hookrightarrow \,\mathfrak g \,\rightarrow \,\mathfrak g/\mathfrak h,$$
@@ -197,7 +197,7 @@ $$
 $$
 and the fact that the $L$ and $R$ maps commute gives us the desired equality. 
 
-### ␥ The Christoffel Symbols
+### The Christoffel Symbols
 What we call "a connection" in differential geometry can be viewed as an Ehresmann connection on the frame bundle. Given a coordinate chart $(U, x^i)$ on $\mathcal M$, we get a local section $\sigma$ of $F\mathcal M$ over $U$, defined by
  $$
   \sigma(p) = \left(\hspace{1pt}p, \frac{\partial}{\partial x^1}\Big|_p, \cdots, \frac{\partial}{\partial x^n}\Big|_p\right).
