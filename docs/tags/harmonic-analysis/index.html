@@ -312,8 +312,8 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             const viewportFocusPoint = viewportHeight * (0.3 + scrollProgress * 0.4);
 
             
-            const plateauRadius = viewportHeight * 0.08; 
-            const falloffDistance = viewportHeight * 0.25; 
+            const plateauRadius = viewportHeight * 0.12; 
+            const falloffDistance = viewportHeight * 0.18; 
 
             postCards.forEach((card, i) => {
                 const rect = card.getBoundingClientRect();
@@ -329,7 +329,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 } else {
                     
                     const falloffProgress = Math.min(1, (distance - plateauRadius) / falloffDistance);
-                    focus = Math.pow(1 - falloffProgress, 3); 
+                    focus = Math.pow(1 - falloffProgress, 4); 
                 }
                 cardFocusValues[i] = focus;
             });
