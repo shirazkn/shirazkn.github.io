@@ -113,7 +113,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             const viewportFocusPoint = viewportHeight * (0.3 + scrollProgress * 0.4);
 
             // Plateau parameters
-            const plateauRadius = viewportHeight * 0.12; // Cards within this distance get full focus
+            const plateauRadius = viewportHeight * 0.10; // Cards within this distance get full focus
             const falloffDistance = viewportHeight * 0.18; // Distance over which focus drops to 0
 
             postCards.forEach((card, i) => {
@@ -128,9 +128,9 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                     // Within plateau - full focus
                     focus = 1;
                 } else {
-                    // Outside plateau - rapid quartic falloff
+                    // Outside plateau - rapid cubic falloff
                     const falloffProgress = Math.min(1, (distance - plateauRadius) / falloffDistance);
-                    focus = Math.pow(1 - falloffProgress, 4); // Quartic for even more rapid drop
+                    focus = Math.pow(1 - falloffProgress, 3); // Cubic falloff
                 }
                 cardFocusValues[i] = focus;
             });
