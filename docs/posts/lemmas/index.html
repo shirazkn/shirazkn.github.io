@@ -699,18 +699,25 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
         if (scrollRafId) return;
         scrollRafId = requestAnimationFrame(() => {
             const viewportHeight = window.innerHeight;
-            const viewportCenter = viewportHeight * 0.4; 
+            const scrollY = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight;
+            const maxScroll = docHeight - viewportHeight;
+
+            
+            const scrollProgress = maxScroll > 0 ? scrollY / maxScroll : 0;
+            const viewportFocusPoint = viewportHeight * (0.3 + scrollProgress * 0.4);
 
             postCards.forEach((card, i) => {
                 const rect = card.getBoundingClientRect();
                 const cardCenter = rect.top + rect.height / 2;
 
                 
-                const distance = Math.abs(cardCenter - viewportCenter);
-                const maxDistance = viewportHeight * 0.6;
+                const distance = Math.abs(cardCenter - viewportFocusPoint);
+                const maxDistance = viewportHeight * 0.35; 
 
                 
-                const focus = Math.max(0, 1 - distance / maxDistance);
+                const linearFocus = Math.max(0, 1 - distance / maxDistance);
+                const focus = linearFocus * linearFocus; 
                 cardFocusValues[i] = focus;
             });
 

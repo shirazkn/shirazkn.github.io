@@ -104,18 +104,25 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
         if (scrollRafId) return;
         scrollRafId = requestAnimationFrame(() => {
             const viewportHeight = window.innerHeight;
-            const viewportCenter = viewportHeight * 0.4; // Focus point slightly above center
+            const scrollY = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight;
+            const maxScroll = docHeight - viewportHeight;
+
+            // Focus point moves from 30% to 70% as you scroll down
+            const scrollProgress = maxScroll > 0 ? scrollY / maxScroll : 0;
+            const viewportFocusPoint = viewportHeight * (0.3 + scrollProgress * 0.4);
 
             postCards.forEach((card, i) => {
                 const rect = card.getBoundingClientRect();
                 const cardCenter = rect.top + rect.height / 2;
 
                 // Calculate how close the card center is to the focus point
-                const distance = Math.abs(cardCenter - viewportCenter);
-                const maxDistance = viewportHeight * 0.6;
+                const distance = Math.abs(cardCenter - viewportFocusPoint);
+                const maxDistance = viewportHeight * 0.35; // Tighter focus zone
 
-                // Focus value: 1 when at focus point, 0 when far away
-                const focus = Math.max(0, 1 - distance / maxDistance);
+                // Sharper falloff using quadratic curve
+                const linearFocus = Math.max(0, 1 - distance / maxDistance);
+                const focus = linearFocus * linearFocus; // Square for sharper peak
                 cardFocusValues[i] = focus;
             });
 
