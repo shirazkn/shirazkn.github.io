@@ -411,13 +411,14 @@ const isHomePage = document.querySelector('.first-entry.home-info') !== null;
 const postCards = document.querySelectorAll('.post-entry');
 const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 
-if (isTouchDevice) {
+if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in window) {
     
     let gyroBaselineBeta = null;
     let gyroBaselineGamma = null;
     const GYRO_DRIFT_RATE = 0.008;
     let gyroRafId = null;
     let latestBeta = null, latestGamma = null;
+    let cardGyroPermissionRequested = false;
 
     function handleCardOrientation(event) {
         latestBeta = event.beta;
@@ -427,23 +428,42 @@ if (isTouchDevice) {
         if (!gyroRafId) {
             gyroRafId = requestAnimationFrame(() => {
                 
-                if (gyroBaselineBeta === null) {
-                    gyroBaselineBeta = latestBeta;
-                    gyroBaselineGamma = latestGamma;
+                const orientation = screen.orientation?.angle || window.orientation || 0;
+                let adjustedBeta = latestBeta;
+                let adjustedGamma = latestGamma;
+
+                if (orientation === 90) {
+                    
+                    adjustedBeta = latestGamma;
+                    adjustedGamma = -latestBeta;
+                } else if (orientation === -90 || orientation === 270) {
+                    
+                    adjustedBeta = -latestGamma;
+                    adjustedGamma = latestBeta;
+                } else if (orientation === 180) {
+                    
+                    adjustedBeta = -latestBeta;
+                    adjustedGamma = -latestGamma;
                 }
 
                 
-                gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * GYRO_DRIFT_RATE;
-                gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * GYRO_DRIFT_RATE;
+                if (gyroBaselineBeta === null) {
+                    gyroBaselineBeta = adjustedBeta;
+                    gyroBaselineGamma = adjustedGamma;
+                }
 
                 
-                let relativeBeta = latestBeta - gyroBaselineBeta;
-                let relativeGamma = latestGamma - gyroBaselineGamma;
+                gyroBaselineBeta += (adjustedBeta - gyroBaselineBeta) * GYRO_DRIFT_RATE;
+                gyroBaselineGamma += (adjustedGamma - gyroBaselineGamma) * GYRO_DRIFT_RATE;
+
+                
+                let relativeBeta = adjustedBeta - gyroBaselineBeta;
+                let relativeGamma = adjustedGamma - gyroBaselineGamma;
 
                 
                 if (Math.abs(relativeBeta) > 40 || Math.abs(relativeGamma) > 40) {
-                    gyroBaselineBeta = latestBeta;
-                    gyroBaselineGamma = latestGamma;
+                    gyroBaselineBeta = adjustedBeta;
+                    gyroBaselineGamma = adjustedGamma;
                     relativeBeta = 0;
                     relativeGamma = 0;
                 }
@@ -460,23 +480,36 @@ if (isTouchDevice) {
         }
     }
 
+    function enableCardGyroscope() {
+        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+    }
+
     
     if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        
+        enableCardGyroscope();
+
+        
         const requestPermission = () => {
+            if (cardGyroPermissionRequested) return;
+            cardGyroPermissionRequested = true;
+
             DeviceOrientationEvent.requestPermission()
                 .then(state => {
                     if (state === 'granted') {
-                        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+                        enableCardGyroscope();
                     }
                 })
-                .catch(() => {});
+                .catch(() => {
+                    cardGyroPermissionRequested = false;
+                });
         };
         document.addEventListener('touchstart', requestPermission, { once: true, passive: true });
-        
-        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+        document.addEventListener('touchend', requestPermission, { once: true, passive: true });
+        document.addEventListener('click', requestPermission, { once: true, passive: true });
     } else {
         
-        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+        enableCardGyroscope();
     }
 } else {
     

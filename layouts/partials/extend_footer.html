@@ -82,13 +82,14 @@ const isHomePage = document.querySelector('.first-entry.home-info') !== null;
 const postCards = document.querySelectorAll('.post-entry');
 const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 
-if (isTouchDevice) {
+if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in window) {
     // Mobile: use gyroscope for all cards with RAF for smooth rendering
     let gyroBaselineBeta = null;
     let gyroBaselineGamma = null;
     const GYRO_DRIFT_RATE = 0.008;
     let gyroRafId = null;
     let latestBeta = null, latestGamma = null;
+    let cardGyroPermissionRequested = false;
 
     function handleCardOrientation(event) {
         latestBeta = event.beta;
@@ -97,24 +98,43 @@ if (isTouchDevice) {
 
         if (!gyroRafId) {
             gyroRafId = requestAnimationFrame(() => {
+                // Adjust for screen orientation
+                const orientation = screen.orientation?.angle || window.orientation || 0;
+                let adjustedBeta = latestBeta;
+                let adjustedGamma = latestGamma;
+
+                if (orientation === 90) {
+                    // Landscape left
+                    adjustedBeta = latestGamma;
+                    adjustedGamma = -latestBeta;
+                } else if (orientation === -90 || orientation === 270) {
+                    // Landscape right
+                    adjustedBeta = -latestGamma;
+                    adjustedGamma = latestBeta;
+                } else if (orientation === 180) {
+                    // Upside down
+                    adjustedBeta = -latestBeta;
+                    adjustedGamma = -latestGamma;
+                }
+
                 // Calibrate on first reading
                 if (gyroBaselineBeta === null) {
-                    gyroBaselineBeta = latestBeta;
-                    gyroBaselineGamma = latestGamma;
+                    gyroBaselineBeta = adjustedBeta;
+                    gyroBaselineGamma = adjustedGamma;
                 }
 
                 // Drift baseline toward current orientation
-                gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * GYRO_DRIFT_RATE;
-                gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * GYRO_DRIFT_RATE;
+                gyroBaselineBeta += (adjustedBeta - gyroBaselineBeta) * GYRO_DRIFT_RATE;
+                gyroBaselineGamma += (adjustedGamma - gyroBaselineGamma) * GYRO_DRIFT_RATE;
 
                 // Calculate relative tilt
-                let relativeBeta = latestBeta - gyroBaselineBeta;
-                let relativeGamma = latestGamma - gyroBaselineGamma;
+                let relativeBeta = adjustedBeta - gyroBaselineBeta;
+                let relativeGamma = adjustedGamma - gyroBaselineGamma;
 
                 // Recalibrate if extreme
                 if (Math.abs(relativeBeta) > 40 || Math.abs(relativeGamma) > 40) {
-                    gyroBaselineBeta = latestBeta;
-                    gyroBaselineGamma = latestGamma;
+                    gyroBaselineBeta = adjustedBeta;
+                    gyroBaselineGamma = adjustedGamma;
                     relativeBeta = 0;
                     relativeGamma = 0;
                 }
@@ -131,23 +151,36 @@ if (isTouchDevice) {
         }
     }
 
-    // Request gyroscope permission (iOS)
+    function enableCardGyroscope() {
+        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+    }
+
+    // iOS 13+ requires permission - must be triggered by user gesture
     if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        // Try enabling immediately - works if permission was already granted
+        enableCardGyroscope();
+
+        // Also set up gesture-based permission request as fallback
         const requestPermission = () => {
+            if (cardGyroPermissionRequested) return;
+            cardGyroPermissionRequested = true;
+
             DeviceOrientationEvent.requestPermission()
                 .then(state => {
                     if (state === 'granted') {
-                        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+                        enableCardGyroscope();
                     }
                 })
-                .catch(() => {});
+                .catch(() => {
+                    cardGyroPermissionRequested = false;
+                });
         };
         document.addEventListener('touchstart', requestPermission, { once: true, passive: true });
-        // Also try immediately in case permission was already granted
-        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+        document.addEventListener('touchend', requestPermission, { once: true, passive: true });
+        document.addEventListener('click', requestPermission, { once: true, passive: true });
     } else {
         // Android - just enable directly
-        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+        enableCardGyroscope();
     }
 } else {
     // Desktop: mouse tracking with RAF for smooth rendering
