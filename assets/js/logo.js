@@ -111,10 +111,25 @@ function calibrateGyroscope(beta, gamma) {
 }
 
 function handleOrientation(event) {
-  const beta = event.beta;
-  const gamma = event.gamma;
+  if (event.beta === null || event.gamma === null) return;
 
-  if (beta === null || gamma === null) return;
+  // Adjust axes based on screen orientation
+  const orientation = screen.orientation?.angle ?? window.orientation ?? 0;
+  let beta, gamma;
+
+  if (orientation === 90) {
+    beta = event.gamma;
+    gamma = -event.beta;
+  } else if (orientation === -90 || orientation === 270) {
+    beta = -event.gamma;
+    gamma = event.beta;
+  } else if (orientation === 180) {
+    beta = -event.beta;
+    gamma = -event.gamma;
+  } else {
+    beta = event.beta;
+    gamma = event.gamma;
+  }
 
   // Calibrate on first reading
   if (gyroBaselineBeta === null) {

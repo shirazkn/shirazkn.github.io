@@ -712,56 +712,56 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     let cardGyroPermissionRequested = false;
 
     function handleCardOrientation(event) {
-        latestBeta = event.beta;
-        latestGamma = event.gamma;
-        if (latestBeta === null || latestGamma === null) return;
+        if (event.beta === null || event.gamma === null) return;
+
+        
+        const orientation = screen.orientation?.angle ?? window.orientation ?? 0;
+        let beta, gamma;
+
+        if (orientation === 90) {
+            beta = event.gamma;
+            gamma = -event.beta;
+        } else if (orientation === -90 || orientation === 270) {
+            beta = -event.gamma;
+            gamma = event.beta;
+        } else if (orientation === 180) {
+            beta = -event.beta;
+            gamma = -event.gamma;
+        } else {
+            beta = event.beta;
+            gamma = event.gamma;
+        }
+
+        latestBeta = beta;
+        latestGamma = gamma;
 
         if (!gyroRafId) {
             gyroRafId = requestAnimationFrame(() => {
                 
-                const orientation = screen.orientation?.angle || window.orientation || 0;
-                let adjustedBeta = latestBeta;
-                let adjustedGamma = latestGamma;
-
-                if (orientation === 90) {
-                    
-                    adjustedBeta = latestGamma;
-                    adjustedGamma = -latestBeta;
-                } else if (orientation === -90 || orientation === 270) {
-                    
-                    adjustedBeta = -latestGamma;
-                    adjustedGamma = latestBeta;
-                } else if (orientation === 180) {
-                    
-                    adjustedBeta = -latestBeta;
-                    adjustedGamma = -latestGamma;
-                }
-
-                
                 if (gyroBaselineBeta === null) {
-                    gyroBaselineBeta = adjustedBeta;
-                    gyroBaselineGamma = adjustedGamma;
+                    gyroBaselineBeta = latestBeta;
+                    gyroBaselineGamma = latestGamma;
                 }
 
                 
-                gyroBaselineBeta += (adjustedBeta - gyroBaselineBeta) * GYRO_DRIFT_RATE;
-                gyroBaselineGamma += (adjustedGamma - gyroBaselineGamma) * GYRO_DRIFT_RATE;
+                gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * GYRO_DRIFT_RATE;
+                gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * GYRO_DRIFT_RATE;
 
                 
-                let relativeBeta = adjustedBeta - gyroBaselineBeta;
-                let relativeGamma = adjustedGamma - gyroBaselineGamma;
+                let relativeBeta = latestBeta - gyroBaselineBeta;
+                let relativeGamma = latestGamma - gyroBaselineGamma;
 
                 
                 if (Math.abs(relativeBeta) > 40 || Math.abs(relativeGamma) > 40) {
-                    gyroBaselineBeta = adjustedBeta;
-                    gyroBaselineGamma = adjustedGamma;
+                    gyroBaselineBeta = latestBeta;
+                    gyroBaselineGamma = latestGamma;
                     relativeBeta = 0;
                     relativeGamma = 0;
                 }
 
                 
-                const rotateY = Math.max(-1.5, Math.min(1.5, relativeGamma * 0.08));
-                const rotateX = Math.max(-1.5, Math.min(1.5, relativeBeta * -0.08));
+                const rotateY = Math.max(-6, Math.min(6, relativeGamma * 0.4));
+                const rotateX = Math.max(-6, Math.min(6, relativeBeta * -0.4));
 
                 postCards.forEach(card => {
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.003)`;
