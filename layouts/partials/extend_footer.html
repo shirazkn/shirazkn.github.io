@@ -127,8 +127,8 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     function applyCardTransforms() {
         postCards.forEach((card, i) => {
             const focus = cardFocusValues[i];
-            // Scale: 1.0 when unfocused, up to 1.015 when fully focused
-            const scale = 1 + focus * 0.015;
+            // Scale: 1.0 when unfocused, up to 1.02 when fully focused
+            const scale = 1 + focus * 0.02;
             // Gyro effect scales with focus
             const gyroScale = 0.3 + focus * 0.7;
             const rotX = currentRotateX * gyroScale;

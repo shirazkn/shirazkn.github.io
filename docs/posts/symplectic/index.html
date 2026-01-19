@@ -771,7 +771,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
         postCards.forEach((card, i) => {
             const focus = cardFocusValues[i];
             
-            const scale = 1 + focus * 0.015;
+            const scale = 1 + focus * 0.02;
             
             const gyroScale = 0.3 + focus * 0.7;
             const rotX = currentRotateX * gyroScale;
