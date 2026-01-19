@@ -527,32 +527,38 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
 
     
     let cardFocusValues = new Array(postCards.length).fill(0);
+    let scrollRafId = null;
 
     function updateCardFocus() {
-        const viewportHeight = window.innerHeight;
-        const viewportCenter = viewportHeight * 0.4; 
+        
+        if (scrollRafId) return;
+        scrollRafId = requestAnimationFrame(() => {
+            const viewportHeight = window.innerHeight;
+            const viewportCenter = viewportHeight * 0.4; 
 
-        postCards.forEach((card, i) => {
-            const rect = card.getBoundingClientRect();
-            const cardCenter = rect.top + rect.height / 2;
+            postCards.forEach((card, i) => {
+                const rect = card.getBoundingClientRect();
+                const cardCenter = rect.top + rect.height / 2;
 
-            
-            const distance = Math.abs(cardCenter - viewportCenter);
-            const maxDistance = viewportHeight * 0.6;
+                
+                const distance = Math.abs(cardCenter - viewportCenter);
+                const maxDistance = viewportHeight * 0.6;
 
-            
-            const focus = Math.max(0, 1 - distance / maxDistance);
-            cardFocusValues[i] = focus;
+                
+                const focus = Math.max(0, 1 - distance / maxDistance);
+                cardFocusValues[i] = focus;
+            });
+
+            applyCardTransforms();
+            scrollRafId = null;
         });
-
-        applyCardTransforms();
     }
 
     function applyCardTransforms() {
         postCards.forEach((card, i) => {
             const focus = cardFocusValues[i];
             
-            const scale = 1 + focus * 0.008;
+            const scale = 1 + focus * 0.015;
             
             const gyroScale = 0.3 + focus * 0.7;
             const rotX = currentRotateX * gyroScale;

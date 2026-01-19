@@ -97,32 +97,38 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
 
     // Scroll-based focus: track which card is most "in view"
     let cardFocusValues = new Array(postCards.length).fill(0);
+    let scrollRafId = null;
 
     function updateCardFocus() {
-        const viewportHeight = window.innerHeight;
-        const viewportCenter = viewportHeight * 0.4; // Focus point slightly above center
+        // Throttle with RAF to prevent jitter
+        if (scrollRafId) return;
+        scrollRafId = requestAnimationFrame(() => {
+            const viewportHeight = window.innerHeight;
+            const viewportCenter = viewportHeight * 0.4; // Focus point slightly above center
 
-        postCards.forEach((card, i) => {
-            const rect = card.getBoundingClientRect();
-            const cardCenter = rect.top + rect.height / 2;
+            postCards.forEach((card, i) => {
+                const rect = card.getBoundingClientRect();
+                const cardCenter = rect.top + rect.height / 2;
 
-            // Calculate how close the card center is to the focus point
-            const distance = Math.abs(cardCenter - viewportCenter);
-            const maxDistance = viewportHeight * 0.6;
+                // Calculate how close the card center is to the focus point
+                const distance = Math.abs(cardCenter - viewportCenter);
+                const maxDistance = viewportHeight * 0.6;
 
-            // Focus value: 1 when at focus point, 0 when far away
-            const focus = Math.max(0, 1 - distance / maxDistance);
-            cardFocusValues[i] = focus;
+                // Focus value: 1 when at focus point, 0 when far away
+                const focus = Math.max(0, 1 - distance / maxDistance);
+                cardFocusValues[i] = focus;
+            });
+
+            applyCardTransforms();
+            scrollRafId = null;
         });
-
-        applyCardTransforms();
     }
 
     function applyCardTransforms() {
         postCards.forEach((card, i) => {
             const focus = cardFocusValues[i];
-            // Scale: 1.0 when unfocused, up to 1.008 when fully focused
-            const scale = 1 + focus * 0.008;
+            // Scale: 1.0 when unfocused, up to 1.015 when fully focused
+            const scale = 1 + focus * 0.015;
             // Gyro effect scales with focus
             const gyroScale = 0.3 + focus * 0.7;
             const rotX = currentRotateX * gyroScale;
