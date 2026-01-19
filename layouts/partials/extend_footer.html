@@ -112,17 +112,26 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             const scrollProgress = maxScroll > 0 ? scrollY / maxScroll : 0;
             const viewportFocusPoint = viewportHeight * (0.3 + scrollProgress * 0.4);
 
+            // Plateau parameters
+            const plateauRadius = viewportHeight * 0.08; // Cards within this distance get full focus
+            const falloffDistance = viewportHeight * 0.25; // Distance over which focus drops to 0
+
             postCards.forEach((card, i) => {
                 const rect = card.getBoundingClientRect();
                 const cardCenter = rect.top + rect.height / 2;
 
-                // Calculate how close the card center is to the focus point
+                // Calculate distance from focus point
                 const distance = Math.abs(cardCenter - viewportFocusPoint);
-                const maxDistance = viewportHeight * 0.35; // Tighter focus zone
 
-                // Sharper falloff using quadratic curve
-                const linearFocus = Math.max(0, 1 - distance / maxDistance);
-                const focus = linearFocus * linearFocus; // Square for sharper peak
+                let focus;
+                if (distance <= plateauRadius) {
+                    // Within plateau - full focus
+                    focus = 1;
+                } else {
+                    // Outside plateau - rapid cubic falloff
+                    const falloffProgress = Math.min(1, (distance - plateauRadius) / falloffDistance);
+                    focus = Math.pow(1 - falloffProgress, 3); // Cubic for rapid drop
+                }
                 cardFocusValues[i] = focus;
             });
 
@@ -143,9 +152,12 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             // Shadow: more pronounced when focused
             const shadowOpacity = 0.3 + focus * 0.3;
             const shadowBlur = 2 + focus * 4;
+            // Opacity: dim unfocused cards significantly
+            const opacity = 0.4 + focus * 0.6;
 
             card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${scale})`;
             card.style.boxShadow = `0 ${1 + focus * 2}px ${shadowBlur}px rgba(0, 0, 0, ${shadowOpacity})`;
+            card.style.opacity = opacity;
         });
     }
 

@@ -589,17 +589,26 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             const scrollProgress = maxScroll > 0 ? scrollY / maxScroll : 0;
             const viewportFocusPoint = viewportHeight * (0.3 + scrollProgress * 0.4);
 
+            
+            const plateauRadius = viewportHeight * 0.08; 
+            const falloffDistance = viewportHeight * 0.25; 
+
             postCards.forEach((card, i) => {
                 const rect = card.getBoundingClientRect();
                 const cardCenter = rect.top + rect.height / 2;
 
                 
                 const distance = Math.abs(cardCenter - viewportFocusPoint);
-                const maxDistance = viewportHeight * 0.35; 
 
-                
-                const linearFocus = Math.max(0, 1 - distance / maxDistance);
-                const focus = linearFocus * linearFocus; 
+                let focus;
+                if (distance <= plateauRadius) {
+                    
+                    focus = 1;
+                } else {
+                    
+                    const falloffProgress = Math.min(1, (distance - plateauRadius) / falloffDistance);
+                    focus = Math.pow(1 - falloffProgress, 3); 
+                }
                 cardFocusValues[i] = focus;
             });
 
@@ -620,9 +629,12 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             
             const shadowOpacity = 0.3 + focus * 0.3;
             const shadowBlur = 2 + focus * 4;
+            
+            const opacity = 0.4 + focus * 0.6;
 
             card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${scale})`;
             card.style.boxShadow = `0 ${1 + focus * 2}px ${shadowBlur}px rgba(0, 0, 0, ${shadowOpacity})`;
+            card.style.opacity = opacity;
         });
     }
 
