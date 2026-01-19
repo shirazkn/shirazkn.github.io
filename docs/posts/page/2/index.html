@@ -10,7 +10,7 @@
 <meta name="description" content="Posts - Shiraz">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.e150a9308943c96db7a04da2d3c2cfc65f8f6bdf60a8495e630a39fd37bfaf93.css" integrity="sha256-4VCpMIlDyW23oE2i08LPxl&#43;Pa99gqEleYwo5/Te/r5M=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.40a4c14d4bf558e17c1349ccb441dcc7a4d0fe518beb3a7911c6ecf8c53cbd42.css" integrity="sha256-QKTBTUv1WOF8E0nMtEHcx6TQ/lGL6zp5Ecbs&#43;MU8vUI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -351,12 +351,13 @@ document.querySelectorAll('.logo a, .post-title').forEach(el => {
 
 
 const isDark = () => document.body.classList.contains('dark');
-const hoverColors = isDark()
-    ? ['#ff51af', '#ff51af', '#f161ac', '#f161ac', '#db327e', '#db327e', '#3b82f6', '#38bdf8']
-    : ['#ff51af', '#ff51af', '#e83a89', '#e83a89', '#f542a1', '#d6306f', '#3b9eff', '#00c2ff'];
+const hoverColorsDark = ['#ff51af', '#ff51af', '#f161ac', '#f161ac', '#db327e', '#db327e', '#3b82f6', '#38bdf8'];
+const hoverColorsLight = ['#ff51af', '#ff51af', '#e83a89', '#e83a89', '#f542a1', '#d6306f', '#3b9eff', '#00c2ff'];
+const getHoverColors = () => isDark() ? hoverColorsDark : hoverColorsLight;
 document.querySelectorAll('.hover-letter').forEach(letter => {
     letter.addEventListener('mouseenter', () => {
-        letter.style.color = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+        const colors = getHoverColors();
+        letter.style.color = colors[Math.floor(Math.random() * colors.length)];
     });
     letter.addEventListener('mouseleave', () => {
         letter.style.color = '';
@@ -364,12 +365,17 @@ document.querySelectorAll('.hover-letter').forEach(letter => {
 });
 
 
+let scanInProgress = false;
 const scanElement = (el) => {
+    if (scanInProgress) return;
+    scanInProgress = true;
     const letters = el.querySelectorAll('.hover-letter');
+    const colors = getHoverColors();
+    const totalTime = letters.length * 50 + 100;
     letters.forEach((letter, i) => {
         setTimeout(() => {
             letter.style.transition = 'top 0.05s ease-out, color 0s';
-            letter.style.color = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+            letter.style.color = colors[Math.floor(Math.random() * colors.length)];
             letter.style.top = '-0.08em';
             setTimeout(() => {
                 letter.style.transition = '';
@@ -378,6 +384,7 @@ const scanElement = (el) => {
             }, 100);
         }, i * 50);
     });
+    setTimeout(() => { scanInProgress = false; }, totalTime);
 };
 
 let lastScannedEl = null;
@@ -404,6 +411,27 @@ const triggerRandomScan = () => {
 const isHomePage = document.querySelector('.first-entry.home-info') !== null;
 
 
+
+
+
+const CARD_CONFIG = {
+    
+    hoverLift: 4,
+    
+    maxRotation: 0.8,
+    
+    shadowOpacityLight: 0.22,      
+    shadowOpacityDark: 0.45,       
+    shadowOpacityRange: 0.12,      
+    
+    shadowBlurBase: 1.5,           
+    shadowBlurHover: 2.5,          
+    shadowYOffsetBase: 1,          
+    shadowYOffsetHover: 2,         
+};
+
+
+
 const postCards = document.querySelectorAll('.post-entry');
 const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 
@@ -412,7 +440,8 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     
     let gyroBaselineBeta = null;
     let gyroBaselineGamma = null;
-    const GYRO_DRIFT_RATE = 0.012;
+    const GYRO_DRIFT_RATE_MIN = 0.008;
+    const GYRO_DRIFT_RATE_MAX = 0.15;
     let gyroRafId = null;
     let latestBeta = null, latestGamma = null;
     let cardGyroPermissionRequested = false;
@@ -434,37 +463,33 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             const maxScroll = docHeight - viewportHeight;
 
             
-            const firstCardRect = postCards[0]?.getBoundingClientRect();
-            const lastCardRect = postCards[postCards.length - 1]?.getBoundingClientRect();
-            const firstCardCenter = firstCardRect ? firstCardRect.top + firstCardRect.height / 2 : viewportHeight * 0.3;
-            const lastCardCenter = lastCardRect ? lastCardRect.top + lastCardRect.height / 2 : viewportHeight * 0.7;
+            const cardCenters = [];
+            for (let i = 0; i < postCards.length; i++) {
+                const rect = postCards[i].getBoundingClientRect();
+                cardCenters[i] = rect.top + rect.height / 2;
+            }
+
+            const firstCardCenter = cardCenters[0] ?? viewportHeight * 0.3;
+            const lastCardCenter = cardCenters[cardCenters.length - 1] ?? viewportHeight * 0.7;
 
             
             const scrollProgress = maxScroll > 0 ? scrollY / maxScroll : 0;
             const viewportFocusPoint = firstCardCenter + scrollProgress * (lastCardCenter - firstCardCenter);
 
             
-            const plateauRadius = viewportHeight * 0.10; 
-            const falloffDistance = viewportHeight * 0.18; 
+            const plateauRadius = viewportHeight * 0.10;
+            const falloffDistance = viewportHeight * 0.18;
 
-            postCards.forEach((card, i) => {
-                const rect = card.getBoundingClientRect();
-                const cardCenter = rect.top + rect.height / 2;
-
-                
-                const distance = Math.abs(cardCenter - viewportFocusPoint);
-
-                let focus;
+            
+            for (let i = 0; i < postCards.length; i++) {
+                const distance = Math.abs(cardCenters[i] - viewportFocusPoint);
                 if (distance <= plateauRadius) {
-                    
-                    focus = 1;
+                    cardFocusValues[i] = 1;
                 } else {
-                    
                     const falloffProgress = Math.min(1, (distance - plateauRadius) / falloffDistance);
-                    focus = Math.pow(1 - falloffProgress, 3); 
+                    cardFocusValues[i] = (1 - falloffProgress) * (1 - falloffProgress);
                 }
-                cardFocusValues[i] = focus;
-            });
+            }
 
             applyCardTransforms();
             scrollRafId = null;
@@ -484,7 +509,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             const shadowOpacity = 0.3 + focus * 0.3;
             const shadowBlur = 2 + focus * 4;
             
-            const opacity = 0.4 + focus * 0.6;
+            const opacity = 0.25 + focus * 0.75;
 
             card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${scale})`;
             card.style.boxShadow = `0 ${1 + focus * 2}px ${shadowBlur}px rgba(0, 0, 0, ${shadowOpacity})`;
@@ -525,20 +550,17 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 }
 
                 
-                gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * GYRO_DRIFT_RATE;
-                gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * GYRO_DRIFT_RATE;
+                const relativeBeta = latestBeta - gyroBaselineBeta;
+                const relativeGamma = latestGamma - gyroBaselineGamma;
 
                 
-                let relativeBeta = latestBeta - gyroBaselineBeta;
-                let relativeGamma = latestGamma - gyroBaselineGamma;
+                const maxTilt = Math.max(Math.abs(relativeBeta), Math.abs(relativeGamma));
+                const tiltFactor = Math.min(1, maxTilt / 40);
+                const driftRate = GYRO_DRIFT_RATE_MIN + tiltFactor * tiltFactor * (GYRO_DRIFT_RATE_MAX - GYRO_DRIFT_RATE_MIN);
 
                 
-                if (Math.abs(relativeBeta) > 40 || Math.abs(relativeGamma) > 40) {
-                    gyroBaselineBeta = latestBeta;
-                    gyroBaselineGamma = latestGamma;
-                    relativeBeta = 0;
-                    relativeGamma = 0;
-                }
+                gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * driftRate;
+                gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * driftRate;
 
                 
                 currentRotateY = Math.max(-8, Math.min(8, relativeGamma * 0.35));
@@ -588,42 +610,66 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     }
 } else {
     
+    
+    let currentMouseCard = null;
+    let lastMouseX = 0, lastMouseY = 0;
+
     postCards.forEach(card => {
         let rafId = null;
-        let mouseX = 0, mouseY = 0;
+        let isPressed = false;
+
+        card.addEventListener('mouseenter', () => {
+            currentMouseCard = card;
+        });
 
         card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            mouseX = e.clientX - rect.left;
-            mouseY = e.clientY - rect.top;
+            if (isPressed) return; 
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
 
             if (!rafId) {
                 rafId = requestAnimationFrame(() => {
+                    if (isPressed) { rafId = null; return; }
+                    const rect = card.getBoundingClientRect();
+                    const mouseX = lastMouseX - rect.left;
+                    const mouseY = lastMouseY - rect.top;
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
-                    const rotateX = (mouseY - centerY) / centerY * -0.8;
-                    const rotateY = (mouseX - centerX) / centerX * 0.8;
+                    const rotateX = (mouseY - centerY) / centerY * -CARD_CONFIG.maxRotation;
+                    const rotateY = (mouseX - centerX) / centerX * CARD_CONFIG.maxRotation;
                     const normalizedY = (centerY - mouseY) / centerY;
                     const isDarkMode = document.body.classList.contains('dark');
-                    const baseOpacity = isDarkMode ? 0.35 : 0.15;
-                    const opacityRange = isDarkMode ? 0.25 : 0.15;
-                    const shadowOpacity = Math.max(0, baseOpacity + normalizedY * opacityRange);
-                    const blur = isDarkMode ? 1 : 0.5;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-1px) scale(1.004)`;
-                    card.style.boxShadow = `0 1px ${blur}px rgba(0, 0, 0, ${shadowOpacity})`;
+                    const baseOpacity = isDarkMode ? CARD_CONFIG.shadowOpacityDark : CARD_CONFIG.shadowOpacityLight;
+                    const shadowOpacity = Math.max(0, baseOpacity + normalizedY * CARD_CONFIG.shadowOpacityRange);
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${CARD_CONFIG.hoverLift}px)`;
+                    card.style.boxShadow = `0 ${CARD_CONFIG.shadowYOffsetHover}px ${CARD_CONFIG.shadowBlurHover}px rgba(0, 0, 0, ${shadowOpacity})`;
                     rafId = null;
                 });
             }
         });
+
+        card.addEventListener('mousedown', () => {
+            isPressed = true;
+            card.style.transform = 'scale(0.99)';
+            card.style.boxShadow = '';
+        });
+
+        card.addEventListener('mouseup', () => {
+            isPressed = false;
+        });
+
         card.addEventListener('mouseleave', () => {
             if (rafId) {
                 cancelAnimationFrame(rafId);
                 rafId = null;
             }
+            isPressed = false;
             card.style.transform = '';
             card.style.boxShadow = '';
+            currentMouseCard = null;
         });
     });
+
 }
 
 if (isHomePage) {

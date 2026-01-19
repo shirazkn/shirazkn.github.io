@@ -1,9 +1,9 @@
 // Physics constants
 const DT = 25;
 const CLIP_DISTANCE = DT * DT;
-const K_OVER_M = 0.0006;
-const C_OVER_M = 0.06;
-const MAX_SPEED = 15.0;
+const K_OVER_M = 0.00025;
+const C_OVER_M = 0.05;
+const MAX_SPEED = 10.0;
 
 // State
 let targetX, targetY;
@@ -98,16 +98,13 @@ function initGyroscope() {
 // Gyroscope calibration
 let gyroBaselineBeta = null;
 let gyroBaselineGamma = null;
-const GYRO_RECALIBRATE_THRESHOLD = 50; // Recalibrate if tilt exceeds this
-const GYRO_DRIFT_RATE = 0.008; // How fast baseline drifts toward current orientation
+const GYRO_DRIFT_RATE_MIN = 0.008;
+const GYRO_DRIFT_RATE_MAX = 0.15;
+let gyroRafId = null;
+let latestBeta = null, latestGamma = null;
 
 function enableGyroscope() {
   window.addEventListener('deviceorientation', handleOrientation, { passive: true });
-}
-
-function calibrateGyroscope(beta, gamma) {
-  gyroBaselineBeta = beta;
-  gyroBaselineGamma = gamma;
 }
 
 function handleOrientation(event) {
@@ -131,34 +128,42 @@ function handleOrientation(event) {
     gamma = event.gamma;
   }
 
-  // Calibrate on first reading
-  if (gyroBaselineBeta === null) {
-    calibrateGyroscope(beta, gamma);
+  latestBeta = beta;
+  latestGamma = gamma;
+
+  // Throttle with RAF for smoother rendering
+  if (!gyroRafId) {
+    gyroRafId = requestAnimationFrame(() => {
+      // Calibrate on first reading
+      if (gyroBaselineBeta === null) {
+        gyroBaselineBeta = latestBeta;
+        gyroBaselineGamma = latestGamma;
+      }
+
+      useGyroscope = true;
+
+      // Calculate relative tilt from baseline
+      const relativeBeta = latestBeta - gyroBaselineBeta;
+      const relativeGamma = latestGamma - gyroBaselineGamma;
+
+      // Adaptive drift rate: faster recentering for extreme tilts
+      const maxTilt = Math.max(Math.abs(relativeBeta), Math.abs(relativeGamma));
+      const tiltFactor = Math.min(1, maxTilt / 40);
+      const driftRate = GYRO_DRIFT_RATE_MIN + tiltFactor * tiltFactor * (GYRO_DRIFT_RATE_MAX - GYRO_DRIFT_RATE_MIN);
+
+      // Drift baseline toward current orientation
+      gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * driftRate;
+      gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * driftRate;
+
+      const tiltX = Math.max(-30, Math.min(30, relativeGamma));
+      const tiltY = Math.max(-30, Math.min(30, relativeBeta));
+
+      targetX = centreX + (tiltX / 30) * centreX * 1.5;
+      targetY = centreY + (tiltY / 30) * centreY * 1.2;
+
+      gyroRafId = null;
+    });
   }
-
-  useGyroscope = true;
-
-  // Slowly drift baseline toward current orientation (recentering)
-  gyroBaselineBeta += (beta - gyroBaselineBeta) * GYRO_DRIFT_RATE;
-  gyroBaselineGamma += (gamma - gyroBaselineGamma) * GYRO_DRIFT_RATE;
-
-  // Calculate relative tilt from baseline
-  let relativeBeta = beta - gyroBaselineBeta;
-  let relativeGamma = gamma - gyroBaselineGamma;
-
-  // Recalibrate if values are extreme (user likely moved phone significantly)
-  if (Math.abs(relativeBeta) > GYRO_RECALIBRATE_THRESHOLD ||
-      Math.abs(relativeGamma) > GYRO_RECALIBRATE_THRESHOLD) {
-    calibrateGyroscope(beta, gamma);
-    relativeBeta = 0;
-    relativeGamma = 0;
-  }
-
-  const tiltX = Math.max(-30, Math.min(30, relativeGamma));
-  const tiltY = Math.max(-30, Math.min(30, relativeBeta));
-
-  targetX = centreX + (tiltX / 30) * centreX * 1.5;
-  targetY = centreY + (tiltY / 30) * centreY * 1.2;
 }
 
 // Scroll handling - works on all devices
@@ -254,12 +259,6 @@ function initPointerTracking() {
       targetX = event.clientX;
       targetY = event.clientY;
     }, { passive: true });
-
-    document.documentElement.addEventListener('mouseleave', () => {
-      hasPointerInput = false;
-      targetX = centreX;
-      targetY = centreY;
-    });
   }
 }
 

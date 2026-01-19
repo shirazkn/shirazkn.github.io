@@ -158,21 +158,24 @@ sub {
 
 /* --------------------------------------------------------------------------
    Post entry cards (overrides from post-entry.css)
+   Shadow values match CARD_CONFIG in extend_footer.html (center-of-card hover)
    -------------------------------------------------------------------------- */
 .post-entry {
-    border: 1.4px solid var(--border);
-    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.15);
-    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+    border: 1px solid var(--border);
+    /* Shadow matches hover center: Y=1px, blur=1.5px, opacity=0.22 (light) */
+    box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.22);
+    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
     overflow: hidden;
     transform-style: preserve-3d;
 }
 
 .post-entry:hover {
-    transition: transform 0.01s linear, box-shadow 0.01s linear;
+    transition: transform 0.01s linear, box-shadow 0.05s linear;
 }
 
 .dark .post-entry {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    /* Shadow matches hover center: Y=1px, blur=1.5px, opacity=0.45 (dark) */
+    box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.45);
 }
 
 .entry-bg {
@@ -244,9 +247,8 @@ sub {
 }
 
 .post-entry:active {
-    transform: scale(0.98);
-    box-shadow: 0.5px 1.0px 0 0 var(--border);
-    border-bottom: 1px solid var(--tertiary);
+    transform: scale(0.99);
+    box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.15);
 }
 
 /* --------------------------------------------------------------------------
