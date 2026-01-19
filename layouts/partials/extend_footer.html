@@ -108,14 +108,15 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             const docHeight = document.documentElement.scrollHeight;
             const maxScroll = docHeight - viewportHeight;
 
-            // Get first card's position to use as initial focus point
+            // Get first and last card positions
             const firstCardRect = postCards[0]?.getBoundingClientRect();
+            const lastCardRect = postCards[postCards.length - 1]?.getBoundingClientRect();
             const firstCardCenter = firstCardRect ? firstCardRect.top + firstCardRect.height / 2 : viewportHeight * 0.3;
+            const lastCardCenter = lastCardRect ? lastCardRect.top + lastCardRect.height / 2 : viewportHeight * 0.7;
 
-            // Focus point starts at first card, then moves toward 70% as you scroll
+            // Focus point moves linearly from first card to last card as you scroll
             const scrollProgress = maxScroll > 0 ? scrollY / maxScroll : 0;
-            const targetFocusPoint = viewportHeight * 0.7;
-            const viewportFocusPoint = firstCardCenter + scrollProgress * (targetFocusPoint - firstCardCenter);
+            const viewportFocusPoint = firstCardCenter + scrollProgress * (lastCardCenter - firstCardCenter);
 
             // Plateau parameters
             const plateauRadius = viewportHeight * 0.10; // Cards within this distance get full focus

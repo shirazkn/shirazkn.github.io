@@ -753,12 +753,13 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
 
             
             const firstCardRect = postCards[0]?.getBoundingClientRect();
+            const lastCardRect = postCards[postCards.length - 1]?.getBoundingClientRect();
             const firstCardCenter = firstCardRect ? firstCardRect.top + firstCardRect.height / 2 : viewportHeight * 0.3;
+            const lastCardCenter = lastCardRect ? lastCardRect.top + lastCardRect.height / 2 : viewportHeight * 0.7;
 
             
             const scrollProgress = maxScroll > 0 ? scrollY / maxScroll : 0;
-            const targetFocusPoint = viewportHeight * 0.7;
-            const viewportFocusPoint = firstCardCenter + scrollProgress * (targetFocusPoint - firstCardCenter);
+            const viewportFocusPoint = firstCardCenter + scrollProgress * (lastCardCenter - firstCardCenter);
 
             
             const plateauRadius = viewportHeight * 0.10; 
