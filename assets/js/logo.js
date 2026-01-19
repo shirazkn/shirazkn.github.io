@@ -1,9 +1,9 @@
 // Physics constants
 const DT = 25;
 const CLIP_DISTANCE = DT * DT;
-const K_OVER_M = 0.00025;
-const C_OVER_M = 0.05;
-const MAX_SPEED = 10.0;
+const K_OVER_M = 0.0006;
+const C_OVER_M = 0.06;
+const MAX_SPEED = 15.0;
 
 // State
 let targetX, targetY;
@@ -318,7 +318,7 @@ function animate(timestamp) {
   keyframeY = posY / centreY;
 
   // Amplify effect - stronger on mobile
-  const amplify = isTouchPrimary() ? 1.8 : 1.2;
+  const amplify = isTouchPrimary() ? 2.0 : 1.2;
   const kfX = (keyframeX - 1) * amplify + 1;
   const kfY = (keyframeY - 1) * amplify + 1;
 

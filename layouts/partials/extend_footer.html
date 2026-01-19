@@ -84,12 +84,57 @@ const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 
 if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in window) {
     // Mobile: use gyroscope for all cards with RAF for smooth rendering
+    // Plus scroll-based "focus" effect
     let gyroBaselineBeta = null;
     let gyroBaselineGamma = null;
     const GYRO_DRIFT_RATE = 0.012;
     let gyroRafId = null;
     let latestBeta = null, latestGamma = null;
     let cardGyroPermissionRequested = false;
+
+    // Current gyro rotation values
+    let currentRotateX = 0, currentRotateY = 0;
+
+    // Scroll-based focus: track which card is most "in view"
+    let cardFocusValues = new Array(postCards.length).fill(0);
+
+    function updateCardFocus() {
+        const viewportHeight = window.innerHeight;
+        const viewportCenter = viewportHeight * 0.4; // Focus point slightly above center
+
+        postCards.forEach((card, i) => {
+            const rect = card.getBoundingClientRect();
+            const cardCenter = rect.top + rect.height / 2;
+
+            // Calculate how close the card center is to the focus point
+            const distance = Math.abs(cardCenter - viewportCenter);
+            const maxDistance = viewportHeight * 0.6;
+
+            // Focus value: 1 when at focus point, 0 when far away
+            const focus = Math.max(0, 1 - distance / maxDistance);
+            cardFocusValues[i] = focus;
+        });
+
+        applyCardTransforms();
+    }
+
+    function applyCardTransforms() {
+        postCards.forEach((card, i) => {
+            const focus = cardFocusValues[i];
+            // Scale: 1.0 when unfocused, up to 1.008 when fully focused
+            const scale = 1 + focus * 0.008;
+            // Gyro effect scales with focus
+            const gyroScale = 0.3 + focus * 0.7;
+            const rotX = currentRotateX * gyroScale;
+            const rotY = currentRotateY * gyroScale;
+            // Shadow: more pronounced when focused
+            const shadowOpacity = 0.3 + focus * 0.3;
+            const shadowBlur = 2 + focus * 4;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${scale})`;
+            card.style.boxShadow = `0 ${1 + focus * 2}px ${shadowBlur}px rgba(0, 0, 0, ${shadowOpacity})`;
+        });
+    }
 
     function handleCardOrientation(event) {
         if (event.beta === null || event.gamma === null) return;
@@ -140,12 +185,10 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 }
 
                 // Map tilt to rotation - same direction, lower sensitivity
-                const rotateY = Math.max(-8, Math.min(8, relativeGamma * 0.35));
-                const rotateX = Math.max(-8, Math.min(8, relativeBeta * -0.35));
+                currentRotateY = Math.max(-8, Math.min(8, relativeGamma * 0.35));
+                currentRotateX = Math.max(-8, Math.min(8, relativeBeta * -0.35));
 
-                postCards.forEach(card => {
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.003)`;
-                });
+                applyCardTransforms();
                 gyroRafId = null;
             });
         }
@@ -154,6 +197,11 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     function enableCardGyroscope() {
         window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
     }
+
+    // Listen for scroll to update focus
+    window.addEventListener('scroll', updateCardFocus, { passive: true });
+    // Initial focus calculation
+    updateCardFocus();
 
     // iOS 13+ requires permission - must be triggered by user gesture
     if (typeof DeviceOrientationEvent.requestPermission === 'function') {
