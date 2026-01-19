@@ -99,7 +99,7 @@ function initGyroscope() {
 let gyroBaselineBeta = null;
 let gyroBaselineGamma = null;
 const GYRO_RECALIBRATE_THRESHOLD = 50; // Recalibrate if tilt exceeds this
-const GYRO_DRIFT_RATE = 0.002; // How fast baseline drifts toward current orientation
+const GYRO_DRIFT_RATE = 0.008; // How fast baseline drifts toward current orientation
 
 function enableGyroscope() {
   window.addEventListener('deviceorientation', handleOrientation, { passive: true });

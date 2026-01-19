@@ -10,7 +10,7 @@
 <meta name="description" content="search">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/search/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.1a4db4a1c89b16f8ffc6902fafe4043fa0b8fb3e0d2eed5fc6e48e79f66a6097.css" integrity="sha256-Gk20ocibFvj/xpAvr&#43;QEP6C4&#43;z4NLu1fxuSOefZqYJc=" rel="preload stylesheet" as="style"><link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e6532527435e75f7308bd827219e632bf0643cc3fcb54f87b01267fb5a5e3f17.css" integrity="sha256-5lMlJ0Nedfcwi9gnIZ5jK/BkPMP8tU&#43;HsBJn&#43;1pePxc=" rel="preload stylesheet" as="style"><link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
 <script defer crossorigin="anonymous" src="/assets/js/search.4d44bc62037378c1aa18c6d10ce9a125a10375b1c9b5bf32adb1bd7fe1068ea4.js" integrity="sha256-TUS8YgNzeMGqGMbRDOmhJaEDdbHJtb8yrbG9f&#43;EGjqQ="></script>
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
@@ -316,7 +316,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     
     let gyroBaselineBeta = null;
     let gyroBaselineGamma = null;
-    const GYRO_DRIFT_RATE = 0.003;
+    const GYRO_DRIFT_RATE = 0.012;
     let gyroRafId = null;
     let latestBeta = null, latestGamma = null;
     let cardGyroPermissionRequested = false;
@@ -370,8 +370,8 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 }
 
                 
-                const rotateY = Math.max(-8, Math.min(8, relativeGamma * 0.8));
-                const rotateX = Math.max(-8, Math.min(8, relativeBeta * -0.8));
+                const rotateY = Math.max(-8, Math.min(8, relativeGamma * 0.35));
+                const rotateX = Math.max(-8, Math.min(8, relativeBeta * -0.35));
 
                 postCards.forEach(card => {
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.003)`;
