@@ -9,7 +9,7 @@ tikzjax: false
 ---
 
 ## <span class=tertiary>␥</span> States \& Observations
-Let $\mathscr S$ be the state space of a robot, and $\mathscr O$ the observation space. The state at time $t$ is written as $S_t$, which is an $\mathscr S$-valued random variable. For example, $S_t$ may be the robot's joint angles at times 
+Let $\mathscr S$ be the state space of a robot and $\mathscr O$ the observation space. The state at time $t$ is written as $S_t$, which is an $\mathscr S$-valued random variable. For example, $S_t$ may be the robot's joint angles at times 
 $$
 \begin{array}{c@{\,,\ }c@{\,,\ }c@{\,,\ }c@{\,,\ }c@{}c}
 t-(\mathrm n - 1)\tau & \cdots \,&  t-2\tau & t-\tau & t
@@ -57,7 +57,7 @@ In practice, the roboticist may only be able to specify $p_{A_{t+\delta}|X_t}(a|
 
 [^greedy]: If only $\mathrm e < \mathrm h$ actions are executed, then why do we predict the remaining $\mathrm h - \mathrm e$ actions at all? My understanding is that this encourages the model to think long-term (*a la* model-predictive control) rather than resorting to a greedy policy.
 
-[^latency]: The OpenVLA has $\delta \approx 320\,ms$ after accounting for model inference, network latency, and other overheads.
+[^latency]: OpenVLA has $\delta \approx 320\,ms$ after accounting for model inference, network latency, and other overheads.
 
 However, what happens at the end of the chunk? There are two issues here:
 1. After executing a chunk, we still need to wait $\delta$ milliseconds to get the next chunk of actions. Our robot hasn't been told what to do during this time; if $\delta > \tau$, then there will be a noticeable pause in the robot's motion.

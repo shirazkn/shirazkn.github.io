@@ -10,7 +10,7 @@
 <meta name="description" content="Probability theory is one of those subjects that&rsquo;s both easy to get started with and hard to master. What follows is a semi-rigorous review of the framework upon which modern-day probability theory is built. The goal here is to demystify what it means for a mathematical object to be random.">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/cond_expectation/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.e1f004d2a49bbf35ded80503e046eb80360b17025881d5952ecf3ba1e5e7fc92.css" integrity="sha256-4fAE0qSbvzXe2AUD4EbrgDYLFwJYgdWVLs87oeXn/JI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6621a878f506b69f63638ae91e1fa1f29a1d41903c0d6c6a4cdb276d4a27273d.css" integrity="sha256-ZiGoePUGtp9jY4rpHh&#43;h8podQZA8DWxqTNsnbUonJz0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -426,6 +426,69 @@ $.</p>
 if (localStorage.getItem("pref-theme") === "dark") {
     document.body.classList.add('dark');
 }
+
+
+document.querySelectorAll('.logo a, .post-title').forEach(el => {
+    el.innerHTML = el.textContent.trim().split(' ').map(word =>
+        `<span class="hover-word">${word.split('').map(char =>
+            `<span class="hover-letter">${char}</span>`
+        ).join('')}</span>`
+    ).join(' ');
+});
+
+
+const isDark = () => document.body.classList.contains('dark');
+const hoverColors = isDark()
+    ? ['#ff51af', '#ff51af', '#f161ac', '#f161ac', '#db327e', '#db327e', '#3b82f6', '#38bdf8']
+    : ['#ff51af', '#ff51af', '#e83a89', '#e83a89', '#f542a1', '#d6306f', '#3b9eff', '#00c2ff'];
+document.querySelectorAll('.hover-letter').forEach(letter => {
+    letter.addEventListener('mouseenter', () => {
+        letter.style.color = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+    });
+    letter.addEventListener('mouseleave', () => {
+        letter.style.color = '';
+    });
+});
+
+
+const scanElement = (el) => {
+    const letters = el.querySelectorAll('.hover-letter');
+    letters.forEach((letter, i) => {
+        setTimeout(() => {
+            letter.style.transition = 'top 0.05s ease-out, color 0s';
+            letter.style.color = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+            letter.style.top = '-0.08em';
+            setTimeout(() => {
+                letter.style.transition = '';
+                letter.style.color = '';
+                letter.style.top = '';
+            }, 100);
+        }, i * 50);
+    });
+};
+
+let lastScannedEl = null;
+const triggerRandomScan = () => {
+    const logos = Array.from(document.querySelectorAll('.logo a'));
+    const titles = Array.from(document.querySelectorAll('.post-title'));
+    
+    const pickLogo = Math.random() < 0.7 && logos.length > 0;
+    let elements = pickLogo ? logos : titles;
+    
+    if (lastScannedEl && elements.length > 1) {
+        elements = elements.filter(el => el !== lastScannedEl);
+    }
+    if (elements.length > 0) {
+        const el = elements[Math.floor(Math.random() * elements.length)];
+        lastScannedEl = el;
+        scanElement(el);
+    }
+    
+    setTimeout(triggerRandomScan, 8000 + Math.random() * 12000);
+};
+
+
+setTimeout(triggerRandomScan, 5000);
 </script>
 <div class="headerfooter">
     <sub><sup><sub>..</sub></sup></sub>

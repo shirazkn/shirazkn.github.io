@@ -10,7 +10,7 @@
 <meta name="description" content="A topological group is a set of elements that has both a group operation and a topology. The group operation satisfies the usual axioms (same as those of finite groups), and the presence of a topology lets us say things like &rsquo;the group is connected&rsquo; and &rsquo;the group operation is continuous&#39;.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/lie-groups/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.e1f004d2a49bbf35ded80503e046eb80360b17025881d5952ecf3ba1e5e7fc92.css" integrity="sha256-4fAE0qSbvzXe2AUD4EbrgDYLFwJYgdWVLs87oeXn/JI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5f72b9d6274026476ca7b83fe1a6a6a203c09a251266869341599852ddb17f19.css" integrity="sha256-X3K51idAJkdsp7g/4aamogPAmiUSZoaTQVmYUt2xfxk=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -70,7 +70,15 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><script>
+(function() {
+    var pref = localStorage.getItem("pref-theme");
+    if (pref === "dark" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+    }
+})();
 </script>
+
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 <script>
   MathJax = {
@@ -770,9 +778,84 @@ Yet another way to do this computation is to pick a chart $(U^\prime,h^\prime)$ 
         <path d="M12 6H0l6-6z" />
     </svg>
 </a><script>
-if (localStorage.getItem("pref-theme") === "dark") {
-    document.body.classList.add('dark');
+
+function syncDarkClass() {
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    document.documentElement.classList.toggle('dark', isDark);
+    document.body.classList.toggle('dark', isDark);
 }
+syncDarkClass();
+
+
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        setTimeout(syncDarkClass, 0);
+    });
+}
+
+
+document.querySelectorAll('.logo a, .post-title').forEach(el => {
+    el.innerHTML = el.textContent.trim().split(' ').map(word =>
+        `<span class="hover-word">${word.split('').map(char =>
+            `<span class="hover-letter">${char}</span>`
+        ).join('')}</span>`
+    ).join(' ');
+});
+
+
+const isDark = () => document.body.classList.contains('dark');
+const hoverColors = isDark()
+    ? ['#ff51af', '#ff51af', '#f161ac', '#f161ac', '#db327e', '#db327e', '#3b82f6', '#38bdf8']
+    : ['#ff51af', '#ff51af', '#e83a89', '#e83a89', '#f542a1', '#d6306f', '#3b9eff', '#00c2ff'];
+document.querySelectorAll('.hover-letter').forEach(letter => {
+    letter.addEventListener('mouseenter', () => {
+        letter.style.color = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+    });
+    letter.addEventListener('mouseleave', () => {
+        letter.style.color = '';
+    });
+});
+
+
+const scanElement = (el) => {
+    const letters = el.querySelectorAll('.hover-letter');
+    letters.forEach((letter, i) => {
+        setTimeout(() => {
+            letter.style.transition = 'top 0.05s ease-out, color 0s';
+            letter.style.color = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+            letter.style.top = '-0.08em';
+            setTimeout(() => {
+                letter.style.transition = '';
+                letter.style.color = '';
+                letter.style.top = '';
+            }, 100);
+        }, i * 50);
+    });
+};
+
+let lastScannedEl = null;
+const triggerRandomScan = () => {
+    const logos = Array.from(document.querySelectorAll('.logo a'));
+    const titles = Array.from(document.querySelectorAll('.post-title'));
+    
+    const pickLogo = Math.random() < 0.7 && logos.length > 0;
+    let elements = pickLogo ? logos : titles;
+    
+    if (lastScannedEl && elements.length > 1) {
+        elements = elements.filter(el => el !== lastScannedEl);
+    }
+    if (elements.length > 0) {
+        const el = elements[Math.floor(Math.random() * elements.length)];
+        lastScannedEl = el;
+        scanElement(el);
+    }
+    
+    setTimeout(triggerRandomScan, 4000 + Math.random() * 6000);
+};
+
+
+setTimeout(triggerRandomScan, 5000);
 </script>
 <div class="headerfooter">
     <sub><sup><sub>..</sub></sup></sub>

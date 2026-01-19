@@ -99,6 +99,7 @@ function initGyroscope() {
 let gyroBaselineBeta = null;
 let gyroBaselineGamma = null;
 const GYRO_RECALIBRATE_THRESHOLD = 50; // Recalibrate if tilt exceeds this
+const GYRO_DRIFT_RATE = 0.005; // How fast baseline drifts toward current orientation
 
 function enableGyroscope() {
   window.addEventListener('deviceorientation', handleOrientation, { passive: true });
@@ -121,6 +122,10 @@ function handleOrientation(event) {
   }
 
   useGyroscope = true;
+
+  // Slowly drift baseline toward current orientation (recentering)
+  gyroBaselineBeta += (beta - gyroBaselineBeta) * GYRO_DRIFT_RATE;
+  gyroBaselineGamma += (gamma - gyroBaselineGamma) * GYRO_DRIFT_RATE;
 
   // Calculate relative tilt from baseline
   let relativeBeta = beta - gyroBaselineBeta;
@@ -315,10 +320,10 @@ function animate(timestamp) {
   pinkGradient.setAttribute('y2', getKeyframedValue(0, -5, kfX) + '%');
 
   // Update transform
-  const rotationX = getKeyframedValue(0, -8, kfX) + 'deg';
-  const rotationY = getKeyframedValue(0, 7.5, kfY) + 'deg';
-  const translationX = getKeyframedValue(0, 0.5, kfX) + '%';
-  const translationY = getKeyframedValue(0, 0.5, kfY) + '%';
+  const rotationX = getKeyframedValue(0, -2, kfX) + 'deg';
+  const rotationY = getKeyframedValue(0, 2, kfY) + 'deg';
+  const translationX = getKeyframedValue(0, 0.15, kfX) + '%';
+  const translationY = getKeyframedValue(0, 0.15, kfY) + '%';
   svgRotator.style.transform = `rotateX(${rotationY}) rotateY(${rotationX}) translateX(${translationX}) translateY(${translationY})`;
 
   // Update SVG paths
