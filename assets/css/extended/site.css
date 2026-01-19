@@ -70,8 +70,6 @@ div#logo-s svg .cls-darkpink {
 }
 
 .dark #pink-gradient {
-    --color-1: #db327e99;
-    --color-2: #ff51af;
     --color-3: #f19dca;
     --color-4: #f161ac;
 }
@@ -150,9 +148,18 @@ sub {
    -------------------------------------------------------------------------- */
 .post-entry {
     border: 1.4px solid var(--border);
-    box-shadow: 0.5px 1.0px 0 0 var(--tertiary);
-    transition: transform 0.03s;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.15);
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
     overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.post-entry:hover {
+    transition: transform 0.01s linear, box-shadow 0.01s linear;
+}
+
+.dark .post-entry {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
 }
 
 .entry-bg {
@@ -237,16 +244,6 @@ sub {
     opacity: 0.5;
     text-align: center;
 }
-/* 
-.signup-form {
-    color: var(--tertiary);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 13vh;
-    margin: 0;
-    text-align: center;
-} */
 
 .inline-link {
     display: inline-block;
@@ -301,13 +298,44 @@ sub {
     color: var(--accent);
 }
 
+.social-icons a:hover svg {
+    fill: var(--accent-light);
+}
+
+#theme-toggle {
+    transition: transform 0.05s;
+}
+
+#theme-toggle:hover {
+    transform: translateY(-1px);
+}
+
 /* --------------------------------------------------------------------------
    Table of contents
    -------------------------------------------------------------------------- */
 .toc details summary {
     cursor: pointer;
+    transition: transform 0.05s;
+    display: inline-block;
 }
 
-.toc details[open] summary {
-    cursor: pointer;
+.toc details summary:hover {
+    transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   Link hover lift effect
+   -------------------------------------------------------------------------- */
+a {
+    display: inline-block;
+    transition: transform 0.05s;
+}
+
+a:hover {
+    transform: translateY(-1px);
+}
+
+/* Preserve default behavior for heading anchor links */
+.anchor {
+    display: none;
 }

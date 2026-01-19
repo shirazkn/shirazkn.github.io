@@ -10,7 +10,7 @@
 <meta name="description" content="Probability theory is one of those subjects that&rsquo;s both easy to get started with and hard to master. What follows is a semi-rigorous review of the framework upon which modern-day probability theory is built. The goal here is to demystify what it means for a mathematical object to be random.">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/cond_expectation/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.5f72b9d6274026476ca7b83fe1a6a6a203c09a251266869341599852ddb17f19.css" integrity="sha256-X3K51idAJkdsp7g/4aamogPAmiUSZoaTQVmYUt2xfxk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.2cd5ec2542886e4507056244f9cf5329b0618f4b33ebd2c377a3a2cf06094342.css" integrity="sha256-LNXsJUKIbkUHBWJE&#43;c9TKbBhj0sz69LDd6OizwYJQ0I=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -508,19 +508,27 @@ const triggerRandomScan = () => {
 };
 
 
-setTimeout(() => {
-    const logo = document.querySelector('.logo a');
-    if (logo) scanElement(logo);
+const isHomePage = document.querySelector('.first-entry.home-info') !== null;
 
+if (isHomePage) {
+    
+    setTimeout(triggerRandomScan, 3000 + Math.random() * 2000);
+} else {
+    
     setTimeout(() => {
-        const titles = Array.from(document.querySelectorAll('.post-title'));
-        if (titles.length > 0) {
-            scanElement(titles[Math.floor(Math.random() * titles.length)]);
-        }
-        
-        setTimeout(triggerRandomScan, 4000 + Math.random() * 6000);
-    }, 1500);
-}, 800);
+        const logo = document.querySelector('.logo a');
+        if (logo) scanElement(logo);
+
+        setTimeout(() => {
+            const titles = Array.from(document.querySelectorAll('.post-title'));
+            if (titles.length > 0) {
+                scanElement(titles[Math.floor(Math.random() * titles.length)]);
+            }
+            
+            setTimeout(triggerRandomScan, 4000 + Math.random() * 6000);
+        }, 400);
+    }, 800);
+}
 </script>
 <div class="headerfooter">
     <sub><sup><sub>..</sub></sup></sub>

@@ -78,6 +78,117 @@ const triggerRandomScan = () => {
 // Check if we're on the home page (has .first-entry.home-info)
 const isHomePage = document.querySelector('.first-entry.home-info') !== null;
 
+// 3D tilt effect for post cards
+const postCards = document.querySelectorAll('.post-entry');
+const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+if (isTouchDevice) {
+    // Mobile: use gyroscope for all cards with RAF for smooth rendering
+    let gyroBaselineBeta = null;
+    let gyroBaselineGamma = null;
+    const GYRO_DRIFT_RATE = 0.008;
+    let gyroRafId = null;
+    let latestBeta = null, latestGamma = null;
+
+    function handleCardOrientation(event) {
+        latestBeta = event.beta;
+        latestGamma = event.gamma;
+        if (latestBeta === null || latestGamma === null) return;
+
+        if (!gyroRafId) {
+            gyroRafId = requestAnimationFrame(() => {
+                // Calibrate on first reading
+                if (gyroBaselineBeta === null) {
+                    gyroBaselineBeta = latestBeta;
+                    gyroBaselineGamma = latestGamma;
+                }
+
+                // Drift baseline toward current orientation
+                gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * GYRO_DRIFT_RATE;
+                gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * GYRO_DRIFT_RATE;
+
+                // Calculate relative tilt
+                let relativeBeta = latestBeta - gyroBaselineBeta;
+                let relativeGamma = latestGamma - gyroBaselineGamma;
+
+                // Recalibrate if extreme
+                if (Math.abs(relativeBeta) > 40 || Math.abs(relativeGamma) > 40) {
+                    gyroBaselineBeta = latestBeta;
+                    gyroBaselineGamma = latestGamma;
+                    relativeBeta = 0;
+                    relativeGamma = 0;
+                }
+
+                // Map tilt to rotation (subtle effect)
+                const rotateY = Math.max(-1.5, Math.min(1.5, relativeGamma * 0.08));
+                const rotateX = Math.max(-1.5, Math.min(1.5, relativeBeta * -0.08));
+
+                postCards.forEach(card => {
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.003)`;
+                });
+                gyroRafId = null;
+            });
+        }
+    }
+
+    // Request gyroscope permission (iOS)
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        const requestPermission = () => {
+            DeviceOrientationEvent.requestPermission()
+                .then(state => {
+                    if (state === 'granted') {
+                        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+                    }
+                })
+                .catch(() => {});
+        };
+        document.addEventListener('touchstart', requestPermission, { once: true, passive: true });
+        // Also try immediately in case permission was already granted
+        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+    } else {
+        // Android - just enable directly
+        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+    }
+} else {
+    // Desktop: mouse tracking with RAF for smooth rendering
+    postCards.forEach(card => {
+        let rafId = null;
+        let mouseX = 0, mouseY = 0;
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+
+            if (!rafId) {
+                rafId = requestAnimationFrame(() => {
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (mouseY - centerY) / centerY * -0.8;
+                    const rotateY = (mouseX - centerX) / centerX * 0.8;
+                    const normalizedY = (centerY - mouseY) / centerY;
+                    const isDarkMode = document.body.classList.contains('dark');
+                    const baseOpacity = isDarkMode ? 0.35 : 0.15;
+                    const opacityRange = isDarkMode ? 0.25 : 0.15;
+                    const shadowOpacity = Math.max(0, baseOpacity + normalizedY * opacityRange);
+                    const blur = isDarkMode ? 1 : 0.5;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-1px) scale(1.004)`;
+                    card.style.boxShadow = `0 1px ${blur}px rgba(0, 0, 0, ${shadowOpacity})`;
+                    rafId = null;
+                });
+            }
+        });
+        card.addEventListener('mouseleave', () => {
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+            card.style.transform = '';
+            card.style.boxShadow = '';
+        });
+    });
+}
+
 if (isHomePage) {
     // Home page: just start random scans after a delay
     setTimeout(triggerRandomScan, 3000 + Math.random() * 2000);

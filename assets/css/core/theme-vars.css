@@ -17,6 +17,7 @@
     --code-bg: rgb(224, 223, 223); /* ToC */
     --border: rgb(229, 228, 229);
     --accent: rgb(188, 10, 92);
+    --accent-light: rgb(255, 122, 192); /* Lighter accent for hover states */
     --aside-border: rgb(255, 255, 255);
     --aside-border-bottom: var(--code-bg);
     --darker: rgb(203, 198, 195); /* The shadow for asides */
@@ -24,25 +25,22 @@
 
 .dark {
     --theme: rgb(7, 7, 7);
-    --entry: rgb(25, 25, 26);
+    --entry: rgb(18, 19, 18);
     --primary: rgb(229, 229, 229);
     --secondary: rgb(125, 126, 125);
-    --tertiary: rgb(55, 56, 61);
+    --tertiary: rgb(50, 51, 58);
     --content: rgb(204, 204, 205);
     --hljs-bg: rgb(46, 46, 51);
     --code-bg: rgb(55, 56, 62);
-    --border: rgb(30, 30, 32);
+    --border: rgb(27, 27, 30);
     --accent: rgb(251, 152, 204);
+    --accent-light: rgb(255, 122, 192); /* Lighter accent for hover states */
     --aside-border: rgb(62, 61, 68);
     --aside-border-bottom: var(--aside-border);
     --darker: rgb(21, 17, 18);
-    --landing-page: rgb(14, 15, 13);
+    --landing-page: rgb(15, 16, 14);
 }
 
 .list {
-    background: var(--landing-page);
-}
-
-.dark.list {
     background: var(--landing-page);
 }

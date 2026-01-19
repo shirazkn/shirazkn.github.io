@@ -10,7 +10,7 @@
 <meta name="description" content="In this post I want to bridge the gap between abstract vector spaces (which are the mathematical foundation of linear algebra) and matrix multiplication (which is the linear algebra most of us are familiar with). Unlike the typical 101 course in linear algebra, I will avoid talking about solving systems of equations.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/matrix/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.5e809805af2b891e384b16cd49e1a50454cdcd325acbd676c0abc02763626a4c.css" integrity="sha256-XoCYBa8riR44SxbNSeGlBFTNzTJay9Z2wKvAJ2Niakw=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.685832d02538cb95971e497bda225bf7aabf15975468afb503ea3f1bed42fffe.css" integrity="sha256-aFgy0CU4y5WXHkl72iJb96q/FZdUaK&#43;1A&#43;o/G&#43;1C//4=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -697,6 +697,117 @@ const triggerRandomScan = () => {
 
 
 const isHomePage = document.querySelector('.first-entry.home-info') !== null;
+
+
+const postCards = document.querySelectorAll('.post-entry');
+const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+if (isTouchDevice) {
+    
+    let gyroBaselineBeta = null;
+    let gyroBaselineGamma = null;
+    const GYRO_DRIFT_RATE = 0.008;
+    let gyroRafId = null;
+    let latestBeta = null, latestGamma = null;
+
+    function handleCardOrientation(event) {
+        latestBeta = event.beta;
+        latestGamma = event.gamma;
+        if (latestBeta === null || latestGamma === null) return;
+
+        if (!gyroRafId) {
+            gyroRafId = requestAnimationFrame(() => {
+                
+                if (gyroBaselineBeta === null) {
+                    gyroBaselineBeta = latestBeta;
+                    gyroBaselineGamma = latestGamma;
+                }
+
+                
+                gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * GYRO_DRIFT_RATE;
+                gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * GYRO_DRIFT_RATE;
+
+                
+                let relativeBeta = latestBeta - gyroBaselineBeta;
+                let relativeGamma = latestGamma - gyroBaselineGamma;
+
+                
+                if (Math.abs(relativeBeta) > 40 || Math.abs(relativeGamma) > 40) {
+                    gyroBaselineBeta = latestBeta;
+                    gyroBaselineGamma = latestGamma;
+                    relativeBeta = 0;
+                    relativeGamma = 0;
+                }
+
+                
+                const rotateY = Math.max(-1.5, Math.min(1.5, relativeGamma * 0.08));
+                const rotateX = Math.max(-1.5, Math.min(1.5, relativeBeta * -0.08));
+
+                postCards.forEach(card => {
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.003)`;
+                });
+                gyroRafId = null;
+            });
+        }
+    }
+
+    
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        const requestPermission = () => {
+            DeviceOrientationEvent.requestPermission()
+                .then(state => {
+                    if (state === 'granted') {
+                        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+                    }
+                })
+                .catch(() => {});
+        };
+        document.addEventListener('touchstart', requestPermission, { once: true, passive: true });
+        
+        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+    } else {
+        
+        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+    }
+} else {
+    
+    postCards.forEach(card => {
+        let rafId = null;
+        let mouseX = 0, mouseY = 0;
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+
+            if (!rafId) {
+                rafId = requestAnimationFrame(() => {
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (mouseY - centerY) / centerY * -0.8;
+                    const rotateY = (mouseX - centerX) / centerX * 0.8;
+                    const normalizedY = (centerY - mouseY) / centerY;
+                    const isDarkMode = document.body.classList.contains('dark');
+                    const baseOpacity = isDarkMode ? 0.35 : 0.15;
+                    const opacityRange = isDarkMode ? 0.25 : 0.15;
+                    const shadowOpacity = Math.max(0, baseOpacity + normalizedY * opacityRange);
+                    const blur = isDarkMode ? 1 : 0.5;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-1px) scale(1.004)`;
+                    card.style.boxShadow = `0 1px ${blur}px rgba(0, 0, 0, ${shadowOpacity})`;
+                    rafId = null;
+                });
+            }
+        });
+        card.addEventListener('mouseleave', () => {
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+            card.style.transform = '';
+            card.style.boxShadow = '';
+        });
+    });
+}
 
 if (isHomePage) {
     
