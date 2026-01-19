@@ -139,9 +139,9 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                     relativeGamma = 0;
                 }
 
-                // Map tilt to rotation - opposite direction, faster response
-                const rotateY = Math.max(-8, Math.min(8, relativeGamma * -0.6));
-                const rotateX = Math.max(-8, Math.min(8, relativeBeta * 0.6));
+                // Map tilt to rotation - same direction, fast response
+                const rotateY = Math.max(-8, Math.min(8, relativeGamma * 0.8));
+                const rotateX = Math.max(-8, Math.min(8, relativeBeta * -0.8));
 
                 postCards.forEach(card => {
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.003)`;

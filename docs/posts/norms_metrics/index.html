@@ -10,7 +10,7 @@
 <meta name="description" content="An explainer on norms, metrics, and inner products, and their relationships to each other.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/norms_metrics/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.685832d02538cb95971e497bda225bf7aabf15975468afb503ea3f1bed42fffe.css" integrity="sha256-aFgy0CU4y5WXHkl72iJb96q/FZdUaK&#43;1A&#43;o/G&#43;1C//4=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.1a4db4a1c89b16f8ffc6902fafe4043fa0b8fb3e0d2eed5fc6e48e79f66a6097.css" integrity="sha256-Gk20ocibFvj/xpAvr&#43;QEP6C4&#43;z4NLu1fxuSOefZqYJc=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -498,8 +498,8 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 }
 
                 
-                const rotateY = Math.max(-8, Math.min(8, relativeGamma * -0.6));
-                const rotateX = Math.max(-8, Math.min(8, relativeBeta * 0.6));
+                const rotateY = Math.max(-8, Math.min(8, relativeGamma * 0.8));
+                const rotateX = Math.max(-8, Math.min(8, relativeBeta * -0.8));
 
                 postCards.forEach(card => {
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.003)`;
