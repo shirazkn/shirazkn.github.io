@@ -59,8 +59,8 @@ let lastScannedEl = null;
 const triggerRandomScan = () => {
     const logos = Array.from(document.querySelectorAll('.logo a'));
     const titles = Array.from(document.querySelectorAll('.post-title'));
-    // 70% chance to pick logo, 30% chance for titles
-    const pickLogo = Math.random() < 0.7 && logos.length > 0;
+    // 50% chance to pick logo, 50% chance for titles
+    const pickLogo = Math.random() < 0.5 && logos.length > 0;
     let elements = pickLogo ? logos : titles;
     // Filter out last scanned element to avoid repeat
     if (lastScannedEl && elements.length > 1) {
@@ -75,8 +75,28 @@ const triggerRandomScan = () => {
     setTimeout(triggerRandomScan, 4000 + Math.random() * 6000);
 };
 
-// Start after 5 seconds
-setTimeout(triggerRandomScan, 5000);
+// Check if we're on the home page (has .first-entry.home-info)
+const isHomePage = document.querySelector('.first-entry.home-info') !== null;
+
+if (isHomePage) {
+    // Home page: just start random scans after a delay
+    setTimeout(triggerRandomScan, 3000 + Math.random() * 2000);
+} else {
+    // Post pages: initial scan on logo and title, then random
+    setTimeout(() => {
+        const logo = document.querySelector('.logo a');
+        if (logo) scanElement(logo);
+
+        setTimeout(() => {
+            const titles = Array.from(document.querySelectorAll('.post-title'));
+            if (titles.length > 0) {
+                scanElement(titles[Math.floor(Math.random() * titles.length)]);
+            }
+            // Start random scans after initial sequence
+            setTimeout(triggerRandomScan, 4000 + Math.random() * 6000);
+        }, 400);
+    }, 800);
+}
 </script>
 <div class="headerfooter">
     <sub><sup><sub>..</sub></sup></sub>

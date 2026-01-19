@@ -10,7 +10,7 @@
 <meta name="description" content="Probability theory is one of those subjects that&rsquo;s both easy to get started with and hard to master. What follows is a semi-rigorous review of the framework upon which modern-day probability theory is built. The goal here is to demystify what it means for a mathematical object to be random.">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/cond_expectation/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6621a878f506b69f63638ae91e1fa1f29a1d41903c0d6c6a4cdb276d4a27273d.css" integrity="sha256-ZiGoePUGtp9jY4rpHh&#43;h8podQZA8DWxqTNsnbUonJz0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5f72b9d6274026476ca7b83fe1a6a6a203c09a251266869341599852ddb17f19.css" integrity="sha256-X3K51idAJkdsp7g/4aamogPAmiUSZoaTQVmYUt2xfxk=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -70,7 +70,15 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><script>
+(function() {
+    var pref = localStorage.getItem("pref-theme");
+    if (pref === "dark" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+    }
+})();
 </script>
+
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 <script>
   MathJax = {
@@ -423,8 +431,20 @@ $.</p>
         <path d="M12 6H0l6-6z" />
     </svg>
 </a><script>
-if (localStorage.getItem("pref-theme") === "dark") {
-    document.body.classList.add('dark');
+
+function syncDarkClass() {
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    document.documentElement.classList.toggle('dark', isDark);
+    document.body.classList.toggle('dark', isDark);
+}
+syncDarkClass();
+
+
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        setTimeout(syncDarkClass, 0);
+    });
 }
 
 
@@ -472,7 +492,7 @@ const triggerRandomScan = () => {
     const logos = Array.from(document.querySelectorAll('.logo a'));
     const titles = Array.from(document.querySelectorAll('.post-title'));
     
-    const pickLogo = Math.random() < 0.7 && logos.length > 0;
+    const pickLogo = Math.random() < 0.5 && logos.length > 0;
     let elements = pickLogo ? logos : titles;
     
     if (lastScannedEl && elements.length > 1) {
@@ -484,11 +504,23 @@ const triggerRandomScan = () => {
         scanElement(el);
     }
     
-    setTimeout(triggerRandomScan, 8000 + Math.random() * 12000);
+    setTimeout(triggerRandomScan, 4000 + Math.random() * 6000);
 };
 
 
-setTimeout(triggerRandomScan, 5000);
+setTimeout(() => {
+    const logo = document.querySelector('.logo a');
+    if (logo) scanElement(logo);
+
+    setTimeout(() => {
+        const titles = Array.from(document.querySelectorAll('.post-title'));
+        if (titles.length > 0) {
+            scanElement(titles[Math.floor(Math.random() * titles.length)]);
+        }
+        
+        setTimeout(triggerRandomScan, 4000 + Math.random() * 6000);
+    }, 1500);
+}, 800);
 </script>
 <div class="headerfooter">
     <sub><sup><sub>..</sub></sup></sub>
