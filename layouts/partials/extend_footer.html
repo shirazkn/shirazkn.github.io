@@ -152,8 +152,8 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
         scheduleTransformUpdate();
     }, {
         threshold: observerThresholds,
-        // Root margin: consider cards "in view" when within middle 50% of viewport
-        rootMargin: '-25% 0px -25% 0px'
+        // Root margin: consider cards "in view" when within middle 70% of viewport
+        rootMargin: '-15% 0px -15% 0px'
     });
 
     // Observe all cards
