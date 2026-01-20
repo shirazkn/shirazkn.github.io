@@ -712,70 +712,58 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
 
     
     let cardFocusValues = new Array(postCards.length).fill(0);
-    let scrollRafId = null;
+    let transformRafId = null;
 
-    function updateCardFocus() {
-        
-        if (scrollRafId) return;
-        scrollRafId = requestAnimationFrame(() => {
-            const viewportHeight = window.innerHeight;
-            const scrollY = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight;
-            const maxScroll = docHeight - viewportHeight;
-
-            
-            const cardCenters = [];
-            for (let i = 0; i < postCards.length; i++) {
-                const rect = postCards[i].getBoundingClientRect();
-                cardCenters[i] = rect.top + rect.height / 2;
-            }
-
-            const firstCardCenter = cardCenters[0] ?? viewportHeight * 0.3;
-            const lastCardCenter = cardCenters[cardCenters.length - 1] ?? viewportHeight * 0.7;
-
-            
-            const scrollProgress = maxScroll > 0 ? scrollY / maxScroll : 0;
-            const viewportFocusPoint = firstCardCenter + scrollProgress * (lastCardCenter - firstCardCenter);
-
-            
-            const plateauRadius = viewportHeight * 0.10;
-            const falloffDistance = viewportHeight * 0.18;
-
-            
-            for (let i = 0; i < postCards.length; i++) {
-                const distance = Math.abs(cardCenters[i] - viewportFocusPoint);
-                if (distance <= plateauRadius) {
-                    cardFocusValues[i] = 1;
-                } else {
-                    const falloffProgress = Math.min(1, (distance - plateauRadius) / falloffDistance);
-                    cardFocusValues[i] = (1 - falloffProgress) * (1 - falloffProgress);
-                }
-            }
-
+    
+    function scheduleTransformUpdate() {
+        if (transformRafId) return;
+        transformRafId = requestAnimationFrame(() => {
             applyCardTransforms();
-            scrollRafId = null;
+            transformRafId = null;
         });
     }
 
-    function applyCardTransforms() {
-        postCards.forEach((card, i) => {
-            const focus = cardFocusValues[i];
-            
-            const scale = 1 + focus * 0.02;
-            
-            const gyroScale = 0.3 + focus * 0.7;
-            const rotX = currentRotateX * gyroScale;
-            const rotY = currentRotateY * gyroScale;
-            
-            const shadowOpacity = 0.3 + focus * 0.3;
-            const shadowBlur = 2 + focus * 4;
-            
-            const opacity = 0.25 + focus * 0.75;
+    
+    const observerThresholds = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const index = Array.prototype.indexOf.call(postCards, entry.target);
+            if (index === -1) return;
 
-            card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${scale})`;
-            card.style.boxShadow = `0 ${1 + focus * 2}px ${shadowBlur}px rgba(0, 0, 0, ${shadowOpacity})`;
-            card.style.opacity = opacity;
+            
+            const ratio = entry.intersectionRatio;
+            
+            cardFocusValues[index] = ratio * ratio;
         });
+        scheduleTransformUpdate();
+    }, {
+        threshold: observerThresholds,
+        
+        rootMargin: '-25% 0px -25% 0px'
+    });
+
+    
+    postCards.forEach(card => cardObserver.observe(card));
+
+    function applyCardTransforms() {
+        
+        const baseGyroX = currentRotateX * 0.3;
+        const baseGyroY = currentRotateY * 0.3;
+        const gyroRangeX = currentRotateX * 0.7;
+        const gyroRangeY = currentRotateY * 0.7;
+
+        for (let i = 0; i < postCards.length; i++) {
+            const focus = cardFocusValues[i];
+            const card = postCards[i];
+
+            
+            const rotX = baseGyroX + gyroRangeX * focus;
+            const rotY = baseGyroY + gyroRangeY * focus;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${1 + focus * 0.02})`;
+            card.style.boxShadow = `0 ${1 + focus * 2}px ${2 + focus * 4}px rgba(0,0,0,${0.3 + focus * 0.3})`;
+            card.style.opacity = 0.25 + focus * 0.75;
+        }
     }
 
     function handleCardOrientation(event) {
@@ -827,7 +815,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 currentRotateY = Math.max(-8, Math.min(8, relativeGamma * 0.35));
                 currentRotateX = Math.max(-8, Math.min(8, relativeBeta * -0.35));
 
-                applyCardTransforms();
+                scheduleTransformUpdate();
                 gyroRafId = null;
             });
         }
@@ -838,9 +826,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     }
 
     
-    window.addEventListener('scroll', updateCardFocus, { passive: true });
-    
-    updateCardFocus();
+    applyCardTransforms();
 
     
     if (typeof DeviceOrientationEvent.requestPermission === 'function') {
