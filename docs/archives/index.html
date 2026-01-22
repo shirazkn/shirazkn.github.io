@@ -10,7 +10,7 @@
 <meta name="description" content="archives">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/archives/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.40a4c14d4bf558e17c1349ccb441dcc7a4d0fe518beb3a7911c6ecf8c53cbd42.css" integrity="sha256-QKTBTUv1WOF8E0nMtEHcx6TQ/lGL6zp5Ecbs&#43;MU8vUI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.714beb9e60d8ed0531b78e01eacc2e1a3e3fb3a790b8452005202c5e4ab1c2ed.css" integrity="sha256-cUvrnmDY7QUxt44B6swuGj4/s6eQuEUgBSAsXkqxwu0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -477,6 +477,9 @@
     </svg>
 </a><script>
 
+document.addEventListener('touchstart', function() {}, { passive: true });
+
+
 function syncDarkClass() {
     const isDark = document.documentElement.dataset.theme === 'dark';
     document.documentElement.classList.toggle('dark', isDark);
@@ -718,6 +721,34 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
 
     
     applyCardTransforms();
+
+    
+    postCards.forEach((card, index) => {
+        let touchStartTime = 0;
+
+        card.addEventListener('touchstart', (e) => {
+            touchStartTime = Date.now();
+            const focus = cardFocusValues[index];
+            
+            card.style.transition = 'transform 0.08s ease-out, box-shadow 0.08s ease-out';
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(${0.97 + focus * 0.01})`;
+            card.style.boxShadow = `0 0.5px 1px rgba(0,0,0,0.2)`;
+        }, { passive: true });
+
+        card.addEventListener('touchend', () => {
+            
+            card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
+            setTimeout(() => {
+                card.style.transition = '';
+                scheduleTransformUpdate();
+            }, 150);
+        }, { passive: true });
+
+        card.addEventListener('touchcancel', () => {
+            card.style.transition = '';
+            scheduleTransformUpdate();
+        }, { passive: true });
+    });
 
     
     if (typeof DeviceOrientationEvent.requestPermission === 'function') {

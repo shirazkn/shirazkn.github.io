@@ -1,4 +1,7 @@
 <script>
+// Enable :active CSS states on iOS (requires a touch listener on document)
+document.addEventListener('touchstart', function() {}, { passive: true });
+
 // Sync .dark class with data-theme attribute
 function syncDarkClass() {
     const isDark = document.documentElement.dataset.theme === 'dark';
@@ -241,6 +244,34 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
 
     // Initial transform application (IntersectionObserver handles updates)
     applyCardTransforms();
+
+    // Add touch feedback for tap (the "go down" animation)
+    postCards.forEach((card, index) => {
+        let touchStartTime = 0;
+
+        card.addEventListener('touchstart', (e) => {
+            touchStartTime = Date.now();
+            const focus = cardFocusValues[index];
+            // Scale down and flatten shadow for pressed state
+            card.style.transition = 'transform 0.08s ease-out, box-shadow 0.08s ease-out';
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(${0.97 + focus * 0.01})`;
+            card.style.boxShadow = `0 0.5px 1px rgba(0,0,0,0.2)`;
+        }, { passive: true });
+
+        card.addEventListener('touchend', () => {
+            // Restore gyro-based transform
+            card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
+            setTimeout(() => {
+                card.style.transition = '';
+                scheduleTransformUpdate();
+            }, 150);
+        }, { passive: true });
+
+        card.addEventListener('touchcancel', () => {
+            card.style.transition = '';
+            scheduleTransformUpdate();
+        }, { passive: true });
+    });
 
     // iOS 13+ requires permission - must be triggered by user gesture
     if (typeof DeviceOrientationEvent.requestPermission === 'function') {

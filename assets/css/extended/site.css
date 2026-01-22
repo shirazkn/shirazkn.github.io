@@ -8,15 +8,16 @@
 .first-entry.home-info {
     margin-top: 0;
     margin-bottom: var(--gap);
-    min-height: 240px;
+    min-height: 200px;
 }
 
 div#logo-s {
     margin: auto;
     width: min(35vw, 280px);
     min-width: 180px;
-    overflow: hidden;
     opacity: 0;
+    perspective: 800px;
+    padding: 5px 0;
 }
 
 /* Mobile: reduce spacing around logo */

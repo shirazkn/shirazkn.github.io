@@ -41,6 +41,8 @@
     border-radius: var(--radius);
     transition: transform 0.1s;
     border: 1px solid var(--border);
+    touch-action: manipulation; /* Removes 300ms tap delay on mobile */
+    -webkit-tap-highlight-color: transparent; /* Remove iOS tap highlight */
 }
 
 .post-entry:active {
