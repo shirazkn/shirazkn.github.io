@@ -23,13 +23,14 @@ div#logo-s {
 /* Mobile: reduce spacing around logo */
 @media (pointer: coarse) {
     .first-entry.home-info {
-        margin-bottom: calc(var(--gap) * 0.5);
-        min-height: 200px;
+        margin-bottom: calc(var(--gap) * 0.25);
+        min-height: 150px;
     }
 
     div#logo-s {
         width: min(45vw, 280px);
         min-width: 200px;
+        padding: 0;
     }
 }
 
