@@ -118,14 +118,15 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     // Plus scroll-based "focus" effect
     let gyroBaselineBeta = null;
     let gyroBaselineGamma = null;
-    const GYRO_DRIFT_RATE_MIN = 0.008;
-    const GYRO_DRIFT_RATE_MAX = 0.15;
+    const GYRO_DRIFT_RATE_MIN = 0.002;  // Slower recentering at low tilt
+    const GYRO_DRIFT_RATE_MAX = 0.25;   // Faster recentering at high tilt
     let gyroRafId = null;
     let latestBeta = null, latestGamma = null;
     let cardGyroPermissionRequested = false;
 
-    // Current gyro rotation values
+    // Current gyro rotation and translation values
     let currentRotateX = 0, currentRotateY = 0;
+    let currentTranslateX = 0, currentTranslateY = 0;
 
     // Scroll-based focus using IntersectionObserver (much more efficient than scroll events)
     let cardFocusValues = new Array(postCards.length).fill(0);
@@ -168,6 +169,11 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
         const baseGyroY = currentRotateY * 0.3;
         const gyroRangeX = currentRotateX * 0.7;
         const gyroRangeY = currentRotateY * 0.7;
+        // Translation: slight base + more for focused cards
+        const baseTransX = currentTranslateX * 0.3;
+        const baseTransY = currentTranslateY * 0.3;
+        const transRangeX = currentTranslateX * 0.7;
+        const transRangeY = currentTranslateY * 0.7;
 
         for (let i = 0; i < postCards.length; i++) {
             const focus = cardFocusValues[i];
@@ -176,8 +182,10 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             // Simplified calculations
             const rotX = baseGyroX + gyroRangeX * focus;
             const rotY = baseGyroY + gyroRangeY * focus;
+            const transX = baseTransX + transRangeX * focus;
+            const transY = baseTransY + transRangeY * focus;
 
-            card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${1 + focus * 0.02})`;
+            card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateX(${transX}px) translateY(${transY}px) scale(${1 + focus * 0.02})`;
             card.style.boxShadow = `0 ${1 + focus * 2}px ${2 + focus * 4}px rgba(0,0,0,${0.3 + focus * 0.3})`;
             card.style.opacity = 0.25 + focus * 0.75;
         }
@@ -219,10 +227,11 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 const relativeBeta = latestBeta - gyroBaselineBeta;
                 const relativeGamma = latestGamma - gyroBaselineGamma;
 
-                // Adaptive drift rate: faster recentering for extreme tilts
+                // Adaptive drift rate: very slow at low tilt, fast at high tilt
                 const maxTilt = Math.max(Math.abs(relativeBeta), Math.abs(relativeGamma));
-                const tiltFactor = Math.min(1, maxTilt / 40);
-                const driftRate = GYRO_DRIFT_RATE_MIN + tiltFactor * tiltFactor * (GYRO_DRIFT_RATE_MAX - GYRO_DRIFT_RATE_MIN);
+                const tiltFactor = Math.min(1, maxTilt / 30);  // Threshold lowered to 30 degrees
+                // Cubic curve for steeper transition - stays slow longer, then ramps up fast
+                const driftRate = GYRO_DRIFT_RATE_MIN + tiltFactor * tiltFactor * tiltFactor * (GYRO_DRIFT_RATE_MAX - GYRO_DRIFT_RATE_MIN);
 
                 // Drift baseline toward current orientation
                 gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * driftRate;
@@ -231,6 +240,10 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 // Map tilt to rotation - same direction, lower sensitivity
                 currentRotateY = Math.max(-8, Math.min(8, relativeGamma * 0.35));
                 currentRotateX = Math.max(-8, Math.min(8, relativeBeta * -0.35));
+
+                // Translation based on tilt (in pixels) - opposite direction for parallax/hovering effect
+                currentTranslateX = Math.max(-6, Math.min(6, relativeGamma * -0.22));
+                currentTranslateY = Math.max(-5, Math.min(5, relativeBeta * -0.18));
 
                 scheduleTransformUpdate();
                 gyroRafId = null;

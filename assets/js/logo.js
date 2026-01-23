@@ -98,8 +98,8 @@ function initGyroscope() {
 // Gyroscope calibration
 let gyroBaselineBeta = null;
 let gyroBaselineGamma = null;
-const GYRO_DRIFT_RATE_MIN = 0.008;
-const GYRO_DRIFT_RATE_MAX = 0.15;
+const GYRO_DRIFT_RATE_MIN = 0.002;  // Slower recentering at low tilt
+const GYRO_DRIFT_RATE_MAX = 0.25;   // Faster recentering at high tilt
 let gyroRafId = null;
 let latestBeta = null, latestGamma = null;
 
@@ -146,10 +146,11 @@ function handleOrientation(event) {
       const relativeBeta = latestBeta - gyroBaselineBeta;
       const relativeGamma = latestGamma - gyroBaselineGamma;
 
-      // Adaptive drift rate: faster recentering for extreme tilts
+      // Adaptive drift rate: very slow at low tilt, fast at high tilt
       const maxTilt = Math.max(Math.abs(relativeBeta), Math.abs(relativeGamma));
-      const tiltFactor = Math.min(1, maxTilt / 40);
-      const driftRate = GYRO_DRIFT_RATE_MIN + tiltFactor * tiltFactor * (GYRO_DRIFT_RATE_MAX - GYRO_DRIFT_RATE_MIN);
+      const tiltFactor = Math.min(1, maxTilt / 30);  // Threshold lowered to 30 degrees
+      // Cubic curve for steeper transition - stays slow longer, then ramps up fast
+      const driftRate = GYRO_DRIFT_RATE_MIN + tiltFactor * tiltFactor * tiltFactor * (GYRO_DRIFT_RATE_MAX - GYRO_DRIFT_RATE_MIN);
 
       // Drift baseline toward current orientation
       gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * driftRate;
@@ -158,8 +159,8 @@ function handleOrientation(event) {
       const tiltX = Math.max(-30, Math.min(30, relativeGamma));
       const tiltY = Math.max(-30, Math.min(30, relativeBeta));
 
-      targetX = centreX + (tiltX / 30) * centreX * 1.2;
-      targetY = centreY + (tiltY / 30) * centreY * 1.0;
+      targetX = centreX + (tiltX / 30) * centreX * 1.5;
+      targetY = centreY + (tiltY / 30) * centreY * 1.25;
 
       gyroRafId = null;
     });
@@ -317,7 +318,7 @@ function animate(timestamp) {
   keyframeY = posY / centreY;
 
   // Amplify effect - stronger on mobile
-  const amplify = isTouchPrimary() ? 1.9 : 1.2;
+  const amplify = isTouchPrimary() ? 2.5 : 1.2;
   const kfX = (keyframeX - 1) * amplify + 1;
   const kfY = (keyframeY - 1) * amplify + 1;
 
@@ -333,9 +334,10 @@ function animate(timestamp) {
   pinkGradient.setAttribute('x2', getKeyframedValue(100, 7, kfX) + '%');
   pinkGradient.setAttribute('y2', getKeyframedValue(0, -7, kfX) + '%');
 
-  // Update transform
-  const rotationX = getKeyframedValue(0, -3, kfX) + 'deg';
-  const rotationY = getKeyframedValue(0, 3, kfY) + 'deg';
+  // Update transform - rotation is more pronounced on desktop
+  const rotationAmount = isTouchPrimary() ? 3 : 5;
+  const rotationX = getKeyframedValue(0, -rotationAmount, kfX) + 'deg';
+  const rotationY = getKeyframedValue(0, rotationAmount, kfY) + 'deg';
   const translationX = getKeyframedValue(0, 0.2, kfX) + '%';
   const translationY = getKeyframedValue(0, 0.2, kfY) + '%';
   svgRotator.style.transform = `rotateX(${rotationY}) rotateY(${rotationX}) translateX(${translationX}) translateY(${translationY})`;
