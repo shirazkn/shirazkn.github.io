@@ -98,7 +98,7 @@ function initGyroscope() {
 // Gyroscope calibration
 let gyroBaselineBeta = null;
 let gyroBaselineGamma = null;
-const GYRO_DRIFT_RATE_MIN = 0.002;  // Slower recentering at low tilt
+const GYRO_DRIFT_RATE_MIN = 0.0008;  // Slower recentering at low tilt
 const GYRO_DRIFT_RATE_MAX = 0.25;   // Faster recentering at high tilt
 let gyroRafId = null;
 let latestBeta = null, latestGamma = null;

@@ -168,7 +168,7 @@
         </ul>
     </nav>
 </header>
-<main class="main"> <script type="application/javascript" src="https://shirazkn.github.io/js/logo.min.c1e708bb5fefbc2b08ad7ef38915b763ca2a5d677d4cf7388c359207533eb322.js"></script>
+<main class="main"> <script type="application/javascript" src="https://shirazkn.github.io/js/logo.min.d91474d91a6d239b774639189056a345c2adfb5deb1e2843a9b07ed54d4aaac9.js"></script>
 
 <article class="first-entry home-info">
     <header class="entry-header">
@@ -492,7 +492,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     
     let gyroBaselineBeta = null;
     let gyroBaselineGamma = null;
-    const GYRO_DRIFT_RATE_MIN = 0.002;  
+    const GYRO_DRIFT_RATE_MIN = 0.0008;  
     const GYRO_DRIFT_RATE_MAX = 0.25;   
     let gyroRafId = null;
     let latestBeta = null, latestGamma = null;
@@ -612,12 +612,12 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * driftRate;
 
                 
-                currentRotateY = Math.max(-8, Math.min(8, relativeGamma * 0.35));
-                currentRotateX = Math.max(-8, Math.min(8, relativeBeta * -0.35));
+                currentRotateY = Math.max(-6, Math.min(6, relativeGamma * 0.25));
+                currentRotateX = Math.max(-6, Math.min(6, relativeBeta * -0.25));
 
                 
-                currentTranslateX = Math.max(-6, Math.min(6, relativeGamma * 0.22));
-                currentTranslateY = Math.max(-5, Math.min(5, relativeBeta * 0.18));
+                currentTranslateX = Math.max(-4, Math.min(4, relativeGamma * 0.16));
+                currentTranslateY = Math.max(-3, Math.min(3, relativeBeta * 0.14));
 
                 scheduleTransformUpdate();
                 gyroRafId = null;
