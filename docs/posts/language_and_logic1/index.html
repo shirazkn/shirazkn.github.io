@@ -589,8 +589,8 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 currentRotateX = Math.max(-8, Math.min(8, relativeBeta * -0.35));
 
                 
-                currentTranslateX = Math.max(-6, Math.min(6, relativeGamma * -0.22));
-                currentTranslateY = Math.max(-5, Math.min(5, relativeBeta * -0.18));
+                currentTranslateX = Math.max(-6, Math.min(6, relativeGamma * 0.22));
+                currentTranslateY = Math.max(-5, Math.min(5, relativeBeta * 0.18));
 
                 scheduleTransformUpdate();
                 gyroRafId = null;

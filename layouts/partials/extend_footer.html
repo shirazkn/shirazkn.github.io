@@ -241,9 +241,9 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 currentRotateY = Math.max(-8, Math.min(8, relativeGamma * 0.35));
                 currentRotateX = Math.max(-8, Math.min(8, relativeBeta * -0.35));
 
-                // Translation based on tilt (in pixels) - opposite direction for parallax/hovering effect
-                currentTranslateX = Math.max(-6, Math.min(6, relativeGamma * -0.22));
-                currentTranslateY = Math.max(-5, Math.min(5, relativeBeta * -0.18));
+                // Translation based on tilt (in pixels) - same direction as tilt
+                currentTranslateX = Math.max(-6, Math.min(6, relativeGamma * 0.22));
+                currentTranslateY = Math.max(-5, Math.min(5, relativeBeta * 0.18));
 
                 scheduleTransformUpdate();
                 gyroRafId = null;
