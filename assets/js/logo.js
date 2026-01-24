@@ -1,6 +1,5 @@
 // Physics constants
 const DT = 25;
-const CLIP_DISTANCE = DT * DT;
 const K_OVER_M = 0.00012;
 const C_OVER_M = 0.04;
 const MAX_SPEED = 8.0;
@@ -34,17 +33,10 @@ function accelerateTowards(tX, tY) {
   const dx = tX - posX;
   const dy = tY - posY;
 
-  if (dx * dx + dy * dy < CLIP_DISTANCE) {
-    posX = tX;
-    posY = tY;
-    velX = 0;
-    velY = 0;
-  } else {
-    velX = saturate(velX + (-C_OVER_M * velX + K_OVER_M * dx) * DT, MAX_SPEED);
-    velY = saturate(velY + (-C_OVER_M * velY + K_OVER_M * dy) * DT, MAX_SPEED);
-    posX += velX * DT;
-    posY += velY * DT;
-  }
+  velX = saturate(velX + (-C_OVER_M * velX + K_OVER_M * dx) * DT, MAX_SPEED);
+  velY = saturate(velY + (-C_OVER_M * velY + K_OVER_M * dy) * DT, MAX_SPEED);
+  posX += velX * DT;
+  posY += velY * DT;
 }
 
 function getKeyframedValue(mean, variation, keyframe) {
