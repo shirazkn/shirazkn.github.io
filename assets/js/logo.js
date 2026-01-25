@@ -94,6 +94,7 @@ const GYRO_DRIFT_RATE_MIN = 0;  // No recentering at low tilt
 const GYRO_DRIFT_RATE_MAX = 0.35;   // Faster recentering at high tilt
 let gyroRafId = null;
 let latestBeta = null, latestGamma = null;
+let isLandscape = false;
 
 function enableGyroscope() {
   window.addEventListener('deviceorientation', handleOrientation, { passive: true });
@@ -104,20 +105,14 @@ function handleOrientation(event) {
 
   // Adjust axes based on screen orientation
   const orientation = screen.orientation?.angle ?? window.orientation ?? 0;
-  let beta, gamma;
+  isLandscape = (orientation === 90 || orientation === -90 || orientation === 270);
 
-  if (orientation === 90) {
-    beta = event.gamma;
-    gamma = -event.beta;
-  } else if (orientation === -90 || orientation === 270) {
-    beta = -event.gamma;
-    gamma = event.beta;
-  } else if (orientation === 180) {
+  let beta = event.beta;
+  let gamma = event.gamma;
+
+  if (orientation === 180) {
     beta = -event.beta;
     gamma = -event.gamma;
-  } else {
-    beta = event.beta;
-    gamma = event.gamma;
   }
 
   latestBeta = beta;
@@ -149,8 +144,15 @@ function handleOrientation(event) {
       gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * driftRate;
       gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * driftRate;
 
-      const tiltX = Math.max(-30, Math.min(30, relativeGamma));
-      const tiltY = Math.max(-30, Math.min(30, relativeBeta));
+      // In landscape mode, swap X and Y axes
+      let tiltX, tiltY;
+      if (isLandscape) {
+        tiltX = Math.max(-30, Math.min(30, relativeBeta));
+        tiltY = Math.max(-30, Math.min(30, relativeGamma));
+      } else {
+        tiltX = Math.max(-30, Math.min(30, relativeGamma));
+        tiltY = Math.max(-30, Math.min(30, relativeBeta));
+      }
 
       targetX = centreX + (tiltX / 30) * centreX * 1.5;
       targetY = centreY + (tiltY / 30) * centreY * 1.25;
