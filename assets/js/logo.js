@@ -90,7 +90,7 @@ function initGyroscope() {
 // Gyroscope calibration
 let gyroBaselineBeta = null;
 let gyroBaselineGamma = null;
-const GYRO_DRIFT_RATE_MIN = 0.00002;  // Very slow recentering at low tilt
+const GYRO_DRIFT_RATE_MIN = 0;  // No recentering at low tilt
 const GYRO_DRIFT_RATE_MAX = 0.35;   // Faster recentering at high tilt
 let gyroRafId = null;
 let latestBeta = null, latestGamma = null;
@@ -138,12 +138,12 @@ function handleOrientation(event) {
       const relativeBeta = latestBeta - gyroBaselineBeta;
       const relativeGamma = latestGamma - gyroBaselineGamma;
 
-      // Adaptive drift rate: very slow at low tilt, fast at high tilt
+      // Adaptive drift rate: zero at low tilt, aggressive only at high tilt
       const maxTilt = Math.max(Math.abs(relativeBeta), Math.abs(relativeGamma));
-      const tiltFactor = Math.min(1, maxTilt / 35);  // Lower threshold so high tilt kicks in sooner
-      // 6th power curve for very steep transition - stays extremely slow at low tilt
-      const t6 = tiltFactor * tiltFactor * tiltFactor * tiltFactor * tiltFactor * tiltFactor;
-      const driftRate = GYRO_DRIFT_RATE_MIN + t6 * (GYRO_DRIFT_RATE_MAX - GYRO_DRIFT_RATE_MIN);
+      const tiltFactor = Math.min(1, maxTilt / 40);  // Threshold for high tilt
+      // 8th power curve for extremely steep transition - no recentering until high tilt
+      const t8 = Math.pow(tiltFactor, 8);
+      const driftRate = GYRO_DRIFT_RATE_MIN + t8 * (GYRO_DRIFT_RATE_MAX - GYRO_DRIFT_RATE_MIN);
 
       // Drift baseline toward current orientation
       gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * driftRate;
@@ -327,12 +327,13 @@ function animate(timestamp) {
   pinkGradient.setAttribute('x2', getKeyframedValue(100, 7, kfX) + '%');
   pinkGradient.setAttribute('y2', getKeyframedValue(0, -7, kfX) + '%');
 
-  // Update transform - rotation is more pronounced on desktop
+  // Update transform - rotation is more pronounced on desktop, translation more on mobile
   const rotationAmount = isTouchPrimary() ? 3 : 5;
+  const translateAmount = isTouchPrimary() ? 0.6 : 0.2;
   const rotationX = getKeyframedValue(0, -rotationAmount, kfX) + 'deg';
   const rotationY = getKeyframedValue(0, rotationAmount, kfY) + 'deg';
-  const translationX = getKeyframedValue(0, 0.2, kfX) + '%';
-  const translationY = getKeyframedValue(0, 0.2, kfY) + '%';
+  const translationX = getKeyframedValue(0, translateAmount, kfX) + '%';
+  const translationY = getKeyframedValue(0, translateAmount, kfY) + '%';
   svgRotator.style.transform = `rotateX(${rotationY}) rotateY(${rotationX}) translateX(${translationX}) translateY(${translationY})`;
 
   // Update SVG paths
