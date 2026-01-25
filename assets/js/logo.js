@@ -90,8 +90,8 @@ function initGyroscope() {
 // Gyroscope calibration
 let gyroBaselineBeta = null;
 let gyroBaselineGamma = null;
-const GYRO_DRIFT_RATE_MIN = 0.0002;  // Very slow recentering at low tilt
-const GYRO_DRIFT_RATE_MAX = 0.25;   // Faster recentering at high tilt
+const GYRO_DRIFT_RATE_MIN = 0.00002;  // Very slow recentering at low tilt
+const GYRO_DRIFT_RATE_MAX = 0.35;   // Faster recentering at high tilt
 let gyroRafId = null;
 let latestBeta = null, latestGamma = null;
 
@@ -140,9 +140,10 @@ function handleOrientation(event) {
 
       // Adaptive drift rate: very slow at low tilt, fast at high tilt
       const maxTilt = Math.max(Math.abs(relativeBeta), Math.abs(relativeGamma));
-      const tiltFactor = Math.min(1, maxTilt / 45);  // Higher threshold before fast recentering
-      // Quartic curve for even steeper transition - stays very slow longer, then ramps up
-      const driftRate = GYRO_DRIFT_RATE_MIN + tiltFactor * tiltFactor * tiltFactor * tiltFactor * (GYRO_DRIFT_RATE_MAX - GYRO_DRIFT_RATE_MIN);
+      const tiltFactor = Math.min(1, maxTilt / 35);  // Lower threshold so high tilt kicks in sooner
+      // 6th power curve for very steep transition - stays extremely slow at low tilt
+      const t6 = tiltFactor * tiltFactor * tiltFactor * tiltFactor * tiltFactor * tiltFactor;
+      const driftRate = GYRO_DRIFT_RATE_MIN + t6 * (GYRO_DRIFT_RATE_MAX - GYRO_DRIFT_RATE_MIN);
 
       // Drift baseline toward current orientation
       gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * driftRate;
