@@ -29,6 +29,11 @@ function saturate(val, maxVal) {
   return Math.min(Math.abs(val), maxVal) * Math.sign(val);
 }
 
+// Soft clamp using tanh - smoothly approaches limit without hard stop
+function softClamp(value, limit) {
+  return limit * Math.tanh(value / limit);
+}
+
 function accelerateTowards(tX, tY) {
   const dx = tX - posX;
   const dy = tY - posY;
@@ -96,6 +101,11 @@ let gyroRafId = null;
 let latestBeta = null, latestGamma = null;
 let isLandscape = false;
 
+// Smoothed tilt values to prevent stuttering
+let smoothedTiltX = 0;
+let smoothedTiltY = 0;
+const GYRO_SMOOTHING = 0.15;  // Lower = smoother but more lag
+
 function enableGyroscope() {
   window.addEventListener('deviceorientation', handleOrientation, { passive: true });
 }
@@ -144,18 +154,23 @@ function handleOrientation(event) {
       gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * driftRate;
       gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * driftRate;
 
-      // In landscape mode, swap X and Y axes
-      let tiltX, tiltY;
+      // In landscape mode, swap X and Y axes and invert vertical
+      // Use soft clamp instead of hard clamp for smooth behavior at limits
+      let rawTiltX, rawTiltY;
       if (isLandscape) {
-        tiltX = Math.max(-30, Math.min(30, relativeBeta));
-        tiltY = Math.max(-30, Math.min(30, relativeGamma));
+        rawTiltX = softClamp(relativeBeta, 30);
+        rawTiltY = softClamp(-relativeGamma, 30);
       } else {
-        tiltX = Math.max(-30, Math.min(30, relativeGamma));
-        tiltY = Math.max(-30, Math.min(30, relativeBeta));
+        rawTiltX = softClamp(relativeGamma, 30);
+        rawTiltY = softClamp(relativeBeta, 30);
       }
 
-      targetX = centreX + (tiltX / 30) * centreX * 1.5;
-      targetY = centreY + (tiltY / 30) * centreY * 1.25;
+      // Apply smoothing
+      smoothedTiltX += (rawTiltX - smoothedTiltX) * GYRO_SMOOTHING;
+      smoothedTiltY += (rawTiltY - smoothedTiltY) * GYRO_SMOOTHING;
+
+      targetX = centreX + (smoothedTiltX / 30) * centreX * 1.5;
+      targetY = centreY + (smoothedTiltY / 30) * centreY * 1.25;
 
       gyroRafId = null;
     });
