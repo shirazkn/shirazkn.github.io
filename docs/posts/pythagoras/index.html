@@ -561,9 +561,9 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             const distance = Math.abs(cardCenterY - targetY) / viewportHeight;
 
             
-            
-            const focus = Math.max(0, 1 - distance / 0.55);
-            cardFocusValues[i] = focus * focus; 
+            const t = Math.max(0, (distance - 0.2) / 0.35);
+            const falloff = Math.max(0, 1 - t);
+            cardFocusValues[i] = falloff * falloff * (falloff * falloff); 
         }
     }
 
