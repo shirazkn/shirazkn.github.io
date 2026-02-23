@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b78659d76588cf580b3b8c681621f1110b38b5c6048b3adb139c26417d83bf35.css" integrity="sha256-t4ZZ12WIz1gLO4xoFiHxEQs4tcYEizrbE5wmQX2DvzU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e3a29d577b0bff410e93401e6f77ec6a5307a660288b508818d6a3d72526e932.css" integrity="sha256-46KdV3sL/0EOk0Aeb3fsalMHpmAoi1CIGNaj1yUm6TI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -229,6 +229,18 @@
 </article>
 
 <article class="post-entry"> 
+  <header class="entry-header">
+    <h2>VLA Models
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>A review of the basic concepts that go into the design and training of VLA models.</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-06 18:56:12 -0500 EST'>December 6, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to VLA Models" href="https://shirazkn.github.io/posts/rl/"></a>
+</article>
+
+<article class="post-entry"> 
   <div class="entry-bg" style="background-image: url('/post-images/geometry/frames.png');"></div>
   <header class="entry-header">
     <h2>Representing Spatial Velocities
@@ -339,19 +351,6 @@
   </div>
   <footer class="entry-footer"><span title='2024-01-24 14:20:59 -0500 EST'>January 24, 2024</span></footer>
   <a class="entry-link" aria-label="post link to Lie Groups: Construction and Geometry" href="https://shirazkn.github.io/posts/lie-groups_construction/"></a>
-</article>
-
-<article class="post-entry"> 
-  <div class="entry-bg" style="background-image: url('/post-images/lie_groups/left-multiplication.png');"></div>
-  <header class="entry-header">
-    <h2>The Lie Group-Lie Algebra Correspondence
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>A topological group is a set of elements that has both a group operation and a topology. The group operation satisfies the usual axioms (same as those of finite groups), and the presence of a topology lets us say things like ’the group is connected’ and ’the group operation is continuous&#39;.</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-01-15 07:24:59 -0500 EST'>January 15, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to The Lie Group-Lie Algebra Correspondence" href="https://shirazkn.github.io/posts/lie-groups/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
@@ -520,6 +519,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     
     let cardFocusValues = new Array(postCards.length).fill(0);
     let transformRafId = null;
+    let scrollProgress = 0; 
 
     
     function scheduleTransformUpdate() {
@@ -531,26 +531,43 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     }
 
     
-    const observerThresholds = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
-    const cardObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const index = Array.prototype.indexOf.call(postCards, entry.target);
-            if (index === -1) return;
+    function updateCardFocusValues() {
+        const viewportHeight = window.innerHeight;
+        
+        const targetY = viewportHeight * (0.25 + scrollProgress * 0.5);
+
+        for (let i = 0; i < postCards.length; i++) {
+            const rect = postCards[i].getBoundingClientRect();
+            const cardCenterY = rect.top + rect.height / 2;
 
             
-            const ratio = entry.intersectionRatio;
+            const distance = Math.abs(cardCenterY - targetY) / viewportHeight;
+
             
-            cardFocusValues[index] = ratio * ratio;
-        });
-        scheduleTransformUpdate();
-    }, {
-        threshold: observerThresholds,
-        
-        rootMargin: '-15% 0px -15% 0px'
-    });
+            
+            const focus = Math.max(0, 1 - distance / 0.35);
+            cardFocusValues[i] = focus * focus; 
+        }
+    }
 
     
-    postCards.forEach(card => cardObserver.observe(card));
+    let scrollRafId = null;
+    function handleScroll() {
+        if (scrollRafId) return;
+        scrollRafId = requestAnimationFrame(() => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            scrollProgress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
+
+            updateCardFocusValues();
+            scheduleTransformUpdate();
+            scrollRafId = null;
+        });
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    
+    handleScroll();
 
     function applyCardTransforms() {
         
@@ -581,7 +598,6 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             const transY = baseTransY + transRangeY * focus;
 
             card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateX(${transX}px) translateY(${transY}px) scale(${1 + focus * 0.02})`;
-            card.style.boxShadow = `0 ${1 + focus * 2}px ${2 + focus * 4}px rgba(0,0,0,${0.3 + focus * 0.3})`;
             card.style.opacity = 0.25 + focus * 0.75;
         }
     }

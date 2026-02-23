@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/tags/robotics/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.081b174322431c1e8420df7749f18d39ccc78f65ab6495cc105a4bf669611538.css" integrity="sha256-CBsXQyJDHB6EIN93SfGNOczHj2WrZJXMEFpL9mlhFTg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e3a29d577b0bff410e93401e6f77ec6a5307a660288b508818d6a3d72526e932.css" integrity="sha256-46KdV3sL/0EOk0Aeb3fsalMHpmAoi1CIGNaj1yUm6TI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://shirazkn.github.io/tags/robotics/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://shirazkn.github.io/tags/robotics/index.xml" title="rss">
 <link rel="alternate" hreflang="en" href="https://shirazkn.github.io/tags/robotics/">
 <noscript>
     <style>
@@ -40,33 +40,56 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><script>
+(function() {
+    var pref = localStorage.getItem("pref-theme");
+    if (pref === "dark" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+    }
+})();
+</script>
+
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 <script>
   MathJax = {
     tex: {
-      packages: {'[+]': ['mathtools']},
+      packages: {'[+]': ['mathtools', 'amscd']},
       displayMath: [['\\[', '\\]'], ['$$', '$$']],  
       inlineMath: [['\\(', '\\)'], ['$', '$']]  
     },
     loader:{
-      load: ['ui/safe', '[tex]/mathtools']
+      load: ['ui/safe', '[tex]/mathtools', '[tex]/amscd']
     },
   };
 </script>
@@ -83,20 +106,8 @@
 <meta name="twitter:description" content="">
 
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
@@ -151,6 +162,19 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">VLA Models
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>A review of the basic concepts that go into the design and training of VLA models.</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-06 18:56:12 -0500 EST'>December 6, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to VLA Models" href="https://shirazkn.github.io/posts/rl/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <div class="entry-bg" style="background-image: url('/post-images/geometry/frames.png');"></div>
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Representing Spatial Velocities
     </h2>
   </header>
@@ -173,7 +197,439 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
-</a><div class="headerfooter">
+</a><script>
+
+document.addEventListener('touchstart', function() {}, { passive: true });
+
+
+function syncDarkClass() {
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    document.documentElement.classList.toggle('dark', isDark);
+    document.body.classList.toggle('dark', isDark);
+}
+syncDarkClass();
+
+
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        setTimeout(syncDarkClass, 0);
+    });
+}
+
+
+document.querySelectorAll('.logo a, .post-title').forEach(el => {
+    el.innerHTML = el.textContent.trim().split(' ').map(word =>
+        `<span class="hover-word">${word.split('').map(char =>
+            `<span class="hover-letter">${char}</span>`
+        ).join('')}</span>`
+    ).join(' ');
+});
+
+
+const isDark = () => document.body.classList.contains('dark');
+const hoverColorsDark = ['#ff51af', '#ff51af', '#f161ac', '#f161ac', '#db327e', '#db327e', '#3b82f6', '#38bdf8'];
+const hoverColorsLight = ['#ff51af', '#ff51af', '#e83a89', '#e83a89', '#f542a1', '#d6306f', '#3b9eff', '#00c2ff'];
+const getHoverColors = () => isDark() ? hoverColorsDark : hoverColorsLight;
+
+
+document.querySelectorAll('.hover-letter').forEach(letter => {
+    letter.addEventListener('mouseenter', () => {
+        const colors = getHoverColors();
+        letter.style.color = colors[Math.floor(Math.random() * colors.length)];
+    });
+    letter.addEventListener('mouseleave', () => {
+        letter.style.color = '';
+    });
+});
+
+
+if (window.matchMedia('(pointer: coarse)').matches) {
+    let lastTouchedLetter = null;
+
+    const activateLetter = (letter) => {
+        if (letter === lastTouchedLetter) return;
+        
+        if (lastTouchedLetter) {
+            lastTouchedLetter.style.color = '';
+            lastTouchedLetter.style.top = '';
+        }
+        
+        const colors = getHoverColors();
+        letter.style.transition = 'top 0.05s ease-out, color 0s';
+        letter.style.color = colors[Math.floor(Math.random() * colors.length)];
+        letter.style.top = '-0.08em';
+        lastTouchedLetter = letter;
+    };
+
+    const deactivateLetter = () => {
+        if (lastTouchedLetter) {
+            lastTouchedLetter.style.transition = '';
+            lastTouchedLetter.style.color = '';
+            lastTouchedLetter.style.top = '';
+            lastTouchedLetter = null;
+        }
+    };
+
+    const getLetterAtPoint = (x, y) => {
+        const el = document.elementFromPoint(x, y);
+        return el?.classList.contains('hover-letter') ? el : null;
+    };
+
+    document.querySelectorAll('.logo a, .post-title').forEach(container => {
+        container.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            const letter = getLetterAtPoint(touch.clientX, touch.clientY);
+            if (letter) activateLetter(letter);
+        }, { passive: true });
+
+        container.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            const letter = getLetterAtPoint(touch.clientX, touch.clientY);
+            if (letter) activateLetter(letter);
+        }, { passive: true });
+
+        container.addEventListener('touchend', deactivateLetter, { passive: true });
+        container.addEventListener('touchcancel', deactivateLetter, { passive: true });
+    });
+}
+
+
+
+
+
+const CARD_CONFIG = {
+    
+    hoverLift: 4,
+    
+    maxRotation: 0.8,
+    
+    shadowOpacityLight: 0.22,      
+    shadowOpacityDark: 0.45,       
+    shadowOpacityRange: 0.12,      
+    
+    shadowBlurBase: 1.5,           
+    shadowBlurHover: 2.5,          
+    shadowYOffsetBase: 1,          
+    shadowYOffsetHover: 2,         
+};
+
+
+
+const postCards = document.querySelectorAll('.post-entry');
+const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in window) {
+    
+    
+    let gyroBaselineBeta = null;
+    let gyroBaselineGamma = null;
+    const GYRO_DRIFT_RATE_MIN = 0.0008;  
+    const GYRO_DRIFT_RATE_MAX = 0.25;   
+    let gyroRafId = null;
+    let latestBeta = null, latestGamma = null;
+    let cardGyroPermissionRequested = false;
+
+    
+    let currentRotateX = 0, currentRotateY = 0;
+    let currentTranslateX = 0, currentTranslateY = 0;
+
+    
+    let smoothedRotateX = 0, smoothedRotateY = 0;
+    let smoothedTranslateX = 0, smoothedTranslateY = 0;
+    const CARD_GYRO_SMOOTHING = 0.15;
+
+    
+    const softClamp = (value, limit) => limit * Math.tanh(value / limit);
+
+    
+    let cardFocusValues = new Array(postCards.length).fill(0);
+    let transformRafId = null;
+    let scrollProgress = 0; 
+
+    
+    function scheduleTransformUpdate() {
+        if (transformRafId) return;
+        transformRafId = requestAnimationFrame(() => {
+            applyCardTransforms();
+            transformRafId = null;
+        });
+    }
+
+    
+    function updateCardFocusValues() {
+        const viewportHeight = window.innerHeight;
+        
+        const targetY = viewportHeight * (0.25 + scrollProgress * 0.5);
+
+        for (let i = 0; i < postCards.length; i++) {
+            const rect = postCards[i].getBoundingClientRect();
+            const cardCenterY = rect.top + rect.height / 2;
+
+            
+            const distance = Math.abs(cardCenterY - targetY) / viewportHeight;
+
+            
+            
+            const focus = Math.max(0, 1 - distance / 0.35);
+            cardFocusValues[i] = focus * focus; 
+        }
+    }
+
+    
+    let scrollRafId = null;
+    function handleScroll() {
+        if (scrollRafId) return;
+        scrollRafId = requestAnimationFrame(() => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            scrollProgress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
+
+            updateCardFocusValues();
+            scheduleTransformUpdate();
+            scrollRafId = null;
+        });
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    
+    handleScroll();
+
+    function applyCardTransforms() {
+        
+        smoothedRotateX += (currentRotateX - smoothedRotateX) * CARD_GYRO_SMOOTHING;
+        smoothedRotateY += (currentRotateY - smoothedRotateY) * CARD_GYRO_SMOOTHING;
+        smoothedTranslateX += (currentTranslateX - smoothedTranslateX) * CARD_GYRO_SMOOTHING;
+        smoothedTranslateY += (currentTranslateY - smoothedTranslateY) * CARD_GYRO_SMOOTHING;
+
+        
+        const baseGyroX = smoothedRotateX * 0.3;
+        const baseGyroY = smoothedRotateY * 0.3;
+        const gyroRangeX = smoothedRotateX * 0.7;
+        const gyroRangeY = smoothedRotateY * 0.7;
+        
+        const baseTransX = smoothedTranslateX * 0.3;
+        const baseTransY = smoothedTranslateY * 0.3;
+        const transRangeX = smoothedTranslateX * 0.7;
+        const transRangeY = smoothedTranslateY * 0.7;
+
+        for (let i = 0; i < postCards.length; i++) {
+            const focus = cardFocusValues[i];
+            const card = postCards[i];
+
+            
+            const rotX = baseGyroX + gyroRangeX * focus;
+            const rotY = baseGyroY + gyroRangeY * focus;
+            const transX = baseTransX + transRangeX * focus;
+            const transY = baseTransY + transRangeY * focus;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateX(${transX}px) translateY(${transY}px) scale(${1 + focus * 0.02})`;
+            card.style.opacity = 0.25 + focus * 0.75;
+        }
+    }
+
+    function handleCardOrientation(event) {
+        if (event.beta === null || event.gamma === null) return;
+
+        
+        const orientation = screen.orientation?.angle ?? window.orientation ?? 0;
+        let beta, gamma;
+
+        if (orientation === 90) {
+            beta = event.gamma;
+            gamma = -event.beta;
+        } else if (orientation === -90 || orientation === 270) {
+            beta = -event.gamma;
+            gamma = event.beta;
+        } else if (orientation === 180) {
+            beta = -event.beta;
+            gamma = -event.gamma;
+        } else {
+            beta = event.beta;
+            gamma = event.gamma;
+        }
+
+        latestBeta = beta;
+        latestGamma = gamma;
+
+        if (!gyroRafId) {
+            gyroRafId = requestAnimationFrame(() => {
+                
+                if (gyroBaselineBeta === null) {
+                    gyroBaselineBeta = latestBeta;
+                    gyroBaselineGamma = latestGamma;
+                }
+
+                
+                const relativeBeta = latestBeta - gyroBaselineBeta;
+                const relativeGamma = latestGamma - gyroBaselineGamma;
+
+                
+                const maxTilt = Math.max(Math.abs(relativeBeta), Math.abs(relativeGamma));
+                const tiltFactor = Math.min(1, maxTilt / 30);  
+                
+                const driftRate = GYRO_DRIFT_RATE_MIN + tiltFactor * tiltFactor * tiltFactor * (GYRO_DRIFT_RATE_MAX - GYRO_DRIFT_RATE_MIN);
+
+                
+                gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * driftRate;
+                gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * driftRate;
+
+                
+                currentRotateY = softClamp(relativeGamma * 0.25, 6);
+                currentRotateX = softClamp(relativeBeta * -0.25, 6);
+
+                
+                currentTranslateX = softClamp(relativeGamma * 0.16, 4);
+                currentTranslateY = softClamp(relativeBeta * 0.14, 3);
+
+                scheduleTransformUpdate();
+                gyroRafId = null;
+            });
+        }
+    }
+
+    function enableCardGyroscope() {
+        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
+    }
+
+    
+    applyCardTransforms();
+
+    
+    postCards.forEach((card, index) => {
+        let touchStartTime = 0;
+
+        card.addEventListener('touchstart', (e) => {
+            touchStartTime = Date.now();
+            const focus = cardFocusValues[index];
+            
+            card.style.transition = 'transform 0.08s ease-out, box-shadow 0.08s ease-out';
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(${0.97 + focus * 0.01})`;
+            card.style.boxShadow = `0 0.5px 1px rgba(0,0,0,0.2)`;
+        }, { passive: true });
+
+        card.addEventListener('touchend', () => {
+            
+            card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
+            setTimeout(() => {
+                card.style.transition = '';
+                scheduleTransformUpdate();
+            }, 150);
+        }, { passive: true });
+
+        card.addEventListener('touchcancel', () => {
+            card.style.transition = '';
+            scheduleTransformUpdate();
+        }, { passive: true });
+    });
+
+    
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        
+        enableCardGyroscope();
+
+        
+        const requestPermission = () => {
+            if (cardGyroPermissionRequested) return;
+            cardGyroPermissionRequested = true;
+
+            DeviceOrientationEvent.requestPermission()
+                .then(state => {
+                    if (state === 'granted') {
+                        enableCardGyroscope();
+                    }
+                })
+                .catch(() => {
+                    cardGyroPermissionRequested = false;
+                });
+        };
+        document.addEventListener('touchstart', requestPermission, { once: true, passive: true });
+        document.addEventListener('touchend', requestPermission, { once: true, passive: true });
+        document.addEventListener('click', requestPermission, { once: true, passive: true });
+    } else {
+        
+        enableCardGyroscope();
+    }
+} else {
+    
+    
+    let currentMouseCard = null;
+    let lastMouseX = 0, lastMouseY = 0;
+
+    postCards.forEach(card => {
+        let rafId = null;
+        let isPressed = false;
+
+        card.addEventListener('mouseenter', () => {
+            currentMouseCard = card;
+        });
+
+        card.addEventListener('mousemove', (e) => {
+            if (isPressed) return; 
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+
+            if (!rafId) {
+                rafId = requestAnimationFrame(() => {
+                    if (isPressed) { rafId = null; return; }
+                    const rect = card.getBoundingClientRect();
+                    const mouseX = lastMouseX - rect.left;
+                    const mouseY = lastMouseY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (mouseY - centerY) / centerY * -CARD_CONFIG.maxRotation;
+                    const rotateY = (mouseX - centerX) / centerX * CARD_CONFIG.maxRotation;
+                    const normalizedY = (centerY - mouseY) / centerY;
+                    const isDarkMode = document.body.classList.contains('dark');
+                    const baseOpacity = isDarkMode ? CARD_CONFIG.shadowOpacityDark : CARD_CONFIG.shadowOpacityLight;
+                    const shadowOpacity = Math.max(0, baseOpacity + normalizedY * CARD_CONFIG.shadowOpacityRange);
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${CARD_CONFIG.hoverLift}px)`;
+                    card.style.boxShadow = `0 ${CARD_CONFIG.shadowYOffsetHover}px ${CARD_CONFIG.shadowBlurHover}px rgba(0, 0, 0, ${shadowOpacity})`;
+                    rafId = null;
+                });
+            }
+        });
+
+        card.addEventListener('mousedown', () => {
+            isPressed = true;
+            card.style.transform = 'scale(0.99)';
+            card.style.boxShadow = '';
+        });
+
+        card.addEventListener('mouseup', () => {
+            isPressed = false;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+            isPressed = false;
+            card.style.transform = '';
+            card.style.boxShadow = '';
+            currentMouseCard = null;
+        });
+    });
+
+}
+
+
+const tocBox = document.querySelector('.toc');
+if (tocBox) {
+    const tocDetails = tocBox.querySelector('details');
+    if (tocDetails) {
+        tocBox.addEventListener('click', (e) => {
+            
+            if (e.target.tagName === 'A') return;
+            
+            if (e.target.closest('summary')) return;
+            tocDetails.open = !tocDetails.open;
+        });
+    }
+}
+</script>
+<div class="headerfooter">
     <sub><sup><sub>..</sub></sup></sub>
 </div>
 
@@ -223,9 +679,11 @@
     document.getElementById("theme-toggle").addEventListener("click", () => {
         if (document.body.className.includes("dark")) {
             document.body.classList.remove('dark');
+            document.documentElement.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
             document.body.classList.add('dark');
+            document.documentElement.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

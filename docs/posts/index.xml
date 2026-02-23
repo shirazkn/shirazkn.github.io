@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Shiraz</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Nov 2025 21:23:17 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 06 Dec 2025 18:56:12 -0500</lastBuildDate>
     <atom:link href="https://shirazkn.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VLA Models</title>
+      <link>https://shirazkn.github.io/posts/rl/</link>
+      <pubDate>Sat, 06 Dec 2025 18:56:12 -0500</pubDate>
+      <guid>https://shirazkn.github.io/posts/rl/</guid>
+      <description>A review of the basic concepts that go into the design and training of VLA models.</description>
+    </item>
     <item>
       <title>Representing Spatial Velocities</title>
       <link>https://shirazkn.github.io/posts/robotics/</link>
