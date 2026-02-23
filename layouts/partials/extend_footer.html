@@ -170,8 +170,8 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             // Calculate distance from target line, normalized by viewport height
             const distance = Math.abs(cardCenterY - targetY) / viewportHeight;
 
-            // Full focus within 20% of target, then quartic falloff to 0 at 55%
-            const t = Math.max(0, (distance - 0.2) / 0.35);
+            // Full focus within 40% of target, then quartic falloff to 0 at 75%
+            const t = Math.max(0, (distance - 0.4) / 0.35);
             const falloff = Math.max(0, 1 - t);
             cardFocusValues[i] = falloff * falloff * (falloff * falloff); // Quartic
         }
