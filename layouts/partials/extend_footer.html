@@ -160,8 +160,8 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     // Calculate focus values based on card position relative to dynamic target line
     function updateCardFocusValues() {
         const viewportHeight = window.innerHeight;
-        // Target line moves from 25% (at top of scroll) to 75% (at bottom of scroll)
-        const targetY = viewportHeight * (0.25 + scrollProgress * 0.5);
+        // Target line moves from 15% (at top of scroll) to 85% (at bottom of scroll)
+        const targetY = viewportHeight * (0.15 + scrollProgress * 0.7);
 
         for (let i = 0; i < postCards.length; i++) {
             const rect = postCards[i].getBoundingClientRect();
@@ -171,8 +171,8 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             const distance = Math.abs(cardCenterY - targetY) / viewportHeight;
 
             // Convert distance to focus: closer = higher focus
-            // Use smooth falloff - full focus within 15% of target, fades to 0 at 50%
-            const focus = Math.max(0, 1 - distance / 0.35);
+            // Wide falloff so more cards are in focus simultaneously
+            const focus = Math.max(0, 1 - distance / 0.55);
             cardFocusValues[i] = focus * focus; // Quadratic for smoother curve
         }
     }

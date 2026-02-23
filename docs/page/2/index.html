@@ -482,7 +482,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     function updateCardFocusValues() {
         const viewportHeight = window.innerHeight;
         
-        const targetY = viewportHeight * (0.25 + scrollProgress * 0.5);
+        const targetY = viewportHeight * (0.15 + scrollProgress * 0.7);
 
         for (let i = 0; i < postCards.length; i++) {
             const rect = postCards[i].getBoundingClientRect();
@@ -493,7 +493,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
 
             
             
-            const focus = Math.max(0, 1 - distance / 0.35);
+            const focus = Math.max(0, 1 - distance / 0.55);
             cardFocusValues[i] = focus * focus; 
         }
     }
