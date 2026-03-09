@@ -10,7 +10,7 @@
 <meta name="description" content="A Hilbert space is a vector space that has an inner product and that it is complete, i.e., it doesn&rsquo;t have holes in it. Inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space is an obvious example, where the inner product is just the dot product.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/hilbert-spaces/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.e3a29d577b0bff410e93401e6f77ec6a5307a660288b508818d6a3d72526e932.css" integrity="sha256-46KdV3sL/0EOk0Aeb3fsalMHpmAoi1CIGNaj1yUm6TI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c47d2866c003f4284e4cb163bf1770f08f3ad958519ae6cbbb57eefd3e4b6f55.css" integrity="sha256-xH0oZsAD9ChOTLFjvxdw8I862VhRmubLu1fu/T5Lb1U=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -663,7 +663,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             const transY = baseTransY + transRangeY * focus;
 
             card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateX(${transX}px) translateY(${transY}px) scale(${1 + focus * 0.02})`;
-            card.style.opacity = 0.25 + focus * 0.75;
+            card.style.opacity = 0.55 + focus * 0.45;
         }
     }
 
@@ -782,9 +782,17 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                     cardGyroPermissionRequested = false;
                 });
         };
-        document.addEventListener('touchstart', requestPermission, { once: true, passive: true });
-        document.addEventListener('touchend', requestPermission, { once: true, passive: true });
-        document.addEventListener('click', requestPermission, { once: true, passive: true });
+        const permissionEvents = ['touchstart', 'touchend', 'touchmove', 'click'];
+        const removePermissionListeners = () => {
+            permissionEvents.forEach(evt => document.removeEventListener(evt, requestPermissionOnGesture));
+        };
+        const requestPermissionOnGesture = () => {
+            requestPermission();
+            if (cardGyroPermissionRequested) removePermissionListeners();
+        };
+        permissionEvents.forEach(evt => {
+            document.addEventListener(evt, requestPermissionOnGesture, { passive: true });
+        });
     } else {
         
         enableCardGyroscope();

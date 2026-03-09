@@ -225,7 +225,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             const transY = baseTransY + transRangeY * focus;
 
             card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateX(${transX}px) translateY(${transY}px) scale(${1 + focus * 0.02})`;
-            card.style.opacity = 0.25 + focus * 0.75;
+            card.style.opacity = 0.55 + focus * 0.45;
         }
     }
 
@@ -344,9 +344,17 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                     cardGyroPermissionRequested = false;
                 });
         };
-        document.addEventListener('touchstart', requestPermission, { once: true, passive: true });
-        document.addEventListener('touchend', requestPermission, { once: true, passive: true });
-        document.addEventListener('click', requestPermission, { once: true, passive: true });
+        const permissionEvents = ['touchstart', 'touchend', 'touchmove', 'click'];
+        const removePermissionListeners = () => {
+            permissionEvents.forEach(evt => document.removeEventListener(evt, requestPermissionOnGesture));
+        };
+        const requestPermissionOnGesture = () => {
+            requestPermission();
+            if (cardGyroPermissionRequested) removePermissionListeners();
+        };
+        permissionEvents.forEach(evt => {
+            document.addEventListener(evt, requestPermissionOnGesture, { passive: true });
+        });
     } else {
         // Android - just enable directly
         enableCardGyroscope();

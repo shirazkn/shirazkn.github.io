@@ -171,6 +171,13 @@ sub {
     transform-style: preserve-3d;
 }
 
+/* Smooth opacity transitions for mobile scroll-based focus */
+@media (pointer: coarse) {
+    .post-entry {
+        transition: transform 0.1s ease-out, box-shadow 0.1s ease-out, opacity 0.25s ease-out;
+    }
+}
+
 .post-entry:hover {
     transition: transform 0.01s linear, box-shadow 0.05s linear;
 }
