@@ -54,13 +54,13 @@ You may reach me at [this](mailto:contact@shiraz-k.com) email address or leave a
 
 ---
 
-Psst... here's a random assortment of pure and applied math content that I've enjoyed and/or continue to learn from:
+Psst... here's an assortment of pure and applied math content that I've enjoyed and/or continue to learn from:
 
-- [The Bright Side of Mathematics](https://www.youtube.com/@brightsideofmaths) (underrated math YouTube channel)
+- [The Bright Side of Mathematics](https://www.youtube.com/@brightsideofmaths)' excellent math lectures and explainers
 - [Keenan Crane's lectures](https://www.youtube.com/watch?v=mas-PUA3OvA&list=PL9_jI1bdZmz0hIrNCMQW1YmZysAiIYSSS) on exterior calculus
-- [The Joy of Abstraction](https://www.cambridge.org/us/universitypress/subjects/mathematics/logic-categories-and-sets/joy-abstraction-exploration-math-category-theory-and-life) for an accessible intro to category theory, or [Category Theory in Context](https://emilyriehl.github.io/files/context.pdf) for the serious stuff
-- [Pieter van Goor's blog](https://pvangoor.github.io) on applied/computational Lie group stuff
+- [The Joy of Abstraction](https://www.cambridge.org/us/universitypress/subjects/mathematics/logic-categories-and-sets/joy-abstraction-exploration-math-category-theory-and-life) (an accessible intro to category theory) or [Category Theory in Context](https://emilyriehl.github.io/files/context.pdf) (a very well-paced textbook on category theory with plenty of examples)
+- [Pieter van Goor's blog](https://pvangoor.github.io) on matrix Lie groups, it's a treasure-trove of formulae for $SO(n)$ and $SE(n)$
 - Blogs by Terence Tao, John Baez, and Tai-Danae Bradley
 - [My Favorite Theorem](https://kpknudson.com/my-favorite-theorem) (podcast)
-- [John M. Lee](https://link.springer.com/book/10.1007/978-1-4419-9982-5) and [Stephen Bruce Sontz](https://link.springer.com/book/10.1007/978-3-319-14765-9) for differential geometry
+- [John M. Lee](https://link.springer.com/book/10.1007/978-1-4419-9982-5) and [Stephen Bruce Sontz](https://link.springer.com/book/10.1007/978-3-319-14765-9)'s books on differential geometry
 - [Peter Winkler's puzzle book](https://math.dartmouth.edu/news-resources/electronic/puzzlebook/book/book.pdf), which first sparked my joy for math

@@ -739,50 +739,37 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     
     
     postCards.forEach((card, index) => {
-        let pressTimer = null;
-        let didScroll = false;
+        let isPressed = false;
 
-        const applyPress = () => {
+        card.addEventListener('touchstart', () => {
+            isPressed = true;
             const focus = cardFocusValues[index];
             card.style.transition = 'transform 0.08s ease-out, box-shadow 0.08s ease-out';
             card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(${0.97 + focus * 0.01})`;
             card.style.boxShadow = `0 0.5px 1px rgba(0,0,0,0.2)`;
-        };
-
-        const cancelPress = () => {
-            if (pressTimer) {
-                clearTimeout(pressTimer);
-                pressTimer = null;
-            }
-        };
-
-        const releasePress = () => {
-            cancelPress();
-            card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
-            setTimeout(() => {
-                card.style.transition = '';
-                scheduleTransformUpdate();
-            }, 150);
-        };
-
-        card.addEventListener('touchstart', () => {
-            didScroll = false;
-            pressTimer = setTimeout(applyPress, 100);
         }, { passive: true });
 
         card.addEventListener('touchmove', () => {
-            if (!didScroll) {
-                didScroll = true;
-                cancelPress();
-                
+            if (isPressed) {
+                isPressed = false;
                 card.style.transition = '';
                 scheduleTransformUpdate();
             }
         }, { passive: true });
 
-        card.addEventListener('touchend', releasePress, { passive: true });
+        card.addEventListener('touchend', () => {
+            if (isPressed) {
+                isPressed = false;
+                card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
+                setTimeout(() => {
+                    card.style.transition = '';
+                    scheduleTransformUpdate();
+                }, 150);
+            }
+        }, { passive: true });
+
         card.addEventListener('touchcancel', () => {
-            cancelPress();
+            isPressed = false;
             card.style.transition = '';
             scheduleTransformUpdate();
         }, { passive: true });
@@ -794,31 +781,37 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
         enableCardGyroscope();
 
         
-        const requestPermission = () => {
-            if (cardGyroPermissionRequested) return;
-            cardGyroPermissionRequested = true;
+        if (!localStorage.getItem('gyro-permission-asked') && postCards.length > 0) {
+            const banner = document.createElement('div');
+            banner.id = 'gyro-banner';
+            banner.innerHTML = 'Tap to enable motion effects ↗';
+            banner.style.cssText = 'position:fixed;bottom:1.2em;left:50%;transform:translateX(-50%);background:var(--entry);color:var(--content);padding:0.55em 1.2em;border-radius:2em;font-size:0.85em;z-index:999;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.18);border:1px solid var(--border);opacity:0;transition:opacity 0.3s;';
+            document.body.appendChild(banner);
+            
+            setTimeout(() => { banner.style.opacity = '1'; }, 600);
 
-            DeviceOrientationEvent.requestPermission()
-                .then(state => {
-                    if (state === 'granted') {
-                        enableCardGyroscope();
-                    }
-                })
-                .catch(() => {
-                    cardGyroPermissionRequested = false;
-                });
-        };
-        const permissionEvents = ['touchstart', 'touchend', 'touchmove', 'click'];
-        const removePermissionListeners = () => {
-            permissionEvents.forEach(evt => document.removeEventListener(evt, requestPermissionOnGesture));
-        };
-        const requestPermissionOnGesture = () => {
-            requestPermission();
-            if (cardGyroPermissionRequested) removePermissionListeners();
-        };
-        permissionEvents.forEach(evt => {
-            document.addEventListener(evt, requestPermissionOnGesture, { passive: true });
-        });
+            banner.addEventListener('click', () => {
+                localStorage.setItem('gyro-permission-asked', '1');
+                banner.style.opacity = '0';
+                setTimeout(() => banner.remove(), 300);
+                if (!cardGyroPermissionRequested) {
+                    cardGyroPermissionRequested = true;
+                    DeviceOrientationEvent.requestPermission()
+                        .then(state => {
+                            if (state === 'granted') enableCardGyroscope();
+                        })
+                        .catch(() => { cardGyroPermissionRequested = false; });
+                }
+            });
+
+            
+            setTimeout(() => {
+                if (banner.parentNode) {
+                    banner.style.opacity = '0';
+                    setTimeout(() => banner.remove(), 300);
+                }
+            }, 8000);
+        }
     } else {
         
         enableCardGyroscope();
