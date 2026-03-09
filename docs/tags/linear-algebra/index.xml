@@ -62,7 +62,7 @@
       <link>https://shirazkn.github.io/posts/pythagoras/</link>
       <pubDate>Fri, 14 Apr 2023 15:53:46 -0400</pubDate>
       <guid>https://shirazkn.github.io/posts/pythagoras/</guid>
-      <description>I mentioned in the last post that Euclidean geometry arises by taking the real numbers and endowing with an inner product, at which point it satisfies the Pythagoras theorem. In this post I will talk about how the Pythagoras theorem is a special case of a more general feature of inner product spaces.</description>
+      <description>I mentioned in the last post that Euclidean geometry arises by taking the real numbers and endowing it with an inner product, at which point it satisfies the Pythagoras theorem. In this post I will talk about how the Pythagoras theorem is a special case of a more general feature of inner product spaces.</description>
     </item>
     <item>
       <title>Norms, Metrics, and Inner Products</title>

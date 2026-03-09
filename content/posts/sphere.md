@@ -24,13 +24,6 @@ A *connection* $\nabla$ on a smooth manifold $M$ is a way of differentiating [ve
 
 where $\mathfrak X(M)$ denotes the space of smooth vector fields on $M$. The axioms/properties that must be satisfied by a connection (specifically, a *Koszul connection*) can be found in Lee's book, so I will focus on the insights.
 
-<!-- <aside class=aside-center>
-More generally, let $\pi_E: E \rightarrow M$ be a vector bundle over $M$. A connection on $E$ is a map $\nabla: \mathfrak X(M) \times \Gamma(E) \rightarrow \Gamma(E)$ satisfying the Leibniz rule. A connection on $TM$ (called a <i>linear</i> or <i>affine</i> connection) arises as a special case of this construction. 
-Another important example is the $C^\infty(M)$ functions, which can be viewed as sections of the vector bundle $\pi : M \times \mathbb R \rightarrow M$.
-</aside> -->
-
-<!-- ## Total Covariant Derivative -->
-
 We write $\nabla X: \mathfrak X(M) \rightarrow \mathfrak X(M)$ to denote the <span class=accented>total covariant derivative</span> of $X$, defined such that $\nabla X(Y) = \nabla _Y X$ inserts $Y$ into the first slot of $\nabla$. Compare this with the map $\nabla _X:\mathfrak X(M) \rightarrow \mathfrak X(M)$ which inserts $Y$ into the second slot of $\nabla$. The former is $C^\infty(M)$-linear in $Y$, while the latter is $\mathbb R$-linear but not $C^\infty(M)$-linear in $Y$. That is, we have $C^\infty(M)$-linearity in the first slot:
 
 <p>
@@ -141,7 +134,6 @@ We are ready to attempt Problem $5-5$ from Lee's book.
 # The Sphere
 
 A vector field $X$ is said to be a *parallel* vector field if $\nabla X$ is identically $0$. A (local) parallel coordinate frame (see [my other post](/posts/lie-groups_riemannian) for an introduction to coordinate frames) exists on (an open set of) a manifold $M$ if and only if $M$ is (locally) flat. Here, local or global flatness refers to the property of being locally or globally isometric, resp., to an open set of the Euclidean space of the same dimension. 
-<!-- There are other ways to show that a piece (i.e., an open set) of a manifold is flat, but the existence of a parallel frame is what we will focus on in this post. -->
 
 A $2$-dimensional manifold is locally flat if and only if a small piece (i.e., an open set) cut out from it can be laid flat on the table without stretching, tearing, or crumpling it. The surface of a Cylinder and the Möbius strip (with a certain, natural choice of metric for it) are examples of locally flat surfaces; this is exactly why one can construct these surfaces from a piece of paper. The crux of Problem $5-5$ is to show that such a local parallel vector field does not exist on the sphere $S^2$. (This can be compared to the difficulty of drawing a map of the Earth that does not introduce distortions of some sort.)
 
@@ -192,10 +184,8 @@ So, there is a good reason for distinguishing between $(x^1, x^2)$ and $(y^1, y^
 
 [^product]: Note that $\mathcal L_{fX} Y = [fX,Y] = -\mathcal L_Y (fX)$, so the Lie derivative satisfies a Leibniz/product rule in either of its arguments.
 
-### I forgot the chain rule again!</i>
+### I forgot the chain rule again!
 My favorite thing about differential geometry is that it does not rely on memorization of formulae as much as multivariable calculus did. Instead, most of the heavy-lifting is done by the conceptual ideas, which, once internalized, can be applied to a variety of scenarios in order to recover most of the classical formulae of calculus. Some work is also done by the clever choice of notation.
-<!-- In particular, we can recover the chain rule using the *naturality* of the exterior derivative in relation to the pullback (see Lee's book, Prop. B. 13).  -->
-
 Let $y^1, y^2,$ and $y^3$ be the functions from $\mathbb R^3$ to $\mathbb R$ that project a point to its coordinates. The pushforward vector field $\psi_* \frac{\partial}{\partial x^1}$ can eat the function $ y^1(x^1, x^2)$, giving us
 
 <p>
@@ -214,7 +204,7 @@ On the other hand, any vector field in $\mathbb R^3$ can be expressed as $X^i \f
 If they are, then we will conclude that the sphere is flat.
 
 Observe that $X$ are the longitudinal (i.e., vertical) vector fields on the sphere, and $Y$ are the latitudinal (i.e., horizontal) vector fields.
-Lee asks us to compute $\nabla_{X} X$ and $\nabla_{Y} X$ to assess the parallel-ness of $X$, with $\nabla$ being the tangential connection. <!-- We use the tangential connection for this.  --> I tried this using the standard (Cartesian) coordinate frame of $\mathbb R^3$, but the computations are cumbersome. For instance, we have
+Lee asks us to compute $\nabla_{X} X$ and $\nabla_{Y} X$ to assess the parallel-ness of $X$, with $\nabla$ being the tangential connection. I tried this using the standard (Cartesian) coordinate frame of $\mathbb R^3$, but the computations are cumbersome. For instance, we have
 
 <p>
 \[
@@ -293,7 +283,7 @@ where $g^{ij}$ are coefficients of the inverse of the metric tensor (see p. 123 
 \Gamma_{22}^1 &= \frac{1}{2} g^{11} \left(
     \partial_2 g_{21} + \partial_2 g_{21} - \partial_1 g_{22}\right) + 0 + 0 \\
     &= -\frac{1}{2 r^2}\partial_{\varphi}\left(r^2 \sin^2 \varphi\right) = -\sin \varphi \,\cos \varphi.
-\end{align*},
+\end{align*}
 \]
 </p>
 
@@ -347,8 +337,6 @@ In the above, we worked with a specific isometric embedding of the sphere in $\m
 
 **The flat torus:** At the same time, the 2-torus can be embedded in $\mathbb R^4$ (analogous to how a circle can be embedded in $R^2$[^S2embedding])
 or realized as the quotient manifold $\mathbb R^2/\mathbb Z^2$. The latter two constructions would give rise to natural choices of flat metrics. We conclude that $\mathbb T^2$ admits a flat metric, but the donut (which is $\mathbb T^2$ with a specific choice of metric) is not flat. That being said, it is technically(?) possible  to isometrically embed the flat torus in $\mathbb R^3$; [these researchers](http://hevea-project.fr/ENPageToreDossierDePresse.html) are working on visualizing such an embedding, and observe that it has a self-similar, fractal-like structure, indicating that the situation is more intricate than our naive conception of the donut.
-
-<!-- [^nash]: The Nash-Kuiper embedding theorem is deemed to be counterintuitive and (according to Wikipedia). we are only guaranteed that we can *approximately* embed a smooth manifold in a higher-dimensional Euclidean space, though the degree of approximation can be arbitrarily good. -->
 
 [^S2embedding]: Note that $S^1$ (and in fact, all one-dimensional smooth manifolds) is flat independently of the choice of metric; a piece of string/yarn can always be curved into another shape of desire. Consequently, the product metric on $S^1\times S^1$ is flat as well.
 

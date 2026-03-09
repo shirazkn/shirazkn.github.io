@@ -7,8 +7,6 @@ bgImage: /post-images/optimization/L1Norm.png
 summary: We talked about why sparsity plays an important role in many of the inverse problems that we encounter in engineering. To actually find the sparse solutions to these problems, we add 'sparsity-promoting' terms to our optimization problems; the machine learning community calls this approach regularization.
 ---
 
-<!-- This post will require some familiarity with optimization (or least-squares, if you will). -->
-
 [We talked about](/posts/sparsity) why sparsity plays an important role in many of the [inverse problems](https://en.wikipedia.org/wiki/Inverse_problem) that we encounter in engineering. To actually find the sparse solutions to these problems, we add 'sparsity-promoting' terms to our optimization problems; the machine learning community calls this approach *regularization*.
 
 ### Regularization
@@ -112,8 +110,6 @@ Suppose $x\in \mathbb R^2$. The function <span class=accented>$\lVert x \rVert_1
 where the green plane is a sub-gradient at the origin.
 Since $\lVert x \rVert_1$ is non-differentiable along the axes, it tries to *snap* the minima towards the axes. Note that the axes of $\mathbb R^2$ are exactly where the sparse vectors are. 
 What about when $x\in \mathbb R^3$? At what points is $\lVert x\rVert_1$ non-differentiable then? (Hint: it's not just the axes!)
-<!-- $\lVert x \rVert_1$ always promotes sparsity, even in higher dimensions. -->
-
 The function <span class=accented>$\lVert x \rVert_2$</span> looks like an ice-cream cone:
 
 <div>
@@ -134,4 +130,3 @@ Then, the regularization term $\sum_{i=1}^{n}\lVert x_i \rVert_2$ is what we wan
 #### Closing Note
 
 There are many different ways to think about sparsity. For instance, one could imagine trying to balance a tennis ball that is resting on one of the surfaces we showed above, by holding the surface from below and tilting it. The ball is likely to settle at one of the non-differentiable points of the surface, thereby minimizing its potential energy. I like the sub-gradient interpretation because it works irrespective of the dimension. We can test for differentiability of arbitrary functions even if we cannot visualize them.
-<!-- Moreover, the sub-gradient interpretation speaks of the global minima of the function, whereas the 'tennis ball' analogy only says that the ball will rest at one of the local minima. -->

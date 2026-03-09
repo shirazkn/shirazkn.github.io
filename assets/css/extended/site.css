@@ -139,7 +139,6 @@ figure {
 }
 
 figure figcaption {
-    border: 5px 0px 5px 0px solid black;
     text-align: center;
     font-weight: normal;
 }
@@ -255,9 +254,11 @@ sub {
         0 0 8px var(--entry);
 }
 
-.post-entry:active {
-    transform: scale(0.99);
-    box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.15);
+@media (pointer: fine) {
+    .post-entry:active {
+        transform: scale(0.99);
+        box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.15);
+    }
 }
 
 /* --------------------------------------------------------------------------

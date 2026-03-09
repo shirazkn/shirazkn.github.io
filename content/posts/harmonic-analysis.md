@@ -27,16 +27,6 @@ $$ \tilde f(\omega) \coloneqq \sum_{j\in \mathbb Z} f(x_j) e^{-i\hspace{1pt}2\pi
 
 Now, 
 
-<!-- 
-<p>
-\[
-    \begin{align*}
-
-    \end{align*}
-\]
-</p> 
--->
-
 $$
     \begin{align*}
 \tilde f(\omega + \tfrac{1}{\Delta}) &= \sum_{j\in \mathbb Z} f(x_j) e^{-i\hspace{1pt}2\pi \left(\omega + \tfrac{1}{\Delta} \right)j\Delta} \Delta\\
@@ -96,7 +86,7 @@ The dual space $\hat G$ is the space of all (equivalence classes of) IURs of $G$
 
 $$\hat f(\lambda) = \int_G f(g) U^\lambda(g^{-1}) dg= \int_G f(g) \left(U^\lambda(g)\right)^{\dagger} dg,$$
 
-[^ref]: See *A Course an Abstract Harmonic Analysis* by Folland (Sec. 4.2) or Chirikjian and Kyatkin (Sec. 8.3.2).
+[^ref]: See *A Course in Abstract Harmonic Analysis* by Folland (Sec. 4.2) or Chirikjian and Kyatkin (Sec. 8.3.2).
 
 where $dg$ is the Haar measure on $G$ and $\hat f(\lambda)$ is an operator.
 If we choose a basis $(\mathbf e_i)_{i=1}^{\textrm{dim}(V^\lambda)}$ for $V^\lambda$ (i.e., the vector space that $U^\lambda$ acts on), then we can compute the $(i,j)^{th}$ component of $\hat f(\lambda)$ as
@@ -134,17 +124,11 @@ $$
 
 Other classical results, like the Parseval/Plancheral identity and the convolution theorem hold, but the convolution is generally non-commutative.
 
-<!-- Since a Lie algebra homomorphism shoud preserve the bracket,
-
-$$
-\widehat{[X^L, Y^L] f}(\lambda) = ...
-$$ -->
-
 ## The Locally Compact, Non-Abelian Case
 
 The theory gets more complicated here, and the literature sparse. The IURs are parametrized by the positive real numbers (i.e., $\lambda >0$). As we are no longer on a compact domain, the space of (equivalence classes of) IURs is continuous.
 
-The IURs of $SE(2)$ act on the $L^2$ space of functions on the circle; or rather, we will think of these as functions on $SO(2)$. Letting $\phi \in  SO(2)$ a point and $\zeta\in L^2(SO(2))$ a function on the circle, respectively, we define
+The IURs of $SE(2)$ act on the $L^2$ space of functions on the circle; or rather, we will think of these as functions on $SO(2)$. Letting $\phi \in  SO(2)$ be a point and $\zeta\in L^2(SO(2))$ a function on the circle, respectively, we define
 
 $$
 \left[U^\lambda 
@@ -173,15 +157,3 @@ When I first saw this, I wondered if the extra $\lambda$ in "$\lambda\,d\lambda$
 
 In the $SE(3)$ case, the IURs act on functions on the sphere, which can be expanded in the basis of *spherical harmonics*. We incur a `$\lambda^2 d\lambda$' term in the inverse transform. Rather than repeating the details, I recommend the tutorial article *GS Chirikjian, Degenerate Diffusions and Harmonic Analysis on SE(3): A Tutorial (2015)* written by my postdoc advisor.
 
-<!-- ### Can we use FFT here?
-
-Interchanging the order of integration, we can first do the computation
-
-$$
-    \begin{align*}
-\int_{\mathbb R^2} f(\theta, \mathbf t) 
-e^{i \lambda \hspace{1pt}(\hspace{1pt}{\mathbf t}_x\cos \phi \hspace{1pt}+\hspace{1pt} {\mathbf t}_y \sin \phi)} d {\mathbf t}_x d{\mathbf t}_y \mapsto g(\theta, \phi)
-\end{align*}
-$$
-
-since this is exactly the kind of product integral handled by the $2$-dimensional FFT. -->

@@ -97,16 +97,12 @@ or more concisely,
 
 It can be shown that this characterization of a coset space works just as well as the one in <span class=accented>(1)</span> and <span class=accented>(2)</span>.
 
-## Homogenous Spaces
+## Homogeneous Spaces
 
 While $G/H$ need not have a group operation associated with it, it is possible to let $G$ act on $G/H$ by left multiplication, i.e., $g\odot [g^\prime]_{\sim_H} = [g\odot g^\prime]_{\sim_H}$. Since this action can be shown to be transitive, $G/H$ is a [homogeneous space](https://en.wikipedia.org/wiki/Homogeneous_space). The stabilizer of $[e]_{\sim_H}\in G/H$ is $H$, which is to say that $H$ is the subgroup of actions in $G$ that act trivially (by the identity map) on $[e]_{\sim_H}$. 
 
 Conversely, given a homogenous space $X$ on which a group $G$ acts, we can construct a coset space by choosing a distinguished point $x\in X$. Letting $H$ denote the stabilizer of $x$ in $G$, $X$ is shown to be isomorphic to $G/H$. Thus, a homogenous space is obtained after we (i) equip a coset space of a Lie group with the appropriate action, and (ii)
 "<i>forget</i>" the identity coset $[e]_{\sim_H}$ of $G/H$. The last point is similar to how an [affine space](https://en.wikipedia.org/wiki/Affine_space) is obtained after we forget the origin of $\mathbb R^n$. Another way of stating the above is that there is no distinguished point in a homogenous space, so the identity coset should be treated the same as any other. 
-<!-- These are subtle differences between homogenous spaces and coset spaces, though the two objects are topologically identical. -->
-
-<!-- When $G/H$ is connected, it is also what's called a [Klein geometry](https://en.wikipedia.org/wiki/Klein_geometry). --> 
-
 ## Quotient Groups
 
 The quotient of topological spaces is distinct from the quotient of groups, for the same reason as why topological homomorphisms (i.e., continuous maps) are different from Lie group homomorphisms. While $G/H$ is always a topological quotient space (in the sense of $G/\sim_H$), it is a <span class=accented>quotient group</span> when $H$ is a normal subgroup of $G$ -- written as $H \trianglelefteq G$. In other words, the fact that $H$ happens to be a normal subgroup enables us to come up with a well-defined group operation on $G/H$.
@@ -137,10 +133,6 @@ The <span class=accented>direct product</span> of two groups $(H, \overset{H}{\o
 $$(h_1, k_1) \overset{H\times K}{\odot} (h_2, k_2) = (h_1 \overset{H}{\odot} h_2, k_1 \overset{K}{\odot} k_2).$$
 
 This can be an uninteresting construction, however, since it doesn't intertwine the group operations of $H$ and $K$ in any meaningful way. The group $\mathbb R^2 = \mathbb R \times \mathbb R$ is the direct product of two copies of $\mathbb R$ (where each group operation is assumed to be the vector addition.) The group $SO(2) \times SO(2) \cong \mathbb R^2/\mathbb Z^2$ may be used to describe (topologically) the configuration space of a robotic arm with a hinge. In the case of matrix Lie groups, a direct product is represented by block diagonal matrices containing a block from each constituent group.
-
-<!-- An example of a direct product is $O(n) \cong SO(n) \times \lbrace +I, -I \rbrace$, where the latter group keeps track of the reflections (i.e., the determinant of the matrix).  -->
-
-<!-- Another example is $GL(n, \mathbb R) \cong SL(n, \mathbb R) \times \mathbb R^\times$. -->
 
 ## Inner Semi-Direct Products
 The <span class=accented>inner semi-direct product</span> is a way of expressing a group $G$ as the product of two of its subgroups.
@@ -202,8 +194,6 @@ To define an outer semi-direct product, we require an action $\Phi_h(\cdot):N \r
 </p>
 
 Letting $G = N \rtimes H$ as above, we have that $H \cong G/N$ (also see [group extension](#group-extension) below). We say that $\Phi_h(\cdot)$ <i>twists</i> the group multiplication; a trivial twist of $\Phi_h(n)=n$ reduces the semi-direct product to a direct product.
-
- <!-- Note that '$G/H$' is not necessarily a group, it is a coset space. -->
 
 <b class=accented>Example 1:</b> $SE(3) \cong \mathbb R^3 \rtimes SO(3)$, where the action of $SO(3)$ on $\mathbb R^3$ is given by $\Phi_R(p) = Rp$. Thus,
 
@@ -338,9 +328,6 @@ As a corollary, every compact Lie group (including [closed and bounded](https://
 
 An interesting property of a Lie group that admits a bi-invariant metric is that its one-parameter subgroups are also geodesic (i.e., shortest-distance) paths of the metric.
 
-<!-- <span class=accented><b>Example 1</b> (Revisited)<b>:</b></span><br>
-Let's actually compute the metric of $SE(3) \cong \mathbb R^3 \rtimes SO(3)$. -->
-
 ## Measures
 
 While metrics help assign values to the lengths of tangent vectors (and by extension, to curves), measures assign values to subsets. In classical calculus, the expression $\int_{\mathbb R} f(x) dx$ refers to integration with respect to a specific, canonical choice of a measure -- the Lebesgue measure. The Lebesgue measure is uniquely determined (up to a scaling factor) by the fact that it should be translation invariant, i.e., $\mu([0,1]) = \mu ([1,2])$, and a few other properties that are viewed as being *natural* to the structure of $\mathbb R^n$. It turns out that there is a canonical measure on Lie groups as well, called the (left) <span class=accented>Haar measure</span>, that satisfies $\mu_G(gA) = \mu_G(A)$ for all $g\in G$ and $A\subset G$, where
@@ -353,8 +340,6 @@ In a compact group, a unique Haar measure can be found by normalizing the scalin
 $$\tilde \mu^{(g)}_G(hA) = \mu_G(hAg) = \mu_G(Ag) = \tilde \mu^{(g)}_G(A)$$
 
 for all $h\in G$. But since the left Haar measure is unique up to scalar multiplication, it must be the case that $\tilde \mu^{(g)}_G = \Delta (g) \mu_G$ where $\Delta (g)$ is a scalar-valued function that only depends on $g$. This is called the <span class=accented>modular function</span> of $G$ -- once computed, it is independent of the choice of the Haar measure $\mu_G$ that is used to compute it. It relates the left Haar measure to the right Haar measure. A lot of the properties and implications of $\Delta(\ \cdot\ )$ follow from showing that it is a group homomorphism from $G$ to $\mathbb R^\times_{>0}$.
-
-<!-- ## Unimodularity and Bi-invariance -->
 
 A Lie group is said to be <span class=accented>unimodular</span> *iff* its left Haar measure is also a right Haar measure, i.e., it is also right-invariant. Equivalently, a group is unimodular *iff* its modular function is $\Delta(g)=1$ for all $g\in G$.
 [Milnor](https://core.ac.uk/download/pdf/82428733.pdf) once again saves us from needing to check this condition explicitly:

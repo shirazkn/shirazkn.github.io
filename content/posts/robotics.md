@@ -58,20 +58,13 @@ A & \mf p\\
 \end{align}
 $$
 
-<!-- <aside class=aside-right>
-The fact that ${^fX^g}$ acts from the <i>right</i> might seem strange, but we will see that this is precisely the <a class=accented href=https://manipulation.csail.mit.edu/pick.html>monogram notation</a>. It's just that the action of ${^fX^g}$ on basis vectors is <i>opposite</i> to its action on the coefficients of vectors expressed w.r.t. that basis.
-</aside> -->
-
 Conversely, given a pair of frames $f,g$, there is a unique transformation ${\mono Xfg~}\coloneq(\mono Afg~, \mono {\mf p}fgf)$ in $G$ that takes $f$ to $g$. Equivalently, ${^fX^g}$ is the frame $g$ as seen from $f$. As we will see, this notation lets us write the transformation rule for frames as $\mono Xeg~ = \mono Xef~ \mono Xfg~$.
-<!-- Because the action is free and transitive, we can identify each transformation with an ordered pair of frames $(f,g)$, where $f$ is the "from" frame and $g$ is the "to" frame. -->
 
 <p style="text-align: center">
 <span class=boxed>
 ${^fX^g}$ is the transformation that takes $f$ to $g$<br> equivalently, it's $g$ "as seen from" $f$
 </span>
 </p>
-
-<!-- You may have noticed that the frames $f$ and $g$ themselves look like elements of $G$. This confusion between points on a homogeneous space and elements of the group acting on that space is one of the pitfalls that the monogram notation seeks to address. -->
 
 <aside class=aside-center>
 The action of $G$ is transitive and free (it doesn't really matter what these words mean, but I have included a handy guide in the <a href=/posts/robotics/#appendix-b-group-actions class=accented>appendix</a>). In particular, $SE(3)=SO(3)\ltimes \mathbb R^3$ is a subgroup of $G$ that acts on $\mathrm F\mathbb R^3$, and it leaves the subset $\mathrm O\mathbb R^3\subseteq \mathrm F\mathbb R^3$ of positively-oriented orthogonal frames invariant! We will later specialize our discussion to the action of $SE(3)$ on $\mathrm O\mathbb R^3$.
@@ -205,8 +198,6 @@ $$
 \end{bmatrix}\in \mathfrak{se}(3),
 $$
 where $\mono{\Omega}fgk\in\mathfrak{so}(3)$ is a $3\times 3$ skew-symmetric matrix. As we will see, $\mono{\mf v}fgk$ is *not* the same as Tedrake's <span class=secondary>$\mono{\mf v}{f}{g}{k}$</span>; what I write as $\mono{\mf v}fgk$ is what Tedrake writes as <span class=secondary>$\mono{\mf v}{f}{g_f}{k}$</span>. I will justify my choice of notation shortly.
-<!-- We can also call $f$ the *reference* frame, or the *observer* frame. -->
-
 *<span class=tertiary>Using the notation.</span>*
 We denote the velocity of $g$ as seen from itself, with $e$ considered as the stationary frame, as
 
@@ -225,12 +216,6 @@ $$
 \mono X~{g'}~=\frac{d}{d\tau}{\mono X{e}{g(t)}~ \mono X{g(t)}{g(t+\tau)}~}\Big\vert_{\tau=0} = \mono X{}g~ \mono{\Lambda}{}gg.
 \end{align}
 $$
-
-<!-- $$
-\begin{align}
-\frac{d}{d\tau}{\mono X{g(t+\tau)}f~}\Big\vert_{\tau=0}=\frac{d}{d\tau}{\mono X{g(t+\tau)}{g(t)}~ \mono X{g(t)}f~}\Big\vert_{\tau=0} = \mono{\Lambda}{\dot g}~~ \mono X{g}f~
-\end{align}
-$$ -->
 
 Thus, $\mono{\Lambda}{}gg=(\mono X{}g~)^{-1}\,\mono X{}{g'}~$ is indeed the <span class=accented>left-invariant velocity</span> of $g$, with $e$ considered to be the stationary/reference frame. What is then the right-invariant velocity? It is the velocity of $g$ as seen from $e$, with $e$ considered the stationary frame:
 
@@ -345,10 +330,6 @@ $$
 $$
 
 *both* angular and translational velocities add when they are expressed in the same frame. 
-
-<!-- <aside class=aside-center>
-
-</aside> -->
 
 ----
 

@@ -25,7 +25,6 @@ Let's call the ball corresponding to $\lVert{}\cdot{}\rVert_p$ as the $p$-ball. 
 [This website](https://mimmackk.github.io/unitball/) shows the unit balls corresponding to other $p$-norms. Here is my artistic illustration of the same:
 
 <div>
-<!-- <figure class=invertible style="max-width: 25%;"> -->
 <figure class=invertible style="max-width: 100%;">
 <img src=/post-images/linear_algebra/NormBalls.png>
 </figure>
@@ -37,15 +36,13 @@ The figure may indicate that $\lVert{}\cdot{}\rVert_p$ gets bigger as $p$ increa
 
 because you need to go *further* from the origin to get to the $\infty$ ball. This is similar to how a car with a *poorer* mileage would need to expend *more* fuel to get to the same point. So the balls get bigger, but the 'mileage' gets smaller.
 
-If $p<1$, then the corresponding "$p$-norm" is not actually a norm, as it is guaranteed to violate [the conditions](/posts/norms_metrics) which we usually place on a norm. What feature do we see appearing in the $p$-balls, when $p<1$? They answer is that they curve inwards (are *non-convex*). In particular, the $0$-ball is quite bizarre, it is exactly the axes! ([Recall](/posts/norms_metrics) that the "$0$-norm" counts the number of non-zero elements in a vector, which is $1$ for each point on the axes). Let's not talk about the $0$-ball for now.
+If $p<1$, then the corresponding "$p$-norm" is not actually a norm, as it is guaranteed to violate [the conditions](/posts/norms_metrics) which we usually place on a norm. What feature do we see appearing in the $p$-balls, when $p<1$? The answer is that they curve inwards (are *non-convex*). In particular, the $0$-ball is quite bizarre, it is exactly the axes! ([Recall](/posts/norms_metrics) that the "$0$-norm" counts the number of non-zero elements in a vector, which is $1$ for each point on the axes). Let's not talk about the $0$-ball for now.
 
 ### The $2$-Ball
 
 When $n=2$ the $2$-ball is a circle, and when $n=3$ the $2$-ball is a sphere. What's less obvious is the case of $n=1$, in which case each of the $p$-norm unit balls is just the line segment from $-1$ to $1$.
 
 We may or may not remember from high-school physics that spheres (i.e., $2$-balls) minimize the ratio of the surface area to volume of a shape. It is why bubbles take spherical shapes, in order to minimize their potential energy. A defining feature of the $2$-ball is that it has continuous rotational symmetry -- we can rotate the $2$-ball without changing its shape, something we cannot do for any of the other $p$-balls. 
-<!-- We looked at the $2$-norm in detail in [earlier posts](/posts/leastsquares). Specifically, we observe that we can rotate the $2$-balls without changing its shape, something we cannot do for any of the other $p$-balls. -->
-
 ### The $\infty$-Ball
 
 Recall that the $\infty$-norm is evaluated by taking the limit $p\rightarrow \infty$ in the definition of the $p$-norm, giving
@@ -95,8 +92,6 @@ where each '$\pm$' indicates that we can choose either sign to obtain a differen
 
 This observation has consequences in the field of *optimization*; [some poor bloke here](https://math.stackexchange.com/questions/2287818/writing-the-unit-ell-1-ball-in-mathbbrn-as-the-intersection-of-closed-h) is trying to check whether a given vector $x$ lies inside the $1$-ball. They write this out as a system of linear inequalities,
  only to realize that it would take an exponentially large number of linear inequalities to do this.
-
-<!-- The particular face in the positive quadrant of the $1$-ball, with $x_i\geq 0 \forall i$, is called the *probability simplex* -->
 
 ### Equivalence of Norms
 
@@ -194,4 +189,3 @@ A quirk that shows up repeatedly in deep learning in various forms is the so-cal
 On the other hand, certain quirks of higher dimensional geometry constitute what some researchers call the [blessing of dimensionality](https://citeseerx.ist.psu.edu/doc/10.1.1.329.3392). Of the different things it can refer to, one of the observations is that as the dimension increases, random sampling from a high-dimensional vector space becomes more and more well-behaved. The sampled vectors [are increasingly likely to be orthogonal](https://drscotthawley.github.io/blog/2022/01/24/MultiDim-DotProducts.html), and have a somewhat predictable length (due to Durett's 'volume concentration' example). It can be used to facilitate, rather than hinder high-dimensional computational tasks, so long as one knows what to watch out for.
 
 [^link]: At the end of [this note](https://faculty.etsu.edu/gardnerr/Func/notes/HWG-5-4.pdf) the author places spheres at the corners of the $1$-ball instead. I don't know enough topology to see if the 'paradox' that arises in this case can be explained without introducing additional concepts.
-<!-- The 'paradox' in this case is that it violates the Heine-Borel and Weierstrass' theorems which hold in finite-dimensional case. -->

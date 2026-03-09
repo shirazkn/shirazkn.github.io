@@ -39,7 +39,6 @@ The cases of $p=0$ and $\infty$ are evaluated using limits, and thus take specia
 where $0^0$ is defined as $0$. So, $\lVert x\rVert_0$ counts the number of non-zero entries in the vector, whereas $\lVert x\rVert_\infty$ picks out the maximum (in magnitude) entry of the vector.
 
 Actually, $\lVert x\rVert_0$ isn't really a norm (it fails property no. $2$, for one), but it still gets called the "$0$-norm" for convenience. I've seen some authors call it a *pseudonorm*. The "$0$-norm" has exploded in popularity due to its applications in the field of *compressive sensing*. 
-<!-- It's used to reconstruct sparse vectors, those that only have a few non-zero entries. This is akin to searching for compressed information, since sparse vectors can be stored in computers using fewer numbers than are required for general vectors.  -->
 
 ### Metrics
 
@@ -79,7 +78,7 @@ D_2(x,y) = \|x-y\|_2 = \sqrt{(x-y)\cdot (x-y)}
 The dot product induces the  $2$-norm which induces the Euclidean distance, so the whole gang is here.
 This is why we typically call $\mathbb R^n$ the Euclidean space; since there is only one canonical inner product for it (the dot product), we don't particularly mind restricting ourselves to the $p=2$ case because it feels somewhat natural to the space. 
 
-Thus, inner products are the most rarest of them all, but also have the most structure. Metrics/distances are on the other extreme, because all Minkowski distances with $0\leq p\leq \infty$ are proper metrics, but only $p=2$ corresponds to an inner product. Norms are sandwiched in between the two in terms of their rarity; "$p$-norms" are proper norms only when $p \geq 1$.
+Thus, inner products are the rarest of them all, but also have the most structure. Metrics/distances are on the other extreme, because all Minkowski distances with $0\leq p\leq \infty$ are proper metrics, but only $p=2$ corresponds to an inner product. Norms are sandwiched in between the two in terms of their rarity; "$p$-norms" are proper norms only when $p \geq 1$.
 
 <p>\[
 \text{Inner Product Spaces} \subset \text{Normed Vector Spaces} \subset \text{Metric Spaces}

@@ -13,10 +13,6 @@ Over the past year, I have struggled to pin down what the scope of my blog shoul
 
 To appreciate the aspects of vector fields that I will touch upon requires at least a familiarity with the abstract/modern definition of a vector space; for an introduction to the topic that does not rely too heavily on abstract constructions, see *Calculus on Manifolds* by Spivak. An even more pressing prerequisite is the notion of a smooth (i.e., differentiable) manifold. Unless you are already familiar with manifolds, or choose to push forth so daringly with the intention of learning about manifolds later on, I delegate your introduction of manifolds to [The Bright Side of Mathematics](https://www.youtube.com/watch?v=62WNNkoRCLE), one of my favorite math channels on YouTube. Aspects of topology and differentiability will not show up until the latter half of this discussion. 
 
-<!-- Lastly, I recommend watching <a href=https://www.youtube.com/watch?v&equals;1lGM5DEdMaw class=accented>Aleph 0's video</a> on the generalized Stokes' theorem to get a sneak peek at what differential forms can be used to accomplish. -->
-
-<!-- The big picture then is that we can view the inner product $\langle \cdot, \cdot \rangle$ as not just a function,  $\langle \cdot, \cdot \rangle:V\times V \rightarrow \mathbb R$, but also as a <span class=accented>pairing</span> between $V$ and its dual, which we will denote as $V^*$. -->
-
 ---
 
 # Preliminaries
@@ -33,15 +29,6 @@ Indeed, some of the most influential ideas in classical and quantum physics were
 ## Covariance and Contravariance
 
 As Einstein did with the speed of light in his development of special relativity, let us recognize that a <span class=accented>vector</span> (not to be confused by the *coordinate representation* of a vector) will remain unchanged under a change of basis. Letting $\mathbf v = v^1\mathbf e_1 + v^2\mathbf e_2 + \dots + v^n\mathbf e_n$ be a vector in an $n$-dimensional real vector space $V$, where $\mathbf e_1$ through $\mathbf e_n$ are a basis for $V$, we can introduce the following notation:
-
-<!-- 
-<p>
-\[
-\begin{align}
-\end{align}
-\]
-</p> 
--->
 
 <p>
 \[
@@ -103,8 +90,6 @@ Suppose that the vector space $V$ is endowed with an inner product, $\langle \cd
 
 
 On account of this <i>pairing</i> between vectors and covectors, we say that $V$ and $V^{\ast}$ are isomorphic (i.e., have the same underlying structure) as vector spaces, and use '$\sharp$' and '$\flat$' (which are called the [musical isomorphisms](https://en.wikipedia.org/wiki/Musical_isomorphism)) to 'translate between the languages' of the two vector spaces. In high school and undergraduate linear algebra, we might have written $\mathbf v^\top$ to refer to the dual version of (i.e., the covector that is paired to) $\mathbf v$; it helps that 'covector' rhymes with 'row-vector'. The musical isomorphisms generalize the notion of a transpose by permitting it to operate differently in either direction. The musical meaning of '$\sharp$' and '$\flat$' (raising/lowering a note) is still relevant; it corresponds to the raising/lowering of indices. Take a look again at <span class=accented>$(1)$</span>, and see that I have used the choice of index (superscript vs. subscript) to distinguish the contravariant and covariant pieces.
-<!-- If you use a ruler to measure the shadow cast by a thin, straight wooden stick, you can either measure an appreciably large number or a diminishingly small one depending on how the stick is oriented. -->
-
 ## Topology
 
 All of the above was introduced in the absence of a smooth manifold, which suggests that manifolds are yet to contribute something to the discussion. Before we proceed, I'd like to list some concepts that I think you should at least skim the Wikipedia pages of (and/or [YouTube videos on](https://www.youtube.com/watch?v=62WNNkoRCLE)) before proceeding further:
@@ -173,8 +158,6 @@ By construction, $\mathbf v(f)$ does not depend on the particular choice of $\ga
 The fact that $\mathbf v(f)\in \mathbb R$ is to be compared to our earlier observations about covectors. A covector is an object that reduces vectors to real numbers. More formally, it is a linear function whose domain is the entire vector space (in this case, $T_p\mathcal M$) and whose codomain is the underlying field of scalars (in this case, $\mathbb R$).
 So is a function $f\in C^1(\mathcal M)$ a covector? Not quite.
 
-<!-- [^5]: Observe that $f$ need not be linear. In fact, it isn't clear what it even means for $f$ to be 'linear', since points on $\mathcal M$ cannot (in general) be added to each other. -->
-
 We could not simply identify the tangent vectors with the paths/curves on $\mathcal M$ passing through $p$ because it would lead to inadvertent double-counting; two paths that are indistinguishable near $p$ would get counted as two distinct tangent vectors, which is not the case. A similar problem arises if we try to identify the functions $f\in C^1(\mathcal M)$ with covectors. Two functions that behave similarly near $p$ would get counted as different cotangent vectors, even though they extract the same measurement out of a given vector.
 
 <aside class=aside-right>
@@ -192,8 +175,6 @@ T_p \mathbb R \cong T^*_p \mathbb R \cong (-\infty, \infty) = \mathbb R.
 $$
 The first isomorphism holds for all (finite-dimensional) tangent spaces, but the second isomorphism generally only holds for Euclidean spaces. It is certainly NOT the case that $T_p \mathcal M \cong \mathcal M$ in general.
 Before moving on from the above example, reflect upon what a path $\gamma :[-1,1]\rightarrow \mathbb R$ on the manifold $\mathbb R$ might look like.
-
-<!-- To see how the addition and scalar multiplication of tangent vectors can be made concrete in terms of (the equivalence classes of) paths, refer to Lee's book. We will instead switch to a more familar perspective by introducing a basis. -->
 
 ## Partial Derivatives and Differentials
 
@@ -217,7 +198,6 @@ The (abuse of) notation I've used follows from that of <a href=https://store.dov
 The distinction between the two is clear once we consider what a directional derivative on a manifold $\mathcal M$ should do: it's a mapping from $C^1(\mathcal M)$ to $\mathbb R$, i.e., it computes the derivative of a $C^1(\mathcal M)$ function at a given point on $\mathcal M$, along a prescribed direction. The object ${\partial/\partial x^i \rvert_p}$ is related to "$ \partial/\partial x^i \rvert_{h(p)}$" by the <a href=#pushforwards-and-pullbacks class=accented>pushforward</a> map corresponding to $h^{-1}$.
 </aside>
 
-<!-- Suppose we are given an inner product $\langle \cdot, \cdot \rangle:T_p\mathcal M \times T_p\mathcal M \rightarrow \mathbb R$. Recall that the inner product allows us to turn vectors into covectors via the musical isomorphism '$\flat$'. -->
 The basis $\left\lbrace \frac{\partial}{\partial x^1}\big\rvert_p, \dots, \frac{\partial}{\partial x^n }\big\rvert_p\right\rbrace$ of $T_p \mathcal M$ gives rise to a corresponding basis of $T^*_p \mathcal M$, called the <a class=accented>dual basis</a>. The dual basis is denoted as $\left\lbrace dx^1_p, \dots, dx^n_p\right\rbrace$ and defined such that the following identity holds:
 
 <p>
@@ -228,8 +208,7 @@ The basis $\left\lbrace \frac{\partial}{\partial x^1}\big\rvert_p, \dots, \frac{
     \]
 </p>
 
-where $\delta_{ij}$ is the [Kroenecker delta](https://en.wikipedia.org/wiki/Kronecker_delta). A covector $df_p \in T^{\ast}_p \mathcal M$ can therefore represented as 
-<!-- In other words, $\langle d x^j, \frac{\partial}{\partial x^k} \rangle= \delta_k^j$ (which is the [Kronecker delta](https://en.wikipedia.org/wiki/Kronecker_delta)).  -->
+where $\delta_{ij}$ is the [Kronecker delta](https://en.wikipedia.org/wiki/Kronecker_delta). A covector $df_p \in T^{\ast}_p \mathcal M$ can therefore be represented as
 
 <p>
 \[
@@ -238,8 +217,6 @@ where $\delta_{ij}$ is the [Kroenecker delta](https://en.wikipedia.org/wiki/Kron
     \end{align}
     \]
 </p>
-
-<!-- With these representations in place, the inner product is simply $\langle df, \mathbf v \rangle = \sum_{i=1}^n f_i v^i$. -->
 
 The notation that was introduced above starts to have further meaning once we introduce the so-called coordinate functions.
 Decompose the chart $h$ into its constituent <span class=accented>coordinate functions</span> as follows:
@@ -330,10 +307,6 @@ Now behold, for something striking will occur when we combine <span class=accent
 
 This is nothing but the multivariable chain rule, which relates the [differential](https://en.wikipedia.org/wiki/Differential_(mathematics)#Differentials_as_linear_maps) of a function to infinitesimal changes in its arguments.
 
-<!-- <aside class=aside-center>
-<b>Disclaimer:</b>
-The usage of <i>differential</i> here plays a different role from its usage in 'differential forms/geometry'. In the latter, it refers to the fact that a form/geometry is defined on the entirety of a manifold (and is in a certain sense, differentiable). More on that later.
-</aside> -->
 
 It should be noted that the measurement of a vector by a covector can be defined in the absence of an inner product; even the dual basis of covectors is defined uniquely.
 However, we do need an inner product to be able to make sense of the musical isomorphisms. Simply because the musical isomorphisms *by definition* refer to the pairing between vectors and covectors induced by the inner product.
@@ -362,7 +335,7 @@ When stored as the entries of a matrix, $g_{ij}(p)$ are related to the Jacobian 
 </p>
 
 These operations are sometimes referred to as <span class=accented>lowering</span> and <span class=accented>raising</span> of index (respectively) for obvious reasons.
-There are other ways to compute $g_{ij}(p)$; for instance, when the manifold is not parameterized but given by an implicit equation (such as '$x^2 + y^2 + z^2=0$'), it is not clear which Jacobian must be evaluated. See [the books](https://www.amazon.com/Stochastic-Models-Information-Theory-Groups/dp/081764802X) by G. S. Chirikjian for more details about these computations.
+There are other ways to compute $g_{ij}(p)$; for instance, when the manifold is not parameterized but given by an implicit equation (such as '$x^2 + y^2 + z^2=1$'), it is not clear which Jacobian must be evaluated. See [the books](https://www.amazon.com/Stochastic-Models-Information-Theory-Groups/dp/081764802X) by G. S. Chirikjian for more details about these computations.
 
 It is also possible to define a non-standard Riemannian metric for $\mathbb R^n$ which is nonetheless "Euclidean", i.e., represents a "flat" space. This is the case when the coefficients $g_{ij}(p)$ are each constant as functions of $p$, for instance.
 

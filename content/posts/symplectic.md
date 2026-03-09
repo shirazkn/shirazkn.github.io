@@ -18,15 +18,11 @@ In this post, I would like to collect my thoughts on the differential geometric 
 Let $(\mathcal M, g)$ be a Riemannian manifold and $p\in \mathcal M$ a point on it. Recall that $g_p$ is an inner product on $T_p\mathcal M$ that is also smooth as a function of $p$.
 If we pick coordinates on some open set of $\mathcal M$, the Riemannian metric can be expressed in this coordinate frame using a symmetric positive definite matrix $\mathbf G=[g_{ij}]$, such that $g= g_{ij} dx^i dx^j$.[^1]
 Since any matrix can be decomposed into a symmetric and a skew-symmetric part, one can wonder: what sort of mathematical structure might a (invertible) <span class=accented>skew-symmetric</span> matrix of coefficients correspond to? 
-<!-- For starters, we observe that since skew-symmetric matrices are not invertible in odd dimensions, we need to restrict our attention to even-dimensional manifolds. -->
-
 This line of investigation leads us to the notion of a <span class=accented>symplectic form</span> on $\mathcal M$. A symplectic form is a closed, non-degenerate, skew-symmetric $2$-form $\omega$ on $\mathcal M$. In a coordinate frame near $p$, it can be written as $\omega = \omega_{ij}\hspace{2pt} dx^i \wedge dx^j$.
 The non-degeneracy condition says that the skew-symmetric matrix $\Omega \coloneqq [\omega^{ij}]$ should be invertible.
 Interestingly, since the skew symmetric matrices are singular (i.e., rank deficient) in odd dimensions, symplectic forms only exist on even-dimensional manifolds. We will say more about symplectic forms after considering a specific type of an even-dimensional manifold, namely the cotangent bundle (i.e., the "momentum phase-space").
 
-<!-- <aside class=aside-center> -->
-[^1]: [Recall](/posts/lie-groups_riemannian) that the notation "$dx^i dx^j$" implicitly refers to the symmetric $2$-tensor, $\frac{1}{2}(dx^i \otimes dx^j + dx^j \otimes dx^i)$. 
-<!-- </aside> -->
+[^1]: [Recall](/posts/lie-groups_riemannian) that the notation "$dx^i dx^j$" implicitly refers to the symmetric $2$-tensor, $\frac{1}{2}(dx^i \otimes dx^j + dx^j \otimes dx^i)$.
 
 ----
 
@@ -40,7 +36,7 @@ Now, we know that smooth maps can *pull back* differential forms, whereas they *
 
 [^3]: The word <i>tautological</i> refers to "obvious" or self-evident truths. The tautological one-form takes its name because of the self-reference involved in its definition, i.e., the object $p$ shows up both in the subscript as well as in the definition of $\tau_{(q, p)}$. 
 
-At any point $(q, p)$ on $T \mathcal Q^\ast$, we use $\pi$ to pull back the only linear form that we have available at hand, namely the form $p$ at $q$. Thus, we define $\tau_{(q, p)} = d\pi^\ast_{(q, p)}p$.
+At any point $(q, p)$ on $T^\ast \mathcal Q$, we use $\pi$ to pull back the only linear form that we have available at hand, namely the form $p$ at $q$. Thus, we define $\tau_{(q, p)} = d\pi^\ast_{(q, p)}p$.
 Note that $\tau_{(q, p)} $ will eat vectors in $T_{(q, p)}(T^\ast\mathcal Q)$ while $p$ ate vectors in $T_q \mathcal Q$, so this is a bonafide construction and not a mere renaming of objects. The symplectic form is defined as $\omega = -d \tau$; the negative sign is just by convention as far as I can tell!
 
 Suppose we have a coordinate chart $(q^i)_{i=1}^n$ on $U\subseteq \mathcal Q$, so that $q^i:U\rightarrow \mathbb R$. Since any differential form on $U$ can be expressed as $p = p_i dq^i$, we can think of $(q^i, p_i)_{i=1}^n$ as being a coordinate chart on the $2n$-dimensional manifold $T^\ast\mathcal Q$. Accordingly, $(dq^i, dp_i)_{i=1}^n$ is a basis for one-forms on $T^\ast\mathcal Q$. 
@@ -54,14 +50,14 @@ in these coordinates[^4], so that the symplectic form $\omega$ becomes $\omega =
 \Omega = \begin{bmatrix} 0 & \mathbf I \\ -\mathbf I & 0 \end{bmatrix},
 \end{align*}
 \]
-<p>
+</p>
 
 where $\mathbf I$ is the $n\times n$ identity matrix. 
 
 <aside class=aside-center> The important <a class=accented href=https://en.wikipedia.org/wiki/Darboux%27s_theorem#Darboux%27s_theorem_for_symplectic_manifolds>Darboux theorem</a> says that <i>any</i> symplectic form can be (locally) expressed as $dq^i \wedge dp_i$ for some choice of coordinates $(q^i,p_i)$. Note that an analogous statement does not hold true for Riemannian metrics! Only the Riemannian metrics of <a href=/posts/sphere class=accented>flat manifolds</a> admit coordinates such that the metric tensor becomes $\mathbf I$.<br>
 </aside>
 
-[^4]: This is easily verifying by feeding either side a tangent vector.
+[^4]: This is easily verified by feeding either side a tangent vector.
 Also see *Mechanics and Symmetry* by Marsden & Ratiu or *Smooth Manifolds* by John M. Lee.
 
 ### Hamiltonian Vector Fields
@@ -157,7 +153,6 @@ where the first equality uses our earlier (symplectic) definition of $X_H$, veri
 
 <aside class=aside-center>
 <b>Mnemonic</b>: 
-<!-- There appears to be a confusing <i>asymmetry</i> between these definitions, so hopefully the following can serve as a mnemonic.  -->
 In both, $\omega\left(\hspace{1pt}\cdot\hspace{1pt},\hspace{1pt}\cdot\hspace{1pt}\right)$ and $\lbrace\hspace{1pt}\cdot\hspace{1pt},\hspace{1pt}\cdot\hspace{1pt}\rbrace$, the argument on the left 'gets differentiated' whereas the argument on the right differentiates (i.e., turns into a vector field). A minus sign shows up precisely when we interchange the roles of these arguments. 
 There appears to be a confusing <i>asymmetry</i> in the way we define the Hamiltonian vector field;
 in the symplectic definition, $H$ is the object being differentiated, whereas in the Poisson algebraic definition, $H$ assumes the role of the differentiator.
@@ -227,12 +222,10 @@ $$\omega^L = \frac{\partial^2 L}{\partial \dot q^i \partial q^j} dq^i \wedge dq^
 As shown in Marsden, there is a very straightforward condition for the non-degeneracy of $\omega^L$:
 $$\text{rank}\left(\frac{\partial^2 L}{\partial \dot q^i \partial \dot q^j}\right) = n.$$
 
-A <span class=accented>Lagrangian vector field</span> $Z$ is one such that $\Omega^L(Z, \cdot) = dE$, where $E$ is the <span class=accented>energy function</span> on $T\mathcal Q$ defined by $E(q, \dot q) = \dot q^i \frac{\partial L}{\partial \dot q^i} - L(q, \dot q)$.[^7] When $\Omega^L$ is degenerate, the Lagrangian vector field $Z$ is not unique (which is perhaps why we do not write it as "$Z_{E}$"). <!-- $Z$ is called a *second-order equation* if $d\pi_{(q, \dot q)}(Z_{(q, \dot q)}) = \dot q$. -->
+A <span class=accented>Lagrangian vector field</span> $Z$ is one such that $\Omega^L(Z, \cdot) = dE$, where $E$ is the <span class=accented>energy function</span> on $T\mathcal Q$ defined by $E(q, \dot q) = \dot q^i \frac{\partial L}{\partial \dot q^i} - L(q, \dot q)$.[^7] When $\Omega^L$ is degenerate, the Lagrangian vector field $Z$ is not unique (which is perhaps why we do not write it as "$Z_{E}$").
 The integral curves of $Z$ correspond to Lagrange's equations of motion (Sec. 7.3 of Marsden and Ratiu).
 
 The downside of the above approach is that it still does not tell me where the functions $L$ or $H$ come from. It just says that, given an initial piece of datum (be it a Hamiltonian $H$ or a Lagrangian $L$), there is a very natural sequence of steps that lets us write down Hamilton's or Lagrange's equations of motion in coordinates. 
-<!-- Actually, we also have everything we need to do this in a coordinate-free manner, for instance, on Lie groups where it makes more sense to work with invariant vector fields rather than some coordinate vector fields. -->
-
 [^5]: $\omega^L$ is closed because the exterior derivative commutes with pullbacks (a property known as *naturality*). This also means that $\tau^L$ and $\omega^L$ have the same relationship to each other as $\tau$ and $\omega$ do.
 
 [^6]: Maybe something I could mention here is that $\mathbb F L$ differentiates *within* fibers. Unlike the other types of derivatives we have for tensor fields on manifolds, the definition of $\mathbb F L$ exploits the vector space structure of the fibers. Remember that in order to differentiate *across* fibers we need a [connection](/posts/sphere).
@@ -248,7 +241,6 @@ can be thought of as the "velocity vector" corresponding to $\gamma(\cdot)$ at t
 
 We can rewrite the minimization problem mentioned earlier as follows: let $L: T\mathcal Q \rightarrow \mathbb R$ be a Lagrangian. We let $\mathfrak S$ denote the <span class=accented>functional</span> (i.e., a function which acts on other functions) defined by
 $$\mathfrak S[\gamma] = \int_a^b L(\gamma, \dot \gamma)\hspace{3pt} dt$$
-<!-- where $\gamma^\ast(L)= L \circ \gamma$ is the pullback of $L$ under $\gamma$. -->
 We want to find the curve in some appropriate submanifold of $\mathcal C$ that minimizes $\mathfrak S$, under the pretext that $L$ could represent things such as the length or potential energy of a $\gamma$-shaped object. Just like in the finite-dimensional case of optimization, we can find the local minima of this problem by setting the exterior derivative $d\mathfrak S_{\tilde{\gamma}}$ to $\mathbf 0$ and solving for $\tilde{\gamma}$. Note that this "$\mathbf 0$" is the origin of $T\mathcal C^\ast$, as opposed to the real number $0$.
 
 Let $X:[a,b]\rightarrow T\mathcal Q$ be a vector field along $\tilde{\gamma}$. Since $X$ also represents an element of $T_{\tilde{\gamma}}\mathcal C$, the covector $d\mathfrak S_{\tilde{\gamma}}$ can eat it to produce a number, which we set to $0$:
@@ -314,12 +306,10 @@ and then integrate (the second term) by parts:
 
 If we hold the endpoints fixed, i.e., $\gamma(a,\hspace{1pt}\cdot\hspace{1pt})$ and $\gamma(b,\hspace{1pt}\cdot\hspace{1pt})$ are each constant, then $X^i(a) = X^i(b) = 0$. In this case, the condition $[d\mathfrak S_{\tilde{\gamma}}]=0$ reduces to the Euler-Lagrange equations.[^noether]
 
-[^noether]: Something that's missing from this article is an explanation of how Noether's theorem figures into the framework of Langrangian mechanics. I will revisit and update this post if I ever get into it.
+[^noether]: Something that's missing from this article is an explanation of how Noether's theorem figures into the framework of Lagrangian mechanics. I will revisit and update this post if I ever get into it.
 
 
 ----
-
-<!-- Unlike in the above, I will only make broad strokes here, leaving the details to the excellent books of Marsden and Ratiu. -->
 
 ## Reduction
 
@@ -369,43 +359,13 @@ except with the tangent spaces identified with their corresponding vector spaces
 
 **Exterior Derivative:** When the codomain of $f$ is $\mathbb R$, they write "$\mathbf d f(x)$" instead of $df_x$ or "$T_x f$". As much as I dislike the idea of introducing a special piece of notation for $\mathbb R$-valued maps, I think this is a reasonable piece of notation since in this case $\mathbf d f(x)$ is a bona fide one-form in $T_x^{\ast}\mathcal M$. After identifying $T_{f(x)} \mathbb R$ with $\mathbb R$, the operator $\mathbf d$ is indeed the <span class=accented>exterior derivative</span> as the notation promises. Thank God!
 
-<!-- Personally, I would just call this object the <span class=accented>Jacobian</span> of $f$. -->
-
-<!-- The chain rule takes the form 
-
-$$
-\mathbf D(g\circ f)(  x)\cdot   e = \mathbf Dg(f(  x))\cdot (\mathbf Df(  x) \cdot   e),
-$$
-
-while the product rule of differentiation can be generalized as follows; if $f_i: \mathbf E \rightarrow \mathbf F_i$ and $B:\mathbf F_1 \times \mathbf F_2 \rightarrow \mathbf G$ is a bilinear function, then 
-
-$$
-\mathbf D(B(f_1, f_2))(  u)\cdot   e = B(\mathbf Df_1(  u)\cdot   e, f_2(  u)) + B(f_1(  u), \mathbf D f_2(  u)\cdot   e).
-$$
- -->
-
-
-<!--
-Higher-order derivatives are given by 
-<p>
-\[
-    \mathbf D^2f(u)\cdot(v,w)=\mathbf D\left[\mathbf Df (\cdot) \cdot w\right](u)\cdot v
-    \]
-    </p> -->
-
-
-<!-- ### The Functional Derivative -->
-
 **[Functional Derivative](https://web.archive.org/web/20170217025324/https://www2.ee.washington.edu/techsite/papers/documents/UWEETR-2008-0001.pdf)**: This is yet another one of those unfortunately named (and notated) objects that in my opinion could simply be called the *differential* (or with some care, the *gradient*). Given $f:\mathbf E \rightarrow \mathbb R$, let ${\delta f}/{\delta x} \coloneqq df_{x}$ be the unique element of $T_x^*\mathbf E \cong \mathbf E^\ast$ that satisfies
 $$
 \mathbf D f(x)\cdot e =  \frac{\delta f}{\delta x} (e)
 $$
 Again, I would have just written $df_x(e)$ for this, with $e$ interpreted as an element of $T_x \mathbf E$ as much as a vector in $\mathbf E$. Unfortunately, M&amp;R and other physicists write "$\delta x$" instead of $e$, which complicates things further.
 
-<!-- <aside class=aside-right> It has always baffled me as to what role $\delta$ plays here... if there is some reason unbeknownst to me why one should write "$\delta x$", then please leave a comment! I want to know!
-</aside> -->
-
-**Gradient**: The notion of a functional derivative can be generalized: consider a (nondegenerate) pairing $\langle\cdot, \cdot\rangle:\mathbf E \times \mathbf F \rightarrow \mathbb R$ between two different vector spaces, $\mathbf E$ and $\mathbf F$. For instance, the "duality pairing" between $\mathbf E$ and $\mathbf E^\ast$ is given by $\langle e, \varphi \rangle = \varphi(e)$. One defines the (generalized) <class span=accented>gradient</span> of $f:\mathbf E\rightarrow \mathbb R$ at $x\in\mathbf E$ as the unique element $\textup f\in \mathbf F$ such that $df_x(e)=\langle e, \textup f\hspace{1pt}\rangle$.
+**Gradient**: The notion of a functional derivative can be generalized: consider a (nondegenerate) pairing $\langle\cdot, \cdot\rangle:\mathbf E \times \mathbf F \rightarrow \mathbb R$ between two different vector spaces, $\mathbf E$ and $\mathbf F$. For instance, the "duality pairing" between $\mathbf E$ and $\mathbf E^\ast$ is given by $\langle e, \varphi \rangle = \varphi(e)$. One defines the (generalized) <span class=accented>gradient</span> of $f:\mathbf E\rightarrow \mathbb R$ at $x\in\mathbf E$ as the unique element $\textup f\in \mathbf F$ such that $df_x(e)=\langle e, \textup f\hspace{1pt}\rangle$.
 Thus, the functional derivative is a sort of "gradient" under the duality pairing, while the colloquial notion of a "gradient vector" uses the inner product pairing of $\mathbf E$ with itself.
 
 

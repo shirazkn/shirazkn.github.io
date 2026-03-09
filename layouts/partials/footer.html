@@ -1,20 +1,5 @@
 {{- if not (.Param "hideFooter") }}
 <footer class="footer">
-    <!-- <center> -->
-    <!-- <div class="signup-form">
-        <script async src="https://eocampaign1.com/form/e5dbf9e6-b891-11ee-a1b7-cdaf9e8a98be.js" data-form="e5dbf9e6-b891-11ee-a1b7-cdaf9e8a98be"></script>
-    </div> -->
-    <!-- </center> -->
-    <!-- {{- if site.Copyright }}
-    <span>{{ site.Copyright | markdownify }}</span>
-    {{- else }}
-    <span>&copy; {{ now.Year }} <a href="{{ "" | absLangURL }}">{{ site.Title }}</a></span>
-    {{- end }} -->
-    <!-- <span>
-        Created using
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span> -->
 </footer>
 {{- end }}
 
@@ -61,7 +46,7 @@
 {{- if (not site.Params.disableScrollToTop) }}
 <script>
     var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
+    window.addEventListener('scroll', function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
             mybutton.style.visibility = "visible";
             mybutton.style.opacity = "1";
@@ -69,7 +54,7 @@
             mybutton.style.visibility = "hidden";
             mybutton.style.opacity = "0";
         }
-    };
+    });
 
 </script>
 {{- end }}
@@ -77,14 +62,24 @@
 {{- if (not site.Params.disableThemeToggle) }}
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            document.documentElement.dataset.theme = 'light';
+        const html = document.documentElement;
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
-            document.documentElement.dataset.theme = 'dark';
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
+        }
+        const isDark = html.dataset.theme === 'dark';
+        html.classList.toggle('dark', isDark);
+        document.body.classList.toggle('dark', isDark);
+        // Update Giscus theme if present
+        const giscusFrame = document.querySelector('iframe.giscus-frame');
+        if (giscusFrame) {
+            giscusFrame.contentWindow.postMessage(
+                { giscus: { setConfig: { theme: isDark ? 'noborder_dark' : 'noborder_light' } } },
+                'https://giscus.app'
+            );
         }
     })
 

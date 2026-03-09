@@ -7,11 +7,7 @@ bgImage: /post-images/linear_algebra/linear_tfm.png
 summary: In this post I want to bridge the gap between abstract vector spaces (which are the mathematical foundation of linear algebra) and matrix multiplication (which is the linear algebra most of us are familiar with). Unlike the typical 101 course in linear algebra, I will avoid talking about solving systems of equations.
 ---
 
-In this post, <!-- I will summarize some of the linear algebra concepts I discussed over the past few weeks, and paint a useful *picture* of linear algebra based on the <span class=accented>singular value decomposition</span>. By a *picture*, I mean that it can serve as an aid for thinking about a variety of concepts in linear algebra. Additionally --> I want to bridge the gap between <span class=accented>abstract vector spaces</span> (which are the mathematical foundation of linear algebra) and <span class=accented>matrix multiplication</span> (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space -- the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about [solving systems of equations](https://en.wikipedia.org/wiki/System_of_linear_equations) in this post. While <span class=accented>solving systems of equations</span> served as the historical precedent[^h] for mathematicians to begin work on linear algebra, it is today an *application*, and not the foundation of linear algebra.
-
-<!-- Sure, linear equations *behave* like vectors (you can multiply an equation by a scalar and add it to another), but a lot of other things (like functions and random variables) behave like vectors too. -->
-
-<!-- We will see that "solving systems of equations" constitutes a small (albeit historically significant) chunk of linear algebra. -->
+In this post, I want to bridge the gap between <span class=accented>abstract vector spaces</span> (which are the mathematical foundation of linear algebra) and <span class=accented>matrix multiplication</span> (which is the linear algebra most of us are familiar with). To do this, we will restrict ourselves to a specific example of a vector space -- the Euclidean space. Unlike the typical 101 course in linear algebra, I will avoid talking about [solving systems of equations](https://en.wikipedia.org/wiki/System_of_linear_equations) in this post. While <span class=accented>solving systems of equations</span> served as the historical precedent[^h] for mathematicians to begin work on linear algebra, it is today an *application*, and not the foundation of linear algebra.
 
 For this post, I expect that the reader has come across concepts like *linear independence* and *orthogonal vectors* before, and can consult Wikipedia for anything that looks new to them.
 
@@ -21,14 +17,7 @@ We write $\mathbb R^n$ as a short-hand for $\mathbb R \times \mathbb R \times \d
 
 1. **Scalars**: Defined as the elements of a set (technically, a [field](/posts/vector/#Field)) which has two binary operations called *addition* and *multiplication*. We choose $\mathbb R$ (the real numbers) as the set of scalars.
 
-2. **Vectors**: For some integer $n > 0$, we define the set of vectors as $\mathbb R^n$. The vectors have the *vector addition* and *scalar multiplication* operations. These operations satisfy [certain axioms](https://mathworld.wolfram.com/VectorSpace.html) which ensure that the addition and multiplication operations behave like they ought to. 
-<!-- For instance, scalar multiplication is *distributive* with respective to the scalar and vector addition operations, in the sense that for any $a,b\in\mathbb R$ and $\mathbf v\in \mathbb R^n$
-
-<p>
-\[(a+b)\mathbf v = a\mathbf v + b\mathbf v\]
-</p> -->
-
-<!-- 3. **Linear Dependence**: A collection of vectors $b_1, b_2, \dots b_m \in \mathbb R^n$ is linearly dependent if there exists a set of scalars, $c_1, c_2, \dots, c_m \in \mathbb R$, such that $\sum_{i=1}^m c_i * b_i = \mathbf 0$. Here, $\mathbf 0$ is a special vector (Called the *origin*) which is the identity element of vector addition, i.e., $v+\mathbf 0 = v$ for all $v\in \mathbb R^n$. -->
+2. **Vectors**: For some integer $n > 0$, we define the set of vectors as $\mathbb R^n$. The vectors have the *vector addition* and *scalar multiplication* operations. These operations satisfy [certain axioms](https://mathworld.wolfram.com/VectorSpace.html) which ensure that the addition and multiplication operations behave like they ought to.
 
 3. **Basis**: We need to pick a basis $\mathcal B$ for $\mathbb R^n$, which is a set of vectors $\lbrace \mathbf b_1, \mathbf b_2, \dots, \mathbf b_n \rbrace$, where $\mathbf b_i \in \mathbb R^n$, such that <span class=accented>every</span> vector $\mathbf v\in \mathbb R^n$ can be <span class=accented>uniquely</span> expressed as a linear combination of the basis vectors. This means that there is a unique sequence of real numbers $v^{(\mathcal B)}_1,v^{(\mathcal B)}_2, \dots, v^{(\mathcal B)}_n \in \mathbb R$ satisfying
 
@@ -45,8 +34,6 @@ We write $\mathbb R^n$ as a short-hand for $\mathbb R \times \mathbb R \times \d
 
 5. **Orthonormal Basis**: If the basis $\mathcal B$ is such that $\langle \mathbf b_i, \mathbf b_j\rangle = 1$ when $i=j$ and $0$ otherwise, we call it an orthonormal basis. Because of how we defined $\theta$,  $\langle \mathbf b_i, \mathbf b_j\rangle = 0$ implies that $\theta(\mathbf b_i, \mathbf b_j)=90^\circ$.
 
-<!-- Notice how we first defined a basis (which is needed to define the inner product), then we defined an inner product (which is needed to define the concept of orthogonality), and finally we are able to ask whether the basis is orthonormal. -->
-
 <aside class=aside-center style="padding-bottom:0pt;">
 Some notes on the basis:
 
@@ -56,7 +43,6 @@ Some notes on the basis:
 
 - We can <span class=accented>construct</span> a basis by picking linearly independent vectors one by one, until we are no longer able to do so.
 
-<!-- - The $\hspace{1pt} \text{span}\hspace{1pt}$ of a basis of $\mathbb R^n$ is equal to $\mathbb R^n$. -->
 
 </aside>
 
@@ -68,13 +54,11 @@ We have introduced ingredients 3, 4, and 5 in a very specific order. Let's see w
 
 ## The Standard Basis
 
-<!-- ### The Standard Basis -->
-
 Mathematicians avoid picking the basis $\mathcal B$ explicitly. Often, they start their analysis with the following (implied) disclaimer: 
 
 > "We have chosen *some* basis, $\mathcal B \subseteq \mathbb R^n$, but the specific choice of basis does not matter for what we're about to show." 
 
-Basically, don't worry too much about *which* basis we chose, just know that we have chosen one. Once a basis $\mathcal B = \lbrace \mathbf b_1, \mathbf b_2, \dots, \mathbf b_n\rbrace$ has been chosen, each vector $\mathbf v\in \mathbb R ^n$ can be uniquely expressed by a sequence of $n$ coefficients, $\left(v^{(\mathcal B)}_i\right)_{i=1}^n$, such that $\mathbf v=\sum_{i=1}^n v^{(\mathcal B)}_i \mathbf b_i$.<!--  Note that the order of the coefficients matter, because the $i^{th}$ coefficient $a_i$ refers to the contribution of the basis vector which we labeled as $b_i$. --> Thus, the vector $\mathbf v$ can be expressed unambiguously using the following, more familiar notation:
+Basically, don't worry too much about *which* basis we chose, just know that we have chosen one. Once a basis $\mathcal B = \lbrace \mathbf b_1, \mathbf b_2, \dots, \mathbf b_n\rbrace$ has been chosen, each vector $\mathbf v\in \mathbb R ^n$ can be uniquely expressed by a sequence of $n$ coefficients, $\left(v^{(\mathcal B)}_i\right)_{i=1}^n$, such that $\mathbf v=\sum_{i=1}^n v^{(\mathcal B)}_i \mathbf b_i$. Thus, the vector $\mathbf v$ can be expressed unambiguously using the following, more familiar notation:
 
 <p>
 \[\begin{bmatrix}
@@ -140,7 +124,6 @@ v^{(\mathcal B')}_n
  \]
 </p>
 
-<!-- We cannot introduce the 'square-bracket' notation without first *fixing* a basis, $\mathcal B$, which we call the standard basis. Thereafter, the 'square-bracket' notation implies the use of the standard basis, $\mathcal B$. -->
 Thus, there is a distinction between the **vector** itself and its *representation* in the standard basis $\mathcal B$; the 'square-bracket' notation gives us the *latter*, and it is our job to infer the **former**.
 Observe that the standard basis vectors $\mathbf b_i$ can themselves be represented in the 'square-bracket' notation, as
 
@@ -184,7 +167,7 @@ Nothing about the orthogonality of $\mathbf b_1, \mathbf b_2, \dots, \mathbf b_n
 
 ### The Dot Product
 
-We can now define an [inner product](/postsnorms_metrics) in terms of the standard basis $\mathcal B$. For vectors $\mathbf v, \mathbf w \in \mathbb R^n$, we define $\langle \mathbf v, \mathbf w\rangle = \sum_{i=1}^n v^{(\mathcal B)}_i w^{(\mathcal B)}_i$, which we call as the <span class=accented>dot product</span>. In the matrix multiplication or "square-bracket" notation, we write this as
+We can now define an [inner product](/posts/norms_metrics) in terms of the standard basis $\mathcal B$. For vectors $\mathbf v, \mathbf w \in \mathbb R^n$, we define $\langle \mathbf v, \mathbf w\rangle = \sum_{i=1}^n v^{(\mathcal B)}_i w^{(\mathcal B)}_i$, which we call as the <span class=accented>dot product</span>. In the matrix multiplication or "square-bracket" notation, we write this as
 
 <p>
 \[
@@ -220,8 +203,7 @@ and
 Notably, we have $f(0 \mathbf u) = f(\mathbf 0) = \mathbf 0$.
 The word 'linear' comes from the special case of the linear map, $f:\mathbb R \rightarrow \mathbb R$; the plot of this function is a straight line passing through the origin. This is also where the 'linear' in <span class=accented>linear algebra</span> comes from: it is <span class=accented>the study of linear maps in vector spaces</span>.
 
-Now here's where abstract linear algebra starts developing into the 'matrix multiplication' version of linear algebra: 
-<!-- <span class=accented> -->
+Now here's where abstract linear algebra starts developing into the 'matrix multiplication' version of linear algebra:
 
 > Any linear map $f:V \rightarrow W$ between two finite-dimensional vector spaces $V$ and $W$ can be represented as a matrix.
 
@@ -298,18 +280,7 @@ v_1\\v_2\\ \vdots \\ v_n
 </p>
 
 which we can write as "$\mathbf w = \mathbf F \mathbf v$". There is a subtlety here: on the left-hand side of this equation, we assume the 'standard basis' to be $\mathcal B^{(W)}$, whereas for the vector on the right we were using the standard basis $\mathcal B^{(V)}$. Thus, we need to fix both bases (one for $V$ and one for $W$) before the linear transformation can be written, unambiguously, as a matrix multiplication. If the dimensions of $V$ and $W$ are the same, we may pick the same basis on either side.
-<!-- 
-[^4]: It is possible that the "range" of a linear transformation may be an $m'$-dimensional subspace of $\mathbb R^m$, where $m'<m$. -->
-<!-- Almost always, the choice of bases does not matter as much as the fact that we *fixed* them. -->
-
-<!-- Note that this is different from what we call a "change of basis" in linear algebra. 
-A "change of basis" usually refers to an *orthonormal* basis in particular, but we haven't said anything about orthonormality yet.  -->
 Observe that we never used the inner product while talking about linear transformations, and thus, we do not claim whether the bases we used above are orthonormal. They are simply linearly independent, as all bases are. In case the basis $\mathcal B^{(V)}$ *is* orthonormal, then this just means that we can find the coefficients $v_1, \dots, v_n$ very easily: $v_i = \langle \mathbf v, \mathbf b_i \rangle$.
-
-<!-- Let $V$ and $W$ be subspaces of $\mathbb R^n$ and $\mathbb R^m$. This means two things: $V$ and $W$ are vector spaces
-For instance, we may have $V=\mathbb R^n$
-
-... -->
 
 ### Orthonormal Transformations
 
@@ -338,24 +309,6 @@ where we know that the set $\lbrace g(\mathbf b_1), g(\mathbf b_2), \dots g(\mat
 </p>
 
 Alternatively, we can re-express the transformed vector in the original basis $\mathcal B$, in which case $g$ is interpreted as purely a transformation of the vector's components while keeping the basis fixed. This duality in how we can view a 'change of basis' has been explored more in [this article](/posts/vector-fields).
-<!-- 
-Thus, there are two equivalent ways to interpret the orthogonal transformation, $g$:
-
-1. It keeps the vector's representation $(v_1, v_2, \dots, v_n)$ fixed while <span class=accented>changing the orthonormal basis</span> as $\mathcal B \mapsto \mathcal B_U$.
-
-2. It <span class=accented>changes the vector's representation</span> as 
-<div>
-\[
-    \begin{bmatrix}
-    v_1 \\ v_2 \\ \vdots \\ v_n
-    \end{bmatrix} \mapsto
-    \mathbf U \begin{bmatrix}
-    v_1 \\ v_2 \\ \vdots \\ v_n
-    \end{bmatrix}
-    \]
-</div>
-while using the same orthonormal basis on either side, $\mathcal B$. The first interpretation requires you to tilt your head to the left:
- -->
 <div>
 <figure class=invertible style="max-width: 100%;">
 <img src=/post-images/linear_algebra/orthogonal_transformation.png>
@@ -364,10 +317,6 @@ while using the same orthonormal basis on either side, $\mathcal B$. The first i
 </div>
 
 [^3]: An invertible function between sets [must be](/posts/cat_theory_1) injective and surjective. If the dimension of $W$ is greater than that of $V$, then $f$ cannot be surjective. If the dimension of $V$ is greater, then $f$ cannot be injective.
-
-<!-- Notice that we drew a geometric picture for an orthonormal transformation, but we avoided doing so for a linear transformation. -->
-<!-- Note that $\lbrace \mathbf U \mathbf b_1, \mathbf U \mathbf b_2, \dots, \mathbf U \mathbf b_n \rbrace$ is a basis for the codomain of $W$
-set of vectors represented via their coefficients in the basis $\mathcal B$. Recall that linear transformations involve up to two *different* vector spaces -->
 
 #### Preserving Structure and Dimension
 Any transformation on a mathematical space that preserves its *structure* (i.e., the relationships of its objects to each other) turns out to be quite special. Linear transformations <span class=accented>preserve the structure of a vector space</span>, because any three vectors $\mathbf u,\mathbf v,\mathbf w\in V$ which have the relationship $\mathbf u + \mathbf v = \mathbf w$ are still related to each other after the transformation: $f(\mathbf u) + f(\mathbf v) = f(\mathbf w)$.[^1] 
@@ -379,18 +328,7 @@ Similarly, orthonormal matrices represent [the structure-preserving transformati
 
 Mathematicians almost always (or perhaps, always) study mathematical objects "<span class=accented>up to isomorphism</span>". This means that we are not studying any particular mathematical object, but rather we are simultaneously studying all of the mathematical objects that are isomorphic to each other. This is why we do not need to specify *which* basis we are using as the standard basis: it simply does not matter, as long as we *fix* this basis and stay consistent. This is analogous to how we may need to *fix* the origin when studying 'displacement' and 'speed' in physics. Choosing a different origin does not change the physical phenomenon, it only changes our description of it.
 
-<!-- As an example, this is analogous to how we can redefine the integers so that $1$ behaves like $0$, $2$ behaves like $1$ and so on. -->
-
-<!-- As an example of how commonplace this is, notice that we can *flip* the integers so that the positive numbers are to the left of $0$, and the negative numbers to the right. All of the properties of integers -->
-
-<!-- To see this, note that $\langle \mathbf v, \mathbf U \mathbf v \rangle = \langle \mathbf U^\intercal \mathbf v,  \mathbf v \rangle$ -->
-
 [^1]: There is an abuse (or rather, a reuse) of notation here; note that the vector addition in $W$ [may be different from](/posts/vector) the vector addition in $V$, though we denote both as '$+$' for convenience.
  We also use '$+$' to denote the scalar addition operation.
 
 [^h]: See [this](https://math.stackexchange.com/questions/271927/why-historically-do-we-multiply-matrices-as-we-do) for the historical context of matrix multiplication, which is different from (but essentially the same as) modern mathematics' treatment of it.
-<!-- 
-This is why the "$\text{Rank}$" of $A$ plus the dimension of $\text{Null}(A)$ equals the number of rows, $m$. When $\text{Null}(A) \neq 0$, or equivalently, $\text{Rank}(A)<m$,
-Note that $A$ maps a subspace to a subspace.
-Some of these subspaces are mapped onto $0$ 
-to the $\text{Range}$ of $A$, whereas the others (namely, the subspaces in $\text{Null}(A)$) go to $0$. -->

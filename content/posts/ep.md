@@ -7,7 +7,7 @@ summary: Poincaré's 1901 paper introduces (in just a humble 3 pages) the Euler-
 bgImage: /post-images/lie_groups/Calculus_of_Variations.png
 ---
 
-Poincaré's [1901 paper](https://www.ma.ic.ac.uk/~dholm/classnotes/M3-4A16-Poincare1901.pdf)[^0] introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the [Euler-Lagrange equations](/posts/symplectic/#variational-approach) to the case where <span>a Lie group $G$ acts on the manifold $\mathcal Q$. In this case, vector fields on $\mathcal Q$ can be expressed in terms of the infinitesimal actions of the group, and the Euler-Lagrange equations reduce to the Euler-Poincaré equations.
+Poincaré's [1901 paper](https://www.ma.ic.ac.uk/~dholm/classnotes/M3-4A16-Poincare1901.pdf)[^0] introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the [Euler-Lagrange equations](/posts/symplectic/#variational-approach) to the case where <span class=accented>a Lie group $G$ acts on the manifold $\mathcal Q$</span>. In this case, vector fields on $\mathcal Q$ can be expressed in terms of the infinitesimal actions of the group, and the Euler-Lagrange equations reduce to the Euler-Poincaré equations.
 In what follows, I work through Poincaré's paper without making too many [identifications](https://math.stackexchange.com/a/3415429).
 
 [^0]: I'm grateful to my colleague <span class=accented>Jöel Bensoam</span> for introducing me to this paper (and to variational calculus)!
@@ -21,8 +21,6 @@ $$[\overline  E_i f](q) = \lim_{\epsilon\rightarrow 0} \frac{f(\exp(\epsilon  E_
 
 
 We will also use $\Phi(g, q) \coloneq g\cdot q$ and $\Phi^{(q)}(g) \coloneq \Phi(g, q)$ to denote the group action. Then, $\overline  E_{i,q}$ is nothing but the pushforward vector $d\Phi^{(q)}_e( E_i)$.
-
-<!-- ## ⌁ Trajectory -->
 
 Let the map $\gamma:[0,1] \rightarrow \mathcal Q$ describe a <span class=accented>path in $\mathcal Q$</span> (e.g., the trajectory of a dynamical system whose state at time $t$ is $\gamma(t)$), starting at time $t=0$ and ending at time $t=1$. Due to transitivity of the group action, we can express the "velocity" vectors of $\gamma$ as follows:
 
@@ -48,7 +46,7 @@ $$
 
 <figure class=invertible style="max-width: 100%;">
 <img src=/post-images/lie_groups/Calculus_of_Variations.png>
-<!-- <figcaption>Variation of $\gamma$</figcaption> -->
+
 </figure>
 
 <aside class=aside-right>
@@ -66,10 +64,6 @@ For each $t\in[0, 1]$, this is nothing but a tangent vector of $\mathcal Q$:
     \frac{\partial}{\partial\lambda} \Gamma (t, \lambda)\Big\rvert_{\lambda=0} \in T_{\gamma(t)}\mathcal Q.
 \]
 </p>
-
-<!-- <aside class=aside-right>
-Note that if $\mathcal Q$ is a vector space, then we can choose the (meta) path as $\Gamma (t, \lambda)= \gamma(t) + \lambda \delta\hspace{-1.5pt}\gamma(t)$. It is important to remember that the foregoing definition relies on vector addition.
-</aside> -->
 
 Thus, as we vary $t$, we obtain a <span class=accented>vector field along $\gamma$</span>. 
 
@@ -91,14 +85,6 @@ $$
 \dot\Gamma(s,\lambda) \coloneq \frac{\partial}{\partial t} 
 \Gamma(t, \lambda)\Big\rvert_{t=s}
 = \eta^i(s, \lambda)\overline  E_{i,\Gamma(s,\lambda)}.$$
-
-<!-- <aside class=aside-right>
-Once again, this is an abuse of notation for the pushforward of $\frac{\partial}{\partial t}$ under $\Gamma$, i.e., 
-$$
-\textrm{d}\Gamma_{(t, 0)}\left(\frac{\partial}{\partial \lambda}\bigg\rvert_{\lambda=0}\right)\in T_{\gamma(t)} \mathcal Q
-$$
-where $\Gamma:[a,b]\times[c,d] \rightarrow \mathcal Q.$
-</aside> -->
 
 Since $\Gamma(\hspace{1pt}\cdot\hspace{1pt},\lambda)$ coincides with $\gamma$ at $\lambda=0$, we have the compatibility condition $\eta^i(t,0)=\eta^i(t)$.
 
@@ -162,16 +148,6 @@ D_t\delta\hspace{-1.5pt}\gamma(s)  &=  \dot\xi^i(s)\overline  E_{i,\gamma(s)} + 
 &=  \dot\xi^i(s)\overline  E_{i,\gamma(s)} + \xi^i(s)\eta^j(s)\big[\nabla_{\overline  E_{j}}\overline  E_{i}\big]_{\gamma(s)},
 \end{align*}
 $$
-
-<!-- 
-Since the notation is getting cumbersome, we can omit the arguments and write $\overline  E_{i}$ instead of $\overline  E_{i,\gamma(t)}$:
-<p>
-\[
-\begin{align*}
-D_t\delta\hspace{-1.5pt}\gamma  &=   \dot\xi^i\overline  E_{i} + \xi^i\eta^j\nabla_{\overline  E_{j}}\overline  E_{i}.
-\end{align*}
-\]
-</p> -->
 
 whereas the right-hand side is
 
@@ -291,9 +267,6 @@ $$\overline  E_i = \overline  E_i^j \frac{\partial}{\partial q^j},$$
 where each $\overline  E_i^j \in C^\infty(\mathcal Q)$ is a coordinate function.
 Letting $\overline  E_i$ act on the coordinate function $q^j$, we get
 
-<!-- 
-[^1]: Note that by specifying how the vector field $\overline  E_i$ acts on an arbitrary function $f$, we have completely characterized $\overline  E_i$. -->
-
 $$
 \overline  E_i q^j = \overline  E_i^k \frac{\partial q^j}{\partial q^k} = \overline  E_i^j,
 $$
@@ -319,7 +292,7 @@ $$
 \end{align*} 
 $$
 
-Here, $i$ sums from $1$ to $r$ whereas $j$ sums (and $k$ ranges) from $1$ to $n$.<!-- The use of $i$ vs. $j$ is not a convention (i.e., does not apply to the rest of the post).  --> Also, observe that $r\geq n$ due to transitivity of the group action. Denoting $q^j \circ \gamma$ as <span class=accented>$\gamma^j$</span>, we can finally put everything together:
+Here, $i$ sums from $1$ to $r$ whereas $j$ sums (and $k$ ranges) from $1$ to $n$. Also, observe that $r\geq n$ due to transitivity of the group action. Denoting $q^j \circ \gamma$ as <span class=accented>$\gamma^j$</span>, we can finally put everything together:
 
 $$
 \frac{d \gamma^k}{dt}(s) = \eta^i(s) \overline  E_{i,\gamma(s)} \gamma^k(s).
@@ -344,10 +317,7 @@ we can express $\gamma(t)$ as $g(t) \cdot p$, where $p\in \mathcal Q$ is a some 
 $$\Gamma(t, \lambda) = \exp(\lambda \xi^i(t)  E_i)g(t)\cdot p.$$
 
 
-<!-- <aside class=aside-center> -->
-<!-- <b>Non-uniqueness of $g(t)$</b>:  -->
 The curve $g$ that generates $\gamma$ in this manner is not unique even after we have fixed some point $p$. To see why, one can consider (the rather silly example of) $G=\mathbb R^3 \times \mathbb R^3$ and $\mathcal Q = \mathbb R^3$. Nevertheless, since we are going to probe <i>all</i> possible variations of $\gamma$, we only need to worry about the "surjectivity" of this formulation, rather than its "injectivity". Surjectivity follows from our assumption of the group action being transitive.
-<!-- </aside> -->
 
 If $G$ is a matrix Lie group, the expression
 

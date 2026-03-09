@@ -46,7 +46,6 @@ where $\lVert v \rVert_{\mathcal X} = \sqrt{\langle v, v\rangle}_{\mathcal X}$ i
 A remarkable by-product of these definitions of angles, orthogonality, and projection, is that it is consistent with our Euclidean intuition: $x-\text{P}_S(x)$ is always orthogonal to $S$. A [related theorem](https://en.wikipedia.org/wiki/Hilbert_projection_theorem) says that $\text P_{\tilde S}(x)$ is well-defined and unique even if $\tilde S \subseteq \mathcal X$ is a closed convex set, although in this case we do not have orthogonality of $x-\text{P}_{\tilde S}(x)$ to the other elements in $\tilde S$.
 
 <div>
-<!-- <figure class=invertible style="max-width: 25%;"> -->
 <figure class=invertible style="max-width: 100%;">
 <img src=/post-images/linear_algebra/projection.png>
 </figure>
@@ -60,7 +59,6 @@ As an example, given two 'vectors' $X$ and $Y$ in the Hilbert space of random va
 
 Given a vector in the Euclidean space $\mathbb R^N$ (equipped with a basis), we can view it as a set of $N$ coefficients. 
 Each coefficient (a real number) describes the vector's distance along the corresponding basis vector (or 'axis', if you will).
-<!-- Instead of axis, we should say orthonormal basis. -->
 
 Taking a few steps back, let's begin by viewing $\mathbb R^N$ as the set-theoretic product $\mathbb R \times \mathbb  R \times \dots \times \mathbb R$. An element $x$ of this space is a sequence of real numbers,
 
@@ -80,8 +78,6 @@ A sequence is in $\ell^2$ if and only if it is <span class=accented>square-summa
 
 A sequence which is not in $\ell^2$ (i.e., an 'infinite-length vector') is 
 $\left(\frac{1}{\sqrt{1}}, \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{3}}, \dots\right)$ because its sum-of-squares decays too slowly as the number of terms increases. A sequence that is in $\ell ^2$ is $\left(\frac{1}{1}, \frac{1}{2}, \frac{1}{3}, \dots\right)$.
-
-<!-- [^aside]: $\ell^p$ spaces (with the $p$-norm defined analogously) can shed some insight into how vector spaces behave in the limit $N\rightarrow \infty$! Perhaps you could [revisit my post](/posts/balls) on norm balls, think of higher dimensional Euclidean spaces as tending towards the $\ell^2$ space. -->
 
 ### (Separable) Hilbert Spaces are Isomorphic
 
@@ -111,14 +107,12 @@ The map $T({}\cdot{})$ [is necessarily linear](https://proofwiki.org/wiki/Surjec
 Using a similar reasoning as above in the finite-dimensional case, we see that all (separable) complex Hilbert spaces with dimension $N$ are isomorphic to the $(\mathbb C^N, \lVert{}\cdot{}\rVert_2)$ space.
 The condition that $T^*=T^{-1}$ might remind you of [unitary matrices](https://en.wikipedia.org/wiki/Unitary_matrix) ($U^\dagger = U^{-1}$, where $U^\dagger$ is the conjugate transpose of $U$), which are exactly the distance-preserving, structure-preserving matrices in $\mathbb C^N$. When we're working with real Hilbert spaces we replace $\mathbb C^N$ with $\mathbb R^N$ and 'unitary' with 'orthogonal'. Recall that $Q^\intercal = Q^{-1}$ for an orthogonal matrix $Q$. Orthogonal matrices are an isometry (distance-preserving) because $\lVert Qx\rVert_2 = \lVert x \rVert_2$, and they are an isomorphism (structure-preserving) because $\langle Qx, Qy \rangle =\langle x, Q^\intercal Qy \rangle = \langle x, y\rangle$. Note that isomorphisms also preserve the angles between vectors.
 
-<!-- Thus, we always have a unitary matrix (or a [unitary operator](https://en.wikipedia.org/wiki/Unitary_operator) in the infinite-dimensional case) which takes us from one Hilbert space to another of the same dimension, in a distance-preserving, structure-preserving manner. -->
-
 <hr> 
 
 ### The $L^p$ Space of Functions
 
 Let's move onwards to function spaces.
-The space $L^1(\mathbb R)$ is the space of <span class=accented>absolutely integrable</span> functions. And element $f\in L^1(\mathbb R)$ is a function of the form $f:\mathbb R\rightarrow \mathbb C$ and satisfies
+The space $L^1(\mathbb R)$ is the space of <span class=accented>absolutely integrable</span> functions. An element $f\in L^1(\mathbb R)$ is a function of the form $f:\mathbb R\rightarrow \mathbb C$ and satisfies
 
 $$ \| f\|_{L^1} =\int_{\mathbb R} | f(x)| dx < \infty.$$
 
@@ -136,9 +130,6 @@ $$
 \end{align}$$
 
 Can we use the above as an inner product for $L^1$ as well? It turns out that we can't, because even if $f$ is in $L^1$, the integral of $f(x)\overline{f(x)}$ can be unbounded if $f$ is not also in $L^2$. 
-<!-- Other $L^p$ spaces are defined analogously. -->
-<!-- This would violate the Cauchy-Schwarz inequality for any valid inner product, $| \langle x, y\rangle| \leq \lVert x \rVert \lVert y \rVert$. -->
-
 <aside class=aside-center>
 Observe that we always require some sort of 'boundedness of norm' when defining Hilbert spaces... it is related to the requirement of <i>completeness</i> of the space, which we have conveniently glossed over in this article. 
 </aside>
@@ -149,7 +140,6 @@ The norms on $\ell^p$ and $L^p$ spaces are natural extensions of the [$p$-norms]
 [^net]: We could also view it as a *[net](https://en.wikipedia.org/wiki/Net_%28mathematics%29)*.
 
 <div>
-<!-- <figure class=invertible style="max-width: 25%;"> -->
 <figure class=invertible style="max-width: 100%;">
 <img src=/post-images/linear_algebra/hilbert_spaces.png>
 </figure>
@@ -177,7 +167,7 @@ These are exactly the Fourier coefficients (up to a constant factor, depending o
 
 $$\langle f, g\rangle_{L^2([0,1])} = \langle T(f), T(g)\rangle_{\ell^2}$$
 
-has a special name in the signal processing community: it's called <a href="https://en.wikipedia.org/wiki/Parseval's_theorem" class=accented>Parseval's</a> (or <a href="https://en.wikipedia.org/wiki/Plancherel_theorem" class=accented>Plancheral's</a>) theorem. We can also discard some of the Fourier coefficients to *[compress](https://www.dspguide.com/ch27/6.htm)* (or *de-noise*) a signal by ignoring its weak (or bothersome) frequencies -- be it an audio signal or an image. Such a truncation of the sequence is a special case of the projection operation in Hilbert spaces, so it's the best approximation in terms of the $L^2$ norm of the approximation error.
+has a special name in the signal processing community: it's called <a href="https://en.wikipedia.org/wiki/Parseval's_theorem" class=accented>Parseval's</a> (or <a href="https://en.wikipedia.org/wiki/Plancherel_theorem" class=accented>Plancherel's</a>) theorem. We can also discard some of the Fourier coefficients to *[compress](https://www.dspguide.com/ch27/6.htm)* (or *de-noise*) a signal by ignoring its weak (or bothersome) frequencies -- be it an audio signal or an image. Such a truncation of the sequence is a special case of the projection operation in Hilbert spaces, so it's the best approximation in terms of the $L^2$ norm of the approximation error.
 
 <hr> 
 
@@ -185,6 +175,3 @@ One of the motivations for defining the map $T$ is that we can now represent obj
 
 All that said, the reason I love typing out posts like these is because it's so gratifying to see all of these different mathematical objects be unified under a single concept. The interplay between vectors, sequences, and functions is something that was never taught or emphasized to me in school. All throughout college, my instructors usually pulled the Fourier transform out of their hat, just to use it for 2 lectures and then put it back in before I ever figured out what it was. Maybe I'm just a slow learner, so it's a good thing I have (one would hope) a long life ahead of me to keep learning!
 
-<!-- Aha! I'm now beginning to understand some of the things that were kept hidden from me... -->
-
-<!-- https://math.stackexchange.com/questions/2739175/do-we-really-need-to-specify-a-basis-to-describe-a-tuple -->

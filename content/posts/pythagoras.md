@@ -4,17 +4,11 @@ date: 2023-04-14T15:53:46-04:00
 tags: ["Linear Algebra"]
 draft: false
 bgImage: /post-images/linear_algebra/parallelogram_1.png
-summary: I mentioned in the last post that Euclidean geometry arises by taking the real numbers and endowing with an inner product, at which point it satisfies the Pythagoras theorem. In this post I will talk about how the Pythagoras theorem is a special case of a more general feature of inner product spaces.
+summary: I mentioned in the last post that Euclidean geometry arises by taking the real numbers and endowing it with an inner product, at which point it satisfies the Pythagoras theorem. In this post I will talk about how the Pythagoras theorem is a special case of a more general feature of inner product spaces.
 ---
 
-To quote [this math podcast](https://theartofmathematicspodcast.com), "the real world is a special case". I mentioned in the last post that Euclidean geometry arises by taking $\mathbb R^2$ or $\mathbb R^3$ and endowing with an inner product, at which point it satisfies the Pythagoras theorem.
+To quote [this math podcast](https://theartofmathematicspodcast.com), "the real world is a special case". I mentioned in the last post that Euclidean geometry arises by taking $\mathbb R^2$ or $\mathbb R^3$ and endowing it with an inner product, at which point it satisfies the Pythagoras theorem.
 In this post I will talk about how the <span class=accented>Pythagoras theorem</span> is a special case of a more general feature of inner product spaces. Contents of [the last post](/posts/norms_metrics) are pre-requisites for this one.
-<!-- When I want to think about $1$ dimensional spaces, I'm instead picturing a ruler in my head, or one of those high-school physics problems involving a train moving at constant velocity. -->
-
-<!-- Anyway, now I will generalize the Pythagoras theorem, which in its most common form is a theorem for $\mathbb R^2$. It is more generally a statement about inner product spaces. -->
-
-<!-- # TODO: how do you measure flatness of a space -->
-
 ###  [The Parallelogram Law](https://en.wikipedia.org/wiki/Parallelogram_law)
 
 Let $x$ and $y$ be two vectors in a normed vector space that we are interested in.
@@ -26,13 +20,12 @@ When it *is* true, is precisely when the normed vector space obeys the parallelo
 </p>
 
 <div>
-<!-- <figure class=invertible style="max-width: 25%;"> -->
 <figure class=invertible>
 <img src=/post-images/linear_algebra/parallelogram_1.png>
 </figure>
 </div>
 
-The name of this law comes from the special case of $\mathbb R^2$ shown above, where it is a relationship between the side lengths and diagonals of a parallelogram. Notably, if $\lVert x+y \rVert=\lVert x-y \rVert$, i.e., the parallelogram is a rectangle, then we recover the Pythagoras theorem. Thus, the Pythagoras theorem is a corollary (i.e., a by product) of the fact that $\mathbb R^2$ equipped with the Euclidean norm $\lVert{}\cdot{}\rVert_2$ satisfies the parallelogram law.
+The name of this law comes from the special case of $\mathbb R^2$ shown above, where it is a relationship between the side lengths and diagonals of a parallelogram. Notably, if $\lVert x+y \rVert=\lVert x-y \rVert$, i.e., the parallelogram is a rectangle, then we recover the Pythagoras theorem. Thus, the Pythagoras theorem is a corollary (i.e., a byproduct) of the fact that $\mathbb R^2$ equipped with the Euclidean norm $\lVert{}\cdot{}\rVert_2$ satisfies the parallelogram law.
 
 Next, let's see why the validity of the parallelogram law coincides with the existence of an inner product.
 
@@ -56,7 +49,6 @@ and bilinear
 \]
 </p>
 
-<!-- The word 'Hermitian' refers to the fact that we're talking about real numbers (recall that Hermitian matrices have real eigenvalues).  -->
 which means that it is linear in either argument.
 As a part of what we require of an inner product in a real vector space, they must be positive-definite symmetric bilinear forms. Positive definite means that $\phi(x,x)\geq 0$ and $\phi(x,x)=0$ $\Leftrightarrow$ $x=0$. 
 
@@ -134,33 +126,3 @@ Adding these,
 
 Naturally, we set $c=2$. Thus, we could potentially simplify the parallelogram law to: <span class=accented> The norm-squared function is a polynomial of degree $2$</span>, which sounds more fundamental and less arbitrary than the parallelogram law to me, let alone the Pythagoras theorem. But we need to do more work to generalize this math to hold outside of Euclidean spaces. 
 
-<!-- Please reach out to me if you have a neat/natural intuition for where the parallelogram law *really* comes from! -->
-
-<!--
-### What *is* the Parallelogram Law?
-
-Let's see where this weirdly fundamental feature of Euclidean spaces comes from. If the Euclidean space is so natural and tangible to us, surely there must be a more intuitive explanation for this law. Consider the following picture:
-
-<div>
- <figure class=invertible style="max-width: 25%;">
-<figure class=invertible>
-<img src=/post-images/linear_algebra/parallelogram_2.png>
-</figure>
-</div>
-
-Suppose you had to travel from one of the blue points, to the black (white, if you have dark mode on) point, to the other blue point. Then what the parallelogram law is *really* saying that <span class=accented>traveling in straight lines</span> (along $x+y$ and $x-y$) <span class=accented>is faster than taking a roundabout path</span>. To see this, recall that the norm of a vector space defines a distance between points $x$ and $y$, given by $\lVert x - y \rVert$. The total distance of the straight line journey is $\lVert x+y \rVert + \lVert x-y \rVert$.
-
-But what if you traveled along the black lines instead? You would need to travel $\lVert x\rVert$
-
--->
-
-
-
-<!-- It remains to be unpacked in a future post what the parallelogram law is *really* saying. I mean... it doesn't look all that fundamental to me? Does anybody actually use it to define an inner product which isn't already obvious? We know all about dot products, show us something more interesting. -->
-
-<!-- #### But what is the Parallelogram Law *really* saying?
-
-The so called law is really establishing the *flatness* of an affine space.
-An affine space is a vector space that has [forgotten its origin](https://ncatlab.org/nlab/show/affine+space), i.e., where you choose to place the origin does not change its structure. -->
-
-<!-- It is a special case of [sesquilinear forms](https://en.wikipedia.org/wiki/Sesquilinear_form) for complex vector spaces.  -->

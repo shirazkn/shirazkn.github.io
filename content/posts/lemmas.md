@@ -9,7 +9,7 @@ summary: Some results about the differentials (i.e., pushforwards) of the expone
 
 I collect here some results about the differentials of the $\exp$ and $\log$ maps of a Lie group. The reader must be familiar with how the <span class=accented>differential</span> (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of [tangent vectors as equivalence classes of curves](/posts/vector-fields); Wikipedia has an excellent [summary](https://en.wikipedia.org/wiki/Tangent_space#Definition_via_tangent_curves) of this, as does my blog (if I may say so myself).
 
-Let $L_g$ refer to the left-multiplication operation: $L_g(h)=gh$ for $g,h\in G$. Given $X\in\mathfrak g$, $X^L_g\coloneq dL_g(X)$ is the corresponding left-invariant vector field. For a matrix Lie group (i.e., where $g$ is identified with some finite-dimensional matrix representation of it), $X^L_g=g X$, which makes sense because we have an external algebraic structure (namely, the multiplication of $n\times n$ matrices, which has the structure of a [unital associative algebra](https://en.wikipedia.org/wiki/Associative_algebra)) that lets us multiply group elements with Lie algebra elements. This rather convenient structure does not exist for a general Lie group. I will assume that the maps $\exp: U \rightarrow V$<!-- (surjective if the group is connected, injective when $G=\mathbb R^n$) -->
+Let $L_g$ refer to the left-multiplication operation: $L_g(h)=gh$ for $g,h\in G$. Given $X\in\mathfrak g$, $X^L_g\coloneq dL_g(X)$ is the corresponding left-invariant vector field. For a matrix Lie group (i.e., where $g$ is identified with some finite-dimensional matrix representation of it), $X^L_g=g X$, which makes sense because we have an external algebraic structure (namely, the multiplication of $n\times n$ matrices, which has the structure of a [unital associative algebra](https://en.wikipedia.org/wiki/Associative_algebra)) that lets us multiply group elements with Lie algebra elements. This rather convenient structure does not exist for a general Lie group. I will assume that the maps $\exp: U \rightarrow V$
 and $\log:V\rightarrow U$ are inverses of each other, where $U\subseteq \mathfrak g$ is a neighborhood of $0$ and $V\subseteq G$ is a neighborhood of $e$.
 
 ---
@@ -35,14 +35,8 @@ $$d\exp_X(Y)=[\hspace{2pt}\exp\circ \hspace{1pt}\gamma\hspace{2pt}]$$
 
 [^jet]: This is also what's called a $1$-[jet](https://en.wikipedia.org/wiki/Jet_(mathematics)#Jets_of_functions_from_the_real_line_to_a_manifold). This notion of an 'equivalence class of curves' generalizes in confusing ways.
 
-<!-- <aside class=aside-right>
-</aside> -->
-
  is some vector in $T_{\exp(X)} G$. But which vector? 
 
-<!-- In what follows, one can also read '$[\,\cdot\,]$' as "to the first order in $t$", resting assured that there is a precise meaning\footnote{$\ldots$either by way of *jets*, or by considering the actions of tangent vectors on functions.} for what this means. -->
-
-<!-- Let's simply write $Y=[\gamma]$, then $d\exp_X(Y)=[\exp\circ \gamma]$. -->
 The key to making these identifications concrete is to notice that we can choose *any* $\gamma$ satisfying $\gamma(0)=X$ and $\dot {\gamma}(0)=Y$.
 **Any** such $\gamma$ is a representative of $Y$.
 So, we might as well choose a $\gamma$ that is convenient to write down; let's make the choice, $\gamma(t) \coloneq X+tY$. In this case, $\exp \circ\hspace{2pt} \gamma(t)=\exp(X+tY)$ is a curve on $G$ passing through $\exp(X)$, and it is a representative of $d\exp_X(Y)$. There's two different ways of writing down the equivalence class of $d\exp_X(Y)$:
@@ -115,7 +109,6 @@ We write $d\log_{g}(gY)=\Psi^{-1}_{g}(Y)$. Alternatively, we can write $d\log_{g
 Section 3.2 of Jean Gallier's book has the formula for $d\exp_X$, and the appendix of my paper "<i>Parameter Estimation on Homogeneous Spaces</i>" has $d\log_{\exp(X)}$ (which I denote there as $\Psi$... oh well).
 </aside>
 
-<!-- ### Sanity Checks -->
 We should verify that $\Psi_{\exp(X)}^{-1}$ is indeed the inverse of $\Psi_X$. Can we show this algebraically?
 
 <p>
@@ -151,14 +144,6 @@ d\log_{\exp(X)}\left(d\exp_X(Y)\right) = d(\log \circ \exp)_X(Y)=Y.
 d\exp_{\log(g)}\left(d\log_g(V)\right) = d(\exp \circ \log)_g(V)=V.
 \]
 </p>
-
-<!-- Writing this using Jacobians,
-
-<p>
-\[
-\Psi^{-1}_{\exp(X)}(\left(\Psi_X(Y)\right) )
-\]
-</p> -->
 
 ---
 
@@ -354,7 +339,6 @@ and as $\mathbf x$ varies, this defines a Riemannian metric on $C$.
 Unlike the left-invariant Riemannian metric on $D\subseteq G$, the coefficients (i.e., the metric tensor) of the pullback Riemannian metric on $C\subseteq\mathbb R^n$ are not constant. 
 
 The choice of basis for $\mathfrak g$ defines a unique <span class=accented>density</span> on $G$, written as $$\omega=|\varepsilon^1\wedge\varepsilon^2\wedge\cdots\wedge \varepsilon^n|.$$ 
-<!-- If we assume (for simplicity of presentation) that $W_{ij}=\delta_{ij}$, i.e., the basis $\lbrace E_{i}\rbrace_{i=1}^n$ is orthonormal, then $\omega$ is called the canonical Riemannian density. -->
 This is an example of a <span class=accented>left Haar measure</span> for $G$, which is unique up to scaling. 
 The absolute value is taken to make this a *density* rather than a volume form, saving us the trouble of worrying about orientation.
 

@@ -9,11 +9,6 @@ summary: One of my motivations for starting a blog was Eugenia Cheng's book The 
 
 One of my motivations for starting a blog was Eugenia Cheng's book [The Joy of Abstraction](https://www.amazon.com/Joy-Abstraction-Exploration-Category-Theory/dp/1108477224)[^bookclub]. It's a surprisingly accessible, gentle introduction to <span class=accented>category theory</span>, a topic that is usually only taught to graduate students in math. She compiled part of the book using notes from a class that she teaches at the Art Institute of Chicago, which is a testament to the aesthetic appreciation that one can expect to gain of category theory irrespective of their academic background! In this post, I will introduce the main ideas in category theory (as I best understand it) and show that it offers an elegant way of thinking about mathematics.
 
-<!-- **Required Background:** Familiarity with 'one-one' and 'onto' functions between sets.  -->
-
-<!-- If you come across something that's new to you, Wikipedia is your friend! -->
-<!-- A secondary motivation for my starting this blog was when I described a bit of mathematics as *elegant* to my friend. She said she'd never heard mathematics be described as elegant before. -->
-
 [^bookclub]: At the time of me writing this post, there is [an ongoing book club](https://topos.site/joa-bookclub/) for The Joy of Abstraction being hosted by its author.
 
 ### The Main Idea
@@ -151,7 +146,7 @@ The trick is to think of a monomorphism $f:X\rightarrow Y$ as a re-labeling of t
 
 $f$ would not be a monomorphism if two people were given the same name, say, <span class=print>John</span>, i.e., two of the <span class=accented>purple</span> lines go into the same name. In that case, I could have picked either <span class=print>John</span> (corresponding to two different lists of people, $g_1$ and $g_2$) but produced the same list of names ($f \circ g_1 = f \circ g_2$), and you would have no way of telling which list of people you were looking at since you do not know which <span class=print>John</span> I picked. You would instead point a finger at me and accuse me of being 'ambiguous'.
 
-Succintly, $f$ *remembers* which elements went to which elements. It does not *forget* that there are $n$ distinct people by assigning two or more of them the same name.
+Succinctly, $f$ *remembers* which elements went to which elements. It does not *forget* that there are $n$ distinct people by assigning two or more of them the same name.
 
 #### 2. Epics are Surjective Functions
 
@@ -168,17 +163,9 @@ This means that **pre-composing** $g_1$ and $g_2$ with $f$ *retains the ability*
 
 Similarly, the definition of monics (which are the injective functions) was really saying that **post-composing** with $f$ *retains the ability* to distinguish two morphisms $g_1$ and $g_2$, because in that case $f$ was just a re-naming of the objects. 
 
-<!-- Now it's also more explicit what injectivity and surjectivity have to do with invertibility. When we travel along a function and its inverse, we get back to where we started. -->
-
 ### Thinking Categorically
 
 Two days after I first published this post, two of my favorite math communicators made a podcast episode about category theory. [Eugenia Cheng talks to Steven Strogatz](https://www.quantamagazine.org/is-there-math-beyond-the-equal-sign-20230322/) about why she finds joy in thinking categorically, i.e., approaching these types of math concepts from a category theory standpoint. 
 
 What we showed above was that some concepts in math might be a bit messy or aesthetically lacking due to how they're set up. This messiness also prevents us from generalizing ideas like injectivity and surjectivity to other fields in math, because they're too deeply rooted in the language of set theory. Category theory allows us to squint at mathematical objects in just the right way, until we've 'blurred out' the messiness, focusing our attention only on the thing that really matters: structure! As a bonus, we get to apply our insights to all of the other mathematical fields that have analogous properties, and therefore similar (or identical) structures.
 I would argue that this is a joyful way of learning mathematics. One where all of mathematics is yielding itself to you, simultaneously.
-
-
-<!-- It's like you're building a sculpture out of screws, nuts, and metal. If you're studying niche topics in mathematics, you might want to zoom into the screws and nuts of the sculpture, make sure that everything is holding together. But in addition, category theory encourages you to step back and look at the sculpture itself. You can now appreciate the bigger picture of what those screws and nuts were building towards. You can also turn your focus towards structural issues related to your sculpture.
-You can compare your sculpture with other sculptures that might be made of entirely different ingredients (glue?).  -->
-
-<!-- [^hom]: The name $\text{hom}$ comes from the word 'homomorphisms', which is really a special case of a morphism that predates category theory. -->

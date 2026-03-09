@@ -27,8 +27,6 @@ On the other hand, we also have something called the <span class=accented>Fourie
 
 [^reverse]: By the way, it is also possible to derive the Fourier transform from the Fourier series [using a Riemann sum](https://en.wikipedia.org/wiki/Fourier_transform#Fourier_transform_as_the_Fourier_series_of_an_aperiodic_function), by letting the 'period' of a 'periodic function' tend to $+\infty$. This is probably more intuitive to work through, since we've already seen this sort of a calculation in introductory calculus classes.
 
-<!-- ### Overview -->
-
 ### Periodic Functions
 
 Given a periodic function $\tilde f(t)$ having a period $T>0$, i.e.,
@@ -162,7 +160,6 @@ This is because $\sum_{k=-\infty}^{\infty}\delta\big(\tau - (t - 2 \pi k) \big)$
 But wait a second! We went around in a circle (pun intended) to show that $f(t) = \mathcal F^{-1}\Big[\mathcal F[f] \Big](t)$. Well, at least now we know that the calculation that we did above checks out, even though we are scarcely able to define $\mathcal F[f] (\omega)$ and despite the fact that we swapped summations and integrals around like it's nothing!
 
 #### Approach #2 (Revisited):
-<!-- In the math we did above, we used the fact that $\mathcal F\[\delta(t)\](\omega) = 1$. We combined this with the so-called "time-shift" property to conclude that $\mathcal F\[\delta(t-a)\](\omega) = e^{-i\omega a}$. -->
 
 Let's go back to the equation
 
@@ -191,7 +188,7 @@ f(t) &= \frac{1}{2\pi} \int_{0}^{2\pi} f(\tau) \sum_{k=-\infty}^{\infty}e^{-ik(\
 \]
 </p>
 
-which is just the Fourier series representation of $f(t)$, with the coefficients $c_k$ equated to the integral inside $\left[\ \cdot\ \right]$. Thus, the bridge between the Fourier transfrom and the Fourier series hinges on the Poisson summation formula.
+which is just the Fourier series representation of $f(t)$, with the coefficients $c_k$ equated to the integral inside $\left[\ \cdot\ \right]$. Thus, the bridge between the Fourier transform and the Fourier series hinges on the Poisson summation formula.
 
 ### The Poisson Summation Formula
 
@@ -204,9 +201,4 @@ $$
 to show that the Fourier transform resolves to the Fourier series in the case of a periodic function? Observe that the function $\sum_{k=-\infty}^\infty\delta (\tilde \tau + 2 \pi k)$ is a [Dirac comb](https://en.wikipedia.org/wiki/Dirac_comb), which is a series of 'needles' (Dirac delta functions) spaced apart by a distance of $2\pi$. Its Fourier transform is also a Dirac comb (see [this blog post](https://dspillustrations.com/pages/posts/misc/the-dirac-comb-and-its-fourier-transform.html); another way to see this is to consider the Dirac comb as a sampled/'discrete-time' periodic signal whose [discrete-time Fourier transform](https://en.wikipedia.org/wiki/Discrete-time_Fourier_transform#Periodic_data) is being sought). Equating $\sum_{k=-\infty}^\infty\delta (\tilde \tau + 2 \pi k)$ to its corresponding inverse Fourier transform gives us $(*)$. The inverse Fourier transform integrates over the Dirac comb, and the comb turns the integral into a summation.
 
 Equation $(*)$ is a special case of the Poisson summation formula (which is in turn a special case of the [convolution theorem](https://en.wikipedia.org/wiki/Convolution_theorem)) applied to the Dirac comb. Proofs of the summation formula can be found on its [Wikipedia page](https://en.wikipedia.org/wiki/Poisson_summation_formula), though I haven't looked at it hard enough to see if there's an intuitive explanation of it that warrants repeating here. We could always prove $(*)$ using **Approach #1** outlined above.
-<!-- It appears that the Fourier transform on a circle is connected to the Fourier transform on $\mathbb Z$. -->
-
-
 Ultimately, we have only swept the problem under the rug. We still don't understand how to re-discover the Fourier series using the Fourier transform, except by working through $(*)$ first. At least this appears to be a less formidable challenge, one that I might have more to say about in the future. I suspect that a complete theory of the relationships between the various types of Fourier analyses is given by [Pontryagin duality](https://en.wikipedia.org/wiki/Pontryagin_duality), although a more immediate and accessible explanation of it would be nice. 
-
-<!-- See https://dsp.stackexchange.com/questions/7866/about-the-fourier-transform-of-periodic-signal and https://lpsa.swarthmore.edu/Fourier/Xforms/FXPeriodic.html -->

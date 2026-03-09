@@ -80,8 +80,6 @@ This helps us remember that the $dx^{i_1}$ and $dx^{i_2}$ of $g$ can be swapped 
 Here, $dx^i dx^j = \textrm{Sym}(dx^i \otimes dx^j) \coloneqq \frac{1}{2}(dx^i \otimes dx^j + dx^j \otimes dx^i)$ denotes the symmetric product of tensors $-$ it is defined in a way that forces the resulting tensor to be symmetric in its arguments. Similarly, '$\wedge$' denotes the alternating (or wedge, or exterior) product of tensors, thereby capturing the antisymmetry of a differential form.
 </aside>
 
-<!-- As does Lee's book, we will use $I$ as a shorthand for a multi-index set such as $i_1 i_2 \cdots i_n$.  -->
-
 With this notation, observe that if $\mathbf{v} = v^k \frac{\partial}{\partial x^k}$ and $\mathbf{w} = w^l \frac{\partial}{\partial x^l}$ are vector fields on $U$, where $(\frac{\partial}{\partial x^i})_i$ is the dual basis of $(dx^i)_{i}$, then
 <p>
 \[
@@ -99,8 +97,6 @@ Since it is a (pointwise) sum of (pointwise) products of $C^\infty(U)$ functions
 # Frames ✨
 
 In the above expressions, we used a frame (a system of vector fields) that arises from a coordinate chart. However, there may arise situations where we prefer to work with a frame that is not only *not* induced by a coordinate chart, but also *cannot* be induced by a coordinate chart. The frame of left-invariant vector fields on a (non-Abelian) Lie group is a prime example of this. 
-
-<!-- Since the choice of a metric automatically endows a geometry to our manifold, it is expected that a(n essentially) unique volume form should result from it. Proposition 15.29 of Lee's book tells us that this is the case. But to get there, we first need to talk about frames. -->
 
 A <span class=accented>local frame</span> in an open set $U$ of $M$ is a set of tangent vector fields in $\mathfrak X(U)$, enumerated as $(E_i)_{i=1}^n$, such that $(E_i(p))_{i=1}^{n}$ is a basis of $T_p M$ for all $p\in U\subseteq M$. A local frame is <span class=accented>orthonormal</span> if $g(E_i, E_j) = \delta_{ij}$, where $\delta_{ij}$ is the Kronecker delta considered as a constant-valued $C^\infty(U)$ function.
 A <span class=accented>global</span> frame is one that is defined on all of $M$, with $U=M$. 
@@ -187,13 +183,10 @@ so that $\omega(E_1, E_2, \cdots, E_n) = 1$. The above statements will look iden
 ### Coordinate Frames
 
 The allure of orthonormal frames is that $g$ and $\omega_g$ can be represented quite succinctly in them. 
-However, the existence of an orthonormal frame *that arises as the coordinate frame of a chart* is a very rare occasion: such a frame only exists when the Riemannian manifold $(M, g)$ is locally flat. If we would rather work with a frame that arises from coordinates, then we must resort to computing the components of a non-flat metric tensor (one that is not simply the Kroenecker delta). Also see my post on [the non-flatness of the sphere](/posts/sphere).
+However, the existence of an orthonormal frame *that arises as the coordinate frame of a chart* is a very rare occasion: such a frame only exists when the Riemannian manifold $(M, g)$ is locally flat. If we would rather work with a frame that arises from coordinates, then we must resort to computing the components of a non-flat metric tensor (one that is not simply the Kronecker delta). Also see my post on [the non-flatness of the sphere](/posts/sphere).
 
-<!-- Recall that if $M$ is a smooth manifold, then each point $p\in M$ has a smooth chart[^smooth_chart] $(U, \varphi)$ containing it.  -->
 Let $\frac{\partial}{\partial x^i}\Big\vert_{q}$ be the usual coordinate-wise partial derivative operators in $\mathbb R^n$, $q \coloneqq (q_1, q_2, \dots, q_n)$, and $q\in V \subseteq \mathbb R^n$.
 Given a smooth function $f\in C^\infty(V)$, the partial derivative operators of $\mathbb R^n$ operate on $f$ as follows:
-
-<!-- [^smooth_chart]: ... i.e., a chart that ensures that the concept of differentiation on $M$ is well-defined. -->
 
 $$
     \begin{align*}
@@ -205,7 +198,7 @@ $$
 $$\frac{\partial}{\partial x^i}\bigg\vert_{(\ \cdot\ )}:V \rightarrow TV.$$
 Thus, $\left\lbrace\frac{\partial}{\partial x^i}\big\vert_{(\ \cdot\ )}\right\rbrace_{i=1}^n$ is a set of vector fields on $V$, and may be visualized as a "fisherman's net" spread across $V$. 
 
-Ultimately, we want a coordinate frame on a subset $U$ of $M$, rather than on $V$, which is in $\mathbb R^n$. Let $\varphi:U \rightarrow V$ be a smooth chart containing some point $p$ of $M$. Its differential $(\varphi_*)_p$ is a vector space isomorphism (i.e., an invertible linear map) between $T_p U$ and $T_q V$. <span class=accented>The pushforward of the "partial derivative vector fields" of $V$ under $\varphi^{-1}$ gives us a coordinate frame on $U$.</span> That is, $\varphi^{-1}$ maps the fisherman's on $V$ to one on $U$.
+Ultimately, we want a coordinate frame on a subset $U$ of $M$, rather than on $V$, which is in $\mathbb R^n$. Let $\varphi:U \rightarrow V$ be a smooth chart containing some point $p$ of $M$. Its differential $(\varphi_*)_p$ is a vector space isomorphism (i.e., an invertible linear map) between $T_p U$ and $T_q V$. <span class=accented>The pushforward of the "partial derivative vector fields" of $V$ under $\varphi^{-1}$ gives us a coordinate frame on $U$.</span> That is, $\varphi^{-1}$ maps the fisherman's net on $V$ to one on $U$.
 By an abuse of notation, I and many others use $\left(\frac{\partial}{\partial x^i}\big\vert_{(\ \cdot\ )}\right)_{i=1}^n$ to refer to either frame; the subscript, the function being operated on, and/or the context will make it clear which frame is being used. This means that if $\tilde f\in C^\infty (U)$, then we write
 
 <p>
@@ -232,7 +225,6 @@ Let $f:M \rightarrow N$ be a diffeomorphism between manifolds (though it is poss
 Recall that tangent and cotangent vectors are dual to each other, and so are their $k^{th}$ exterior powers: alternating $k$-vector fields and differential $k$-forms. Whenever we have a morphism for an object going one way, we expect a dual morphism for the corresponding dual object going the other way. Using this intuition, we deduce that if $f_{\ast}: TM \rightarrow TN$ allows us to push forward vector fields, there must be a dual morphism $f^{\ast}: T^{\ast} N \rightarrow T^{\ast} M$ that allows us to pull back covector fields. Similarly, $f^{\ast}: \Omega^k(N) \rightarrow \Omega^k(M)$[^omega] pulls back differential forms from $N$ to $M$ (we use the same notation for either map, $f^{\ast}$).   In particular, metrics and volume forms on $N$ can be pulled back to define metrics and volume forms on $M$. 
 
 [^omega]: The space of differential $k$-forms on $M$ is denoted by $\Omega^k(M)$, which is also the space $\Gamma (\Lambda^k T^* M)$ of smooth sections of the $k^{th}$ exterior power of the cotangent bundle, $T^{\ast}M$. Note that $\Omega^k(M)$ is a subspace (specifically, a submodule) of the space of all the covariant $k$-tensor fields on $M$ (viewed as a $C^\infty(M)$-module).
-<!-- For example, the torus $M=\mathbb S^1 \times\mathbb S^1$ can be embedded in $N=\mathbb R^3$ in the form of a donut, and so the embedding $\iota : M\rightarrow N$ allows us to borrow the metric/volume form from the ambient Euclidean space; we say that the resulting metric/volume form is *induced* on $M$ under the embedding. -->
 
 The covariant tensor field thus obtained on $M$ is called as the <span class=accented>pullback</span> of the covariant tensor field on $N$ under $f$.
 For example, consider $M=S^2$ to be the unit $2$-sphere and $f$ to be its usual submersion into $N=\mathbb R^3$. Then, the pullback of the Euclidean ('dot product') metric $\bar g$ of $\mathbb R^3$ under $f$, $f^{\ast} \bar g$, is called the *round metric*, and it is a bonafide Riemannian metric for $S^2$ (I compute its components in [the next post](/posts/sphere)). When the Euclidean metric is pulled back onto a submanifold $M\subseteq \mathbb R^3$ in this manner, the pullback metric is called the *induced metric* or the *first fundamental form* of $M$. More generally, we can pull back covariant tensor fields from arbitrary manifolds, as long as we have a smooth map onto it.
@@ -249,15 +241,11 @@ The pullback of a differential form is defined such that it must be in concordan
 
 I like to read this as: $f^{\ast}\omega$ eats vector fields on $M$ by imitating how $\omega$ might eat the corresponding pushforward vector fields on $N$. Thus, $f^{\ast}\omega$ is a differential $k$-form on $M$; the domain of $\omega$ has been pulled back by $f^{\ast}$.
 
-<!-- While we have fully characterized the pullback of differential forms, some concrete properties of the pullback map are invaluable for doing actual computations. We will demonstrate these properties by pulling back metrics and volume forms on Lie groups. -->
-
 ---
 
 # Lie Groups ✨
 
 The tangent space at the identity of a Lie group $G$ can be given one of infinitely many possible inner products. However, there is a unique way to extend this inner product to a Riemannian metric by requiring that it be compatible with the group structure of $G$ (and as a consequence, compatible with the differential structure of $G$ as a manifold). For the same reason, there is also a unique choice of volume form (or equivalently, measure) with respect to which one can define the integral. This will be called the <span class=accented>Haar integral</span>, and it specializes to the Lebesgue integral when $G=\mathbb R^n$.
-<!-- <span class=accented>continue here</span>. -->
-
 Yet another useful property of Lie groups is that there is a way to construct global orthonormal frames for it: we choose an orthonormal basis of $T_e G$ and extend it to a set of left/right-invariant vector fields. Even among Lie groups, orthonormal *coordinate* frames are a rare occurrence;
 if $G$ is non-Abelian, then an orthonormal frame could not possibly come from a coordinate system (also see [this](/posts/sphere/#a-word-of-caution)). Nevertheless, the fact that a global orthonormal frame exists is already quite a special property.
 
@@ -301,8 +289,6 @@ Immediately, we have the following property at all $g\in G$:
 </p>
 
 In the following, we assume that $(E_i)_{i=1}^n$ and $(\varepsilon^i)_{i=1}^n$ are left-invariant. Analogous arguments follow for the right-invariant case. The only caveat is that the left-invariant and right-invariant metrics and volume forms may or may not turn out to be the same, as discussed in [my previous post](/posts/lie-groups_construction/#geometry).
-<!-- In short, we say that Lie groups are [parallelizable](https://en.wikipedia.org/wiki/Parallelizable_manifold) manifolds; also see [this](/posts/lie-groups/#representation-theory).  -->
-
 ### What is Left-Invariance?
 
 Let's scrutinize the left-invariance of $E_i$. Pretend that the left-multiplication map $L_g$ sends $G$ to another copy of itself, denoted as $G^💧$! 
@@ -381,19 +367,6 @@ $$
 \langle \mathbf v,\mathbf w\rangle_g = \langle (\mathcal L_h)_{\ast_g}\mathbf v, 
 (\mathcal L_h) _{\ast_g}\mathbf w\rangle _{hg}
 $$
-<!-- 
-It is notationally easier (more concise) to show this property for vector fields. Let $V,W\in\mathfrak X(G)$ be vector fields whose values at $g$ are $\mathbf v$ and $\mathbf w$, respectively. Then,
-
-<p>
-\[
-\begin{align}
-\langle (\mathcal L_g)_* V, (\mathcal L_g)_* W \rangle &= \delta_{ij} \varepsilon^i \varepsilon^j \big(\left(\mathcal L_g\right)_* V,\ \left(\mathcal L_g\right)_* W\big) \\
-&= \delta_{ij}\ \varepsilon^i\big(\left(\mathcal L_g\right)_* V\big)\ \varepsilon^j \big(\left(\mathcal L_g\right)_* W\big)\\
-&= \delta_{ij}\ [\left(\mathcal L_g\right)^* \varepsilon^i] \left( V\right) [\left(\mathcal L_g\right)^* \varepsilon^j] \left( W\right)\\
-&= \delta_{ij}\  \varepsilon^i \left( V\right)  \varepsilon^j \left( W\right) = \langle V, W \rangle.
-\end{align}
-\]
-</p> -->
 
 To see this, we evaluate the right hand side:
 
@@ -427,31 +400,3 @@ The notation may seem cumbersome, but given how light-yet-powerful the notation 
 A left-invariant volume form can be defined as $\omega = \varepsilon^1 \wedge \varepsilon^2 \wedge \cdots \wedge \varepsilon^n$, and has analogous invariance properties.
 
 Note that we could also have chosen to work with a coordinate coframe on an open set $U\subseteq G$ containing $g$ in order to express $\langle \cdot, \cdot \rangle$. In this case, we would need to compute the metric tensor coefficients since they will no longer be trivial. Evidently, if we work with coordinates on a Lie group, then we are not taking advantage of the group structure. In [the next post](/posts/sphere/#the-sphere), I compute the metric tensor coefficients for the sphere (which is not a Lie group!) in spherical polar coordinates. Some important comments about the Levi-Civita connection are made as well.
-<!-- In [the next one](/posts/so3), I pull back the geometric structure of $SO(3)$ to its [axis-angle parametrization](https://en.wikipedia.org/wiki/Axis–angle_representation). -->
-
-<!-- Let's see an example of why such a pullback can be helpful for computations.
-
-### <span class=accented>Example:</span> $SO(3)$
-
-Suppose $p\in G=SO(3)$ is a rotation, and $G$ is identified with the set of $3\times 3$ orthogonal matrices with determinant $1$.
-Let's look for a local parameterization of $SO(3)$, $\psi: V \rightarrow SO(3)$, such that $V\subseteq \mathbb R^3$ is an open set and $p\in \psi(V)$. The so-called 'z-x-z' or '3-1-3' Euler angle parameterization is a sequence of three rotations:
-
-<p>
-\[
-    \begin{align}
-\psi(\alpha, \beta, \gamma) = R_z(\gamma) R_x(\beta) R_z(\alpha)
-    \end{align}
-    \]
-</p> 
-
-where
-
-<p>
-\[
-    \begin{align}
-R_z(\theta) = \begin{bmatrix} \cos \theta & -\sin \theta & 0 \\ \sin \theta & \cos \theta & 0 \\ 0 & 0 & 1 \end{bmatrix}
-    \end{align}
-    \]
-</p> 
-
-and $R_x(\theta)$ is defined similarly. -->

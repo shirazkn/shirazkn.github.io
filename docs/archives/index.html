@@ -10,7 +10,7 @@
 <meta name="description" content="archives">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/archives/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c47d2866c003f4284e4cb163bf1770f08f3ad958519ae6cbbb57eefd3e4b6f55.css" integrity="sha256-xH0oZsAD9ChOTLFjvxdw8I862VhRmubLu1fu/T5Lb1U=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.40d14ba5b6f59ccd75b2aa4d72039862009c2bacf919930b8cc26e20dd7ea620.css" integrity="sha256-QNFLpbb1nM11sqpNcgOYYgCcK6z5GZMLjMJuIN1&#43;piA=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -79,7 +79,6 @@
 })();
 </script>
 
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 <script>
   MathJax = {
     tex: {
@@ -92,6 +91,7 @@
     },
   };
 </script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
 
@@ -479,11 +479,6 @@
     </main>
     
 <footer class="footer">
-    
-    
-    
-    
-    
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -502,12 +497,6 @@ function syncDarkClass() {
 syncDarkClass();
 
 
-const themeToggle = document.getElementById('theme-toggle');
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        setTimeout(syncDarkClass, 0);
-    });
-}
 
 
 document.querySelectorAll('.logo a, .post-title').forEach(el => {
@@ -788,28 +777,52 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     applyCardTransforms();
 
     
+    
     postCards.forEach((card, index) => {
-        let touchStartTime = 0;
+        let pressTimer = null;
+        let didScroll = false;
 
-        card.addEventListener('touchstart', (e) => {
-            touchStartTime = Date.now();
+        const applyPress = () => {
             const focus = cardFocusValues[index];
-            
             card.style.transition = 'transform 0.08s ease-out, box-shadow 0.08s ease-out';
             card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(${0.97 + focus * 0.01})`;
             card.style.boxShadow = `0 0.5px 1px rgba(0,0,0,0.2)`;
-        }, { passive: true });
+        };
 
-        card.addEventListener('touchend', () => {
-            
+        const cancelPress = () => {
+            if (pressTimer) {
+                clearTimeout(pressTimer);
+                pressTimer = null;
+            }
+        };
+
+        const releasePress = () => {
+            cancelPress();
             card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
             setTimeout(() => {
                 card.style.transition = '';
                 scheduleTransformUpdate();
             }, 150);
+        };
+
+        card.addEventListener('touchstart', () => {
+            didScroll = false;
+            pressTimer = setTimeout(applyPress, 100);
         }, { passive: true });
 
+        card.addEventListener('touchmove', () => {
+            if (!didScroll) {
+                didScroll = true;
+                cancelPress();
+                
+                card.style.transition = '';
+                scheduleTransformUpdate();
+            }
+        }, { passive: true });
+
+        card.addEventListener('touchend', releasePress, { passive: true });
         card.addEventListener('touchcancel', () => {
+            cancelPress();
             card.style.transition = '';
             scheduleTransformUpdate();
         }, { passive: true });
@@ -964,7 +977,7 @@ if (tocBox) {
 </script>
 <script>
     var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
+    window.addEventListener('scroll', function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
             mybutton.style.visibility = "visible";
             mybutton.style.opacity = "1";
@@ -972,19 +985,29 @@ if (tocBox) {
             mybutton.style.visibility = "hidden";
             mybutton.style.opacity = "0";
         }
-    };
+    });
 
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            document.documentElement.dataset.theme = 'light';
+        const html = document.documentElement;
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
-            document.documentElement.dataset.theme = 'dark';
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
+        }
+        const isDark = html.dataset.theme === 'dark';
+        html.classList.toggle('dark', isDark);
+        document.body.classList.toggle('dark', isDark);
+        
+        const giscusFrame = document.querySelector('iframe.giscus-frame');
+        if (giscusFrame) {
+            giscusFrame.contentWindow.postMessage(
+                { giscus: { setConfig: { theme: isDark ? 'noborder_dark' : 'noborder_light' } } },
+                'https://giscus.app'
+            );
         }
     })
 

@@ -5,9 +5,7 @@ draft: true
 summary: Probability theory is one of those subjects that's both easy to get started with and hard to master. What follows is a semi-rigorous review of the framework upon which modern-day probability theory is built. The goal here is to demystify what it means for a mathematical object to be random.
 ---
 
-Probability theory is one of those subjects that's both -- easy to get started with and hard to master. For instance, the conditional expectation operation $\mathbb E[\,\cdot\,|\,\cdot\,]$ can be notoriously tricky to work with, and its properties are not well-understood by researchers in my field who might *want* and *need* to use it to prove important results. What follows is a semi-rigorous review of the framework upon which modern-day probability theory is built. I personally find this to be an illuminating way to think about randomness.
-The goal here is to demystify what it means for a mathematical object to be random, and to have a rigorous axiomatic understanding of operations such as the conditional expectation.
-<!-- It's allowed me to understand and reason about *weird* random variables (more on that in a later post) which may not be as easy to grapple with an elementary understanding of probability. -->
+This is a semi-rigorous review of the framework upon which modern-day probability theory is built. My goal is to demystify what it means for a mathematical object to be random, and to have an axiomatic understanding of commonly-encountered objects like the conditional expectation.
 
 ## Probability Space
 Any rigorous treatment of probability theory begins with a *<span class=accented>probability space</span>*. A probability space is the tuple $(\Omega, \mathscr F, P)$, which has three ingredients:
@@ -16,7 +14,7 @@ Any rigorous treatment of probability theory begins with a *<span class=accented
 - $\mathscr F$ is a <span class=accented>set of subsets</span> of $\Omega$
 - $P$ is a <span class=accented>function</span> that measures subsets, $P:\mathscr F \rightarrow [0,1]$.
 
-The probability space $(\Omega, \mathscr F, P)$ can be thought of as some underlying source of randomness (say, God playing dice) on which other random variables can be defined. Here is the most intuitive interpretation of a probability space:
+The probability space $(\Omega, \mathscr F, P)$ can be thought of as some underlying source of randomness (say, [God playing dice](https://en.wikipedia.org/wiki/Does_God_Play_Dice%3F)) on which other random variables can be defined. Here is the most intuitive interpretation of a probability space:
 
 - $\Omega$ is the <span class=accented>set of all outcomes</span>, i.e., the different eventualities that are possible. For e.g., if we throw two dice, one after another, then a potential outcome is $(1, 4) \in \Omega$.
 
@@ -25,20 +23,20 @@ The probability space $(\Omega, \mathscr F, P)$ can be thought of as some underl
  - $P$ <span class=accented>assigns a probability</span> (number between $0$ and $1$) to each event in $\mathscr F$.
 
 Note that we do not assign probabilities to the elements of $\Omega$ directly, but only to the subsets of $\Omega$ which are in $\mathscr F$.
-This all seems intuitive enough, but a more formal description is due. 
+This all seems intuitive enough, but a more general description is due. 
 In what follows, we will not concern with what the set $\Omega$ actually contains, taking a more agnostic approach.
 
 The tuple $(\Omega, \mathscr F, P)$ is called a <span class=accented>probability space</span> if
 
 - $\Omega$ is a <span class=accented>set</span>
 
-- $\mathscr F$ is a <span class=accented>$\sigma$-algebra</span>, i.e., a set of subsets of $\Omega$ satisfying certain properties
+- $\mathscr F$ is a <span class=accented>$\sigma$-algebra</span>, i.e., a set of subsets of $\Omega$ satisfying [certain properties](https://en.wikipedia.org/wiki/Σ-algebra)
 
 - $P\colon \mathscr F \rightarrow [0, 1]$ is a function satisfying certain properties, called a <span class=accented>probability measure</span>.
 
-Choosing a [$\sigma$-algebra](https://en.wikipedia.org/wiki/Σ-algebra) is a way of *picking* which events (i.e., subsets of $\Omega$) we would like to assign probabilities to. <!-- The other subsets of $\Omega$ (which are not in $\mathscr F$) may be too messy to work with, such that assigning probabilities to these messy subsets may yield unintuitive results. The $\sigma$-algebra $\mathscr F$ contains *nice* subsets of $\Omega$ that may have nice topological (or otherwise) properties. --> Because of the properties we impose on a $\sigma$-algebra, it always contains the empty set, $\emptyset$, and the complete set, $\Omega$. Thus, $\lbrace \emptyset, \Omega \rbrace$ is the smallest possible $\sigma$-algebra. Rather than *smallest*, we will say that this is the *coarsest* $\sigma$-algebra.[^po] The other extreme case is that of the *finest* $\sigma$-algebra, one that we cannot chop up into smaller pieces. When $\Omega$ has countably many elements, the power set (i.e., the set of all the subsets) of $\Omega$, $\mathcal P(\Omega)$, is what's called the *discrete* $\sigma$-algebra. In particular, $\mathcal P(\Omega)$ includes singleton sets of the form $\lbrace \omega \rbrace$ (where $\omega \in \Omega$ is an outcome), which means that we can assign a probability to each outcome. This is similar to how we use 'probability mass functions' in classical probability theory. 
+Choosing a $\sigma$-algebra is a way of *picking* which events (i.e., subsets of $\Omega$) we would like to assign probabilities to. <!-- The other subsets of $\Omega$ (which are not in $\mathscr F$) may be too messy to work with, such that assigning probabilities to these messy subsets may yield unintuitive results. The $\sigma$-algebra $\mathscr F$ contains *nice* subsets of $\Omega$ that may have nice topological (or otherwise) properties. --> Because of the properties we impose on a $\sigma$-algebra, it always contains the empty set, $\emptyset$, and the complete set, $\Omega$. Thus, $\lbrace \emptyset, \Omega \rbrace$ is the smallest possible $\sigma$-algebra. Rather than *smallest*, we will say that this is the *coarsest* $\sigma$-algebra.[^po] The other extreme case is that of the *finest* $\sigma$-algebra, one that we cannot chop up into smaller pieces. When $\Omega$ has countably many elements, the power set (i.e., the set of all the subsets) of $\Omega$, $\mathcal P(\Omega)$, is what's called the *discrete* $\sigma$-algebra. In particular, $\mathcal P(\Omega)$ includes singleton sets of the form $\lbrace \omega \rbrace$ (where $\omega \in \Omega$ is an outcome), which means that we can assign a probability to each outcome. This is similar to how we use 'probability mass functions' in classical probability theory. 
 
-[^po]: The inclusion operation of sets defines a *partial order* on the power set of $\Omega$, so the term 'coarsest' refers to the minimal element w.r.t. this partial order. In contrast, we usually use the word 'smallest' to refer to the minimal element of some collection w.r.t. cardinality, which defines a *total order* for finite sets (and if you're brave enough, for infinite sets).
+[^po]: The inclusion operation of sets defines a *partial order* on the power set of $\Omega$, so the term 'coarsest' refers to the minimal element w.r.t. this partial order.
 <!-- We run into issues when $\Omega$ has uncountably many elements. Suppose $X$ is the uniform random variable on the domain $(0,1]$. We assign probabilities to events such as $X\in(-0.49, 0.51]$, but not to the specific outcome, $X=0.5$. -->
 
 A [measure](https://en.wikipedia.org/wiki/Measure_(mathematics)) maps the sets in a $\sigma$-algebra to the non-negative real numbers, almost like it is 'weighing' or 'measuring' the sets. A [probability measure](https://en.wikipedia.org/wiki/Probability_measure) is a special type of measure that only takes positive values and satisfies $P(\Omega)=1$ (recall that $\Omega\in \mathscr F$ by axiom). Think of the probability measure $P$ as *assigning probabilities*  to the events in $\mathscr F$.  Analogously, we have $P(\Omega)=1$. Terrence Tao has an excellent [blogpost](https://terrytao.wordpress.com/2009/01/01/245b-notes-0-a-quick-review-of-measure-and-integration-theory/) that goes over measure theory (and another one on probability theory).

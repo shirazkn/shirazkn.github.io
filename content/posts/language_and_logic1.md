@@ -7,13 +7,6 @@ showToc: false
 TocOpen: false
 summary: This post discusses the question of whether spoken and written languages like English could be 'logical' by design. The first part does not require a mathematical background, whereas the second touches on the concepts of axioms, theorems and proofs.
 ---
-
-<!-- 
-Design ideas:
-clickable footnotes
-sidebar box
--->
-
 This is my first post! It discusses the question of whether spoken and written languages like English could be 'logical' by design. I will break this post up into two parts. The first one does not require a mathematical background whatsoever, whereas [the second](/posts/language_and_logic2) touches on the concepts of axioms, theorems and proofs.
 
 ### Fallacies
@@ -60,7 +53,6 @@ As human communities manufactured their languages, they did so with the express 
 
 It is certainly one of my mom's greatest tools. 
 
-<!-- ### <span class=tertiary>Outro</span> &nbsp;Proof by No Contradiction -->
 ### Truth is Subjective
 
 Humans are organized into systems, communities that talk to each other in a certain language. Between two systems, languages, with all of their words, syntaxes, enunciations, and cultural connotations, can differ either slightly (Californians v. New Yorkers) or drastically (Urdu speakers v. English speakers). Can the notion of *being logical* differ between the two systems (and thus, their languages)?
@@ -73,7 +65,6 @@ These are things we lay down as foundations for our worldview, and we always nee
 
 It turns out that we define *truth* quite similarly. Once you are within a system, the *truth* of that system is anything that is consistent within the system. Inconsistency, i.e., contradicting with the aforementioned truths, is what is meant by being *false*. 
 How was Galileo to propose his radical idea to the world, had he not the access to a language that allowed him to be logically inconsistent with what was considered *true* at the time?
-<!-- Given a choice between two systems of *truth*, one employs something like the Occam's razor to decide which system to subscribe to. Hence, most of us are now in Galileo's system of *truth*, as it just seems... more natural. -->
 
 In both mathematics and scientific deduction, contradictions are a major blow to the field, because it means that we need to upend much of the theory that we've been relying on. It's like finding out that the foundation of the building you've been constructing so meticulously was fractured all along. Sometimes it's exciting all the same, it just means that we need to have an open mind and accept a new idea. Albert Einstein lived through at least three such 'major blows' during his lifetime. The first was of his own doing, the realization that [spacetime curves and contorts](https://en.wikipedia.org/wiki/Hyperbolic_geometry#Geometry_of_the_universe_%28special_relativity%29) in ways that are impossible for humans to even visualize. The second time, he was the one who was unsettled by the Danish physicist Neils Bohr's [theory of quantum physics](https://en.wikipedia.org/wiki/Bohr–Einstein_debates).
 

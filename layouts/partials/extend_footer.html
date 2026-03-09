@@ -10,13 +10,7 @@ function syncDarkClass() {
 }
 syncDarkClass();
 
-// Listen for theme toggle clicks
-const themeToggle = document.getElementById('theme-toggle');
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        setTimeout(syncDarkClass, 0);
-    });
-}
+// (Theme toggle click handler is in footer.html)
 
 // Wrap letters in spans for hover effect (preserving word boundaries)
 document.querySelectorAll('.logo a, .post-title').forEach(el => {
@@ -297,28 +291,52 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     applyCardTransforms();
 
     // Add touch feedback for tap (the "go down" animation)
+    // Delay activation to distinguish taps from scrolls
     postCards.forEach((card, index) => {
-        let touchStartTime = 0;
+        let pressTimer = null;
+        let didScroll = false;
 
-        card.addEventListener('touchstart', (e) => {
-            touchStartTime = Date.now();
+        const applyPress = () => {
             const focus = cardFocusValues[index];
-            // Scale down and flatten shadow for pressed state
             card.style.transition = 'transform 0.08s ease-out, box-shadow 0.08s ease-out';
             card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(${0.97 + focus * 0.01})`;
             card.style.boxShadow = `0 0.5px 1px rgba(0,0,0,0.2)`;
-        }, { passive: true });
+        };
 
-        card.addEventListener('touchend', () => {
-            // Restore gyro-based transform
+        const cancelPress = () => {
+            if (pressTimer) {
+                clearTimeout(pressTimer);
+                pressTimer = null;
+            }
+        };
+
+        const releasePress = () => {
+            cancelPress();
             card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
             setTimeout(() => {
                 card.style.transition = '';
                 scheduleTransformUpdate();
             }, 150);
+        };
+
+        card.addEventListener('touchstart', () => {
+            didScroll = false;
+            pressTimer = setTimeout(applyPress, 100);
         }, { passive: true });
 
+        card.addEventListener('touchmove', () => {
+            if (!didScroll) {
+                didScroll = true;
+                cancelPress();
+                // Reset transform if press already applied
+                card.style.transition = '';
+                scheduleTransformUpdate();
+            }
+        }, { passive: true });
+
+        card.addEventListener('touchend', releasePress, { passive: true });
         card.addEventListener('touchcancel', () => {
+            cancelPress();
             card.style.transition = '';
             scheduleTransformUpdate();
         }, { passive: true });

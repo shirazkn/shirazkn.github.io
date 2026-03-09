@@ -10,7 +10,7 @@
 <meta name="description" content="One of my motivations for starting a blog was Eugenia Cheng&rsquo;s book The Joy of Abstraction. It&rsquo;s a surprisingly accessible, gentle introduction to category theory, a topic that is usually only taught to graduate students in math. In this post, I will introduce the main ideas in category theory and show that it offers an elegant way of thinking about mathematics.">
 <meta name="author" content="">
 <link rel="canonical" href="https://shirazkn.github.io/posts/cat_theory_1/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c47d2866c003f4284e4cb163bf1770f08f3ad958519ae6cbbb57eefd3e4b6f55.css" integrity="sha256-xH0oZsAD9ChOTLFjvxdw8I862VhRmubLu1fu/T5Lb1U=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.40d14ba5b6f59ccd75b2aa4d72039862009c2bacf919930b8cc26e20dd7ea620.css" integrity="sha256-QNFLpbb1nM11sqpNcgOYYgCcK6z5GZMLjMJuIN1&#43;piA=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://shirazkn.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
@@ -79,7 +79,6 @@
 })();
 </script>
 
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 <script>
   MathJax = {
     tex: {
@@ -92,6 +91,7 @@
     },
   };
 </script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
 
@@ -140,7 +140,7 @@
   "keywords": [
     "General"
   ],
-  "articleBody": "One of my motivations for starting a blog was Eugenia Cheng’s book The Joy of Abstraction 1. It’s a surprisingly accessible, gentle introduction to category theory, a topic that is usually only taught to graduate students in math. She compiled part of the book using notes from a class that she teaches at the Art Institute of Chicago, which is a testament to the aesthetic appreciation that one can expect to gain of category theory irrespective of their academic background! In this post, I will introduce the main ideas in category theory (as I best understand it) and show that it offers an elegant way of thinking about mathematics.\nThe Main Idea The mathematician Tai-Danae Bradley describes category theory as a sort of ‘mad libs’ for mathematics. Mad libs is a game where you have a sentence with a few blank spaces, and depending on what you place in the blank space, you get a different interpretation out of it:\nYour [noun] is so [adjective] that it's making me [adjective]! Mad libs fix the structure of the sentence, but the objects you put in let you extract different interpretations out of it. Try putting in the words blog, boring and sleepy 😕\nCategory theory lets you do something similar. Every now and then you encounter something in mathematics that makes you go “Hey, this feels a lot like that other thing!” If there were some way to move back and forth between the two universes that have a similar structure, we can apply the insights that we gain in one universe to the other. The following is an example of where I might want to ‘move between mathematical universes with the same structure’:\nThe so called contrapositive of the statement $\\textbf A\\Rightarrow \\textbf B$ ($\\textbf A$ implies $\\textbf B$), is $\\neg \\textbf B \\Rightarrow \\neg \\textbf A$ ('not $\\textbf B$' implies 'not $\\textbf A$'). A statement and its contrapositive are logically equivalent, i.e., \\[\\textbf A\\Rightarrow \\textbf B \\quad \\textit{if and only if} \\quad \\neg \\textbf B \\Rightarrow \\neg \\textbf A\\] As an example, consider the statement $\\textbf A$ = “Today is Sunday” and $\\textbf B$ = “Tomorrow is a Monday.” The statement $\\textbf A\\Rightarrow \\textbf B$ is true, but so is its contrapositive $\\neg \\textbf B \\Rightarrow \\neg \\textbf A$, i.e., “If tomorrow is not a Monday, then today is not Sunday.”\nNow consider the following relationship between sets $A$ and $B$ (not to be confused with the propositions $\\textbf A$ and $\\textbf B$):\nLet $A^\\complement$ denote the complement of $A$, i.e., everything that's not in $A$. Then we have \\[ A\\subseteq B \\quad \\textit{if and only if} \\quad B^\\complement \\subseteq A^\\complement \\] Everything that's inside $A$ is also inside $B$.\nEverything that's outside $B$ is also outside $A$. Even if these examples are of no interest to you, all we need to note is that we replaced the symbol $\\Rightarrow$ (implies) with $\\subseteq$ (is a subset of), but the relationship between the corresponding objects looks nearly identical2. As the objects we’re swapping out become more complex, the insights that carry over during the ‘swapping out’ become deeper.\nThe two different mathematical universes (logic and set theory) consist of objects (statements and sets) as well as relationships between them ($\\Rightarrow$ and $\\subseteq$). Similarly, a category is something that is made up of objects as well as their relationships to each other (called morphisms), satisfying some additional rules which impart to it its structure.\nCategories The best part of category theory is that it takes a whopping $10$ minutes or so to set up the foundations of it, but it comes with rich insights and new ways of thinking about math. Let’s give the definition of a category.\nA category $\\mathcal C$ consists of objects and morphisms; the latter are basically arrows from one object in $\\mathcal C$ to another. We write $\\text{ob}(\\mathcal C)$ to refer to the collection of all the objects in $\\mathcal C$. Given two objects $X$ and $Y$ in $\\text{ob}(\\mathcal C)$, we write $\\mathcal C(X,Y)$ to denote the collection of all the morphisms (i.e., arrows/relationships) from $X$ to $Y$. Note that (unlike in the above two examples) there may be more than one arrow in $\\mathcal C(X,Y)$.\nIf there is an arrow $f$ from $X$ to $Y$, and an arrow $g$ from $Y$ to $Z$, then we can draw an arrow from $X$ to $Z$ (which represents the path of going from $X$ to $Y$, then to $Z$). We call this specific arrow from $X$ to $Z$ as the composition of $f$ and $g$, denoting it as $g\\circ f$. We also say that $f$ and $g$ are composable, since the arrow-head of $f$ touches the tail of $g$.\nTo see why the composition is written 'backwards', i.e., as $g \\circ f$ rather than '$f \\circ g$', think of the objects as sets and the morphisms as functions between sets. That is, if $f:A\\rightarrow B$ and $g:B\\rightarrow C$, then $g(f(\\cdot)):A\\rightarrow C$ is a function from $A$ to $C$. Composition of functions is a special case of the composition in category theory. In addition to objects, morphisms, and their compositions, any category has an underlying structure that is imparted to it by the following properties:\nIdentities: For every object $X$, there exists a morphism $1_X$ from $X$ to itself, called the identity morphism. Moreover, for any $X$ and $Y$ in $\\text{ob} (\\mathcal C)$ and $f$ in $\\mathcal C(X,Y)$, we must have $f \\circ 1_X = f = 1_Y \\circ f $. In other words, $1_X$ is like $\\text{stay at X}$, and $1_Y$ is like $\\text{stay at Y}$. Associativity: For $f$, $g$ and $h$ in $\\mathcal C(W,X)$, $\\mathcal C(X,Y)$, and $\\mathcal C(Y,Z)$, respectively, we must have $h \\circ (g \\circ f)$ = ($h \\circ g) \\circ f$. Visually, the pink arrow in this figure can be obtained in two equivalent ways: For e.g., if $X$ and $Y$ are vector spaces and $M$ is the linear transformation that takes $X$ to $Y$, then the first bullet point is saying that $ M I_X = M = I_Y M$, where $I_X$ corresponds to the identity matrix of the vector space $X$ (note that $I_X$ and $I_Y$ may have different dimensions as matrices!). Similarly, the second bullet point is just stipulating the associativity of matrix multiplication, which we are so used to that we take it for granted. The order in which we compose arrows (that are composable) does not matter.\nIn the two examples we gave earlier, logic and sets, we introduced the morphisms $\\Rightarrow$ and $\\subseteq$, respectively. Since $\\textbf A \\Rightarrow \\textbf A$ and $A\\subseteq A$, we do have identity morphisms (arrows from the object to itself) at each object. Similarly, if the objects are numbers, then $\\leq$ is another morphism that serves both as an identity as well as a relationship between two distinct numbers. At the same time, $\u003c$ would not work as an identity morphism, as it is not true that a number is $\u003c$ itself.\nObserve that we are in the business of ‘swapping out’ morphisms and not just objects.\nThe Category of Sets We could define a category $\\mathcal C$ consisting of sets (as its objects) in many different ways, depending on what sort of relationships (morphisms) we want to represent between them. However, the category of sets refers to one particular type of category. It is the category $\\mathcal C$ where $\\text{ob}(\\mathcal C)$ are sets and $\\mathcal C(X, Y)$ is the collection of all the functions from sets $X$ to $Y$. A function $f$ in $\\mathcal C(X, Y)$ assigns to each element in $X$ an element in $Y$.\nNow I’ll demonstrate why this representation of sets is cleaner than the way we usually think about sets. Recall that a function $f:X\\rightarrow Y$ is injective or ‘one-one’ if for all $x_1,x_2 \\in X, f(x_1)=f(x_2) \\Rightarrow x_1 = x_2$. In other words, two different elements cannot map to the same element. The function $f$ is called surjective or ‘onto’ if for every $y\\in Y$, there exists some $x\\in X$ such that $f(x)=y$. In other words, the image of $X$ under the operation $f$ gives all of $Y$, and not just some part of $Y$. (The arrows in the following illustration are NOT supposed to be morphisms! Let’s emphasize that these are illustrations rather than diagrams.)\nNow I don’t know about you, but these definitions look pretty asymmetrical to me. If I’d never seen them before, I would guess that they are talking about two completely different concepts. The two concepts are united by the fact that if $f$ is both injective and surjective, then it is invertible, i.e., there exists some function $g: Y\\rightarrow X$ such that $g \\circ f = 1_X$ and $f\\circ g = 1_Y$. In this case, $f$ is said to be bijective, and $g$ is called the inverse of $f$.\nAs an example, let $X$ be a set of people and $Y$ be some tasks or missions. $f$ is the assignment of people in $X$ to tasks in $Y$. The inverse function $g$ can then be thought of like ‘holding people accountable for their tasks’. If a task or a mission goes badly, we want the inverse function $g$ to tell us exactly who to hold responsible for its failure. If $f$ is not injective, either of two people who worked on the same task may be to blame. If $f$ is not surjective, it means that we don’t have anyone to blame for one of the tasks, because apparently no one was even assigned that task. These are the situations in which the inverse function $g$ fails to exist.\nWe just saw that invertible functions between sets has a purely categorical definition, namely the existence of a ‘reverse’ morphism from $Y$ to $X$ satisfying some properties. We could extend this definition to define invertible morphisms in any category. At the same time, we could ask if there is a purely categorical definition of injective and surjective functions.\nMonics and Epics In any category $\\mathcal C$ with objects $X$ and $Y$, a morphism $f$ in $\\mathcal C(X, Y)$ is said to be a monomorphism or a monic between $X$ and $Y$ if for all objects $Z$ and morphisms $g_1$ and $g_2$ in $\\mathcal C(Z, X)$,\n\\[ f \\circ g_1 = f\\circ g_2 \\quad \\Rightarrow \\quad g_1 = g_2 \\]\nIn any category $\\mathcal C$ with objects $X$ and $Y$, a morphism $f$ in $\\mathcal C(X, Y)$ is said to be an epimorphism or an epic 😎 between $X$ and $Y$ if for all objects $Z$ and morphisms $g_1$ and $g_2$ in $\\mathcal C(Y, Z)$,\n\\[ g_1 \\circ f = g_2 \\circ f \\quad\\Rightarrow \\quad g_1 = g_2 \\]\nIn the category of sets, the monomorphisms and epimorphisms are precisely the injective and surjective functions, respectively. Now these definitions look so symmetric that they almost seem wrong. So why is it that they are equivalent definitions for injectivity and surjectivity, respectively? To begin with, why is a monomorphism, as defined above, necessarily an injective function (and vice versa)?3\n1. Monics are Injective Functions The trick is to think of a monomorphism $f:X\\rightarrow Y$ as a re-labeling of the elements of $X$. Suppose $X$ is a set of people and $Y$ is a set of (distinct) names, then let $f$ be the operation of assigning each person a name. $f$ is injective if each person gets a distinct name (no two people have the same name). In that case, if I give you a list of names, you know exactly which list of people I picked. In the figure, the purple arrows are the monomorphism (assignment of distinct names):\n$f$ would not be a monomorphism if two people were given the same name, say, John, i.e., two of the purple lines go into the same name. In that case, I could have picked either John (corresponding to two different lists of people, $g_1$ and $g_2$) but produced the same list of names ($f \\circ g_1 = f \\circ g_2$), and you would have no way of telling which list of people you were looking at since you do not know which John I picked. You would instead point a finger at me and accuse me of being ‘ambiguous’.\nSuccintly, $f$ remembers which elements went to which elements. It does not forget that there are $n$ distinct people by assigning two or more of them the same name.\n2. Epics are Surjective Functions Finally, let’s see why the definition of epimorphisms of sets works as the definition for surjectivity. This is perhaps more difficult to see, because it looks so different from the set-theoretic definition of surjectivity. Let’s take this post to a full circle and invoke the contrapositive of the definition for an epic, which says that an epimorphism or an epic is, equivalently, a morphism $f$ in $\\mathcal C(X, Y)$ such that for all objects $Z$ and morphisms $g_1$ and $g_2$ in $\\mathcal C(Y, Z)$,\n\\[ g_1 \\neq g_2 \\quad\\Rightarrow \\quad g_1 \\circ f \\neq g_2 \\circ f \\]\nThis means that pre-composing $g_1$ and $g_2$ with $f$ retains the ability to distinguish $g_1$ and $g_2$. Suppose $f$ weren’t surjective, then we may no longer be able to distinguish $g_1$ and $g_2$ because $f$ is not even ’looking at’ one of the elements, which may be crucial to distinguishing $g_1$ and $g_2$:\nSimilarly, the definition of monics (which are the injective functions) was really saying that post-composing with $f$ retains the ability to distinguish two morphisms $g_1$ and $g_2$, because in that case $f$ was just a re-naming of the objects.\nThinking Categorically Two days after I first published this post, two of my favorite math communicators made a podcast episode about category theory. Eugenia Cheng talks to Steven Strogatz about why she finds joy in thinking categorically, i.e., approaching these types of math concepts from a category theory standpoint.\nWhat we showed above was that some concepts in math might be a bit messy or aesthetically lacking due to how they’re set up. This messiness also prevents us from generalizing ideas like injectivity and surjectivity to other fields in math, because they’re too deeply rooted in the language of set theory. Category theory allows us to squint at mathematical objects in just the right way, until we’ve ‘blurred out’ the messiness, focusing our attention only on the thing that really matters: structure! As a bonus, we get to apply our insights to all of the other mathematical fields that have analogous properties, and therefore similar (or identical) structures. I would argue that this is a joyful way of learning mathematics. One where all of mathematics is yielding itself to you, simultaneously.\nAt the time of me writing this post, there is an ongoing book club for The Joy of Abstraction being hosted by its author. ↩︎\nEither statement is a consequence of duality in category theory. Duality manifests again on my blog when I talk about differential forms . ↩︎\nWe just showed one direction of each of these equivalences, at best. The main goal is to get an intuition for why the two definitions of injectivity and surjectivity may be equivalent! ↩︎\n",
+  "articleBody": "One of my motivations for starting a blog was Eugenia Cheng’s book The Joy of Abstraction 1. It’s a surprisingly accessible, gentle introduction to category theory, a topic that is usually only taught to graduate students in math. She compiled part of the book using notes from a class that she teaches at the Art Institute of Chicago, which is a testament to the aesthetic appreciation that one can expect to gain of category theory irrespective of their academic background! In this post, I will introduce the main ideas in category theory (as I best understand it) and show that it offers an elegant way of thinking about mathematics.\nThe Main Idea The mathematician Tai-Danae Bradley describes category theory as a sort of ‘mad libs’ for mathematics. Mad libs is a game where you have a sentence with a few blank spaces, and depending on what you place in the blank space, you get a different interpretation out of it:\nYour [noun] is so [adjective] that it's making me [adjective]! Mad libs fix the structure of the sentence, but the objects you put in let you extract different interpretations out of it. Try putting in the words blog, boring and sleepy 😕\nCategory theory lets you do something similar. Every now and then you encounter something in mathematics that makes you go “Hey, this feels a lot like that other thing!” If there were some way to move back and forth between the two universes that have a similar structure, we can apply the insights that we gain in one universe to the other. The following is an example of where I might want to ‘move between mathematical universes with the same structure’:\nThe so called contrapositive of the statement $\\textbf A\\Rightarrow \\textbf B$ ($\\textbf A$ implies $\\textbf B$), is $\\neg \\textbf B \\Rightarrow \\neg \\textbf A$ ('not $\\textbf B$' implies 'not $\\textbf A$'). A statement and its contrapositive are logically equivalent, i.e., \\[\\textbf A\\Rightarrow \\textbf B \\quad \\textit{if and only if} \\quad \\neg \\textbf B \\Rightarrow \\neg \\textbf A\\] As an example, consider the statement $\\textbf A$ = “Today is Sunday” and $\\textbf B$ = “Tomorrow is a Monday.” The statement $\\textbf A\\Rightarrow \\textbf B$ is true, but so is its contrapositive $\\neg \\textbf B \\Rightarrow \\neg \\textbf A$, i.e., “If tomorrow is not a Monday, then today is not Sunday.”\nNow consider the following relationship between sets $A$ and $B$ (not to be confused with the propositions $\\textbf A$ and $\\textbf B$):\nLet $A^\\complement$ denote the complement of $A$, i.e., everything that's not in $A$. Then we have \\[ A\\subseteq B \\quad \\textit{if and only if} \\quad B^\\complement \\subseteq A^\\complement \\] Everything that's inside $A$ is also inside $B$.\nEverything that's outside $B$ is also outside $A$. Even if these examples are of no interest to you, all we need to note is that we replaced the symbol $\\Rightarrow$ (implies) with $\\subseteq$ (is a subset of), but the relationship between the corresponding objects looks nearly identical2. As the objects we’re swapping out become more complex, the insights that carry over during the ‘swapping out’ become deeper.\nThe two different mathematical universes (logic and set theory) consist of objects (statements and sets) as well as relationships between them ($\\Rightarrow$ and $\\subseteq$). Similarly, a category is something that is made up of objects as well as their relationships to each other (called morphisms), satisfying some additional rules which impart to it its structure.\nCategories The best part of category theory is that it takes a whopping $10$ minutes or so to set up the foundations of it, but it comes with rich insights and new ways of thinking about math. Let’s give the definition of a category.\nA category $\\mathcal C$ consists of objects and morphisms; the latter are basically arrows from one object in $\\mathcal C$ to another. We write $\\text{ob}(\\mathcal C)$ to refer to the collection of all the objects in $\\mathcal C$. Given two objects $X$ and $Y$ in $\\text{ob}(\\mathcal C)$, we write $\\mathcal C(X,Y)$ to denote the collection of all the morphisms (i.e., arrows/relationships) from $X$ to $Y$. Note that (unlike in the above two examples) there may be more than one arrow in $\\mathcal C(X,Y)$.\nIf there is an arrow $f$ from $X$ to $Y$, and an arrow $g$ from $Y$ to $Z$, then we can draw an arrow from $X$ to $Z$ (which represents the path of going from $X$ to $Y$, then to $Z$). We call this specific arrow from $X$ to $Z$ as the composition of $f$ and $g$, denoting it as $g\\circ f$. We also say that $f$ and $g$ are composable, since the arrow-head of $f$ touches the tail of $g$.\nTo see why the composition is written 'backwards', i.e., as $g \\circ f$ rather than '$f \\circ g$', think of the objects as sets and the morphisms as functions between sets. That is, if $f:A\\rightarrow B$ and $g:B\\rightarrow C$, then $g(f(\\cdot)):A\\rightarrow C$ is a function from $A$ to $C$. Composition of functions is a special case of the composition in category theory. In addition to objects, morphisms, and their compositions, any category has an underlying structure that is imparted to it by the following properties:\nIdentities: For every object $X$, there exists a morphism $1_X$ from $X$ to itself, called the identity morphism. Moreover, for any $X$ and $Y$ in $\\text{ob} (\\mathcal C)$ and $f$ in $\\mathcal C(X,Y)$, we must have $f \\circ 1_X = f = 1_Y \\circ f $. In other words, $1_X$ is like $\\text{stay at X}$, and $1_Y$ is like $\\text{stay at Y}$. Associativity: For $f$, $g$ and $h$ in $\\mathcal C(W,X)$, $\\mathcal C(X,Y)$, and $\\mathcal C(Y,Z)$, respectively, we must have $h \\circ (g \\circ f)$ = ($h \\circ g) \\circ f$. Visually, the pink arrow in this figure can be obtained in two equivalent ways: For e.g., if $X$ and $Y$ are vector spaces and $M$ is the linear transformation that takes $X$ to $Y$, then the first bullet point is saying that $ M I_X = M = I_Y M$, where $I_X$ corresponds to the identity matrix of the vector space $X$ (note that $I_X$ and $I_Y$ may have different dimensions as matrices!). Similarly, the second bullet point is just stipulating the associativity of matrix multiplication, which we are so used to that we take it for granted. The order in which we compose arrows (that are composable) does not matter.\nIn the two examples we gave earlier, logic and sets, we introduced the morphisms $\\Rightarrow$ and $\\subseteq$, respectively. Since $\\textbf A \\Rightarrow \\textbf A$ and $A\\subseteq A$, we do have identity morphisms (arrows from the object to itself) at each object. Similarly, if the objects are numbers, then $\\leq$ is another morphism that serves both as an identity as well as a relationship between two distinct numbers. At the same time, $\u003c$ would not work as an identity morphism, as it is not true that a number is $\u003c$ itself.\nObserve that we are in the business of ‘swapping out’ morphisms and not just objects.\nThe Category of Sets We could define a category $\\mathcal C$ consisting of sets (as its objects) in many different ways, depending on what sort of relationships (morphisms) we want to represent between them. However, the category of sets refers to one particular type of category. It is the category $\\mathcal C$ where $\\text{ob}(\\mathcal C)$ are sets and $\\mathcal C(X, Y)$ is the collection of all the functions from sets $X$ to $Y$. A function $f$ in $\\mathcal C(X, Y)$ assigns to each element in $X$ an element in $Y$.\nNow I’ll demonstrate why this representation of sets is cleaner than the way we usually think about sets. Recall that a function $f:X\\rightarrow Y$ is injective or ‘one-one’ if for all $x_1,x_2 \\in X, f(x_1)=f(x_2) \\Rightarrow x_1 = x_2$. In other words, two different elements cannot map to the same element. The function $f$ is called surjective or ‘onto’ if for every $y\\in Y$, there exists some $x\\in X$ such that $f(x)=y$. In other words, the image of $X$ under the operation $f$ gives all of $Y$, and not just some part of $Y$. (The arrows in the following illustration are NOT supposed to be morphisms! Let’s emphasize that these are illustrations rather than diagrams.)\nNow I don’t know about you, but these definitions look pretty asymmetrical to me. If I’d never seen them before, I would guess that they are talking about two completely different concepts. The two concepts are united by the fact that if $f$ is both injective and surjective, then it is invertible, i.e., there exists some function $g: Y\\rightarrow X$ such that $g \\circ f = 1_X$ and $f\\circ g = 1_Y$. In this case, $f$ is said to be bijective, and $g$ is called the inverse of $f$.\nAs an example, let $X$ be a set of people and $Y$ be some tasks or missions. $f$ is the assignment of people in $X$ to tasks in $Y$. The inverse function $g$ can then be thought of like ‘holding people accountable for their tasks’. If a task or a mission goes badly, we want the inverse function $g$ to tell us exactly who to hold responsible for its failure. If $f$ is not injective, either of two people who worked on the same task may be to blame. If $f$ is not surjective, it means that we don’t have anyone to blame for one of the tasks, because apparently no one was even assigned that task. These are the situations in which the inverse function $g$ fails to exist.\nWe just saw that invertible functions between sets has a purely categorical definition, namely the existence of a ‘reverse’ morphism from $Y$ to $X$ satisfying some properties. We could extend this definition to define invertible morphisms in any category. At the same time, we could ask if there is a purely categorical definition of injective and surjective functions.\nMonics and Epics In any category $\\mathcal C$ with objects $X$ and $Y$, a morphism $f$ in $\\mathcal C(X, Y)$ is said to be a monomorphism or a monic between $X$ and $Y$ if for all objects $Z$ and morphisms $g_1$ and $g_2$ in $\\mathcal C(Z, X)$,\n\\[ f \\circ g_1 = f\\circ g_2 \\quad \\Rightarrow \\quad g_1 = g_2 \\]\nIn any category $\\mathcal C$ with objects $X$ and $Y$, a morphism $f$ in $\\mathcal C(X, Y)$ is said to be an epimorphism or an epic 😎 between $X$ and $Y$ if for all objects $Z$ and morphisms $g_1$ and $g_2$ in $\\mathcal C(Y, Z)$,\n\\[ g_1 \\circ f = g_2 \\circ f \\quad\\Rightarrow \\quad g_1 = g_2 \\]\nIn the category of sets, the monomorphisms and epimorphisms are precisely the injective and surjective functions, respectively. Now these definitions look so symmetric that they almost seem wrong. So why is it that they are equivalent definitions for injectivity and surjectivity, respectively? To begin with, why is a monomorphism, as defined above, necessarily an injective function (and vice versa)?3\n1. Monics are Injective Functions The trick is to think of a monomorphism $f:X\\rightarrow Y$ as a re-labeling of the elements of $X$. Suppose $X$ is a set of people and $Y$ is a set of (distinct) names, then let $f$ be the operation of assigning each person a name. $f$ is injective if each person gets a distinct name (no two people have the same name). In that case, if I give you a list of names, you know exactly which list of people I picked. In the figure, the purple arrows are the monomorphism (assignment of distinct names):\n$f$ would not be a monomorphism if two people were given the same name, say, John, i.e., two of the purple lines go into the same name. In that case, I could have picked either John (corresponding to two different lists of people, $g_1$ and $g_2$) but produced the same list of names ($f \\circ g_1 = f \\circ g_2$), and you would have no way of telling which list of people you were looking at since you do not know which John I picked. You would instead point a finger at me and accuse me of being ‘ambiguous’.\nSuccinctly, $f$ remembers which elements went to which elements. It does not forget that there are $n$ distinct people by assigning two or more of them the same name.\n2. Epics are Surjective Functions Finally, let’s see why the definition of epimorphisms of sets works as the definition for surjectivity. This is perhaps more difficult to see, because it looks so different from the set-theoretic definition of surjectivity. Let’s take this post to a full circle and invoke the contrapositive of the definition for an epic, which says that an epimorphism or an epic is, equivalently, a morphism $f$ in $\\mathcal C(X, Y)$ such that for all objects $Z$ and morphisms $g_1$ and $g_2$ in $\\mathcal C(Y, Z)$,\n\\[ g_1 \\neq g_2 \\quad\\Rightarrow \\quad g_1 \\circ f \\neq g_2 \\circ f \\]\nThis means that pre-composing $g_1$ and $g_2$ with $f$ retains the ability to distinguish $g_1$ and $g_2$. Suppose $f$ weren’t surjective, then we may no longer be able to distinguish $g_1$ and $g_2$ because $f$ is not even ’looking at’ one of the elements, which may be crucial to distinguishing $g_1$ and $g_2$:\nSimilarly, the definition of monics (which are the injective functions) was really saying that post-composing with $f$ retains the ability to distinguish two morphisms $g_1$ and $g_2$, because in that case $f$ was just a re-naming of the objects.\nThinking Categorically Two days after I first published this post, two of my favorite math communicators made a podcast episode about category theory. Eugenia Cheng talks to Steven Strogatz about why she finds joy in thinking categorically, i.e., approaching these types of math concepts from a category theory standpoint.\nWhat we showed above was that some concepts in math might be a bit messy or aesthetically lacking due to how they’re set up. This messiness also prevents us from generalizing ideas like injectivity and surjectivity to other fields in math, because they’re too deeply rooted in the language of set theory. Category theory allows us to squint at mathematical objects in just the right way, until we’ve ‘blurred out’ the messiness, focusing our attention only on the thing that really matters: structure! As a bonus, we get to apply our insights to all of the other mathematical fields that have analogous properties, and therefore similar (or identical) structures. I would argue that this is a joyful way of learning mathematics. One where all of mathematics is yielding itself to you, simultaneously.\nAt the time of me writing this post, there is an ongoing book club for The Joy of Abstraction being hosted by its author. ↩︎\nEither statement is a consequence of duality in category theory. Duality manifests again on my blog when I talk about differential forms . ↩︎\nWe just showed one direction of each of these equivalences, at best. The main goal is to get an intuition for why the two definitions of injectivity and surjectivity may be equivalent! ↩︎\n",
   "wordCount" : "2517",
   "inLanguage": "en",
   "datePublished": "2023-03-18T21:07:38-04:00",
@@ -222,9 +222,6 @@
   <div class="post-content"><p>One of my motivations for starting a blog was Eugenia Cheng&rsquo;s book <a href="https://www.amazon.com/Joy-Abstraction-Exploration-Category-Theory/dp/1108477224" target="_blank" class="accented">
     The Joy of Abstraction
 </a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. It&rsquo;s a surprisingly accessible, gentle introduction to <span class=accented>category theory</span>, a topic that is usually only taught to graduate students in math. She compiled part of the book using notes from a class that she teaches at the Art Institute of Chicago, which is a testament to the aesthetic appreciation that one can expect to gain of category theory irrespective of their academic background! In this post, I will introduce the main ideas in category theory (as I best understand it) and show that it offers an elegant way of thinking about mathematics.</p>
-<!-- **Required Background:** Familiarity with 'one-one' and 'onto' functions between sets.  -->
-<!-- If you come across something that's new to you, Wikipedia is your friend! -->
-<!-- A secondary motivation for my starting this blog was when I described a bit of mathematics as *elegant* to my friend. She said she'd never heard mathematics be described as elegant before. -->
 <h3 id="the-main-idea">The Main Idea<a hidden class="anchor" aria-hidden="true" href="#the-main-idea">#</a></h3>
 <p>The mathematician Tai-Danae Bradley <a href="https://www.youtube.com/watch?v=Gz8W1r90olc" target="_blank" class="accented">
     describes category theory
@@ -323,7 +320,7 @@ Moreover, for any $X$ and $Y$ in $\text{ob} (\mathcal C)$ and $f$ in $\mathcal C
 </figure>
 </div>
 <p>$f$ would not be a monomorphism if two people were given the same name, say, <span class=print>John</span>, i.e., two of the <span class=accented>purple</span> lines go into the same name. In that case, I could have picked either <span class=print>John</span> (corresponding to two different lists of people, $g_1$ and $g_2$) but produced the same list of names ($f \circ g_1 = f \circ g_2$), and you would have no way of telling which list of people you were looking at since you do not know which <span class=print>John</span> I picked. You would instead point a finger at me and accuse me of being &lsquo;ambiguous&rsquo;.</p>
-<p>Succintly, $f$ <em>remembers</em> which elements went to which elements. It does not <em>forget</em> that there are $n$ distinct people by assigning two or more of them the same name.</p>
+<p>Succinctly, $f$ <em>remembers</em> which elements went to which elements. It does not <em>forget</em> that there are $n$ distinct people by assigning two or more of them the same name.</p>
 <h4 id="2-epics-are-surjective-functions">2. Epics are Surjective Functions<a hidden class="anchor" aria-hidden="true" href="#2-epics-are-surjective-functions">#</a></h4>
 <p>Finally, let&rsquo;s see why the definition of epimorphisms of sets works as the definition for surjectivity. This is perhaps more difficult to see, because it looks so different from the set-theoretic definition of surjectivity. Let&rsquo;s take this post to a full circle and invoke the <em>contrapositive</em> of the definition for an epic, which says that an <strong>epimorphism</strong> or an <strong>epic</strong> is, equivalently, a morphism $f$ in $\mathcal C(X, Y)$ such that for all objects $Z$ and morphisms $g_1$ and $g_2$ in $\mathcal C(Y, Z)$,</p>
 <p>\[ g_1 \neq g_2 \quad\Rightarrow \quad g_1 \circ f \neq g_2 \circ f  \]</p>
@@ -334,16 +331,12 @@ Moreover, for any $X$ and $Y$ in $\text{ob} (\mathcal C)$ and $f$ in $\mathcal C
 </figure>
 </div>
 <p>Similarly, the definition of monics (which are the injective functions) was really saying that <strong>post-composing</strong> with $f$ <em>retains the ability</em> to distinguish two morphisms $g_1$ and $g_2$, because in that case $f$ was just a re-naming of the objects.</p>
-<!-- Now it's also more explicit what injectivity and surjectivity have to do with invertibility. When we travel along a function and its inverse, we get back to where we started. -->
 <h3 id="thinking-categorically">Thinking Categorically<a hidden class="anchor" aria-hidden="true" href="#thinking-categorically">#</a></h3>
 <p>Two days after I first published this post, two of my favorite math communicators made a podcast episode about category theory. <a href="https://www.quantamagazine.org/is-there-math-beyond-the-equal-sign-20230322/" target="_blank" class="accented">
     Eugenia Cheng talks to Steven Strogatz
 </a> about why she finds joy in thinking categorically, i.e., approaching these types of math concepts from a category theory standpoint.</p>
 <p>What we showed above was that some concepts in math might be a bit messy or aesthetically lacking due to how they&rsquo;re set up. This messiness also prevents us from generalizing ideas like injectivity and surjectivity to other fields in math, because they&rsquo;re too deeply rooted in the language of set theory. Category theory allows us to squint at mathematical objects in just the right way, until we&rsquo;ve &lsquo;blurred out&rsquo; the messiness, focusing our attention only on the thing that really matters: structure! As a bonus, we get to apply our insights to all of the other mathematical fields that have analogous properties, and therefore similar (or identical) structures.
 I would argue that this is a joyful way of learning mathematics. One where all of mathematics is yielding itself to you, simultaneously.</p>
-<!-- It's like you're building a sculpture out of screws, nuts, and metal. If you're studying niche topics in mathematics, you might want to zoom into the screws and nuts of the sculpture, make sure that everything is holding together. But in addition, category theory encourages you to step back and look at the sculpture itself. You can now appreciate the bigger picture of what those screws and nuts were building towards. You can also turn your focus towards structural issues related to your sculpture.
-You can compare your sculpture with other sculptures that might be made of entirely different ingredients (glue?).  -->
-<!-- [^hom]: The name $\text{hom}$ comes from the word 'homomorphisms', which is really a special case of a morphism that predates category theory. -->
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -371,30 +364,35 @@ You can compare your sculpture with other sculptures that might be made of entir
       <li><a href="https://shirazkn.github.io/tags/general/">General</a></li>
     </ul>
   </footer>
-<script src="https://giscus.app/client.js"
-        data-repo="shirazkn/shirazkn.github.io"
-        data-repo-id="R_kgDOI2VbWw"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOI2VbW84CWJnt"
-        data-mapping="title"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="noborder_light"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
+<script>
+(function() {
+    var theme = localStorage.getItem("pref-theme");
+    var giscusTheme = (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches))
+        ? "noborder_dark" : "noborder_light";
+
+    var script = document.createElement('script');
+    script.src = "https://giscus.app/client.js";
+    script.setAttribute("data-repo", "shirazkn/shirazkn.github.io");
+    script.setAttribute("data-repo-id", "R_kgDOI2VbWw");
+    script.setAttribute("data-category", "Announcements");
+    script.setAttribute("data-category-id", "DIC_kwDOI2VbW84CWJnt");
+    script.setAttribute("data-mapping", "title");
+    script.setAttribute("data-strict", "0");
+    script.setAttribute("data-reactions-enabled", "1");
+    script.setAttribute("data-emit-metadata", "0");
+    script.setAttribute("data-input-position", "bottom");
+    script.setAttribute("data-theme", giscusTheme);
+    script.setAttribute("data-lang", "en");
+    script.setAttribute("crossorigin", "anonymous");
+    script.async = true;
+    document.currentScript.parentElement.appendChild(script);
+})();
 </script>
+
 </article>
     </main>
     
 <footer class="footer">
-    
-    
-    
-    
-    
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -413,12 +411,6 @@ function syncDarkClass() {
 syncDarkClass();
 
 
-const themeToggle = document.getElementById('theme-toggle');
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        setTimeout(syncDarkClass, 0);
-    });
-}
 
 
 document.querySelectorAll('.logo a, .post-title').forEach(el => {
@@ -699,28 +691,52 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     applyCardTransforms();
 
     
+    
     postCards.forEach((card, index) => {
-        let touchStartTime = 0;
+        let pressTimer = null;
+        let didScroll = false;
 
-        card.addEventListener('touchstart', (e) => {
-            touchStartTime = Date.now();
+        const applyPress = () => {
             const focus = cardFocusValues[index];
-            
             card.style.transition = 'transform 0.08s ease-out, box-shadow 0.08s ease-out';
             card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(${0.97 + focus * 0.01})`;
             card.style.boxShadow = `0 0.5px 1px rgba(0,0,0,0.2)`;
-        }, { passive: true });
+        };
 
-        card.addEventListener('touchend', () => {
-            
+        const cancelPress = () => {
+            if (pressTimer) {
+                clearTimeout(pressTimer);
+                pressTimer = null;
+            }
+        };
+
+        const releasePress = () => {
+            cancelPress();
             card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
             setTimeout(() => {
                 card.style.transition = '';
                 scheduleTransformUpdate();
             }, 150);
+        };
+
+        card.addEventListener('touchstart', () => {
+            didScroll = false;
+            pressTimer = setTimeout(applyPress, 100);
         }, { passive: true });
 
+        card.addEventListener('touchmove', () => {
+            if (!didScroll) {
+                didScroll = true;
+                cancelPress();
+                
+                card.style.transition = '';
+                scheduleTransformUpdate();
+            }
+        }, { passive: true });
+
+        card.addEventListener('touchend', releasePress, { passive: true });
         card.addEventListener('touchcancel', () => {
+            cancelPress();
             card.style.transition = '';
             scheduleTransformUpdate();
         }, { passive: true });
@@ -875,7 +891,7 @@ if (tocBox) {
 </script>
 <script>
     var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
+    window.addEventListener('scroll', function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
             mybutton.style.visibility = "visible";
             mybutton.style.opacity = "1";
@@ -883,19 +899,29 @@ if (tocBox) {
             mybutton.style.visibility = "hidden";
             mybutton.style.opacity = "0";
         }
-    };
+    });
 
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            document.documentElement.dataset.theme = 'light';
+        const html = document.documentElement;
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
-            document.documentElement.dataset.theme = 'dark';
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
+        }
+        const isDark = html.dataset.theme === 'dark';
+        html.classList.toggle('dark', isDark);
+        document.body.classList.toggle('dark', isDark);
+        
+        const giscusFrame = document.querySelector('iframe.giscus-frame');
+        if (giscusFrame) {
+            giscusFrame.contentWindow.postMessage(
+                { giscus: { setConfig: { theme: isDark ? 'noborder_dark' : 'noborder_light' } } },
+                'https://giscus.app'
+            );
         }
     })
 

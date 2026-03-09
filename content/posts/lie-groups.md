@@ -14,8 +14,6 @@ A <span class=accented>topological group</span> is a set of elements $G$ that ha
 [^1]: More precisely, we test for the differentiability of $\odot$ in the product topology on $G \times G$.
 
 A different (but closely related) mathematical object is the <span class=accented>Lie algebra</span>. A Lie algebra $\mathfrak v$ is a vector space equipped with an operation called the <span class=accented>Lie bracket</span>, $[\cdot, \cdot]: \mathfrak v \times \mathfrak v \to \mathfrak v$, that satisfies certain properties that parallel those of a 'cross product'. While a Lie algebra may exist in the absence of an associated Lie group, <span class=accented>every Lie group gives rise to a Lie algebra</span>[^2]. In other words, we can associate to each Lie group $G$ a corresponding Lie algebra, with the latter typically denoted as $\mathfrak g$ to emphasize its relationship to $G$. 
-<!-- While the group operation $\odot$ of $G$ may not be commutative, the addition operation $+$ of $\mathfrak g$ is commutative by definition.  -->
-
 Letting $e$ denote the identity element of $G$, we will see that $T_e G$ (the tangent space of $G$ at $e$), together with an appropriately defined bracket operation, is a natural candidate for $\mathfrak g$. Consider as an example $SO(2)$, the group of rotation matrices of $\mathbb R^2$ having determinant $1$, whose identity element $e$ is the identity matrix $I$. The tangent space $T_ISO(2)$ consists of the $2\times 2$ skew-symmetric matrices. Skew-symmetric matrices represent infinitesimally small rotations, since near the identity element of $SO(2)$ (i.e., the identity matrix), we have
 
 <p>
@@ -110,8 +108,6 @@ Most (if not all) mathematical objects come with a distinctive *structure*; for 
 which shows that the structure of the vector addition operation $\overset{V}{+}$ of $V$, has been *transported to* that of the $\overset{W}{+}$ operation of $W$. This suggests that homomorphisms (i.e., structure-preserving maps) may be paramount to the study of the underlying mathematical structure, which is indeed the case (see linear algebra). 
 
 
-
-<!-- Homomorphisms between topological spaces are the *continuous maps*. Homomorphisms between sets are simply the *maps* or *functions* between them; as sets have significantly less structure than, say, topological spaces, functions between sets are not all that 'special' when compared to continuous maps. -->
 
 If $A$ and $B$ are two objects of the same type and $f$ a homomorphism between them, we simply write
 
@@ -305,7 +301,7 @@ The above result becomes interesting when we consider a group isomorphism from $
 \]
 </p>
 
-where ${a} \in \mathbb R$. Clearly, $e=S^0$ is the identity element of $G$ and $S^a\circ S^{-a} = S^0$.<!-- I omit the details here (to understand it, we need to understand the tangent vectors as [derivations](https://math.stackexchange.com/questions/1340503/tangent-space-as-derivations-exercise)) -->
+where ${a} \in \mathbb R$. Clearly, $e=S^0$ is the identity element of $G$ and $S^a\circ S^{-a} = S^0$.
 I defer the details to a footnote[^ddt], but a tangent vector in $T_{S^0}G$ is given by a differential operator of the form $\tau \frac{d}{dt}$,
 where $\tau \in \mathbb R$. The exponential map is then given by
 
@@ -341,7 +337,7 @@ whereas on the right-hand side, we have $(S^\tau f )(t_0) =f(t_0+\tau)$. Thus,
     f(t_0) + \tau \frac{df}{dt}(t_0) + \frac{\tau^2}{2!} \frac{d^2f}{dt^2}(t_0) + &\dots =f(t_0+\tau)
     \end{align}
     \]
-<p>
+</p>
 
 
 which is nothing but the Taylor series expansion of $f$ at $t_0$! In a sense, the Taylor series expansion starts at $t_0$ and then 'slides along the graph of $f$' to obtain its value at the other points. 
@@ -468,14 +464,6 @@ due to each left-invariant vector field being uniquely determined by its value a
 </p>
 
 where I use $\star$ to make it explicit that we're relying on matrix multiplication; the $T_e G$ of a non-matrix Lie group does not necessarily come with a $\star$-like multiplication operation. When writing $[X,Y] (e)$, we are once again interpreting $[X,Y]$ as a vector field $G \rightarrow TG$ rather than a derivation.
-
-<!-- With this identification, we have
-
-<p>
-\[
-[X,Y](f)(e) = \big[\tilde X,\tilde Y\big]_{\star} f(e)
-\]
-</p> -->
 
 Lastly, we should observe the connection of the Lie bracket to the <span class=accented>Lie derivative</span> between vector fields; namely, that they are one and the same. Letting $\Phi$ be the flow map corresponding to $X$, we have
 

@@ -23,8 +23,6 @@ where $\mathcal F$ is the <span class=accented>fiber</span>, $\mathcal E$ is the
 
 The preimage under $\pi$ of the point $p\in\mathcal M$ is diffeomorphic to $\mathcal F$, and is called "the fiber above $p$". The job of $\iota$ is to tell us what "a typical fiber" in $\mathcal E$ looks like. The typical fiber of the Hopf fibration is a circle:
 
- <!-- [^1]: I'm tempted to call this a short exact sequence, but apparently we only call it that when we're working in an abelian category (a category where the morphisms themselves have an additive structure — as in the case of $\mathrm{Vect}$). -->
-
 <div style="margin-bottom: 0.0em; display: flex; justify-content: center;">
 <figure>
  <video autoplay loop muted playsinline width="80%" class=inverted>
@@ -32,7 +30,7 @@ The preimage under $\pi$ of the point $p\in\mathcal M$ is diffeomorphic to $\mat
   Err.. your browser doesn't support the video tag!
 </video>
 <figcaption>The <a href="https://samuelj.li/hopf-fibration/" class=accented>Hopf Fibration</a> is the fiber bundle, $S^1\hookrightarrow S^3 \rightarrow S^2$. Here, I visualize points on $S^2$ and the corresponding fibers sitting above in $S^3$.</figcaption>
-<figure>
+</figure>
 </div>
 
 <div style="float:right; align-items:right; justify-content:right; gap:4.5em; margin-bottom: 0em; margin-left: 0.5em">
@@ -55,7 +53,6 @@ A [principal $G$-bundle](https://en.wikipedia.org/wiki/Principal_bundle) is one 
 A homogeneous space refers to a smooth manifold $\mathcal M$ equipped with a left $G$-action (satisfying some axioms). We let $g\in G$ act on $p\in\mathcal M$ to yield $g\cdot p\in \mathcal M$. A homogeneous space does not have a distinguished point (think of a sphere, on which no point is more special than the other). However, if we *do* choose a special point $p_0\in\mathcal M$ (sort of like choosing the origin of a coordinate system), we can view $\mathcal M$ as a [coset space](https://en.wikipedia.org/wiki/Homogeneous_space). We do so by considering the subgroup $G_{p_0} < G$ of group actions that leave the point $p_0$ fixed — the *[stabilizer](https://ncatlab.org/nlab/show/stabilizer+group)* subgroup of $p_0$ in $G$. Denoting the subgroup $G_{p_0}$ as $H$, we have the following picture:
 
 <div>
-<!-- <figure class=invertible style="max-width: 25%;"> -->
 <figure class=invertible style="max-width: 70%;">
 <img src=/post-images/geometry/fiber_bundle.png>
 </figure>
@@ -103,10 +100,6 @@ $${\mathbb R}^n \hookrightarrow T\mathcal M \rightarrow \mathcal M.
 
 This fiber bundle has a fiber-preserving $GL(n)$ action — matrix-vector multiplication. However, $T\mathcal M$ is *not* a principal $GL(n)$-bundle since its fibers are not isomorphic to $GL(n)$. Nevertheless, there is indeed a principal $GL(n)$-bundle closely related to $T\mathcal M$, which is...
 
-<!-- https://math.stackexchange.com/questions/4796658/what-is-a-simple-way-of-understanding-associated-bundles 
-
--->
-
 ### The Frame Bundle
 Consider an ordered set of $n$ linearly independent vectors in $T_p\mathcal M$. One such set is called a *frame*. The space of all the frames at $p$ make up the fiber, and the union of these fibers leads to the notion of a [frame bundle](https://en.wikipedia.org/wiki/Frame_bundle) $F\mathcal M$. More formally, we can view a frame at $p\in\mathcal M$ as being a linear isomorphism from $\mathbb R^n$ to $T_p\mathcal M$. The frame bundle is then (as a set) the following object:
 $$
@@ -137,14 +130,14 @@ Think of the fibers as trees in a forest. Consider the plight of our monkey, [Eh
 
 Assume Ehresmann the monkey is at the point $q \in \mathcal E$. The space of all the directions in which he could jump constitute the tangent space, $T_{q}\mathcal E$. The *vertical subspace* $\mathrm{Ver}_q\mathcal E$ is all the directions that keep Ehresmann on the same tree. It is precisely the vectors $v$ that satisfy $d\pi_q(v)=0$; these directions do not change Ehresmann's coordinates as measured along the ground. The vertical subspaces, collectively called the <span class=accented>vertical subbundle</span> $\mathrm{Ver}\mathcal E$, are well-defined as soon as we define a principal bundle.
 
-The <span class=accented>horizontal subbundle</span> is something that must be chosen, similar  to how we *choose* an inner product on a vector space. Turns out that there are a few different, equivalent ways of specify a horzontal subbundle for a principal $H$-bundle:
+The <span class=accented>horizontal subbundle</span> is something that must be chosen, similar  to how we *choose* an inner product on a vector space. Turns out that there are a few different, equivalent ways of specify a horizontal subbundle for a principal $H$-bundle:
 
 1. specify a horizontal subspace $\mathrm{Hor}_q\mathcal E \subseteq T_{q}\mathcal E$ for each $q\in\mathcal E$ such that $$T_q\mathcal E =\mathrm{Hor}_q\mathcal E\oplus \mathrm{Ver}_q\mathcal E,$$
 2. choose a linear projection $\Gamma:T\mathcal E \rightarrow  \mathrm{Ver}\mathcal E$ and define $\mathrm{Hor}\mathcal E \coloneq \mathrm{ker}(\Gamma)$,[^subtle] 
 3. write down a $T\mathcal E$-valued one-form $\Gamma$ on $\mathcal E$ that satisfies $\Gamma\vert_{\mathrm{Ver}\mathcal E}=\mathrm{id}_{\mathrm{Ver}\mathcal E}$ (i.e., $\Gamma$ restricted to $\mathrm{Ver}\mathcal E$ is the identity map on $\mathrm{Ver}\mathcal E$), or
 4. write down an $\mathfrak h$-valued one-form $\Gamma$ on $\mathcal E$.
 
-[^subtle]: It is a subtle point that, even thought he vertical subbundle $\mathrm{Ver}\mathcal E$ is well-defined, the projection of an arbitrary vector $v\in T_q\mathcal E$ onto $\mathrm{Ver}_q\mathcal E$ depends on the choice of horizontal subbundle/connection.
+[^subtle]: It is a subtle point that, even though the vertical subbundle $\mathrm{Ver}\mathcal E$ is well-defined, the projection of an arbitrary vector $v\in T_q\mathcal E$ onto $\mathrm{Ver}_q\mathcal E$ depends on the choice of horizontal subbundle/connection.
 
 It takes some self-introspection and a few dozen cups of coffee to see why these are indeed equivalent objects (i.e., neither of them specifies too much or too little structure!). An <span class=accented>Ehresmann connection</span> is a choice of horizontal subbundle that satisfies a few additional properties (cf. <a href="https://link.springer.com/book/10.1007/978-3-319-14765-9" class=accented>Sec. 10.1</a>), most notably the <span class=accented>$H$-invariance</span> condition:
 $$
@@ -285,7 +278,7 @@ Finally, we will choose a <span class=accented>parametrization</span> $\psi:\mat
 \psi^\ast\boldsymbol\omega &=\mf E_i\big(\psi^\ast\varepsilon^i\big)
 \end{align}
 $$Let $\psi^\ast\varepsilon^i=\epsilon_{i}dx^i$. Then $$\big(\psi^\ast \varepsilon^i\big)\left(\frac{\partial}{\partial x^k}\right)=\epsilon_k=\varepsilon^i\left(\psi_\ast \frac{\partial}{\partial x^k}\right)=\left((\psi)^{-1}\psi_\ast \frac{\partial}{\partial x^k}\right)^{\vee^i}=\mf J^i_k$$
-in the notation of my [previous post](https://shiraz-k.com/posts/lemmas/). Hence, $$
+in the notation of my [previous post](/posts/lemmas/). Hence, $$
 \begin{align}
 \psi^\ast\boldsymbol\omega &= (\boldsymbol\psi)^{-1}\frac{\partial\,\boldsymbol\psi}{\partial x^k}dx^k,
 \end{align}

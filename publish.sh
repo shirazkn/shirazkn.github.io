@@ -1,3 +1,5 @@
+#!/bin/bash
+set -e
 hugo
 git add .
 git commit -m "$1"
