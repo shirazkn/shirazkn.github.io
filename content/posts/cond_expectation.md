@@ -34,23 +34,29 @@ The tuple $(\Omega, \mathscr F, P)$ is called a <span class=accented>probability
 
 - $P\colon \mathscr F \rightarrow [0, 1]$ is a function satisfying certain properties, called a <span class=accented>probability measure</span>.
 
-Choosing a $\sigma$-algebra is a way of *picking* which events (i.e., subsets of $\Omega$) we would like to assign probabilities to. <!-- The other subsets of $\Omega$ (which are not in $\mathscr F$) may be too messy to work with, such that assigning probabilities to these messy subsets may yield unintuitive results. The $\sigma$-algebra $\mathscr F$ contains *nice* subsets of $\Omega$ that may have nice topological (or otherwise) properties. --> Because of the properties we impose on a $\sigma$-algebra, it always contains the empty set, $\emptyset$, and the complete set, $\Omega$. Thus, $\lbrace \emptyset, \Omega \rbrace$ is the smallest possible $\sigma$-algebra. Rather than *smallest*, we will say that this is the *coarsest* $\sigma$-algebra.[^po] The other extreme case is that of the *finest* $\sigma$-algebra, one that we cannot chop up into smaller pieces. When $\Omega$ has countably many elements, the power set (i.e., the set of all the subsets) of $\Omega$, $\mathcal P(\Omega)$, is what's called the *discrete* $\sigma$-algebra. In particular, $\mathcal P(\Omega)$ includes singleton sets of the form $\lbrace \omega \rbrace$ (where $\omega \in \Omega$ is an outcome), which means that we can assign a probability to each outcome. This is similar to how we use 'probability mass functions' in classical probability theory. 
+Choosing a $\sigma$-algebra is a way of *picking* which events (i.e., subsets of $\Omega$) we would like to assign probabilities to. <!-- The other subsets of $\Omega$ (which are not in $\mathscr F$) may be too messy to work with, such that assigning probabilities to these messy subsets may yield unintuitive results. The $\sigma$-algebra $\mathscr F$ contains *nice* subsets of $\Omega$ that may have nice topological (or otherwise) properties. --> Because of the properties we impose on a $\sigma$-algebra, it always contains the empty set, $\emptyset$, and the complete set, $\Omega$. Thus, $\lbrace \emptyset, \Omega \rbrace$ is the smallest possible $\sigma$-algebra. Rather than *smallest*, we will say that this is the *coarsest* $\sigma$-algebra.[^po] The other extreme case is that of the *finest* $\sigma$-algebra, one that we cannot chop up into smaller pieces. When $\Omega$ has countably many elements, the power set (i.e., the set of all the subsets) of $\Omega$, $2^{\Omega}$, is what's called the *discrete* $\sigma$-algebra. In particular, $2^{\Omega}$ includes singleton sets of the form $\lbrace \omega \rbrace$ (where $\omega \in \Omega$ is an outcome), which means that we can assign a probability to each outcome. This is similar to how we use 'probability mass functions' in classical probability theory. 
 
 [^po]: The inclusion operation of sets defines a *partial order* on the power set of $\Omega$, so the term 'coarsest' refers to the minimal element w.r.t. this partial order.
 <!-- We run into issues when $\Omega$ has uncountably many elements. Suppose $X$ is the uniform random variable on the domain $(0,1]$. We assign probabilities to events such as $X\in(-0.49, 0.51]$, but not to the specific outcome, $X=0.5$. -->
 
-A [measure](https://en.wikipedia.org/wiki/Measure_(mathematics)) maps the sets in a $\sigma$-algebra to the non-negative real numbers, almost like it is 'weighing' or 'measuring' the sets. A [probability measure](https://en.wikipedia.org/wiki/Probability_measure) is a special type of measure that only takes positive values and satisfies $P(\Omega)=1$ (recall that $\Omega\in \mathscr F$ by axiom). Think of the probability measure $P$ as *assigning probabilities*  to the events in $\mathscr F$.  Analogously, we have $P(\Omega)=1$. Terrence Tao has an excellent [blogpost](https://terrytao.wordpress.com/2009/01/01/245b-notes-0-a-quick-review-of-measure-and-integration-theory/) that goes over measure theory (and another one on probability theory).
+A [measure](https://en.wikipedia.org/wiki/Measure_(mathematics)) maps the sets in a $\sigma$-algebra to the non-negative real numbers, almost like it is 'weighing' or 'measuring' the sets. A [probability measure](https://en.wikipedia.org/wiki/Probability_measure) is a special type of measure that only takes positive values and satisfies $P(\Omega)=1$ (recall that $\Omega\in \mathscr F$ by axiom). Think of the probability measure $P$ as assigning probabilities to the events in $\mathscr F$;: 
+$$A\subseteq \Omega \Leftarrow A\in \mathscr F \Rightarrow P(A) \in [0, 1].$$
+
+Since in our framework $\Omega$ represents *all* possible outcomes, we have $P(\Omega)=1$. Terrence Tao has an excellent [blogpost](https://terrytao.wordpress.com/2009/01/01/245b-notes-0-a-quick-review-of-measure-and-integration-theory/) that goes over measure theory (and another one on probability theory).
 
 <!-- This is similar to how a probability density function is a special type of function that integrates to $1$. -->
 
 ## Measurability
 
-You might wonder why we don't just set $\mathscr F$ to be the power set of $\Omega$, $\mathcal P(\Omega)$. While this works just fine when $\Omega$ has countably many elements, [some technical issues](https://stats.stackexchange.com/questions/199280/why-do-we-need-sigma-algebras-to-define-probability-spaces) arise when $\Omega$ has uncountably many elements.
+You might wonder why we don't just set $\mathscr F$ to be the power set of $\Omega$, $2^{\Omega}$. While this works just fine when $\Omega$ has countably many elements, [some technical issues](https://stats.stackexchange.com/questions/199280/why-do-we-need-sigma-algebras-to-define-probability-spaces) arise when $\Omega$ has uncountably many elements.
 
 To see why we might be forced to discard some of the subsets of $\Omega$ when $\Omega$ is uncountable, consider $\Omega=[0,1]$. Suppose we want to turn this into the probablity space, $([0,1], \mathscr F, P_U)$, where $P_U$ is the uniform probability measure satisfying $P_U\left([a, b]\right)= b-a$. 
-Unfortunately, there exist wicked subsets of $[0,1]$ such as the [Vitali set](https://en.wikipedia.org/wiki/Vitali_set), to which $P_U$ is unable to assign a measure (i.e., we can try to assign a value to $P_U(\textrm{Vitali Set})$, but it would immediately lead to a contradiction). The Vitali set is said to be non-measurable. So, we instead let $\mathscr F = \mathcal B([0, 1])$, where $\mathcal B([0, 1])$ is what is called the <span class=accented>Borel $\sigma$-algebra</span> of $[0,1]$; it is defined as the coarsest (i.e., 'smallest') $\sigma$-algebra that contains all the open sets (equivalently, all the closed sets) of $[0,1]$. In this way, the Borel $\sigma$-algebra marries the fields of probability theory and topology with each other, and avoids pathologies like the Vitali set.
+Unfortunately, there exist wicked subsets of $[0,1]$ such as the [Vitali set](https://en.wikipedia.org/wiki/Vitali_set), to which $P_U$ is unable to assign a measure (i.e., we can try to assign a value to $P_U(\textrm{Vitali Set})$, but it would immediately lead to a contradiction). More precisely, the very nature of the Vitali set is at odds with the requirements we place on the measure $P_U$ (e.g., we would like that $P_U([a,b])=P_U([a+c,b+c])$). Faced with this incompatibility between two things that we *want* to have (all sets are measurable, and the uniform measure $P_U$ exists), we are forced to strike a compromise.
+
+The compromise is that the Vitali set will be deemed <span class=accented>non-measurable</span>. We instead let $\mathscr F = \mathcal B([0, 1])$, where $\mathcal B([0, 1])$ is what is called the <span class=accented>Borel $\sigma$-algebra</span> of $[0,1]$; it is defined as the coarsest (i.e., 'smallest') $\sigma$-algebra that contains all the open sets (equivalently, all the closed sets) of $[0,1]$. In this way, the Borel $\sigma$-algebra marries the fields of probability theory and topology with each other and disallows pathologies like the Vitali set.
 The elements of $\mathscr F$ are called the *measurable subsets* of $\Omega$.
 
+If $\Omega$ has only finitely many elements (e.g., $\Omega=\lbrace 1, 2, 3, 4, 5, 6\rbrace$), then as it turns out, it is okay to let $\mathscr F = 2^\Omega$. When $\Omega=\mathbb R^n$, we typically let $\mathscr F$ be the *Borel* $\sigma$-algebra, which is defined as the smallest (i.e., coarsest) $\sigma$-algebra containing the open sets. In this way, the Borel $\sigma$-algebra ties together the fields of calculus and probability, allowing us to talk about *continuous* random variables.
 <!-- The [axioms](https://en.wikipedia.org/wiki/Σ-algebra#Definition_and_properties) which a $\sigma$-algebra should satisfy are surprisingly straightforward. Mathematicians like cleaning things up at the end of the day. It is unthinkable that an entire field of mathematics (probability) could be founded on messy definitions with many edge cases. -->
 
 <hr> 
@@ -58,19 +64,23 @@ The elements of $\mathscr F$ are called the *measurable subsets* of $\Omega$.
 ## Random Variables
 A lot of texts will call $(\Omega, \mathscr F, P)$ as 'the (underlying) probability space'. It is useful for rigorously defining what we mean by randomness, but we seldom deal with $(\Omega, \mathscr F, P)$ directly. Instead, we define a random variable as a <span class=accented>measurable function</span> from $\Omega$ to another space. We refer to a function $X:\Omega \rightarrow \mathcal X$ as a <span class=accented>random variable</span> if it is measurable. You might already have a vague intuition as to why we need the adjective 'measurable' here. First, let's see a simple example:
 
-1. Throw a die.
-2. If the die lands on $1$, $2$, or $3$, place a coin heads-up. Otherwise, place the coin tails-up.
+ 1. Throw a die.
+ 2. If the die lands on $1$, $2$, or $3$, place a coin heads-up. Otherwise, place the coin tails-up.
 
-The coin is going to take values of $\text{Heads}$ or $\text{Tails}$ with equal probability, as if it were flipped. But really, the only randomness in this scenario is coming from the throwing of the die (represented by the outcomes in $\Omega=\lbrace 1, 2, 3, 4, 5, 6 \rbrace$). The throwing of the die is the so-called underlying probability space. The heads/tails instances of the coin are the random variable, $X$, defined as $X(1)=X(2)=X(3)=\text{Heads}$, and $X(4)=X(5)=X(6)=\text{Tails}$.
+The coin is going to take values of $\text{Heads}$ or $\text{Tails}$ with equal probability, as if it were flipped. But really, the only randomness in this scenario is coming from the throwing of the die (represented by the outcomes in $\Omega=\lbrace 1, 2, 3, 4, 5, 6 \rbrace$). The throwing of the die is the so-called underlying probability space. The heads/tails instances of the coin are the random variable $X$, defined as $X(1)=X(2)=X(3)=\text{Heads}$, and $X(4)=X(5)=X(6)=\text{Tails}$.
 
 We now have two spaces, a probability space $(\Omega, \mathscr F, P)$ and another space $(\mathcal X, \mathscr G)$, where $\mathscr G$ is the set of measurable subsets of $\mathcal X$. We still need to define a measure for the latter space.
 The reason we call $X$ a *measurable* function is because it should satisfy the following property: for all $S \in \mathscr G$,
 
 $$X^{-1}(S)\coloneqq \lbrace \omega \in \Omega \mathrel| X(\omega)\in S \rbrace \in \mathscr F$$
 
-We say that $X$ is $\mathscr F$-measurable, and that $X^{-1}(S)$ is the *pre-image* or the *pullback* of $S$ under $X$. Thus, the definition of $X$ relies not only on the domain and codomain, but also on the corresponding $\sigma$-algebras. Using $X^{-1}$, we can 'pull back' sets in $\mathcal X$ to sets in $\Omega$, and just measure them using $P$. This gives us the measure space $(\mathcal X, \mathscr G, P\circ X^{-1})$, where '$\circ$' denotes the composition of functions.
+We say that $X$ is $\mathscr F$-measurable, and that $X^{-1}(S)$ is the *pre-image* or the *pullback* of $S$ under $X$. Thus, the definition of $X$ relies not only on the domain and codomain, but also on the corresponding $\sigma$-algebras. 
 
-Given a random variable $X$ that maps $(\Omega, \mathscr F)$ to $(\mathcal X, \mathscr G)$, by *the $\sigma$-algebra generated by $X$*, we mean the set
+<aside class=aside-right>
+Notice that if $\mathscr F = 2^\Omega$ and $\mathscr G=2^{\mathcal X}$ (as in our die-coin example), then <i>any</i> function $X:\Omega \rightarrow \mathcal X$ is measurable! This is analogous to how any function between two sets equipped with the discrete topology is continuous.
+</aside>
+
+Using $X^{-1}$, we can 'pull back' sets in $\mathcal X$ to sets in $\Omega$ and measure them using $P$. This gives us the measure space $(\mathcal X, \mathscr G, P\circ X^{-1})$, where '$\circ$' denotes the composition of functions. Given a random variable $X$ that maps $(\Omega, \mathscr F)$ to $(\mathcal X, \mathscr G)$, by *the $\sigma$-algebra generated by $X$*, we mean the set
 
 $$
 \sigma (X) \coloneqq \lbrace  X^{-1}(S) \mathrel| S\in \mathscr G \rbrace,$$
@@ -91,13 +101,13 @@ $$
 X(1) = \text{Heads},\ X(2) = \text{Heads},  \\ \dots, \ X(6) = \text{Tails} 
 $$
 
-where $\Omega$ are the outcomes of the die, $X$ maps an outcome to the corresponding value taken by the coin, and $\mathscr F$ and $\mathscr G$ are just the power sets.
+where $\Omega$ are the outcomes of the die and $X$ maps an outcome to the corresponding value taken by the coin.
 The $\sigma$-algebra generated by $X$ is *not* $\mathscr F$, but rather
 $$
     \sigma(X) = \lbrace \emptyset,  \lbrace 1, 2, 3 \rbrace,\lbrace 4, 5, 6 \rbrace, \Omega \rbrace.
 $$
 
-For instance, the set $\lbrace \text{Heads}\rbrace\in\mathscr G$ is pulled back to $\lbrace 1, 2, 3\rbrace$; also, don't forget to pull back $\emptyset$ and $\mathcal X$! Even though it was not clear from the definitions, $\sigma (X)$ encodes the randomness of $X$. 
+For instance, the set $\lbrace \text{Heads}\rbrace\in\mathscr G$ is pulled back to $\lbrace 1, 2, 3\rbrace$; don't forget to pull back $\emptyset$ and $\mathcal X$! In a sense, $\sigma (X)$ encodes the randomness of $X$.
 
 #### Example 2. Indicator Random Variable
 
@@ -113,19 +123,19 @@ $$
 $$
 
 Since $\textbf 1_S^{-1}(\lbrace 1\rbrace )=S$ and $\textbf 1_S^{-1}(\lbrace 0\rbrace)=S^\complement$, we have that $\sigma(\textbf{1}_S) = \lbrace \emptyset, S, S^\complement, \Omega\rbrace$.
-Thus, we say that the random variable $\textbf 1_S$ is $\lbrace \emptyset, S, S^\complement, \Omega\rbrace$-measurable. In our die-coin example, if we view $\text{Heads}$ as $1$ and $\text{Tails}$ as $0$, then the random variable $X$ is equivalent (for purposes of doing probability) to $\textbf 1_{\lbrace 1, 2, 3 \rbrace}$. 
+Thus, we say that the random variable $\textbf 1_S$ is $\lbrace \emptyset, S, S^\complement, \Omega\rbrace$-measurable. In our die-coin example, if we view $\text{Heads}$ as $1$ and $\text{Tails}$ as $0$, then the random variable $X$ is equivalent to $\textbf 1_{\lbrace 1, 2, 3 \rbrace}$. 
 
 <hr>
 
 ### Expected Value
 
-The expected value of a vector-valued random variable $X$ is defined as
+The expected value of a real-valued random variable $X:\Omega\rightarrow \mathbb R$ (we need the *addition* and *multiplication* operations of $\mathbb R$) is defined as
 
-$$\mathbb E[X] = \int_{\Omega} X dP,$$
+$$\mathbb E[X] = \int_{\Omega} X dP.$$
 
-where the integral has a specific meaning, which we are yet to define. This integral (called the *Lebesgue integral*) is defined using a step-by-step approach. 
+This integral is called the *expectation* of $X$ or the *Lebesgue integral* of $X$ wrt $(\Omega,\mathcal F, P)$, and is defined using a step-by-step approach. 
 
-The expectation (or rather, the Lebesgue integral) is first defined for the <span class=accented>indicator random variable, </span> $\textbf 1_S$. We have, $\mathbb E[\textbf 1_S] \coloneq \int_{\Omega} \textbf 1_S dP = P(S)$, which is the probability of the event, $S$. For the die-coin example, we get $\mathbb E [\textbf 1_{\lbrace 1, 2, 3 \rbrace}] = P(\lbrace 1, 2, 3 \rbrace)$, which we usually set as $1/2$ if the die (and the ensuing coin flip) is unbiased.
+The expectation (and more generally, the Lebesgue integral) is first defined for the <span class=accented>indicator random variable, </span> $\textbf 1_S$. We have, $\mathbb E[\textbf 1_S] \coloneq \int_{\Omega} \textbf 1_S dP = P(S)$, which is the probability of the event $S$. For the die-coin example, we get $\mathbb E [\textbf 1_{\lbrace 1, 2, 3 \rbrace}] = P(\lbrace 1, 2, 3 \rbrace)$, which is $1/2$ as long as the die (and the ensuing coin flip) is unbiased.
 
 
 Next, we define the expectation for random variables constructed as $X(\omega)=\sum \limits_i c_i \textbf 1_{S_i}(\omega)$, for which we have
@@ -134,10 +144,14 @@ $$
 \mathbb E[X] \coloneq\int_{\Omega} \left(\sum \limits_i c_i \textbf 1_{S_i} \right) dP = \sum \limits_i c_i P(S_i).
 $$
 
-Finally, we can let the summation here range over infinite index sets (at least those that are permissible under the axioms of a $\sigma$-algebra).
-This step-by-step approach is how most integrals are defined (Riemann, Lebesgue, etc.). Note that the domain of integration in high-school mathematics is typically $\mathbb R$, whose elements can be ordered, added, and multiplied. In contrast, the theory above allows for $\Omega$ to be the set $\lbrace 🦧,🍍,🍎,👠\rbrace$. Nevertheless, we have assumed that the elements of $\mathcal X$ can be added and scaled! So for instance, the die-coin example does not work.[^means]
+Finally, we can let the summation here range over infinite index sets (that are permissible under the axioms of a $\sigma$-algebra), thereby completing our definition/construction of the expectation operator for "simple" random variables in $\mathbb R$. It can be extended to general (measurable) $\mathbb R$-valuued random variables using some careful limiting arguments.
 
-[^means]: For when the random variable takes values in a Lie group or a manifold, we need to further generalize the notion of the "expectation" to suit our needs. See my paper *"Means of Random Variables in Lie Groups"* for a review of the Lie group case.
+Note that the definition above allows for $\Omega$ to be the set $\lbrace 🦧,🍍,🍎,👠\rbrace$. On the other hand, we have assumed that the elements of $\mathcal X$ can be added and scaled!
+
+
+<aside class=aside-center>
+For when the random variable takes values in a Lie group or a manifold, we need to further generalize the notion of the "expectation" to suit our needs. See my paper <i>"Means of Random Variables in Lie Groups"</i> for a review of the Lie group case. For vector-valued random variables, we can define the expectation component-wise (as long as we also demonstrate that it's basis-independent). Alternatively, we can say that given $X:\Omega \rightarrow V$, $\mathbb E[X]$ is the unique vector that satisfies $\alpha(\mathbb E[X])=\mathbb E[\alpha(X)]$ for all $\alpha \in V^\ast$.
+</aside>
 
 
 <!-- (The only catch in this definition is that the co-domain of $X$ should have some sort of an addition operation. Moreover, the expectation [may not exist](https://en.wikipedia.org/wiki/Cauchy_distribution), which is when the integral is not defined[^l1].) -->
@@ -148,18 +162,18 @@ This step-by-step approach is how most integrals are defined (Riemann, Lebesgue,
 #### Example 3. Deterministic Random Variable
 
 Let a <span class=accented>deterministic random variable</span> $X$ be defined such that $X(\omega)=k$, i.e., $X(\omega)$ takes the value $k$ for each outcome $\omega \in \Omega$. This is how we can define a deterministic quantity, also called as a *degenerate* or an *almost-everywhere constant* random variable.
-Since $X^{-1}(\lbrace k\rbrace) = \Omega$, it follows that $X$ is $\lbrace \emptyset, \Omega \rbrace$-measurable. We could also write this random variable as $k \textbf{1}_{\Omega}$ if we were clever (which we are), since $1_\Omega$ is $\lbrace \emptyset,\Omega\rbrace$-measurable and $\mathbb E[X] = \mathbb E [ k \textbf{1}_{\Omega}] = k P(\Omega) = k$.
+Since $X^{-1}(\lbrace k\rbrace) = X^{-1}(\mathcal X) = \Omega$ and $X^{-1}(\emptyset)=\emptyset$, it follows that $X$ is $\lbrace \emptyset, \Omega \rbrace$-measurable. We could also write this random variable as $k \textbf{1}_{\Omega}$ if we were clever (which we are), since $1_\Omega$ is $\lbrace \emptyset,\Omega\rbrace$-measurable and $\mathbb E [ k \textbf{1}_{\Omega}] = k P(\Omega) = k$.
 
 This example also illustrates something that isn't emphasized in classical probability theory: the expectation operation is taken *with respect to* an underlying probability space, $(\Omega, \mathscr F, P)$. Usually, it is implied which probability space is being referred to, which is why the notation of '$\mathbb E[{}\cdot{}]$' does not contain a reference to $(\Omega, \mathscr F, P)$. (At this juncture, see Theorem 1.6.4 of *"Probability Theory"* by Rick Durett for an elegant proof of the Markov/Chebychev inequality.)
 
 #### Example 4. Continuous Random Variables
 
-To define a continuous random variable, we will have to let $\Omega$ be uncountably infinite as a set. For instance, imagine $\Omega$ to be the uniform distribution on $(0, 1)$. Given a measurable set $T \in \mathscr G$, where $\mathscr G$ is the $\sigma$-algebra of $\mathcal X$, consider the indicator function $\textbf{1}_{T}$. We can define the composite random variable $\textbf{1}_{T} \circ X = \textbf{1}_{X^{-1}[T]}$ (where $X^{-1}[T]$ is the preimage of $T$). We see that 
+To define a continuous random variable, we will have to let $\Omega$ be uncountably infinite as a set. Let $\Omega$ to be the uniform distribution on $(0, 1)$. Given a measurable set $T \in \mathscr G$, where $\mathscr G$ is the $\sigma$-algebra of $\mathcal X$, consider the indicator function $\textbf{1}_{T}$. We can define the composite random variable $\textbf{1}_{T} \circ X = \textbf{1}_{X^{-1}[T]}$ (where $X^{-1}[T]$ is the preimage of $T$). We see that 
 $$
-\begin{align}
+\begin{align*}
 \mathbb E[\textbf{1}_{X^{-1}[T]}] &= \int_\Omega \textbf{1}_{X^{-1}[T]} dP \\
 &= P(\,\omega \in X^{-1}[T]\,) = P(\,X(\omega) \in T\,).
-\end{align}
+\end{align*}
 $$
 
 Assume we have another integration measure $\lambda$ on $\mathcal X$, for instance, the Lesbesgue or Haar measure.
@@ -170,9 +184,6 @@ $$
 $$
 
 Conversely, the specification of such a function defines a random variable on $\mathcal X$. Verify that $p$ integrates to $1$ w.r.t. $\lambda$! 
-
-<aside class=aside-center>This example also shows us why the issue of defining a "uniform distribution" is subtle. Uniform w.r.t. which integration measure? When we said "uniform distribution on $(0, 1)$" earlier, we automatically assumed that the distribution was uniform w.r.t. the Lebesgue measure. Note also that we cannot define a uniform distribution on $\mathbb R$ this way.
-</aside>
 
 ### Change of Variables
 
@@ -191,7 +202,7 @@ In words, we are taking the expectation of $f(X)$ while treating $(\mathcal X, \
 
 ---
 
-## Conditional Expectated Value
+## Conditional Expected Value
 
 Let $E \in \mathscr F$. We can define a new measure $P(\,\cdot\,|E)$ by the property that, given $S \in \mathscr F$
 

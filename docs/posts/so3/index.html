@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=59054&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,16 +9,16 @@
 <meta name="keywords" content="Differential Geometry">
 <meta name="description" content="I will construct the Haar measure for SO(3) and pull it back to the axis-angle parametrization of orthogonal matrices. The goal is to be able to integrate (and thereby define probability densities) on SO(3).">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:59054/posts/so3/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.e3a29d577b0bff410e93401e6f77ec6a5307a660288b508818d6a3d72526e932.css" integrity="sha256-46KdV3sL/0EOk0Aeb3fsalMHpmAoi1CIGNaj1yUm6TI=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:59054/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:59054/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:59054/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:59054/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:59054/favicon.ico">
+<link rel="canonical" href="http://localhost:1313/posts/so3/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.40d14ba5b6f59ccd75b2aa4d72039862009c2bacf919930b8cc26e20dd7ea620.css" integrity="sha256-QNFLpbb1nM11sqpNcgOYYgCcK6z5GZMLjMJuIN1&#43;piA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:59054/posts/so3/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/so3/">
 <noscript>
     <style>
         #theme-toggle,
@@ -79,7 +79,6 @@
 })();
 </script>
 
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 <script>
   MathJax = {
     tex: {
@@ -92,10 +91,11 @@
     },
   };
 </script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
 
-<meta property="og:url" content="http://localhost:59054/posts/so3/">
+<meta property="og:url" content="http://localhost:1313/posts/so3/">
   <meta property="og:site_name" content="Shiraz">
   <meta property="og:title" content="Integration on SO(3)">
   <meta property="og:description" content="I will construct the Haar measure for SO(3) and pull it back to the axis-angle parametrization of orthogonal matrices. The goal is to be able to integrate (and thereby define probability densities) on SO(3).">
@@ -119,13 +119,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:59054/posts/"
+      "item": "http://localhost:1313/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Integration on SO(3)",
-      "item": "http://localhost:59054/posts/so3/"
+      "item": "http://localhost:1313/posts/so3/"
     }
   ]
 }
@@ -147,14 +147,14 @@
   "dateModified": "2024-06-07T11:27:55-04:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:59054/posts/so3/"
+    "@id": "http://localhost:1313/posts/so3/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Shiraz",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:59054/favicon.ico"
+      "url": "http://localhost:1313/favicon.ico"
     }
   }
 }
@@ -164,7 +164,7 @@
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:59054/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <a href="http://localhost:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -190,17 +190,17 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:59054/archives/" title="archives">
+                <a href="http://localhost:1313/archives/" title="archives">
                     <span>archives</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:59054/tags/" title="tags">
+                <a href="http://localhost:1313/tags/" title="tags">
                     <span>tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:59054/search/" title="search (Alt &#43; /)" accesskey=/>
+                <a href="http://localhost:1313/search/" title="search (Alt &#43; /)" accesskey=/>
                     <span>search</span>
                 </a>
             </li>
@@ -372,33 +372,38 @@ Any $3$ form in $U$ (and in particular, $\psi^*\mu$) can be expressed as $f\ dx^
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:59054/tags/differential-geometry/">Differential Geometry</a></li>
+      <li><a href="http://localhost:1313/tags/differential-geometry/">Differential Geometry</a></li>
     </ul>
   </footer>
-<script src="https://giscus.app/client.js"
-        data-repo="shirazkn/shirazkn.github.io"
-        data-repo-id="R_kgDOI2VbWw"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOI2VbW84CWJnt"
-        data-mapping="title"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="noborder_light"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
+<script>
+(function() {
+    var theme = localStorage.getItem("pref-theme");
+    var giscusTheme = (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches))
+        ? "noborder_dark" : "noborder_light";
+
+    var script = document.createElement('script');
+    script.src = "https://giscus.app/client.js";
+    script.setAttribute("data-repo", "shirazkn/shirazkn.github.io");
+    script.setAttribute("data-repo-id", "R_kgDOI2VbWw");
+    script.setAttribute("data-category", "Announcements");
+    script.setAttribute("data-category-id", "DIC_kwDOI2VbW84CWJnt");
+    script.setAttribute("data-mapping", "title");
+    script.setAttribute("data-strict", "0");
+    script.setAttribute("data-reactions-enabled", "1");
+    script.setAttribute("data-emit-metadata", "0");
+    script.setAttribute("data-input-position", "bottom");
+    script.setAttribute("data-theme", giscusTheme);
+    script.setAttribute("data-lang", "en");
+    script.setAttribute("crossorigin", "anonymous");
+    script.async = true;
+    document.currentScript.parentElement.appendChild(script);
+})();
 </script>
+
 </article>
     </main>
     
 <footer class="footer">
-    
-    
-    
-    
-    
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -417,12 +422,6 @@ function syncDarkClass() {
 syncDarkClass();
 
 
-const themeToggle = document.getElementById('theme-toggle');
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        setTimeout(syncDarkClass, 0);
-    });
-}
 
 
 document.querySelectorAll('.logo a, .post-title').forEach(el => {
@@ -577,9 +576,9 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             const distance = Math.abs(cardCenterY - targetY) / viewportHeight;
 
             
-            
-            const focus = Math.max(0, 1 - distance / 0.55);
-            cardFocusValues[i] = focus * focus; 
+            const t = Math.max(0, (distance - 0.4) / 0.35);
+            const falloff = Math.max(0, 1 - t);
+            cardFocusValues[i] = falloff * falloff * (falloff * falloff); 
         }
     }
 
@@ -631,7 +630,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
             const transY = baseTransY + transRangeY * focus;
 
             card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateX(${transX}px) translateY(${transY}px) scale(${1 + focus * 0.02})`;
-            card.style.opacity = 0.25 + focus * 0.75;
+            card.style.opacity = 0.55 + focus * 0.45;
         }
     }
 
@@ -703,28 +702,39 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
     applyCardTransforms();
 
     
+    
     postCards.forEach((card, index) => {
-        let touchStartTime = 0;
+        let isPressed = false;
 
-        card.addEventListener('touchstart', (e) => {
-            touchStartTime = Date.now();
+        card.addEventListener('touchstart', () => {
+            isPressed = true;
             const focus = cardFocusValues[index];
-            
             card.style.transition = 'transform 0.08s ease-out, box-shadow 0.08s ease-out';
             card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(${0.97 + focus * 0.01})`;
             card.style.boxShadow = `0 0.5px 1px rgba(0,0,0,0.2)`;
         }, { passive: true });
 
-        card.addEventListener('touchend', () => {
-            
-            card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
-            setTimeout(() => {
+        card.addEventListener('touchmove', () => {
+            if (isPressed) {
+                isPressed = false;
                 card.style.transition = '';
                 scheduleTransformUpdate();
-            }, 150);
+            }
+        }, { passive: true });
+
+        card.addEventListener('touchend', () => {
+            if (isPressed) {
+                isPressed = false;
+                card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
+                setTimeout(() => {
+                    card.style.transition = '';
+                    scheduleTransformUpdate();
+                }, 150);
+            }
         }, { passive: true });
 
         card.addEventListener('touchcancel', () => {
+            isPressed = false;
             card.style.transition = '';
             scheduleTransformUpdate();
         }, { passive: true });
@@ -736,23 +746,37 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
         enableCardGyroscope();
 
         
-        const requestPermission = () => {
-            if (cardGyroPermissionRequested) return;
-            cardGyroPermissionRequested = true;
+        if (!localStorage.getItem('gyro-permission-asked') && postCards.length > 0) {
+            const banner = document.createElement('div');
+            banner.id = 'gyro-banner';
+            banner.innerHTML = 'Tap to enable motion effects ↗';
+            banner.style.cssText = 'position:fixed;bottom:1.2em;left:50%;transform:translateX(-50%);background:var(--entry);color:var(--content);padding:0.55em 1.2em;border-radius:2em;font-size:0.85em;z-index:999;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.18);border:1px solid var(--border);opacity:0;transition:opacity 0.3s;';
+            document.body.appendChild(banner);
+            
+            setTimeout(() => { banner.style.opacity = '1'; }, 600);
 
-            DeviceOrientationEvent.requestPermission()
-                .then(state => {
-                    if (state === 'granted') {
-                        enableCardGyroscope();
-                    }
-                })
-                .catch(() => {
-                    cardGyroPermissionRequested = false;
-                });
-        };
-        document.addEventListener('touchstart', requestPermission, { once: true, passive: true });
-        document.addEventListener('touchend', requestPermission, { once: true, passive: true });
-        document.addEventListener('click', requestPermission, { once: true, passive: true });
+            banner.addEventListener('click', () => {
+                localStorage.setItem('gyro-permission-asked', '1');
+                banner.style.opacity = '0';
+                setTimeout(() => banner.remove(), 300);
+                if (!cardGyroPermissionRequested) {
+                    cardGyroPermissionRequested = true;
+                    DeviceOrientationEvent.requestPermission()
+                        .then(state => {
+                            if (state === 'granted') enableCardGyroscope();
+                        })
+                        .catch(() => { cardGyroPermissionRequested = false; });
+                }
+            });
+
+            
+            setTimeout(() => {
+                if (banner.parentNode) {
+                    banner.style.opacity = '0';
+                    setTimeout(() => banner.remove(), 300);
+                }
+            }, 8000);
+        }
     } else {
         
         enableCardGyroscope();
@@ -871,7 +895,7 @@ if (tocBox) {
 </script>
 <script>
     var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
+    window.addEventListener('scroll', function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
             mybutton.style.visibility = "visible";
             mybutton.style.opacity = "1";
@@ -879,19 +903,29 @@ if (tocBox) {
             mybutton.style.visibility = "hidden";
             mybutton.style.opacity = "0";
         }
-    };
+    });
 
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            document.documentElement.dataset.theme = 'light';
+        const html = document.documentElement;
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
-            document.documentElement.dataset.theme = 'dark';
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
+        }
+        const isDark = html.dataset.theme === 'dark';
+        html.classList.toggle('dark', isDark);
+        document.body.classList.toggle('dark', isDark);
+        
+        const giscusFrame = document.querySelector('iframe.giscus-frame');
+        if (giscusFrame) {
+            giscusFrame.contentWindow.postMessage(
+                { giscus: { setConfig: { theme: isDark ? 'noborder_dark' : 'noborder_light' } } },
+                'https://giscus.app'
+            );
         }
     })
 

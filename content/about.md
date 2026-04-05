@@ -15,7 +15,7 @@ Much of what I've posted since was motivated by a desire to understand [manifold
 My post on [vector fields on manifolds](/posts/vector-fields) has received critical acclaim among the 2 or 3 people who've read it closely. I am quite fond of [this one](/posts/lie-groups_construction) that discusses various constructions involving Lie groups, such as quotients, products, and [Riemannian metrics](/posts/lie-groups_riemannian). Recently, I have been learning about [harmonic analysis](/posts/harmonic-analysis), [mechanics](/tags/mechanics), [fiber bundles](/posts/bundles), and [robotics](/tags/robotics). 
 In the distant future, I'd like to get into the business of making math visualizations, and maybe a podcast?
 
-## About Me
+### About Me
 
 <div style="float:right; margin:0 0 -1.0rem -1.25rem; width:200px; height:200px;">
     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="shiz photo" style="width:100%;height:100%;">
@@ -52,15 +52,23 @@ Besides being a math fanatic, I am an amateur musician, and have been rekindling
 You may reach me at [this](mailto:contact@shiraz-k.com) email address or leave a comment on one of my posts!
 
 
----
+### See Also
 
-Psst... here's an assortment of pure and applied math content that I've enjoyed and/or continue to learn from:
+Here's an assortment of pure and applied math content that I've enjoyed and/or continue to learn from:
 
 - [The Bright Side of Mathematics](https://www.youtube.com/@brightsideofmaths)' excellent math lectures and explainers
 - [Keenan Crane's lectures](https://www.youtube.com/watch?v=mas-PUA3OvA&list=PL9_jI1bdZmz0hIrNCMQW1YmZysAiIYSSS) on exterior calculus
-- [The Joy of Abstraction](https://www.cambridge.org/us/universitypress/subjects/mathematics/logic-categories-and-sets/joy-abstraction-exploration-math-category-theory-and-life) (an accessible intro to category theory) or [Category Theory in Context](https://emilyriehl.github.io/files/context.pdf) (a very well-paced textbook on category theory with plenty of examples)
+- [The Joy of Abstraction](https://www.cambridge.org/us/universitypress/subjects/mathematics/logic-categories-and-sets/joy-abstraction-exploration-math-category-theory-and-life) (an accessible intro to category theory) and [Category Theory in Context](https://emilyriehl.github.io/files/context.pdf) (a very well-paced textbook on category theory with plenty of examples)
 - [Pieter van Goor's blog](https://pvangoor.github.io) on matrix Lie groups, it's a treasure-trove of formulae for $SO(n)$ and $SE(n)$
 - Blogs by Terence Tao, John Baez, and Tai-Danae Bradley
 - [My Favorite Theorem](https://kpknudson.com/my-favorite-theorem) (podcast)
 - [John M. Lee](https://link.springer.com/book/10.1007/978-1-4419-9982-5) and [Stephen Bruce Sontz](https://link.springer.com/book/10.1007/978-3-319-14765-9)'s books on differential geometry
 - [Peter Winkler's puzzle book](https://math.dartmouth.edu/news-resources/electronic/puzzlebook/book/book.pdf), which first sparked my joy for math
+
+---
+
+### AI Disclaimer
+
+None of the content on my blog is LLM-generated, although once or twice I have asked an LLM: *Do you see any errors/notational inconsistencies on this blog?*, to which I have only ever received false positive responses. The logo on my homepage and its animation were created without LLMs as well (I learnt whatever minimal JS was needed to make it work). The logo is a 2-dimensional damped harmonic oscillator, a reference to the [Lorenz attractor](https://en.wikipedia.org/wiki/Lorenz_system), and also has a hidden 'S' in it! Some of the recent CSS additions to my blog (like the post hover effect) were LLM-generated; that's just me being lazy.
+
+I expect to make light use of LLMs to make my life a little bit easier, in terms of maintenance and upkeep of the blog. However, using an LLM to generate the content on this blog would defeat the whole purpose of this endeavor.

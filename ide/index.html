@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog Editor</title>
+<script>/*DARK_MODE_INJECT*/</script>
+
+<script>
+MathJax = {
+  tex: {
+    packages: {'[+]': ['mathtools', 'amscd']},
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    inlineMath: [['\\(', '\\)'], ['$', '$']]
+  },
+  loader: { load: ['ui/safe', '[tex]/mathtools', '[tex]/amscd'] },
+  startup: { typeset: false }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@15.0.7/marked.min.js"></script>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ide-bg: #f5f5f5;
+  --ide-bg2: #eaeaea;
+  --ide-fg: #222;
+  --ide-fg2: #999;
+  --ide-accent: #bc0a5c;
+  --ide-accent-hover: #a00850;
+  --ide-border: #ddd;
+  --ide-editor-bg: #fff;
+  --ide-editor-fg: #1e1e1e;
+  --ide-sidebar-bg: #f0f0f0;
+  --ide-hover: rgba(0,0,0,0.04);
+  --ide-active-bg: rgba(188,10,92,0.08);
+  --pv-bg: #fff;
+  --pv-fg: rgb(31,31,31);
+  --pv-secondary: rgb(122,125,124);
+  --pv-tertiary: rgb(195,194,194);
+  --pv-accent: rgb(188,10,92);
+  --pv-code-bg: rgb(224,223,223);
+  --pv-pre-bg: rgb(28,29,33);
+  --pv-pre-fg: #e0e0e0;
+  --pv-aside-border: rgb(230,230,230);
+  --pv-aside-shadow: rgb(203,198,195);
+  --pv-aside-bg: transparent;
+}
+
+.dark-mode {
+  --ide-bg: #0c0c0e;
+  --ide-bg2: #101012;
+  --ide-fg: #b8b8b8;
+  --ide-fg2: #555;
+  --ide-accent: #c44a7a;
+  --ide-accent-hover: #d86e96;
+  --ide-border: #1c1c20;
+  --ide-editor-bg: #0e0e11;
+  --ide-editor-fg: #b0b0b4;
+  --ide-sidebar-bg: #0e0e11;
+  --ide-hover: rgba(255,255,255,0.025);
+  --ide-active-bg: rgba(196,74,122,0.1);
+  --pv-bg: #0e0e11;
+  --pv-fg: rgb(190,190,194);
+  --pv-secondary: rgb(110,110,112);
+  --pv-tertiary: rgb(44,44,50);
+  --pv-accent: rgb(196,74,122);
+  --pv-code-bg: rgb(24,24,28);
+  --pv-pre-bg: rgb(16,16,20);
+  --pv-pre-fg: #a8a8ac;
+  --pv-aside-border: rgba(40,40,46,0.7);
+  --pv-aside-shadow: rgba(0,0,0,0.5);
+  --pv-aside-bg: rgba(12,12,15,0.5);
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--ide-bg); color: var(--ide-fg);
+}
+
+#app { display: flex; height: 100vh; }
+
+#sidebar {
+  width: 220px; background: var(--ide-sidebar-bg);
+  border-right: 1px solid var(--ide-border);
+  display: flex; flex-direction: column;
+  transition: width 0.2s, opacity 0.15s;
+  overflow: hidden; flex-shrink: 0;
+}
+#sidebar.collapsed { width: 0; border-right: none; opacity: 0; pointer-events: none; }
+
+#sidebar-toggle {
+  background: none; border: none;
+  color: var(--ide-fg2); width: 26px; height: 26px;
+  border-radius: 4px; cursor: pointer; font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+#sidebar-toggle:hover { color: var(--ide-accent); }
+
+#sidebar-header {
+  padding: 9px 14px 7px;
+  font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--ide-fg2); border-bottom: 1px solid var(--ide-border);
+}
+#search-input {
+  display: block; margin: 6px 10px; padding: 4px 8px; width: calc(100% - 20px);
+  background: var(--ide-bg); border: 1px solid var(--ide-border);
+  border-radius: 3px; color: var(--ide-fg); font-size: 11px; outline: none;
+}
+#search-input:focus { border-color: var(--ide-accent); }
+#post-list { flex: 1; overflow-y: auto; padding: 2px 0; }
+.post-item {
+  padding: 5px 14px; cursor: pointer; font-size: 12px;
+  border-left: 2px solid transparent; transition: background 0.1s;
+  display: flex; justify-content: space-between; align-items: center;
+  white-space: nowrap; overflow: hidden;
+}
+.post-item:hover { background: var(--ide-hover); }
+.post-item.active { border-left-color: var(--ide-accent); background: var(--ide-active-bg); }
+.post-item .title { overflow: hidden; text-overflow: ellipsis; }
+.draft-badge {
+  font-size: 9px; background: var(--ide-accent); color: white;
+  padding: 0 5px; border-radius: 3px; margin-left: 6px; flex-shrink: 0;
+}
+.page-badge {
+  font-size: 9px; background: var(--ide-fg2); color: white;
+  padding: 0 5px; border-radius: 3px; margin-left: 6px; flex-shrink: 0;
+}
+
+#main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
+#toolbar {
+  height: 34px; min-height: 34px; background: var(--ide-bg2);
+  border-bottom: 1px solid var(--ide-border);
+  display: flex; align-items: center; padding: 0 8px; gap: 6px; font-size: 12px;
+}
+.filename { font-weight: 600; color: var(--ide-accent); font-size: 12px; }
+.modified-dot { width: 6px; height: 6px; border-radius: 50%; background: #e8a030; display: none; }
+.modified-dot.visible { display: block; }
+.spacer { flex: 1; }
+#save-status { font-size: 10px; color: var(--ide-fg2); }
+.tb-btn {
+  background: none; border: none; color: var(--ide-fg2);
+  cursor: pointer; font-size: 12px; padding: 2px 6px; border-radius: 3px;
+}
+.tb-btn:hover { color: var(--ide-accent); }
+.tb-btn.active { color: var(--ide-accent); background: var(--ide-active-bg); }
+
+#panes { flex: 1; display: flex; min-height: 0; }
+
+#editor-pane { flex: 1; min-width: 0; position: relative; }
+
+#editor-textarea {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  resize: none; border: none; outline: none;
+  background: var(--ide-editor-bg); color: var(--ide-editor-fg);
+  padding: 20px 24px;
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Menlo, monospace;
+  font-size: 13.5px; line-height: 1.7; tab-size: 2;
+}
+#editor-textarea.no-wrap { white-space: pre; overflow-x: auto; }
+#editor-textarea::placeholder { color: var(--ide-fg2); }
+
+#resize-handle {
+  width: 4px; cursor: col-resize; background: var(--ide-border);
+  transition: background 0.15s; flex-shrink: 0;
+}
+#resize-handle:hover, #resize-handle.dragging { background: var(--ide-accent); }
+
+#preview-pane {
+  flex: 1; overflow-y: auto; min-width: 0;
+  background: var(--pv-bg); padding: 36px 44px;
+}
+
+/* Heading TOC overlay */
+#toc {
+  position: absolute; top: 36px; right: 8px; z-index: 50;
+  max-width: 200px; max-height: calc(100% - 80px); overflow-y: auto;
+  font-size: 11px; line-height: 1.5;
+  opacity: 0.35; transition: opacity 0.15s;
+}
+#toc:hover { opacity: 0.9; }
+#toc a {
+  display: block; color: var(--pv-fg); text-decoration: none;
+  padding: 1px 8px; border-left: 2px solid transparent;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#toc a:hover { color: var(--pv-accent); border-left-color: var(--pv-accent); }
+#toc a.toc-h3 { padding-left: 18px; font-size: 10px; }
+#toc a.toc-h4 { padding-left: 28px; font-size: 10px; }
+
+#drop-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(188,10,92,0.08); border: 3px dashed var(--ide-accent);
+  z-index: 999; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--ide-accent); pointer-events: none;
+}
+#drop-overlay.visible { display: flex; }
+
+#status-bar {
+  height: 22px; min-height: 22px; background: var(--ide-bg2);
+  border-top: 1px solid var(--ide-border);
+  display: flex; align-items: center; padding: 0 14px;
+  font-size: 10px; color: var(--ide-fg2); gap: 16px;
+}
+
+/* ===== Preview ===== */
+.pv {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: var(--pv-fg); font-size: 16px; line-height: 1.7; max-width: 720px; margin: 0 auto;
+}
+.pv h1 { font-size: 1.8em; margin: 0.8em 0 0.4em; }
+.pv h2 { font-size: 1.4em; margin: 1.2em 0 0.4em; }
+.pv h3 { font-size: 1.2em; margin: 1em 0 0.3em; }
+.pv h4 { font-size: 1.1em; margin: 0.8em 0 0.3em; }
+.pv p { margin: 0.8em 0; text-align: justify; }
+.pv ul, .pv ol { margin: 0.8em 0; padding-left: 1.8em; }
+.pv li { margin: 0.3em 0; }
+.pv li > p { margin: 0.3em 0; }
+.pv img { max-width: 100%; height: auto; border-radius: 4px; margin: 1em 0; }
+.pv a { color: var(--pv-accent); }
+.pv code { background: var(--pv-code-bg); padding: 2px 5px; border-radius: 3px; font-size: 0.9em; }
+.pv pre { background: var(--pv-pre-bg); color: var(--pv-pre-fg); padding: 16px; border-radius: 6px; overflow-x: auto; margin: 1em 0; }
+.pv pre code { background: none; padding: 0; color: inherit; }
+.pv hr { border: none; border-top: 1px solid var(--ide-border); margin: 2em 0; }
+.pv blockquote {
+  opacity: 0.9; font-family: 'IM Fell DW Pica', Times, serif; font-size: 1.1em;
+  max-width: 99.5%; margin: auto; padding: 0px 20px;
+  border-left: 2px solid var(--pv-accent);
+}
+.pv table { border-collapse: collapse; margin: 1em 0; }
+.pv th, .pv td { border: 1px solid var(--ide-border); padding: 8px 12px; }
+.pv sup a { color: var(--pv-accent); text-decoration: none; font-size: 0.8em; }
+
+.pv .accented { color: var(--pv-accent); }
+.pv .red { color: red; }
+.pv .gray { color: var(--pv-secondary); }
+.pv .boxed {
+  border: 1px solid var(--pv-tertiary); text-align: center;
+  padding: 0.25rem 0.75rem 0.5rem; border-radius: 2px; display: inline-block;
+}
+.pv .centred { padding: 0 5%; text-align: center; }
+.pv .faded { opacity: 0.25; }
+.pv .tertiary { opacity: 0.5; }
+.pv .secondary { opacity: 0.7; }
+.pv .equation-like { padding: 0 5%; display: table; }
+
+.pv aside {
+  width: 46%; margin: 0 0.95rem 0 -0.4rem; padding: 0.8em 1.3em 0em 1.3em;
+  float: left;
+  border-right: 1px solid var(--pv-aside-border);
+  border-bottom: 0.5px solid var(--pv-aside-border);
+  box-shadow: inset -0.1em 0.1em 0.2em 0 var(--pv-aside-shadow), 0.2em 0.04em 0.5em 0.2em rgba(0,0,0,0.02);
+  color: var(--pv-secondary); border-radius: 25px; font-size: 0.90em; text-align: justify;
+  background: var(--pv-aside-bg);
+}
+.pv aside.aside-right {
+  margin: 0.5em -0.4rem 0.5em 0.75rem; float: right; padding-bottom: 1em;
+  border-right: 0; border-left: 1px solid var(--pv-aside-border);
+  box-shadow: inset 0.1em 0.1em 0.2em 0 var(--pv-aside-shadow), -0.2em 0.04em 0.5em 0.2em rgba(0,0,0,0.02);
+}
+.pv aside.aside-center {
+  width: 102%; float: none; margin: 1em 0 1em -0.5em;
+  border-right: 0; border-left: 1px solid var(--pv-aside-border); padding-bottom: 1em;
+  box-shadow: inset 0.1em 0.1em 0.2em 0 var(--pv-aside-shadow), -0.2em 0.04em 0.5em 0.2em rgba(0,0,0,0.02);
+}
+.pv .print b { color: var(--pv-secondary); font-weight: 500; }
+.pv .print { opacity: 0.9; font-family: 'IM Fell DW Pica', Times, serif; font-size: 1.1em; }
+.pv .footnotes { font-size: 0.85em; border-top: 1px solid var(--ide-border); margin-top: 2em; padding-top: 1em; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--ide-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ide-fg2); }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div id="sidebar">
+    <div id="sidebar-header">Posts</div>
+    <input type="text" id="search-input" placeholder="Filter...">
+    <div id="post-list"></div>
+  </div>
+
+  <div id="main">
+    <div id="toolbar">
+      <button id="sidebar-toggle" title="Toggle sidebar (Ctrl+B)">&#9776;</button>
+      <span class="filename" id="current-file"></span>
+      <div class="modified-dot" id="modified-dot"></div>
+      <div class="spacer"></div>
+      <span id="save-status"></span>
+      <button class="tb-btn" id="wrap-btn" title="Toggle line wrap (Ctrl+L)">wrap</button>
+    </div>
+
+    <div id="panes">
+      <div id="editor-pane">
+        <textarea id="editor-textarea" spellcheck="false" placeholder="Select a post from the sidebar to start editing."></textarea>
+      </div>
+      <div id="resize-handle"></div>
+      <div id="preview-pane">
+        <div id="toc"></div>
+        <div class="pv" id="preview"></div>
+      </div>
+    </div>
+
+    <div id="status-bar">
+      <span id="status-cursor">Ln 1, Col 1</span>
+      <span id="status-words"></span>
+      <span id="status-msg"></span>
+    </div>
+  </div>
+</div>
+
+<div id="drop-overlay">Drop image here</div>
+
+<script>
+(function() {
+  "use strict";
+
+  var ta = document.getElementById("editor-textarea");
+  var postList = document.getElementById("post-list");
+  var searchInput = document.getElementById("search-input");
+  var preview = document.getElementById("preview");
+  var toc = document.getElementById("toc");
+  var currentFileEl = document.getElementById("current-file");
+  var modifiedDot = document.getElementById("modified-dot");
+  var saveStatus = document.getElementById("save-status");
+  var statusCursor = document.getElementById("status-cursor");
+  var statusWords = document.getElementById("status-words");
+  var statusMsg = document.getElementById("status-msg");
+  var editorPane = document.getElementById("editor-pane");
+  var previewPane = document.getElementById("preview-pane");
+  var resizeHandle = document.getElementById("resize-handle");
+  var dropOverlay = document.getElementById("drop-overlay");
+  var sidebar = document.getElementById("sidebar");
+  var sidebarToggle = document.getElementById("sidebar-toggle");
+  var wrapBtn = document.getElementById("wrap-btn");
+
+  var currentFile = null;
+  var originalContent = "";
+  var isModified = false;
+  var autoSaveTimer = null;
+  var allPosts = [];
+  var activeScrollPane = null;
+  var wordWrap = true; // on by default
+
+  // ---- Sidebar ----
+  var sidebarOpen = true;
+  sidebarToggle.addEventListener("click", function() {
+    sidebarOpen = !sidebarOpen;
+    sidebar.classList.toggle("collapsed", !sidebarOpen);
+  });
+
+  // ---- Line wrap toggle ----
+  wrapBtn.classList.add("active");
+  wrapBtn.addEventListener("click", toggleWrap);
+  function toggleWrap() {
+    wordWrap = !wordWrap;
+    ta.classList.toggle("no-wrap", !wordWrap);
+    wrapBtn.classList.toggle("active", wordWrap);
+  }
+
+  // ---- Posts ----
+  function loadPosts(cb) {
+    fetch("/api/posts").then(function(r) { return r.json(); }).then(function(posts) {
+      allPosts = posts;
+      renderPostList();
+      if (cb) cb();
+    }).catch(function() { flash("Failed to load posts"); });
+  }
+
+  function renderPostList(filter) {
+    var f = (filter || "").toLowerCase();
+    var list = allPosts.filter(function(p) {
+      return p.title.toLowerCase().indexOf(f) >= 0 || p.filename.toLowerCase().indexOf(f) >= 0;
+    });
+    postList.innerHTML = list.map(function(p) {
+      var badge = "";
+      if (p.filename === "about.md") badge = '<span class="page-badge">page</span>';
+      else if (p.draft) badge = '<span class="draft-badge">draft</span>';
+      return '<div class="post-item' + (p.filename === currentFile ? ' active' : '') + '" data-file="' + esc(p.filename) + '">'
+        + '<span class="title">' + esc(p.title) + '</span>'
+        + badge
+        + '</div>';
+    }).join("");
+    var items = postList.querySelectorAll(".post-item");
+    for (var i = 0; i < items.length; i++) {
+      (function(el) {
+        el.addEventListener("click", function(e) {
+          // Cmd+click → open in new tab
+          if (e.metaKey || e.ctrlKey) {
+            window.open("/?file=" + encodeURIComponent(el.getAttribute("data-file")), "_blank");
+          } else {
+            openPost(el.getAttribute("data-file"));
+          }
+        });
+      })(items[i]);
+    }
+  }
+
+  function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+  searchInput.addEventListener("input", function() { renderPostList(searchInput.value); });
+
+  // ---- Open / Save ----
+  function openPost(filename) {
+    if (isModified && currentFile && !confirm("Unsaved changes. Discard?")) return;
+    fetch("/api/posts/" + encodeURIComponent(filename))
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        currentFile = filename;
+        originalContent = data.content;
+        isModified = false;
+        currentFileEl.textContent = filename;
+        modifiedDot.classList.remove("visible");
+        ta.value = data.content;
+        renderPostList(searchInput.value);
+        updatePreview();
+        ta.focus();
+        ta.setSelectionRange(0, 0);
+        ta.scrollTop = 0;
+      })
+      .catch(function() { flash("Failed to open file"); });
+  }
+
+  function savePost() {
+    if (!currentFile || !isModified) return;
+    fetch("/api/posts/" + encodeURIComponent(currentFile), {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content: ta.value }),
+    }).then(function() {
+      originalContent = ta.value;
+      isModified = false;
+      modifiedDot.classList.remove("visible");
+      saveStatus.textContent = "saved";
+      setTimeout(function() { if (saveStatus.textContent === "saved") saveStatus.textContent = ""; }, 2000);
+    }).catch(function() { flash("Save failed"); });
+  }
+
+  // ---- Publish ----
+  function doPublish() {
+    var msg = prompt("Commit message for publish:", "update blog");
+    if (msg === null) return; // cancelled
+    // Force-save first if modified
+    if (isModified && currentFile) {
+      fetch("/api/posts/" + encodeURIComponent(currentFile), {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: ta.value }),
+      }).then(function() {
+        originalContent = ta.value;
+        isModified = false;
+        modifiedDot.classList.remove("visible");
+        runPublish(msg);
+      }).catch(function() { flash("Save failed, aborting publish"); });
+    } else {
+      runPublish(msg);
+    }
+  }
+
+  function runPublish(msg) {
+    flash("Publishing...");
+    fetch("/api/publish", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: msg }),
+    }).then(function(r) { return r.json(); }).then(function(data) {
+      if (data.ok) {
+        flash("Published!");
+      } else {
+        flash("Publish failed: " + (data.error || "unknown error"));
+        console.error("publish stdout:", data.stdout);
+        console.error("publish stderr:", data.stderr);
+      }
+    }).catch(function(e) { flash("Publish error: " + e.message); });
+  }
+
+  // ---- Editor events ----
+  var previewTimer = null;
+  ta.addEventListener("input", function() {
+    isModified = ta.value !== originalContent;
+    modifiedDot.classList.toggle("visible", isModified);
+    clearTimeout(previewTimer);
+    previewTimer = setTimeout(updatePreview, 250);
+    if (isModified) {
+      clearTimeout(autoSaveTimer);
+      autoSaveTimer = setTimeout(savePost, 2000);
+    }
+  });
+
+  ta.addEventListener("keyup", updateCursor);
+  ta.addEventListener("click", updateCursor);
+
+  function updateCursor() {
+    var pos = ta.selectionStart;
+    var lines = ta.value.slice(0, pos).split("\n");
+    statusCursor.textContent = "Ln " + lines.length + ", Col " + (lines[lines.length - 1].length + 1);
+  }
+
+  // Tab inserts spaces
+  ta.addEventListener("keydown", function(e) {
+    if (e.key === "Tab") {
+      e.preventDefault();
+      var s = ta.selectionStart;
+      ta.value = ta.value.slice(0, s) + "  " + ta.value.slice(ta.selectionEnd);
+      ta.selectionStart = ta.selectionEnd = s + 2;
+      ta.dispatchEvent(new Event("input"));
+    }
+  });
+
+  // ---- Preview ----
+  function stripFrontMatter(text) {
+    var m = text.match(/^---\s*\n([\s\S]*?)\n---\s*\n?([\s\S]*)$/);
+    if (m) return { fm: m[1], body: m[2] };
+    return { fm: "", body: text };
+  }
+
+  function updatePreview() {
+    var text = ta.value;
+    var parsed = stripFrontMatter(text);
+    var body = parsed.body;
+    var wc = body.trim() ? body.trim().split(/\s+/).length : 0;
+    statusWords.textContent = wc + " words";
+    preview.innerHTML = marked.parse(body);
+    buildToc();
+    if (window.MathJax && MathJax.typesetPromise) {
+      MathJax.typesetPromise([preview]).catch(function() {});
+    }
+  }
+
+  // ---- TOC ----
+  function buildToc() {
+    var headings = preview.querySelectorAll("h2, h3, h4");
+    if (headings.length === 0) { toc.innerHTML = ""; return; }
+    var html = "";
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      var id = "hd-" + i;
+      h.id = id;
+      var level = h.tagName.toLowerCase();
+      var cls = level === "h3" ? " toc-h3" : level === "h4" ? " toc-h4" : "";
+      html += '<a class="' + cls + '" data-target="' + id + '">' + h.textContent + '</a>';
+    }
+    toc.innerHTML = html;
+  }
+
+  // TOC click — use event delegation so MathJax re-rendering doesn't break it
+  toc.addEventListener("click", function(e) {
+    var a = e.target.closest("a[data-target]");
+    if (!a) return;
+    var el = document.getElementById(a.getAttribute("data-target"));
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  // ---- Scroll sync ----
+  editorPane.addEventListener("mouseenter", function() { activeScrollPane = "editor"; });
+  previewPane.addEventListener("mouseenter", function() { activeScrollPane = "preview"; });
+
+  ta.addEventListener("scroll", function() {
+    if (activeScrollPane !== "editor") return;
+    var frac = ta.scrollTop / Math.max(1, ta.scrollHeight - ta.clientHeight);
+    previewPane.scrollTop = frac * (previewPane.scrollHeight - previewPane.clientHeight);
+  });
+  previewPane.addEventListener("scroll", function() {
+    if (activeScrollPane !== "preview") return;
+    var frac = previewPane.scrollTop / Math.max(1, previewPane.scrollHeight - previewPane.clientHeight);
+    ta.scrollTop = frac * (ta.scrollHeight - ta.clientHeight);
+  });
+
+  // ---- Clipboard paste ----
+  document.addEventListener("paste", function(e) {
+    if (!currentFile) return;
+    var items = e.clipboardData && e.clipboardData.items;
+    if (!items) return;
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf("image/") === 0) {
+        e.preventDefault();
+        var file = items[i].getAsFile();
+        if (!file) continue;
+        var ext = file.type.split("/")[1] || "png";
+        if (ext === "jpeg") ext = "jpg";
+        var ts = new Date().toISOString().replace(/[:T]/g, "-").slice(0, 19);
+        var namedFile = new File([file], "paste-" + ts + "." + ext, { type: file.type });
+        var slug = currentFile.replace(/\.md$/, "").replace(/-/g, "_");
+        uploadFiles([namedFile], slug, 0);
+        return;
+      }
+    }
+  });
+
+  // ---- Drag & Drop ----
+  var dragN = 0;
+  document.addEventListener("dragenter", function(e) {
+    if (e.dataTransfer.types.indexOf("Files") >= 0) { dragN++; dropOverlay.classList.add("visible"); }
+  });
+  document.addEventListener("dragleave", function() {
+    dragN--; if (dragN <= 0) { dragN = 0; dropOverlay.classList.remove("visible"); }
+  });
+  document.addEventListener("dragover", function(e) { e.preventDefault(); });
+  document.addEventListener("drop", function(e) {
+    e.preventDefault(); dragN = 0; dropOverlay.classList.remove("visible");
+    if (!currentFile) { flash("Open a post first"); return; }
+    var files = e.dataTransfer.files;
+    if (!files.length) return;
+    var slug = currentFile.replace(/\.md$/, "").replace(/-/g, "_");
+    uploadFiles(files, slug, 0);
+  });
+
+  function uploadFiles(files, slug, i) {
+    if (i >= files.length) return;
+    var file = files[i];
+    if (!file.type.startsWith("image/")) { flash("Skipped: " + file.name); uploadFiles(files, slug, i + 1); return; }
+    var fd = new FormData();
+    fd.append("file", file);
+    flash("Uploading " + file.name + "...");
+    fetch("/api/upload/" + encodeURIComponent(slug), { method: "POST", body: fd })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.ok) {
+          var pos = ta.selectionStart;
+          var tag = '\n<img src="' + data.path + '">\n';
+          ta.value = ta.value.slice(0, pos) + tag + ta.value.slice(pos);
+          ta.selectionStart = ta.selectionEnd = pos + tag.length;
+          ta.dispatchEvent(new Event("input"));
+          flash("Added " + data.filename);
+        }
+        uploadFiles(files, slug, i + 1);
+      })
+      .catch(function() { flash("Upload failed"); uploadFiles(files, slug, i + 1); });
+  }
+
+  // ---- Resize ----
+  var resizing = false;
+  resizeHandle.addEventListener("mousedown", function(e) {
+    resizing = true; resizeHandle.classList.add("dragging");
+    document.body.style.cursor = "col-resize"; document.body.style.userSelect = "none";
+    e.preventDefault();
+  });
+  document.addEventListener("mousemove", function(e) {
+    if (!resizing) return;
+    var rect = document.getElementById("panes").getBoundingClientRect();
+    var f = Math.max(0.15, Math.min(0.85, (e.clientX - rect.left) / rect.width));
+    editorPane.style.flex = f;
+    previewPane.style.flex = 1 - f;
+  });
+  document.addEventListener("mouseup", function() {
+    if (resizing) {
+      resizing = false; resizeHandle.classList.remove("dragging");
+      document.body.style.cursor = ""; document.body.style.userSelect = "";
+    }
+  });
+
+  // ---- Insert helpers ----
+  function insertAtCursor(text) {
+    var s = ta.selectionStart;
+    ta.value = ta.value.slice(0, s) + text + ta.value.slice(ta.selectionEnd);
+    // Place cursor inside the block (between $$ and $$)
+    var cursorPos = s + text.indexOf("\n") + 1;
+    ta.selectionStart = ta.selectionEnd = cursorPos;
+    ta.focus();
+    ta.dispatchEvent(new Event("input"));
+  }
+
+  // ---- Keys ----
+  document.addEventListener("keydown", function(e) {
+    var mod = e.metaKey || e.ctrlKey;
+    if (mod && e.key === "s") { e.preventDefault(); savePost(); }
+    if (mod && e.key === "b") { e.preventDefault(); sidebarToggle.click(); }
+    if (mod && e.key === "l") { e.preventDefault(); toggleWrap(); }
+    if (mod && e.key === "e") { e.preventDefault(); insertAtCursor("\n$$\n\n$$\n"); }
+    if (mod && e.key === "p" && !e.shiftKey) {
+      e.preventDefault();
+      if (!sidebarOpen) sidebarToggle.click();
+      searchInput.focus(); searchInput.select();
+    }
+    if (mod && e.shiftKey && e.key === "S") { e.preventDefault(); doPublish(); }
+  });
+
+  // ---- Util ----
+  function flash(msg) {
+    statusMsg.textContent = msg;
+    setTimeout(function() { if (statusMsg.textContent === msg) statusMsg.textContent = ""; }, 3000);
+  }
+
+  // ---- Init ----
+  loadPosts(function() {
+    // Handle ?file= param after posts are loaded
+    var params = new URLSearchParams(location.search);
+    var fileParam = params.get("file");
+    if (fileParam) openPost(fileParam);
+  });
+})();
+</script>
+
+</body>
+</html>
