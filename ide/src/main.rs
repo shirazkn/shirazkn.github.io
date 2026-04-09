@@ -10,7 +10,8 @@ use serde::{Deserialize, Serialize};
 use std::{
     fs,
     path::PathBuf,
-    sync::Arc,
+    process::Child,
+    sync::{Arc, Mutex},
     time::SystemTime,
 };
 
@@ -32,6 +33,7 @@ struct AppState {
     images_dir: PathBuf,
     static_dir: PathBuf,
     dark: bool,
+    server_child: Arc<Mutex<Option<Child>>>,
 }
 
 #[derive(Serialize)]
@@ -304,6 +306,35 @@ async fn publish(
     }
 }
 
+async fn start_server(State(state): State<Arc<AppState>>) -> Response {
+    let mut guard = state.server_child.lock().unwrap();
+    let running = guard.as_mut().map_or(false, |c| {
+        c.try_wait().map_or(false, |s| s.is_none())
+    });
+    if !running {
+        match std::process::Command::new("hugo")
+            .args(["-D", "server"])
+            .current_dir(&state.root)
+            .spawn()
+        {
+            Ok(child) => { *guard = Some(child); }
+            Err(e) => {
+                return axum::Json(serde_json::json!({
+                    "ok": false,
+                    "error": format!("Failed to start hugo server: {}", e),
+                    "url": "http://localhost:1313"
+                }))
+                .into_response();
+            }
+        }
+    }
+    axum::Json(serde_json::json!({
+        "ok": true,
+        "url": "http://localhost:1313"
+    }))
+    .into_response()
+}
+
 async fn serve_image(
     State(state): State<Arc<AppState>>,
     Path(rest): Path<String>,
@@ -347,6 +378,7 @@ async fn main() {
         static_dir: root.join("static"),
         dark: args.dark,
         root: root.clone(),
+        server_child: Arc::new(Mutex::new(None)),
     });
 
     let app = Router::new()
@@ -355,6 +387,7 @@ async fn main() {
         .route("/api/posts/{filename}", get(read_post).put(write_post))
         .route("/api/upload/{slug}", post(upload_image))
         .route("/api/publish", post(publish))
+        .route("/api/server", post(start_server))
         .route("/post-images/{*rest}", get(serve_image))
         .with_state(state);
 

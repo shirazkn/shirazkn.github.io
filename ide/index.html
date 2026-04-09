@@ -19,6 +19,18 @@ MathJax = {
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked@15.0.7/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked-footnote@1.2.4/dist/index.umd.js"></script>
+
+<!-- Prism: syntax highlighting for preview (manual mode so it doesn't run on load) -->
+<script>window.Prism = { manual: true };</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css">
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script>
+if (window.Prism && Prism.plugins && Prism.plugins.autoloader) {
+  Prism.plugins.autoloader.languages_path = 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/';
+}
+</script>
 
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,12 +43,12 @@ MathJax = {
   --ide-accent: #bc0a5c;
   --ide-accent-hover: #a00850;
   --ide-border: #ddd;
-  --ide-editor-bg: #fff;
+  --ide-editor-bg: #f6f5f4;
   --ide-editor-fg: #1e1e1e;
-  --ide-sidebar-bg: #f0f0f0;
+  --ide-sidebar-bg: #eeedec;
   --ide-hover: rgba(0,0,0,0.04);
   --ide-active-bg: rgba(188,10,92,0.08);
-  --pv-bg: #fff;
+  --pv-bg: #f6f5f4;
   --pv-fg: rgb(31,31,31);
   --pv-secondary: rgb(122,125,124);
   --pv-tertiary: rgb(195,194,194);
@@ -58,7 +70,7 @@ MathJax = {
   --ide-accent-hover: #d86e96;
   --ide-border: #1c1c20;
   --ide-editor-bg: #0e0e11;
-  --ide-editor-fg: #b0b0b4;
+  --ide-editor-fg: #d0d0d4;
   --ide-sidebar-bg: #0e0e11;
   --ide-hover: rgba(255,255,255,0.025);
   --ide-active-bg: rgba(196,74,122,0.1);
@@ -76,7 +88,7 @@ MathJax = {
 }
 
 html, body {
-  height: 100%;
+  height: 100%; overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: var(--ide-bg); color: var(--ide-fg);
 }
@@ -90,7 +102,7 @@ html, body {
   transition: width 0.2s, opacity 0.15s;
   overflow: hidden; flex-shrink: 0;
 }
-#sidebar.collapsed { width: 0; border-right: none; opacity: 0; pointer-events: none; }
+#sidebar.collapsed { width: 0; min-width: 0; border-right: none; opacity: 0; pointer-events: none; padding: 0; }
 
 #sidebar-toggle {
   background: none; border: none;
@@ -152,10 +164,10 @@ html, body {
 
 #panes { flex: 1; display: flex; min-height: 0; }
 
-#editor-pane { flex: 1; min-width: 0; position: relative; }
+#editor-pane { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 
 #editor-textarea {
-  position: absolute; inset: 0; width: 100%; height: 100%;
+  flex: 1; width: 100%; min-height: 0;
   resize: none; border: none; outline: none;
   background: var(--ide-editor-bg); color: var(--ide-editor-fg);
   padding: 20px 24px;
@@ -164,6 +176,34 @@ html, body {
 }
 #editor-textarea.no-wrap { white-space: pre; overflow-x: auto; }
 #editor-textarea::placeholder { color: var(--ide-fg2); }
+
+/* CodeMirror fill */
+#editor-pane .cm-editor {
+  flex: 1; min-height: 0;
+}
+#editor-pane .cm-editor .cm-scroller {
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Menlo, monospace;
+  font-size: 13.5px; line-height: 1.7;
+  padding: 12px 0;
+}
+.cm-editor { background: var(--ide-editor-bg); color: var(--ide-editor-fg); }
+.cm-editor .cm-gutters {
+  background: var(--ide-editor-bg); color: var(--ide-fg2);
+  border-right: 1px solid var(--ide-border);
+}
+.cm-editor .cm-activeLineGutter { color: var(--ide-fg); }
+.cm-editor .cm-activeLine { background: var(--ide-active-bg); }
+.cm-editor .cm-selectionBackground, .cm-editor ::selection {
+  background: color-mix(in srgb, var(--ide-accent) 15%, transparent) !important;
+}
+.cm-editor .cm-cursor { border-left-color: var(--ide-accent); }
+.cm-editor .cm-line { padding-left: 4px; }
+
+/* Math decoration colors */
+.cm-editor .cm-math-mark { color: #d49030; }
+.cm-editor .cm-math-content { color: #b07828; }
+.dark-mode .cm-editor .cm-math-mark { color: #f9e2af; }
+.dark-mode .cm-editor .cm-math-content { color: #e0c070; }
 
 #resize-handle {
   width: 4px; cursor: col-resize; background: var(--ide-border);
@@ -174,16 +214,23 @@ html, body {
 #preview-pane {
   flex: 1; overflow-y: auto; min-width: 0;
   background: var(--pv-bg); padding: 36px 44px;
+
 }
 
 /* Heading TOC overlay */
 #toc {
-  position: absolute; top: 36px; right: 8px; z-index: 50;
+  position: absolute; top: 42px; right: 12px; z-index: 50;
   max-width: 200px; max-height: calc(100% - 80px); overflow-y: auto;
   font-size: 11px; line-height: 1.5;
-  opacity: 0.35; transition: opacity 0.15s;
+  padding: 4px 2px;
+  opacity: 0; transition: opacity 0.2s, background 0.2s;
+  border-radius: 4px;
 }
-#toc:hover { opacity: 0.9; }
+#toc:hover {
+  opacity: 1;
+  background: color-mix(in srgb, var(--pv-bg) 85%, transparent);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
 #toc a {
   display: block; color: var(--pv-fg); text-decoration: none;
   padding: 1px 8px; border-left: 2px solid transparent;
@@ -222,6 +269,16 @@ html, body {
 .pv li { margin: 0.3em 0; }
 .pv li > p { margin: 0.3em 0; }
 .pv img { max-width: 100%; height: auto; border-radius: 4px; margin: 1em 0; }
+.pv figure { margin: 1.2em auto; text-align: center; }
+.pv figure img { margin: 0; }
+.pv figcaption { font-size: 0.85em; opacity: 0.65; margin-top: 0.4em; }
+/* invertible: dark mode inverts; deinvertible: light mode inverts */
+html.dark-mode .pv figure.invertible img,
+html.dark-mode .pv img.invertible { filter: invert(0.875) hue-rotate(180deg); }
+.pv figure.deinvertible img,
+.pv img.deinvertible { filter: invert(0.875) hue-rotate(180deg); }
+html.dark-mode .pv figure.deinvertible img,
+html.dark-mode .pv img.deinvertible { filter: none; }
 .pv a { color: var(--pv-accent); }
 .pv code { background: var(--pv-code-bg); padding: 2px 5px; border-radius: 3px; font-size: 0.9em; }
 .pv pre { background: var(--pv-pre-bg); color: var(--pv-pre-fg); padding: 16px; border-radius: 6px; overflow-x: auto; margin: 1em 0; }
@@ -295,6 +352,7 @@ html, body {
       <div class="spacer"></div>
       <span id="save-status"></span>
       <button class="tb-btn" id="wrap-btn" title="Toggle line wrap (Ctrl+L)">wrap</button>
+      <button class="tb-btn" id="server-btn" title="Open Hugo preview server (localhost:1313)">server</button>
     </div>
 
     <div id="panes">
@@ -322,6 +380,7 @@ html, body {
 (function() {
   "use strict";
 
+  // ---- DOM ----
   var ta = document.getElementById("editor-textarea");
   var postList = document.getElementById("post-list");
   var searchInput = document.getElementById("search-input");
@@ -340,20 +399,80 @@ html, body {
   var sidebar = document.getElementById("sidebar");
   var sidebarToggle = document.getElementById("sidebar-toggle");
   var wrapBtn = document.getElementById("wrap-btn");
+  var serverBtn = document.getElementById("server-btn");
 
+  // ---- State ----
   var currentFile = null;
   var originalContent = "";
   var isModified = false;
   var autoSaveTimer = null;
   var allPosts = [];
-  var activeScrollPane = null;
-  var wordWrap = true; // on by default
+  var wordWrap = true;
+
+  // ============================================================
+  // Editor abstraction — wraps textarea, upgrades to CM if loaded
+  // ============================================================
+  var E = {
+    _cm: null,
+    getValue: function() { return this._cm ? this._cm.state.doc.toString() : ta.value; },
+    setValue: function(text) {
+      if (this._cm) {
+        this._cm.dispatch({ changes: { from: 0, to: this._cm.state.doc.length, insert: text } });
+      } else {
+        ta.value = text;
+      }
+    },
+    getCursor: function() {
+      return this._cm ? this._cm.state.selection.main.head : ta.selectionStart;
+    },
+    insertAt: function(pos, text, cursorOffset) {
+      if (this._cm) {
+        var anchor = pos + (cursorOffset != null ? cursorOffset : text.length);
+        this._cm.dispatch({ changes: { from: pos, insert: text }, selection: { anchor: anchor } });
+        this._cm.focus();
+      } else {
+        ta.value = ta.value.slice(0, pos) + text + ta.value.slice(ta.selectionEnd);
+        var cp = pos + (cursorOffset != null ? cursorOffset : text.length);
+        ta.selectionStart = ta.selectionEnd = cp;
+        ta.focus();
+      }
+      onEditorChange();
+    },
+    focus: function() { this._cm ? this._cm.focus() : ta.focus(); },
+    scrollTop: function(v) {
+      var dom = this._cm ? this._cm.scrollDOM : ta;
+      if (v !== undefined) { dom.scrollTop = v; return; }
+      return dom.scrollTop;
+    },
+    scrollFrac: function() {
+      var dom = this._cm ? this._cm.scrollDOM : ta;
+      return dom.scrollTop / Math.max(1, dom.scrollHeight - dom.clientHeight);
+    },
+    setScrollFrac: function(f) {
+      var dom = this._cm ? this._cm.scrollDOM : ta;
+      dom.scrollTop = f * (dom.scrollHeight - dom.clientHeight);
+    },
+    scrollDOM: function() { return this._cm ? this._cm.scrollDOM : ta; },
+  };
 
   // ---- Sidebar ----
   var sidebarOpen = true;
+  var firstPostOpened = false;
   sidebarToggle.addEventListener("click", function() {
     sidebarOpen = !sidebarOpen;
-    sidebar.classList.toggle("collapsed", !sidebarOpen);
+    if (sidebarOpen) {
+      sidebar.style.display = "";
+      // Force reflow so the transition runs
+      sidebar.offsetWidth;
+      sidebar.classList.remove("collapsed");
+    } else {
+      sidebar.classList.add("collapsed");
+      // After transition, hide completely to avoid layout cost
+      sidebar.addEventListener("transitionend", function hide() {
+        if (!sidebarOpen) sidebar.style.display = "none";
+        sidebar.removeEventListener("transitionend", hide);
+      });
+    }
   });
 
   // ---- Line wrap toggle ----
@@ -363,6 +482,7 @@ html, body {
     wordWrap = !wordWrap;
     ta.classList.toggle("no-wrap", !wordWrap);
     wrapBtn.classList.toggle("active", wordWrap);
+    // TODO: CM wrap reconfigure if needed
   }
 
   // ---- Posts ----
@@ -392,7 +512,6 @@ html, body {
     for (var i = 0; i < items.length; i++) {
       (function(el) {
         el.addEventListener("click", function(e) {
-          // Cmd+click → open in new tab
           if (e.metaKey || e.ctrlKey) {
             window.open("/?file=" + encodeURIComponent(el.getAttribute("data-file")), "_blank");
           } else {
@@ -417,24 +536,25 @@ html, body {
         isModified = false;
         currentFileEl.textContent = filename;
         modifiedDot.classList.remove("visible");
-        ta.value = data.content;
+        E.setValue(data.content);
         renderPostList(searchInput.value);
         updatePreview();
-        ta.focus();
-        ta.setSelectionRange(0, 0);
-        ta.scrollTop = 0;
+        E.focus();
+        E.scrollTop(0);
+        if (!firstPostOpened) { firstPostOpened = true; if (sidebarOpen) sidebarToggle.click(); }
       })
       .catch(function() { flash("Failed to open file"); });
   }
 
   function savePost() {
     if (!currentFile || !isModified) return;
+    var content = E.getValue();
     fetch("/api/posts/" + encodeURIComponent(currentFile), {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content: ta.value }),
+      body: JSON.stringify({ content: content }),
     }).then(function() {
-      originalContent = ta.value;
+      originalContent = content;
       isModified = false;
       modifiedDot.classList.remove("visible");
       saveStatus.textContent = "saved";
@@ -445,15 +565,15 @@ html, body {
   // ---- Publish ----
   function doPublish() {
     var msg = prompt("Commit message for publish:", "update blog");
-    if (msg === null) return; // cancelled
-    // Force-save first if modified
+    if (msg === null) return;
+    var content = E.getValue();
     if (isModified && currentFile) {
       fetch("/api/posts/" + encodeURIComponent(currentFile), {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: ta.value }),
+        body: JSON.stringify({ content: content }),
       }).then(function() {
-        originalContent = ta.value;
+        originalContent = content;
         isModified = false;
         modifiedDot.classList.remove("visible");
         runPublish(msg);
@@ -480,10 +600,11 @@ html, body {
     }).catch(function(e) { flash("Publish error: " + e.message); });
   }
 
-  // ---- Editor events ----
+  // ---- Editor change handler (shared by textarea and CM) ----
   var previewTimer = null;
-  ta.addEventListener("input", function() {
-    isModified = ta.value !== originalContent;
+  function onEditorChange() {
+    var content = E.getValue();
+    isModified = content !== originalContent;
     modifiedDot.classList.toggle("visible", isModified);
     clearTimeout(previewTimer);
     previewTimer = setTimeout(updatePreview, 250);
@@ -491,18 +612,19 @@ html, body {
       clearTimeout(autoSaveTimer);
       autoSaveTimer = setTimeout(savePost, 2000);
     }
-  });
+  }
 
-  ta.addEventListener("keyup", updateCursor);
-  ta.addEventListener("click", updateCursor);
+  // Textarea fallback events
+  ta.addEventListener("input", onEditorChange);
+  ta.addEventListener("keyup", updateCursorTA);
+  ta.addEventListener("click", updateCursorTA);
 
-  function updateCursor() {
+  function updateCursorTA() {
     var pos = ta.selectionStart;
     var lines = ta.value.slice(0, pos).split("\n");
     statusCursor.textContent = "Ln " + lines.length + ", Col " + (lines[lines.length - 1].length + 1);
   }
 
-  // Tab inserts spaces
   ta.addEventListener("keydown", function(e) {
     if (e.key === "Tab") {
       e.preventDefault();
@@ -521,12 +643,13 @@ html, body {
   }
 
   function updatePreview() {
-    var text = ta.value;
+    var text = E.getValue();
     var parsed = stripFrontMatter(text);
     var body = parsed.body;
     var wc = body.trim() ? body.trim().split(/\s+/).length : 0;
     statusWords.textContent = wc + " words";
     preview.innerHTML = marked.parse(body);
+    if (window.Prism) Prism.highlightAllUnder(preview);
     buildToc();
     if (window.MathJax && MathJax.typesetPromise) {
       MathJax.typesetPromise([preview]).catch(function() {});
@@ -549,7 +672,6 @@ html, body {
     toc.innerHTML = html;
   }
 
-  // TOC click — use event delegation so MathJax re-rendering doesn't break it
   toc.addEventListener("click", function(e) {
     var a = e.target.closest("a[data-target]");
     if (!a) return;
@@ -557,29 +679,19 @@ html, body {
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
-  // ---- Scroll sync ----
-  editorPane.addEventListener("mouseenter", function() { activeScrollPane = "editor"; });
-  previewPane.addEventListener("mouseenter", function() { activeScrollPane = "preview"; });
-
-  ta.addEventListener("scroll", function() {
-    if (activeScrollPane !== "editor") return;
-    var frac = ta.scrollTop / Math.max(1, ta.scrollHeight - ta.clientHeight);
-    previewPane.scrollTop = frac * (previewPane.scrollHeight - previewPane.clientHeight);
-  });
-  previewPane.addEventListener("scroll", function() {
-    if (activeScrollPane !== "preview") return;
-    var frac = previewPane.scrollTop / Math.max(1, previewPane.scrollHeight - previewPane.clientHeight);
-    ta.scrollTop = frac * (ta.scrollHeight - ta.clientHeight);
-  });
+  // ---- Scroll sync: disabled (scroll each pane independently) ----
+  var mjBusy = false;
+  function setupEditorScroll() {} // no-op, called by CM loader
 
   // ---- Clipboard paste ----
-  document.addEventListener("paste", function(e) {
+  function pasteImageIfAny(e) {
     if (!currentFile) return;
     var items = e.clipboardData && e.clipboardData.items;
     if (!items) return;
     for (var i = 0; i < items.length; i++) {
       if (items[i].type.indexOf("image/") === 0) {
         e.preventDefault();
+        e.stopPropagation();
         var file = items[i].getAsFile();
         if (!file) continue;
         var ext = file.type.split("/")[1] || "png";
@@ -591,6 +703,24 @@ html, body {
         return;
       }
     }
+  }
+  // Fallback for textarea (when CM is not loaded)
+  document.addEventListener("paste", pasteImageIfAny);
+
+  // ---- Server button ----
+  function currentPreviewUrl() {
+    var base = "http://localhost:1313";
+    if (!currentFile) return base;
+    var stem = currentFile.replace(/\.md$/, "");
+    if (currentFile === "about.md") return base + "/about/";
+    return base + "/posts/" + stem + "/";
+  }
+
+  serverBtn.addEventListener("click", function() {
+    var url = currentPreviewUrl();
+    fetch("/api/server", { method: "POST" })
+      .then(function() { window.open(url, "_blank"); })
+      .catch(function() { window.open(url, "_blank"); });
   });
 
   // ---- Drag & Drop ----
@@ -622,11 +752,10 @@ html, body {
       .then(function(r) { return r.json(); })
       .then(function(data) {
         if (data.ok) {
-          var pos = ta.selectionStart;
-          var tag = '\n<img src="' + data.path + '">\n';
-          ta.value = ta.value.slice(0, pos) + tag + ta.value.slice(pos);
-          ta.selectionStart = ta.selectionEnd = pos + tag.length;
-          ta.dispatchEvent(new Event("input"));
+          var pos = E.getCursor();
+          var fig = '\n<figure class=invertible style="max-width: 100%;">\n<img src="' + data.path + '">\n<figcaption></figcaption>\n</figure>\n';
+          var captionCursor = fig.indexOf('<figcaption>') + '<figcaption>'.length;
+          E.insertAt(pos, fig, captionCursor);
           flash("Added " + data.filename);
         }
         uploadFiles(files, slug, i + 1);
@@ -655,24 +784,17 @@ html, body {
     }
   });
 
-  // ---- Insert helpers ----
-  function insertAtCursor(text) {
-    var s = ta.selectionStart;
-    ta.value = ta.value.slice(0, s) + text + ta.value.slice(ta.selectionEnd);
-    // Place cursor inside the block (between $$ and $$)
-    var cursorPos = s + text.indexOf("\n") + 1;
-    ta.selectionStart = ta.selectionEnd = cursorPos;
-    ta.focus();
-    ta.dispatchEvent(new Event("input"));
-  }
-
   // ---- Keys ----
   document.addEventListener("keydown", function(e) {
     var mod = e.metaKey || e.ctrlKey;
     if (mod && e.key === "s") { e.preventDefault(); savePost(); }
     if (mod && e.key === "b") { e.preventDefault(); sidebarToggle.click(); }
     if (mod && e.key === "l") { e.preventDefault(); toggleWrap(); }
-    if (mod && e.key === "e") { e.preventDefault(); insertAtCursor("\n$$\n\n$$\n"); }
+    if (mod && e.key === "e") {
+      e.preventDefault();
+      var txt = "\n$$\n\n$$\n";
+      E.insertAt(E.getCursor(), txt, 4); // cursor between the $$ pairs
+    }
     if (mod && e.key === "p" && !e.shiftKey) {
       e.preventDefault();
       if (!sidebarOpen) sidebarToggle.click();
@@ -687,13 +809,194 @@ html, body {
     setTimeout(function() { if (statusMsg.textContent === msg) statusMsg.textContent = ""; }, 3000);
   }
 
+  // ============================================================
+  // CodeMirror — async load, upgrades textarea if successful
+  // ============================================================
+  async function loadCodeMirror() {
+    try {
+      var cmMod = await import("https://esm.sh/codemirror");
+      var mdMod = await import("https://esm.sh/@codemirror/lang-markdown");
+      var viewMod = await import("https://esm.sh/@codemirror/view");
+      var stateMod = await import("https://esm.sh/@codemirror/state");
+      var langMod = await import("https://esm.sh/@codemirror/language");
+      var hlMod = await import("https://esm.sh/@lezer/highlight");
+
+      var EditorView = cmMod.EditorView;
+      var basicSetup = cmMod.basicSetup;
+      var markdownLang = mdMod.markdown;
+      var EditorState = stateMod.EditorState;
+      var RangeSetBuilder = stateMod.RangeSetBuilder;
+      var km = viewMod.keymap;
+      var ViewPlugin = viewMod.ViewPlugin;
+      var Decoration = viewMod.Decoration;
+      var syntaxHighlighting = langMod.syntaxHighlighting;
+      var HighlightStyle = langMod.HighlightStyle;
+      var t = hlMod.tags;
+
+      var isDark = document.documentElement.classList.contains("dark-mode");
+
+      // ---- Color palette ----
+      var colors = isDark ? {
+        heading:    "#eda0b8",
+        strong:     "#ddd8dc",
+        emphasis:   "#c8a4f0",
+        link:       "#89dceb",
+        url:        "#74c7ec",
+        code:       "#a6e3a1",
+        meta:       "#585868",
+        comment:    "#505060",
+        separator:  "#404048",
+        punct:      "#606070",
+        list:       "#eda0b8",
+        string:     "#a6e3a1",
+      } : {
+        heading:    "#c03060",
+        strong:     "#333",
+        emphasis:   "#7c3aed",
+        link:       "#0870a8",
+        url:        "#0d7ea0",
+        code:       "#2e8b57",
+        meta:       "#b0b0b0",
+        comment:    "#bbbbbb",
+        separator:  "#cccccc",
+        punct:      "#aaaaaa",
+        list:       "#c03060",
+        string:     "#2e8b57",
+      };
+
+      var myStyle = HighlightStyle.define([
+        { tag: t.heading,   color: colors.heading },
+        { tag: t.heading1,  color: colors.heading },
+        { tag: t.heading2,  color: colors.heading },
+        { tag: t.heading3,  color: colors.heading },
+        { tag: t.heading4,  color: colors.heading },
+        { tag: t.strong,    color: colors.strong },
+        { tag: t.emphasis,  color: colors.emphasis, fontStyle: "italic" },
+        { tag: t.link,      color: colors.link },
+        { tag: t.url,       color: colors.url },
+        { tag: t.monospace, color: colors.code },
+        { tag: t.meta,      color: colors.meta },
+        { tag: t.comment,   color: colors.comment },
+        { tag: t.contentSeparator, color: colors.separator },
+        { tag: t.processingInstruction, color: colors.meta },
+        { tag: t.punctuation, color: colors.punct },
+        { tag: t.list,      color: colors.list },
+        { tag: t.string,    color: colors.string },
+        { tag: t.quote,     color: colors.emphasis },
+      ]);
+
+      var theme = EditorView.theme({
+        "&": { height: "100%", backgroundColor: "var(--ide-editor-bg)" },
+        ".cm-scroller": { overflow: "auto" },
+        ".cm-content": { caretColor: "var(--ide-accent)" },
+        ".cm-gutters": {
+          backgroundColor: "var(--ide-editor-bg)",
+          color: "var(--ide-fg2)",
+          borderRight: "1px solid var(--ide-border)",
+        },
+      }, { dark: isDark });
+
+      var saveKM = km.of([
+        { key: "Mod-s", run: function() { savePost(); return true; } },
+        { key: "Mod-e", run: function() {
+          E.insertAt(E.getCursor(), "\n$$\n\n$$\n", 4);
+          return true;
+        }},
+      ]);
+
+      var updateListener = EditorView.updateListener.of(function(update) {
+        if (update.docChanged) onEditorChange();
+        if (update.selectionSet) {
+          var pos = update.state.selection.main.head;
+          var line = update.state.doc.lineAt(pos);
+          statusCursor.textContent = "Ln " + line.number + ", Col " + (pos - line.from + 1);
+        }
+      });
+
+      // ---- Math highlighting ----
+      var mathMarkDeco = Decoration.mark({ class: "cm-math-mark" });
+      var mathContentDeco = Decoration.mark({ class: "cm-math-content" });
+
+      var mathPlugin = ViewPlugin.fromClass(
+        class {
+          constructor(view) { this.decorations = this.build(view.state); }
+          update(update) {
+            if (update.docChanged) this.decorations = this.build(update.state);
+          }
+          build(state) {
+            var builder = new RangeSetBuilder();
+            var text = state.doc.toString();
+            var re = /\$\$[\s\S]*?\$\$|\$(?!\$|\s)(?:[^$\n\\]|\\.)*(?<!\s)\$/g;
+            var m;
+            while ((m = re.exec(text)) !== null) {
+              var from = m.index;
+              var to = from + m[0].length;
+              var dLen = m[0].startsWith("$$") ? 2 : 1;
+              builder.add(from, from + dLen, mathMarkDeco);
+              if (to - from > dLen * 2)
+                builder.add(from + dLen, to - dLen, mathContentDeco);
+              builder.add(to - dLen, to, mathMarkDeco);
+            }
+            return builder.finish();
+          }
+        },
+        { decorations: function(v) { return v.decorations; } }
+      );
+
+      var currentText = ta.value;
+      var cmPlaceholder = viewMod.placeholder;
+
+      var cmEditor = new EditorView({
+        state: EditorState.create({
+          doc: currentText,
+          extensions: [
+            basicSetup,
+            markdownLang(),
+            theme,
+            syntaxHighlighting(myStyle),
+            saveKM,
+            updateListener,
+            EditorView.lineWrapping,
+            mathPlugin,
+            cmPlaceholder("Select a post from the sidebar to start editing."),
+          ],
+        }),
+        parent: editorPane,
+      });
+
+      // Verify it rendered with actual height before switching
+      requestAnimationFrame(function() {
+        if (cmEditor.dom.clientHeight > 50) {
+          ta.style.display = "none";
+          E._cm = cmEditor;
+          // Capture-phase paste handler ensures we intercept image pastes
+          // before CM processes them (CM does not handle images, just text)
+          cmEditor.contentDOM.addEventListener("paste", pasteImageIfAny, true);
+          setupEditorScroll();
+          flash("Syntax highlighting loaded");
+        } else {
+          // CM didn't size properly — destroy and keep textarea
+          cmEditor.destroy();
+          console.warn("CodeMirror rendered at 0 height, keeping textarea");
+        }
+      });
+
+    } catch (e) {
+      console.error("CodeMirror load error:", e);
+      flash("CM failed: " + (e.message || e));
+    }
+  }
+
   // ---- Init ----
+  if (window.markedFootnote) marked.use(markedFootnote());
+
   loadPosts(function() {
-    // Handle ?file= param after posts are loaded
     var params = new URLSearchParams(location.search);
     var fileParam = params.get("file");
     if (fileParam) openPost(fileParam);
   });
+
+  loadCodeMirror();
 })();
 </script>
 

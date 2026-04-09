@@ -97,6 +97,17 @@ body.dark img.invertible {
     filter: invert(0.875) hue-rotate(180deg);
 }
 
+/* Deinverted: inverted in light mode, normal in dark mode */
+figure.deinvertible img,
+img.deinvertible {
+    filter: invert(0.875) hue-rotate(180deg);
+}
+
+body.dark figure.deinvertible img,
+body.dark img.deinvertible {
+    filter: none;
+}
+
 video.inverted {
     filter: invert(1.0) hue-rotate(180deg) contrast(125%);
 }

@@ -57,8 +57,6 @@ The compromise is that the Vitali set will be deemed <span class=accented>non-me
 The elements of $\mathscr F$ are called the *measurable subsets* of $\Omega$.
 
 If $\Omega$ has only finitely many elements (e.g., $\Omega=\lbrace 1, 2, 3, 4, 5, 6\rbrace$), then as it turns out, it is okay to let $\mathscr F = 2^\Omega$. When $\Omega=\mathbb R^n$, we typically let $\mathscr F$ be the *Borel* $\sigma$-algebra, which is defined as the smallest (i.e., coarsest) $\sigma$-algebra containing the open sets. In this way, the Borel $\sigma$-algebra ties together the fields of calculus and probability, allowing us to talk about *continuous* random variables.
-<!-- The [axioms](https://en.wikipedia.org/wiki/Σ-algebra#Definition_and_properties) which a $\sigma$-algebra should satisfy are surprisingly straightforward. Mathematicians like cleaning things up at the end of the day. It is unthinkable that an entire field of mathematics (probability) could be founded on messy definitions with many edge cases. -->
-
 <hr> 
 
 ## Random Variables
