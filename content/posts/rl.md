@@ -1,7 +1,6 @@
 ---
 title: VLA Models
 date: 2025-12-06T18:56:12-05:00
-draft: false
 summary: A review of the basic concepts that go into the design and training of VLA models.
 showToc: true
 tags: ["Optimization", "Probability", "Robotics"]
@@ -10,7 +9,9 @@ tikzjax: false
 
 As research labs are beginning to phase out Vision Language Action (VLA) models in favor of the newer "world models", this is a perfect time to look back on a field that has had some time to mature, and put together some notation that makes it easier to talk about the central concepts. Most of the technical content is borrowed from the papers by [Physical Intelligence](https://www.pi.website), some of it comes from my background in control theory.
 
-## States \& Observations
+# Definitions
+
+## States, Observations, and Actions
 Let $\mathscr S$ be the state space of a robot. The <span class=accented>state</span> at time $t$ is written as $S_t$, which is an $\mathscr S$-valued random variable. For example, $S_t$ may be the robot's joint angles at times 
 $$
 \begin{array}{c@{\,,\ }c@{\,,\ }c@{\,,\ }c@{\,,\ }c@{}c}
@@ -23,12 +24,9 @@ where $\tau$ is a timestep. In this case, $\mathscr S=(SO(2))^{\mathrm j\mathrm 
 In control theory, the <i>state-transition map</i> tells you how the state of a system evolves over time, subject to some state-dependent control inputs. We can formulate something similar in the stochastic setting using a stochastic differential equation (SDE) or its corresponding Fokker-Planck equation.
 </aside>
 
-
-## Actions
-
 The goal of learning-based control is to learn a <span class=accented>policy</span>, which is a mapping that takes $S_t$ and outputs an <span class=accented>action</span> $A_t$. A policy enables the robot to interact with (and respond to changes in) its environment. We may expect our mapping from $S_t$ to $A_t$ to be deterministic, nevertheless, it proves to be more convenient to consider a probabilistic policy. Let the policy <span class=accented>$\pi$</span> be the conditional pdf $\pi(a,s)\coloneqq f_{A_t|S_t}(a|s)$ that tells you the probability density of taking the action $a$ given the state $s$. As the notation suggests, we have assumed that $\pi$ does not explicitly depend on time (though one could always cheat and include $t$ itself as a variable in $S_t$).
 
-Diffusion and flow-matching policies became extremely fashionable in 2025. In fact, there exists a continuous spectrum of <span class=accented>generative policies</span> that interpolates between diffusion (SDE-based generation) and flow-matching (ODE generation with random initial condition). Generative policies learn how to generate samples from $\pi(\,\cdot\,,s)$ for each $s\in\mathscr S$, rather than learning the pdf $\pi$ directly. While the generative model serves as the <span class=accented>action head</span>, the observations are passed through a vision encoder that goes into a VLM (vision-language model), which in turn steers the action head via something like [FiLM](https://arxiv.org/abs/1709.07871).
+
 
 ## Trajectories
 
@@ -51,8 +49,19 @@ The subscripts for "$f$" indicate that two different functions are used on eithe
 
 We can replace $[0,t]$ with $\lbrace 0, 1, 2, \ldots, {\rm k}\rbrace$ to recover the discrete-time formulation. For instance, a discrete-time trajectory may be viewed as a map $\lbrace 0, 1, 2 \ldots \rbrace \rightarrow \mathscr S$.
 
-## Datasets
-Given an underlying distribution over initial conditions (represented by $S_0$), a policy $\pi$, and a stochastic dynamical model for the system (e.g., an underlying SDE), we get a combined stochastic process $(S_t,A_t)_{t\in[0,\infty)}$. This is the random state-action trajectory. Conversely, if we have a <span class=accented>dataset</span> of state-action trajectories, we can learn the $\pi$ that would generate them; this is <span class=accented>behavior cloning</span>. We can also make small perturbations to $\pi$ to see if the resulting trajectories improve upon some reward function (in expectation); this is <span class=accented>reinforcement learning</span>. Regularization can be introduced to ensure that the perturbed policy doesn't deviate too far from some baseline policy (as done in TRPO and PPO). The regularization term is typically an information-theoretic [divergence](https://en.wikipedia.org/wiki/Divergence_(statistics)) between $(S_t,A_t)_{t\in[0,\infty)}$ and the baseline policy; the divergence between two distributions measures how much they differ from each other.
+
+
+# Concepts
+Given an underlying distribution over initial conditions (represented by $S_0$), a policy $\pi$, and a stochastic dynamical model for the system (e.g., an underlying SDE), we get a combined stochastic process $(S_t,A_t)_{t\in[0,\infty)}$. This is the random state-action trajectory. Conversely, if we have a <span class=accented>dataset</span> of state-action trajectories, we can learn the $\pi$ that would generate them; this is <span class=]
+accented>behavior cloning</span>. We can also make small perturbations to $\pi$ to see if the resulting trajectories improve upon some reward function (in expectation); this is <span class=accented>reinforcement learning</span>. Regularization can be introduced to ensure that the perturbed policy doesn't deviate too far from some baseline policy (as done in TRPO and PPO). The regularization term is typically an information-theoretic [divergence](https://en.wikipedia.org/wiki/Divergence_(statistics)) between $(S_t,A_t)_{t\in[0,\infty)}$ and the baseline policy; the divergence between two distributions measures how much they differ from each other.
+
+## Generative Policies
+
+Diffusion and flow-matching policies became extremely fashionable in 2025. There exists a continuous spectrum of <span class=accented>generative policies</span> that interpolates between diffusion (SDE-based generation) and flow-matching (ODE generation with random initial condition).
+Generative policies learn how to generate samples from $\pi(\,\cdot\,,s)$ for each $s\in\mathscr S$, rather than learning the pdf $\pi$ directly. While the generative model serves as the <span class=accented>action head</span>, the observations are passed through a vision encoder and then into a VLM (vision-language model), which in turn steers the action head via something like [FiLM](https://arxiv.org/abs/1709.07871).
+
+Our goal is to learn a generative model that can sample from $f_{A_t|S_t}(\,\cdot\,|s)$. For simplicity, let's denote this pdf as $\pi$, so that our goal is to sample from $\pi$.
+
 
 ## Action Chunking
 

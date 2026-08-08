@@ -2,185 +2,223 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Shiraz</title>
-    <link>https://shirazkn.github.io/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Shiraz</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 06 Dec 2025 18:56:12 -0500</lastBuildDate>
-    <atom:link href="https://shirazkn.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Apr 2026 13:44:06 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SE(3) Boids</title>
+      <link>http://localhost:1313/posts/godot/</link>
+      <pubDate>Sun, 05 Apr 2026 13:44:06 -0400</pubDate>
+      <guid>http://localhost:1313/posts/godot/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m currently learning the game engine &lt;a href=&#34;https://godotengine.org&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    Godot
+&lt;/a&gt;. As an introductory project, I am going to create a &lt;a href=&#34;https://brubsby.com/?a=23&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    boids
+&lt;/a&gt;-style simulation that uses some light Lie group theory.
+Let&amp;rsquo;s first review the &lt;a href=&#34;https://docs.godotengine.org/en/stable/getting_started/introduction/key_concepts_overview.html&#34; target=&#34;_blank&#34; class=&#34;accented&#34;&gt;
+    basic ingredients
+&lt;/a&gt; of a Godot project. If I got any of the details of Godot wrong, please let me know! I did not get any of the details of Lie groups wrong.&lt;/p&gt;
+&lt;h1 id=&#34;basics&#34;&gt;Basics&lt;/h1&gt;
+&lt;h2 id=&#34;nodes-are-class-instances&#34;&gt;&lt;span class=accented&gt;Nodes&lt;/span&gt; are Class Instances&lt;/h2&gt;
+&lt;p&gt;A &lt;span class=accented&gt;node&lt;/span&gt; refers to an instance/object of a class. Each node is the instance of some class, that is, we can define a mapping&lt;/p&gt;</description>
+    </item>
     <item>
       <title>VLA Models</title>
-      <link>https://shirazkn.github.io/posts/rl/</link>
+      <link>http://localhost:1313/posts/rl/</link>
       <pubDate>Sat, 06 Dec 2025 18:56:12 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/rl/</guid>
+      <guid>http://localhost:1313/posts/rl/</guid>
       <description>A review of the basic concepts that go into the design and training of VLA models.</description>
     </item>
     <item>
       <title>Representing Spatial Velocities</title>
-      <link>https://shirazkn.github.io/posts/robotics/</link>
+      <link>http://localhost:1313/posts/robotics/</link>
       <pubDate>Thu, 13 Nov 2025 21:23:17 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/robotics/</guid>
+      <guid>http://localhost:1313/posts/robotics/</guid>
       <description>I&amp;rsquo;ve been going through Russ Tedrake&amp;rsquo;s notes on robotics, which got me thinking about their so-called monogram notation. The result of this deliberation was a new notation for spatial velocities that bridges the gap between abstract Lie groups and their applications to robotics and computer graphics.</description>
     </item>
     <item>
       <title>Principal Bundles</title>
-      <link>https://shirazkn.github.io/posts/bundles/</link>
+      <link>http://localhost:1313/posts/bundles/</link>
       <pubDate>Fri, 24 Oct 2025 20:55:32 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/bundles/</guid>
+      <guid>http://localhost:1313/posts/bundles/</guid>
       <description>A principal bundle is a fiber bundle, that additionally has the right-action of a group that preserves fibers. Beginning with coset spaces, we look at some interesting examples of principal bundles and the things we can do with them.</description>
     </item>
     <item>
+      <title>An Invitation to Infinite Dimensions</title>
+      <link>http://localhost:1313/posts/infinite/</link>
+      <pubDate>Mon, 01 Sep 2025 16:16:40 -0400</pubDate>
+      <guid>http://localhost:1313/posts/infinite/</guid>
+      <description>Most students&amp;rsquo; first time seeing an infinite-dimensional space is when they learn about the Fourier transform. Yet, I always hesitate to play around with them because I do not know how (and moreover, whether!) the theorems that I know from finite-dimensional linear algebra can be extended to the infinite-dimensional setting.</description>
+    </item>
+    <item>
       <title>Differentials in Lie Theory</title>
-      <link>https://shirazkn.github.io/posts/lemmas/</link>
+      <link>http://localhost:1313/posts/lemmas/</link>
       <pubDate>Mon, 13 Jan 2025 12:46:04 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/lemmas/</guid>
+      <guid>http://localhost:1313/posts/lemmas/</guid>
       <description>Some results about the differentials (i.e., pushforwards) of the exponential and logarithm maps of a Lie group. I rely extensively on the interpretation of tangent vectors as equivalence classes of curves.</description>
     </item>
     <item>
       <title>Euler-Poincaré Equations</title>
-      <link>https://shirazkn.github.io/posts/ep/</link>
+      <link>http://localhost:1313/posts/ep/</link>
       <pubDate>Thu, 19 Dec 2024 08:18:04 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/ep/</guid>
+      <guid>http://localhost:1313/posts/ep/</guid>
       <description>Poincaré&amp;rsquo;s 1901 paper introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the Euler-Lagrange equations to the case where a Lie group acts on the configuration manifold. I work through Poincaré&amp;rsquo;s paper without making too many identifications.</description>
     </item>
     <item>
       <title>Harmonic Analysis</title>
-      <link>https://shirazkn.github.io/posts/harmonic-analysis/</link>
+      <link>http://localhost:1313/posts/harmonic-analysis/</link>
       <pubDate>Thu, 12 Dec 2024 13:02:50 +0530</pubDate>
-      <guid>https://shirazkn.github.io/posts/harmonic-analysis/</guid>
+      <guid>http://localhost:1313/posts/harmonic-analysis/</guid>
       <description>The Fourier transform maps a complex-valued function to a function on its Pontryagin dual space. Generalizations of this concept to non-Abelian compact and locally compact Lie groups are reviewed.</description>
     </item>
     <item>
       <title>Classical Mechanics on Manifolds</title>
-      <link>https://shirazkn.github.io/posts/symplectic/</link>
+      <link>http://localhost:1313/posts/symplectic/</link>
       <pubDate>Mon, 09 Dec 2024 14:45:16 +0530</pubDate>
-      <guid>https://shirazkn.github.io/posts/symplectic/</guid>
+      <guid>http://localhost:1313/posts/symplectic/</guid>
       <description>Despite having encountered the Lagrangian and Hamiltonian formalisms of mechanics several times in a variety of engineering and physics settings, I had never been able to retain it in my memory. In this post, I would like to collect my thoughts on their differential geometric treatment, which assumes a very simple and memorable form once we introduce the language of symplectic geometry.</description>
     </item>
     <item>
+      <title>Integration on SO(3)</title>
+      <link>http://localhost:1313/posts/so3/</link>
+      <pubDate>Fri, 07 Jun 2024 11:27:55 -0400</pubDate>
+      <guid>http://localhost:1313/posts/so3/</guid>
+      <description>I will construct the Haar measure for SO(3) and pull it back to the axis-angle parametrization of orthogonal matrices. The goal is to be able to integrate (and thereby define probability densities) on SO(3).</description>
+    </item>
+    <item>
+      <title>Measure-theoretic Probability</title>
+      <link>http://localhost:1313/posts/cond_expectation/</link>
+      <pubDate>Sat, 11 May 2024 07:40:56 -0700</pubDate>
+      <guid>http://localhost:1313/posts/cond_expectation/</guid>
+      <description>Probability theory is one of those subjects that&amp;rsquo;s both easy to get started with and hard to master. What follows is a semi-rigorous review of the framework upon which modern-day probability theory is built. The goal here is to demystify what it means for a mathematical object to be random.</description>
+    </item>
+    <item>
       <title>The Levi-Civita Connection</title>
-      <link>https://shirazkn.github.io/posts/sphere/</link>
+      <link>http://localhost:1313/posts/sphere/</link>
       <pubDate>Sun, 24 Mar 2024 10:43:16 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/sphere/</guid>
+      <guid>http://localhost:1313/posts/sphere/</guid>
       <description>Here, I solve Problem 5-5 from John Lee&amp;rsquo;s book on &lt;em&gt;Riemannian Manifolds&lt;/em&gt;, which demonstrates the non-flatness of the 2-sphere. This problem is particularly interesting because it serves as the motivating example for a later chapter in the book on curvature.</description>
     </item>
     <item>
       <title>Lie Groups as Riemannian Manifolds</title>
-      <link>https://shirazkn.github.io/posts/lie-groups_riemannian/</link>
+      <link>http://localhost:1313/posts/lie-groups_riemannian/</link>
       <pubDate>Tue, 30 Jan 2024 09:53:05 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/lie-groups_riemannian/</guid>
+      <guid>http://localhost:1313/posts/lie-groups_riemannian/</guid>
       <description>A &lt;span class=accented&gt;Lie group&lt;/span&gt; is a group that is also a (continuous, differentiable) topological space. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow the group with additional structure so that it is not merely a manifold, but a &lt;span class=accented&gt;Riemannian manifold&lt;/span&gt;.</description>
     </item>
     <item>
       <title>Lie Groups: Construction and Geometry</title>
-      <link>https://shirazkn.github.io/posts/lie-groups_construction/</link>
+      <link>http://localhost:1313/posts/lie-groups_construction/</link>
       <pubDate>Wed, 24 Jan 2024 14:20:59 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/lie-groups_construction/</guid>
+      <guid>http://localhost:1313/posts/lie-groups_construction/</guid>
       <description>There are multiple ways to construct new groups from old ones. I provide an intuition for how these constructions work, and also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups.</description>
     </item>
     <item>
       <title>The Lie Group-Lie Algebra Correspondence</title>
-      <link>https://shirazkn.github.io/posts/lie-groups/</link>
+      <link>http://localhost:1313/posts/lie-groups/</link>
       <pubDate>Mon, 15 Jan 2024 07:24:59 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/lie-groups/</guid>
+      <guid>http://localhost:1313/posts/lie-groups/</guid>
       <description>A &lt;span class=accented&gt;topological group&lt;/span&gt; is a set of elements that has both a group operation and a topology. The group operation satisfies the usual axioms (same as those of finite groups), and the presence of a topology lets us say things like &amp;rsquo;the group is connected&amp;rsquo; and &amp;rsquo;the group operation is continuous&#39;.</description>
     </item>
     <item>
       <title>Vector Fields on Manifolds</title>
-      <link>https://shirazkn.github.io/posts/vector-fields/</link>
+      <link>http://localhost:1313/posts/vector-fields/</link>
       <pubDate>Wed, 03 Jan 2024 11:22:28 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/vector-fields/</guid>
+      <guid>http://localhost:1313/posts/vector-fields/</guid>
       <description>Over the past year, I have struggled to pin down what the scope of my blog should be. Maybe it is for me to catalog the process of self-learning mathematics as an engineering major who lacks a curricular background in modern mathematics. This post serves in part the purpose of organizing my own thoughts on these matters, and in part the purpose of providing a roadmap for others who are interested in embarking on a similar journey.</description>
     </item>
     <item>
       <title>Fourier Transforms of Periodic Functions</title>
-      <link>https://shirazkn.github.io/posts/fourier/</link>
+      <link>http://localhost:1313/posts/fourier/</link>
       <pubDate>Mon, 02 Oct 2023 14:59:15 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/fourier/</guid>
+      <guid>http://localhost:1313/posts/fourier/</guid>
       <description>The Fourier transform takes a function and outputs a different (possibly complex-valued) function. We also have something called the Fourier series, which takes a periodic function and gives a summation rather than an integral. I want to derive the Fourier series using the Fourier transform for anyone who is interested in connecting the two concepts with each other.</description>
     </item>
     <item>
       <title>Matrix Multiplication</title>
-      <link>https://shirazkn.github.io/posts/matrix/</link>
+      <link>http://localhost:1313/posts/matrix/</link>
       <pubDate>Sun, 28 May 2023 10:35:07 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/matrix/</guid>
+      <guid>http://localhost:1313/posts/matrix/</guid>
       <description>In this post I want to bridge the gap between abstract vector spaces (which are the mathematical foundation of linear algebra) and matrix multiplication (which is the linear algebra most of us are familiar with). Unlike the typical 101 course in linear algebra, I will avoid talking about solving systems of equations.</description>
     </item>
     <item>
       <title>What is a Vector?</title>
-      <link>https://shirazkn.github.io/posts/vector/</link>
+      <link>http://localhost:1313/posts/vector/</link>
       <pubDate>Sat, 20 May 2023 15:26:18 -0700</pubDate>
-      <guid>https://shirazkn.github.io/posts/vector/</guid>
+      <guid>http://localhost:1313/posts/vector/</guid>
       <description>A running gag in engineering colleges is that a lot of instructors begin their first class of the semester with this question &amp;ndash; &amp;ldquo;What is a vector?&amp;rdquo;. I used to find this ritual almost pointless because every answer felt either like a non-answer or a matter of context. Today, I no longer think that this is a matter of context.</description>
     </item>
     <item>
       <title>Understanding Sparsity through Sub-Gradients</title>
-      <link>https://shirazkn.github.io/posts/sparsity_2/</link>
+      <link>http://localhost:1313/posts/sparsity_2/</link>
       <pubDate>Fri, 28 Apr 2023 17:15:26 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/sparsity_2/</guid>
+      <guid>http://localhost:1313/posts/sparsity_2/</guid>
       <description>We talked about why sparsity plays an important role in many of the inverse problems that we encounter in engineering. To actually find the sparse solutions to these problems, we add &amp;lsquo;sparsity-promoting&amp;rsquo; terms to our optimization problems; the machine learning community calls this approach regularization.</description>
     </item>
     <item>
       <title>Sparsity</title>
-      <link>https://shirazkn.github.io/posts/sparsity/</link>
+      <link>http://localhost:1313/posts/sparsity/</link>
       <pubDate>Sat, 22 Apr 2023 11:05:58 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/sparsity/</guid>
+      <guid>http://localhost:1313/posts/sparsity/</guid>
       <description>The so called curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. This is because many (if not all) of the problems we&amp;rsquo;re interested in solving as engineers have some inherent sparsity.</description>
     </item>
     <item>
       <title>Hilbert Spaces</title>
-      <link>https://shirazkn.github.io/posts/hilbert-spaces/</link>
+      <link>http://localhost:1313/posts/hilbert-spaces/</link>
       <pubDate>Fri, 21 Apr 2023 12:09:09 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/hilbert-spaces/</guid>
+      <guid>http://localhost:1313/posts/hilbert-spaces/</guid>
       <description>A Hilbert space is a vector space that has an inner product and that it is complete, i.e., it doesn&amp;rsquo;t have holes in it. Inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space is an obvious example, where the inner product is just the dot product.</description>
     </item>
     <item>
       <title>Norm Balls</title>
-      <link>https://shirazkn.github.io/posts/balls/</link>
+      <link>http://localhost:1313/posts/balls/</link>
       <pubDate>Tue, 18 Apr 2023 21:32:10 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/balls/</guid>
+      <guid>http://localhost:1313/posts/balls/</guid>
       <description>Let&amp;rsquo;s look at the norm balls corresponding to the different p-norms. When p equals 2 this is the usual Euclidean distance. The corresponding ball is what we think of when someone says &amp;lsquo;ball&amp;rsquo;, it is all the points that are within a given distance from the origin.</description>
     </item>
     <item>
       <title>The Parallelogram Law</title>
-      <link>https://shirazkn.github.io/posts/pythagoras/</link>
+      <link>http://localhost:1313/posts/pythagoras/</link>
       <pubDate>Fri, 14 Apr 2023 15:53:46 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/pythagoras/</guid>
+      <guid>http://localhost:1313/posts/pythagoras/</guid>
       <description>I mentioned in the last post that Euclidean geometry arises by taking the real numbers and endowing it with an inner product, at which point it satisfies the Pythagoras theorem. In this post I will talk about how the Pythagoras theorem is a special case of a more general feature of inner product spaces.</description>
     </item>
     <item>
       <title>Norms, Metrics, and Inner Products</title>
-      <link>https://shirazkn.github.io/posts/norms_metrics/</link>
+      <link>http://localhost:1313/posts/norms_metrics/</link>
       <pubDate>Mon, 10 Apr 2023 12:20:23 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/norms_metrics/</guid>
+      <guid>http://localhost:1313/posts/norms_metrics/</guid>
       <description>An explainer on norms, metrics, and inner products, and their relationships to each other.</description>
     </item>
     <item>
       <title>The Unreasonable Effectiveness of &#39;2&#39; in Statistics</title>
-      <link>https://shirazkn.github.io/posts/leastsquares/</link>
+      <link>http://localhost:1313/posts/leastsquares/</link>
       <pubDate>Sun, 09 Apr 2023 12:20:39 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/leastsquares/</guid>
+      <guid>http://localhost:1313/posts/leastsquares/</guid>
       <description>The title is a reference to The Unreasonable Effectiveness of Mathematics in the Natural Sciences. I had a similar question about the number 2 which repeatedly shows up in engineering and science, specifically in the form of the 2-norm of a vector, and seems surprisingly effective at doing what it&amp;rsquo;s supposed to do.</description>
     </item>
     <item>
       <title>Category Theory</title>
-      <link>https://shirazkn.github.io/posts/cat_theory_1/</link>
+      <link>http://localhost:1313/posts/cat_theory_1/</link>
       <pubDate>Sat, 18 Mar 2023 21:07:38 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/cat_theory_1/</guid>
+      <guid>http://localhost:1313/posts/cat_theory_1/</guid>
       <description>One of my motivations for starting a blog was Eugenia Cheng&amp;rsquo;s book The Joy of Abstraction. It&amp;rsquo;s a surprisingly accessible, gentle introduction to category theory, a topic that is usually only taught to graduate students in math. In this post, I will introduce the main ideas in category theory and show that it offers an elegant way of thinking about mathematics.</description>
     </item>
     <item>
       <title>The Incompleteness Theorems</title>
-      <link>https://shirazkn.github.io/posts/language_and_logic2/</link>
+      <link>http://localhost:1313/posts/language_and_logic2/</link>
       <pubDate>Sun, 05 Feb 2023 08:46:18 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/language_and_logic2/</guid>
+      <guid>http://localhost:1313/posts/language_and_logic2/</guid>
       <description>I suggested that there is no objective notion of logical truth, that whether a statement is &amp;rsquo;true&amp;rsquo; can depend on the system of truth that one is operating in. Here we will develop that argument further using the concept of axiomatic systems.</description>
     </item>
     <item>
       <title>Misuse as a Use of Language</title>
-      <link>https://shirazkn.github.io/posts/language_and_logic1/</link>
+      <link>http://localhost:1313/posts/language_and_logic1/</link>
       <pubDate>Fri, 27 Jan 2023 13:48:49 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/language_and_logic1/</guid>
+      <guid>http://localhost:1313/posts/language_and_logic1/</guid>
       <description>This post discusses the question of whether spoken and written languages like English could be &amp;rsquo;logical&amp;rsquo; by design. The first part does not require a mathematical background, whereas the second touches on the concepts of axioms, theorems and proofs.</description>
     </item>
   </channel>

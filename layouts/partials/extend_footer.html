@@ -107,6 +107,11 @@ const CARD_CONFIG = {
     shadowBlurHover: 2.5,          // Blur during hover
     shadowYOffsetBase: 1,          // Base Y offset (non-hover)
     shadowYOffsetHover: 2,         // Y offset during hover
+    // Pink underglow on hover
+    glowBlur: 8,                   // Glow blur radius (px)
+    glowSpread: 0,                 // Glow spread (px)
+    glowOpacityLight: 0.22,        // Light mode glow opacity
+    glowOpacityDark: 0.07,         // Dark mode glow opacity
 };
 // ==========================================================================
 
@@ -382,6 +387,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
 
         card.addEventListener('mouseenter', () => {
             currentMouseCard = card;
+            card.style.transition = 'none';
         });
 
         card.addEventListener('mousemove', (e) => {
@@ -403,8 +409,11 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                     const isDarkMode = document.body.classList.contains('dark');
                     const baseOpacity = isDarkMode ? CARD_CONFIG.shadowOpacityDark : CARD_CONFIG.shadowOpacityLight;
                     const shadowOpacity = Math.max(0, baseOpacity + normalizedY * CARD_CONFIG.shadowOpacityRange);
+                    const glowOpacity = isDarkMode ? CARD_CONFIG.glowOpacityDark : CARD_CONFIG.glowOpacityLight;
+                    const glowColor = isDarkMode ? `rgba(251,152,204,${glowOpacity})` : `rgba(188,10,92,${glowOpacity})`;
+                    const glow = `0 0 ${CARD_CONFIG.glowBlur}px ${CARD_CONFIG.glowSpread}px ${glowColor}`;
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${CARD_CONFIG.hoverLift}px)`;
-                    card.style.boxShadow = `0 ${CARD_CONFIG.shadowYOffsetHover}px ${CARD_CONFIG.shadowBlurHover}px rgba(0, 0, 0, ${shadowOpacity})`;
+                    card.style.boxShadow = `0 ${CARD_CONFIG.shadowYOffsetHover}px ${CARD_CONFIG.shadowBlurHover}px rgba(0, 0, 0, ${shadowOpacity}), ${glow}`;
                     rafId = null;
                 });
             }
@@ -426,6 +435,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 rafId = null;
             }
             isPressed = false;
+            card.style.transition = '';
             card.style.transform = '';
             card.style.boxShadow = '';
             currentMouseCard = null;

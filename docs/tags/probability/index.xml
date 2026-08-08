@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Probability on Shiraz</title>
-    <link>https://shirazkn.github.io/tags/probability/</link>
+    <link>http://localhost:1313/tags/probability/</link>
     <description>Recent content in Probability on Shiraz</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 06 Dec 2025 18:56:12 -0500</lastBuildDate>
-    <atom:link href="https://shirazkn.github.io/tags/probability/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/probability/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VLA Models</title>
-      <link>https://shirazkn.github.io/posts/rl/</link>
+      <link>http://localhost:1313/posts/rl/</link>
       <pubDate>Sat, 06 Dec 2025 18:56:12 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/rl/</guid>
+      <guid>http://localhost:1313/posts/rl/</guid>
       <description>A review of the basic concepts that go into the design and training of VLA models.</description>
     </item>
     <item>
       <title>The Unreasonable Effectiveness of &#39;2&#39; in Statistics</title>
-      <link>https://shirazkn.github.io/posts/leastsquares/</link>
+      <link>http://localhost:1313/posts/leastsquares/</link>
       <pubDate>Sun, 09 Apr 2023 12:20:39 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/leastsquares/</guid>
+      <guid>http://localhost:1313/posts/leastsquares/</guid>
       <description>The title is a reference to The Unreasonable Effectiveness of Mathematics in the Natural Sciences. I had a similar question about the number 2 which repeatedly shows up in engineering and science, specifically in the form of the 2-norm of a vector, and seems surprisingly effective at doing what it&amp;rsquo;s supposed to do.</description>
     </item>
   </channel>

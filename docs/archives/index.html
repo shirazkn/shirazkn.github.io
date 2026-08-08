@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,16 +9,16 @@
 <meta name="keywords" content="">
 <meta name="description" content="archives">
 <meta name="author" content="">
-<link rel="canonical" href="https://shirazkn.github.io/archives/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a019f2ee065ad19309ffabf13f685da971d4b028bbd9c85841a8aa8892484d14.css" integrity="sha256-oBny7gZa0ZMJ/6vxP2hdqXHUsCi72chYQaiqiJJITRQ=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://shirazkn.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://shirazkn.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
+<link rel="canonical" href="http://localhost:1313/archives/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.2921f0d9e585bc62a176e52c3c9ea94ecefc8bb59f1eff9561f20e0db052bdd6.css" integrity="sha256-KSHw2eWFvGKhduUsPJ6pTs78i7WfHv&#43;VYfIODbBSvdY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://shirazkn.github.io/archives/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/archives/">
 <noscript>
     <style>
         #theme-toggle,
@@ -80,6 +80,25 @@
 </script>
 
 <script>
+  function preprocessMathEscapes() {
+    const content = document.querySelector('.post-content');
+    if (!content) return;
+    const walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (node.parentElement && node.parentElement.closest('pre, code')) {
+          return NodeFilter.FILTER_SKIP;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    let node;
+    while ((node = walker.nextNode())) {
+      if (node.nodeValue.includes('\\_')) {
+        node.nodeValue = node.nodeValue.replace(/\\_/g, '_');
+      }
+    }
+  }
+
   MathJax = {
     tex: {
       packages: {'[+]': ['mathtools', 'amscd']},
@@ -89,13 +108,19 @@
     loader:{
       load: ['ui/safe', '[tex]/mathtools', '[tex]/amscd']
     },
+    startup: {
+      ready() {
+        preprocessMathEscapes();
+        MathJax.startup.defaultReady();
+      }
+    }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
 
-<meta property="og:url" content="https://shirazkn.github.io/archives/">
+<meta property="og:url" content="http://localhost:1313/archives/">
   <meta property="og:site_name" content="Shiraz">
   <meta property="og:title" content="Archive">
   <meta property="og:description" content="archives">
@@ -115,7 +140,7 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Archive",
-      "item": "https://shirazkn.github.io/archives/"
+      "item": "http://localhost:1313/archives/"
     }
   ]
 }
@@ -137,14 +162,14 @@
   "dateModified": "0001-01-01T00:00:00Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://shirazkn.github.io/archives/"
+    "@id": "http://localhost:1313/archives/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Shiraz",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://shirazkn.github.io/favicon.ico"
+      "url": "http://localhost:1313/favicon.ico"
     }
   }
 }
@@ -154,7 +179,7 @@
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <a href="http://localhost:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -180,17 +205,17 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://shirazkn.github.io/archives/" title="archives">
+                <a href="http://localhost:1313/archives/" title="archives">
                     <span class="active">archives</span>
                 </a>
             </li>
             <li>
-                <a href="https://shirazkn.github.io/tags/" title="tags">
+                <a href="http://localhost:1313/tags/" title="tags">
                     <span>tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://shirazkn.github.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                <a href="http://localhost:1313/search/" title="search (Alt &#43; /)" accesskey=/>
                     <span>search</span>
                 </a>
             </li>
@@ -205,9 +230,35 @@
   </h1>
 </header>
 <div class="archive-year">
+  <h2 class="archive-year-header" id="2026">
+    <a class="archive-header-link" href="#2026">2026</a>
+    <sup class="archive-count">&nbsp;1</sup>
+  </h2>
+  <div class="archive-month">
+    <h3 class="archive-month-header" id="2026-April">
+      <a class="archive-header-link" href="#2026-April">April</a>
+      <sup class="archive-count">&nbsp;1</sup>
+    </h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title entry-hint-parent">SE(3) Boids
+          <span class="entry-hint" title="Draft">
+            <svg xmlns="http://www.w3.org/2000/svg" height="15" viewBox="0 -960 960 960" fill="currentColor">
+              <path
+                d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+            </svg>
+          </span>
+        </h3>
+        <div class="archive-meta"><span title='2026-04-05 13:44:06 -0400 EDT'>April 5, 2026</span></div>
+        <a class="entry-link" aria-label="post link to SE(3) Boids" href="http://localhost:1313/posts/godot/"></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="archive-year">
   <h2 class="archive-year-header" id="2025">
     <a class="archive-header-link" href="#2025">2025</a>
-    <sup class="archive-count">&nbsp;4</sup>
+    <sup class="archive-count">&nbsp;5</sup>
   </h2>
   <div class="archive-month">
     <h3 class="archive-month-header" id="2025-December">
@@ -217,9 +268,15 @@
     <div class="archive-posts">
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">VLA Models
+          <span class="entry-hint" title="Draft">
+            <svg xmlns="http://www.w3.org/2000/svg" height="15" viewBox="0 -960 960 960" fill="currentColor">
+              <path
+                d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+            </svg>
+          </span>
         </h3>
         <div class="archive-meta"><span title='2025-12-06 18:56:12 -0500 EST'>December 6, 2025</span></div>
-        <a class="entry-link" aria-label="post link to VLA Models" href="https://shirazkn.github.io/posts/rl/"></a>
+        <a class="entry-link" aria-label="post link to VLA Models" href="http://localhost:1313/posts/rl/"></a>
       </div>
     </div>
   </div>
@@ -233,7 +290,7 @@
         <h3 class="archive-entry-title entry-hint-parent">Representing Spatial Velocities
         </h3>
         <div class="archive-meta"><span title='2025-11-13 21:23:17 -0500 EST'>November 13, 2025</span></div>
-        <a class="entry-link" aria-label="post link to Representing Spatial Velocities" href="https://shirazkn.github.io/posts/robotics/"></a>
+        <a class="entry-link" aria-label="post link to Representing Spatial Velocities" href="http://localhost:1313/posts/robotics/"></a>
       </div>
     </div>
   </div>
@@ -247,7 +304,27 @@
         <h3 class="archive-entry-title entry-hint-parent">Principal Bundles
         </h3>
         <div class="archive-meta"><span title='2025-10-24 20:55:32 -0400 EDT'>October 24, 2025</span></div>
-        <a class="entry-link" aria-label="post link to Principal Bundles" href="https://shirazkn.github.io/posts/bundles/"></a>
+        <a class="entry-link" aria-label="post link to Principal Bundles" href="http://localhost:1313/posts/bundles/"></a>
+      </div>
+    </div>
+  </div>
+  <div class="archive-month">
+    <h3 class="archive-month-header" id="2025-September">
+      <a class="archive-header-link" href="#2025-September">September</a>
+      <sup class="archive-count">&nbsp;1</sup>
+    </h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title entry-hint-parent">An Invitation to Infinite Dimensions
+          <span class="entry-hint" title="Draft">
+            <svg xmlns="http://www.w3.org/2000/svg" height="15" viewBox="0 -960 960 960" fill="currentColor">
+              <path
+                d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+            </svg>
+          </span>
+        </h3>
+        <div class="archive-meta"><span title='2025-09-01 16:16:40 -0400 EDT'>September 1, 2025</span></div>
+        <a class="entry-link" aria-label="post link to An Invitation to Infinite Dimensions" href="http://localhost:1313/posts/infinite/"></a>
       </div>
     </div>
   </div>
@@ -261,7 +338,7 @@
         <h3 class="archive-entry-title entry-hint-parent">Differentials in Lie Theory
         </h3>
         <div class="archive-meta"><span title='2025-01-13 12:46:04 -0500 EST'>January 13, 2025</span></div>
-        <a class="entry-link" aria-label="post link to Differentials in Lie Theory" href="https://shirazkn.github.io/posts/lemmas/"></a>
+        <a class="entry-link" aria-label="post link to Differentials in Lie Theory" href="http://localhost:1313/posts/lemmas/"></a>
       </div>
     </div>
   </div>
@@ -269,7 +346,7 @@
 <div class="archive-year">
   <h2 class="archive-year-header" id="2024">
     <a class="archive-header-link" href="#2024">2024</a>
-    <sup class="archive-count">&nbsp;8</sup>
+    <sup class="archive-count">&nbsp;10</sup>
   </h2>
   <div class="archive-month">
     <h3 class="archive-month-header" id="2024-December">
@@ -281,19 +358,59 @@
         <h3 class="archive-entry-title entry-hint-parent">Euler-Poincaré Equations
         </h3>
         <div class="archive-meta"><span title='2024-12-19 08:18:04 -0500 EST'>December 19, 2024</span></div>
-        <a class="entry-link" aria-label="post link to Euler-Poincaré Equations" href="https://shirazkn.github.io/posts/ep/"></a>
+        <a class="entry-link" aria-label="post link to Euler-Poincaré Equations" href="http://localhost:1313/posts/ep/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Harmonic Analysis
         </h3>
         <div class="archive-meta"><span title='2024-12-12 13:02:50 +0530 +0530'>December 12, 2024</span></div>
-        <a class="entry-link" aria-label="post link to Harmonic Analysis" href="https://shirazkn.github.io/posts/harmonic-analysis/"></a>
+        <a class="entry-link" aria-label="post link to Harmonic Analysis" href="http://localhost:1313/posts/harmonic-analysis/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Classical Mechanics on Manifolds
         </h3>
         <div class="archive-meta"><span title='2024-12-09 14:45:16 +0530 +0530'>December 9, 2024</span></div>
-        <a class="entry-link" aria-label="post link to Classical Mechanics on Manifolds" href="https://shirazkn.github.io/posts/symplectic/"></a>
+        <a class="entry-link" aria-label="post link to Classical Mechanics on Manifolds" href="http://localhost:1313/posts/symplectic/"></a>
+      </div>
+    </div>
+  </div>
+  <div class="archive-month">
+    <h3 class="archive-month-header" id="2024-June">
+      <a class="archive-header-link" href="#2024-June">June</a>
+      <sup class="archive-count">&nbsp;1</sup>
+    </h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title entry-hint-parent">Integration on SO(3)
+          <span class="entry-hint" title="Draft">
+            <svg xmlns="http://www.w3.org/2000/svg" height="15" viewBox="0 -960 960 960" fill="currentColor">
+              <path
+                d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+            </svg>
+          </span>
+        </h3>
+        <div class="archive-meta"><span title='2024-06-07 11:27:55 -0400 EDT'>June 7, 2024</span></div>
+        <a class="entry-link" aria-label="post link to Integration on SO(3)" href="http://localhost:1313/posts/so3/"></a>
+      </div>
+    </div>
+  </div>
+  <div class="archive-month">
+    <h3 class="archive-month-header" id="2024-May">
+      <a class="archive-header-link" href="#2024-May">May</a>
+      <sup class="archive-count">&nbsp;1</sup>
+    </h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title entry-hint-parent">Measure-theoretic Probability
+          <span class="entry-hint" title="Draft">
+            <svg xmlns="http://www.w3.org/2000/svg" height="15" viewBox="0 -960 960 960" fill="currentColor">
+              <path
+                d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+            </svg>
+          </span>
+        </h3>
+        <div class="archive-meta"><span title='2024-05-11 07:40:56 -0700 -0700'>May 11, 2024</span></div>
+        <a class="entry-link" aria-label="post link to Measure-theoretic Probability" href="http://localhost:1313/posts/cond_expectation/"></a>
       </div>
     </div>
   </div>
@@ -307,7 +424,7 @@
         <h3 class="archive-entry-title entry-hint-parent">The Levi-Civita Connection
         </h3>
         <div class="archive-meta"><span title='2024-03-24 10:43:16 -0400 EDT'>March 24, 2024</span></div>
-        <a class="entry-link" aria-label="post link to The Levi-Civita Connection" href="https://shirazkn.github.io/posts/sphere/"></a>
+        <a class="entry-link" aria-label="post link to The Levi-Civita Connection" href="http://localhost:1313/posts/sphere/"></a>
       </div>
     </div>
   </div>
@@ -321,25 +438,25 @@
         <h3 class="archive-entry-title entry-hint-parent">Lie Groups as Riemannian Manifolds
         </h3>
         <div class="archive-meta"><span title='2024-01-30 09:53:05 -0500 EST'>January 30, 2024</span></div>
-        <a class="entry-link" aria-label="post link to Lie Groups as Riemannian Manifolds" href="https://shirazkn.github.io/posts/lie-groups_riemannian/"></a>
+        <a class="entry-link" aria-label="post link to Lie Groups as Riemannian Manifolds" href="http://localhost:1313/posts/lie-groups_riemannian/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Lie Groups: Construction and Geometry
         </h3>
         <div class="archive-meta"><span title='2024-01-24 14:20:59 -0500 EST'>January 24, 2024</span></div>
-        <a class="entry-link" aria-label="post link to Lie Groups: Construction and Geometry" href="https://shirazkn.github.io/posts/lie-groups_construction/"></a>
+        <a class="entry-link" aria-label="post link to Lie Groups: Construction and Geometry" href="http://localhost:1313/posts/lie-groups_construction/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">The Lie Group-Lie Algebra Correspondence
         </h3>
         <div class="archive-meta"><span title='2024-01-15 07:24:59 -0500 EST'>January 15, 2024</span></div>
-        <a class="entry-link" aria-label="post link to The Lie Group-Lie Algebra Correspondence" href="https://shirazkn.github.io/posts/lie-groups/"></a>
+        <a class="entry-link" aria-label="post link to The Lie Group-Lie Algebra Correspondence" href="http://localhost:1313/posts/lie-groups/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Vector Fields on Manifolds
         </h3>
         <div class="archive-meta"><span title='2024-01-03 11:22:28 -0500 EST'>January 3, 2024</span></div>
-        <a class="entry-link" aria-label="post link to Vector Fields on Manifolds" href="https://shirazkn.github.io/posts/vector-fields/"></a>
+        <a class="entry-link" aria-label="post link to Vector Fields on Manifolds" href="http://localhost:1313/posts/vector-fields/"></a>
       </div>
     </div>
   </div>
@@ -359,7 +476,7 @@
         <h3 class="archive-entry-title entry-hint-parent">Fourier Transforms of Periodic Functions
         </h3>
         <div class="archive-meta"><span title='2023-10-02 14:59:15 -0400 EDT'>October 2, 2023</span></div>
-        <a class="entry-link" aria-label="post link to Fourier Transforms of Periodic Functions" href="https://shirazkn.github.io/posts/fourier/"></a>
+        <a class="entry-link" aria-label="post link to Fourier Transforms of Periodic Functions" href="http://localhost:1313/posts/fourier/"></a>
       </div>
     </div>
   </div>
@@ -373,13 +490,13 @@
         <h3 class="archive-entry-title entry-hint-parent">Matrix Multiplication
         </h3>
         <div class="archive-meta"><span title='2023-05-28 10:35:07 -0400 EDT'>May 28, 2023</span></div>
-        <a class="entry-link" aria-label="post link to Matrix Multiplication" href="https://shirazkn.github.io/posts/matrix/"></a>
+        <a class="entry-link" aria-label="post link to Matrix Multiplication" href="http://localhost:1313/posts/matrix/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">What is a Vector?
         </h3>
         <div class="archive-meta"><span title='2023-05-20 15:26:18 -0700 -0700'>May 20, 2023</span></div>
-        <a class="entry-link" aria-label="post link to What is a Vector?" href="https://shirazkn.github.io/posts/vector/"></a>
+        <a class="entry-link" aria-label="post link to What is a Vector?" href="http://localhost:1313/posts/vector/"></a>
       </div>
     </div>
   </div>
@@ -393,43 +510,43 @@
         <h3 class="archive-entry-title entry-hint-parent">Understanding Sparsity through Sub-Gradients
         </h3>
         <div class="archive-meta"><span title='2023-04-28 17:15:26 -0400 EDT'>April 28, 2023</span></div>
-        <a class="entry-link" aria-label="post link to Understanding Sparsity through Sub-Gradients" href="https://shirazkn.github.io/posts/sparsity_2/"></a>
+        <a class="entry-link" aria-label="post link to Understanding Sparsity through Sub-Gradients" href="http://localhost:1313/posts/sparsity_2/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Sparsity
         </h3>
         <div class="archive-meta"><span title='2023-04-22 11:05:58 -0400 EDT'>April 22, 2023</span></div>
-        <a class="entry-link" aria-label="post link to Sparsity" href="https://shirazkn.github.io/posts/sparsity/"></a>
+        <a class="entry-link" aria-label="post link to Sparsity" href="http://localhost:1313/posts/sparsity/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Hilbert Spaces
         </h3>
         <div class="archive-meta"><span title='2023-04-21 12:09:09 -0400 EDT'>April 21, 2023</span></div>
-        <a class="entry-link" aria-label="post link to Hilbert Spaces" href="https://shirazkn.github.io/posts/hilbert-spaces/"></a>
+        <a class="entry-link" aria-label="post link to Hilbert Spaces" href="http://localhost:1313/posts/hilbert-spaces/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Norm Balls
         </h3>
         <div class="archive-meta"><span title='2023-04-18 21:32:10 -0400 EDT'>April 18, 2023</span></div>
-        <a class="entry-link" aria-label="post link to Norm Balls" href="https://shirazkn.github.io/posts/balls/"></a>
+        <a class="entry-link" aria-label="post link to Norm Balls" href="http://localhost:1313/posts/balls/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">The Parallelogram Law
         </h3>
         <div class="archive-meta"><span title='2023-04-14 15:53:46 -0400 EDT'>April 14, 2023</span></div>
-        <a class="entry-link" aria-label="post link to The Parallelogram Law" href="https://shirazkn.github.io/posts/pythagoras/"></a>
+        <a class="entry-link" aria-label="post link to The Parallelogram Law" href="http://localhost:1313/posts/pythagoras/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Norms, Metrics, and Inner Products
         </h3>
         <div class="archive-meta"><span title='2023-04-10 12:20:23 -0400 EDT'>April 10, 2023</span></div>
-        <a class="entry-link" aria-label="post link to Norms, Metrics, and Inner Products" href="https://shirazkn.github.io/posts/norms_metrics/"></a>
+        <a class="entry-link" aria-label="post link to Norms, Metrics, and Inner Products" href="http://localhost:1313/posts/norms_metrics/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">The Unreasonable Effectiveness of &lsquo;2&rsquo; in Statistics
         </h3>
         <div class="archive-meta"><span title='2023-04-09 12:20:39 -0400 EDT'>April 9, 2023</span></div>
-        <a class="entry-link" aria-label="post link to The Unreasonable Effectiveness of &#39;2&#39; in Statistics" href="https://shirazkn.github.io/posts/leastsquares/"></a>
+        <a class="entry-link" aria-label="post link to The Unreasonable Effectiveness of &#39;2&#39; in Statistics" href="http://localhost:1313/posts/leastsquares/"></a>
       </div>
     </div>
   </div>
@@ -443,7 +560,7 @@
         <h3 class="archive-entry-title entry-hint-parent">Category Theory
         </h3>
         <div class="archive-meta"><span title='2023-03-18 21:07:38 -0400 EDT'>March 18, 2023</span></div>
-        <a class="entry-link" aria-label="post link to Category Theory" href="https://shirazkn.github.io/posts/cat_theory_1/"></a>
+        <a class="entry-link" aria-label="post link to Category Theory" href="http://localhost:1313/posts/cat_theory_1/"></a>
       </div>
     </div>
   </div>
@@ -457,7 +574,7 @@
         <h3 class="archive-entry-title entry-hint-parent">The Incompleteness Theorems
         </h3>
         <div class="archive-meta"><span title='2023-02-05 08:46:18 -0500 EST'>February 5, 2023</span></div>
-        <a class="entry-link" aria-label="post link to The Incompleteness Theorems" href="https://shirazkn.github.io/posts/language_and_logic2/"></a>
+        <a class="entry-link" aria-label="post link to The Incompleteness Theorems" href="http://localhost:1313/posts/language_and_logic2/"></a>
       </div>
     </div>
   </div>
@@ -471,7 +588,7 @@
         <h3 class="archive-entry-title entry-hint-parent">Misuse as a Use of Language
         </h3>
         <div class="archive-meta"><span title='2023-01-27 13:48:49 -0500 EST'>January 27, 2023</span></div>
-        <a class="entry-link" aria-label="post link to Misuse as a Use of Language" href="https://shirazkn.github.io/posts/language_and_logic1/"></a>
+        <a class="entry-link" aria-label="post link to Misuse as a Use of Language" href="http://localhost:1313/posts/language_and_logic1/"></a>
       </div>
     </div>
   </div>
@@ -593,6 +710,11 @@ const CARD_CONFIG = {
     shadowBlurHover: 2.5,          
     shadowYOffsetBase: 1,          
     shadowYOffsetHover: 2,         
+    
+    glowBlur: 8,                   
+    glowSpread: 0,                 
+    glowOpacityLight: 0.22,        
+    glowOpacityDark: 0.07,         
 };
 
 
@@ -868,6 +990,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
 
         card.addEventListener('mouseenter', () => {
             currentMouseCard = card;
+            card.style.transition = 'none';
         });
 
         card.addEventListener('mousemove', (e) => {
@@ -889,8 +1012,11 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                     const isDarkMode = document.body.classList.contains('dark');
                     const baseOpacity = isDarkMode ? CARD_CONFIG.shadowOpacityDark : CARD_CONFIG.shadowOpacityLight;
                     const shadowOpacity = Math.max(0, baseOpacity + normalizedY * CARD_CONFIG.shadowOpacityRange);
+                    const glowOpacity = isDarkMode ? CARD_CONFIG.glowOpacityDark : CARD_CONFIG.glowOpacityLight;
+                    const glowColor = isDarkMode ? `rgba(251,152,204,${glowOpacity})` : `rgba(188,10,92,${glowOpacity})`;
+                    const glow = `0 0 ${CARD_CONFIG.glowBlur}px ${CARD_CONFIG.glowSpread}px ${glowColor}`;
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${CARD_CONFIG.hoverLift}px)`;
-                    card.style.boxShadow = `0 ${CARD_CONFIG.shadowYOffsetHover}px ${CARD_CONFIG.shadowBlurHover}px rgba(0, 0, 0, ${shadowOpacity})`;
+                    card.style.boxShadow = `0 ${CARD_CONFIG.shadowYOffsetHover}px ${CARD_CONFIG.shadowBlurHover}px rgba(0, 0, 0, ${shadowOpacity}), ${glow}`;
                     rafId = null;
                 });
             }
@@ -912,6 +1038,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 rafId = null;
             }
             isPressed = false;
+            card.style.transition = '';
             card.style.transform = '';
             card.style.boxShadow = '';
             currentMouseCard = null;

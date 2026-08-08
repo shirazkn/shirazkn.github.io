@@ -1,0 +1,112 @@
+/* Hugo emits inline background-color on <pre> — clear it so only
+   the outer .highlight div (with border-radius) is visible. */
+.post-content .highlight pre {
+    background-color: transparent !important;
+}
+
+/* ============================================================
+   Syntax highlighting — light mode
+   Background matches inline code (--code-bg: rgb(224,223,223)).
+   Palette derived from blog accent (#bc0a5c pink/magenta).
+   ============================================================ */
+
+.post-content pre code {
+    color: #1e1e1e;
+}
+
+.chroma                                             { color: #1e1e1e; }
+.chroma .err                                        { color: #cc0000; }
+.chroma .k, .chroma .kp, .chroma .kr               { color: #bc0a5c; }
+.chroma .kc                                         { color: #7030a0; }
+.chroma .kd                                         { color: #bc0a5c; }
+.chroma .kn                                         { color: #196b7a; }
+.chroma .kt                                         { color: #7030a0; }
+.chroma .na                                         { color: #1958a8; }
+.chroma .nb, .chroma .bp                            { color: #196b7a; }
+.chroma .nc                                         { color: #7d4500; }
+.chroma .no                                         { color: #7d4500; }
+.chroma .nd                                         { color: #1958a8; font-weight: bold; }
+.chroma .ni                                         { color: #196b7a; }
+.chroma .ne                                         { color: #b05800; }
+.chroma .nf, .chroma .fm                            { color: #1958a8; }
+.chroma .nl                                         { color: #196b7a; }
+.chroma .nn                                         { color: #b05800; }
+.chroma .py                                         { color: #b05800; }
+.chroma .nt                                         { color: #bc0a5c; }
+.chroma .nv, .chroma .vc, .chroma .vg,
+.chroma .vi, .chroma .vm                            { color: #5a1a2a; }
+.chroma .s, .chroma .sb, .chroma .sc, .chroma .si,
+.chroma .sx, .chroma .s1, .chroma .s2, .chroma .ss  { color: #266626; }
+.chroma .sa                                         { color: #bc0a5c; }
+.chroma .dl                                         { color: #1958a8; }
+.chroma .sd, .chroma .sh                            { color: #7a7d7c; }
+.chroma .se                                         { color: #1958a8; }
+.chroma .sr                                         { color: #196b7a; }
+.chroma .m, .chroma .mb, .chroma .mf, .chroma .mh,
+.chroma .mi, .chroma .il, .chroma .mo               { color: #b05800; }
+.chroma .o, .chroma .ow                             { color: #196b7a; font-weight: bold; }
+.chroma .c, .chroma .ch, .chroma .cm, .chroma .c1,
+.chroma .cs, .chroma .cp, .chroma .cpf              { color: #7a7d7c; font-style: italic; }
+.chroma .lnt, .chroma .ln                           { color: #9a9d9c; }
+.chroma .gd                                         { color: #cc0000; }
+.chroma .ge                                         { font-style: italic; }
+.chroma .gr, .chroma .gt                            { color: #cc0000; }
+.chroma .gh, .chroma .gu                            { color: #b05800; font-weight: bold; }
+.chroma .gi                                         { color: #266626; }
+.chroma .gs                                         { font-weight: bold; }
+.chroma .gl                                         { text-decoration: underline; }
+
+/* ============================================================
+   Syntax highlighting — dark mode
+   Background matches inline code (--code-bg: rgb(55,56,62)).
+   Keywords use blog accent (#fb98cc light pink).
+   ============================================================ */
+
+.dark .post-content pre code {
+    color: #ccccd3;
+}
+
+.dark .chroma                                                       { color: #ccccd3; }
+.dark .chroma .err                                                  { color: #ed8796; }
+.dark .chroma .k, .dark .chroma .kp, .dark .chroma .kr             { color: #fb98cc; }
+.dark .chroma .kc                                                   { color: #f5a97f; }
+.dark .chroma .kd                                                   { color: #fb98cc; }
+.dark .chroma .kn                                                   { color: #8bd5ca; }
+.dark .chroma .kt                                                   { color: #fb98cc; }
+.dark .chroma .na                                                   { color: #8aadf4; }
+.dark .chroma .nb, .dark .chroma .bp                                { color: #91d7e3; }
+.dark .chroma .nc                                                   { color: #eed49f; }
+.dark .chroma .no                                                   { color: #eed49f; }
+.dark .chroma .nd                                                   { color: #8aadf4; font-weight: bold; }
+.dark .chroma .ni                                                   { color: #8bd5ca; }
+.dark .chroma .ne                                                   { color: #f5a97f; }
+.dark .chroma .nf, .dark .chroma .fm                                { color: #8aadf4; }
+.dark .chroma .nl                                                   { color: #91d7e3; }
+.dark .chroma .nn                                                   { color: #f5a97f; }
+.dark .chroma .py                                                   { color: #f5a97f; }
+.dark .chroma .nt                                                   { color: #fb98cc; }
+.dark .chroma .nv, .dark .chroma .vc, .dark .chroma .vg,
+.dark .chroma .vi, .dark .chroma .vm                                { color: #f4dbd6; }
+.dark .chroma .s, .dark .chroma .sb, .dark .chroma .sc,
+.dark .chroma .si, .dark .chroma .sx, .dark .chroma .s1,
+.dark .chroma .s2, .dark .chroma .ss                                { color: #a6da95; }
+.dark .chroma .sa                                                   { color: #ed8796; }
+.dark .chroma .dl                                                   { color: #8aadf4; }
+.dark .chroma .sd, .dark .chroma .sh                                { color: #6e738d; }
+.dark .chroma .se                                                   { color: #8aadf4; }
+.dark .chroma .sr                                                   { color: #8bd5ca; }
+.dark .chroma .m, .dark .chroma .mb, .dark .chroma .mf,
+.dark .chroma .mh, .dark .chroma .mi, .dark .chroma .il,
+.dark .chroma .mo                                                   { color: #f5a97f; }
+.dark .chroma .o, .dark .chroma .ow                                 { color: #91d7e3; font-weight: bold; }
+.dark .chroma .c, .dark .chroma .ch, .dark .chroma .cm,
+.dark .chroma .c1, .dark .chroma .cs, .dark .chroma .cp,
+.dark .chroma .cpf                                                  { color: #7d7e7d; font-style: italic; }
+.dark .chroma .lnt, .dark .chroma .ln                               { color: #7d7e7d; }
+.dark .chroma .gd                                                   { color: #ed8796; }
+.dark .chroma .ge                                                   { font-style: italic; }
+.dark .chroma .gr, .dark .chroma .gt                                { color: #ed8796; }
+.dark .chroma .gh, .dark .chroma .gu                                { color: #f5a97f; font-weight: bold; }
+.dark .chroma .gi                                                   { color: #a6da95; }
+.dark .chroma .gs                                                   { font-weight: bold; }
+.dark .chroma .gl                                                   { text-decoration: underline; }

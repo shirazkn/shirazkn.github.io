@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,17 +9,17 @@
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="https://shirazkn.github.io/tags/general/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a019f2ee065ad19309ffabf13f685da971d4b028bbd9c85841a8aa8892484d14.css" integrity="sha256-oBny7gZa0ZMJ/6vxP2hdqXHUsCi72chYQaiqiJJITRQ=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://shirazkn.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://shirazkn.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
+<link rel="canonical" href="http://localhost:1313/tags/general/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.2921f0d9e585bc62a176e52c3c9ea94ecefc8bb59f1eff9561f20e0db052bdd6.css" integrity="sha256-KSHw2eWFvGKhduUsPJ6pTs78i7WfHv&#43;VYfIODbBSvdY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://shirazkn.github.io/tags/general/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="https://shirazkn.github.io/tags/general/">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/general/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/general/">
 <noscript>
     <style>
         #theme-toggle,
@@ -81,6 +81,25 @@
 </script>
 
 <script>
+  function preprocessMathEscapes() {
+    const content = document.querySelector('.post-content');
+    if (!content) return;
+    const walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (node.parentElement && node.parentElement.closest('pre, code')) {
+          return NodeFilter.FILTER_SKIP;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    let node;
+    while ((node = walker.nextNode())) {
+      if (node.nodeValue.includes('\\_')) {
+        node.nodeValue = node.nodeValue.replace(/\\_/g, '_');
+      }
+    }
+  }
+
   MathJax = {
     tex: {
       packages: {'[+]': ['mathtools', 'amscd']},
@@ -90,13 +109,19 @@
     loader:{
       load: ['ui/safe', '[tex]/mathtools', '[tex]/amscd']
     },
+    startup: {
+      ready() {
+        preprocessMathEscapes();
+        MathJax.startup.defaultReady();
+      }
+    }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
 
-<meta property="og:url" content="https://shirazkn.github.io/tags/general/">
+<meta property="og:url" content="http://localhost:1313/tags/general/">
   <meta property="og:site_name" content="Shiraz">
   <meta property="og:title" content="General">
   <meta property="og:locale" content="en-us">
@@ -110,7 +135,7 @@
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <a href="http://localhost:1313/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -136,17 +161,17 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://shirazkn.github.io/archives/" title="archives">
+                <a href="http://localhost:1313/archives/" title="archives">
                     <span>archives</span>
                 </a>
             </li>
             <li>
-                <a href="https://shirazkn.github.io/tags/" title="tags">
+                <a href="http://localhost:1313/tags/" title="tags">
                     <span>tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://shirazkn.github.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                <a href="http://localhost:1313/search/" title="search (Alt &#43; /)" accesskey=/>
                     <span>search</span>
                 </a>
             </li>
@@ -161,7 +186,6 @@
 </header>
 
 <article class="post-entry tag-entry"> 
-  <div class="entry-bg" style="background-image: url('/post-images/cat_theory/epic.png');"></div>
   <header class="entry-header">
     <h2 class="entry-hint-parent">Category Theory
     </h2>
@@ -170,11 +194,10 @@
     <p>One of my motivations for starting a blog was Eugenia Cheng’s book The Joy of Abstraction. It’s a surprisingly accessible, gentle introduction to category theory, a topic that is usually only taught to graduate students in math. In this post, I will introduce the main ideas in category theory and show that it offers an elegant way of thinking about mathematics.</p>
   </div>
   <footer class="entry-footer"><span title='2023-03-18 21:07:38 -0400 EDT'>March 18, 2023</span></footer>
-  <a class="entry-link" aria-label="post link to Category Theory" href="https://shirazkn.github.io/posts/cat_theory_1/"></a>
+  <a class="entry-link" aria-label="post link to Category Theory" href="http://localhost:1313/posts/cat_theory_1/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
-  <div class="entry-bg" style="background-image: url('/post-images/axioms_structure.png');"></div>
   <header class="entry-header">
     <h2 class="entry-hint-parent">The Incompleteness Theorems
     </h2>
@@ -183,7 +206,7 @@
     <p>I suggested that there is no objective notion of logical truth, that whether a statement is ’true’ can depend on the system of truth that one is operating in. Here we will develop that argument further using the concept of axiomatic systems.</p>
   </div>
   <footer class="entry-footer"><span title='2023-02-05 08:46:18 -0500 EST'>February 5, 2023</span></footer>
-  <a class="entry-link" aria-label="post link to The Incompleteness Theorems" href="https://shirazkn.github.io/posts/language_and_logic2/"></a>
+  <a class="entry-link" aria-label="post link to The Incompleteness Theorems" href="http://localhost:1313/posts/language_and_logic2/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
@@ -195,7 +218,7 @@
     <p>This post discusses the question of whether spoken and written languages like English could be ’logical’ by design. The first part does not require a mathematical background, whereas the second touches on the concepts of axioms, theorems and proofs.</p>
   </div>
   <footer class="entry-footer"><span title='2023-01-27 13:48:49 -0500 EST'>January 27, 2023</span></footer>
-  <a class="entry-link" aria-label="post link to Misuse as a Use of Language" href="https://shirazkn.github.io/posts/language_and_logic1/"></a>
+  <a class="entry-link" aria-label="post link to Misuse as a Use of Language" href="http://localhost:1313/posts/language_and_logic1/"></a>
 </article>
     </main>
     
@@ -314,6 +337,11 @@ const CARD_CONFIG = {
     shadowBlurHover: 2.5,          
     shadowYOffsetBase: 1,          
     shadowYOffsetHover: 2,         
+    
+    glowBlur: 8,                   
+    glowSpread: 0,                 
+    glowOpacityLight: 0.22,        
+    glowOpacityDark: 0.07,         
 };
 
 
@@ -589,6 +617,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
 
         card.addEventListener('mouseenter', () => {
             currentMouseCard = card;
+            card.style.transition = 'none';
         });
 
         card.addEventListener('mousemove', (e) => {
@@ -610,8 +639,11 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                     const isDarkMode = document.body.classList.contains('dark');
                     const baseOpacity = isDarkMode ? CARD_CONFIG.shadowOpacityDark : CARD_CONFIG.shadowOpacityLight;
                     const shadowOpacity = Math.max(0, baseOpacity + normalizedY * CARD_CONFIG.shadowOpacityRange);
+                    const glowOpacity = isDarkMode ? CARD_CONFIG.glowOpacityDark : CARD_CONFIG.glowOpacityLight;
+                    const glowColor = isDarkMode ? `rgba(251,152,204,${glowOpacity})` : `rgba(188,10,92,${glowOpacity})`;
+                    const glow = `0 0 ${CARD_CONFIG.glowBlur}px ${CARD_CONFIG.glowSpread}px ${glowColor}`;
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${CARD_CONFIG.hoverLift}px)`;
-                    card.style.boxShadow = `0 ${CARD_CONFIG.shadowYOffsetHover}px ${CARD_CONFIG.shadowBlurHover}px rgba(0, 0, 0, ${shadowOpacity})`;
+                    card.style.boxShadow = `0 ${CARD_CONFIG.shadowYOffsetHover}px ${CARD_CONFIG.shadowBlurHover}px rgba(0, 0, 0, ${shadowOpacity}), ${glow}`;
                     rafId = null;
                 });
             }
@@ -633,6 +665,7 @@ if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in windo
                 rafId = null;
             }
             isPressed = false;
+            card.style.transition = '';
             card.style.transform = '';
             card.style.boxShadow = '';
             currentMouseCard = null;

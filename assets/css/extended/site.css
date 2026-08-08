@@ -149,9 +149,11 @@ figure {
     max-width: 80%;
 }
 
-figure figcaption {
+figure figcaption,
+.post-content figure>figcaption {
     text-align: center;
     font-weight: normal;
+    color: var(--secondary);
 }
 
 /* --------------------------------------------------------------------------
@@ -176,7 +178,7 @@ sub {
     border: 1px solid var(--border);
     /* Shadow matches hover center: Y=1px, blur=1.5px, opacity=0.22 (light) */
     box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.22);
-    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+    transition: transform 0.04s ease-out, box-shadow 0.04s ease-out;
     overflow: hidden;
     transform-style: preserve-3d;
 }
@@ -184,12 +186,12 @@ sub {
 /* Smooth opacity transitions for mobile scroll-based focus */
 @media (pointer: coarse) {
     .post-entry {
-        transition: transform 0.1s ease-out, box-shadow 0.1s ease-out, opacity 0.25s ease-out;
+        transition: transform 0.04s ease-out, box-shadow 0.04s ease-out, opacity 0.25s ease-out;
     }
 }
 
 .post-entry:hover {
-    transition: transform 0.01s linear, box-shadow 0.05s linear;
+    transition: transform 0.01s linear, box-shadow 0.03s linear;
 }
 
 .dark .post-entry {
@@ -197,73 +199,6 @@ sub {
     box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.45);
 }
 
-.entry-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0.2;
-    pointer-events: none;
-    filter: blur(16px);
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        black 2%,
-        black 98%,
-        transparent 100%
-    );
-    mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        black 2%,
-        black 98%,
-        transparent 100%
-    );
-}
-
-.entry-bg::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.3) 0%,
-        transparent 50%,
-        rgba(0, 0, 0, 0.2) 100%
-    );
-}
-
-.dark .entry-bg {
-    opacity: 0.1;
-    filter: blur(16px) invert(1) hue-rotate(180deg);
-}
-
-.dark .entry-bg::after {
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.15) 0%,
-        transparent 50%,
-        rgba(0, 0, 0, 0.3) 100%
-    );
-}
-
-.post-entry .entry-content {
-    position: relative;
-    z-index: 1;
-    pointer-events: none;
-    text-shadow:
-        0 0 1px var(--entry),
-        0 0 2px var(--entry),
-        0 0 3px var(--entry),
-        0 0 5px var(--entry),
-        0 0 8px var(--entry);
-}
 
 @media (pointer: fine) {
     .post-entry:active {

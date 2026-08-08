@@ -1,4 +1,23 @@
 <script>
+  function preprocessMathEscapes() {
+    const content = document.querySelector('.post-content');
+    if (!content) return;
+    const walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (node.parentElement && node.parentElement.closest('pre, code')) {
+          return NodeFilter.FILTER_SKIP;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    let node;
+    while ((node = walker.nextNode())) {
+      if (node.nodeValue.includes('\\_')) {
+        node.nodeValue = node.nodeValue.replace(/\\_/g, '_');
+      }
+    }
+  }
+
   MathJax = {
     tex: {
       packages: {'[+]': ['mathtools', 'amscd']},
@@ -8,6 +27,12 @@
     loader:{
       load: ['ui/safe', '[tex]/mathtools', '[tex]/amscd']
     },
+    startup: {
+      ready() {
+        preprocessMathEscapes();
+        MathJax.startup.defaultReady();
+      }
+    }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>

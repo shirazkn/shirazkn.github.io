@@ -2,80 +2,87 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Linear Algebra on Shiraz</title>
-    <link>https://shirazkn.github.io/tags/linear-algebra/</link>
+    <link>http://localhost:1313/tags/linear-algebra/</link>
     <description>Recent content in Linear Algebra on Shiraz</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 13 Nov 2025 21:23:17 -0500</lastBuildDate>
-    <atom:link href="https://shirazkn.github.io/tags/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Representing Spatial Velocities</title>
-      <link>https://shirazkn.github.io/posts/robotics/</link>
+      <link>http://localhost:1313/posts/robotics/</link>
       <pubDate>Thu, 13 Nov 2025 21:23:17 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/robotics/</guid>
+      <guid>http://localhost:1313/posts/robotics/</guid>
       <description>I&amp;rsquo;ve been going through Russ Tedrake&amp;rsquo;s notes on robotics, which got me thinking about their so-called monogram notation. The result of this deliberation was a new notation for spatial velocities that bridges the gap between abstract Lie groups and their applications to robotics and computer graphics.</description>
     </item>
     <item>
+      <title>An Invitation to Infinite Dimensions</title>
+      <link>http://localhost:1313/posts/infinite/</link>
+      <pubDate>Mon, 01 Sep 2025 16:16:40 -0400</pubDate>
+      <guid>http://localhost:1313/posts/infinite/</guid>
+      <description>Most students&amp;rsquo; first time seeing an infinite-dimensional space is when they learn about the Fourier transform. Yet, I always hesitate to play around with them because I do not know how (and moreover, whether!) the theorems that I know from finite-dimensional linear algebra can be extended to the infinite-dimensional setting.</description>
+    </item>
+    <item>
       <title>Vector Fields on Manifolds</title>
-      <link>https://shirazkn.github.io/posts/vector-fields/</link>
+      <link>http://localhost:1313/posts/vector-fields/</link>
       <pubDate>Wed, 03 Jan 2024 11:22:28 -0500</pubDate>
-      <guid>https://shirazkn.github.io/posts/vector-fields/</guid>
+      <guid>http://localhost:1313/posts/vector-fields/</guid>
       <description>Over the past year, I have struggled to pin down what the scope of my blog should be. Maybe it is for me to catalog the process of self-learning mathematics as an engineering major who lacks a curricular background in modern mathematics. This post serves in part the purpose of organizing my own thoughts on these matters, and in part the purpose of providing a roadmap for others who are interested in embarking on a similar journey.</description>
     </item>
     <item>
       <title>Matrix Multiplication</title>
-      <link>https://shirazkn.github.io/posts/matrix/</link>
+      <link>http://localhost:1313/posts/matrix/</link>
       <pubDate>Sun, 28 May 2023 10:35:07 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/matrix/</guid>
+      <guid>http://localhost:1313/posts/matrix/</guid>
       <description>In this post I want to bridge the gap between abstract vector spaces (which are the mathematical foundation of linear algebra) and matrix multiplication (which is the linear algebra most of us are familiar with). Unlike the typical 101 course in linear algebra, I will avoid talking about solving systems of equations.</description>
     </item>
     <item>
       <title>What is a Vector?</title>
-      <link>https://shirazkn.github.io/posts/vector/</link>
+      <link>http://localhost:1313/posts/vector/</link>
       <pubDate>Sat, 20 May 2023 15:26:18 -0700</pubDate>
-      <guid>https://shirazkn.github.io/posts/vector/</guid>
+      <guid>http://localhost:1313/posts/vector/</guid>
       <description>A running gag in engineering colleges is that a lot of instructors begin their first class of the semester with this question &amp;ndash; &amp;ldquo;What is a vector?&amp;rdquo;. I used to find this ritual almost pointless because every answer felt either like a non-answer or a matter of context. Today, I no longer think that this is a matter of context.</description>
     </item>
     <item>
       <title>Sparsity</title>
-      <link>https://shirazkn.github.io/posts/sparsity/</link>
+      <link>http://localhost:1313/posts/sparsity/</link>
       <pubDate>Sat, 22 Apr 2023 11:05:58 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/sparsity/</guid>
+      <guid>http://localhost:1313/posts/sparsity/</guid>
       <description>The so called curse of dimensionality in machine learning is the observation that neural networks with many parameters can be impossibly difficult to train due to the vastness of its parameter space. This is because many (if not all) of the problems we&amp;rsquo;re interested in solving as engineers have some inherent sparsity.</description>
     </item>
     <item>
       <title>Hilbert Spaces</title>
-      <link>https://shirazkn.github.io/posts/hilbert-spaces/</link>
+      <link>http://localhost:1313/posts/hilbert-spaces/</link>
       <pubDate>Fri, 21 Apr 2023 12:09:09 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/hilbert-spaces/</guid>
+      <guid>http://localhost:1313/posts/hilbert-spaces/</guid>
       <description>A Hilbert space is a vector space that has an inner product and that it is complete, i.e., it doesn&amp;rsquo;t have holes in it. Inner product spaces have a rich geometric structure, and so do Hilbert spaces. The Euclidean space is an obvious example, where the inner product is just the dot product.</description>
     </item>
     <item>
       <title>Norm Balls</title>
-      <link>https://shirazkn.github.io/posts/balls/</link>
+      <link>http://localhost:1313/posts/balls/</link>
       <pubDate>Tue, 18 Apr 2023 21:32:10 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/balls/</guid>
+      <guid>http://localhost:1313/posts/balls/</guid>
       <description>Let&amp;rsquo;s look at the norm balls corresponding to the different p-norms. When p equals 2 this is the usual Euclidean distance. The corresponding ball is what we think of when someone says &amp;lsquo;ball&amp;rsquo;, it is all the points that are within a given distance from the origin.</description>
     </item>
     <item>
       <title>The Parallelogram Law</title>
-      <link>https://shirazkn.github.io/posts/pythagoras/</link>
+      <link>http://localhost:1313/posts/pythagoras/</link>
       <pubDate>Fri, 14 Apr 2023 15:53:46 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/pythagoras/</guid>
+      <guid>http://localhost:1313/posts/pythagoras/</guid>
       <description>I mentioned in the last post that Euclidean geometry arises by taking the real numbers and endowing it with an inner product, at which point it satisfies the Pythagoras theorem. In this post I will talk about how the Pythagoras theorem is a special case of a more general feature of inner product spaces.</description>
     </item>
     <item>
       <title>Norms, Metrics, and Inner Products</title>
-      <link>https://shirazkn.github.io/posts/norms_metrics/</link>
+      <link>http://localhost:1313/posts/norms_metrics/</link>
       <pubDate>Mon, 10 Apr 2023 12:20:23 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/norms_metrics/</guid>
+      <guid>http://localhost:1313/posts/norms_metrics/</guid>
       <description>An explainer on norms, metrics, and inner products, and their relationships to each other.</description>
     </item>
     <item>
       <title>The Unreasonable Effectiveness of &#39;2&#39; in Statistics</title>
-      <link>https://shirazkn.github.io/posts/leastsquares/</link>
+      <link>http://localhost:1313/posts/leastsquares/</link>
       <pubDate>Sun, 09 Apr 2023 12:20:39 -0400</pubDate>
-      <guid>https://shirazkn.github.io/posts/leastsquares/</guid>
+      <guid>http://localhost:1313/posts/leastsquares/</guid>
       <description>The title is a reference to The Unreasonable Effectiveness of Mathematics in the Natural Sciences. I had a similar question about the number 2 which repeatedly shows up in engineering and science, specifically in the form of the 2-norm of a vector, and seems surprisingly effective at doing what it&amp;rsquo;s supposed to do.</description>
     </item>
   </channel>

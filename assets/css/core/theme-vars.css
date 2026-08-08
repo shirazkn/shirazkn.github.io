@@ -14,7 +14,8 @@
     --tertiary: rgb(195, 194, 194);  /* Post entry shadow */
     --content: rgb(31, 31, 31);
     --hljs-bg: rgb(28, 29, 33);
-    --code-bg: rgb(224, 223, 223); /* ToC */
+    --code-bg: rgb(188, 187, 187); /* ToC */
+    --code-block-bg: rgb(188, 187, 187);
     --border: rgb(229, 228, 229);
     --accent: rgb(188, 10, 92);
     --accent-light: rgb(255, 122, 192); /* Lighter accent for hover states */
@@ -31,7 +32,8 @@
     --tertiary: rgb(50, 51, 58);
     --content: rgb(204, 204, 205);
     --hljs-bg: rgb(46, 46, 51);
-    --code-bg: rgb(55, 56, 62);
+    --code-bg: rgb(28, 29, 34);
+    --code-block-bg: rgb(28, 29, 34);
     --border: rgb(27, 27, 30);
     --accent: rgb(251, 152, 204);
     --accent-light: rgb(255, 122, 192); /* Lighter accent for hover states */

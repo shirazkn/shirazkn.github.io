@@ -208,6 +208,25 @@ async fn read_post(
     }
 }
 
+async fn post_mtime(
+    State(state): State<Arc<AppState>>,
+    Path(filename): Path<String>,
+) -> Response {
+    match resolve_file(&state, &filename) {
+        Some(path) => {
+            let mtime = path
+                .metadata()
+                .ok()
+                .and_then(|m| m.modified().ok())
+                .and_then(|t| t.duration_since(SystemTime::UNIX_EPOCH).ok())
+                .map(|d| d.as_millis() as u64)
+                .unwrap_or(0);
+            axum::Json(serde_json::json!({ "mtime": mtime })).into_response()
+        }
+        None => StatusCode::NOT_FOUND.into_response(),
+    }
+}
+
 async fn write_post(
     State(state): State<Arc<AppState>>,
     Path(filename): Path<String>,
@@ -385,6 +404,7 @@ async fn main() {
         .route("/", get(index_page))
         .route("/api/posts", get(list_posts))
         .route("/api/posts/{filename}", get(read_post).put(write_post))
+        .route("/api/posts/{filename}/mtime", get(post_mtime))
         .route("/api/upload/{slug}", post(upload_image))
         .route("/api/publish", post(publish))
         .route("/api/server", post(start_server))

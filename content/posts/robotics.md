@@ -17,8 +17,8 @@ This got me thinking about the connections between the monogram notation and abs
 
 ## <span class=tertiary>Chapter 1.</span> The Frame Bundle
 
-First, let's think about the space in which frames live. Given a point $\mf p\in \mathbb R^3$, a <span class=accented>frame</span> $f$ at $\mf p^f$ is an ordered set of $3$ linearly independent vectors $(\mf f_1, \mf f_2, \mf f_3)$ along with the base point $\mf p^f$.
-The frame is visualized as arrows starting at $\mf p$ and facing outwards.[^orientation] The collection of all frames of $\mathbb R^3$ makes up the frame bundle $\mathrm F\mathbb R^3$. 
+First, let's think about the space in which frames live. Given a point $\mf p^f\in \mathbb R^3$, a <span class=accented>frame</span> $f$ at $\mf p^f$ is an ordered set of $3$ linearly independent vectors $(\mf f_1, \mf f_2, \mf f_3)$ along with the base point $\mf p^f$.
+The frame is visualized as arrows starting at $\mf p^f$ and facing outwards.[^orientation] The collection of all frames of $\mathbb R^3$ makes up the frame bundle $\mathrm F\mathbb R^3$. 
 There is a map $\pi:\mathrm F\mathbb R^3\rightarrow \mathbb R^3$ that maps $f$ to its base point $\mf p^f$, giving us a [fiber bundle](/posts/bundles/#-the-frame-bundle) structure.
 
 [^orientation]: It turns out that such a frame can have one of two parities — it can either be *positively* or *negatively* oriented. Our usual choice of the $\mathrm{xyz}$ axes is positively oriented, so you can use that fact to come up with your own "right-hand rule" for positive orientation.

@@ -199,11 +199,13 @@ html, body {
 .cm-editor .cm-cursor { border-left-color: var(--ide-accent); }
 .cm-editor .cm-line { padding-left: 4px; }
 
-/* Math decoration colors */
+/* Math decoration colors — span override prevents markdown emphasis/punct bleeding in */
 .cm-editor .cm-math-mark { color: #d49030; }
-.cm-editor .cm-math-content { color: #b07828; }
+.cm-editor .cm-math-content,
+.cm-editor .cm-math-content span { color: #b07828 !important; font-style: normal !important; }
 .dark-mode .cm-editor .cm-math-mark { color: #f9e2af; }
-.dark-mode .cm-editor .cm-math-content { color: #e0c070; }
+.dark-mode .cm-editor .cm-math-content,
+.dark-mode .cm-editor .cm-math-content span { color: #e0c070 !important; font-style: normal !important; }
 
 #resize-handle {
   width: 4px; cursor: col-resize; background: var(--ide-border);
@@ -408,6 +410,9 @@ html.dark-mode .pv img.deinvertible { filter: none; }
   var autoSaveTimer = null;
   var allPosts = [];
   var wordWrap = true;
+  var lastKnownMtime = 0;
+  var watchTimer = null;
+  var mathGeneration = 0;
 
   // ============================================================
   // Editor abstraction — wraps textarea, upgrades to CM if loaded
@@ -525,6 +530,36 @@ html.dark-mode .pv img.deinvertible { filter: none; }
   function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
   searchInput.addEventListener("input", function() { renderPostList(searchInput.value); });
 
+  // ---- File watching ----
+  function startFileWatch() {
+    clearInterval(watchTimer);
+    lastKnownMtime = 0;
+    if (!currentFile) return;
+    watchTimer = setInterval(function() {
+      if (!currentFile) return;
+      fetch("/api/posts/" + encodeURIComponent(currentFile) + "/mtime")
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          if (!d.mtime) return;
+          if (lastKnownMtime === 0) { lastKnownMtime = d.mtime; return; }
+          if (d.mtime === lastKnownMtime) return;
+          lastKnownMtime = d.mtime;
+          if (isModified) { flash("File changed on disk (unsaved changes kept)"); return; }
+          fetch("/api/posts/" + encodeURIComponent(currentFile))
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+              if (data.content === E.getValue()) return;
+              var frac = E.scrollFrac();
+              E.setValue(data.content);
+              originalContent = data.content;
+              E.setScrollFrac(frac);
+              updatePreview();
+              flash("Reloaded from disk");
+            }).catch(function() {});
+        }).catch(function() {});
+    }, 1000);
+  }
+
   // ---- Open / Save ----
   function openPost(filename) {
     if (isModified && currentFile && !confirm("Unsaved changes. Discard?")) return;
@@ -541,14 +576,20 @@ html.dark-mode .pv img.deinvertible { filter: none; }
         updatePreview();
         E.focus();
         E.scrollTop(0);
+        startFileWatch();
         if (!firstPostOpened) { firstPostOpened = true; if (sidebarOpen) sidebarToggle.click(); }
       })
       .catch(function() { flash("Failed to open file"); });
   }
 
   function savePost() {
-    if (!currentFile || !isModified) return;
+    if (!currentFile) return;
     var content = E.getValue();
+    if (content === originalContent) {
+      isModified = false;
+      modifiedDot.classList.remove("visible");
+      return;
+    }
     fetch("/api/posts/" + encodeURIComponent(currentFile), {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -557,6 +598,7 @@ html.dark-mode .pv img.deinvertible { filter: none; }
       originalContent = content;
       isModified = false;
       modifiedDot.classList.remove("visible");
+      lastKnownMtime = Date.now();
       saveStatus.textContent = "saved";
       setTimeout(function() { if (saveStatus.textContent === "saved") saveStatus.textContent = ""; }, 2000);
     }).catch(function() { flash("Save failed"); });
@@ -602,16 +644,15 @@ html.dark-mode .pv img.deinvertible { filter: none; }
 
   // ---- Editor change handler (shared by textarea and CM) ----
   var previewTimer = null;
+  var fastMathTimer = null;
   function onEditorChange() {
-    var content = E.getValue();
-    isModified = content !== originalContent;
-    modifiedDot.classList.toggle("visible", isModified);
+    if (!isModified) { isModified = true; modifiedDot.classList.add("visible"); }
+    clearTimeout(fastMathTimer);
     clearTimeout(previewTimer);
-    previewTimer = setTimeout(updatePreview, 250);
-    if (isModified) {
-      clearTimeout(autoSaveTimer);
-      autoSaveTimer = setTimeout(savePost, 2000);
-    }
+    clearTimeout(autoSaveTimer);
+    fastMathTimer = setTimeout(updateCurrentEquation, 200);
+    previewTimer = setTimeout(function() { renderMarkdown().then(runMathJax); }, 1000);
+    autoSaveTimer = setTimeout(savePost, 3000);
   }
 
   // Textarea fallback events
@@ -642,18 +683,92 @@ html.dark-mode .pv img.deinvertible { filter: none; }
     return { fm: "", body: text };
   }
 
-  function updatePreview() {
+  // Yield to the browser between expensive steps so input events are never blocked.
+  // scheduler.yield() (Chrome 115+) is ideal; setTimeout(0) is the universal fallback.
+  var _yield = (typeof scheduler !== 'undefined' && scheduler.yield)
+    ? function() { return scheduler.yield(); }
+    : function() { return new Promise(function(r) { setTimeout(r, 0); }); };
+
+  // Returns {idx, content} if cursor is inside a math block, else null.
+  function getMathAtCursor() {
+    var text = E.getValue();
+    var offset = E.getCursor();
+    var re = /\$\$[\s\S]*?\$\$|\$(?!\$|\s)(?:[^$\n\\]|\\.)*(?<!\s)\$/g;
+    var m, idx = 0;
+    while ((m = re.exec(text)) !== null) {
+      if (offset >= m.index && offset <= m.index + m[0].length) {
+        return { idx: idx, content: m[0] };
+      }
+      idx++;
+    }
+    return null;
+  }
+
+  // Fast path: re-typeset only the equation the cursor is in.
+  var _mathEqBusy = false;
+  async function updateCurrentEquation() {
+    if (_mathEqBusy) return;
+    if (!window.MathJax || !MathJax.typesetPromise) return;
+    var info = getMathAtCursor();
+    if (!info) return;
+    var elem = preview.querySelector('[data-math-idx="' + info.idx + '"]');
+    if (!elem) return;
+    _mathEqBusy = true;
+    try {
+      if (window.MathJax.typesetClear) MathJax.typesetClear([elem]);
+      elem.textContent = info.content;
+      await MathJax.typesetPromise([elem]);
+      elem.setAttribute('data-typeset', '1');
+    } catch(e) {}
+    finally { _mathEqBusy = false; }
+  }
+
+  async function renderMarkdown() {
+    mathGeneration++;  // cancel any in-progress runMathJax
     var text = E.getValue();
     var parsed = stripFrontMatter(text);
     var body = parsed.body;
     var wc = body.trim() ? body.trim().split(/\s+/).length : 0;
     statusWords.textContent = wc + " words";
-    preview.innerHTML = marked.parse(body);
+
+    await _yield();
+
+    // Protect math from marked, and tag each block with a stable index.
+    var mathCache = [];
+    var safe = body.replace(/\$\$[\s\S]*?\$\$|\$(?!\$|\s)(?:[^$\n\\]|\\.)*(?<!\s)\$/g, function(m) {
+      return '\x02' + (mathCache.push(m) - 1) + '\x03';
+    });
+    var html = marked.parse(safe);
+    html = html.replace(/\x02(\d+)\x03/g, function(_, i) {
+      return '<span class="math-eq" data-math-idx="' + i + '">' + mathCache[+i] + '</span>';
+    });
+
+    await _yield();
+
+    preview.innerHTML = html;
     if (window.Prism) Prism.highlightAllUnder(preview);
     buildToc();
-    if (window.MathJax && MathJax.typesetPromise) {
-      MathJax.typesetPromise([preview]).catch(function() {});
+  }
+
+  // Typeset all not-yet-typeset equations, yielding between each.
+  async function runMathJax() {
+    if (!window.MathJax || !MathJax.typesetPromise) return;
+    var gen = ++mathGeneration;
+    var elems = Array.from(preview.querySelectorAll('[data-math-idx]'));
+    for (var i = 0; i < elems.length; i++) {
+      await _yield();
+      if (mathGeneration !== gen) return;
+      if (!preview.contains(elems[i])) continue;
+      if (elems[i].getAttribute('data-typeset')) continue;  // already done by fast path
+      try {
+        await MathJax.typesetPromise([elems[i]]);
+        elems[i].setAttribute('data-typeset', '1');
+      } catch(e) {}
     }
+  }
+
+  function updatePreview() {
+    renderMarkdown().then(runMathJax);
   }
 
   // ---- TOC ----
@@ -718,9 +833,10 @@ html.dark-mode .pv img.deinvertible { filter: none; }
 
   serverBtn.addEventListener("click", function() {
     var url = currentPreviewUrl();
+    flash("Starting server...");
     fetch("/api/server", { method: "POST" })
-      .then(function() { window.open(url, "_blank"); })
-      .catch(function() { window.open(url, "_blank"); });
+      .then(function() { setTimeout(function() { window.open(url, "_blank"); }, 2000); })
+      .catch(function() { setTimeout(function() { window.open(url, "_blank"); }, 2000); });
   });
 
   // ---- Drag & Drop ----
@@ -919,11 +1035,17 @@ html.dark-mode .pv img.deinvertible { filter: none; }
 
       var mathPlugin = ViewPlugin.fromClass(
         class {
-          constructor(view) { this.decorations = this.build(view.state); }
+          constructor(view) { this.decorations = this._build(view.state); this._lastBuild = 0; }
           update(update) {
-            if (update.docChanged) this.decorations = this.build(update.state);
+            if (update.docChanged) {
+              var now = Date.now();
+              if (now - this._lastBuild > 2000) {
+                this.decorations = this._build(update.state);
+                this._lastBuild = now;
+              }
+            }
           }
-          build(state) {
+          _build(state) {
             var builder = new RangeSetBuilder();
             var text = state.doc.toString();
             var re = /\$\$[\s\S]*?\$\$|\$(?!\$|\s)(?:[^$\n\\]|\\.)*(?<!\s)\$/g;
@@ -957,6 +1079,7 @@ html.dark-mode .pv img.deinvertible { filter: none; }
             saveKM,
             updateListener,
             EditorView.lineWrapping,
+            mathDecoField,
             mathPlugin,
             cmPlaceholder("Select a post from the sidebar to start editing."),
           ],
