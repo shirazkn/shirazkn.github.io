@@ -61,14 +61,14 @@ Here's an assortment of pure and applied math content that I've enjoyed and/or c
 - [The Joy of Abstraction](https://www.cambridge.org/us/universitypress/subjects/mathematics/logic-categories-and-sets/joy-abstraction-exploration-math-category-theory-and-life) (an accessible intro to category theory) and [Category Theory in Context](https://emilyriehl.github.io/files/context.pdf) (a very well-paced textbook on category theory with plenty of examples)
 - [Pieter van Goor's blog](https://pvangoor.github.io) on matrix Lie groups, it's a treasure-trove of formulae for $SO(n)$ and $SE(n)$
 - Blogs by Terence Tao, John Baez, and Tai-Danae Bradley
-- [My Favorite Theorem](https://kpknudson.com/my-favorite-theorem) (podcast)
-- [John M. Lee](https://link.springer.com/book/10.1007/978-1-4419-9982-5) and [Stephen Bruce Sontz](https://link.springer.com/book/10.1007/978-3-319-14765-9)'s books on differential geometry
+- [My Favorite Theorem](https://kpknudson.com/my-favorite-theorem) (podcast, which is now discontinued 😞)
+- [John M. Lee](https://link.springer.com/book/10.1007/978-1-4419-9982-5) and [Stephen Bruce Sontz](https://link.springer.com/book/10.1007/978-3-319-14765-9)'s books on differential geometry; the latter is underrated IMO!
 - [Peter Winkler's puzzle book](https://math.dartmouth.edu/news-resources/electronic/puzzlebook/book/book.pdf), which first sparked my joy for math
 
 ---
 
 ### AI Disclaimer
 
-None of the content on my blog is LLM-generated, although once or twice I have asked an LLM: *Do you see any errors/notational inconsistencies on this blog?*, to which I have only ever received false positive responses. The logo on my homepage and its animation were created without LLMs as well (I learnt whatever minimal JS was needed to make it work). The logo is a 2-dimensional damped harmonic oscillator, a reference to the [Lorenz attractor](https://en.wikipedia.org/wiki/Lorenz_system), and also has a hidden 'S' in it! Some of the recent CSS additions to my blog (like the post hover effect) were LLM-generated; that's just me being lazy.
+None of the content on my blog is LLM-generated, although once or twice I have asked an LLM: "Can you spot any errors/notational inconsistencies?" The logo on my homepage and its animation were created without LLMs as well (I learnt whatever JS was needed to make it work, and then promptly forgot it). The logo is a 2-dimensional damped harmonic oscillator, a reference to the [Lorenz attractor](https://en.wikipedia.org/wiki/Lorenz_system), and also has a hidden 'S' in it! Some of the recent CSS additions to my blog (like the post hover effect) were LLM-generated.
 
-I expect to make light use of LLMs to make my life a little bit easier, in terms of maintenance and upkeep of the blog. However, using an LLM to generate the content on this blog would defeat the whole purpose of this endeavor.
+I expect to make light use of LLMs to make my life a little bit easier, in terms of maintenance and upkeep of the blog. However, using an LLM to generate the content on the blog would defeat the whole purpose of this endeavor.
