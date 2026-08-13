@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Mechanics on Shiraz</title>
-    <link>http://localhost:1313/tags/mechanics/</link>
+    <link>https://shirazkn.github.io/tags/mechanics/</link>
     <description>Recent content in Mechanics on Shiraz</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 13 Nov 2025 21:23:17 -0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/mechanics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://shirazkn.github.io/tags/mechanics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Representing Spatial Velocities</title>
-      <link>http://localhost:1313/posts/robotics/</link>
+      <link>https://shirazkn.github.io/posts/robotics/</link>
       <pubDate>Thu, 13 Nov 2025 21:23:17 -0500</pubDate>
-      <guid>http://localhost:1313/posts/robotics/</guid>
+      <guid>https://shirazkn.github.io/posts/robotics/</guid>
       <description>I&amp;rsquo;ve been going through Russ Tedrake&amp;rsquo;s notes on robotics, which got me thinking about their so-called monogram notation. The result of this deliberation was a new notation for spatial velocities that bridges the gap between abstract Lie groups and their applications to robotics and computer graphics.</description>
     </item>
     <item>
       <title>Euler-Poincaré Equations</title>
-      <link>http://localhost:1313/posts/ep/</link>
+      <link>https://shirazkn.github.io/posts/ep/</link>
       <pubDate>Thu, 19 Dec 2024 08:18:04 -0500</pubDate>
-      <guid>http://localhost:1313/posts/ep/</guid>
+      <guid>https://shirazkn.github.io/posts/ep/</guid>
       <description>Poincaré&amp;rsquo;s 1901 paper introduces (in just a humble 3 pages) the Euler-Poincaré equations, which are the specialization of the Euler-Lagrange equations to the case where a Lie group acts on the configuration manifold. I work through Poincaré&amp;rsquo;s paper without making too many identifications.</description>
     </item>
     <item>
       <title>Classical Mechanics on Manifolds</title>
-      <link>http://localhost:1313/posts/symplectic/</link>
+      <link>https://shirazkn.github.io/posts/symplectic/</link>
       <pubDate>Mon, 09 Dec 2024 14:45:16 +0530</pubDate>
-      <guid>http://localhost:1313/posts/symplectic/</guid>
+      <guid>https://shirazkn.github.io/posts/symplectic/</guid>
       <description>Despite having encountered the Lagrangian and Hamiltonian formalisms of mechanics several times in a variety of engineering and physics settings, I had never been able to retain it in my memory. In this post, I would like to collect my thoughts on their differential geometric treatment, which assumes a very simple and memorable form once we introduce the language of symplectic geometry.</description>
     </item>
   </channel>

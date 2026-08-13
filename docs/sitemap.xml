@@ -2,132 +2,120 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2026-04-05T13:44:06-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/godot/</loc>
-    <lastmod>2026-04-05T13:44:06-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2026-04-05T13:44:06-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/optimization/</loc>
+    <loc>https://shirazkn.github.io/tags/optimization/</loc>
     <lastmod>2025-12-06T18:56:12-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/probability/</loc>
+    <loc>https://shirazkn.github.io/posts/</loc>
     <lastmod>2025-12-06T18:56:12-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/robotics/</loc>
+    <loc>https://shirazkn.github.io/tags/probability/</loc>
     <lastmod>2025-12-06T18:56:12-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://shirazkn.github.io/tags/robotics/</loc>
     <lastmod>2025-12-06T18:56:12-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/rl/</loc>
+    <loc>https://shirazkn.github.io/</loc>
     <lastmod>2025-12-06T18:56:12-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/differential-geometry/</loc>
+    <loc>https://shirazkn.github.io/tags/</loc>
+    <lastmod>2025-12-06T18:56:12-05:00</lastmod>
+  </url><url>
+    <loc>https://shirazkn.github.io/posts/rl/</loc>
+    <lastmod>2025-12-06T18:56:12-05:00</lastmod>
+  </url><url>
+    <loc>https://shirazkn.github.io/tags/differential-geometry/</loc>
     <lastmod>2025-11-13T21:23:17-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/linear-algebra/</loc>
+    <loc>https://shirazkn.github.io/tags/linear-algebra/</loc>
     <lastmod>2025-11-13T21:23:17-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mechanics/</loc>
+    <loc>https://shirazkn.github.io/tags/mechanics/</loc>
     <lastmod>2025-11-13T21:23:17-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/robotics/</loc>
+    <loc>https://shirazkn.github.io/posts/robotics/</loc>
     <lastmod>2025-11-13T21:23:17-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/bundles/</loc>
+    <loc>https://shirazkn.github.io/posts/bundles/</loc>
     <lastmod>2025-10-24T20:55:32-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/infinite/</loc>
-    <lastmod>2025-09-01T16:16:40-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/lemmas/</loc>
+    <loc>https://shirazkn.github.io/posts/lemmas/</loc>
     <lastmod>2025-01-13T12:46:04-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/ep/</loc>
+    <loc>https://shirazkn.github.io/posts/ep/</loc>
     <lastmod>2024-12-19T08:18:04-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/harmonic-analysis/</loc>
+    <loc>https://shirazkn.github.io/posts/harmonic-analysis/</loc>
     <lastmod>2024-12-12T13:02:50+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/harmonic-analysis/</loc>
+    <loc>https://shirazkn.github.io/tags/harmonic-analysis/</loc>
     <lastmod>2024-12-12T13:02:50+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/symplectic/</loc>
+    <loc>https://shirazkn.github.io/posts/symplectic/</loc>
     <lastmod>2024-12-09T14:45:16+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/so3/</loc>
-    <lastmod>2024-06-07T11:27:55-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/cond_expectation/</loc>
-    <lastmod>2024-05-11T07:40:56-07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/sphere/</loc>
+    <loc>https://shirazkn.github.io/posts/sphere/</loc>
     <lastmod>2024-03-24T10:43:16-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/lie-groups_riemannian/</loc>
+    <loc>https://shirazkn.github.io/posts/lie-groups_riemannian/</loc>
     <lastmod>2024-01-30T09:53:05-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/lie-groups_construction/</loc>
+    <loc>https://shirazkn.github.io/posts/lie-groups_construction/</loc>
     <lastmod>2024-01-24T14:20:59-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/lie-groups/</loc>
+    <loc>https://shirazkn.github.io/posts/lie-groups/</loc>
     <lastmod>2024-01-15T07:24:59-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/vector-fields/</loc>
+    <loc>https://shirazkn.github.io/posts/vector-fields/</loc>
     <lastmod>2024-01-03T11:22:28-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/fourier/</loc>
+    <loc>https://shirazkn.github.io/posts/fourier/</loc>
     <lastmod>2023-10-02T14:59:15-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/matrix/</loc>
+    <loc>https://shirazkn.github.io/posts/matrix/</loc>
     <lastmod>2023-05-28T10:35:07-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/vector/</loc>
+    <loc>https://shirazkn.github.io/posts/vector/</loc>
     <lastmod>2023-05-20T15:26:18-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/sparsity_2/</loc>
+    <loc>https://shirazkn.github.io/posts/sparsity_2/</loc>
     <lastmod>2023-04-28T17:15:26-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/sparsity/</loc>
+    <loc>https://shirazkn.github.io/posts/sparsity/</loc>
     <lastmod>2023-04-22T11:05:58-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/hilbert-spaces/</loc>
+    <loc>https://shirazkn.github.io/posts/hilbert-spaces/</loc>
     <lastmod>2023-04-21T12:09:09-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/balls/</loc>
+    <loc>https://shirazkn.github.io/posts/balls/</loc>
     <lastmod>2023-04-18T21:32:10-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/pythagoras/</loc>
+    <loc>https://shirazkn.github.io/posts/pythagoras/</loc>
     <lastmod>2023-04-14T15:53:46-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/norms_metrics/</loc>
+    <loc>https://shirazkn.github.io/posts/norms_metrics/</loc>
     <lastmod>2023-04-10T12:20:23-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/leastsquares/</loc>
+    <loc>https://shirazkn.github.io/posts/leastsquares/</loc>
     <lastmod>2023-04-09T12:20:39-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/cat_theory_1/</loc>
+    <loc>https://shirazkn.github.io/posts/cat_theory_1/</loc>
     <lastmod>2023-03-18T21:07:38-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/general/</loc>
+    <loc>https://shirazkn.github.io/tags/general/</loc>
     <lastmod>2023-03-18T21:07:38-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/language_and_logic2/</loc>
+    <loc>https://shirazkn.github.io/posts/language_and_logic2/</loc>
     <lastmod>2023-02-05T08:46:18-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/language_and_logic1/</loc>
+    <loc>https://shirazkn.github.io/posts/language_and_logic1/</loc>
     <lastmod>2023-01-27T13:48:49-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://shirazkn.github.io/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://shirazkn.github.io/archives/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://shirazkn.github.io/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>https://shirazkn.github.io/search/</loc>
   </url>
 </urlset>
