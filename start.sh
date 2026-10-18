@@ -2,4 +2,5 @@
 
 code .
 open -a "Hugo Server"
-hugo -D server
+# Render to memory so the dev build (drafts, localhost URLs) never lands in docs/
+hugo server -D --renderToMemory

@@ -1,10 +1,9 @@
-{{ if .Title }}
-    <figure>
-        <img loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" />
-        <figcaption>
-            {{ .Title }}
-        </figcaption>
-    </figure>
-{{ else }}
-    <img loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" />
-{{ end }}
+{{- $img := printf `<img loading="lazy" decoding="async" src="%s" alt="%s">` (.Destination | safeURL) .PlainText -}}
+{{- if .Title }}
+<figure>
+    {{ $img | safeHTML }}
+    <figcaption>{{ .Title }}</figcaption>
+</figure>
+{{- else }}
+{{ $img | safeHTML }}
+{{- end -}}

@@ -74,17 +74,17 @@ div#logo-s svg .cls-darkpink {
 }
 
 /* Logo gradient colors - dark mode */
-.dark #black-gradient {
+[data-theme="dark"] #black-gradient {
     --color-1: #090708;
     --color-2: #262525;
 }
 
-.dark #darkpink-gradient {
+[data-theme="dark"] #darkpink-gradient {
     --color-1: #5b193b;
     --color-2: #b41a6a;
 }
 
-.dark #pink-gradient {
+[data-theme="dark"] #pink-gradient {
     --color-3: #f19dca;
     --color-4: #f161ac;
 }
@@ -92,8 +92,8 @@ div#logo-s svg .cls-darkpink {
 /* --------------------------------------------------------------------------
    Dark mode image/video inversion
    -------------------------------------------------------------------------- */
-body.dark figure.invertible img,
-body.dark img.invertible {
+[data-theme="dark"] figure.invertible img,
+[data-theme="dark"] img.invertible {
     filter: invert(0.875) hue-rotate(180deg);
 }
 
@@ -103,8 +103,8 @@ img.deinvertible {
     filter: invert(0.875) hue-rotate(180deg);
 }
 
-body.dark figure.deinvertible img,
-body.dark img.deinvertible {
+[data-theme="dark"] figure.deinvertible img,
+[data-theme="dark"] img.deinvertible {
     filter: none;
 }
 
@@ -112,7 +112,7 @@ video.inverted {
     filter: invert(1.0) hue-rotate(180deg) contrast(125%);
 }
 
-body.dark video.inverted {
+[data-theme="dark"] video.inverted {
     filter: contrast(117%) saturate(90%);
 }
 
@@ -135,7 +135,7 @@ body.dark video.inverted {
     display: block;
 }
 
-body.dark .tikz-wrapper svg {
+[data-theme="dark"] .tikz-wrapper svg {
     filter: invert(0.875) hue-rotate(180deg);
 }
 
@@ -172,38 +172,96 @@ sub {
 
 /* --------------------------------------------------------------------------
    Post entry cards (overrides from post-entry.css)
-   Shadow values match CARD_CONFIG in extend_footer.html (center-of-card hover)
+   Every effect animates only transform/opacity, so it runs on the compositor
+   and never repaints the card.
    -------------------------------------------------------------------------- */
 .post-entry {
+    --card-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
     border: 1px solid var(--border);
-    /* Shadow matches hover center: Y=1px, blur=1.5px, opacity=0.22 (light) */
     box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.22);
-    transition: transform 0.04s ease-out, box-shadow 0.04s ease-out;
-    overflow: hidden;
-    transform-style: preserve-3d;
+    isolation: isolate;
+    transition: transform 0.15s var(--card-ease);
 }
 
-/* Smooth opacity transitions for mobile scroll-based focus */
-@media (pointer: coarse) {
-    .post-entry {
-        transition: transform 0.04s ease-out, box-shadow 0.04s ease-out, opacity 0.25s ease-out;
-    }
+/* Hover elevation: a pre-rendered crisp ledge shadow that fades in, rather
+   than a box-shadow that has to be repainted every frame */
+.post-entry::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 3px 0 -1px rgba(0, 0, 0, 0.12), 0 3px 5px -2px rgba(0, 0, 0, 0.22);
+    opacity: 0;
+    transition: opacity 0.15s var(--card-ease);
 }
 
-.post-entry:hover {
-    transition: transform 0.01s linear, box-shadow 0.03s linear;
-}
-
-.dark .post-entry {
-    /* Shadow matches hover center: Y=1px, blur=1.5px, opacity=0.45 (dark) */
+[data-theme="dark"] .post-entry {
     box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.45);
 }
 
+/* A dark shadow vanishes against the near-black page, so dark mode uses a
+   light rim and ledge instead */
+[data-theme="dark"] .post-entry::after {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 3px 0 -1px rgba(255, 255, 255, 0.12);
+}
 
-@media (pointer: fine) {
-    .post-entry:active {
-        transform: scale(0.99);
-        box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.15);
+@media (hover: hover) and (pointer: fine) {
+    .post-entry:hover {
+        transform: translateY(-1px);
+        transition-duration: 0.08s;
+    }
+
+    .post-entry:hover::after {
+        opacity: 1;
+        transition-duration: 0.08s;
+    }
+}
+
+/* Same lift when a card is reached with the keyboard */
+.post-entry:has(.entry-link:focus-visible) {
+    transform: translateY(-1px);
+}
+
+.post-entry:has(.entry-link:focus-visible)::after {
+    opacity: 1;
+}
+
+.post-entry:active {
+    transform: scale(0.996);
+    transition-duration: 0.04s;
+}
+
+.post-entry:active::after {
+    opacity: 0;
+    transition-duration: 0.04s;
+}
+
+/* Touch screens: cards ease into focus as they scroll into view. Scroll-driven
+   animations run off the main thread; browsers without support just show the
+   cards as-is. Uses `scale` (not `transform`) so it composes with :active. */
+@supports (animation-timeline: view()) {
+    @media (pointer: coarse) and (prefers-reduced-motion: no-preference) {
+        .post-entry {
+            animation: card-enter linear both, card-exit linear forwards;
+            animation-timeline: view(), view();
+            animation-range: entry 0% entry 100%, exit 0% exit 100%;
+        }
+    }
+}
+
+@keyframes card-enter {
+    from {
+        opacity: 0.6;
+        scale: 0.98;
+    }
+}
+
+@keyframes card-exit {
+    to {
+        opacity: 0.6;
+        scale: 0.98;
     }
 }
 
@@ -238,6 +296,12 @@ sub {
     animation: cursor-blink 1.1s steps(1) infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .entry-content-2::after {
+        animation: none;
+    }
+}
+
 /* --------------------------------------------------------------------------
    Hover letter effect (logo and post titles)
    -------------------------------------------------------------------------- */
@@ -252,7 +316,7 @@ sub {
 
 .hover-letter {
     position: relative;
-    transition: top 0.05s ease-out, color 0.4s ease-out;
+    transition: top 0.05s ease-out, color 0.2s ease-out;
     top: 0;
 }
 
@@ -292,31 +356,31 @@ sub {
     cursor: pointer;
 }
 
-.toc details summary {
+.toc summary {
     cursor: pointer;
     transition: transform 0.05s;
     display: inline-block;
     list-style: none;
 }
 
-.toc details summary::-webkit-details-marker {
+.toc summary::-webkit-details-marker {
     display: none;
 }
 
-.toc details summary::before {
+.toc summary::before {
     content: '▶ ';
     font-size: 0.7em;
     margin-right: 0.3em;
-    transition: transform 0.15s ease-out;
+    transition: transform 0.1s ease-out;
     display: inline-block;
 }
 
-.toc details[open] summary::before {
+.toc[open] summary::before {
     transform: rotate(90deg);
 }
 
 @media (hover: hover) {
-    .toc details summary:hover {
+    .toc summary:hover {
         transform: translateY(-1px);
     }
 }
@@ -332,6 +396,21 @@ a {
 @media (hover: hover) {
     a:hover {
         transform: translateY(-1px);
+    }
+}
+
+/* Links in running text stay inline so long ones can wrap across lines;
+   transforms don't apply to inline boxes, so they lift with `top` instead */
+.post-content a:not(.anchor) {
+    display: inline;
+    position: relative;
+    top: 0;
+    transition: top 0.05s;
+}
+
+@media (hover: hover) {
+    .post-content a:not(.anchor):hover {
+        top: -1px;
     }
 }
 

@@ -1,15 +1,12 @@
-<script>
-(function() {
-    var pref = localStorage.getItem("pref-theme");
-    if (pref === "dark" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-        document.documentElement.classList.add("dark");
-    }
-})();
-</script>
-{{ if or .Params.math .Site.Params.math }}
+{{- /* MathJax is ~1MB; list pages (home, tags, archives, search) never contain TeX */}}
+{{ if and .IsPage (not (in (slice "search" "archives") .Layout)) (or .Params.math .Site.Params.math) }}
 {{ partial "math.html" . }}
 {{ end }}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
+{{- /* Used by blockquotes and .print; loaded without blocking first paint */}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica&display=swap"></noscript>
 
 {{ if or (.Params.tikzjax) (.Site.Params.tikzjax) }}
 <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">

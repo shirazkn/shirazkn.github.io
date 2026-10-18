@@ -18,6 +18,20 @@
     }
   }
 
+  // Inline math can't wrap, so a formula wider than its line would widen the whole
+  // page (mostly on phones). Let just those few scroll on their own.
+  function markWideInlineMath() {
+    for (const m of document.querySelectorAll('.post-content mjx-container:not([display="true"])')) {
+      m.classList.remove('mjx-wide');
+      // Measure against the nearest block box (math often sits inside inline spans)
+      let p = m.parentElement;
+      while (p.parentElement && getComputedStyle(p).display.startsWith('inline')) p = p.parentElement;
+      const cs = getComputedStyle(p);
+      const available = p.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      if (m.getBoundingClientRect().width > available + 0.5) m.classList.add('mjx-wide');
+    }
+  }
+
   MathJax = {
     tex: {
       packages: {'[+]': ['mathtools', 'amscd']},
@@ -31,6 +45,14 @@
       ready() {
         preprocessMathEscapes();
         MathJax.startup.defaultReady();
+        MathJax.startup.promise.then(() => {
+          markWideInlineMath();
+          let resizeRaf = null;
+          window.addEventListener('resize', () => {
+            cancelAnimationFrame(resizeRaf);
+            resizeRaf = requestAnimationFrame(markWideInlineMath);
+          });
+        });
       }
     }
   };

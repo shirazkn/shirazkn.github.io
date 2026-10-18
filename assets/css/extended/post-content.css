@@ -67,7 +67,7 @@
     text-align: justify;
 }
 
-body.dark .post-content aside {
+[data-theme="dark"] .post-content aside {
     /* border-left: 1.2px solid var(--aside-border); */
     border-color: rgba(49, 49, 49, 0.625);
     border-right: 0.5px solid rgba(38, 37, 38, 0.54);
@@ -121,4 +121,57 @@ body.dark .post-content aside {
     margin: auto;
     padding: 0px 20px 0px 20px;
     border-inline-start: 2px solid var(--accent);
+}
+
+/* Wide equations scroll on their own instead of widening the whole page
+   (on phones, most posts have at least one display equation wider than the screen) */
+.post-content mjx-container[display="true"],
+.post-content .boxed {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* Set by markWideInlineMath() in math.html on the rare inline formula wider than its line */
+.post-content mjx-container.mjx-wide {
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    vertical-align: middle;
+}
+
+/* Thin scrollbar on scrolling math; the default (overlay) one covers the bottom of the formula */
+.post-content :is(mjx-container[display="true"], mjx-container.mjx-wide, .boxed)::-webkit-scrollbar {
+    height: 3px;
+}
+.post-content :is(mjx-container[display="true"], mjx-container.mjx-wide, .boxed)::-webkit-scrollbar-thumb {
+    background: var(--tertiary);
+    border-radius: 3px;
+}
+.post-content :is(mjx-container[display="true"], mjx-container.mjx-wide, .boxed)::-webkit-scrollbar-track {
+    background: transparent;
+}
+/* Firefox; guarded because Chromium ignores the rules above once these are set */
+@supports not selector(::-webkit-scrollbar) {
+    .post-content :is(mjx-container[display="true"], mjx-container.mjx-wide, .boxed) {
+        scrollbar-width: thin;
+        scrollbar-color: var(--tertiary) transparent;
+    }
+}
+
+/* Phones: floated asides would squeeze the body text into a narrow column,
+   and figures sized for the 720px desktop column would be tiny */
+@media (max-width: 600px) {
+    .post-content aside,
+    .post-content aside.aside-right {
+        float: none;
+        width: auto;
+        margin: 1em 0;
+        text-align: left;
+    }
+
+    .post-content figure {
+        max-width: 100% !important; /* overrides inline max-width set for desktop */
+    }
 }
