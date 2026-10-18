@@ -9,16 +9,16 @@
 <meta name="keywords" content="Differential Geometry">
 <meta name="description" content="There are multiple ways to construct new groups from old ones. I provide an intuition for how these constructions work, and also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups.">
 <meta name="author" content="">
-<link rel="canonical" href="https://shirazkn.github.io/posts/lie-groups_construction/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.2921f0d9e585bc62a176e52c3c9ea94ecefc8bb59f1eff9561f20e0db052bdd6.css" integrity="sha256-KSHw2eWFvGKhduUsPJ6pTs78i7WfHv&#43;VYfIODbBSvdY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://shirazkn.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://shirazkn.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
+<link rel="canonical" href="https://shiraz-k.com/posts/lie-groups_construction/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a0ebdfe53c3eb2e3553423a17ddbc637fa0058202126dd12b1f64b8055fb9532.css" integrity="sha256-oOvf5Tw&#43;suNVNCOhfdvGN/oAWCAhJt0SsfZLgFX7lTI=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://shiraz-k.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://shiraz-k.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://shiraz-k.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://shiraz-k.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://shiraz-k.com/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://shirazkn.github.io/posts/lie-groups_construction/">
+<link rel="alternate" hreflang="en" href="https://shiraz-k.com/posts/lie-groups_construction/">
 <noscript>
     <style>
         #theme-toggle,
@@ -51,12 +51,6 @@
             }
         }
 
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
     </style>
 </noscript>
 <script>
@@ -70,13 +64,6 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><script>
-(function() {
-    var pref = localStorage.getItem("pref-theme");
-    if (pref === "dark" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-        document.documentElement.classList.add("dark");
-    }
-})();
 </script>
 
 <script>
@@ -99,6 +86,20 @@
     }
   }
 
+  
+  
+  function markWideInlineMath() {
+    for (const m of document.querySelectorAll('.post-content mjx-container:not([display="true"])')) {
+      m.classList.remove('mjx-wide');
+      
+      let p = m.parentElement;
+      while (p.parentElement && getComputedStyle(p).display.startsWith('inline')) p = p.parentElement;
+      const cs = getComputedStyle(p);
+      const available = p.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      if (m.getBoundingClientRect().width > available + 0.5) m.classList.add('mjx-wide');
+    }
+  }
+
   MathJax = {
     tex: {
       packages: {'[+]': ['mathtools', 'amscd']},
@@ -112,27 +113,40 @@
       ready() {
         preprocessMathEscapes();
         MathJax.startup.defaultReady();
+        MathJax.startup.promise.then(() => {
+          markWideInlineMath();
+          let resizeRaf = null;
+          window.addEventListener('resize', () => {
+            cancelAnimationFrame(resizeRaf);
+            resizeRaf = requestAnimationFrame(markWideInlineMath);
+          });
+        });
       }
     }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica&display=swap"></noscript>
 
-<meta property="og:url" content="https://shirazkn.github.io/posts/lie-groups_construction/">
+
+<meta property="og:url" content="https://shiraz-k.com/posts/lie-groups_construction/">
   <meta property="og:site_name" content="Shiraz">
   <meta property="og:title" content="Lie Groups: Construction and Geometry">
   <meta property="og:description" content="There are multiple ways to construct new groups from old ones. I provide an intuition for how these constructions work, and also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups.">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-01-24T14:20:59-05:00">
     <meta property="article:modified_time" content="2024-01-24T14:20:59-05:00">
     <meta property="article:tag" content="Differential Geometry">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lie Groups: Construction and Geometry">
-<meta name="twitter:description" content="There are multiple ways to construct new groups from old ones. I provide an intuition for how these constructions work, and also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups.">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Lie Groups: Construction and Geometry">
+  <meta name="twitter:description" content="There are multiple ways to construct new groups from old ones. I provide an intuition for how these constructions work, and also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups.">
 
 
 <script type="application/ld+json">
@@ -144,13 +158,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://shirazkn.github.io/posts/"
+      "item": "https://shiraz-k.com/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Lie Groups: Construction and Geometry",
-      "item": "https://shirazkn.github.io/posts/lie-groups_construction/"
+      "item": "https://shiraz-k.com/posts/lie-groups_construction/"
     }
   ]
 }
@@ -165,21 +179,21 @@
   "keywords": [
     "Differential Geometry"
   ],
-  "articleBody": "There are multiple ways to construct new groups from old ones. For instance, the semidirect product $SO(3) \\ltimes \\mathbb R^3$ is the Special Euclidean group $SE(3)$, which is composed of all the rigid transformations of $\\mathbb R^3$ (minus reflections). Here, I provide an intuition for how these constructions work. I will also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups. While the word geometry implies the presence of an inner product/Riemannian metric, the word calculus hints at the possibility of differentiation and integration on Lie groups.\nQuotients Coset Spaces Let $G$ be a Lie group having the operation $\\odot$, and $H\\leq G$ a subgroup of it. The left cosets of $H$ in $G$ refer to the subsets of $G$ of the form\n\\[ \\begin{align} g\\odot H = \\lbrace g \\odot h\\ \\vert\\ h\\in H \\rbrace \\subseteq G \\end{align} \\] where $g\\in G$. An important property of these subsets is that they’re disjoint, in the sense that\n\\[ \\begin{align} \\textrm{either }\\ \u0026\\left( g_1 \\odot H \\right) \\cap \\left( g_2 \\odot H \\right) = \\emptyset \\nonumber \\\\ \u0026\\text{or } \\ \\ g_1 \\odot H = g_2 \\odot H. \\end{align} \\] In general, the objects $\\left\\lbrace g\\odot H\\ \\vert\\ g\\in G\\right\\rbrace$ do not form a group; they are merely a topological space called a coset space, written as $G/H$. I find this interpretation of a coset space very unmotivated. To me, a better way to think about $G/H$ is as the topological quotient space, $G/\\sim_H$, constructed as follows.\nLet $S$ be some topological space and $\\sim$ an equivalence relation on the elements of $S$. The (topological) quotient space $S/\\sim$ is the set of equivalence classes of $S$ under $\\sim$. In other words, $S/\\sim$ is the space obtained by gluing together all the points in $S$ that are equivalent to each other:\n\\[ \\begin{align} [s]_\\sim \u0026= \\lbrace s' \\in S\\ \\vert\\ s' \\sim s \\rbrace \\end{align} \\] $S/\\sim$ is the set of all such (distinct) equivalence classes. We say that $s_0\\in S$ is a representative of the equivalence class $[s_0]_\\sim$. It’s easy to see that the equivalence classes satisfy a property similar to (2). In particular,\n\\[ \\begin{align} s_1,s_2\\in [s]_\\sim \u0026\\iff [s_1]_\\sim=[s_2]_\\sim \\\\ \u0026\\iff s_1 \\sim s_2 \\end{align} \\] A corresponding ‘quotient topology’ can be inherited by $S/\\sim$ from $S$ (that’s what makes this a topological quotient), but we need not get into the details of that right now.\nA special type of equivalence relation, $\\sim_H$, is one that is given by the action of some group $H$ on $S$. Let $H$ act on $S$ as $h(s)\\in S$, then $[s]_{\\sim_H} $ is defined as the orbit of $s$ under $H$:\n\\[ \\begin{align} s_1, s_2 \\in [s]_{\\sim_H} \u0026\\iff \\exists h\\in H:\\ s_1 = h(s_2) \\end{align} \\] $S/\\sim_H$ is called an orbit space.\nIf we replace $S$ by a Lie group $G$, we get (at least in terms of the notation) the concept of a coset space, $G/\\sim_H$. As mentioned earlier, $G/\\sim_H$ need not constitute a group (i.e., we will not necessarily define a group operation between the equivalence classes), so it should suffice to think about it topologically. Let $H$ act on the Lie group $G$ by right multiplication, i.e., $h(g) = g\\odot h$. Then, the orbit space $G/\\sim_H$ is the set of all left cosets of $H$ in $G$, which is precisely the left coset space, $G/H$. Thus,\n\\[ \\begin{align} g_1, g_2 \\in [g]_{\\sim_H} \u0026\\iff \\exists h\\in H:\\ g_1 = g_2 \\odot h \\end{align} \\] or more concisely,\n\\[ \\begin{align} g_1, g_2 \\in [g]_{\\sim_H} \u0026\\iff g_2^{-1} \\odot g_1 \\in H. \\end{align} \\] It can be shown that this characterization of a coset space works just as well as the one in (1) and (2).\nHomogeneous Spaces While $G/H$ need not have a group operation associated with it, it is possible to let $G$ act on $G/H$ by left multiplication, i.e., $g\\odot [g^\\prime]_{\\sim_H} = [g\\odot g^\\prime]_{\\sim_H}$. Since this action can be shown to be transitive, $G/H$ is a homogeneous space . The stabilizer of $[e]_{\\sim_H}\\in G/H$ is $H$, which is to say that $H$ is the subgroup of actions in $G$ that act trivially (by the identity map) on $[e]_{\\sim_H}$.\nConversely, given a homogenous space $X$ on which a group $G$ acts, we can construct a coset space by choosing a distinguished point $x\\in X$. Letting $H$ denote the stabilizer of $x$ in $G$, $X$ is shown to be isomorphic to $G/H$. Thus, a homogenous space is obtained after we (i) equip a coset space of a Lie group with the appropriate action, and (ii) “forget” the identity coset $[e]_{\\sim_H}$ of $G/H$. The last point is similar to how an affine space is obtained after we forget the origin of $\\mathbb R^n$. Another way of stating the above is that there is no distinguished point in a homogenous space, so the identity coset should be treated the same as any other.\nQuotient Groups The quotient of topological spaces is distinct from the quotient of groups, for the same reason as why topological homomorphisms (i.e., continuous maps) are different from Lie group homomorphisms. While $G/H$ is always a topological quotient space (in the sense of $G/\\sim_H$), it is a quotient group when $H$ is a normal subgroup of $G$ – written as $H \\trianglelefteq G$. In other words, the fact that $H$ happens to be a normal subgroup enables us to come up with a well-defined group operation on $G/H$.\nBy the defining property of a normal subgroup, we have that $g\\odot H \\odot g^{-1}= H$ for all $g\\in G$ (i.e., $H$ is invariant under conjugation). The group operation $\\star$ of $G/H$ is then given by\n\\[ \\begin{align} \\left[ g_1 \\odot H \\right] \\star \\left[ g_2 \\odot H \\right] = \\left[ (g_1 \\odot g_2) \\odot H\\right]. \\end{align} \\] The fact that $H$ is normal makes this definition independent of the choice of representatives, $g_1$ and $g_2$.\nAn example of a quotient group is $\\mathbb R^2/\\mathbb Z^2$, where $\\mathbb Z^2$ is the integer lattice in $\\mathbb R^2$ considered as a group under addition. Topologically, $\\mathbb R^2/\\mathbb Z^2$ is a torus, and can be used to model for instance the repeating pattern of a crystal structure or a tesselation. Another example is $SO(3)/SO(2)$, which is topologically a $2$-sphere (i.e., the surface of a ball in $\\mathbb R^3$). Notice that the subgroup of rotations that stabilize a given point on the sphere is isomorphic to $SO(2)$.\nProducts Direct Products The direct product of two groups $(H, \\overset{H}{\\odot})$ and $(K, \\overset{K}{\\odot})$ is the set of ordered pairs $H \\times K$ with the group operation\n$$(h_1, k_1) \\overset{H\\times K}{\\odot} (h_2, k_2) = (h_1 \\overset{H}{\\odot} h_2, k_1 \\overset{K}{\\odot} k_2).$$This can be an uninteresting construction, however, since it doesn’t intertwine the group operations of $H$ and $K$ in any meaningful way. The group $\\mathbb R^2 = \\mathbb R \\times \\mathbb R$ is the direct product of two copies of $\\mathbb R$ (where each group operation is assumed to be the vector addition.) The group $SO(2) \\times SO(2) \\cong \\mathbb R^2/\\mathbb Z^2$ may be used to describe (topologically) the configuration space of a robotic arm with a hinge. In the case of matrix Lie groups, a direct product is represented by block diagonal matrices containing a block from each constituent group.\nInner Semi-Direct Products The inner semi-direct product is a way of expressing a group $G$ as the product of two of its subgroups. Let\n\\[ N,H \\leq G, \\quad N \\trianglelefteq G \\] Moreover, we require that $NH=G$ and $H \\cap N = \\lbrace e \\rbrace$, i.e., the subgroups ‘span’ $G$ and are (as sets) complements of each other in $G$. If the preceding statements hold, then $G$ is the inner semi-direct product of $H$ acting on $N$, written as $G = N \\rtimes H$ (the triangle helps us remember that $N$ is normal). The group operation $\\star$ is given by\n\\[ \\begin{align} (n_1, h_1) \\star (n_2, h_2) = \\big(n_1 ( h_1 n_2 h_1^{-1} ),h_1 h_2\\big) \\end{align} \\] where $h_1 h_2$ is a short-hand for $h_1 \\odot h_2$, and $\\star$ is the newly-defined group operation.\nThis video does a commendable job of explaining the motivation behind this definition – the gist of it is as follows. Recall that $NH=G$. It can be shown with some effort that the map $\\phi: N \\times H \\rightarrow G$ defined by $\\phi(n,h) = n h$ is a bijection of sets. This motivates us to go a little further and see if we can turn $\\phi$ into a group isomorphism. Now, observe that\n\\[ \\begin{align} \\phi\\big((n_1, h_1) \\star (n_2, h_2)\\big) \u0026= \\phi\\big(n_1 ( h_1 n_2 h_1^{-1} ),h_1 h_2\\big) \\nonumber \\\\ \u0026= n_1 ( h_1 n_2 h_1^{-1} ) h_1 h_2 \\nonumber\\\\ \u0026= n_1 h_1 n_2 h_2 \\nonumber\\\\ \u0026= \\phi(n_1, h_1) \\phi(n_2, h_2) \\end{align} \\] This shows that $\\phi$, together with the operation $\\star$ defined as above, is actually an isomorphism of groups (i.e., it preserves the group operation, and is bijective as a map between the underlying sets). So, it is enough to remember that $\\star$ should be defined in a way that the $h_1^{-1}h_1$ in ‘$n_1 ( h_1 n_2 h_1^{-1} ) h_1 h_2$’ should cancel out. Lastly, note that $N$ needs to be a normal subgroup so that $ h_1 n_2 h_1^{-1}$ is indeed in $N$.\nThe direct product of sets is not the same as the direct product of groups. In the definition of $\\phi$, we used '$N \\times H$' to denote the set-theoretic product of $N$ and $H$. We did not prescribe a group operation on '$N \\times H$', and we certainly did not impose the direct-product group operation on it. To reiterate, $N \\rtimes H$ is the group given by the set of elements '$N \\times H$' along with the group operation $\\star$ as defined above. Outer Semi-Direct Products The outer semi-direct product follows by observing that the preceding definition can be generalized to the case where $H$ and $N$ are not subgroups of some common group. Here, the group $G$ is not given to us to begin with – it is obtained as a result of performing the semi-direct product construction.\nTo define an outer semi-direct product, we require an action $\\Phi_h(\\cdot):N \\rightarrow N$ for each element $h\\in H$ such that $\\Phi_h(\\cdot)$ is a group automorphism of $N$. For instance, observe that if $H,N \\leq G$ and $N\\trianglelefteq G$, then the choice of the action $\\Phi_h(n) \\coloneqq h n h^{-1}$ will make the outer semi-direct product coincide with the inner semi-direct product (i.e., the latter is a special case of the former). In the more general setting where $H$ and $N$ are only related to each other via actions of the form $\\Phi_h(n)$, the group operation $\\star$ is given by\n\\[ \\begin{align} (n_1, h_1) \\star (n_2, h_2) = \\big(n_1 \\Phi_{h_1}(n_2),h_1 h_2\\big) \\end{align} \\] Letting $G = N \\rtimes H$ as above, we have that $H \\cong G/N$ (also see group extension below). We say that $\\Phi_h(\\cdot)$ twists the group multiplication; a trivial twist of $\\Phi_h(n)=n$ reduces the semi-direct product to a direct product.\nExample 1: $SE(3) \\cong \\mathbb R^3 \\rtimes SO(3)$, where the action of $SO(3)$ on $\\mathbb R^3$ is given by $\\Phi_R(p) = Rp$. Thus,\n\\[ \\begin{align} (p_1, R_1) \\star (p_2, R_2) = \\big(p_1 + R_1p_2,R_1 R_2\\big) \\end{align} \\] where the $+$ comes from the group operation of $\\mathbb R^3$, the matrix-vector multiplication comes from $\\Phi_R$, and the matrix-matrix multiplication comes from $SO(3)$. Remember that the group that the triangle points towards (i.e., $\\mathbb R^3$) plays the role of the normal subgroup, whereas the other group ($SO(3)$) acts on the former via automorphisms.\nExample 2: $GL(n;\\mathbb R) \\cong SL(n;\\mathbb R) \\rtimes \\mathbb R^\\times$\nIt’s not too hard to see that these groups should be related to each other as above. The elements of $SL(n;\\mathbb R)$ are determinant-one matrices, and the group $\\mathbb R^\\times$ scales the determinant up and down to recover the remaining matrices of $GL(n;\\mathbb R)$. However, why is this not the same as $SL(n;\\mathbb R) \\times \\mathbb R^\\times$? We should try to answer this question, so that the distinction between direct and semidirect products becomes clear to us.\nAny direct product should have a projection onto either of its factors, similar to how one is able to extract the $\\textrm{x}$ and $\\textrm{y}$ coordinates of a vector in $\\mathbb R^2$. When $n$ is odd, we have the following projection from $GL(n;\\mathbb R)$ to $SL(n;\\mathbb R)$:\n\\[ (A) \\mapsto \\frac{A}{\\big[\\textrm{det}(A)\\big]^{1/n}} \\] since\n$$ \\textrm{det}\\left(\\frac{A}{\\big[\\textrm{det}(A)\\big]^{1/n}}\\right) = \\frac{\\textrm{det}(A)}{[\\textrm{det}(A)]^{n/n}} =1. $$This would not work if $n$ were even, however, since $\\big[\\textrm{det}(A)\\big]^{1/n}$ may not have a real value in these cases1. On the other hand, the semi-direct product does not require that there be a projection from $GL(n;\\mathbb R)$ to $SL(n;\\mathbb R)$ to begin with.\nSo, $GL(n;\\mathbb R) \\cong SL(n;\\mathbb R) \\rtimes \\mathbb R^\\times$ always, and $GL(n;\\mathbb R) \\cong SL(n;\\mathbb R) \\times \\mathbb R^\\times$ when $n$ is odd, which is the content of Problem 7-21 of Lee’s book (also see the errata ). We will come back to this example in the context of group extensions, below.\nExample 3: $O(n) \\cong SO(n) \\rtimes O(1)$, which is also an example from Lee’s book. Note that $O(1)$ is simply a group of the form $\\lbrace 1, -1 \\rbrace$. As before, we can also express this as a direct product when $n$ is odd.\nGroup Extensions Given a homomorphism $A\\rightarrow B$ between objects $A$ and $B$ of some type, the kernel of the homomorphism is the set of elements of $A$ that map to the identity of $B$. For example, the kernel of (the linear transformation corresponding to) a matrix is its null space. It can be shown quite easily that a group homomorphism $f:G\\rightarrow G^\\prime$ should map the identity of $G$ to the identity of $G^\\prime$, so $\\ker(f)$ will at least contain the identity element of $G$.\nThe following sequence of group homomorphisms is an example of a short exact sequence , in which the image of each homomorphism happens to be the kernel of the next homomorphism:\n\\[ 1 \\rightarrow N \\overset{\\iota}{\\rightarrow} G \\overset{\\pi}{\\rightarrow} H \\rightarrow 1 \\] Here, $G$ is said to be an extension of $H$ by $N$, and $1=\\lbrace e\\rbrace$ is the trivial one-element group. It’s quite remarkable how much this succinct expression says about the relationships between $N$, $G$, and $H$. Firstly, $1$ maps to the identity of $N$ (since group homomorphisms preserve identities), and the same occurs on the right end of the sequence. We know that $\\iota{(N)}$ is a normal subgroup of $G$ by the first isomorphism theorem of Noether . The first isomorphism theorem also says that the quotient $G/\\iota{(N)}$ is isomorphic to $H$.\nIn the typical mathematical notation, $\\iota$ denotes an inclusion and $\\pi$ a projection. An inclusion maps a subset of a set injectively (though in all likelihood, not surjectively) into the parent set. A similar definition follows for the inclusion of a subspace onto a vector space, a topological subspace into its ambient space, and so on. A projection is something we’ve seen before in the context of a fiber bundle . This suggests that $G\\cong N\\times H$ will always satisfy such a short exact sequence, with $\\pi$ defined quite literally as a projection.\nThen arises the question of when $G$, if given as a group extension, is the semi-direct product of $H$ acting on $N$. Since $G$ need not have a projection onto $N$ in a semi-direct product, so we certainly don’t need to have a morphism $N \\leftarrow G$. Instead, what characterizes a semi-direct product precisely is the existence of a group homomorphism $\\sigma: H \\rightarrow G$, called a section or a splitting , such that $\\pi \\circ \\sigma=\\textit{Id}$ (the identity map). This is in part because we can then define the action $\\Phi_h(n)$ as $\\sigma(h) n \\sigma(h)^{-1}$ via the conjugations in $G$, giving us everything we need to construct the group operation.\nExample 2 (Revisited):\nWe have the following short exact sequence:\n\\[ 1 \\rightarrow SL(n;\\mathbb R) \\overset{\\iota}{\\rightarrow} GL(n;\\mathbb R) \\overset{\\pi}{\\rightarrow} \\mathbb R^\\times \\rightarrow 1 \\] To check that this is a valid short exact sequence, we need the image of $\\iota$ to be the kernel of $\\pi$. Let $\\iota$ be the inclusion map and $\\pi=\\textrm{det}(\\ \\cdot\\ )$, then, the kernel of $\\pi$ is the set of matrices with determinant $1$, which is precisely $SL(n; \\mathbb R)$. Thus, we already know that $\\mathbb R^\\times \\cong GL(n;\\mathbb R)/SL(n;\\mathbb R)$ by the isomorphism theorem. To check that $GL(n;\\mathbb R) \\cong SL(n;\\mathbb R) \\rtimes \\mathbb R^\\times$, we need to find a section $\\sigma: \\mathbb R^\\times \\rightarrow GL(n;\\mathbb R)$ such that $\\pi \\circ \\sigma=\\textit{Id}$. Letting\n\\[ \\sigma(\\lambda) = \\begin{bmatrix} \\lambda \u0026 0 \u0026 \\cdots \u0026 0 \\\\ 0 \u0026 1 \u0026 \\cdots \u0026 0 \\\\ \\vdots \u0026 \\vdots \u0026 \\ddots \u0026 \\vdots \\\\ 0 \u0026 0 \u0026 \\cdots \u0026 1 \\end{bmatrix}\\]\ncompletes the argument.\nNote that $\\sigma \\circ \\pi \\neq \\textit{Id}$. This is what differentiates a section/splitting from an inverse, and prevents $GL(n;\\mathbb R)$ and $\\mathbb R^\\times$ from being isomorphic (which they’re clearly not). Also, $\\pi$ and $\\sigma$ do not constitute a bijection, which is one of the requirements of a group isomorphism.\nGeometry Metrics Suppose that we are given (or choose) an inner product on $T_eG$, the tangent space at the identity of $G$ (which is also the vector space underlying $\\mathfrak g$). We denote this as $\\langle \\tilde X, \\tilde Y \\rangle_e$ for $\\tilde X, \\tilde Y \\in T_e G$. We can extend this metric to obtain a left-invariant metric on the entire Lie group $G$, as follows:\n\\[ \\langle X_g, Y_g \\rangle_g \\coloneqq \\langle (\\mathcal L_{g^{-1}*}) X_g,\\ (\\mathcal L_{g^{-1}*}) Y_g \\rangle_e \\] The reason this is called left-invariant is because2\n\\[ \\langle \\mathcal L_{h*} X_g, \\mathcal L_{h*} Y_g \\rangle _{hg} = \\langle X_g, Y_g \\rangle _g. \\] A bi-invariant metric is one that is simultaneously left- and right-invariant. The following Lemmas from a paper by Milnor characterize the Lie groups that admit bi-invariant metrics:\nLemma 7.1 A left-invariant metric on $\\small{G}$ is also right invariant if and only if, for each $\\small{g\\in G}$, $\\small{\\textrm{Ad}}_g$ is an isometry of the inner product on $\\small{\\mathfrak g}$ [that generates said left-invariant metric]. This is also Proposition 3.12 of Lee’s book on Riemannian Manifolds. It states that $\\textrm{Ad}_g$ are given by $O(n)$ matrices acting on $\\mathfrak g$.\nLemma 7.2 A left invariant metric on a connected Lie group is also right invariant if and only if $\\small{\\textrm{ad}_X}$ is skew-adjoint for every $\\small{X\\in\\ }\\mathfrak g$. This follows as a consequence of Lemma 7.1, since $\\mathfrak o(n)$ are precisely the skew-symmetric matrices. The next result is the most striking of the three, and immediately gives us examples of Lie groups that admit bi-invariant metrics:\nLemma 7.5 A connected Lie group admits a bi-invariant metric if and only if it is isomorphic to the direct product of a compact group and a commutative group. As a corollary, every compact Lie group (including closed and bounded matrix Lie groups like $SO(n)$) admits a bi-invariant metric. While $SO(n) \\times \\mathbb R^n$ admits a bi-invariant metric, $SE(n) \\cong SO(n) \\ltimes \\mathbb R^n$ does not. (Nevertheless, $SE(n)$ has the next best thing: a bi-invariant measure.)\nAn interesting property of a Lie group that admits a bi-invariant metric is that its one-parameter subgroups are also geodesic (i.e., shortest-distance) paths of the metric.\nMeasures While metrics help assign values to the lengths of tangent vectors (and by extension, to curves), measures assign values to subsets. In classical calculus, the expression $\\int_{\\mathbb R} f(x) dx$ refers to integration with respect to a specific, canonical choice of a measure – the Lebesgue measure. The Lebesgue measure is uniquely determined (up to a scaling factor) by the fact that it should be translation invariant, i.e., $\\mu([0,1]) = \\mu ([1,2])$, and a few other properties that are viewed as being natural to the structure of $\\mathbb R^n$. It turns out that there is a canonical measure on Lie groups as well, called the (left) Haar measure, that satisfies $\\mu_G(gA) = \\mu_G(A)$ for all $g\\in G$ and $A\\subset G$, where\n$$gA \\coloneqq \\lbrace ga\\ \\vert\\ a\\in A \\rbrace.$$The Lebesgue measure is a special case of the Haar measure on $\\mathbb R^n$; the latter generalizes what we mean by translation to include any group operation. Like the Lebesgue measure, the left Haar measure can be shown to be unique up to scaling. In a compact group, a unique Haar measure can be found by normalizing the scaling factor to $1$ so that $\\int_G d\\mu_G=\\mu(G)=1$. If $\\mu_G$ is a left Haar measure and $g\\in G$, then $\\tilde \\mu^{(g)}_G \\coloneqq \\mu_G\\circ \\mathcal R_{g}$ is also a left Haar measure, since\n$$\\tilde \\mu^{(g)}_G(hA) = \\mu_G(hAg) = \\mu_G(Ag) = \\tilde \\mu^{(g)}_G(A)$$for all $h\\in G$. But since the left Haar measure is unique up to scalar multiplication, it must be the case that $\\tilde \\mu^{(g)}_G = \\Delta (g) \\mu_G$ where $\\Delta (g)$ is a scalar-valued function that only depends on $g$. This is called the modular function of $G$ – once computed, it is independent of the choice of the Haar measure $\\mu_G$ that is used to compute it. It relates the left Haar measure to the right Haar measure. A lot of the properties and implications of $\\Delta(\\ \\cdot\\ )$ follow from showing that it is a group homomorphism from $G$ to $\\mathbb R^\\times_{\u003e0}$.\nA Lie group is said to be unimodular iff its left Haar measure is also a right Haar measure, i.e., it is also right-invariant. Equivalently, a group is unimodular iff its modular function is $\\Delta(g)=1$ for all $g\\in G$. Milnor once again saves us from needing to check this condition explicitly:\nLemma 6.1 A Lie group is unimodular if and only if the linear transformation $\\textrm{Ad}_g$ has determinant $\\pm 1$ for every $g\\in G$.\nThe absolute value of this determinant is precisely the modular function , $\\Delta(g)$. Recall or verify that $\\lvert\\det(\\ \\cdot\\ )\\rvert$ is a Lie group homomorphism from $GL(n; \\mathbb R)$ to $\\mathbb R^\\times_{\u003e0}$, the multiplicative group of positive real numbers.\nLemma 6.3 A connected Lie group is unimodular if and only if the linear transformation $\\textrm{ad}_X$ has trace zero for every $X\\in\\mathfrak g$.\nCompare the relationship between these lemmas with the fact that $\\textrm{det}(e^A) = e^{\\textrm{tr}(A)}$ for any matrix $A$.\nNote that for matrix Lie groups, $\\textrm{ad}_X(Y)$ is always trace zero, since $\\textrm{ad}_X(Y) = XY - YX$ and $\\textrm{tr}(XY) = \\textrm{tr}(YX)$. Lemma 6.3 is talking of the trace of $\\textrm{ad}_X$ as a linear transformation on $\\mathfrak g$ (as opposed to the trace of $\\textrm{ad}_X(Y)$). Moreover, for computing the trace of $\\textrm{ad}_X$ it does not matter what basis of $\\mathfrak g$ we choose, since the trace is a property of the underlying linear transformation rather than of the matrix. As a special case of Lemma 6.3, the $\\textrm{ad}_X$ matrices corresponding to a nilpotent Lie algebra are given by nilpotent matrices , which have trace zero. Thus, every nilpotent Lie group is unimodular. Moreover, compact Lie groups are unimodular because $\\Delta(g)$ is a homomorphism into the non-compact group $\\mathbb R^\\times_{\u003e0}$, whereas the only compact subgroup of $\\mathbb R^\\times_{\u003e0}$ is $\\lbrace 1 \\rbrace$.\nBi-invariant Haar measures are incredibly useful because they offer a way to integrate on Lie groups (as well as to define probability densities, Fourier transforms, etc.) while retaining the intuitive and attractive properties of the Lebesgue integral:\n\\[ \\begin{align} \\int_G f(g) d\\mu_G(g) \u0026= \\int_G f(g^{-1}) d\\mu_G(g) \\nonumber\\\\ \u0026= \\int_G f(hg) d\\mu_G(g) \\nonumber\\\\ \u0026= \\int_G f(gh) d\\mu_G(g) \\nonumber \\end{align} \\] where $f:G\\rightarrow \\mathbb R$ is a function, and $g \\mapsto hg$ is to be viewed as the analogue of translation in $\\mathbb R^n$. By requiring $f$ to be compactly supported and/or an integrable function and normalizing it, one is able to define a probability density function on $G$.\nIn the next post , I use the machinery developed in the book Introduction to Smooth Manifolds by John M. Lee to study the properties of Riemannian metrics and measures. If you would rather skip ahead to the actual calculations, I point you toward the books by G.S. Chirikjian . It contains formulae for differentiation and integration on the (matrix) Lie groups that are commonly encountered in engineering applications.\nNote that $f(x) = x^{1/n}$ is a multi-valued function. Since it is an $n^{th}$ degree polynomial, it will have exactly $n$ (not necessarily distinct) complex roots. ↩︎\nThis property makes the right-invariant vector fields on $G$ examples of Killing vector fields with respect to the left-invariant metric – this is because left-invariant flows are given by right-multiplication , and vice versa. Also see this . ↩︎\n",
-  "wordCount" : "4066",
+  "articleBody": "There are multiple ways to construct new groups from old ones. For instance, the semidirect product $SO(3) \\ltimes \\mathbb R^3$ is the Special Euclidean group $SE(3)$, which is composed of all the rigid transformations of $\\mathbb R^3$ (minus reflections). Here, I provide an intuition for how these constructions work. I will also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups. While the word geometry implies the presence of an inner product/Riemannian metric, the word calculus hints at the possibility of differentiation and integration on Lie groups.\nQuotients Coset Spaces Let $G$ be a Lie group having the operation $\\odot$, and $H\\leq G$ a subgroup of it. The left cosets of $H$ in $G$ refer to the subsets of $G$ of the form\n\\[ \\begin{align} g\\odot H = \\lbrace g \\odot h\\ \\vert\\ h\\in H \\rbrace \\subseteq G \\end{align} \\] where $g\\in G$. An important property of these subsets is that they’re disjoint, in the sense that\n\\[ \\begin{align} \\textrm{either }\\ \u0026\\left( g_1 \\odot H \\right) \\cap \\left( g_2 \\odot H \\right) = \\emptyset \\nonumber \\\\ \u0026\\text{or } \\ \\ g_1 \\odot H = g_2 \\odot H. \\end{align} \\] In general, the objects $\\left\\lbrace g\\odot H\\ \\vert\\ g\\in G\\right\\rbrace$ do not form a group; they are merely a topological space called a coset space, written as $G/H$. I find this interpretation of a coset space very unmotivated. To me, a better way to think about $G/H$ is as the topological quotient space, $G/\\sim_H$, constructed as follows.\nLet $S$ be some topological space and $\\sim$ an equivalence relation on the elements of $S$. The (topological) quotient space $S/\\sim$ is the set of equivalence classes of $S$ under $\\sim$. In other words, $S/\\sim$ is the space obtained by gluing together all the points in $S$ that are equivalent to each other:\n\\[ \\begin{align} [s]_\\sim \u0026= \\lbrace s' \\in S\\ \\vert\\ s' \\sim s \\rbrace \\end{align} \\] $S/\\sim$ is the set of all such (distinct) equivalence classes. We say that $s_0\\in S$ is a representative of the equivalence class $[s_0]_\\sim$. It’s easy to see that the equivalence classes satisfy a property similar to (2). In particular,\n\\[ \\begin{align} s_1,s_2\\in [s]_\\sim \u0026\\iff [s_1]_\\sim=[s_2]_\\sim \\\\ \u0026\\iff s_1 \\sim s_2 \\end{align} \\] A corresponding ‘quotient topology’ can be inherited by $S/\\sim$ from $S$ (that’s what makes this a topological quotient), but we need not get into the details of that right now.\nA special type of equivalence relation, $\\sim_H$, is one that is given by the action of some group $H$ on $S$. Let $H$ act on $S$ as $h(s)\\in S$, then $[s]_{\\sim_H} $ is defined as the orbit of $s$ under $H$:\n\\[ \\begin{align} s_1, s_2 \\in [s]_{\\sim_H} \u0026\\iff \\exists h\\in H:\\ s_1 = h(s_2) \\end{align} \\] $S/\\sim_H$ is called an orbit space.\nIf we replace $S$ by a Lie group $G$, we get (at least in terms of the notation) the concept of a coset space, $G/\\sim_H$. As mentioned earlier, $G/\\sim_H$ need not constitute a group (i.e., we will not necessarily define a group operation between the equivalence classes), so it should suffice to think about it topologically. Let $H$ act on the Lie group $G$ by right multiplication, i.e., $h(g) = g\\odot h$. Then, the orbit space $G/\\sim_H$ is the set of all left cosets of $H$ in $G$, which is precisely the left coset space, $G/H$. Thus,\n\\[ \\begin{align} g_1, g_2 \\in [g]_{\\sim_H} \u0026\\iff \\exists h\\in H:\\ g_1 = g_2 \\odot h \\end{align} \\] or more concisely,\n\\[ \\begin{align} g_1, g_2 \\in [g]_{\\sim_H} \u0026\\iff g_2^{-1} \\odot g_1 \\in H. \\end{align} \\] It can be shown that this characterization of a coset space works just as well as the one in (1) and (2).\nHomogeneous Spaces While $G/H$ need not have a group operation associated with it, it is possible to let $G$ act on $G/H$ by left multiplication, i.e., $g\\odot [g^\\prime]_{\\sim_H} = [g\\odot g^\\prime]_{\\sim_H}$. Since this action can be shown to be transitive, $G/H$ is a homogeneous space. The stabilizer of $[e]_{\\sim_H}\\in G/H$ is $H$, which is to say that $H$ is the subgroup of actions in $G$ that act trivially (by the identity map) on $[e]_{\\sim_H}$.\nConversely, given a homogenous space $X$ on which a group $G$ acts, we can construct a coset space by choosing a distinguished point $x\\in X$. Letting $H$ denote the stabilizer of $x$ in $G$, $X$ is shown to be isomorphic to $G/H$. Thus, a homogenous space is obtained after we (i) equip a coset space of a Lie group with the appropriate action, and (ii) “forget” the identity coset $[e]_{\\sim_H}$ of $G/H$. The last point is similar to how an affine space is obtained after we forget the origin of $\\mathbb R^n$. Another way of stating the above is that there is no distinguished point in a homogenous space, so the identity coset should be treated the same as any other.\nQuotient Groups The quotient of topological spaces is distinct from the quotient of groups, for the same reason as why topological homomorphisms (i.e., continuous maps) are different from Lie group homomorphisms. While $G/H$ is always a topological quotient space (in the sense of $G/\\sim_H$), it is a quotient group when $H$ is a normal subgroup of $G$ – written as $H \\trianglelefteq G$. In other words, the fact that $H$ happens to be a normal subgroup enables us to come up with a well-defined group operation on $G/H$.\nBy the defining property of a normal subgroup, we have that $g\\odot H \\odot g^{-1}= H$ for all $g\\in G$ (i.e., $H$ is invariant under conjugation). The group operation $\\star$ of $G/H$ is then given by\n\\[ \\begin{align} \\left[ g_1 \\odot H \\right] \\star \\left[ g_2 \\odot H \\right] = \\left[ (g_1 \\odot g_2) \\odot H\\right]. \\end{align} \\] The fact that $H$ is normal makes this definition independent of the choice of representatives, $g_1$ and $g_2$.\nAn example of a quotient group is $\\mathbb R^2/\\mathbb Z^2$, where $\\mathbb Z^2$ is the integer lattice in $\\mathbb R^2$ considered as a group under addition. Topologically, $\\mathbb R^2/\\mathbb Z^2$ is a torus, and can be used to model for instance the repeating pattern of a crystal structure or a tesselation. On the other hand, $SO(3)/SO(2)$ is not a quotient group (since $SO(2)$ is not a normal subgroup of $SO(3)$), but it is a homogeneous space that is topologically a $2$-sphere (i.e., the surface of a ball in $\\mathbb R^3$). Notice that the subgroup of rotations that stabilize a given point on the sphere is isomorphic to $SO(2)$.\nProducts Direct Products The direct product of two groups $(H, \\overset{H}{\\odot})$ and $(K, \\overset{K}{\\odot})$ is the set of ordered pairs $H \\times K$ with the group operation\n$$(h_1, k_1) \\overset{H\\times K}{\\odot} (h_2, k_2) = (h_1 \\overset{H}{\\odot} h_2, k_1 \\overset{K}{\\odot} k_2).$$This can be an uninteresting construction, however, since it doesn’t intertwine the group operations of $H$ and $K$ in any meaningful way. The group $\\mathbb R^2 = \\mathbb R \\times \\mathbb R$ is the direct product of two copies of $\\mathbb R$ (where each group operation is assumed to be the vector addition.) The group $SO(2) \\times SO(2) \\cong \\mathbb R^2/\\mathbb Z^2$ may be used to describe (topologically) the configuration space of a robotic arm with a hinge. In the case of matrix Lie groups, a direct product is represented by block diagonal matrices containing a block from each constituent group.\nInner Semi-Direct Products The inner semi-direct product is a way of expressing a group $G$ as the product of two of its subgroups. Let\n\\[ N,H \\leq G, \\quad N \\trianglelefteq G \\] Moreover, we require that $NH=G$ and $H \\cap N = \\lbrace e \\rbrace$, i.e., the subgroups ‘span’ $G$ and are (as sets) complements of each other in $G$. If the preceding statements hold, then $G$ is the inner semi-direct product of $H$ acting on $N$, written as $G = N \\rtimes H$ (the triangle helps us remember that $N$ is normal). The group operation $\\star$ is given by\n\\[ \\begin{align} (n_1, h_1) \\star (n_2, h_2) = \\big(n_1 ( h_1 n_2 h_1^{-1} ),h_1 h_2\\big) \\end{align} \\] where $h_1 h_2$ is a short-hand for $h_1 \\odot h_2$, and $\\star$ is the newly-defined group operation.\nThis video does a commendable job of explaining the motivation behind this definition – the gist of it is as follows. Recall that $NH=G$. It can be shown with some effort that the map $\\phi: N \\times H \\rightarrow G$ defined by $\\phi(n,h) = n h$ is a bijection of sets. This motivates us to go a little further and see if we can turn $\\phi$ into a group isomorphism. Now, observe that\n\\[ \\begin{align} \\phi\\big((n_1, h_1) \\star (n_2, h_2)\\big) \u0026= \\phi\\big(n_1 ( h_1 n_2 h_1^{-1} ),h_1 h_2\\big) \\nonumber \\\\ \u0026= n_1 ( h_1 n_2 h_1^{-1} ) h_1 h_2 \\nonumber\\\\ \u0026= n_1 h_1 n_2 h_2 \\nonumber\\\\ \u0026= \\phi(n_1, h_1) \\phi(n_2, h_2) \\end{align} \\] This shows that $\\phi$, together with the operation $\\star$ defined as above, is actually an isomorphism of groups (i.e., it preserves the group operation, and is bijective as a map between the underlying sets). So, it is enough to remember that $\\star$ should be defined in a way that the $h_1^{-1}h_1$ in ‘$n_1 ( h_1 n_2 h_1^{-1} ) h_1 h_2$’ should cancel out. Lastly, note that $N$ needs to be a normal subgroup so that $ h_1 n_2 h_1^{-1}$ is indeed in $N$.\nThe direct product of sets is not the same as the direct product of groups. In the definition of $\\phi$, we used '$N \\times H$' to denote the set-theoretic product of $N$ and $H$. We did not prescribe a group operation on '$N \\times H$', and we certainly did not impose the direct-product group operation on it. To reiterate, $N \\rtimes H$ is the group given by the set of elements '$N \\times H$' along with the group operation $\\star$ as defined above. Outer Semi-Direct Products The outer semi-direct product follows by observing that the preceding definition can be generalized to the case where $H$ and $N$ are not subgroups of some common group. Here, the group $G$ is not given to us to begin with – it is obtained as a result of performing the semi-direct product construction.\nTo define an outer semi-direct product, we require an action $\\Phi_h(\\cdot):N \\rightarrow N$ for each element $h\\in H$ such that $\\Phi_h(\\cdot)$ is a group automorphism of $N$. For instance, observe that if $H,N \\leq G$ and $N\\trianglelefteq G$, then the choice of the action $\\Phi_h(n) \\coloneqq h n h^{-1}$ will make the outer semi-direct product coincide with the inner semi-direct product (i.e., the latter is a special case of the former). In the more general setting where $H$ and $N$ are only related to each other via actions of the form $\\Phi_h(n)$, the group operation $\\star$ is given by\n\\[ \\begin{align} (n_1, h_1) \\star (n_2, h_2) = \\big(n_1 \\Phi_{h_1}(n_2),h_1 h_2\\big) \\end{align} \\] Letting $G = N \\rtimes H$ as above, we have that $H \\cong G/N$ (also see group extension below). We say that $\\Phi_h(\\cdot)$ twists the group multiplication; a trivial twist of $\\Phi_h(n)=n$ reduces the semi-direct product to a direct product.\nExample 1: $SE(3) \\cong \\mathbb R^3 \\rtimes SO(3)$, where the action of $SO(3)$ on $\\mathbb R^3$ is given by $\\Phi_R(p) = Rp$. Thus,\n\\[ \\begin{align} (p_1, R_1) \\star (p_2, R_2) = \\big(p_1 + R_1p_2,R_1 R_2\\big) \\end{align} \\] where the $+$ comes from the group operation of $\\mathbb R^3$, the matrix-vector multiplication comes from $\\Phi_R$, and the matrix-matrix multiplication comes from $SO(3)$. Remember that the group that the triangle points towards (i.e., $\\mathbb R^3$) plays the role of the normal subgroup, whereas the other group ($SO(3)$) acts on the former via automorphisms.\nExample 2: $GL(n;\\mathbb R) \\cong SL(n;\\mathbb R) \\rtimes \\mathbb R^\\times$\nIt’s not too hard to see that these groups should be related to each other as above. The elements of $SL(n;\\mathbb R)$ are determinant-one matrices, and the group $\\mathbb R^\\times$ scales the determinant up and down to recover the remaining matrices of $GL(n;\\mathbb R)$. However, why is this not the same as $SL(n;\\mathbb R) \\times \\mathbb R^\\times$? We should try to answer this question, so that the distinction between direct and semidirect products becomes clear to us.\nAny direct product should have a projection onto either of its factors, similar to how one is able to extract the $\\textrm{x}$ and $\\textrm{y}$ coordinates of a vector in $\\mathbb R^2$. When $n$ is odd, we have the following projection from $GL(n;\\mathbb R)$ to $SL(n;\\mathbb R)$:\n\\[ (A) \\mapsto \\frac{A}{\\big[\\textrm{det}(A)\\big]^{1/n}} \\] since\n$$ \\textrm{det}\\left(\\frac{A}{\\big[\\textrm{det}(A)\\big]^{1/n}}\\right) = \\frac{\\textrm{det}(A)}{[\\textrm{det}(A)]^{n/n}} =1. $$This would not work if $n$ were even, however, since $\\big[\\textrm{det}(A)\\big]^{1/n}$ may not have a real value in these cases1. On the other hand, the semi-direct product does not require that there be a projection from $GL(n;\\mathbb R)$ to $SL(n;\\mathbb R)$ to begin with.\nSo, $GL(n;\\mathbb R) \\cong SL(n;\\mathbb R) \\rtimes \\mathbb R^\\times$ always, and $GL(n;\\mathbb R) \\cong SL(n;\\mathbb R) \\times \\mathbb R^\\times$ when $n$ is odd, which is the content of Problem 7-21 of Lee’s book (also see the errata). We will come back to this example in the context of group extensions, below.\nExample 3: $O(n) \\cong SO(n) \\rtimes O(1)$, which is also an example from Lee’s book. Note that $O(1)$ is simply a group of the form $\\lbrace 1, -1 \\rbrace$. As before, we can also express this as a direct product when $n$ is odd.\nGroup Extensions Given a homomorphism $A\\rightarrow B$ between objects $A$ and $B$ of some type, the kernel of the homomorphism is the set of elements of $A$ that map to the identity of $B$. For example, the kernel of (the linear transformation corresponding to) a matrix is its null space. It can be shown quite easily that a group homomorphism $f:G\\rightarrow G^\\prime$ should map the identity of $G$ to the identity of $G^\\prime$, so $\\ker(f)$ will at least contain the identity element of $G$.\nThe following sequence of group homomorphisms is an example of a short exact sequence, in which the image of each homomorphism happens to be the kernel of the next homomorphism:\n\\[ 1 \\rightarrow N \\overset{\\iota}{\\rightarrow} G \\overset{\\pi}{\\rightarrow} H \\rightarrow 1 \\] Here, $G$ is said to be an extension of $H$ by $N$, and $1=\\lbrace e\\rbrace$ is the trivial one-element group. It’s quite remarkable how much this succinct expression says about the relationships between $N$, $G$, and $H$. Firstly, $1$ maps to the identity of $N$ (since group homomorphisms preserve identities), and the same occurs on the right end of the sequence. We know that $\\iota{(N)}$ is a normal subgroup of $G$ by the first isomorphism theorem of Noether. The first isomorphism theorem also says that the quotient $G/\\iota{(N)}$ is isomorphic to $H$.\nIn the typical mathematical notation, $\\iota$ denotes an inclusion and $\\pi$ a projection. An inclusion maps a subset of a set injectively (though in all likelihood, not surjectively) into the parent set. A similar definition follows for the inclusion of a subspace onto a vector space, a topological subspace into its ambient space, and so on. A projection is something we’ve seen before in the context of a fiber bundle. This suggests that $G\\cong N\\times H$ will always satisfy such a short exact sequence, with $\\pi$ defined quite literally as a projection.\nThen arises the question of when $G$, if given as a group extension, is the semi-direct product of $H$ acting on $N$. Since $G$ need not have a projection onto $N$ in a semi-direct product, so we certainly don’t need to have a morphism $N \\leftarrow G$. Instead, what characterizes a semi-direct product precisely is the existence of a group homomorphism $\\sigma: H \\rightarrow G$, called a section or a splitting, such that $\\pi \\circ \\sigma=\\textit{Id}$ (the identity map). This is in part because we can then define the action $\\Phi_h(n)$ as $\\sigma(h) n \\sigma(h)^{-1}$ via the conjugations in $G$, giving us everything we need to construct the group operation.\nExample 2 (Revisited):\nWe have the following short exact sequence:\n\\[ 1 \\rightarrow SL(n;\\mathbb R) \\overset{\\iota}{\\rightarrow} GL(n;\\mathbb R) \\overset{\\pi}{\\rightarrow} \\mathbb R^\\times \\rightarrow 1 \\] To check that this is a valid short exact sequence, we need the image of $\\iota$ to be the kernel of $\\pi$. Let $\\iota$ be the inclusion map and $\\pi=\\textrm{det}(\\ \\cdot\\ )$, then, the kernel of $\\pi$ is the set of matrices with determinant $1$, which is precisely $SL(n; \\mathbb R)$. Thus, we already know that $\\mathbb R^\\times \\cong GL(n;\\mathbb R)/SL(n;\\mathbb R)$ by the isomorphism theorem. To check that $GL(n;\\mathbb R) \\cong SL(n;\\mathbb R) \\rtimes \\mathbb R^\\times$, we need to find a section $\\sigma: \\mathbb R^\\times \\rightarrow GL(n;\\mathbb R)$ such that $\\pi \\circ \\sigma=\\textit{Id}$. Letting\n\\[ \\sigma(\\lambda) = \\begin{bmatrix} \\lambda \u0026 0 \u0026 \\cdots \u0026 0 \\\\ 0 \u0026 1 \u0026 \\cdots \u0026 0 \\\\ \\vdots \u0026 \\vdots \u0026 \\ddots \u0026 \\vdots \\\\ 0 \u0026 0 \u0026 \\cdots \u0026 1 \\end{bmatrix}\\]\ncompletes the argument.\nNote that $\\sigma \\circ \\pi \\neq \\textit{Id}$. This is what differentiates a section/splitting from an inverse, and prevents $GL(n;\\mathbb R)$ and $\\mathbb R^\\times$ from being isomorphic (which they’re clearly not). Also, $\\pi$ and $\\sigma$ do not constitute a bijection, which is one of the requirements of a group isomorphism.\nGeometry Metrics Suppose that we are given (or choose) an inner product on $T_eG$, the tangent space at the identity of $G$ (which is also the vector space underlying $\\mathfrak g$). We denote this as $\\langle \\tilde X, \\tilde Y \\rangle_e$ for $\\tilde X, \\tilde Y \\in T_e G$. We can extend this metric to obtain a left-invariant metric on the entire Lie group $G$, as follows:\n\\[ \\langle X_g, Y_g \\rangle_g \\coloneqq \\langle (\\mathcal L_{g^{-1}*}) X_g,\\ (\\mathcal L_{g^{-1}*}) Y_g \\rangle_e \\] The reason this is called left-invariant is because2\n\\[ \\langle \\mathcal L_{h*} X_g, \\mathcal L_{h*} Y_g \\rangle _{hg} = \\langle X_g, Y_g \\rangle _g. \\] A bi-invariant metric is one that is simultaneously left- and right-invariant. The following Lemmas from a paper by Milnor characterize the Lie groups that admit bi-invariant metrics:\nLemma 7.1 A left-invariant metric on $\\small{G}$ is also right invariant if and only if, for each $\\small{g\\in G}$, $\\small{\\textrm{Ad}}_g$ is an isometry of the inner product on $\\small{\\mathfrak g}$ [that generates said left-invariant metric]. This is also Proposition 3.12 of Lee’s book on Riemannian Manifolds. It states that $\\textrm{Ad}_g$ are given by $O(n)$ matrices acting on $\\mathfrak g$.\nLemma 7.2 A left invariant metric on a connected Lie group is also right invariant if and only if $\\small{\\textrm{ad}_X}$ is skew-adjoint for every $\\small{X\\in\\ }\\mathfrak g$. This follows as a consequence of Lemma 7.1, since $\\mathfrak o(n)$ are precisely the skew-symmetric matrices. The next result is the most striking of the three, and immediately gives us examples of Lie groups that admit bi-invariant metrics:\nLemma 7.5 A connected Lie group admits a bi-invariant metric if and only if it is isomorphic to the direct product of a compact group and a commutative group. As a corollary, every compact Lie group (including closed and bounded matrix Lie groups like $SO(n)$) admits a bi-invariant metric. While $SO(n) \\times \\mathbb R^n$ admits a bi-invariant metric, $SE(n) \\cong SO(n) \\ltimes \\mathbb R^n$ does not. (Nevertheless, $SE(n)$ has the next best thing: a bi-invariant measure.)\nAn interesting property of a Lie group that admits a bi-invariant metric is that its one-parameter subgroups are also geodesic (i.e., shortest-distance) paths of the metric.\nMeasures While metrics help assign values to the lengths of tangent vectors (and by extension, to curves), measures assign values to subsets. In classical calculus, the expression $\\int_{\\mathbb R} f(x) dx$ refers to integration with respect to a specific, canonical choice of a measure – the Lebesgue measure. The Lebesgue measure is uniquely determined (up to a scaling factor) by the fact that it should be translation invariant, i.e., $\\mu([0,1]) = \\mu ([1,2])$, and a few other properties that are viewed as being natural to the structure of $\\mathbb R^n$. It turns out that there is a canonical measure on Lie groups as well, called the (left) Haar measure, that satisfies $\\mu_G(gA) = \\mu_G(A)$ for all $g\\in G$ and $A\\subset G$, where\n$$gA \\coloneqq \\lbrace ga\\ \\vert\\ a\\in A \\rbrace.$$The Lebesgue measure is a special case of the Haar measure on $\\mathbb R^n$; the latter generalizes what we mean by translation to include any group operation. Like the Lebesgue measure, the left Haar measure can be shown to be unique up to scaling. In a compact group, a unique Haar measure can be found by normalizing the scaling factor to $1$ so that $\\int_G d\\mu_G=\\mu(G)=1$. If $\\mu_G$ is a left Haar measure and $g\\in G$, then $\\tilde \\mu^{(g)}_G \\coloneqq \\mu_G\\circ \\mathcal R_{g}$ is also a left Haar measure, since\n$$\\tilde \\mu^{(g)}_G(hA) = \\mu_G(hAg) = \\mu_G(Ag) = \\tilde \\mu^{(g)}_G(A)$$for all $h\\in G$. But since the left Haar measure is unique up to scalar multiplication, it must be the case that $\\tilde \\mu^{(g)}_G = \\Delta (g) \\mu_G$ where $\\Delta (g)$ is a scalar-valued function that only depends on $g$. This is called the modular function of $G$ – once computed, it is independent of the choice of the Haar measure $\\mu_G$ that is used to compute it. It relates the left Haar measure to the right Haar measure. A lot of the properties and implications of $\\Delta(\\ \\cdot\\ )$ follow from showing that it is a group homomorphism from $G$ to $\\mathbb R^\\times_{\u003e0}$.\nA Lie group is said to be unimodular iff its left Haar measure is also a right Haar measure, i.e., it is also right-invariant. Equivalently, a group is unimodular iff its modular function is $\\Delta(g)=1$ for all $g\\in G$. Milnor once again saves us from needing to check this condition explicitly:\nLemma 6.1 A Lie group is unimodular if and only if the linear transformation $\\textrm{Ad}_g$ has determinant $\\pm 1$ for every $g\\in G$.\nThe absolute value of this determinant is precisely the modular function, $\\Delta(g)$. Recall or verify that $\\lvert\\det(\\ \\cdot\\ )\\rvert$ is a Lie group homomorphism from $GL(n; \\mathbb R)$ to $\\mathbb R^\\times_{\u003e0}$, the multiplicative group of positive real numbers.\nLemma 6.3 A connected Lie group is unimodular if and only if the linear transformation $\\textrm{ad}_X$ has trace zero for every $X\\in\\mathfrak g$.\nCompare the relationship between these lemmas with the fact that $\\textrm{det}(e^A) = e^{\\textrm{tr}(A)}$ for any matrix $A$.\nNote that for matrix Lie groups, $\\textrm{ad}_X(Y)$ is always trace zero, since $\\textrm{ad}_X(Y) = XY - YX$ and $\\textrm{tr}(XY) = \\textrm{tr}(YX)$. Lemma 6.3 is talking of the trace of $\\textrm{ad}_X$ as a linear transformation on $\\mathfrak g$ (as opposed to the trace of $\\textrm{ad}_X(Y)$). Moreover, for computing the trace of $\\textrm{ad}_X$ it does not matter what basis of $\\mathfrak g$ we choose, since the trace is a property of the underlying linear transformation rather than of the matrix. As a special case of Lemma 6.3, the $\\textrm{ad}_X$ matrices corresponding to a nilpotent Lie algebra are given by nilpotent matrices, which have trace zero. Thus, every nilpotent Lie group is unimodular. Moreover, compact Lie groups are unimodular because $\\Delta(g)$ is a homomorphism into the non-compact group $\\mathbb R^\\times_{\u003e0}$, whereas the only compact subgroup of $\\mathbb R^\\times_{\u003e0}$ is $\\lbrace 1 \\rbrace$.\nBi-invariant Haar measures are incredibly useful because they offer a way to integrate on Lie groups (as well as to define probability densities, Fourier transforms, etc.) while retaining the intuitive and attractive properties of the Lebesgue integral:\n\\[ \\begin{align} \\int_G f(g) d\\mu_G(g) \u0026= \\int_G f(g^{-1}) d\\mu_G(g) \\nonumber\\\\ \u0026= \\int_G f(hg) d\\mu_G(g) \\nonumber\\\\ \u0026= \\int_G f(gh) d\\mu_G(g) \\nonumber \\end{align} \\] where $f:G\\rightarrow \\mathbb R$ is a function, and $g \\mapsto hg$ is to be viewed as the analogue of translation in $\\mathbb R^n$. By requiring $f$ to be compactly supported and/or an integrable function and normalizing it, one is able to define a probability density function on $G$.\nIn the next post, I use the machinery developed in the book Introduction to Smooth Manifolds by John M. Lee to study the properties of Riemannian metrics and measures. If you would rather skip ahead to the actual calculations, I point you toward the books by G.S. Chirikjian. It contains formulae for differentiation and integration on the (matrix) Lie groups that are commonly encountered in engineering applications.\nNote that $f(x) = x^{1/n}$ is a multi-valued function. Since it is an $n^{th}$ degree polynomial, it will have exactly $n$ (not necessarily distinct) complex roots. ↩︎\nThis property makes the right-invariant vector fields on $G$ examples of Killing vector fields with respect to the left-invariant metric – this is because left-invariant flows are given by right-multiplication, and vice versa. Also see this. ↩︎\n",
+  "wordCount" : "4075",
   "inLanguage": "en",
   "datePublished": "2024-01-24T14:20:59-05:00",
   "dateModified": "2024-01-24T14:20:59-05:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://shirazkn.github.io/posts/lie-groups_construction/"
+    "@id": "https://shiraz-k.com/posts/lie-groups_construction/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Shiraz",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://shirazkn.github.io/favicon.ico"
+      "url": "https://shiraz-k.com/favicon.ico"
     }
   }
 }
@@ -187,17 +201,17 @@
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
-            <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <a href="https://shiraz-k.com/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -213,19 +227,19 @@
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
-                <a href="https://shirazkn.github.io/archives/" title="archives">
+                <a href="https://shiraz-k.com/archives/" title="archives">
                     <span>archives</span>
                 </a>
             </li>
             <li>
-                <a href="https://shirazkn.github.io/tags/" title="tags">
+                <a href="https://shiraz-k.com/tags/" title="tags">
                     <span>tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://shirazkn.github.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                <a href="https://shiraz-k.com/search/" title="search (Alt &#43; /)" accesskey=/>
                     <span>search</span>
                 </a>
             </li>
@@ -240,54 +254,54 @@
     <h1 class="post-title entry-hint-parent">
       Lie Groups: Construction and Geometry
     </h1>
-    <div class="post-meta"><span title='2024-01-24 14:20:59 -0500 EST'>January 24, 2024</span>
+    <div class="post-meta">
+
+<span title='2024-01-24 14:20:59 -0500 EST'>January 24, 2024</span>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> <details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#quotients" aria-label="Quotients">Quotients</a><ul>
-                        
-                <li>
-                    <a href="#coset-spaces" aria-label="Coset Spaces">Coset Spaces</a></li>
-                <li>
-                    <a href="#homogeneous-spaces" aria-label="Homogeneous Spaces">Homogeneous Spaces</a></li>
-                <li>
-                    <a href="#quotient-groups" aria-label="Quotient Groups">Quotient Groups</a></li></ul>
-                </li>
-                <li>
-                    <a href="#products" aria-label="Products">Products</a><ul>
-                        
-                <li>
-                    <a href="#direct-products" aria-label="Direct Products">Direct Products</a></li>
-                <li>
-                    <a href="#inner-semi-direct-products" aria-label="Inner Semi-Direct Products">Inner Semi-Direct Products</a></li>
-                <li>
-                    <a href="#outer-semi-direct-products" aria-label="Outer Semi-Direct Products">Outer Semi-Direct Products</a></li>
-                <li>
-                    <a href="#group-extensions" aria-label="Group Extensions">Group Extensions</a></li></ul>
-                </li>
-                <li>
-                    <a href="#geometry" aria-label="Geometry">Geometry</a><ul>
-                        
-                <li>
-                    <a href="#metrics" aria-label="Metrics">Metrics</a></li>
-                <li>
-                    <a href="#measures" aria-label="Measures">Measures</a>
-                </li>
-            </ul>
+    <div class="inner"><ul>
+            <li>
+                <a href="#quotients" aria-label="Quotients">Quotients</a><ul>
+                    
+            <li>
+                <a href="#coset-spaces" aria-label="Coset Spaces">Coset Spaces</a></li>
+            <li>
+                <a href="#homogeneous-spaces" aria-label="Homogeneous Spaces">Homogeneous Spaces</a></li>
+            <li>
+                <a href="#quotient-groups" aria-label="Quotient Groups">Quotient Groups</a></li></ul>
             </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <li>
+                <a href="#products" aria-label="Products">Products</a><ul>
+                    
+            <li>
+                <a href="#direct-products" aria-label="Direct Products">Direct Products</a></li>
+            <li>
+                <a href="#inner-semi-direct-products" aria-label="Inner Semi-Direct Products">Inner Semi-Direct Products</a></li>
+            <li>
+                <a href="#outer-semi-direct-products" aria-label="Outer Semi-Direct Products">Outer Semi-Direct Products</a></li>
+            <li>
+                <a href="#group-extensions" aria-label="Group Extensions">Group Extensions</a></li></ul>
+            </li>
+            <li>
+                <a href="#geometry" aria-label="Geometry">Geometry</a><ul>
+                    
+            <li>
+                <a href="#metrics" aria-label="Metrics">Metrics</a></li>
+            <li>
+                <a href="#measures" aria-label="Measures">Measures</a>
+            </li>
+        </ul>
+        </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><p>There are multiple ways to construct new groups from old ones. For instance, the semidirect product $SO(3) \ltimes \mathbb R^3$ is the Special Euclidean group $SE(3)$, which is composed of all the rigid transformations of $\mathbb R^3$ (minus reflections). Here, I provide an intuition for how these constructions work. I will also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups. While the word <em>geometry</em> implies the presence of an inner product/Riemannian metric, the word <em>calculus</em> hints at the possibility of differentiation and integration on Lie groups.</p>
+  <div class="post-content md-content"><p>There are multiple ways to construct new groups from old ones. For instance, the semidirect product $SO(3) \ltimes \mathbb R^3$ is the Special Euclidean group $SE(3)$, which is composed of all the rigid transformations of $\mathbb R^3$ (minus reflections). Here, I provide an intuition for how these constructions work. I will also go over some of the additional structures that can be imposed on Lie groups, paving the path towards doing differential geometry and calculus on Lie groups. While the word <em>geometry</em> implies the presence of an inner product/Riemannian metric, the word <em>calculus</em> hints at the possibility of differentiation and integration on Lie groups.</p>
 <hr>
 <h1 id="quotients">Quotients<a hidden class="anchor" aria-hidden="true" href="#quotients">#</a></h1>
 <h2 id="coset-spaces">Coset Spaces<a hidden class="anchor" aria-hidden="true" href="#coset-spaces">#</a></h2>
@@ -308,9 +322,7 @@
 \]
 </p>
 <p>In general, the objects $\left\lbrace g\odot H\ \vert\ g\in G\right\rbrace$ do not form a group; they are merely a topological space called a <span class=accented>coset space</span>, written as $G/H$. I find this interpretation of a coset space very unmotivated. To me, a better way to think about $G/H$ is as the topological quotient space, $G/\sim_H$, constructed as follows.</p>
-<p>Let $S$ be some topological space and $\sim$ an <a href="https://en.wikipedia.org/wiki/Equivalence_relation" target="_blank" class="accented">
-    equivalence relation
-</a> on the elements of $S$. The (topological) <span class=accented>quotient space</span> $S/\sim$ is the set of equivalence classes of $S$ under $\sim$. In other words, $S/\sim$ is the space obtained by <em>gluing together</em> all the points in $S$ that are equivalent to each other:</p>
+<p>Let $S$ be some topological space and $\sim$ an <a href="https://en.wikipedia.org/wiki/Equivalence_relation" target="_blank" rel="noopener" class="accented">equivalence relation</a> on the elements of $S$. The (topological) <span class=accented>quotient space</span> $S/\sim$ is the set of equivalence classes of $S$ under $\sim$. In other words, $S/\sim$ is the space obtained by <em>gluing together</em> all the points in $S$ that are equivalent to each other:</p>
 <p>
 \[
     \begin{align}
@@ -357,13 +369,9 @@ It&rsquo;s easy to see that the equivalence classes satisfy a property similar t
 </p> 
 <p>It can be shown that this characterization of a coset space works just as well as the one in <span class=accented>(1)</span> and <span class=accented>(2)</span>.</p>
 <h2 id="homogeneous-spaces">Homogeneous Spaces<a hidden class="anchor" aria-hidden="true" href="#homogeneous-spaces">#</a></h2>
-<p>While $G/H$ need not have a group operation associated with it, it is possible to let $G$ act on $G/H$ by left multiplication, i.e., $g\odot [g^\prime]_{\sim_H} = [g\odot g^\prime]_{\sim_H}$. Since this action can be shown to be transitive, $G/H$ is a <a href="https://en.wikipedia.org/wiki/Homogeneous_space" target="_blank" class="accented">
-    homogeneous space
-</a>. The stabilizer of $[e]_{\sim_H}\in G/H$ is $H$, which is to say that $H$ is the subgroup of actions in $G$ that act trivially (by the identity map) on $[e]_{\sim_H}$.</p>
+<p>While $G/H$ need not have a group operation associated with it, it is possible to let $G$ act on $G/H$ by left multiplication, i.e., $g\odot [g^\prime]_{\sim_H} = [g\odot g^\prime]_{\sim_H}$. Since this action can be shown to be transitive, $G/H$ is a <a href="https://en.wikipedia.org/wiki/Homogeneous_space" target="_blank" rel="noopener" class="accented">homogeneous space</a>. The stabilizer of $[e]_{\sim_H}\in G/H$ is $H$, which is to say that $H$ is the subgroup of actions in $G$ that act trivially (by the identity map) on $[e]_{\sim_H}$.</p>
 <p>Conversely, given a homogenous space $X$ on which a group $G$ acts, we can construct a coset space by choosing a distinguished point $x\in X$. Letting $H$ denote the stabilizer of $x$ in $G$, $X$ is shown to be isomorphic to $G/H$. Thus, a homogenous space is obtained after we (i) equip a coset space of a Lie group with the appropriate action, and (ii)
-&ldquo;<i>forget</i>&rdquo; the identity coset $[e]_{\sim_H}$ of $G/H$. The last point is similar to how an <a href="https://en.wikipedia.org/wiki/Affine_space" target="_blank" class="accented">
-    affine space
-</a> is obtained after we forget the origin of $\mathbb R^n$. Another way of stating the above is that there is no distinguished point in a homogenous space, so the identity coset should be treated the same as any other.</p>
+&ldquo;<i>forget</i>&rdquo; the identity coset $[e]_{\sim_H}$ of $G/H$. The last point is similar to how an <a href="https://en.wikipedia.org/wiki/Affine_space" target="_blank" rel="noopener" class="accented">affine space</a> is obtained after we forget the origin of $\mathbb R^n$. Another way of stating the above is that there is no distinguished point in a homogenous space, so the identity coset should be treated the same as any other.</p>
 <h2 id="quotient-groups">Quotient Groups<a hidden class="anchor" aria-hidden="true" href="#quotient-groups">#</a></h2>
 <p>The quotient of topological spaces is distinct from the quotient of groups, for the same reason as why topological homomorphisms (i.e., continuous maps) are different from Lie group homomorphisms. While $G/H$ is always a topological quotient space (in the sense of $G/\sim_H$), it is a <span class=accented>quotient group</span> when $H$ is a normal subgroup of $G$ &ndash; written as $H \trianglelefteq G$. In other words, the fact that $H$ happens to be a normal subgroup enables us to come up with a well-defined group operation on $G/H$.</p>
 <p>By the defining property of a normal subgroup, we have that $g\odot H \odot g^{-1}= H$ for all $g\in G$ (i.e., $H$ is invariant under conjugation). The group operation $\star$ of $G/H$ is then given by</p>
@@ -375,7 +383,7 @@ It&rsquo;s easy to see that the equivalence classes satisfy a property similar t
     \]
 </p> 
 <p>The fact that $H$ is normal makes this definition independent of the choice of representatives, $g_1$ and $g_2$.</p>
-<p>An example of a quotient group is $\mathbb R^2/\mathbb Z^2$, where $\mathbb Z^2$ is the integer lattice in $\mathbb R^2$ considered as a group under addition. Topologically, $\mathbb R^2/\mathbb Z^2$ is a torus, and can be used to model for instance the repeating pattern of a crystal structure or a tesselation. Another example is $SO(3)/SO(2)$, which is topologically a $2$-sphere (i.e., the surface of a ball in $\mathbb R^3$). Notice that the subgroup of rotations that stabilize a given point on the sphere is isomorphic to $SO(2)$.</p>
+<p>An example of a quotient group is $\mathbb R^2/\mathbb Z^2$, where $\mathbb Z^2$ is the integer lattice in $\mathbb R^2$ considered as a group under addition. Topologically, $\mathbb R^2/\mathbb Z^2$ is a torus, and can be used to model for instance the repeating pattern of a crystal structure or a tesselation. On the other hand, $SO(3)/SO(2)$ is not a quotient group (since $SO(2)$ is not a normal subgroup of $SO(3)$), but it is a homogeneous space that is topologically a $2$-sphere (i.e., the surface of a ball in $\mathbb R^3$). Notice that the subgroup of rotations that stabilize a given point on the sphere is isomorphic to $SO(2)$.</p>
 <hr>
 <h1 id="products">Products<a hidden class="anchor" aria-hidden="true" href="#products">#</a></h1>
 <h2 id="direct-products">Direct Products<a hidden class="anchor" aria-hidden="true" href="#direct-products">#</a></h2>
@@ -398,9 +406,7 @@ Let</p>
 \]
 </p>
 <p>where $h_1 h_2$ is a short-hand for $h_1 \odot h_2$, and $\star$ is the newly-defined group operation.</p>
-<p><a href="https://www.youtube.com/watch?v=Pat5Qsmrdaw&amp;t=716s" target="_blank" class="accented">
-    This video
-</a> does a commendable job of explaining the motivation behind this definition &ndash; the gist of it is as follows.
+<p><a href="https://www.youtube.com/watch?v=Pat5Qsmrdaw&amp;t=716s" target="_blank" rel="noopener" class="accented">This video</a> does a commendable job of explaining the motivation behind this definition &ndash; the gist of it is as follows.
 Recall that $NH=G$. It can be shown with some effort that the map $\phi: N \times H \rightarrow G$ defined by $\phi(n,h) = n h$ is a bijection of sets. This motivates us to go a little further and see if we can turn $\phi$ into a group isomorphism.
 Now, observe that</p>
 <p>
@@ -430,9 +436,7 @@ In the definition of $\phi$, we used '$N \times H$' to denote the set-theoretic 
     \end{align}
 \]
 </p>
-<p>Letting $G = N \rtimes H$ as above, we have that $H \cong G/N$ (also see <a href="#group-extension" class="accented">
-    group extension
-</a> below). We say that $\Phi_h(\cdot)$ <i>twists</i> the group multiplication; a trivial twist of $\Phi_h(n)=n$ reduces the semi-direct product to a direct product.</p>
+<p>Letting $G = N \rtimes H$ as above, we have that $H \cong G/N$ (also see <a href="#group-extension" class="accented">group extension</a> below). We say that $\Phi_h(\cdot)$ <i>twists</i> the group multiplication; a trivial twist of $\Phi_h(n)=n$ reduces the semi-direct product to a direct product.</p>
 <p><b class=accented>Example 1:</b> $SE(3) \cong \mathbb R^3 \rtimes SO(3)$, where the action of $SO(3)$ on $\mathbb R^3$ is given by $\Phi_R(p) = Rp$. Thus,</p>
 <p>
 \[
@@ -456,30 +460,20 @@ When $n$ is odd, we have the following projection from $GL(n;\mathbb R)$ to $SL(
 $$
 \textrm{det}\left(\frac{A}{\big[\textrm{det}(A)\big]^{1/n}}\right) = \frac{\textrm{det}(A)}{[\textrm{det}(A)]^{n/n}} =1.
 $$<p>This would not work if $n$ were even, however, since $\big[\textrm{det}(A)\big]^{1/n}$ may not have a real value in these cases<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. On the other hand, the semi-direct product does not require that there be a projection from $GL(n;\mathbb R)$ to $SL(n;\mathbb R)$ to begin with.</p>
-<p>So, $GL(n;\mathbb R) \cong SL(n;\mathbb R) \rtimes \mathbb R^\times$ always, and $GL(n;\mathbb R) \cong SL(n;\mathbb R) \times \mathbb R^\times$ when $n$ is odd, which is the content of Problem 7-21 of <a href=https://sites.math.washington.edu//~lee/Books/ISM/ class=accented>Lee&rsquo;s book</a> (also see the <a href="https://sites.math.washington.edu//~lee/Books/ISM/errata.pdf" target="_blank" class="accented">
-    errata
-</a>).  We will come back to this example in the context of group extensions, below.</p>
+<p>So, $GL(n;\mathbb R) \cong SL(n;\mathbb R) \rtimes \mathbb R^\times$ always, and $GL(n;\mathbb R) \cong SL(n;\mathbb R) \times \mathbb R^\times$ when $n$ is odd, which is the content of Problem 7-21 of <a href=https://sites.math.washington.edu//~lee/Books/ISM/ class=accented>Lee&rsquo;s book</a> (also see the <a href="https://sites.math.washington.edu//~lee/Books/ISM/errata.pdf" target="_blank" rel="noopener" class="accented">errata</a>).  We will come back to this example in the context of group extensions, below.</p>
 <p><b class=accented>Example 3:</b> $O(n) \cong SO(n) \rtimes O(1)$, which is also an example from Lee&rsquo;s book. Note that $O(1)$ is simply a group of the form $\lbrace 1, -1 \rbrace$. As before, we can also express this as a direct product when $n$ is odd.</p>
 <h2 id="group-extensions">Group Extensions<a hidden class="anchor" aria-hidden="true" href="#group-extensions">#</a></h2>
 <p>Given a homomorphism $A\rightarrow B$ between objects $A$ and $B$ of some type, the kernel of the homomorphism is the set of elements of $A$ that map to the identity of $B$. For example, the kernel of (the linear transformation corresponding to) a matrix is its null space. It can be shown quite easily that a group homomorphism $f:G\rightarrow G^\prime$ should map the identity of $G$ to the identity of $G^\prime$, so $\ker(f)$ will at least contain the identity element of $G$.</p>
-<p>The following sequence of group homomorphisms is an example of a <a href="https://en.wikipedia.org/wiki/Short_exact_sequence" target="_blank" class="accented">
-    short exact sequence
-</a>, in which the image of each homomorphism happens to be the kernel of the next homomorphism:</p>
+<p>The following sequence of group homomorphisms is an example of a <a href="https://en.wikipedia.org/wiki/Short_exact_sequence" target="_blank" rel="noopener" class="accented">short exact sequence</a>, in which the image of each homomorphism happens to be the kernel of the next homomorphism:</p>
 <p>
 \[
    1 \rightarrow N \overset{\iota}{\rightarrow} G \overset{\pi}{\rightarrow} H \rightarrow 1
 \]
 </p>
-<p>Here, $G$ is said to be an <span class=accented>extension</span> of $H$ by $N$, and $1=\lbrace e\rbrace$ is the trivial one-element group. It&rsquo;s quite remarkable how much this succinct expression says about the relationships between $N$, $G$, and $H$. Firstly, $1$ maps to the identity of $N$ (since group homomorphisms preserve identities), and the same occurs on the right end of the sequence. We know that $\iota{(N)}$ is a normal subgroup of $G$ by the <a href="https://en.wikipedia.org/wiki/Isomorphism_theorems" target="_blank" class="accented">
-    first isomorphism theorem of Noether
-</a>. The first isomorphism theorem also says that the quotient $G/\iota{(N)}$ is isomorphic to $H$.</p>
-<p>In the typical mathematical notation, $\iota$ denotes an <span class=accented>inclusion</span> and $\pi$ a <span class=accented>projection</span>. An inclusion maps a subset of a set injectively (though in all likelihood, not surjectively) into the parent set. A similar definition follows for the inclusion of a subspace onto a vector space, a topological subspace into its ambient space, and so on. A projection is something we&rsquo;ve seen before in the context of a <a href="/posts/vector-fields/#tangentcotangent-bundles" class="accented">
-    fiber bundle
-</a>.
+<p>Here, $G$ is said to be an <span class=accented>extension</span> of $H$ by $N$, and $1=\lbrace e\rbrace$ is the trivial one-element group. It&rsquo;s quite remarkable how much this succinct expression says about the relationships between $N$, $G$, and $H$. Firstly, $1$ maps to the identity of $N$ (since group homomorphisms preserve identities), and the same occurs on the right end of the sequence. We know that $\iota{(N)}$ is a normal subgroup of $G$ by the <a href="https://en.wikipedia.org/wiki/Isomorphism_theorems" target="_blank" rel="noopener" class="accented">first isomorphism theorem of Noether</a>. The first isomorphism theorem also says that the quotient $G/\iota{(N)}$ is isomorphic to $H$.</p>
+<p>In the typical mathematical notation, $\iota$ denotes an <span class=accented>inclusion</span> and $\pi$ a <span class=accented>projection</span>. An inclusion maps a subset of a set injectively (though in all likelihood, not surjectively) into the parent set. A similar definition follows for the inclusion of a subspace onto a vector space, a topological subspace into its ambient space, and so on. A projection is something we&rsquo;ve seen before in the context of a <a href="/posts/vector-fields/#tangentcotangent-bundles" class="accented">fiber bundle</a>.
 This suggests that $G\cong N\times H$ will always satisfy such a short exact sequence, with $\pi$ defined quite literally as a projection.</p>
-<p>Then arises the question of when $G$, if given as a group extension, is the semi-direct product of $H$ acting on $N$. Since $G$ need not have a projection onto $N$ in a semi-direct product, so we certainly don&rsquo;t need to have a morphism $N \leftarrow G$. Instead, what characterizes a semi-direct product precisely is the existence of a group homomorphism $\sigma: H \rightarrow G$, called a <span class=accented>section</span> or a <a href="https://ncatlab.org/nlab/show/split&#43;monomorphism" target="_blank" class="accented">
-    splitting
-</a>, such that $\pi \circ \sigma=\textit{Id}$ (the identity map). This is in part because we can then define the action $\Phi_h(n)$ as $\sigma(h) n \sigma(h)^{-1}$ via the conjugations in $G$, giving us everything we need to construct the group operation.</p>
+<p>Then arises the question of when $G$, if given as a group extension, is the semi-direct product of $H$ acting on $N$. Since $G$ need not have a projection onto $N$ in a semi-direct product, so we certainly don&rsquo;t need to have a morphism $N \leftarrow G$. Instead, what characterizes a semi-direct product precisely is the existence of a group homomorphism $\sigma: H \rightarrow G$, called a <span class=accented>section</span> or a <a href="https://ncatlab.org/nlab/show/split&#43;monomorphism" target="_blank" rel="noopener" class="accented">splitting</a>, such that $\pi \circ \sigma=\textit{Id}$ (the identity map). This is in part because we can then define the action $\Phi_h(n)$ as $\sigma(h) n \sigma(h)^{-1}$ via the conjugations in $G$, giving us everything we need to construct the group operation.</p>
 <p><b class=accented>Example 2</b> <span class=accented>(Revisited)</span><b class=accented>:<br></b> We have the following short exact sequence:</p>
 <p>
 \[
@@ -509,17 +503,13 @@ Letting</p>
     = \langle X_g, Y_g \rangle _g.
 \]
 </p>
-<p>A <span class=accented>bi-invariant metric</span> is one that is simultaneously left- and right-invariant. The following Lemmas from <a href="https://core.ac.uk/download/pdf/82428733.pdf" target="_blank" class="accented">
-    a paper by Milnor
-</a> characterize the Lie groups that admit bi-invariant metrics:</p>
+<p>A <span class=accented>bi-invariant metric</span> is one that is simultaneously left- and right-invariant. The following Lemmas from <a href="https://core.ac.uk/download/pdf/82428733.pdf" target="_blank" rel="noopener" class="accented">a paper by Milnor</a> characterize the Lie groups that admit bi-invariant metrics:</p>
 <p class=equation-like>
 <span class=print>
 <b>Lemma 7.1</b> A left-invariant metric on $\small{G}$ is also right invariant if and only if, for each $\small{g\in G}$, $\small{\textrm{Ad}}_g$ is an isometry of the inner product on $\small{\mathfrak g}$ [that generates said left-invariant metric].
 </span>
 </p>
-<p>This is also Proposition 3.12 of Lee&rsquo;s <a href="https://link.springer.com/book/10.1007/978-3-319-91755-9" target="_blank" class="accented">
-    book
-</a> on Riemannian Manifolds.
+<p>This is also Proposition 3.12 of Lee&rsquo;s <a href="https://link.springer.com/book/10.1007/978-3-319-91755-9" target="_blank" rel="noopener" class="accented">book</a> on Riemannian Manifolds.
 It states that $\textrm{Ad}_g$ are given by $O(n)$ matrices acting on $\mathfrak g$.</p>
 <p class=equation-like>
 <span class=print>
@@ -532,9 +522,7 @@ It states that $\textrm{Ad}_g$ are given by $O(n)$ matrices acting on $\mathfrak
 <b>Lemma 7.5</b> A connected Lie group admits a bi-invariant metric if and only if it is isomorphic to the direct product of a compact group and a commutative group.
 </span>
 </p>
-<p>As a corollary, every compact Lie group (including <a href="https://en.wikipedia.org/wiki/Heine%E2%80%93Borel_theorem" target="_blank" class="accented">
-    closed and bounded
-</a> matrix Lie groups like $SO(n)$) admits a bi-invariant metric. While $SO(n) \times \mathbb R^n$ admits a bi-invariant metric, $SE(n) \cong SO(n) \ltimes \mathbb R^n$ does not.
+<p>As a corollary, every compact Lie group (including <a href="https://en.wikipedia.org/wiki/Heine%E2%80%93Borel_theorem" target="_blank" rel="noopener" class="accented">closed and bounded</a> matrix Lie groups like $SO(n)$) admits a bi-invariant metric. While $SO(n) \times \mathbb R^n$ admits a bi-invariant metric, $SE(n) \cong SO(n) \ltimes \mathbb R^n$ does not.
 (Nevertheless, $SE(n)$ has the next best thing: a bi-invariant measure.)</p>
 <p>An interesting property of a Lie group that admits a bi-invariant metric is that its one-parameter subgroups are also geodesic (i.e., shortest-distance) paths of the metric.</p>
 <h2 id="measures">Measures<a hidden class="anchor" aria-hidden="true" href="#measures">#</a></h2>
@@ -543,24 +531,16 @@ $$gA \coloneqq \lbrace ga\ \vert\ a\in A \rbrace.$$<p>The Lebesgue measure is a 
 In a compact group, a unique Haar measure can be found by normalizing the scaling factor to $1$ so that $\int_G d\mu_G=\mu(G)=1$. If $\mu_G$ is a left Haar measure and $g\in G$, then $\tilde \mu^{(g)}_G \coloneqq \mu_G\circ \mathcal R_{g}$ is also a left Haar measure, since</p>
 $$\tilde \mu^{(g)}_G(hA) = \mu_G(hAg) = \mu_G(Ag) = \tilde \mu^{(g)}_G(A)$$<p>for all $h\in G$. But since the left Haar measure is unique up to scalar multiplication, it must be the case that $\tilde \mu^{(g)}_G = \Delta (g) \mu_G$ where $\Delta (g)$ is a scalar-valued function that only depends on $g$. This is called the <span class=accented>modular function</span> of $G$ &ndash; once computed, it is independent of the choice of the Haar measure $\mu_G$ that is used to compute it. It relates the left Haar measure to the right Haar measure. A lot of the properties and implications of $\Delta(\ \cdot\ )$ follow from showing that it is a group homomorphism from $G$ to $\mathbb R^\times_{>0}$.</p>
 <p>A Lie group is said to be <span class=accented>unimodular</span> <em>iff</em> its left Haar measure is also a right Haar measure, i.e., it is also right-invariant. Equivalently, a group is unimodular <em>iff</em> its modular function is $\Delta(g)=1$ for all $g\in G$.
-<a href="https://core.ac.uk/download/pdf/82428733.pdf" target="_blank" class="accented">
-    Milnor
-</a> once again saves us from needing to check this condition explicitly:</p>
+<a href="https://core.ac.uk/download/pdf/82428733.pdf" target="_blank" rel="noopener" class="accented">Milnor</a> once again saves us from needing to check this condition explicitly:</p>
 <p class=equation-like>
 <span class=print><b>Lemma 6.1</b> A Lie group is unimodular if and only if the linear transformation $\textrm{Ad}_g$ has determinant $\pm 1$ for every $g\in G$.<br>
 </p>
-<p>The absolute value of this determinant <a href="https://www.math.toronto.edu/mein/teaching/LectureNotes/lie.pdf" target="_blank" class="accented">
-    is precisely the modular function
-</a>, $\Delta(g)$. Recall or verify that $\lvert\det(\ \cdot\ )\rvert$ is a Lie group homomorphism from $GL(n; \mathbb R)$ to $\mathbb R^\times_{>0}$, the multiplicative group of positive real numbers.</p>
+<p>The absolute value of this determinant <a href="https://www.math.toronto.edu/mein/teaching/LectureNotes/lie.pdf" target="_blank" rel="noopener" class="accented">is precisely the modular function</a>, $\Delta(g)$. Recall or verify that $\lvert\det(\ \cdot\ )\rvert$ is a Lie group homomorphism from $GL(n; \mathbb R)$ to $\mathbb R^\times_{>0}$, the multiplicative group of positive real numbers.</p>
 <p class=equation-like>
 <span class=print><b>Lemma 6.3</b> A connected Lie group is unimodular if and only if the linear transformation $\textrm{ad}_X$ has trace zero for every $X\in\mathfrak g$.<br>
 </p>
 <p>Compare the relationship between these lemmas with the fact that $\textrm{det}(e^A) = e^{\textrm{tr}(A)}$ for any matrix $A$.</p>
-<p>Note that for matrix Lie groups, $\textrm{ad}_X(Y)$ is always trace zero, since $\textrm{ad}_X(Y) = XY - YX$ and $\textrm{tr}(XY) = \textrm{tr}(YX)$. Lemma 6.3 is talking of the trace of $\textrm{ad}_X$ as a linear transformation on $\mathfrak g$ (as opposed to the trace of $\textrm{ad}_X(Y)$). Moreover, for computing the trace of $\textrm{ad}_X$ it does not matter what basis of $\mathfrak g$ we choose, since the trace is a property of the underlying linear transformation rather than of the matrix. As a special case of Lemma 6.3, the $\textrm{ad}_X$ matrices corresponding to a <a href="https://en.wikipedia.org/wiki/Nilpotent_Lie_algebra" target="_blank" class="accented">
-    nilpotent
-</a> Lie algebra <a href="https://en.wikipedia.org/wiki/Engel%27s_theorem" target="_blank" class="accented">
-    are given by nilpotent matrices
-</a>, which have trace zero. Thus, every nilpotent Lie group is unimodular. Moreover, compact Lie groups are unimodular because $\Delta(g)$ is a homomorphism into the non-compact group $\mathbb R^\times_{>0}$, whereas the only compact subgroup of $\mathbb R^\times_{>0}$ is $\lbrace 1 \rbrace$.</p>
+<p>Note that for matrix Lie groups, $\textrm{ad}_X(Y)$ is always trace zero, since $\textrm{ad}_X(Y) = XY - YX$ and $\textrm{tr}(XY) = \textrm{tr}(YX)$. Lemma 6.3 is talking of the trace of $\textrm{ad}_X$ as a linear transformation on $\mathfrak g$ (as opposed to the trace of $\textrm{ad}_X(Y)$). Moreover, for computing the trace of $\textrm{ad}_X$ it does not matter what basis of $\mathfrak g$ we choose, since the trace is a property of the underlying linear transformation rather than of the matrix. As a special case of Lemma 6.3, the $\textrm{ad}_X$ matrices corresponding to a <a href="https://en.wikipedia.org/wiki/Nilpotent_Lie_algebra" target="_blank" rel="noopener" class="accented">nilpotent</a> Lie algebra <a href="https://en.wikipedia.org/wiki/Engel%27s_theorem" target="_blank" rel="noopener" class="accented">are given by nilpotent matrices</a>, which have trace zero. Thus, every nilpotent Lie group is unimodular. Moreover, compact Lie groups are unimodular because $\Delta(g)$ is a homomorphism into the non-compact group $\mathbb R^\times_{>0}$, whereas the only compact subgroup of $\mathbb R^\times_{>0}$ is $\lbrace 1 \rbrace$.</p>
 <p>Bi-invariant Haar measures are incredibly useful because they offer a way to integrate on Lie groups (as well as to define probability densities, Fourier transforms, etc.) while retaining the intuitive and attractive properties of the Lebesgue integral:</p>
 <p>
 \[
@@ -573,14 +553,8 @@ $$\tilde \mu^{(g)}_G(hA) = \mu_G(hAg) = \mu_G(Ag) = \tilde \mu^{(g)}_G(A)$$<p>fo
 </p> 
 <p>where $f:G\rightarrow \mathbb R$ is a function, and $g \mapsto hg$ is to be viewed as the analogue of translation in $\mathbb R^n$. By requiring $f$ to be compactly supported and/or an integrable function and normalizing it, one is able to define a probability density function on $G$.</p>
 <hr>
-<p>In <a href="/posts/lie-groups_riemannian" class="accented">
-    the next post
-</a>, I use the machinery developed in the book <a href="https://link.springer.com/book/10.1007/978-1-4419-9982-5" target="_blank" class="accented">
-    Introduction to Smooth Manifolds
-</a> by John M. Lee to study the properties of Riemannian metrics and measures. If you would rather skip ahead to the actual calculations,
-I point you toward the books by <a href="https://link.springer.com/book/10.1007/978-0-8176-4944-9" target="_blank" class="accented">
-    G.S. Chirikjian
-</a>. It contains formulae for differentiation and integration on the (matrix) Lie groups that are commonly encountered in engineering applications.</p>
+<p>In <a href="/posts/lie-groups_riemannian" class="accented">the next post</a>, I use the machinery developed in the book <a href="https://link.springer.com/book/10.1007/978-1-4419-9982-5" target="_blank" rel="noopener" class="accented">Introduction to Smooth Manifolds</a> by John M. Lee to study the properties of Riemannian metrics and measures. If you would rather skip ahead to the actual calculations,
+I point you toward the books by <a href="https://link.springer.com/book/10.1007/978-0-8176-4944-9" target="_blank" rel="noopener" class="accented">G.S. Chirikjian</a>. It contains formulae for differentiation and integration on the (matrix) Lie groups that are commonly encountered in engineering applications.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -588,13 +562,7 @@ I point you toward the books by <a href="https://link.springer.com/book/10.1007/
 <p>Note that $f(x) = x^{1/n}$ is a multi-valued function. Since it is an $n^{th}$ degree polynomial, it will have exactly $n$ (not necessarily distinct) complex roots.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>This property makes the right-invariant vector fields on $G$ examples of <a href="https://en.wikipedia.org/wiki/Killing_vector_field" target="_blank" class="accented">
-    Killing vector fields
-</a> with respect to the left-invariant metric &ndash; this is because <a href="/posts/lie-groups/#the-flows-of-mathfrak-xmathcal-lg" class="accented">
-    left-invariant flows are given by right-multiplication
-</a>, and vice versa. Also see <a href="https://math.stackexchange.com/questions/2288619/misconception-about-geodesics-and-killing-fields-on-lie-groups" target="_blank" class="accented">
-    this
-</a>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>This property makes the right-invariant vector fields on $G$ examples of <a href="https://en.wikipedia.org/wiki/Killing_vector_field" target="_blank" rel="noopener" class="accented">Killing vector fields</a> with respect to the left-invariant metric &ndash; this is because <a href="/posts/lie-groups/#the-flows-of-mathfrak-xmathcal-lg" class="accented">left-invariant flows are given by right-multiplication</a>, and vice versa. Also see <a href="https://math.stackexchange.com/questions/2288619/misconception-about-geodesics-and-killing-fields-on-lie-groups" target="_blank" rel="noopener" class="accented">this</a>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
@@ -604,14 +572,13 @@ I point you toward the books by <a href="https://link.springer.com/book/10.1007/
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://shirazkn.github.io/tags/differential-geometry/">Differential Geometry</a></li>
+      <li><a href="https://shiraz-k.com/tags/differential-geometry/">Differential Geometry</a></li>
     </ul>
   </footer>
 <script>
 (function() {
-    var theme = localStorage.getItem("pref-theme");
-    var giscusTheme = (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches))
-        ? "noborder_dark" : "noborder_light";
+    
+    var giscusTheme = document.documentElement.dataset.theme === "dark" ? "noborder_dark" : "noborder_light";
 
     var script = document.createElement('script');
     script.src = "https://giscus.app/client.js";
@@ -637,7 +604,7 @@ I point you toward the books by <a href="https://link.springer.com/book/10.1007/
     
 <footer class="footer">
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link hidden" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
@@ -646,26 +613,25 @@ I point you toward the books by <a href="https://link.springer.com/book/10.1007/
 document.addEventListener('touchstart', function() {}, { passive: true });
 
 
-function syncDarkClass() {
-    const isDark = document.documentElement.dataset.theme === 'dark';
-    document.documentElement.classList.toggle('dark', isDark);
-    document.body.classList.toggle('dark', isDark);
-}
-syncDarkClass();
-
-
 
 
 document.querySelectorAll('.logo a, .post-title').forEach(el => {
-    el.innerHTML = el.textContent.trim().split(' ').map(word =>
-        `<span class="hover-word">${word.split('').map(char =>
-            `<span class="hover-letter">${char}</span>`
-        ).join('')}</span>`
-    ).join(' ');
+    const words = el.textContent.trim().split(/\s+/);
+    el.replaceChildren(...words.flatMap((word, i) => {
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'hover-word';
+        for (const char of word) {
+            const letter = document.createElement('span');
+            letter.className = 'hover-letter';
+            letter.textContent = char;
+            wordSpan.append(letter);
+        }
+        return i ? [' ', wordSpan] : [wordSpan];
+    }));
 });
 
 
-const isDark = () => document.body.classList.contains('dark');
+const isDark = () => document.documentElement.dataset.theme === 'dark';
 const hoverColorsDark = ['#ff51af', '#ff51af', '#f161ac', '#f161ac', '#db327e', '#db327e', '#3b82f6', '#38bdf8'];
 const hoverColorsLight = ['#ff51af', '#ff51af', '#e83a89', '#e83a89', '#f542a1', '#d6306f', '#3b9eff', '#00c2ff'];
 const getHoverColors = () => isDark() ? hoverColorsDark : hoverColorsLight;
@@ -733,373 +699,15 @@ if (window.matchMedia('(pointer: coarse)').matches) {
 }
 
 
-
-
-
-const CARD_CONFIG = {
-    
-    hoverLift: 4,
-    
-    maxRotation: 0.8,
-    
-    shadowOpacityLight: 0.22,      
-    shadowOpacityDark: 0.45,       
-    shadowOpacityRange: 0.12,      
-    
-    shadowBlurBase: 1.5,           
-    shadowBlurHover: 2.5,          
-    shadowYOffsetBase: 1,          
-    shadowYOffsetHover: 2,         
-    
-    glowBlur: 8,                   
-    glowSpread: 0,                 
-    glowOpacityLight: 0.22,        
-    glowOpacityDark: 0.07,         
-};
-
-
-
-const postCards = document.querySelectorAll('.post-entry');
-const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
-
-if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in window) {
-    
-    
-    let gyroBaselineBeta = null;
-    let gyroBaselineGamma = null;
-    const GYRO_DRIFT_RATE_MIN = 0.0008;  
-    const GYRO_DRIFT_RATE_MAX = 0.25;   
-    let gyroRafId = null;
-    let latestBeta = null, latestGamma = null;
-    let cardGyroPermissionRequested = false;
-
-    
-    let currentRotateX = 0, currentRotateY = 0;
-    let currentTranslateX = 0, currentTranslateY = 0;
-
-    
-    let smoothedRotateX = 0, smoothedRotateY = 0;
-    let smoothedTranslateX = 0, smoothedTranslateY = 0;
-    const CARD_GYRO_SMOOTHING = 0.15;
-
-    
-    const softClamp = (value, limit) => limit * Math.tanh(value / limit);
-
-    
-    let cardFocusValues = new Array(postCards.length).fill(0);
-    let transformRafId = null;
-    let scrollProgress = 0; 
-
-    
-    function scheduleTransformUpdate() {
-        if (transformRafId) return;
-        transformRafId = requestAnimationFrame(() => {
-            applyCardTransforms();
-            transformRafId = null;
-        });
-    }
-
-    
-    function updateCardFocusValues() {
-        const viewportHeight = window.innerHeight;
-        
-        const targetY = viewportHeight * (0.15 + scrollProgress * 0.7);
-
-        for (let i = 0; i < postCards.length; i++) {
-            const rect = postCards[i].getBoundingClientRect();
-            const cardCenterY = rect.top + rect.height / 2;
-
-            
-            const distance = Math.abs(cardCenterY - targetY) / viewportHeight;
-
-            
-            const t = Math.max(0, (distance - 0.4) / 0.35);
-            const falloff = Math.max(0, 1 - t);
-            cardFocusValues[i] = falloff * falloff * (falloff * falloff); 
-        }
-    }
-
-    
-    let scrollRafId = null;
-    function handleScroll() {
-        if (scrollRafId) return;
-        scrollRafId = requestAnimationFrame(() => {
-            const scrollTop = window.scrollY || document.documentElement.scrollTop;
-            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-            scrollProgress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
-
-            updateCardFocusValues();
-            scheduleTransformUpdate();
-            scrollRafId = null;
-        });
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    
-    handleScroll();
-
-    function applyCardTransforms() {
-        
-        smoothedRotateX += (currentRotateX - smoothedRotateX) * CARD_GYRO_SMOOTHING;
-        smoothedRotateY += (currentRotateY - smoothedRotateY) * CARD_GYRO_SMOOTHING;
-        smoothedTranslateX += (currentTranslateX - smoothedTranslateX) * CARD_GYRO_SMOOTHING;
-        smoothedTranslateY += (currentTranslateY - smoothedTranslateY) * CARD_GYRO_SMOOTHING;
-
-        
-        const baseGyroX = smoothedRotateX * 0.3;
-        const baseGyroY = smoothedRotateY * 0.3;
-        const gyroRangeX = smoothedRotateX * 0.7;
-        const gyroRangeY = smoothedRotateY * 0.7;
-        
-        const baseTransX = smoothedTranslateX * 0.3;
-        const baseTransY = smoothedTranslateY * 0.3;
-        const transRangeX = smoothedTranslateX * 0.7;
-        const transRangeY = smoothedTranslateY * 0.7;
-
-        for (let i = 0; i < postCards.length; i++) {
-            const focus = cardFocusValues[i];
-            const card = postCards[i];
-
-            
-            const rotX = baseGyroX + gyroRangeX * focus;
-            const rotY = baseGyroY + gyroRangeY * focus;
-            const transX = baseTransX + transRangeX * focus;
-            const transY = baseTransY + transRangeY * focus;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateX(${transX}px) translateY(${transY}px) scale(${1 + focus * 0.02})`;
-            card.style.opacity = 0.55 + focus * 0.45;
-        }
-    }
-
-    function handleCardOrientation(event) {
-        if (event.beta === null || event.gamma === null) return;
-
-        
-        const orientation = screen.orientation?.angle ?? window.orientation ?? 0;
-        let beta, gamma;
-
-        if (orientation === 90) {
-            beta = event.gamma;
-            gamma = -event.beta;
-        } else if (orientation === -90 || orientation === 270) {
-            beta = -event.gamma;
-            gamma = event.beta;
-        } else if (orientation === 180) {
-            beta = -event.beta;
-            gamma = -event.gamma;
-        } else {
-            beta = event.beta;
-            gamma = event.gamma;
-        }
-
-        latestBeta = beta;
-        latestGamma = gamma;
-
-        if (!gyroRafId) {
-            gyroRafId = requestAnimationFrame(() => {
-                
-                if (gyroBaselineBeta === null) {
-                    gyroBaselineBeta = latestBeta;
-                    gyroBaselineGamma = latestGamma;
-                }
-
-                
-                const relativeBeta = latestBeta - gyroBaselineBeta;
-                const relativeGamma = latestGamma - gyroBaselineGamma;
-
-                
-                const maxTilt = Math.max(Math.abs(relativeBeta), Math.abs(relativeGamma));
-                const tiltFactor = Math.min(1, maxTilt / 30);  
-                
-                const driftRate = GYRO_DRIFT_RATE_MIN + tiltFactor * tiltFactor * tiltFactor * (GYRO_DRIFT_RATE_MAX - GYRO_DRIFT_RATE_MIN);
-
-                
-                gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * driftRate;
-                gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * driftRate;
-
-                
-                currentRotateY = softClamp(relativeGamma * 0.25, 6);
-                currentRotateX = softClamp(relativeBeta * -0.25, 6);
-
-                
-                currentTranslateX = softClamp(relativeGamma * 0.16, 4);
-                currentTranslateY = softClamp(relativeBeta * 0.14, 3);
-
-                scheduleTransformUpdate();
-                gyroRafId = null;
-            });
-        }
-    }
-
-    function enableCardGyroscope() {
-        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
-    }
-
-    
-    applyCardTransforms();
-
-    
-    
-    postCards.forEach((card, index) => {
-        let isPressed = false;
-
-        card.addEventListener('touchstart', () => {
-            isPressed = true;
-            const focus = cardFocusValues[index];
-            card.style.transition = 'transform 0.08s ease-out, box-shadow 0.08s ease-out';
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(${0.97 + focus * 0.01})`;
-            card.style.boxShadow = `0 0.5px 1px rgba(0,0,0,0.2)`;
-        }, { passive: true });
-
-        card.addEventListener('touchmove', () => {
-            if (isPressed) {
-                isPressed = false;
-                card.style.transition = '';
-                scheduleTransformUpdate();
-            }
-        }, { passive: true });
-
-        card.addEventListener('touchend', () => {
-            if (isPressed) {
-                isPressed = false;
-                card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
-                setTimeout(() => {
-                    card.style.transition = '';
-                    scheduleTransformUpdate();
-                }, 150);
-            }
-        }, { passive: true });
-
-        card.addEventListener('touchcancel', () => {
-            isPressed = false;
-            card.style.transition = '';
-            scheduleTransformUpdate();
-        }, { passive: true });
-    });
-
-    
-    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        
-        enableCardGyroscope();
-
-        
-        if (!localStorage.getItem('gyro-permission-asked') && postCards.length > 0) {
-            const banner = document.createElement('div');
-            banner.id = 'gyro-banner';
-            banner.innerHTML = 'Tap to enable motion effects ↗';
-            banner.style.cssText = 'position:fixed;bottom:1.2em;left:50%;transform:translateX(-50%);background:var(--entry);color:var(--content);padding:0.55em 1.2em;border-radius:2em;font-size:0.85em;z-index:999;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.18);border:1px solid var(--border);opacity:0;transition:opacity 0.3s;';
-            document.body.appendChild(banner);
-            
-            setTimeout(() => { banner.style.opacity = '1'; }, 600);
-
-            banner.addEventListener('click', () => {
-                localStorage.setItem('gyro-permission-asked', '1');
-                banner.style.opacity = '0';
-                setTimeout(() => banner.remove(), 300);
-                if (!cardGyroPermissionRequested) {
-                    cardGyroPermissionRequested = true;
-                    DeviceOrientationEvent.requestPermission()
-                        .then(state => {
-                            if (state === 'granted') enableCardGyroscope();
-                        })
-                        .catch(() => { cardGyroPermissionRequested = false; });
-                }
-            });
-
-            
-            setTimeout(() => {
-                if (banner.parentNode) {
-                    banner.style.opacity = '0';
-                    setTimeout(() => banner.remove(), 300);
-                }
-            }, 8000);
-        }
-    } else {
-        
-        enableCardGyroscope();
-    }
-} else {
-    
-    
-    let currentMouseCard = null;
-    let lastMouseX = 0, lastMouseY = 0;
-
-    postCards.forEach(card => {
-        let rafId = null;
-        let isPressed = false;
-
-        card.addEventListener('mouseenter', () => {
-            currentMouseCard = card;
-            card.style.transition = 'none';
-        });
-
-        card.addEventListener('mousemove', (e) => {
-            if (isPressed) return; 
-            lastMouseX = e.clientX;
-            lastMouseY = e.clientY;
-
-            if (!rafId) {
-                rafId = requestAnimationFrame(() => {
-                    if (isPressed) { rafId = null; return; }
-                    const rect = card.getBoundingClientRect();
-                    const mouseX = lastMouseX - rect.left;
-                    const mouseY = lastMouseY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = (mouseY - centerY) / centerY * -CARD_CONFIG.maxRotation;
-                    const rotateY = (mouseX - centerX) / centerX * CARD_CONFIG.maxRotation;
-                    const normalizedY = (centerY - mouseY) / centerY;
-                    const isDarkMode = document.body.classList.contains('dark');
-                    const baseOpacity = isDarkMode ? CARD_CONFIG.shadowOpacityDark : CARD_CONFIG.shadowOpacityLight;
-                    const shadowOpacity = Math.max(0, baseOpacity + normalizedY * CARD_CONFIG.shadowOpacityRange);
-                    const glowOpacity = isDarkMode ? CARD_CONFIG.glowOpacityDark : CARD_CONFIG.glowOpacityLight;
-                    const glowColor = isDarkMode ? `rgba(251,152,204,${glowOpacity})` : `rgba(188,10,92,${glowOpacity})`;
-                    const glow = `0 0 ${CARD_CONFIG.glowBlur}px ${CARD_CONFIG.glowSpread}px ${glowColor}`;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${CARD_CONFIG.hoverLift}px)`;
-                    card.style.boxShadow = `0 ${CARD_CONFIG.shadowYOffsetHover}px ${CARD_CONFIG.shadowBlurHover}px rgba(0, 0, 0, ${shadowOpacity}), ${glow}`;
-                    rafId = null;
-                });
-            }
-        });
-
-        card.addEventListener('mousedown', () => {
-            isPressed = true;
-            card.style.transform = 'scale(0.99)';
-            card.style.boxShadow = '';
-        });
-
-        card.addEventListener('mouseup', () => {
-            isPressed = false;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            if (rafId) {
-                cancelAnimationFrame(rafId);
-                rafId = null;
-            }
-            isPressed = false;
-            card.style.transition = '';
-            card.style.transform = '';
-            card.style.boxShadow = '';
-            currentMouseCard = null;
-        });
-    });
-
-}
-
-
-const tocBox = document.querySelector('.toc');
+const tocBox = document.querySelector('details.toc');
 if (tocBox) {
-    const tocDetails = tocBox.querySelector('details');
-    if (tocDetails) {
-        tocBox.addEventListener('click', (e) => {
-            
-            if (e.target.tagName === 'A') return;
-            
-            if (e.target.closest('summary')) return;
-            tocDetails.open = !tocDetails.open;
-        });
-    }
+    tocBox.addEventListener('click', (e) => {
+        
+        if (e.target.tagName === 'A') return;
+        
+        if (e.target.closest('summary')) return;
+        tocBox.open = !tocBox.open;
+    });
 }
 </script>
 <div class="headerfooter">
@@ -1117,14 +725,18 @@ if (tocBox) {
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
-            e.preventDefault();
             var id = this.getAttribute("href").substr(1);
+            var target = null;
+            try { target = document.getElementById(decodeURIComponent(id)); } catch (_) { }
+            
+            if (!target) return;
+            e.preventDefault();
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                target.scrollIntoView({
                     behavior: "smooth"
                 });
             } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                target.scrollIntoView();
             }
             if (id === "top") {
                 history.replaceState(null, null, " ");
@@ -1136,14 +748,12 @@ if (tocBox) {
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.addEventListener('scroll', function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     });
 
@@ -1159,8 +769,6 @@ if (tocBox) {
             localStorage.setItem("pref-theme", 'dark');
         }
         const isDark = html.dataset.theme === 'dark';
-        html.classList.toggle('dark', isDark);
-        document.body.classList.toggle('dark', isDark);
         
         const giscusFrame = document.querySelector('iframe.giscus-frame');
         if (giscusFrame) {

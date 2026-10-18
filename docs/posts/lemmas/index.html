@@ -9,16 +9,16 @@
 <meta name="keywords" content="Differential Geometry">
 <meta name="description" content="Some results about the differentials (i.e., pushforwards) of the exponential and logarithm maps of a Lie group. I rely extensively on the interpretation of tangent vectors as equivalence classes of curves.">
 <meta name="author" content="">
-<link rel="canonical" href="https://shirazkn.github.io/posts/lemmas/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.2921f0d9e585bc62a176e52c3c9ea94ecefc8bb59f1eff9561f20e0db052bdd6.css" integrity="sha256-KSHw2eWFvGKhduUsPJ6pTs78i7WfHv&#43;VYfIODbBSvdY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://shirazkn.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://shirazkn.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
+<link rel="canonical" href="https://shiraz-k.com/posts/lemmas/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a0ebdfe53c3eb2e3553423a17ddbc637fa0058202126dd12b1f64b8055fb9532.css" integrity="sha256-oOvf5Tw&#43;suNVNCOhfdvGN/oAWCAhJt0SsfZLgFX7lTI=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://shiraz-k.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://shiraz-k.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://shiraz-k.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://shiraz-k.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://shiraz-k.com/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://shirazkn.github.io/posts/lemmas/">
+<link rel="alternate" hreflang="en" href="https://shiraz-k.com/posts/lemmas/">
 <noscript>
     <style>
         #theme-toggle,
@@ -51,12 +51,6 @@
             }
         }
 
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
     </style>
 </noscript>
 <script>
@@ -70,13 +64,6 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><script>
-(function() {
-    var pref = localStorage.getItem("pref-theme");
-    if (pref === "dark" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-        document.documentElement.classList.add("dark");
-    }
-})();
 </script>
 
 <script>
@@ -99,6 +86,20 @@
     }
   }
 
+  
+  
+  function markWideInlineMath() {
+    for (const m of document.querySelectorAll('.post-content mjx-container:not([display="true"])')) {
+      m.classList.remove('mjx-wide');
+      
+      let p = m.parentElement;
+      while (p.parentElement && getComputedStyle(p).display.startsWith('inline')) p = p.parentElement;
+      const cs = getComputedStyle(p);
+      const available = p.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      if (m.getBoundingClientRect().width > available + 0.5) m.classList.add('mjx-wide');
+    }
+  }
+
   MathJax = {
     tex: {
       packages: {'[+]': ['mathtools', 'amscd']},
@@ -112,27 +113,40 @@
       ready() {
         preprocessMathEscapes();
         MathJax.startup.defaultReady();
+        MathJax.startup.promise.then(() => {
+          markWideInlineMath();
+          let resizeRaf = null;
+          window.addEventListener('resize', () => {
+            cancelAnimationFrame(resizeRaf);
+            resizeRaf = requestAnimationFrame(markWideInlineMath);
+          });
+        });
       }
     }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica&display=swap"></noscript>
 
-<meta property="og:url" content="https://shirazkn.github.io/posts/lemmas/">
+
+<meta property="og:url" content="https://shiraz-k.com/posts/lemmas/">
   <meta property="og:site_name" content="Shiraz">
   <meta property="og:title" content="Differentials in Lie Theory">
   <meta property="og:description" content="Some results about the differentials (i.e., pushforwards) of the exponential and logarithm maps of a Lie group. I rely extensively on the interpretation of tangent vectors as equivalence classes of curves.">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-01-13T12:46:04-05:00">
     <meta property="article:modified_time" content="2025-01-13T12:46:04-05:00">
     <meta property="article:tag" content="Differential Geometry">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Differentials in Lie Theory">
-<meta name="twitter:description" content="Some results about the differentials (i.e., pushforwards) of the exponential and logarithm maps of a Lie group. I rely extensively on the interpretation of tangent vectors as equivalence classes of curves.">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Differentials in Lie Theory">
+  <meta name="twitter:description" content="Some results about the differentials (i.e., pushforwards) of the exponential and logarithm maps of a Lie group. I rely extensively on the interpretation of tangent vectors as equivalence classes of curves.">
 
 
 <script type="application/ld+json">
@@ -144,13 +158,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://shirazkn.github.io/posts/"
+      "item": "https://shiraz-k.com/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Differentials in Lie Theory",
-      "item": "https://shirazkn.github.io/posts/lemmas/"
+      "item": "https://shiraz-k.com/posts/lemmas/"
     }
   ]
 }
@@ -165,21 +179,21 @@
   "keywords": [
     "Differential Geometry"
   ],
-  "articleBody": "I collect here some results about the differentials of the $\\exp$ and $\\log$ maps of a Lie group. The reader must be familiar with how the differential (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of tangent vectors as equivalence classes of curves ; Wikipedia has an excellent summary of this, as does my blog (if I may say so myself).\nLet $L_g$ refer to the left-multiplication operation: $L_g(h)=gh$ for $g,h\\in G$. Given $X\\in\\mathfrak g$, $X^L_g\\coloneq dL_g(X)$ is the corresponding left-invariant vector field. For a matrix Lie group (i.e., where $g$ is identified with some finite-dimensional matrix representation of it), $X^L_g=g X$, which makes sense because we have an external algebraic structure (namely, the multiplication of $n\\times n$ matrices, which has the structure of a unital associative algebra ) that lets us multiply group elements with Lie algebra elements. This rather convenient structure does not exist for a general Lie group. I will assume that the maps $\\exp: U \\rightarrow V$ and $\\log:V\\rightarrow U$ are inverses of each other, where $U\\subseteq \\mathfrak g$ is a neighborhood of $0$ and $V\\subseteq G$ is a neighborhood of $e$.\n🀲 Differential of $\\exp$ Suppose $\\exp(X)$ is a point on $G$. The differential of $\\exp$ provides an answer to the following question: what happens when $X$ is perturbed in the direction $Y \\in T_{X}\\mathfrak g$? The result, referred to as the pushforward of $Y$ under $\\exp$, lies in $T_{\\exp(X)} G$. It is a linear map between vector spaces:\n\\[ d\\exp_X: T_{X}\\mathfrak g \\rightarrow T_{\\exp X} G. \\] Since $\\mathfrak g$ is a vector space, we can identify $T_X\\mathfrak g$ with $\\mathfrak g$. Using the map $dL_{{\\exp(X)}^{-1}}=dL_{{\\exp(X)}}^{-1}$, we can identity $T_{\\exp X} G$ with $T_e G$, which is also just $\\mathfrak g$. A pedagogical nightmare ensues.\nLet $\\gamma(t)$ be a curve on $\\mathfrak g$. We use the notation $[\\gamma]$ to refer to the equivalence class of all the curves1 that pass through $\\gamma(0)$ with the velocity $\\dot \\gamma(0)$.2 We say that $\\gamma$ is a representative of the class $[\\gamma]$. If $\\gamma$ is chosen such that $\\gamma(0)=X\\in\\mathfrak g$ and $\\dot \\gamma(0)=Y \\in T_X\\mathfrak g$, then $[\\gamma]$ is completely characterized by $Y$ and vice versa; therefore, we can write $[\\gamma]=Y$. The image of $\\gamma$ under $\\exp$, which is $\\exp\\circ \\gamma(t)$, is a curve on $G$ as well as a representative of $d\\exp_X(Y)$. That is, $$d\\exp_X(Y)=[\\hspace{2pt}\\exp\\circ \\hspace{1pt}\\gamma\\hspace{2pt}]$$is some vector in $T_{\\exp(X)} G$. But which vector?\nThe key to making these identifications concrete is to notice that we can choose any $\\gamma$ satisfying $\\gamma(0)=X$ and $\\dot {\\gamma}(0)=Y$. Any such $\\gamma$ is a representative of $Y$. So, we might as well choose a $\\gamma$ that is convenient to write down; let’s make the choice, $\\gamma(t) \\coloneq X+tY$. In this case, $\\exp \\circ\\hspace{2pt} \\gamma(t)=\\exp(X+tY)$ is a curve on $G$ passing through $\\exp(X)$, and it is a representative of $d\\exp_X(Y)$. There’s two different ways of writing down the equivalence class of $d\\exp_X(Y)$:\n$$ d\\exp_X(Y) =\\big[\\exp(X+tY)\\big]=\\big[\\exp(X)\\exp(t\\hspace{2pt}\\square)\\big] $$where the box is a Lie algebra element: $\\square \\in \\mathfrak g$. There must be a value of $\\square$ for which these are indeed the same equivalence class. The value of $\\square$ can therefore be used to describe the quantity $d\\exp_X(Y)$. Hence, we define the Jacobian of $\\exp$ at $X$ as the linear map\n\\[ \\begin{align*} \\Psi_X:\\mathfrak g \u0026\\rightarrow \\mathfrak g\\\\ Y \u0026\\mapsto \\square \\end{align*} \\] In conclusion, the differential of $\\exp$ takes two objects, the point $X$ and the direction $Y$, and defines the object $\\square$. Here, $\\square$ represents the direction and extent to which $\\exp(X)$ is perturbed when we nudge $X$ in the direction of $Y$. On matrix Lie groups, $\\Psi_X$ is defined by\n\\[ \\Psi_X(Y) =\\square =\\exp(X)^{-1}\\frac{d}{dt}\\exp(X+tY)\\Big|_{t=0}, \\] and we write $d\\exp_X(Y)=\\exp(X)\\Psi_X(Y)$.\n🀳 Differential of $\\log$ By the same arguments as above,\n$$ d\\log_g: T_g G \\rightarrow T_{\\log(g)}\\mathfrak g. $$Since $T_g G\\cong \\mathfrak g$ and $T_{\\log(g)}\\mathfrak g\\cong \\mathfrak g$, we should once again expect a formula that goes from $\\mathfrak g$ to $\\mathfrak g$. It proves to be convenient to work entirely with $\\mathfrak g$-elements and write $\\exp(X)$ in place of $g$.\nLet $\\gamma \\coloneq \\exp(X) \\exp(tY)$ by a curve passing through $\\exp(X)$ with the velocity $Y$. We have,\n\\[ \\begin{align*} d\\log_{\\exp(X)}(Y)\u0026=\\big[\\hspace{1pt}\\log\\mathrel\\circ\\gamma\\hspace{1pt}(t)\\hspace{1pt}\\big]\\\\\u0026=\\big[\\hspace{1pt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\hspace{1pt}\\big]. \\end{align*} \\] As before, we have an alternative way of writing down the equivalence class:\n$$ \\big[\\hspace{1pt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\hspace{1pt}\\big]= \\big[\\hspace{1pt}X + t\\hspace{1pt}\\square\\hspace{1pt}\\big]. $$Thus, the differential of $\\log$ takes two objects, $X$ (alternatively, $g\\coloneq \\exp(X)$) and $Y$, and its output is characterized by $\\square$. Here, $\\square$ is the direction in which $\\log(g)$ is perturbed when we perturb its argument $g$ in the direction $Y$. On matrix Lie groups, we can once again define the operator $\\Psi^{-1}_{\\exp(X)}:\\mathfrak g \\rightarrow \\mathfrak g$ using derivatives of matrix-valued functions:\n\\[ \\Psi^{-1}_{\\exp(X)}(Y) = \\frac{d}{dt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\Big|_{t=0}. \\] We write $d\\log_{g}(gY)=\\Psi^{-1}_{g}(Y)$. Alternatively, we can write $d\\log_{g}(V)=\\Psi^{-1}_{g}(g^{-1}V)$, where $V\\in T_{g} G$.\nSection 3.2 of Jean Gallier's book has the formula for $d\\exp_X$, and the appendix of my paper \"Parameter Estimation on Homogeneous Spaces\" has $d\\log_{\\exp(X)}$ (which I denote there as $\\Psi$... oh well). We should verify that $\\Psi_{\\exp(X)}^{-1}$ is indeed the inverse of $\\Psi_X$. Can we show this algebraically?\n\\[ \\begin{align*} \\small \u0026\\Psi_X\\left(\\Psi_{\\exp(X)}^{-1}(Y)\\right)\\\\ \u0026\\quad = \\exp(X)^{-1}\\frac{d}{ds}\\exp\\left(X+s\\frac{d}{dt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\Big|_{t=0}\\right)\\Big|_{s=0}\\\\ \\small \u0026\\quad \\overset{?}=Y,\\\\ \\small \u0026\\Psi_{\\exp(X)}^{-1}\\left(\\Psi_X(Y)\\right) \\\\\u0026\\quad = \\frac{d}{dt}\\log\\Big(\\exp(X)\\exp\\Big(t \\exp(X)^{-1}\\frac{d}{ds}\\exp\\left(X+sY\\right)\\Big|_{s=0} \\Big)\\Big)\\Big|_{t=0}\\\\ \\small \u0026\\quad \\overset{?}=Y. \\end{align*} \\] I’m not sure how to proceed… In any case, such formidable calculations should not be needed to demonstrate a simple fact. The intrinsic versions of these results are trivial:\n\\[ d\\log_{\\exp(X)}\\left(d\\exp_X(Y)\\right) = d(\\log \\circ \\exp)_X(Y)=Y. \\] \\[ d\\exp_{\\log(g)}\\left(d\\log_g(V)\\right) = d(\\exp \\circ \\log)_g(V)=V. \\] 🀴 Parametrization Another context in which differentials show up in Lie theory is in the context of parametrizations of $G$. While most of this discussion is a specialization of what happens on a general manifold, the Lie group case is special because we are especially interested in left-invariant quantities (e.g., left-invariant vector fields and volume forms).\nLet $\\varphi:C\\rightarrow D$ be a parametrization of $D\\subseteq G$ whose domain is $C\\subseteq \\mathbb R^n$, such that its inverse $\\varphi^{-1}:D \\rightarrow C$ exists (and therefore, is a smooth coordinate chart). A function $f:G\\rightarrow \\mathbb R$ can be restricted to $D$ to define $f|_D:D\\rightarrow \\mathbb R$; nevertheless, we will just write $f$ to refer to the restricted function. We can pull $f$ back under $\\varphi$ to define $\\bar f\\coloneq {\\varphi}^\\ast f=f\\circ \\varphi$, so that $\\bar f(\\mathbf x)=f(\\varphi(\\mathbf x))$. We can differentiate $\\bar f$ using the usual rules of multivariable calculus. Let $\\frac{\\partial}{\\partial x^i}$ be the $i^{th}$ standard vector field in $C$. As vector fields do, it will map $\\bar f$ to another function:\n\\[ \\frac{\\partial}{\\partial x^i}\\big(\\,\\bar f\\,\\big):C \\rightarrow \\mathbb R. \\] As far as differential calculus on manifolds go, the story pretty much ends here. However, on a Lie group we are interested in computing derivatives along the left-invariant vector fields (LIVFs). Letting $\\lbrace E_i \\rbrace_{i=1}^n$ be a basis for $\\mathfrak g$, we can express its LIVFs using the parametrization:\n\\[ E_{i,g}^L = g E_i = {\\overline E_i^j}(g)\\frac{\\partial}{\\partial x^j}\\Big|_{g} \\] Here, $\\frac{\\partial}{\\partial x^i}\\big|_{\\varphi(\\mathbf x)}\\coloneq d \\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^i}\\big|_{\\mathbf x}$ (by abuse of notation) is called the $i^{th}$ coordinate vector field, and $\\overline E_i^j$ are smooth functions. But what are these functions? We need to set up a commutative diagram that shows us how the action of $E_{i}^L$ on $f$ can be equated to the action of an $\\mathbb R^n$-vector field on $\\bar f$.\nLet $Z = \\mathbf z^i E_i$, where $\\mathbf z^i$ are real numbers (not functions!). Consider\n\\[ \\begin{align*} Z^L_{\\varphi(\\mathbf x)} f \u0026= \\mathbf z^i E^L_{i,\\varphi(\\mathbf x)}f =\\mathbf z^i\\frac{d}{dt}f\\left(\\varphi(\\mathbf x)\\exp(tE_i)\\right)\\Big|_{t=0}\\\\ \u0026= \\mathbf z^i{\\overline E_i^j}(\\varphi(\\mathbf x))\\frac{\\partial}{\\partial x^j}\\Big|_{\\varphi(\\mathbf x)}f\\\\ \u0026= \\mathbf z^i{\\overline E_i^j}(\\varphi(\\mathbf x))\\frac{\\partial \\bar f}{\\partial x^j}(\\mathbf x) \\end{align*} \\] where the last equality follows from the definition of the pushforward. Let $f$ be the $k^{th}$ coordinate function, ${x}^k:D \\rightarrow \\mathbb R$ (that is, $x^k\\coloneq {\\varphi^{-1}}^k$). Then, ${{\\partial x}^k}/{\\partial x^j}=\\delta^k_j$ (with the usual identifications), and we get\n\\[ \\begin{align*} E^L_{i,\\varphi(\\mathbf x)}x^k \u0026= {\\overline E_i^k}(\\varphi(\\mathbf x)). \\end{align*} \\] Hence,\n\\[ \\begin{align*} [Z^Lf](g) \u0026= \\mathbf z^i [E_i^Lx^j](g)\\frac{\\partial \\bar f}{\\partial x^j}(\\varphi^{-1}(g)). \\end{align*} \\] We can write this in the matrix-vector form as\n\\[ \\begin{align*} \\ \\nabla f_{g}^\\top\\mathbf z = \\nabla {\\bar f}^\\top_{\\varphi^{-1}(g)} M(g)\\,\\mathbf z\\ \\end{align*} \\] where\n\\[ \\begin{align*} \\nabla \\bar f \u0026= \\begin{bmatrix}\\frac{\\partial \\bar f}{\\partial x^1} \\\\ \\vdots \\\\ \\frac{\\partial \\bar f}{\\partial x^n}\\end{bmatrix}\\quad\\text{and}\\quad \\nabla f \u0026= \\begin{bmatrix}E_1^Lf \\\\ \\vdots \\\\ E_n^Lf\\end{bmatrix}, \\end{align*} \\] so that $\\nabla f_{g}^\\top \\mathbf z=[Z^L f](g)$, and $M^i_j=E_j^Lx^i$. What is the inverse of $M$? Let $J(\\mathbf x) \\coloneq \\left[M(\\varphi{\\small(\\mathbf x)})\\right]^{-1}$. It should satisfy3 \\[ \\begin{align*} M_j^i\\, J^j_k\\, \u0026= J^j_k [E^L_{j}x^i]\\\\\u0026= [{(J^j_k E_j)}^Lx^i]\\\\ \u0026= \\delta^i_k. \\end{align*} \\] So, $J^j_k$ should be such that\n\\[ (J^j_k(\\mathbf x) E_j)^L_{\\varphi(\\mathbf x)} = \\frac{\\partial}{\\partial x^k}\\Big|_{\\varphi(\\mathbf x)}=d\\varphi_{\\mathbf x}\\left(\\frac{\\partial}{\\partial x^k}\\Big|_{\\mathbf x}\\right). \\] In the matrix-vector form, we can write\n\\[ \\ \\nabla {\\bar f}_{\\mathbf x}^\\top\\mathbf y = \\nabla f_{\\varphi(\\mathbf x)}^\\top J(\\mathbf x)\\mathbf y\\ \\] Thus, the question of whether one uses $M$ or $J$ in calculations depends on whether the direction of differentiation is specified in the Lie algebra basis, or in the standard basis of $C\\subseteq \\mathbb R^n$ (i.e., it depends on whether it is $\\mathbf z$ or $\\mathbf y$ that is specified).\nWe can recover an explicit formula for $J$ that is used in the work of Chirikjian.4 On a matrix Lie group, we can view $\\varphi:\\mathbb R^n\\rightarrow \\mathbb R^{m \\times m}$ as a map between vector spaces. Letting $(\\hspace{1pt}\\cdot\\hspace{1pt})^\\vee:\\mathfrak g\\rightarrow \\mathbb R^n$ be the map $Z \\mapsto\\mathbf z$, which Chirikjian calls the vee map, we have\n\\[ J(\\mathbf x) = \\begin{bmatrix}\\big(\\varphi (\\mathbf x)^{-1}\\frac{\\partial \\varphi}{\\partial x^1}\\big)^\\vee \u0026 \\big(\\varphi (\\mathbf x)^{-1}\\frac{\\partial \\varphi}{\\partial x^2}\\big)^\\vee \u0026\\cdots \u0026 \\big(\\varphi (\\mathbf x)^{-1}\\frac{\\partial \\varphi}{\\partial x^n}\\big)^\\vee \\end{bmatrix}. \\] and\n\\[ M(g) = \\begin{bmatrix}E_1^L \\varphi^{-1}(g) \u0026 E_2^L \\varphi^{-1}(g) \u0026 \\cdots \u0026 E_n^L \\varphi^{-1}(g) \\end{bmatrix}= J(\\varphi^{-1}(g))^{-1}. \\] The map $\\varphi:\\mathbf x\\mapsto\\exp(\\mathbf x^iE_i)$ is called the exponential parametrization, whose inverse is $\\varphi^{-1}(g)=\\log(g)^\\vee$. In this case, $$ \\begin{align*} J(\\mathbf x)\\mathbf y\u0026=\\left(\\varphi(\\mathbf x)^{-1}\\left(\\mathbf y^i\\frac{\\partial \\varphi}{\\partial x^i}\\Big|_{\\mathbf x}\\right)\\right)^\\vee \\\\ \u0026= \\left(\\varphi(\\mathbf x)^{-1}\\frac{d}{d t}\\exp\\big((\\mathbf x^i + t \\mathbf y^i) E_i\\big)\\Big|_{t=0}\\right)^\\vee \\\\ \u0026= \\left(\\varphi(\\mathbf x)^{-1}\\frac{d}{d t}\\exp(X + tY)\\Big|_{t=0}\\right)^\\vee =\\big(\\Psi_X(Y)\\big)^\\vee, \\end{align*} $$ where $X^\\vee =\\mathbf x$ and $Y^\\vee =\\mathbf y$. Hence, $J(\\mathbf x)$ is nothing but the linear operator $\\Psi_X$ expressed in a specific basis. Similarly, $$ \\begin{align*} M(g)\\mathbf z\u0026= \\big[Z^L\\log^\\vee\\big](g) \\\\ \u0026= \\left(\\frac{d}{d t}\\log\\big(g\\exp(tZ)\\big)\\Big|_{t=0}\\right)^\\vee \\\\ \u0026=\\big(\\Psi^{-1}_g(Z)\\big)^\\vee. \\end{align*} $$ To put this in yet another way, $J(\\mathbf x) \\mathbf y$ expresses the vector $d\\varphi_{\\mathbf x}(\\mathbf y)$ in the basis of LIVFs, $\\lbrace E_{i,g}^L\\rbrace_{i=1}^n$ at $g=\\varphi (\\mathbf x)$. Meanwhile, $M(g) \\mathbf z$ expresses the LIVF $Z^L_g$ in the standard coordinate basis at $\\varphi^{-1}(g)$.\n🀵 Lengths and Volume In this final chapter, let’s look at how the Jacobians of a parametrization relate to the measurement of lengths and volumes on $G$. Assume that we have an inner product for $\\mathfrak g$, defined via\n\\[ \\langle{E_i},{E_j}\\rangle= W_{ij}. \\] This inner product defines a unique left-invariant Riemannian metric on $G$ (as explained in my previous posts), written as $W_{ij}\\varepsilon^i \\varepsilon^j$, where $\\lbrace \\varepsilon_{i}\\rbrace_{i=1}^n$ is the coframe that is dual to the frame of LIVFs, $\\lbrace E_{i}^L\\rbrace_{i=1}^n$. We now move to a point $\\mathbf x$ in the parameter space. There is presently no inner product for $T_{\\mathbf x}C$, since we haven’t chosen one. The key observation is that the Riemannian metric and volume form are both covariant tensor fields, so they can be pulled back (under $\\varphi$) from $D$ to $C$. For instance, if $\\langle \\cdot , \\cdot \\rangle_{\\mathbf x}$ is the pullback of the left-invariant Riemannian metric, then\n\\[ \\begin{align*} \\left\\langle \\frac{\\partial}{\\partial x^r},\\frac{\\partial}{\\partial x^s} \\right\\rangle_{\\mathbf x} \u0026= \\varphi^\\ast_{\\mathbf x}[W_{ij}\\varepsilon^i \\varepsilon^j]\\left(\\frac{\\partial}{\\partial x^r},\\frac{\\partial}{\\partial x^s}\\right)\\\\ \u0026= W_{ij}\\varepsilon^i \\varepsilon^j\\left(d\\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^r},d\\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^s}\\right)\\\\ \u0026= W_{ij}J(\\mathbf x)^i_rJ(\\mathbf x)^j_s. \\end{align*} \\] Hence, we have a weighted inner product at $\\mathbf x$: $$\\langle \\mathbf y,\\mathbf z \\rangle_{\\mathbf x}=\\mathbf y^\\top J(\\mathbf x)^\\top \\mathbf W J(\\mathbf x)\\mathbf z,$$and as $\\mathbf x$ varies, this defines a Riemannian metric on $C$. Unlike the left-invariant Riemannian metric on $D\\subseteq G$, the coefficients (i.e., the metric tensor) of the pullback Riemannian metric on $C\\subseteq\\mathbb R^n$ are not constant.\nThe choice of basis for $\\mathfrak g$ defines a unique density on $G$, written as $$\\omega=|\\varepsilon^1\\wedge\\varepsilon^2\\wedge\\cdots\\wedge \\varepsilon^n|.$$ This is an example of a left Haar measure for $G$, which is unique up to scaling. The absolute value is taken to make this a density rather than a volume form, saving us the trouble of worrying about orientation.\nBy a similar procedure, we can compute the pullback volume form on $C$. Let $\\varphi^\\ast\\omega=\\lambda(\\mathbf x) dx^1\\wedge\\cdots\\wedge dx^n$. Then,\n\\[ \\begin{align*} \\lambda(\\mathbf x) \u0026= \\varphi^\\ast\\omega\\left(\\frac{\\partial}{\\partial x^1},\\cdots, \\frac{\\partial}{\\partial x^n}\\right)\\\\ \u0026= |\\varepsilon^1\\wedge\\varepsilon^2\\wedge\\cdots\\wedge \\varepsilon^n|\\left(d\\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^1},\\cdots, d\\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^n}\\right)\\\\ \u0026= |\\varepsilon^1\\wedge\\varepsilon^2\\wedge\\cdots\\wedge \\varepsilon^n|\\left(\\,J_1^iE_i^L,\\,J_2^iE_i^L,\\cdots,\\, J_n^iE_i^L\\,\\right)\\\\ \u0026= \\left\\lvert\\det\\left(\\begin{bmatrix} J_1^1 \u0026 J_2^1 \u0026 \\cdots \u0026 J_n^1\\\\ J_1^2 \u0026 J_2^2 \u0026 \\cdots \u0026 J_n^2\\\\ \\vdots\u0026 \\vdots\u0026 \u0026\\vdots\\\\ J_1^n \u0026 J_2^n \u0026 \\cdots \u0026 J_n^n\\\\ \\end{bmatrix}\\right)\\right\\rvert \\\\ \u0026= |\\det(\\,J{\\small (\\mathbf x)}\\,)|, \\end{align*} \\] where we have omitted the argument $(\\mathbf x)$ of $J_i^j(\\mathbf x)$ for brevity. We can now integrate a function $f:D \\rightarrow \\mathbb R$ w.r.t. the Haar measure $\\omega$, by pulling the integral back to the parameter space:\n\\[ \\begin{align*} \\int_{D\\subseteq G} f \\cdot \\omega \u0026= \\int_{C\\subseteq \\mathbb R^n} \\varphi^\\ast f \\cdot\\varphi^\\ast \\omega \\\\\u0026= \\int_{C\\subseteq \\mathbb R^n} \\bar f \\cdot |\\det (J) |\\cdot dx^1\\wedge \\cdots \\wedge dx^n, \\end{align*} \\] where I use $`\\hspace{1pt}\\cdot\\hspace{1pt}'$ for clarity, to indicate the multiplication of a function with another function or $n$-form.\nThis is also what’s called a $1$- jet . This notion of an ’equivalence class of curves’ generalizes in confusing ways. ↩︎\nHere, $\\dot \\gamma(0)$ refers to the pushforward of $\\frac{\\partial}{\\partial t}\\big\\vert_{t=0}$ under $\\gamma$. ↩︎\nDon’t worry too much about which indices I place on top and which on the bottom. I just like the placement of the indices of a matrix to be consistent with those of its components. ↩︎\nNote that Chirikjian writes $J$ as “$J_r$”, although I prefer to think of $J$ as the left Jacobian due to the involvement of left-invariant vector fields. Nevertheless, our calculations agree with his. ↩︎\n",
-  "wordCount" : "2280",
+  "articleBody": "I collect here some results about the differentials of the $\\exp$ and $\\log$ maps of a Lie group. The reader must be familiar with how the differential (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of tangent vectors as equivalence classes of curves; Wikipedia has an excellent summary of this, as does my blog (if I may say so myself).\nLet $L_g$ refer to the left-multiplication operation: $L_g(h)=gh$ for $g,h\\in G$. Given $X\\in\\mathfrak g$, $X^L_g\\coloneq dL_g(X)$ is the corresponding left-invariant vector field. For a matrix Lie group (i.e., where $g$ is identified with some finite-dimensional matrix representation of it), $X^L_g=g X$, which makes sense because we have an external algebraic structure (namely, the multiplication of $n\\times n$ matrices, which has the structure of a unital associative algebra) that lets us multiply group elements with Lie algebra elements. This rather convenient structure does not exist for a general Lie group. I will assume that the maps $\\exp: U \\rightarrow V$ and $\\log:V\\rightarrow U$ are inverses of each other, where $U\\subseteq \\mathfrak g$ is a neighborhood of $0$ and $V\\subseteq G$ is a neighborhood of $e$.\n🀲 Differential of $\\exp$ Suppose $\\exp(X)$ is a point on $G$. The differential of $\\exp$ provides an answer to the following question: what happens when $X$ is perturbed in the direction $Y \\in T_{X}\\mathfrak g$? The result, referred to as the pushforward of $Y$ under $\\exp$, lies in $T_{\\exp(X)} G$. It is a linear map between vector spaces:\n\\[ d\\exp_X: T_{X}\\mathfrak g \\rightarrow T_{\\exp X} G. \\] Since $\\mathfrak g$ is a vector space, we can identify $T_X\\mathfrak g$ with $\\mathfrak g$. Using the map $dL_{{\\exp(X)}^{-1}}=dL_{{\\exp(X)}}^{-1}$, we can identity $T_{\\exp X} G$ with $T_e G$, which is also just $\\mathfrak g$. A pedagogical nightmare ensues.\nLet $\\gamma(t)$ be a curve on $\\mathfrak g$. We use the notation $[\\gamma]$ to refer to the equivalence class of all the curves1 that pass through $\\gamma(0)$ with the velocity $\\dot \\gamma(0)$.2 We say that $\\gamma$ is a representative of the class $[\\gamma]$. If $\\gamma$ is chosen such that $\\gamma(0)=X\\in\\mathfrak g$ and $\\dot \\gamma(0)=Y \\in T_X\\mathfrak g$, then $[\\gamma]$ is completely characterized by $Y$ and vice versa; therefore, we can write $[\\gamma]=Y$. The image of $\\gamma$ under $\\exp$, which is $\\exp\\circ \\gamma(t)$, is a curve on $G$ as well as a representative of $d\\exp_X(Y)$. That is, $$d\\exp_X(Y)=[\\hspace{2pt}\\exp\\circ \\hspace{1pt}\\gamma\\hspace{2pt}]$$is some vector in $T_{\\exp(X)} G$. But which vector?\nThe key to making these identifications concrete is to notice that we can choose any $\\gamma$ satisfying $\\gamma(0)=X$ and $\\dot {\\gamma}(0)=Y$. Any such $\\gamma$ is a representative of $Y$. So, we might as well choose a $\\gamma$ that is convenient to write down; let’s make the choice, $\\gamma(t) \\coloneq X+tY$. In this case, $\\exp \\circ\\hspace{2pt} \\gamma(t)=\\exp(X+tY)$ is a curve on $G$ passing through $\\exp(X)$, and it is a representative of $d\\exp_X(Y)$. There’s two different ways of writing down the equivalence class of $d\\exp_X(Y)$:\n$$ d\\exp_X(Y) =\\big[\\exp(X+tY)\\big]=\\big[\\exp(X)\\exp(t\\hspace{2pt}\\square)\\big] $$where the box is a Lie algebra element: $\\square \\in \\mathfrak g$. There must be a value of $\\square$ for which these are indeed the same equivalence class. The value of $\\square$ can therefore be used to describe the quantity $d\\exp_X(Y)$. Hence, we define the Jacobian of $\\exp$ at $X$ as the linear map\n\\[ \\begin{align*} \\Psi_X:\\mathfrak g \u0026\\rightarrow \\mathfrak g\\\\ Y \u0026\\mapsto \\square \\end{align*} \\] In conclusion, the differential of $\\exp$ takes two objects, the point $X$ and the direction $Y$, and defines the object $\\square$. Here, $\\square$ represents the direction and extent to which $\\exp(X)$ is perturbed when we nudge $X$ in the direction of $Y$. On matrix Lie groups, $\\Psi_X$ is defined by\n\\[ \\Psi_X(Y) =\\square =\\exp(X)^{-1}\\frac{d}{dt}\\exp(X+tY)\\Big|_{t=0}, \\] and we write $d\\exp_X(Y)=\\exp(X)\\Psi_X(Y)$.\n🀳 Differential of $\\log$ By the same arguments as above,\n$$ d\\log_g: T_g G \\rightarrow T_{\\log(g)}\\mathfrak g. $$Since $T_g G\\cong \\mathfrak g$ and $T_{\\log(g)}\\mathfrak g\\cong \\mathfrak g$, we should once again expect a formula that goes from $\\mathfrak g$ to $\\mathfrak g$. It proves to be convenient to work entirely with $\\mathfrak g$-elements and write $\\exp(X)$ in place of $g$.\nLet $\\gamma \\coloneq \\exp(X) \\exp(tY)$ by a curve passing through $\\exp(X)$ with the velocity $Y$. We have,\n\\[ \\begin{align*} d\\log_{\\exp(X)}(Y)\u0026=\\big[\\hspace{1pt}\\log\\mathrel\\circ\\gamma\\hspace{1pt}(t)\\hspace{1pt}\\big]\\\\\u0026=\\big[\\hspace{1pt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\hspace{1pt}\\big]. \\end{align*} \\] As before, we have an alternative way of writing down the equivalence class:\n$$ \\big[\\hspace{1pt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\hspace{1pt}\\big]= \\big[\\hspace{1pt}X + t\\hspace{1pt}\\square\\hspace{1pt}\\big]. $$Thus, the differential of $\\log$ takes two objects, $X$ (alternatively, $g\\coloneq \\exp(X)$) and $Y$, and its output is characterized by $\\square$. Here, $\\square$ is the direction in which $\\log(g)$ is perturbed when we perturb its argument $g$ in the direction $Y$. On matrix Lie groups, we can once again define the operator $\\Psi^{-1}_{\\exp(X)}:\\mathfrak g \\rightarrow \\mathfrak g$ using derivatives of matrix-valued functions:\n\\[ \\Psi^{-1}_{\\exp(X)}(Y) = \\frac{d}{dt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\Big|_{t=0}. \\] We write $d\\log_{g}(gY)=\\Psi^{-1}_{g}(Y)$. Alternatively, we can write $d\\log_{g}(V)=\\Psi^{-1}_{g}(g^{-1}V)$, where $V\\in T_{g} G$.\nSection 3.2 of Jean Gallier's book has the formula for $d\\exp_X$, and the appendix of my paper \"Parameter Estimation on Homogeneous Spaces\" has $d\\log_{\\exp(X)}$ (which I denote there as $\\Psi$... oh well). We should verify that $\\Psi_{\\exp(X)}^{-1}$ is indeed the inverse of $\\Psi_X$. Can we show this algebraically?\n\\[ \\begin{align*} \\small \u0026\\Psi_X\\left(\\Psi_{\\exp(X)}^{-1}(Y)\\right)\\\\ \u0026\\quad = \\exp(X)^{-1}\\frac{d}{ds}\\exp\\left(X+s\\frac{d}{dt}\\log\\big(\\exp(X)\\exp(tY)\\big)\\Big|_{t=0}\\right)\\Big|_{s=0}\\\\ \\small \u0026\\quad \\overset{?}=Y,\\\\ \\small \u0026\\Psi_{\\exp(X)}^{-1}\\left(\\Psi_X(Y)\\right) \\\\\u0026\\quad = \\frac{d}{dt}\\log\\Big(\\exp(X)\\exp\\Big(t \\exp(X)^{-1}\\frac{d}{ds}\\exp\\left(X+sY\\right)\\Big|_{s=0} \\Big)\\Big)\\Big|_{t=0}\\\\ \\small \u0026\\quad \\overset{?}=Y. \\end{align*} \\] I’m not sure how to proceed… In any case, such formidable calculations should not be needed to demonstrate a simple fact. The intrinsic versions of these results are trivial:\n\\[ d\\log_{\\exp(X)}\\left(d\\exp_X(Y)\\right) = d(\\log \\circ \\exp)_X(Y)=Y. \\] \\[ d\\exp_{\\log(g)}\\left(d\\log_g(V)\\right) = d(\\exp \\circ \\log)_g(V)=V. \\] 🀴 Parametrization Another context in which differentials show up in Lie theory is in the context of parametrizations of $G$. While most of this discussion is a specialization of what happens on a general manifold, the Lie group case is special because we are especially interested in left-invariant quantities (e.g., left-invariant vector fields and volume forms).\nLet $\\varphi:C\\rightarrow D$ be a parametrization of $D\\subseteq G$ whose domain is $C\\subseteq \\mathbb R^n$, such that its inverse $\\varphi^{-1}:D \\rightarrow C$ exists (and therefore, is a smooth coordinate chart). A function $f:G\\rightarrow \\mathbb R$ can be restricted to $D$ to define $f|_D:D\\rightarrow \\mathbb R$; nevertheless, we will just write $f$ to refer to the restricted function. We can pull $f$ back under $\\varphi$ to define $\\bar f\\coloneq {\\varphi}^\\ast f=f\\circ \\varphi$, so that $\\bar f(\\mathbf x)=f(\\varphi(\\mathbf x))$. We can differentiate $\\bar f$ using the usual rules of multivariable calculus. Let $\\frac{\\partial}{\\partial x^i}$ be the $i^{th}$ standard vector field in $C$. As vector fields do, it will map $\\bar f$ to another function:\n\\[ \\frac{\\partial}{\\partial x^i}\\big(\\,\\bar f\\,\\big):C \\rightarrow \\mathbb R. \\] As far as differential calculus on manifolds go, the story pretty much ends here. However, on a Lie group we are interested in computing derivatives along the left-invariant vector fields (LIVFs). Letting $\\lbrace E_i \\rbrace_{i=1}^n$ be a basis for $\\mathfrak g$, we can express its LIVFs using the parametrization:\n\\[ E_{i,g}^L = g E_i = {\\overline E_i^j}(g)\\frac{\\partial}{\\partial x^j}\\Big|_{g} \\] Here, $\\frac{\\partial}{\\partial x^i}\\big|_{\\varphi(\\mathbf x)}\\coloneq d \\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^i}\\big|_{\\mathbf x}$ (by abuse of notation) is called the $i^{th}$ coordinate vector field, and $\\overline E_i^j$ are smooth functions. But what are these functions? We need to set up a commutative diagram that shows us how the action of $E_{i}^L$ on $f$ can be equated to the action of an $\\mathbb R^n$-vector field on $\\bar f$.\nLet $Z = \\mathbf z^i E_i$, where $\\mathbf z^i$ are real numbers (not functions!). Consider\n\\[ \\begin{align*} Z^L_{\\varphi(\\mathbf x)} f \u0026= \\mathbf z^i E^L_{i,\\varphi(\\mathbf x)}f =\\mathbf z^i\\frac{d}{dt}f\\left(\\varphi(\\mathbf x)\\exp(tE_i)\\right)\\Big|_{t=0}\\\\ \u0026= \\mathbf z^i{\\overline E_i^j}(\\varphi(\\mathbf x))\\frac{\\partial}{\\partial x^j}\\Big|_{\\varphi(\\mathbf x)}f\\\\ \u0026= \\mathbf z^i{\\overline E_i^j}(\\varphi(\\mathbf x))\\frac{\\partial \\bar f}{\\partial x^j}(\\mathbf x) \\end{align*} \\] where the last equality follows from the definition of the pushforward. Let $f$ be the $k^{th}$ coordinate function, ${x}^k:D \\rightarrow \\mathbb R$ (that is, $x^k\\coloneq {\\varphi^{-1}}^k$). Then, ${{\\partial x}^k}/{\\partial x^j}=\\delta^k_j$ (with the usual identifications), and we get\n\\[ \\begin{align*} E^L_{i,\\varphi(\\mathbf x)}x^k \u0026= {\\overline E_i^k}(\\varphi(\\mathbf x)). \\end{align*} \\] Hence,\n\\[ \\begin{align*} [Z^Lf](g) \u0026= \\mathbf z^i [E_i^Lx^j](g)\\frac{\\partial \\bar f}{\\partial x^j}(\\varphi^{-1}(g)). \\end{align*} \\] We can write this in the matrix-vector form as\n\\[ \\begin{align*} \\ \\nabla f_{g}^\\top\\mathbf z = \\nabla {\\bar f}^\\top_{\\varphi^{-1}(g)} M(g)\\,\\mathbf z\\ \\end{align*} \\] where\n\\[ \\begin{align*} \\nabla \\bar f \u0026= \\begin{bmatrix}\\frac{\\partial \\bar f}{\\partial x^1} \\\\ \\vdots \\\\ \\frac{\\partial \\bar f}{\\partial x^n}\\end{bmatrix}\\quad\\text{and}\\quad \\nabla f \u0026= \\begin{bmatrix}E_1^Lf \\\\ \\vdots \\\\ E_n^Lf\\end{bmatrix}, \\end{align*} \\] so that $\\nabla f_{g}^\\top \\mathbf z=[Z^L f](g)$, and $M^i_j=E_j^Lx^i$. What is the inverse of $M$? Let $J(\\mathbf x) \\coloneq \\left[M(\\varphi{\\small(\\mathbf x)})\\right]^{-1}$. It should satisfy3 \\[ \\begin{align*} M_j^i\\, J^j_k\\, \u0026= J^j_k [E^L_{j}x^i]\\\\\u0026= [{(J^j_k E_j)}^Lx^i]\\\\ \u0026= \\delta^i_k. \\end{align*} \\] So, $J^j_k$ should be such that\n\\[ (J^j_k(\\mathbf x) E_j)^L_{\\varphi(\\mathbf x)} = \\frac{\\partial}{\\partial x^k}\\Big|_{\\varphi(\\mathbf x)}=d\\varphi_{\\mathbf x}\\left(\\frac{\\partial}{\\partial x^k}\\Big|_{\\mathbf x}\\right). \\] In the matrix-vector form, we can write\n\\[ \\ \\nabla {\\bar f}_{\\mathbf x}^\\top\\mathbf y = \\nabla f_{\\varphi(\\mathbf x)}^\\top J(\\mathbf x)\\mathbf y\\ \\] Thus, the question of whether one uses $M$ or $J$ in calculations depends on whether the direction of differentiation is specified in the Lie algebra basis, or in the standard basis of $C\\subseteq \\mathbb R^n$ (i.e., it depends on whether it is $\\mathbf z$ or $\\mathbf y$ that is specified).\nWe can recover an explicit formula for $J$ that is used in the work of Chirikjian.4 On a matrix Lie group, we can view $\\varphi:\\mathbb R^n\\rightarrow \\mathbb R^{m \\times m}$ as a map between vector spaces. Letting $(\\hspace{1pt}\\cdot\\hspace{1pt})^\\vee:\\mathfrak g\\rightarrow \\mathbb R^n$ be the map $Z \\mapsto\\mathbf z$, which Chirikjian calls the vee map, we have\n\\[ J(\\mathbf x) = \\begin{bmatrix}\\big(\\varphi (\\mathbf x)^{-1}\\frac{\\partial \\varphi}{\\partial x^1}\\big)^\\vee \u0026 \\big(\\varphi (\\mathbf x)^{-1}\\frac{\\partial \\varphi}{\\partial x^2}\\big)^\\vee \u0026\\cdots \u0026 \\big(\\varphi (\\mathbf x)^{-1}\\frac{\\partial \\varphi}{\\partial x^n}\\big)^\\vee \\end{bmatrix}. \\] and\n\\[ M(g) = \\begin{bmatrix}E_1^L \\varphi^{-1}(g) \u0026 E_2^L \\varphi^{-1}(g) \u0026 \\cdots \u0026 E_n^L \\varphi^{-1}(g) \\end{bmatrix}= J(\\varphi^{-1}(g))^{-1}. \\] The map $\\varphi:\\mathbf x\\mapsto\\exp(\\mathbf x^iE_i)$ is called the exponential parametrization, whose inverse is $\\varphi^{-1}(g)=\\log(g)^\\vee$. In this case, $$ \\begin{align*} J(\\mathbf x)\\mathbf y\u0026=\\left(\\varphi(\\mathbf x)^{-1}\\left(\\mathbf y^i\\frac{\\partial \\varphi}{\\partial x^i}\\Big|_{\\mathbf x}\\right)\\right)^\\vee \\\\ \u0026= \\left(\\varphi(\\mathbf x)^{-1}\\frac{d}{d t}\\exp\\big((\\mathbf x^i + t \\mathbf y^i) E_i\\big)\\Big|_{t=0}\\right)^\\vee \\\\ \u0026= \\left(\\varphi(\\mathbf x)^{-1}\\frac{d}{d t}\\exp(X + tY)\\Big|_{t=0}\\right)^\\vee =\\big(\\Psi_X(Y)\\big)^\\vee, \\end{align*} $$ where $X^\\vee =\\mathbf x$ and $Y^\\vee =\\mathbf y$. Hence, $J(\\mathbf x)$ is nothing but the linear operator $\\Psi_X$ expressed in a specific basis. Similarly, $$ \\begin{align*} M(g)\\mathbf z\u0026= \\big[Z^L\\log^\\vee\\big](g) \\\\ \u0026= \\left(\\frac{d}{d t}\\log\\big(g\\exp(tZ)\\big)\\Big|_{t=0}\\right)^\\vee \\\\ \u0026=\\big(\\Psi^{-1}_g(Z)\\big)^\\vee. \\end{align*} $$ To put this in yet another way, $J(\\mathbf x) \\mathbf y$ expresses the vector $d\\varphi_{\\mathbf x}(\\mathbf y)$ in the basis of LIVFs, $\\lbrace E_{i,g}^L\\rbrace_{i=1}^n$ at $g=\\varphi (\\mathbf x)$. Meanwhile, $M(g) \\mathbf z$ expresses the LIVF $Z^L_g$ in the standard coordinate basis at $\\varphi^{-1}(g)$.\n🀵 Lengths and Volume In this final chapter, let’s look at how the Jacobians of a parametrization relate to the measurement of lengths and volumes on $G$. Assume that we have an inner product for $\\mathfrak g$, defined via\n\\[ \\langle{E_i},{E_j}\\rangle= W_{ij}. \\] This inner product defines a unique left-invariant Riemannian metric on $G$ (as explained in my previous posts), written as $W_{ij}\\varepsilon^i \\varepsilon^j$, where $\\lbrace \\varepsilon_{i}\\rbrace_{i=1}^n$ is the coframe that is dual to the frame of LIVFs, $\\lbrace E_{i}^L\\rbrace_{i=1}^n$. We now move to a point $\\mathbf x$ in the parameter space. There is presently no inner product for $T_{\\mathbf x}C$, since we haven’t chosen one. The key observation is that the Riemannian metric and volume form are both covariant tensor fields, so they can be pulled back (under $\\varphi$) from $D$ to $C$. For instance, if $\\langle \\cdot , \\cdot \\rangle_{\\mathbf x}$ is the pullback of the left-invariant Riemannian metric, then\n\\[ \\begin{align*} \\left\\langle \\frac{\\partial}{\\partial x^r},\\frac{\\partial}{\\partial x^s} \\right\\rangle_{\\mathbf x} \u0026= \\varphi^\\ast_{\\mathbf x}[W_{ij}\\varepsilon^i \\varepsilon^j]\\left(\\frac{\\partial}{\\partial x^r},\\frac{\\partial}{\\partial x^s}\\right)\\\\ \u0026= W_{ij}\\varepsilon^i \\varepsilon^j\\left(d\\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^r},d\\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^s}\\right)\\\\ \u0026= W_{ij}J(\\mathbf x)^i_rJ(\\mathbf x)^j_s. \\end{align*} \\] Hence, we have a weighted inner product at $\\mathbf x$: $$\\langle \\mathbf y,\\mathbf z \\rangle_{\\mathbf x}=\\mathbf y^\\top J(\\mathbf x)^\\top \\mathbf W J(\\mathbf x)\\mathbf z,$$and as $\\mathbf x$ varies, this defines a Riemannian metric on $C$. Unlike the left-invariant Riemannian metric on $D\\subseteq G$, the coefficients (i.e., the metric tensor) of the pullback Riemannian metric on $C\\subseteq\\mathbb R^n$ are not constant.\nThe choice of basis for $\\mathfrak g$ defines a unique density on $G$, written as $$\\omega=|\\varepsilon^1\\wedge\\varepsilon^2\\wedge\\cdots\\wedge \\varepsilon^n|.$$ This is an example of a left Haar measure for $G$, which is unique up to scaling. The absolute value is taken to make this a density rather than a volume form, saving us the trouble of worrying about orientation.\nBy a similar procedure, we can compute the pullback volume form on $C$. Let $\\varphi^\\ast\\omega=\\lambda(\\mathbf x) dx^1\\wedge\\cdots\\wedge dx^n$. Then,\n\\[ \\begin{align*} \\lambda(\\mathbf x) \u0026= \\varphi^\\ast\\omega\\left(\\frac{\\partial}{\\partial x^1},\\cdots, \\frac{\\partial}{\\partial x^n}\\right)\\\\ \u0026= |\\varepsilon^1\\wedge\\varepsilon^2\\wedge\\cdots\\wedge \\varepsilon^n|\\left(d\\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^1},\\cdots, d\\varphi_{\\mathbf x}\\frac{\\partial}{\\partial x^n}\\right)\\\\ \u0026= |\\varepsilon^1\\wedge\\varepsilon^2\\wedge\\cdots\\wedge \\varepsilon^n|\\left(\\,J_1^iE_i^L,\\,J_2^iE_i^L,\\cdots,\\, J_n^iE_i^L\\,\\right)\\\\ \u0026= \\left\\lvert\\det\\left(\\begin{bmatrix} J_1^1 \u0026 J_2^1 \u0026 \\cdots \u0026 J_n^1\\\\ J_1^2 \u0026 J_2^2 \u0026 \\cdots \u0026 J_n^2\\\\ \\vdots\u0026 \\vdots\u0026 \u0026\\vdots\\\\ J_1^n \u0026 J_2^n \u0026 \\cdots \u0026 J_n^n\\\\ \\end{bmatrix}\\right)\\right\\rvert \\\\ \u0026= |\\det(\\,J{\\small (\\mathbf x)}\\,)|, \\end{align*} \\] where we have omitted the argument $(\\mathbf x)$ of $J_i^j(\\mathbf x)$ for brevity. We can now integrate a function $f:D \\rightarrow \\mathbb R$ w.r.t. the Haar measure $\\omega$, by pulling the integral back to the parameter space:\n\\[ \\begin{align*} \\int_{D\\subseteq G} f \\cdot \\omega \u0026= \\int_{C\\subseteq \\mathbb R^n} \\varphi^\\ast f \\cdot\\varphi^\\ast \\omega \\\\\u0026= \\int_{C\\subseteq \\mathbb R^n} \\bar f \\cdot |\\det (J) |\\cdot dx^1\\wedge \\cdots \\wedge dx^n, \\end{align*} \\] where I use $`\\hspace{1pt}\\cdot\\hspace{1pt}'$ for clarity, to indicate the multiplication of a function with another function or $n$-form.\nThis is also what’s called a $1$-jet. This notion of an ’equivalence class of curves’ generalizes in confusing ways. ↩︎\nHere, $\\dot \\gamma(0)$ refers to the pushforward of $\\frac{\\partial}{\\partial t}\\big\\vert_{t=0}$ under $\\gamma$. ↩︎\nDon’t worry too much about which indices I place on top and which on the bottom. I just like the placement of the indices of a matrix to be consistent with those of its components. ↩︎\nNote that Chirikjian writes $J$ as “$J_r$”, although I prefer to think of $J$ as the left Jacobian due to the involvement of left-invariant vector fields. Nevertheless, our calculations agree with his. ↩︎\n",
+  "wordCount" : "2276",
   "inLanguage": "en",
   "datePublished": "2025-01-13T12:46:04-05:00",
   "dateModified": "2025-01-13T12:46:04-05:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://shirazkn.github.io/posts/lemmas/"
+    "@id": "https://shiraz-k.com/posts/lemmas/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Shiraz",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://shirazkn.github.io/favicon.ico"
+      "url": "https://shiraz-k.com/favicon.ico"
     }
   }
 }
@@ -187,17 +201,17 @@
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
-            <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <a href="https://shiraz-k.com/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -213,19 +227,19 @@
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
-                <a href="https://shirazkn.github.io/archives/" title="archives">
+                <a href="https://shiraz-k.com/archives/" title="archives">
                     <span>archives</span>
                 </a>
             </li>
             <li>
-                <a href="https://shirazkn.github.io/tags/" title="tags">
+                <a href="https://shiraz-k.com/tags/" title="tags">
                     <span>tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://shirazkn.github.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                <a href="https://shiraz-k.com/search/" title="search (Alt &#43; /)" accesskey=/>
                     <span>search</span>
                 </a>
             </li>
@@ -240,38 +254,32 @@
     <h1 class="post-title entry-hint-parent">
       Differentials in Lie Theory
     </h1>
-    <div class="post-meta"><span title='2025-01-13 12:46:04 -0500 EST'>January 13, 2025</span>
+    <div class="post-meta">
+
+<span title='2025-01-13 12:46:04 -0500 EST'>January 13, 2025</span>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> <details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#-differential-of" aria-label="🀲 Differential of $\exp$">🀲 Differential of $\exp$</a></li>
-                <li>
-                    <a href="#-differential-of-1" aria-label="🀳 Differential of $\log$">🀳 Differential of $\log$</a></li>
-                <li>
-                    <a href="#-parametrization" aria-label="🀴 Parametrization">🀴 Parametrization</a></li>
-                <li>
-                    <a href="#-lengths-and-volume" aria-label="🀵 Lengths and Volume">🀵 Lengths and Volume</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+    <div class="inner"><ul>
+            <li>
+                <a href="#-differential-of" aria-label="🀲 Differential of $\exp$">🀲 Differential of $\exp$</a></li>
+            <li>
+                <a href="#-differential-of-1" aria-label="🀳 Differential of $\log$">🀳 Differential of $\log$</a></li>
+            <li>
+                <a href="#-parametrization" aria-label="🀴 Parametrization">🀴 Parametrization</a></li>
+            <li>
+                <a href="#-lengths-and-volume" aria-label="🀵 Lengths and Volume">🀵 Lengths and Volume</a>
+            </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><p>I collect here some results about the differentials of the $\exp$ and $\log$ maps of a Lie group. The reader must be familiar with how the <span class=accented>differential</span> (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of <a href="/posts/vector-fields" class="accented">
-    tangent vectors as equivalence classes of curves
-</a>; Wikipedia has an excellent <a href="https://en.wikipedia.org/wiki/Tangent_space#Definition_via_tangent_curves" target="_blank" class="accented">
-    summary
-</a> of this, as does my blog (if I may say so myself).</p>
-<p>Let $L_g$ refer to the left-multiplication operation: $L_g(h)=gh$ for $g,h\in G$. Given $X\in\mathfrak g$, $X^L_g\coloneq dL_g(X)$ is the corresponding left-invariant vector field. For a matrix Lie group (i.e., where $g$ is identified with some finite-dimensional matrix representation of it), $X^L_g=g X$, which makes sense because we have an external algebraic structure (namely, the multiplication of $n\times n$ matrices, which has the structure of a <a href="https://en.wikipedia.org/wiki/Associative_algebra" target="_blank" class="accented">
-    unital associative algebra
-</a>) that lets us multiply group elements with Lie algebra elements. This rather convenient structure does not exist for a general Lie group. I will assume that the maps $\exp: U \rightarrow V$
+  <div class="post-content md-content"><p>I collect here some results about the differentials of the $\exp$ and $\log$ maps of a Lie group. The reader must be familiar with how the <span class=accented>differential</span> (i.e., pushforward map) is defined on a general manifold for much of this to make any sense. I will also rely extensively on the interpretation of <a href="/posts/vector-fields" class="accented">tangent vectors as equivalence classes of curves</a>; Wikipedia has an excellent <a href="https://en.wikipedia.org/wiki/Tangent_space#Definition_via_tangent_curves" target="_blank" rel="noopener" class="accented">summary</a> of this, as does my blog (if I may say so myself).</p>
+<p>Let $L_g$ refer to the left-multiplication operation: $L_g(h)=gh$ for $g,h\in G$. Given $X\in\mathfrak g$, $X^L_g\coloneq dL_g(X)$ is the corresponding left-invariant vector field. For a matrix Lie group (i.e., where $g$ is identified with some finite-dimensional matrix representation of it), $X^L_g=g X$, which makes sense because we have an external algebraic structure (namely, the multiplication of $n\times n$ matrices, which has the structure of a <a href="https://en.wikipedia.org/wiki/Associative_algebra" target="_blank" rel="noopener" class="accented">unital associative algebra</a>) that lets us multiply group elements with Lie algebra elements. This rather convenient structure does not exist for a general Lie group. I will assume that the maps $\exp: U \rightarrow V$
 and $\log:V\rightarrow U$ are inverses of each other, where $U\subseteq \mathfrak g$ is a neighborhood of $0$ and $V\subseteq G$ is a neighborhood of $e$.</p>
 <hr>
 <h2 id="-differential-of">🀲 Differential of $\exp$<a hidden class="anchor" aria-hidden="true" href="#-differential-of">#</a></h2>
@@ -282,9 +290,7 @@ and $\log:V\rightarrow U$ are inverses of each other, where $U\subseteq \mathfra
 \]
 </p>
 <p>Since $\mathfrak g$ is a vector space, we can identify $T_X\mathfrak g$ with $\mathfrak g$. Using the map $dL_{{\exp(X)}^{-1}}=dL_{{\exp(X)}}^{-1}$, we can identity $T_{\exp X} G$ with $T_e G$, which is also just $\mathfrak g$. A pedagogical nightmare ensues.</p>
-<p>Let $\gamma(t)$ be a curve on $\mathfrak g$. We use the notation $[\gamma]$ to refer to the <a href="https://en.wikipedia.org/wiki/Equivalence_class" target="_blank" class="accented">
-    equivalence class
-</a> of all the curves<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> that pass through $\gamma(0)$ with the velocity $\dot \gamma(0)$.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> We say that $\gamma$ is a <span class=accented>representative</span> of the class $[\gamma]$.
+<p>Let $\gamma(t)$ be a curve on $\mathfrak g$. We use the notation $[\gamma]$ to refer to the <a href="https://en.wikipedia.org/wiki/Equivalence_class" target="_blank" rel="noopener" class="accented">equivalence class</a> of all the curves<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> that pass through $\gamma(0)$ with the velocity $\dot \gamma(0)$.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> We say that $\gamma$ is a <span class=accented>representative</span> of the class $[\gamma]$.
 If $\gamma$ is chosen such that $\gamma(0)=X\in\mathfrak g$ and $\dot \gamma(0)=Y \in T_X\mathfrak g$, then $[\gamma]$ is completely characterized by $Y$ and vice versa; therefore, we can write $[\gamma]=Y$.
 The image of $\gamma$ under $\exp$, which is <span>$\exp\circ \gamma(t)$</span>, is a curve on $G$ as well as a representative of $d\exp_X(Y)$. That is,
 </p>
@@ -372,9 +378,7 @@ d\exp_{\log(g)}\left(d\log_g(V)\right) = d(\exp \circ \log)_g(V)=V.
 <hr>
 <h2 id="-parametrization">🀴 Parametrization<a hidden class="anchor" aria-hidden="true" href="#-parametrization">#</a></h2>
 <p>Another context in which differentials show up in Lie theory is in the context of <em>parametrizations</em> of $G$. While most of this discussion is a specialization of what happens on a general manifold, the Lie group case is special because we are especially interested in left-invariant quantities (e.g., left-invariant vector fields and volume forms).</p>
-<p>Let $\varphi:C\rightarrow D$ be a parametrization of $D\subseteq G$ whose domain is $C\subseteq \mathbb R^n$, such that its inverse $\varphi^{-1}:D \rightarrow C$ exists (and therefore, is a smooth coordinate chart). A function $f:G\rightarrow \mathbb R$ can be <em>restricted</em> to $D$ to define $f|_D:D\rightarrow \mathbb R$; nevertheless, we will just write $f$ to refer to the restricted function. We can pull $f$ back under $\varphi$ to define $\bar f\coloneq {\varphi}^\ast f=f\circ \varphi$, so that $\bar f(\mathbf x)=f(\varphi(\mathbf x))$. We can differentiate $\bar f$ using the usual rules of multivariable calculus. Let $\frac{\partial}{\partial x^i}$ be the $i^{th}$ <a href="/posts/vector-fields" class="accented">
-    standard vector field
-</a> in $C$. As vector fields do, it will map $\bar f$ to another function:</p>
+<p>Let $\varphi:C\rightarrow D$ be a parametrization of $D\subseteq G$ whose domain is $C\subseteq \mathbb R^n$, such that its inverse $\varphi^{-1}:D \rightarrow C$ exists (and therefore, is a smooth coordinate chart). A function $f:G\rightarrow \mathbb R$ can be <em>restricted</em> to $D$ to define $f|_D:D\rightarrow \mathbb R$; nevertheless, we will just write $f$ to refer to the restricted function. We can pull $f$ back under $\varphi$ to define $\bar f\coloneq {\varphi}^\ast f=f\circ \varphi$, so that $\bar f(\mathbf x)=f(\varphi(\mathbf x))$. We can differentiate $\bar f$ using the usual rules of multivariable calculus. Let $\frac{\partial}{\partial x^i}$ be the $i^{th}$ <a href="/posts/vector-fields" class="accented">standard vector field</a> in $C$. As vector fields do, it will map $\bar f$ to another function:</p>
 <p>
 \[
 \frac{\partial}{\partial x^i}\big(\,\bar f\,\big):C \rightarrow \mathbb R.
@@ -553,9 +557,7 @@ We can now integrate a function $f:D \rightarrow \mathbb R$ w.r.t. the Haar meas
 <hr>
 <ol>
 <li id="fn:1">
-<p>This is also what&rsquo;s called a $1$-<a href="https://en.wikipedia.org/wiki/Jet_%28mathematics%29#Jets_of_functions_from_the_real_line_to_a_manifold" target="_blank" class="accented">
-    jet
-</a>. This notion of an &rsquo;equivalence class of curves&rsquo; generalizes in confusing ways.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>This is also what&rsquo;s called a $1$-<a href="https://en.wikipedia.org/wiki/Jet_%28mathematics%29#Jets_of_functions_from_the_real_line_to_a_manifold" target="_blank" rel="noopener" class="accented">jet</a>. This notion of an &rsquo;equivalence class of curves&rsquo; generalizes in confusing ways.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
 <p>Here, $\dot \gamma(0)$ refers to the pushforward of $\frac{\partial}{\partial t}\big\vert_{t=0}$ under $\gamma$.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
@@ -574,14 +576,13 @@ We can now integrate a function $f:D \rightarrow \mathbb R$ w.r.t. the Haar meas
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://shirazkn.github.io/tags/differential-geometry/">Differential Geometry</a></li>
+      <li><a href="https://shiraz-k.com/tags/differential-geometry/">Differential Geometry</a></li>
     </ul>
   </footer>
 <script>
 (function() {
-    var theme = localStorage.getItem("pref-theme");
-    var giscusTheme = (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches))
-        ? "noborder_dark" : "noborder_light";
+    
+    var giscusTheme = document.documentElement.dataset.theme === "dark" ? "noborder_dark" : "noborder_light";
 
     var script = document.createElement('script');
     script.src = "https://giscus.app/client.js";
@@ -607,7 +608,7 @@ We can now integrate a function $f:D \rightarrow \mathbb R$ w.r.t. the Haar meas
     
 <footer class="footer">
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link hidden" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
@@ -616,26 +617,25 @@ We can now integrate a function $f:D \rightarrow \mathbb R$ w.r.t. the Haar meas
 document.addEventListener('touchstart', function() {}, { passive: true });
 
 
-function syncDarkClass() {
-    const isDark = document.documentElement.dataset.theme === 'dark';
-    document.documentElement.classList.toggle('dark', isDark);
-    document.body.classList.toggle('dark', isDark);
-}
-syncDarkClass();
-
-
 
 
 document.querySelectorAll('.logo a, .post-title').forEach(el => {
-    el.innerHTML = el.textContent.trim().split(' ').map(word =>
-        `<span class="hover-word">${word.split('').map(char =>
-            `<span class="hover-letter">${char}</span>`
-        ).join('')}</span>`
-    ).join(' ');
+    const words = el.textContent.trim().split(/\s+/);
+    el.replaceChildren(...words.flatMap((word, i) => {
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'hover-word';
+        for (const char of word) {
+            const letter = document.createElement('span');
+            letter.className = 'hover-letter';
+            letter.textContent = char;
+            wordSpan.append(letter);
+        }
+        return i ? [' ', wordSpan] : [wordSpan];
+    }));
 });
 
 
-const isDark = () => document.body.classList.contains('dark');
+const isDark = () => document.documentElement.dataset.theme === 'dark';
 const hoverColorsDark = ['#ff51af', '#ff51af', '#f161ac', '#f161ac', '#db327e', '#db327e', '#3b82f6', '#38bdf8'];
 const hoverColorsLight = ['#ff51af', '#ff51af', '#e83a89', '#e83a89', '#f542a1', '#d6306f', '#3b9eff', '#00c2ff'];
 const getHoverColors = () => isDark() ? hoverColorsDark : hoverColorsLight;
@@ -703,373 +703,15 @@ if (window.matchMedia('(pointer: coarse)').matches) {
 }
 
 
-
-
-
-const CARD_CONFIG = {
-    
-    hoverLift: 4,
-    
-    maxRotation: 0.8,
-    
-    shadowOpacityLight: 0.22,      
-    shadowOpacityDark: 0.45,       
-    shadowOpacityRange: 0.12,      
-    
-    shadowBlurBase: 1.5,           
-    shadowBlurHover: 2.5,          
-    shadowYOffsetBase: 1,          
-    shadowYOffsetHover: 2,         
-    
-    glowBlur: 8,                   
-    glowSpread: 0,                 
-    glowOpacityLight: 0.22,        
-    glowOpacityDark: 0.07,         
-};
-
-
-
-const postCards = document.querySelectorAll('.post-entry');
-const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
-
-if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in window) {
-    
-    
-    let gyroBaselineBeta = null;
-    let gyroBaselineGamma = null;
-    const GYRO_DRIFT_RATE_MIN = 0.0008;  
-    const GYRO_DRIFT_RATE_MAX = 0.25;   
-    let gyroRafId = null;
-    let latestBeta = null, latestGamma = null;
-    let cardGyroPermissionRequested = false;
-
-    
-    let currentRotateX = 0, currentRotateY = 0;
-    let currentTranslateX = 0, currentTranslateY = 0;
-
-    
-    let smoothedRotateX = 0, smoothedRotateY = 0;
-    let smoothedTranslateX = 0, smoothedTranslateY = 0;
-    const CARD_GYRO_SMOOTHING = 0.15;
-
-    
-    const softClamp = (value, limit) => limit * Math.tanh(value / limit);
-
-    
-    let cardFocusValues = new Array(postCards.length).fill(0);
-    let transformRafId = null;
-    let scrollProgress = 0; 
-
-    
-    function scheduleTransformUpdate() {
-        if (transformRafId) return;
-        transformRafId = requestAnimationFrame(() => {
-            applyCardTransforms();
-            transformRafId = null;
-        });
-    }
-
-    
-    function updateCardFocusValues() {
-        const viewportHeight = window.innerHeight;
-        
-        const targetY = viewportHeight * (0.15 + scrollProgress * 0.7);
-
-        for (let i = 0; i < postCards.length; i++) {
-            const rect = postCards[i].getBoundingClientRect();
-            const cardCenterY = rect.top + rect.height / 2;
-
-            
-            const distance = Math.abs(cardCenterY - targetY) / viewportHeight;
-
-            
-            const t = Math.max(0, (distance - 0.4) / 0.35);
-            const falloff = Math.max(0, 1 - t);
-            cardFocusValues[i] = falloff * falloff * (falloff * falloff); 
-        }
-    }
-
-    
-    let scrollRafId = null;
-    function handleScroll() {
-        if (scrollRafId) return;
-        scrollRafId = requestAnimationFrame(() => {
-            const scrollTop = window.scrollY || document.documentElement.scrollTop;
-            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-            scrollProgress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
-
-            updateCardFocusValues();
-            scheduleTransformUpdate();
-            scrollRafId = null;
-        });
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    
-    handleScroll();
-
-    function applyCardTransforms() {
-        
-        smoothedRotateX += (currentRotateX - smoothedRotateX) * CARD_GYRO_SMOOTHING;
-        smoothedRotateY += (currentRotateY - smoothedRotateY) * CARD_GYRO_SMOOTHING;
-        smoothedTranslateX += (currentTranslateX - smoothedTranslateX) * CARD_GYRO_SMOOTHING;
-        smoothedTranslateY += (currentTranslateY - smoothedTranslateY) * CARD_GYRO_SMOOTHING;
-
-        
-        const baseGyroX = smoothedRotateX * 0.3;
-        const baseGyroY = smoothedRotateY * 0.3;
-        const gyroRangeX = smoothedRotateX * 0.7;
-        const gyroRangeY = smoothedRotateY * 0.7;
-        
-        const baseTransX = smoothedTranslateX * 0.3;
-        const baseTransY = smoothedTranslateY * 0.3;
-        const transRangeX = smoothedTranslateX * 0.7;
-        const transRangeY = smoothedTranslateY * 0.7;
-
-        for (let i = 0; i < postCards.length; i++) {
-            const focus = cardFocusValues[i];
-            const card = postCards[i];
-
-            
-            const rotX = baseGyroX + gyroRangeX * focus;
-            const rotY = baseGyroY + gyroRangeY * focus;
-            const transX = baseTransX + transRangeX * focus;
-            const transY = baseTransY + transRangeY * focus;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateX(${transX}px) translateY(${transY}px) scale(${1 + focus * 0.02})`;
-            card.style.opacity = 0.55 + focus * 0.45;
-        }
-    }
-
-    function handleCardOrientation(event) {
-        if (event.beta === null || event.gamma === null) return;
-
-        
-        const orientation = screen.orientation?.angle ?? window.orientation ?? 0;
-        let beta, gamma;
-
-        if (orientation === 90) {
-            beta = event.gamma;
-            gamma = -event.beta;
-        } else if (orientation === -90 || orientation === 270) {
-            beta = -event.gamma;
-            gamma = event.beta;
-        } else if (orientation === 180) {
-            beta = -event.beta;
-            gamma = -event.gamma;
-        } else {
-            beta = event.beta;
-            gamma = event.gamma;
-        }
-
-        latestBeta = beta;
-        latestGamma = gamma;
-
-        if (!gyroRafId) {
-            gyroRafId = requestAnimationFrame(() => {
-                
-                if (gyroBaselineBeta === null) {
-                    gyroBaselineBeta = latestBeta;
-                    gyroBaselineGamma = latestGamma;
-                }
-
-                
-                const relativeBeta = latestBeta - gyroBaselineBeta;
-                const relativeGamma = latestGamma - gyroBaselineGamma;
-
-                
-                const maxTilt = Math.max(Math.abs(relativeBeta), Math.abs(relativeGamma));
-                const tiltFactor = Math.min(1, maxTilt / 30);  
-                
-                const driftRate = GYRO_DRIFT_RATE_MIN + tiltFactor * tiltFactor * tiltFactor * (GYRO_DRIFT_RATE_MAX - GYRO_DRIFT_RATE_MIN);
-
-                
-                gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * driftRate;
-                gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * driftRate;
-
-                
-                currentRotateY = softClamp(relativeGamma * 0.25, 6);
-                currentRotateX = softClamp(relativeBeta * -0.25, 6);
-
-                
-                currentTranslateX = softClamp(relativeGamma * 0.16, 4);
-                currentTranslateY = softClamp(relativeBeta * 0.14, 3);
-
-                scheduleTransformUpdate();
-                gyroRafId = null;
-            });
-        }
-    }
-
-    function enableCardGyroscope() {
-        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
-    }
-
-    
-    applyCardTransforms();
-
-    
-    
-    postCards.forEach((card, index) => {
-        let isPressed = false;
-
-        card.addEventListener('touchstart', () => {
-            isPressed = true;
-            const focus = cardFocusValues[index];
-            card.style.transition = 'transform 0.08s ease-out, box-shadow 0.08s ease-out';
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(${0.97 + focus * 0.01})`;
-            card.style.boxShadow = `0 0.5px 1px rgba(0,0,0,0.2)`;
-        }, { passive: true });
-
-        card.addEventListener('touchmove', () => {
-            if (isPressed) {
-                isPressed = false;
-                card.style.transition = '';
-                scheduleTransformUpdate();
-            }
-        }, { passive: true });
-
-        card.addEventListener('touchend', () => {
-            if (isPressed) {
-                isPressed = false;
-                card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
-                setTimeout(() => {
-                    card.style.transition = '';
-                    scheduleTransformUpdate();
-                }, 150);
-            }
-        }, { passive: true });
-
-        card.addEventListener('touchcancel', () => {
-            isPressed = false;
-            card.style.transition = '';
-            scheduleTransformUpdate();
-        }, { passive: true });
-    });
-
-    
-    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        
-        enableCardGyroscope();
-
-        
-        if (!localStorage.getItem('gyro-permission-asked') && postCards.length > 0) {
-            const banner = document.createElement('div');
-            banner.id = 'gyro-banner';
-            banner.innerHTML = 'Tap to enable motion effects ↗';
-            banner.style.cssText = 'position:fixed;bottom:1.2em;left:50%;transform:translateX(-50%);background:var(--entry);color:var(--content);padding:0.55em 1.2em;border-radius:2em;font-size:0.85em;z-index:999;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.18);border:1px solid var(--border);opacity:0;transition:opacity 0.3s;';
-            document.body.appendChild(banner);
-            
-            setTimeout(() => { banner.style.opacity = '1'; }, 600);
-
-            banner.addEventListener('click', () => {
-                localStorage.setItem('gyro-permission-asked', '1');
-                banner.style.opacity = '0';
-                setTimeout(() => banner.remove(), 300);
-                if (!cardGyroPermissionRequested) {
-                    cardGyroPermissionRequested = true;
-                    DeviceOrientationEvent.requestPermission()
-                        .then(state => {
-                            if (state === 'granted') enableCardGyroscope();
-                        })
-                        .catch(() => { cardGyroPermissionRequested = false; });
-                }
-            });
-
-            
-            setTimeout(() => {
-                if (banner.parentNode) {
-                    banner.style.opacity = '0';
-                    setTimeout(() => banner.remove(), 300);
-                }
-            }, 8000);
-        }
-    } else {
-        
-        enableCardGyroscope();
-    }
-} else {
-    
-    
-    let currentMouseCard = null;
-    let lastMouseX = 0, lastMouseY = 0;
-
-    postCards.forEach(card => {
-        let rafId = null;
-        let isPressed = false;
-
-        card.addEventListener('mouseenter', () => {
-            currentMouseCard = card;
-            card.style.transition = 'none';
-        });
-
-        card.addEventListener('mousemove', (e) => {
-            if (isPressed) return; 
-            lastMouseX = e.clientX;
-            lastMouseY = e.clientY;
-
-            if (!rafId) {
-                rafId = requestAnimationFrame(() => {
-                    if (isPressed) { rafId = null; return; }
-                    const rect = card.getBoundingClientRect();
-                    const mouseX = lastMouseX - rect.left;
-                    const mouseY = lastMouseY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = (mouseY - centerY) / centerY * -CARD_CONFIG.maxRotation;
-                    const rotateY = (mouseX - centerX) / centerX * CARD_CONFIG.maxRotation;
-                    const normalizedY = (centerY - mouseY) / centerY;
-                    const isDarkMode = document.body.classList.contains('dark');
-                    const baseOpacity = isDarkMode ? CARD_CONFIG.shadowOpacityDark : CARD_CONFIG.shadowOpacityLight;
-                    const shadowOpacity = Math.max(0, baseOpacity + normalizedY * CARD_CONFIG.shadowOpacityRange);
-                    const glowOpacity = isDarkMode ? CARD_CONFIG.glowOpacityDark : CARD_CONFIG.glowOpacityLight;
-                    const glowColor = isDarkMode ? `rgba(251,152,204,${glowOpacity})` : `rgba(188,10,92,${glowOpacity})`;
-                    const glow = `0 0 ${CARD_CONFIG.glowBlur}px ${CARD_CONFIG.glowSpread}px ${glowColor}`;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${CARD_CONFIG.hoverLift}px)`;
-                    card.style.boxShadow = `0 ${CARD_CONFIG.shadowYOffsetHover}px ${CARD_CONFIG.shadowBlurHover}px rgba(0, 0, 0, ${shadowOpacity}), ${glow}`;
-                    rafId = null;
-                });
-            }
-        });
-
-        card.addEventListener('mousedown', () => {
-            isPressed = true;
-            card.style.transform = 'scale(0.99)';
-            card.style.boxShadow = '';
-        });
-
-        card.addEventListener('mouseup', () => {
-            isPressed = false;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            if (rafId) {
-                cancelAnimationFrame(rafId);
-                rafId = null;
-            }
-            isPressed = false;
-            card.style.transition = '';
-            card.style.transform = '';
-            card.style.boxShadow = '';
-            currentMouseCard = null;
-        });
-    });
-
-}
-
-
-const tocBox = document.querySelector('.toc');
+const tocBox = document.querySelector('details.toc');
 if (tocBox) {
-    const tocDetails = tocBox.querySelector('details');
-    if (tocDetails) {
-        tocBox.addEventListener('click', (e) => {
-            
-            if (e.target.tagName === 'A') return;
-            
-            if (e.target.closest('summary')) return;
-            tocDetails.open = !tocDetails.open;
-        });
-    }
+    tocBox.addEventListener('click', (e) => {
+        
+        if (e.target.tagName === 'A') return;
+        
+        if (e.target.closest('summary')) return;
+        tocBox.open = !tocBox.open;
+    });
 }
 </script>
 <div class="headerfooter">
@@ -1087,14 +729,18 @@ if (tocBox) {
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
-            e.preventDefault();
             var id = this.getAttribute("href").substr(1);
+            var target = null;
+            try { target = document.getElementById(decodeURIComponent(id)); } catch (_) { }
+            
+            if (!target) return;
+            e.preventDefault();
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                target.scrollIntoView({
                     behavior: "smooth"
                 });
             } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                target.scrollIntoView();
             }
             if (id === "top") {
                 history.replaceState(null, null, " ");
@@ -1106,14 +752,12 @@ if (tocBox) {
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.addEventListener('scroll', function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     });
 
@@ -1129,8 +773,6 @@ if (tocBox) {
             localStorage.setItem("pref-theme", 'dark');
         }
         const isDark = html.dataset.theme === 'dark';
-        html.classList.toggle('dark', isDark);
-        document.body.classList.toggle('dark', isDark);
         
         const giscusFrame = document.querySelector('iframe.giscus-frame');
         if (giscusFrame) {
