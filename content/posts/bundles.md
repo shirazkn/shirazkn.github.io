@@ -98,7 +98,9 @@ The tangent space at a point $p\in \mathcal M$ is denoted as $T_p\mathcal M$, an
 $${\mathbb R}^n \hookrightarrow T\mathcal M \rightarrow \mathcal M.
   $$
 
-This fiber bundle has a fiber-preserving $GL(n)$ action — matrix-vector multiplication. However, $T\mathcal M$ is *not* a principal $GL(n)$-bundle since its fibers are not isomorphic to $GL(n)$. Nevertheless, there is indeed a principal $GL(n)$-bundle closely related to $T\mathcal M$, which is...
+In general, the tangent bundle does *not* admit a faithful, fiber-preserving $GL(n)$ action (that's linear on fibers).[^reason] Moreover, $T\mathcal M$ is *not* a principal $GL(n)$-bundle since its fibers are not isomorphic to $GL(n)$. Nevertheless, there is indeed a principal $GL(n)$-bundle closely related to $T\mathcal M$, which is...
+
+[^reason]: Matrix-vector multiplication requires a choice of basis for each $T_p\mathcal M$. Such a smooth global choice only exists if the manifold is *parallelizable*.
 
 ### The Frame Bundle
 Consider an ordered set of $n$ linearly independent vectors in $T_p\mathcal M$. One such set is called a *frame*. The space of all the frames at $p$ make up the fiber, and the union of these fibers leads to the notion of a [frame bundle](https://en.wikipedia.org/wiki/Frame_bundle) $F\mathcal M$. More formally, we can view a frame at $p\in\mathcal M$ as being a linear isomorphism from $\mathbb R^n$ to $T_p\mathcal M$. The frame bundle is then (as a set) the following object:
@@ -106,17 +108,18 @@ $$
 F\mathcal M = \left\lbrace (\hspace{1pt}p, f)\,\mathrel|\,p\in\mathcal M,\ f:\mathbb R^n \rightarrow T_p\mathcal M \textup{ is an isomorphism}\right\rbrace
 $$
 
-The frame bundle has an action of $GL(n)$. We need to take care that this is a *right*-action and not a *left*-action, the difference being that the group element $gh \in GL(n)$ should act on a vector $(p,v)\in T\mathcal M$ as $$(\hspace{1pt}p,v)\cdot gh= \left((\hspace{1pt}p,v)\cdot g\right)\cdot\, h$$
+The frame bundle has an action of $GL(n)$. We need to take care that this is a *right*-action and not a *left*-action, the difference being that the group element $gh \in GL(n)$ should act on a frame $(p,f)\in F\mathcal M$ as $$(\hspace{1pt}p,f)\cdot gh= \left((\hspace{1pt}p,f)\cdot g\right)\cdot\, h$$
 On the other hand, a left-action of $gh$ would look different — $h$ will act first, then $g$.
 
 <aside class=aside-right>
-Do we have a group action on $F\mathcal M$ that moves between fibers, like we did on a coset space? That is, is there some map $\Phi$ that takes $(p_1,f_1)$ to $(p_2,f_2)$ with $p_1 \neq p_2$? Not necessarily. If such a map did exist, then $\pi \circ \Phi$ would be a group action on $\mathcal M$.
+Suppose a group acts on $F\mathcal M$ by bundle automorphisms, i.e., each $\Phi_g$ maps fibers to fibers. Then it induces the group action $\pi\circ\Phi$ on $\mathcal M$ which sends $p$ to the base point of $\Phi_g(p,f)$. A fiber-preserving group action descends to the trivial action on $\mathcal M$.
 </aside>
 
 This is where the linear-isomorphisms interpretation of the frame bundle comes in handy; given an $n\times n$ matrix $\mathbf A\in GL(n)$, we let
 $$(\hspace{1pt}p,f)\mathrel\cdot\mathbf A = (\hspace{1pt}p,f\circ \mathbf A),$$
 where $[f\circ \mathbf A](\mathbf v) = f(\mathbf A \mathbf v)$. 
-There is a way to view $T\mathcal M$ as a fiber bundle that is "[associated](https://www.youtube.com/watch?v=q2GYZz6q3QI&t=6s)" to the frame bundle. We say that $GL(n)$ is the <i>structure group</i> of $T\mathcal M$, and we call $T\mathcal M$ a $GL(n)$-bundle. An associated bundle has a *left* action of its structure group. If that is confusing as hell, then you're on the right track.
+There is a way to view $T\mathcal M$ as a fiber bundle that is "[associated](https://www.youtube.com/watch?v=q2GYZz6q3QI&t=6s)" to the frame bundle. We say that $GL(n)$ is the <i>structure group</i> of $T\mathcal M$, and we call $T\mathcal M$ a $GL(n)$-bundle. An associated bundle has a *left* action of its structure group on its model fiber (here, $GL(n)$ acting on $\mathbb R^n$), which cancels out the right action on the frame bundle: the frame $f\circ \mathbf A$ paired with $\mathbf v$, and the frame $f$ paired with $\mathbf A\mathbf v$, describe the same tangent vector $f(\mathbf A\mathbf v)\in T_p\mathcal M$. 
+See my [next post](/posts/robotics/#chapter-2-transformation-rules) on robotics, where the preceding observation manifests as a right-action on reference frames accompanied by a left-action on coordinates.
 
 
 ### Ehresmann Connections
@@ -134,8 +137,8 @@ The <span class=accented>horizontal subbundle</span> is something that must be c
 
 1. specify a horizontal subspace $\mathrm{Hor}_q\mathcal E \subseteq T_{q}\mathcal E$ for each $q\in\mathcal E$ such that $$T_q\mathcal E =\mathrm{Hor}_q\mathcal E\oplus \mathrm{Ver}_q\mathcal E,$$
 2. choose a linear projection $\Gamma:T\mathcal E \rightarrow  \mathrm{Ver}\mathcal E$ and define $\mathrm{Hor}\mathcal E \coloneq \mathrm{ker}(\Gamma)$,[^subtle] 
-3. write down a $T\mathcal E$-valued one-form $\Gamma$ on $\mathcal E$ that satisfies $\Gamma\vert_{\mathrm{Ver}\mathcal E}=\mathrm{id}_{\mathrm{Ver}\mathcal E}$ (i.e., $\Gamma$ restricted to $\mathrm{Ver}\mathcal E$ is the identity map on $\mathrm{Ver}\mathcal E$), or
-4. write down an $\mathfrak h$-valued one-form $\Gamma$ on $\mathcal E$.
+3. write down a $\mathrm{Ver}\mathcal E$-valued one-form $\Gamma$ on $\mathcal E$ that satisfies $\Gamma\vert_{\mathrm{Ver}\mathcal E}=\mathrm{id}_{\mathrm{Ver}\mathcal E}$ (i.e., $\Gamma$ restricted to $\mathrm{Ver}\mathcal E$ is the identity map on $\mathrm{Ver}\mathcal E$), or
+4. write down an $\mathfrak h$-valued one-form $\Gamma$ on $\mathcal E$ that identifies $\mathrm{Ver}_q\mathcal E$ with $\mathfrak h$ via the right $H$-action (i.e., $\Gamma$ sends $\frac{d}{dt}\big\vert_{t=0}\,q\cdot\exp(t\xi)$ to $\xi$).
 
 [^subtle]: It is a subtle point that, even though the vertical subbundle $\mathrm{Ver}\mathcal E$ is well-defined, the projection of an arbitrary vector $v\in T_q\mathcal E$ onto $\mathrm{Ver}_q\mathcal E$ depends on the choice of horizontal subbundle/connection.
 

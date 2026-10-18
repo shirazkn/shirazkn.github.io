@@ -9,16 +9,16 @@
 <meta name="keywords" content="Differential Geometry">
 <meta name="description" content="A Lie group is a group that is also a (continuous, differentiable) topological space. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow the group with additional structure so that it is not merely a manifold, but a Riemannian manifold.">
 <meta name="author" content="">
-<link rel="canonical" href="https://shirazkn.github.io/posts/lie-groups_riemannian/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.2921f0d9e585bc62a176e52c3c9ea94ecefc8bb59f1eff9561f20e0db052bdd6.css" integrity="sha256-KSHw2eWFvGKhduUsPJ6pTs78i7WfHv&#43;VYfIODbBSvdY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://shirazkn.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://shirazkn.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://shirazkn.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://shirazkn.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://shirazkn.github.io/favicon.ico">
+<link rel="canonical" href="https://shiraz-k.com/posts/lie-groups_riemannian/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a0ebdfe53c3eb2e3553423a17ddbc637fa0058202126dd12b1f64b8055fb9532.css" integrity="sha256-oOvf5Tw&#43;suNVNCOhfdvGN/oAWCAhJt0SsfZLgFX7lTI=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://shiraz-k.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://shiraz-k.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://shiraz-k.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://shiraz-k.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://shiraz-k.com/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://shirazkn.github.io/posts/lie-groups_riemannian/">
+<link rel="alternate" hreflang="en" href="https://shiraz-k.com/posts/lie-groups_riemannian/">
 <noscript>
     <style>
         #theme-toggle,
@@ -51,12 +51,6 @@
             }
         }
 
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
     </style>
 </noscript>
 <script>
@@ -70,13 +64,6 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><script>
-(function() {
-    var pref = localStorage.getItem("pref-theme");
-    if (pref === "dark" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-        document.documentElement.classList.add("dark");
-    }
-})();
 </script>
 
 <script>
@@ -99,6 +86,20 @@
     }
   }
 
+  
+  
+  function markWideInlineMath() {
+    for (const m of document.querySelectorAll('.post-content mjx-container:not([display="true"])')) {
+      m.classList.remove('mjx-wide');
+      
+      let p = m.parentElement;
+      while (p.parentElement && getComputedStyle(p).display.startsWith('inline')) p = p.parentElement;
+      const cs = getComputedStyle(p);
+      const available = p.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      if (m.getBoundingClientRect().width > available + 0.5) m.classList.add('mjx-wide');
+    }
+  }
+
   MathJax = {
     tex: {
       packages: {'[+]': ['mathtools', 'amscd']},
@@ -112,27 +113,40 @@
       ready() {
         preprocessMathEscapes();
         MathJax.startup.defaultReady();
+        MathJax.startup.promise.then(() => {
+          markWideInlineMath();
+          let resizeRaf = null;
+          window.addEventListener('resize', () => {
+            cancelAnimationFrame(resizeRaf);
+            resizeRaf = requestAnimationFrame(markWideInlineMath);
+          });
+        });
       }
     }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica&display=swap"></noscript>
 
-<meta property="og:url" content="https://shirazkn.github.io/posts/lie-groups_riemannian/">
+
+<meta property="og:url" content="https://shiraz-k.com/posts/lie-groups_riemannian/">
   <meta property="og:site_name" content="Shiraz">
   <meta property="og:title" content="Lie Groups as Riemannian Manifolds">
   <meta property="og:description" content="A Lie group is a group that is also a (continuous, differentiable) topological space. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow the group with additional structure so that it is not merely a manifold, but a Riemannian manifold.">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-01-30T09:53:05-05:00">
     <meta property="article:modified_time" content="2024-01-30T09:53:05-05:00">
     <meta property="article:tag" content="Differential Geometry">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lie Groups as Riemannian Manifolds">
-<meta name="twitter:description" content="A Lie group is a group that is also a (continuous, differentiable) topological space. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow the group with additional structure so that it is not merely a manifold, but a Riemannian manifold.">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Lie Groups as Riemannian Manifolds">
+  <meta name="twitter:description" content="A Lie group is a group that is also a (continuous, differentiable) topological space. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow the group with additional structure so that it is not merely a manifold, but a Riemannian manifold.">
 
 
 <script type="application/ld+json">
@@ -144,13 +158,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://shirazkn.github.io/posts/"
+      "item": "https://shiraz-k.com/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Lie Groups as Riemannian Manifolds",
-      "item": "https://shirazkn.github.io/posts/lie-groups_riemannian/"
+      "item": "https://shiraz-k.com/posts/lie-groups_riemannian/"
     }
   ]
 }
@@ -165,21 +179,21 @@
   "keywords": [
     "Differential Geometry"
   ],
-  "articleBody": "A Lie group $G$ is a group that is also a (continuous, differentiable) topological space. An example to keep in mind is $G=\\mathbb R^n$ which is a group under vector addition and has well-defined notions of continuity and differentiation. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow $G$ with additional structure so that it is not merely a manifold, but a Riemannian manifold. Luckily for us, we only need to define an inner product for the Lie algebra, after which there is a natural definition of length and volume that can be made for the entire group manifold. I say that the resulting choice of volume (called the Haar measure) is natural because it is compatible with the group structure of $G$ as well as its differential structure as a manifold. This can be compared to how the standard notion of volume for $\\mathbb R^n$, the Lebesgue measure, is compatible with vector addition; we have for a (measurable) set $A\\subseteq \\mathbb R^n$ and for every $\\mathbf x_0 \\in \\mathbb R^n$,\n\\[ \\textrm{Vol}(A) = \\textrm{Vol}(\\mathbf x_0 + A), \\] where \\[ \\mathbf x_0 + A \\coloneqq \\lbrace\\, \\mathbf x_0 + \\mathbf x \\ \\vert\\ \\mathbf x \\in A \\,\\rbrace. \\] Thus begins our journey into making sense of this compatibility in the general context of a Lie group. If you are seeking a more application-oriented approach and/or aren’t all that interested in this sort of abstraction, this book has all the formulae worked out, and my previous post introduces the idea of invariant metrics and measures on Lie groups. Note that I will be using the Einstein summation convention throughout.\nLengths and Volumes ✨ Let $M$ be an $n$-dimensional smooth manifold. A covariant $2$-tensor field on $M$ is a bilinear map that takes $2$ smooth vector fields as its arguments and produces a smooth $C^\\infty(M)$ function.1 A Riemannian metric is a covariant $2$-tensor field that is symmetric:\n\\[ \\begin{align} g(\\mathbf{v}_1, \\mathbf{v}_2) \u0026= g(\\mathbf{v}_2, \\mathbf{v}_1) \\in C^\\infty(M), \\end{align} \\] and positive-definite: \\[ \\begin{align} g(\\mathbf{v}_1, \\mathbf{v}_1)(p) \u003e 0 \u0026\\quad \\Leftrightarrow \\quad \\mathbf{v}_1(p) \\neq \\mathbf 0. \\end{align} \\] where $\\mathbf{v}_1, \\mathbf{v}_2 \\in \\mathfrak X(M)$ are smooth vector fields on $M$. At some point $p\\in M$, the number $g(\\mathbf{v}_1, \\mathbf{v}_2)(p)$ is interpreted as the inner product between the tangent vectors $\\mathbf{v}_1(p)$ and $\\mathbf{v}_2(p)$, often written as $\\langle \\mathbf v_1, \\mathbf v_2 \\rangle_p \\coloneqq g(\\mathbf{v}_1, \\mathbf{v}_2)(p)$. With such a mathematical structure imposed on $M$, we call $(M,g)$ a Riemannian manifold.\nWhile a metric tensor is a symmetric covariant $2$-tensor field, a volume form $\\omega$ is an alternating covariant $n$-tensor field, also called as a differential $n$-form. By combining its alternating property with its linearity, $\\omega$ can be shown to be antisymmetric in its arguments. That is, if $\\mathbf{v}_1,\\mathbf{v}_2, \\cdots, \\mathbf{v}_n \\in \\mathfrak X(M)$ are smooth vector fields, then\n$$ \\omega(\\mathbf{v}_1, \\mathbf{v}_2, \\cdots, \\mathbf{v}_n) = -\\omega(\\mathbf{v}_2, \\mathbf{v}_1, \\cdots, \\mathbf{v}_n) = \\nu \\in C^\\infty(M) $$The function $\\nu$ that is spit out by $\\omega$ (after it eats $n$ vector fields) assigns the volume $\\nu(p)\\in \\mathbb R$ to the parallelopiped spanned by the vectors $\\mathbf{v}_1(p), \\mathbf{v}_2(p), \\cdots, \\mathbf{v}_n(p)\\in T_pM$. Thus, $\\omega$ is sort of like a ‘volume meter’ affixed to each point of $M$. It is the authority on what counts as a positive volume, what counts as a small or a large volume, and so on. Its antisymmetry can be compared with the fact that $\\int_a^b f(x) dx= -\\int_b^a f(x) dx$.\nEither of these maps can be written as a tensor in local coordinates on $U\\subseteq M$, e.g., $g=g_{ij}dx^i \\otimes dx^j$, where the Einstein summation convention is used and $g_{ij}\\in C^\\infty (U)$. Since the standard tensor notation doesn’t reflect the symmetry/antisymmetry of the tensors, one typically drops it in favor of notation that does:\n\\[ \\begin{align} g \u0026= g_{i_1 i_2}dx^{i_1} dx^{i_2}\\\\ \\omega \u0026= \\omega_{i_1 i_2 \\cdots i_n} dx^{i_1} \\wedge dx^{i_2} \\wedge \\cdots \\wedge dx^{i_n} \\end{align} \\] This helps us remember that the $dx^{i_1}$ and $dx^{i_2}$ of $g$ can be swapped without consequence, whereas swapping the $dx^{i_1}$ and $dx^{i_k}$ of $\\omega$ may or may not incur a sign-change depending on the parity of the permutation.\nHere, $dx^i dx^j = \\textrm{Sym}(dx^i \\otimes dx^j) \\coloneqq \\frac{1}{2}(dx^i \\otimes dx^j + dx^j \\otimes dx^i)$ denotes the symmetric product of tensors $-$ it is defined in a way that forces the resulting tensor to be symmetric in its arguments. Similarly, '$\\wedge$' denotes the alternating (or wedge, or exterior) product of tensors, thereby capturing the antisymmetry of a differential form. With this notation, observe that if $\\mathbf{v} = v^k \\frac{\\partial}{\\partial x^k}$ and $\\mathbf{w} = w^l \\frac{\\partial}{\\partial x^l}$ are vector fields on $U$, where $(\\frac{\\partial}{\\partial x^i})_i$ is the dual basis of $(dx^i)_{i}$, then\n\\[ \\begin{align} g(\\mathbf{v},\\mathbf{w}) \u0026= g_{ij} dx^i dx^j \\left(v^k \\frac{\\partial}{\\partial x^k}, w^l \\frac{\\partial}{\\partial x^l}\\right) \\\\ \u0026= g_{ij}v^k w^l \\ \\left[dx^i dx^j \\left(\\frac{\\partial}{\\partial x^k}, \\frac{\\partial}{\\partial x^l}\\right)\\right] \\\\ \u0026= g_{ij} v^k w^l \\delta^i_k \\delta^j_l \\\\ \u0026= g_{ij} v^i w^j. \\end{align} \\] Since it is a (pointwise) sum of (pointwise) products of $C^\\infty(U)$ functions, $g_{ij} v^i w^j\\in C^\\infty(U)$. The metric tensor coefficients $(g_{ij})_{i,j=1}^n$ play a role similar to that of a weighting matrix $W \\in \\mathbb R^{n \\times n}$ that is introduced when defining a non-standard inner product in $\\mathbb R^n$, as $\\langle \\mathbf{v}, \\mathbf{w}\\rangle \\coloneqq \\mathbf{v}^\\top W \\mathbf{w}$.\nFrames ✨ In the above expressions, we used a frame (a system of vector fields) that arises from a coordinate chart. However, there may arise situations where we prefer to work with a frame that is not only not induced by a coordinate chart, but also cannot be induced by a coordinate chart. The frame of left-invariant vector fields on a (non-Abelian) Lie group is a prime example of this.\nA local frame in an open set $U$ of $M$ is a set of tangent vector fields in $\\mathfrak X(U)$, enumerated as $(E_i)_{i=1}^n$, such that $(E_i(p))_{i=1}^{n}$ is a basis of $T_p M$ for all $p\\in U\\subseteq M$. A local frame is orthonormal if $g(E_i, E_j) = \\delta_{ij}$, where $\\delta_{ij}$ is the Kronecker delta considered as a constant-valued $C^\\infty(U)$ function. A global frame is one that is defined on all of $M$, with $U=M$.\nA frame is said to be oriented once we order it and decree that this ordering – as well as even permutations of it – will be considered as being 'positively oriented'. In high-school geometry, we learn that the $\\textrm x - \\textrm y - \\textrm z$ basis is positively oriented by convention. In three dimensions, cyclic permutations like \\[ \\textrm x - \\textrm y - \\textrm z \\quad \\mapsto \\quad \\textrm y - \\textrm z - \\textrm x\\] are precisely the even-parity permutations, which is why $\\textrm y - \\textrm z - \\textrm x$ is considered to be positively oriented too. The dual coframe to $(E_i)_{i=1}^n$ is the collection of cotangent (or covariant) vector fields $(\\varepsilon^i)_{i=1}^n$, such that $\\varepsilon^i(E_j) = \\delta^i_{j}$. These cotangent vector fields form a basis for differential $1$-forms. We can take their tensor products to obtain a basis for covariant $k$-tensor fields:\n\\[ \\begin{align} \\lbrace \\varepsilon^{i_1} \\otimes \\varepsilon^{i_2} \\otimes \\cdots \\otimes \\varepsilon^{i_k}\\ \\vert\\ 1\\leq i_1, i_2, \\cdots, i_k \\leq n \\rbrace \\end{align} \\] or their exterior /wedge products to obtain a basis for the space of differential $k$-forms:\n\\[ \\begin{align} \\lbrace \\varepsilon^{i_1} \\wedge \\varepsilon^{i_2} \\wedge \\cdots \\wedge \\varepsilon^{i_k}\\ \\vert\\ 1\\leq i_1 \u003c i_2 \u003c \\cdots \u003c i_k \\leq n \\rbrace \\end{align} \\] Observe that covariant $k$-tensor fields are a more general class of objects than differential $k$-forms, since the latter have the additional, special property of being alternating. This fact is reflected in the dimensions of their bases (notice the range of the indices in either case). Despite this important distinction, $k$-forms are sometimes simply called '$k$-covectors'; a more precise term would be alternating $k$-covectors. Orthonormal Frames In the coordinate coframe $(dx^i)_{i=1}^n$, we expressed the metric tensor as $g = g_{ij}dx^i dx^j$. Let’s now try to express it in a local coframe $(\\varepsilon^i)_{i=1}^n$ on $U \\subseteq M$ that is dual to an orthonormal one:\n\\[ \\begin{align} g = g_{ij}dx^i dx^j = \\tilde g_{ij} \\varepsilon^i \\varepsilon^j \\end{align} \\] We have then, that\n\\[ \\begin{align} \\delta_{kl} = g(E_k, E_l) \u0026= \\tilde g_{ij} {\\varepsilon}^i {\\varepsilon}^j \\left(E_k, E_l\\right) \\\\ \u0026= \\tilde g_{ij} {\\varepsilon}^i \\left(E_k\\right) {\\varepsilon}^j \\left(E_l\\right) \\\\ \u0026= \\tilde g_{ij} \\delta^i_k \\delta^j_l = \\tilde g_{kl}. \\end{align} \\] This means that the metric tensor, when expressed in a coframe dual to an orthonormal one, has the trivial representation: $g = \\delta_{ij} \\varepsilon^i \\varepsilon^j$. By writing out the summation explicitly, this takes a more familiar form:\n$$ g = (\\varepsilon^1)^2 + (\\varepsilon^2)^2 + \\cdots + (\\varepsilon^n)^2. $$Given a local orthonormal frame of vector fields $(E_i)_{i=1}^n$ whose dual coframe is $(\\varepsilon^i)_{i=1}^n$, the unique (up to choice of orientation) Riemannian volume form $\\omega_g$ is given by\n\\[ \\begin{align} \\omega_g = \\varepsilon^1 \\wedge \\varepsilon^2 \\wedge \\cdots \\wedge \\varepsilon^n \\end{align} \\] so that $\\omega(E_1, E_2, \\cdots, E_n) = 1$. The above statements will look identical in any of the local orthonormal frames of $M$.\nCoordinate Frames The allure of orthonormal frames is that $g$ and $\\omega_g$ can be represented quite succinctly in them. However, the existence of an orthonormal frame that arises as the coordinate frame of a chart is a very rare occasion: such a frame only exists when the Riemannian manifold $(M, g)$ is locally flat. If we would rather work with a frame that arises from coordinates, then we must resort to computing the components of a non-flat metric tensor (one that is not simply the Kronecker delta). Also see my post on the non-flatness of the sphere .\nLet $\\frac{\\partial}{\\partial x^i}\\Big\\vert_{q}$ be the usual coordinate-wise partial derivative operators in $\\mathbb R^n$, $q \\coloneqq (q_1, q_2, \\dots, q_n)$, and $q\\in V \\subseteq \\mathbb R^n$. Given a smooth function $f\\in C^\\infty(V)$, the partial derivative operators of $\\mathbb R^n$ operate on $f$ as follows:\n$$ \\begin{align*} \\frac{\\partial}{\\partial x^2}\\bigg\\vert_{q} f = \\lim_{h\\rightarrow 0} \\frac{f(q_1, q_2+h, \\dots, q_n) - f(q_1, q_2, \\dots, q_n)}{h} \\end{align*} $$ Recalling that the job of a vector field is to map a smooth function to a real number at every point (in a smooth manner), the following object is in fact a vector field on $V$: $$\\frac{\\partial}{\\partial x^i}\\bigg\\vert_{(\\ \\cdot\\ )}:V \\rightarrow TV.$$ Thus, $\\left\\lbrace\\frac{\\partial}{\\partial x^i}\\big\\vert_{(\\ \\cdot\\ )}\\right\\rbrace_{i=1}^n$ is a set of vector fields on $V$, and may be visualized as a “fisherman’s net” spread across $V$.\nUltimately, we want a coordinate frame on a subset $U$ of $M$, rather than on $V$, which is in $\\mathbb R^n$. Let $\\varphi:U \\rightarrow V$ be a smooth chart containing some point $p$ of $M$. Its differential $(\\varphi_*)_p$ is a vector space isomorphism (i.e., an invertible linear map) between $T_p U$ and $T_q V$. The pushforward of the “partial derivative vector fields” of $V$ under $\\varphi^{-1}$ gives us a coordinate frame on $U$. That is, $\\varphi^{-1}$ maps the fisherman’s net on $V$ to one on $U$. By an abuse of notation, I and many others use $\\left(\\frac{\\partial}{\\partial x^i}\\big\\vert_{(\\ \\cdot\\ )}\\right)_{i=1}^n$ to refer to either frame; the subscript, the function being operated on, and/or the context will make it clear which frame is being used. This means that if $\\tilde f\\in C^\\infty (U)$, then we write\n\\[ \\begin{align} \\frac{\\partial}{\\partial x^i}\\Big\\vert_{p} \\tilde f \u0026= \\left((\\varphi_*^{-1})_{\\varphi(p)} \\frac{\\partial}{\\partial x^i}\\Big\\vert_{\\varphi(p)}\\right) \\tilde f\\\\ \u0026= \\frac{\\partial}{\\partial x^i}\\Big\\vert_{\\varphi(p)} \\tilde f \\circ \\varphi^{-1} = \\frac{\\partial}{\\partial x^i}\\Big\\vert_{\\varphi(p)} (\\varphi^{-1 *} \\tilde f). \\end{align} \\] where $\\varphi^{-1 *} \\tilde f$ is called the pullback of $\\tilde f$ under $\\varphi^{-1}$; it pulls the domain of $\\tilde f$ back to $V$.\nOrthonormal Coordinate Frames I reiterate that there are Riemannian manifolds where such a coordinate frame couldn’t possibly be orthonormal at all $p\\in U$. Theorem 13.14 of Lee’s Introduction to Smooth Manifolds says that this is only possible when $U$ is flat, i.e., $M$ is locally flat.\nPullbacks ✨ Let $f:M \\rightarrow N$ be a diffeomorphism between manifolds (though it is possible to generalize the forthcoming discussion to other kinds of smooth maps).\nRecall that tangent and cotangent vectors are dual to each other, and so are their $k^{th}$ exterior powers: alternating $k$-vector fields and differential $k$-forms. Whenever we have a morphism for an object going one way, we expect a dual morphism for the corresponding dual object going the other way. Using this intuition, we deduce that if $f_{\\ast}: TM \\rightarrow TN$ allows us to push forward vector fields, there must be a dual morphism $f^{\\ast}: T^{\\ast} N \\rightarrow T^{\\ast} M$ that allows us to pull back covector fields. Similarly, $f^{\\ast}: \\Omega^k(N) \\rightarrow \\Omega^k(M)$2 pulls back differential forms from $N$ to $M$ (we use the same notation for either map, $f^{\\ast}$). In particular, metrics and volume forms on $N$ can be pulled back to define metrics and volume forms on $M$.\nThe covariant tensor field thus obtained on $M$ is called as the pullback of the covariant tensor field on $N$ under $f$. For example, consider $M=S^2$ to be the unit $2$-sphere and $f$ to be its usual submersion into $N=\\mathbb R^3$. Then, the pullback of the Euclidean (‘dot product’) metric $\\bar g$ of $\\mathbb R^3$ under $f$, $f^{\\ast} \\bar g$, is called the round metric, and it is a bonafide Riemannian metric for $S^2$ (I compute its components in the next post ). When the Euclidean metric is pulled back onto a submanifold $M\\subseteq \\mathbb R^3$ in this manner, the pullback metric is called the induced metric or the first fundamental form of $M$. More generally, we can pull back covariant tensor fields from arbitrary manifolds, as long as we have a smooth map onto it.\nThe pullback of a differential form is defined such that it must be in concordance with the pushforwards of vector fields. Specifically, if $\\omega \\in \\Omega^k(N)$ is a differential $k$-form and $\\mathbf{v}_1, \\mathbf{v}_2, \\cdots, \\mathbf{v}_k \\in \\mathfrak X(M)$, then\n\\[ \\begin{align} (f^*\\omega)(\\mathbf{v}_1, \\mathbf{v}_2, \\cdots, \\mathbf{v}_k) = \\omega(f_*\\mathbf{v}_1, f_*\\mathbf{v}_2, \\cdots, f_*\\mathbf{v}_k). \\end{align} \\] I like to read this as: $f^{\\ast}\\omega$ eats vector fields on $M$ by imitating how $\\omega$ might eat the corresponding pushforward vector fields on $N$. Thus, $f^{\\ast}\\omega$ is a differential $k$-form on $M$; the domain of $\\omega$ has been pulled back by $f^{\\ast}$.\nLie Groups ✨ The tangent space at the identity of a Lie group $G$ can be given one of infinitely many possible inner products. However, there is a unique way to extend this inner product to a Riemannian metric by requiring that it be compatible with the group structure of $G$ (and as a consequence, compatible with the differential structure of $G$ as a manifold). For the same reason, there is also a unique choice of volume form (or equivalently, measure) with respect to which one can define the integral. This will be called the Haar integral, and it specializes to the Lebesgue integral when $G=\\mathbb R^n$. Yet another useful property of Lie groups is that there is a way to construct global orthonormal frames for it: we choose an orthonormal basis of $T_e G$ and extend it to a set of left/right-invariant vector fields. Even among Lie groups, orthonormal coordinate frames are a rare occurrence; if $G$ is non-Abelian, then an orthonormal frame could not possibly come from a coordinate system (also see this ). Nevertheless, the fact that a global orthonormal frame exists is already quite a special property.\nLeft-Invariant Vector Fields Let $G$ be a Lie group, $e\\in G$ its identity element, and $\\mathfrak g$ its Lie algebra.3 Consider an inner product on $\\mathfrak g$, $\\langle \\cdot, \\cdot \\rangle_e$, and use the Gram-Schmidt process to construct an orthonormal basis for $\\mathfrak g$. Denote one such orthonormal basis by $(\\tilde E_i)_{i=1}^n$, where $\\tilde E_i \\in \\mathfrak g$ and $\\langle \\tilde E_i, \\tilde E_j \\rangle_e = \\delta_{ij}$. Its corresponding dual basis is denoted as $(\\tilde \\varepsilon^i)_{i=1}^n$, where $\\tilde \\varepsilon^i \\in \\mathfrak g^*$. We can then express $\\langle \\cdot, \\cdot \\rangle_e$ by the tensor $\\delta_{ij} \\tilde \\varepsilon^i \\tilde \\varepsilon^j$.\nLet $\\mathcal L_{g}:G\\rightarrow G$ denote the left-multiplication map, $\\mathcal L_{g}(h) = gh$, and similarly define $\\mathcal R_{g}$4; observe that these maps are diffeomorphisms from $G$ to $G$, and can therefore push and pull tensors and tensor fields from one point of $G$ to another. For instance, the orthonormal basis $(\\tilde E_i)_{i=1}^n$ can be extended to a global orthonormal frame $(E_i)_{i=1}^n$ on $G$:\n\\[ E_i(g) \\coloneqq \\left(\\mathcal L_{g}\\right)_* \\tilde E_i. \\] Such a global orthonormal frame on $G$ also serves as a “basis” of the space (or more rigorously, a generating set of the $C^\\infty(G)$-module) of vector fields on $G$, since any vector field $V\\in\\mathfrak X(G)$ can be uniquely expressed as $V = v^i E_i$ with $v^i \\in C^\\infty(G)$. Vector fields of the form $\\text{c}^i E_i$ (where $\\text{c}^i$ are constants) are precisely the left-invariant vector fields of $G$.\nOne can similarly extend $(\\tilde \\varepsilon^i)_{i=1}^n$ to a left-invariant global coframe $(\\varepsilon^i)_{i=1}^n$ on $G$:\n\\[ \\varepsilon^i(g) \\coloneqq \\left(\\mathcal L_{g^{-1}}\\right)^* \\tilde \\varepsilon^i. \\] Immediately, we have the following property at all $g\\in G$:\n\\[ \\begin{align} \\varepsilon^i(E_j)(g) \u0026= \\Big[\\left(\\mathcal L_{g^{-1}}\\right)^* \\tilde \\varepsilon^i\\Big]\\Big(\\left(\\mathcal L_{g}\\right)_* \\tilde E_j \\Big) \\\\ \u0026= \\tilde \\varepsilon^i\\Big(\\left(\\mathcal L_{g^{-1}}\\right)_*\\left(\\mathcal L_{g}\\right)_* \\tilde E_j \\Big) =\\tilde \\varepsilon^i\\Big(\\tilde E_j\\Big) = \\delta_{ij}. \\end{align} \\] In the following, we assume that $(E_i)_{i=1}^n$ and $(\\varepsilon^i)_{i=1}^n$ are left-invariant. Analogous arguments follow for the right-invariant case. The only caveat is that the left-invariant and right-invariant metrics and volume forms may or may not turn out to be the same, as discussed in my previous post .\nWhat is Left-Invariance? Let’s scrutinize the left-invariance of $E_i$. Pretend that the left-multiplication map $L_g$ sends $G$ to another copy of itself, denoted as $G^💧$!\nIf we view $E_i$ as a vector field on $G$, its pushforward on $G^💧$, $(\\mathcal L_{g})_*E_i$, should act on a function $f\\in C^\\infty (G^💧)$ by mimicking whatever $E_i$ would have done in its place. Given some point $h\\in G$, with $\\mathcal L_g(h) = gh \\in G^💧$, we have\n\\[ \\begin{align} \\big[(\\mathcal L_{g})_*E_i \\,f\\big](gh) \u0026= \\big[E_i(f \\circ \\mathcal L_g)\\big](h) \\end{align} \\] Moreover,\n\\[ \\begin{align} \\big[E_i(f \\circ \\mathcal L_g)\\big](h) \u0026= \\frac{d}{dt}[f\\circ \\mathcal L_g]\\big(h \\exp(t\\tilde E_i)\\big)\\Big\\vert_{t=0}\\\\ \u0026= \\frac{d}{dt}f\\big(g h\\exp(t\\tilde E_i)\\big)\\Big\\vert_{t=0}\\\\ \u0026= [E_i f](gh)\\\\ \u0026= [(E_i f)\\circ \\mathcal L_g](h). \\end{align} \\] Now let $G=G^💧$ (as we have done implicitly in the calculation above). Observe that the calculation above involved the following maps:\n\\[ \\begin{align} f: G \u0026\\rightarrow \\mathbb R\\\\ E_i f : G \u0026\\rightarrow \\mathbb R\\\\ \\end{align} \\] i.e., $f$ and its derivative. Then, we notice that we can perform either of these maps on $G^💧$ as well. That is, we do $\\mathcal L_g: G \\rightarrow G$ first, and then perform either of the above maps. This gives us two more maps:\n\\[ \\begin{align} f\\circ \\mathcal L_g: G \u0026\\rightarrow \\mathbb R\\\\ (E_i f)\\circ \\mathcal L_g : G \u0026\\rightarrow \\mathbb R\\\\ \\end{align} \\] Finally, we note that $E_i$ can act on the function $f\\circ \\mathcal L_g$, giving us yet another function\n$$E_i(f\\circ \\mathcal L_g): G \\rightarrow \\mathbb R.$$ That $E_i(f\\circ \\mathcal L_g)$ and $E_i(f)\\circ \\mathcal L_g$ are the same function, is what we showed, which is not true unless $E_i$ is left-invariant. The fact that $\\mathcal L_g$ moves in and out of the differentiation is what “left-invariant” refers to (also see the commutative square here ). An analogous property is exhibited by $\\varepsilon^i$.\nLeft-Invariance of Geometric Structure Now consider what should happen if we define the Riemannian metric of $G$ as\n\\[ \\langle \\hspace{1pt}\\cdot\\hspace{2pt},\\hspace{1pt}\\cdot\\hspace{2pt}\\rangle = \\textrm{k}_{ij}\\hspace{1pt}\\varepsilon^i \\varepsilon^j \\] where $\\textrm{k}_{ij}$ are constants that should be thought of as a “weighting matrix”. Clearly, this metric should inherit the left-invariance properties of $(\\varepsilon^i)_{i=1}^n$. Indeed, we can use similar arguments as before to show that if $\\mathbf v, \\mathbf w \\in T_gG$, then\n$$ \\langle \\mathbf v,\\mathbf w\\rangle_g = \\langle (\\mathcal L_h)_{\\ast_g}\\mathbf v, (\\mathcal L_h) _{\\ast_g}\\mathbf w\\rangle _{hg} $$To see this, we evaluate the right hand side:\n\\[ \\begin{align*} \\langle (\\mathcal L_h)_{\\ast_g}\\mathbf v, (\\mathcal L_h) _{\\ast_g}\\mathbf w\\rangle _{hg} \u0026= \\textrm{k}_{ij}\\hspace{1pt}\\varepsilon^i_{hg} \\varepsilon^j_{hg} \\big((\\mathcal L_h)_{\\ast_g}\\mathbf v, (\\mathcal L_h) _{\\ast_g}\\mathbf w\\big)\\\\ \u0026= \\textrm{k}_{ij}\\hspace{1pt}\\varepsilon^i_{hg} \\big((\\mathcal L_h)_{\\ast_g}\\mathbf v\\big) \\varepsilon^j_{hg} \\big((\\mathcal L_h) _{\\ast_g}\\mathbf w\\big)\\\\ \\end{align*} \\] Then, use the duality between pushforwards and pullbacks to show that\n\\[ \\begin{align*} \\varepsilon^i_{hg} \\big((\\mathcal L_h)_{\\ast_g}\\mathbf v\\big) \u0026= \\big[(\\mathcal L_h)^\\ast_{_{hg}}\\varepsilon^i_{hg}\\big] \\big(\\mathbf v\\big) \\\\ \u0026=\\big[(\\mathcal L_h)^\\ast_{_{hg}} (\\mathcal L_{h^{-1}})^\\ast_{_g} \\varepsilon^i_{g}\\big] \\big(\\mathbf v\\big) \\\\ \u0026= \\varepsilon^i_g \\big(\\mathbf v\\big). \\end{align*} \\] The notation may seem cumbersome, but given how light-yet-powerful the notation of differential geometry is already, it’s not too bad (depending on what you intend to do with it). Drawing a diagram involving the points $g$ and $hg$, as well as the maps $\\mathcal L_g$ and $\\mathcal L_h$, can help in understanding the above calculation.\nA left-invariant volume form can be defined as $\\omega = \\varepsilon^1 \\wedge \\varepsilon^2 \\wedge \\cdots \\wedge \\varepsilon^n$, and has analogous invariance properties.\nNote that we could also have chosen to work with a coordinate coframe on an open set $U\\subseteq G$ containing $g$ in order to express $\\langle \\cdot, \\cdot \\rangle$. In this case, we would need to compute the metric tensor coefficients since they will no longer be trivial. Evidently, if we work with coordinates on a Lie group, then we are not taking advantage of the group structure. In the next post , I compute the metric tensor coefficients for the sphere (which is not a Lie group!) in spherical polar coordinates. Some important comments about the Levi-Civita connection are made as well.\nFormally, such an object is an element of $\\Gamma (T^*M \\otimes T^*M)$, i.e., it is ‘a smooth section of the 2nd tensor power of the cotangent bundle of $M$’. There is a sense in which covariant $k$-tensor fields are elements of the dual space corresponding to the module of contravariant $k$-tensor fields on $M$, where instead of a field of scalars, we have a ring of $C^\\infty(M)$ functions. With this linear algebraic perspective, we recognize that a vector and its dual should combine to give a scalar. ↩︎\nThe space of differential $k$-forms on $M$ is denoted by $\\Omega^k(M)$, which is also the space $\\Gamma (\\Lambda^k T^* M)$ of smooth sections of the $k^{th}$ exterior power of the cotangent bundle, $T^{\\ast}M$. Note that $\\Omega^k(M)$ is a subspace (specifically, a submodule) of the space of all the covariant $k$-tensor fields on $M$ (viewed as a $C^\\infty(M)$-module). ↩︎\nWe conflate $\\mathfrak g$ with $T_e G$ for convenience. (the latter does not come with a Lie bracket). ↩︎\nBeware: In the first half of this post, $g$ denoted the Riemannian metric, whereas in the latter half, it represents an arbitrary element of $G$. ↩︎\n",
-  "wordCount" : "3681",
+  "articleBody": "A Lie group $G$ is a group that is also a (continuous, differentiable) topological space. An example to keep in mind is $G=\\mathbb R^n$ which is a group under vector addition and has well-defined notions of continuity and differentiation. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow $G$ with additional structure so that it is not merely a manifold, but a Riemannian manifold. Luckily for us, we only need to define an inner product for the Lie algebra, after which there is a natural definition of length and volume that can be made for the entire group manifold. I say that the resulting choice of volume (called the Haar measure) is natural because it is compatible with the group structure of $G$ as well as its differential structure as a manifold. This can be compared to how the standard notion of volume for $\\mathbb R^n$, the Lebesgue measure, is compatible with vector addition; we have for a (measurable) set $A\\subseteq \\mathbb R^n$ and for every $\\mathbf x_0 \\in \\mathbb R^n$,\n\\[ \\textrm{Vol}(A) = \\textrm{Vol}(\\mathbf x_0 + A), \\] where \\[ \\mathbf x_0 + A \\coloneqq \\lbrace\\, \\mathbf x_0 + \\mathbf x \\ \\vert\\ \\mathbf x \\in A \\,\\rbrace. \\] Thus begins our journey into making sense of this compatibility in the general context of a Lie group. If you are seeking a more application-oriented approach and/or aren’t all that interested in this sort of abstraction, this book has all the formulae worked out, and my previous post introduces the idea of invariant metrics and measures on Lie groups. Note that I will be using the Einstein summation convention throughout.\nLengths and Volumes ✨ Let $M$ be an $n$-dimensional smooth manifold. A covariant $2$-tensor field on $M$ is a bilinear map that takes $2$ smooth vector fields as its arguments and produces a smooth $C^\\infty(M)$ function.1 A Riemannian metric is a covariant $2$-tensor field that is symmetric:\n\\[ \\begin{align} g(\\mathbf{v}_1, \\mathbf{v}_2) \u0026= g(\\mathbf{v}_2, \\mathbf{v}_1) \\in C^\\infty(M), \\end{align} \\] and positive-definite: \\[ \\begin{align} g(\\mathbf{v}_1, \\mathbf{v}_1)(p) \u003e 0 \u0026\\quad \\Leftrightarrow \\quad \\mathbf{v}_1(p) \\neq \\mathbf 0. \\end{align} \\] where $\\mathbf{v}_1, \\mathbf{v}_2 \\in \\mathfrak X(M)$ are smooth vector fields on $M$. At some point $p\\in M$, the number $g(\\mathbf{v}_1, \\mathbf{v}_2)(p)$ is interpreted as the inner product between the tangent vectors $\\mathbf{v}_1(p)$ and $\\mathbf{v}_2(p)$, often written as $\\langle \\mathbf v_1, \\mathbf v_2 \\rangle_p \\coloneqq g(\\mathbf{v}_1, \\mathbf{v}_2)(p)$. With such a mathematical structure imposed on $M$, we call $(M,g)$ a Riemannian manifold.\nWhile a metric tensor is a symmetric covariant $2$-tensor field, a volume form $\\omega$ is an alternating covariant $n$-tensor field, also called as a differential $n$-form. By combining its alternating property with its linearity, $\\omega$ can be shown to be antisymmetric in its arguments. That is, if $\\mathbf{v}_1,\\mathbf{v}_2, \\cdots, \\mathbf{v}_n \\in \\mathfrak X(M)$ are smooth vector fields, then\n$$ \\omega(\\mathbf{v}_1, \\mathbf{v}_2, \\cdots, \\mathbf{v}_n) = -\\omega(\\mathbf{v}_2, \\mathbf{v}_1, \\cdots, \\mathbf{v}_n) = \\nu \\in C^\\infty(M) $$The function $\\nu$ that is spit out by $\\omega$ (after it eats $n$ vector fields) assigns the volume $\\nu(p)\\in \\mathbb R$ to the parallelopiped spanned by the vectors $\\mathbf{v}_1(p), \\mathbf{v}_2(p), \\cdots, \\mathbf{v}_n(p)\\in T_pM$. Thus, $\\omega$ is sort of like a ‘volume meter’ affixed to each point of $M$. It is the authority on what counts as a positive volume, what counts as a small or a large volume, and so on. Its antisymmetry can be compared with the fact that $\\int_a^b f(x) dx= -\\int_b^a f(x) dx$.\nEither of these maps can be written as a tensor in local coordinates on $U\\subseteq M$, e.g., $g=g_{ij}dx^i \\otimes dx^j$, where the Einstein summation convention is used and $g_{ij}\\in C^\\infty (U)$. Since the standard tensor notation doesn’t reflect the symmetry/antisymmetry of the tensors, one typically drops it in favor of notation that does:\n\\[ \\begin{align} g \u0026= g_{i_1 i_2}dx^{i_1} dx^{i_2}\\\\ \\omega \u0026= \\omega_{i_1 i_2 \\cdots i_n} dx^{i_1} \\wedge dx^{i_2} \\wedge \\cdots \\wedge dx^{i_n} \\end{align} \\] This helps us remember that the $dx^{i_1}$ and $dx^{i_2}$ of $g$ can be swapped without consequence, whereas swapping the $dx^{i_1}$ and $dx^{i_k}$ of $\\omega$ may or may not incur a sign-change depending on the parity of the permutation.\nHere, $dx^i dx^j = \\textrm{Sym}(dx^i \\otimes dx^j) \\coloneqq \\frac{1}{2}(dx^i \\otimes dx^j + dx^j \\otimes dx^i)$ denotes the symmetric product of tensors $-$ it is defined in a way that forces the resulting tensor to be symmetric in its arguments. Similarly, '$\\wedge$' denotes the alternating (or wedge, or exterior) product of tensors, thereby capturing the antisymmetry of a differential form. With this notation, observe that if $\\mathbf{v} = v^k \\frac{\\partial}{\\partial x^k}$ and $\\mathbf{w} = w^l \\frac{\\partial}{\\partial x^l}$ are vector fields on $U$, where $(\\frac{\\partial}{\\partial x^i})_i$ is the dual basis of $(dx^i)_{i}$, then\n\\[ \\begin{align} g(\\mathbf{v},\\mathbf{w}) \u0026= g_{ij} dx^i dx^j \\left(v^k \\frac{\\partial}{\\partial x^k}, w^l \\frac{\\partial}{\\partial x^l}\\right) \\\\ \u0026= g_{ij}v^k w^l \\ \\left[dx^i dx^j \\left(\\frac{\\partial}{\\partial x^k}, \\frac{\\partial}{\\partial x^l}\\right)\\right] \\\\ \u0026= g_{ij} v^k w^l \\delta^i_k \\delta^j_l \\\\ \u0026= g_{ij} v^i w^j. \\end{align} \\] Since it is a (pointwise) sum of (pointwise) products of $C^\\infty(U)$ functions, $g_{ij} v^i w^j\\in C^\\infty(U)$. The metric tensor coefficients $(g_{ij})_{i,j=1}^n$ play a role similar to that of a weighting matrix $W \\in \\mathbb R^{n \\times n}$ that is introduced when defining a non-standard inner product in $\\mathbb R^n$, as $\\langle \\mathbf{v}, \\mathbf{w}\\rangle \\coloneqq \\mathbf{v}^\\top W \\mathbf{w}$.\nFrames ✨ In the above expressions, we used a frame (a system of vector fields) that arises from a coordinate chart. However, there may arise situations where we prefer to work with a frame that is not only not induced by a coordinate chart, but also cannot be induced by a coordinate chart. The frame of left-invariant vector fields on a (non-Abelian) Lie group is a prime example of this.\nA local frame in an open set $U$ of $M$ is a set of tangent vector fields in $\\mathfrak X(U)$, enumerated as $(E_i)_{i=1}^n$, such that $(E_i(p))_{i=1}^{n}$ is a basis of $T_p M$ for all $p\\in U\\subseteq M$. A local frame is orthonormal if $g(E_i, E_j) = \\delta_{ij}$, where $\\delta_{ij}$ is the Kronecker delta considered as a constant-valued $C^\\infty(U)$ function. A global frame is one that is defined on all of $M$, with $U=M$.\nA frame is said to be oriented once we order it and decree that this ordering – as well as even permutations of it – will be considered as being 'positively oriented'. In high-school geometry, we learn that the $\\textrm x - \\textrm y - \\textrm z$ basis is positively oriented by convention. In three dimensions, cyclic permutations like \\[ \\textrm x - \\textrm y - \\textrm z \\quad \\mapsto \\quad \\textrm y - \\textrm z - \\textrm x\\] are precisely the even-parity permutations, which is why $\\textrm y - \\textrm z - \\textrm x$ is considered to be positively oriented too. The dual coframe to $(E_i)_{i=1}^n$ is the collection of cotangent (or covariant) vector fields $(\\varepsilon^i)_{i=1}^n$, such that $\\varepsilon^i(E_j) = \\delta^i_{j}$. These cotangent vector fields form a basis for differential $1$-forms. We can take their tensor products to obtain a basis for covariant $k$-tensor fields:\n\\[ \\begin{align} \\lbrace \\varepsilon^{i_1} \\otimes \\varepsilon^{i_2} \\otimes \\cdots \\otimes \\varepsilon^{i_k}\\ \\vert\\ 1\\leq i_1, i_2, \\cdots, i_k \\leq n \\rbrace \\end{align} \\] or their exterior/wedge products to obtain a basis for the space of differential $k$-forms:\n\\[ \\begin{align} \\lbrace \\varepsilon^{i_1} \\wedge \\varepsilon^{i_2} \\wedge \\cdots \\wedge \\varepsilon^{i_k}\\ \\vert\\ 1\\leq i_1 \u003c i_2 \u003c \\cdots \u003c i_k \\leq n \\rbrace \\end{align} \\] Observe that covariant $k$-tensor fields are a more general class of objects than differential $k$-forms, since the latter have the additional, special property of being alternating. This fact is reflected in the dimensions of their bases (notice the range of the indices in either case). Despite this important distinction, $k$-forms are sometimes simply called '$k$-covectors'; a more precise term would be alternating $k$-covectors. Orthonormal Frames In the coordinate coframe $(dx^i)_{i=1}^n$, we expressed the metric tensor as $g = g_{ij}dx^i dx^j$. Let’s now try to express it in a local coframe $(\\varepsilon^i)_{i=1}^n$ on $U \\subseteq M$ that is dual to an orthonormal one:\n\\[ \\begin{align} g = g_{ij}dx^i dx^j = \\tilde g_{ij} \\varepsilon^i \\varepsilon^j \\end{align} \\] We have then, that\n\\[ \\begin{align} \\delta_{kl} = g(E_k, E_l) \u0026= \\tilde g_{ij} {\\varepsilon}^i {\\varepsilon}^j \\left(E_k, E_l\\right) \\\\ \u0026= \\tilde g_{ij} {\\varepsilon}^i \\left(E_k\\right) {\\varepsilon}^j \\left(E_l\\right) \\\\ \u0026= \\tilde g_{ij} \\delta^i_k \\delta^j_l = \\tilde g_{kl}. \\end{align} \\] This means that the metric tensor, when expressed in a coframe dual to an orthonormal one, has the trivial representation: $g = \\delta_{ij} \\varepsilon^i \\varepsilon^j$. By writing out the summation explicitly, this takes a more familiar form:\n$$ g = (\\varepsilon^1)^2 + (\\varepsilon^2)^2 + \\cdots + (\\varepsilon^n)^2. $$Given a local orthonormal frame of vector fields $(E_i)_{i=1}^n$ whose dual coframe is $(\\varepsilon^i)_{i=1}^n$, the unique (up to choice of orientation) Riemannian volume form $\\omega_g$ is given by\n\\[ \\begin{align} \\omega_g = \\varepsilon^1 \\wedge \\varepsilon^2 \\wedge \\cdots \\wedge \\varepsilon^n \\end{align} \\] so that $\\omega(E_1, E_2, \\cdots, E_n) = 1$. The above statements will look identical in any of the local orthonormal frames of $M$.\nCoordinate Frames The allure of orthonormal frames is that $g$ and $\\omega_g$ can be represented quite succinctly in them. However, the existence of an orthonormal frame that arises as the coordinate frame of a chart is a very rare occasion: such a frame only exists when the Riemannian manifold $(M, g)$ is locally flat. If we would rather work with a frame that arises from coordinates, then we must resort to computing the components of a non-flat metric tensor (one that is not simply the Kronecker delta). Also see my post on the non-flatness of the sphere.\nLet $\\frac{\\partial}{\\partial x^i}\\Big\\vert_{q}$ be the usual coordinate-wise partial derivative operators in $\\mathbb R^n$, $q \\coloneqq (q_1, q_2, \\dots, q_n)$, and $q\\in V \\subseteq \\mathbb R^n$. Given a smooth function $f\\in C^\\infty(V)$, the partial derivative operators of $\\mathbb R^n$ operate on $f$ as follows:\n$$ \\begin{align*} \\frac{\\partial}{\\partial x^2}\\bigg\\vert_{q} f = \\lim_{h\\rightarrow 0} \\frac{f(q_1, q_2+h, \\dots, q_n) - f(q_1, q_2, \\dots, q_n)}{h} \\end{align*} $$Recalling that the job of a vector field is to map a smooth function to a real number at every point (in a smooth manner), the following object is in fact a vector field on $V$: $$\\frac{\\partial}{\\partial x^i}\\bigg\\vert_{(\\ \\cdot\\ )}:V \\rightarrow TV.$$ Thus, $\\left\\lbrace\\frac{\\partial}{\\partial x^i}\\big\\vert_{(\\ \\cdot\\ )}\\right\\rbrace_{i=1}^n$ is a set of vector fields on $V$, and may be visualized as a “fisherman’s net” spread across $V$.\nUltimately, we want a coordinate frame on a subset $U$ of $M$, rather than on $V$, which is in $\\mathbb R^n$. Let $\\varphi:U \\rightarrow V$ be a smooth chart containing some point $p$ of $M$. Its differential $(\\varphi_*)_p$ is a vector space isomorphism (i.e., an invertible linear map) between $T_p U$ and $T_q V$. The pushforward of the “partial derivative vector fields” of $V$ under $\\varphi^{-1}$ gives us a coordinate frame on $U$. That is, $\\varphi^{-1}$ maps the fisherman’s net on $V$ to one on $U$. By an abuse of notation, I and many others use $\\left(\\frac{\\partial}{\\partial x^i}\\big\\vert_{(\\ \\cdot\\ )}\\right)_{i=1}^n$ to refer to either frame; the subscript, the function being operated on, and/or the context will make it clear which frame is being used. This means that if $\\tilde f\\in C^\\infty (U)$, then we write\n\\[ \\begin{align} \\frac{\\partial}{\\partial x^i}\\Big\\vert_{p} \\tilde f \u0026= \\left((\\varphi_*^{-1})_{\\varphi(p)} \\frac{\\partial}{\\partial x^i}\\Big\\vert_{\\varphi(p)}\\right) \\tilde f\\\\ \u0026= \\frac{\\partial}{\\partial x^i}\\Big\\vert_{\\varphi(p)} \\tilde f \\circ \\varphi^{-1} = \\frac{\\partial}{\\partial x^i}\\Big\\vert_{\\varphi(p)} (\\varphi^{-1 *} \\tilde f). \\end{align} \\] where $\\varphi^{-1 *} \\tilde f$ is called the pullback of $\\tilde f$ under $\\varphi^{-1}$; it pulls the domain of $\\tilde f$ back to $V$.\nOrthonormal Coordinate Frames I reiterate that there are Riemannian manifolds where such a coordinate frame couldn’t possibly be orthonormal at all $p\\in U$. Theorem 13.14 of Lee’s Introduction to Smooth Manifolds says that this is only possible when $U$ is flat, i.e., $M$ is locally flat.\nPullbacks ✨ Let $f:M \\rightarrow N$ be a diffeomorphism between manifolds (though it is possible to generalize the forthcoming discussion to other kinds of smooth maps).\nRecall that tangent and cotangent vectors are dual to each other, and so are their $k^{th}$ exterior powers: alternating $k$-vector fields and differential $k$-forms. Whenever we have a morphism for an object going one way, we expect a dual morphism for the corresponding dual object going the other way. Using this intuition, we deduce that if $f_{\\ast}: TM \\rightarrow TN$ allows us to push forward vector fields, there must be a dual morphism $f^{\\ast}: T^{\\ast} N \\rightarrow T^{\\ast} M$ that allows us to pull back covector fields. Similarly, $f^{\\ast}: \\Omega^k(N) \\rightarrow \\Omega^k(M)$2 pulls back differential forms from $N$ to $M$ (we use the same notation for either map, $f^{\\ast}$). In particular, metrics and volume forms on $N$ can be pulled back to define metrics and volume forms on $M$.\nThe covariant tensor field thus obtained on $M$ is called as the pullback of the covariant tensor field on $N$ under $f$. For example, consider $M=S^2$ to be the unit $2$-sphere and $f$ to be its usual embedding into $N=\\mathbb R^3$. Then, the pullback of the Euclidean (‘dot product’) metric $\\bar g$ of $\\mathbb R^3$ under $f$, $f^{\\ast} \\bar g$, is called the round metric, and it is a bonafide Riemannian metric for $S^2$ (I compute its components in the next post). When the Euclidean metric is pulled back onto a submanifold $M\\subseteq \\mathbb R^3$ in this manner, the pullback metric is called the induced metric or the first fundamental form of $M$. More generally, we can pull back covariant tensor fields from arbitrary manifolds, as long as we have a smooth map onto it.\nThe pullback of a differential form is defined such that it must be in concordance with the pushforwards of vector fields. Specifically, if $\\omega \\in \\Omega^k(N)$ is a differential $k$-form and $\\mathbf{v}_1, \\mathbf{v}_2, \\cdots, \\mathbf{v}_k \\in \\mathfrak X(M)$, then\n\\[ \\begin{align} (f^*\\omega)(\\mathbf{v}_1, \\mathbf{v}_2, \\cdots, \\mathbf{v}_k) = \\omega(f_*\\mathbf{v}_1, f_*\\mathbf{v}_2, \\cdots, f_*\\mathbf{v}_k). \\end{align} \\] I like to read this as: $f^{\\ast}\\omega$ eats vector fields on $M$ by imitating how $\\omega$ might eat the corresponding pushforward vector fields on $N$. Thus, $f^{\\ast}\\omega$ is a differential $k$-form on $M$; the domain of $\\omega$ has been pulled back by $f^{\\ast}$.\nLie Groups ✨ The tangent space at the identity of a Lie group $G$ can be given one of infinitely many possible inner products. However, there is a unique way to extend this inner product to a Riemannian metric by requiring that it be compatible with the group structure of $G$ (and as a consequence, compatible with the differential structure of $G$ as a manifold). For the same reason, there is also a unique choice of volume form (or equivalently, measure) with respect to which one can define the integral. This will be called the Haar integral, and it specializes to the Lebesgue integral when $G=\\mathbb R^n$. Yet another useful property of Lie groups is that there is a way to construct global orthonormal frames for it: we choose an orthonormal basis of $T_e G$ and extend it to a set of left/right-invariant vector fields. Even among Lie groups, orthonormal coordinate frames are a rare occurrence; if $G$ is non-Abelian, then such an orthonormal frame could not possibly come from a coordinate system (also see this). Nevertheless, the fact that a global orthonormal frame exists is already quite a special property.\nLeft-Invariant Vector Fields Let $G$ be a Lie group, $e\\in G$ its identity element, and $\\mathfrak g$ its Lie algebra.3 Consider an inner product on $\\mathfrak g$, $\\langle \\cdot, \\cdot \\rangle_e$, and use the Gram-Schmidt process to construct an orthonormal basis for $\\mathfrak g$. Denote one such orthonormal basis by $(\\tilde E_i)_{i=1}^n$, where $\\tilde E_i \\in \\mathfrak g$ and $\\langle \\tilde E_i, \\tilde E_j \\rangle_e = \\delta_{ij}$. Its corresponding dual basis is denoted as $(\\tilde \\varepsilon^i)_{i=1}^n$, where $\\tilde \\varepsilon^i \\in \\mathfrak g^*$. We can then express $\\langle \\cdot, \\cdot \\rangle_e$ by the tensor $\\delta_{ij} \\tilde \\varepsilon^i \\tilde \\varepsilon^j$.\nLet $\\mathcal L_{g}:G\\rightarrow G$ denote the left-multiplication map, $\\mathcal L_{g}(h) = gh$, and similarly define $\\mathcal R_{g}$4; observe that these maps are diffeomorphisms from $G$ to $G$, and can therefore push and pull tensors and tensor fields from one point of $G$ to another. For instance, the orthonormal basis $(\\tilde E_i)_{i=1}^n$ can be extended to a global orthonormal frame $(E_i)_{i=1}^n$ on $G$:\n\\[ E_i(g) \\coloneqq \\left(\\mathcal L_{g}\\right)_* \\tilde E_i. \\] Such a global orthonormal frame on $G$ also serves as a “basis” of the space (or more rigorously, a generating set of the $C^\\infty(G)$-module) of vector fields on $G$, since any vector field $V\\in\\mathfrak X(G)$ can be uniquely expressed as $V = v^i E_i$ with $v^i \\in C^\\infty(G)$. Vector fields of the form $\\text{c}^i E_i$ (where $\\text{c}^i$ are constants) are precisely the left-invariant vector fields of $G$.\nOne can similarly extend $(\\tilde \\varepsilon^i)_{i=1}^n$ to a left-invariant global coframe $(\\varepsilon^i)_{i=1}^n$ on $G$:\n\\[ \\varepsilon^i(g) \\coloneqq \\left(\\mathcal L_{g^{-1}}\\right)^* \\tilde \\varepsilon^i. \\] Immediately, we have the following property at all $g\\in G$:\n\\[ \\begin{align} \\varepsilon^i(E_j)(g) \u0026= \\Big[\\left(\\mathcal L_{g^{-1}}\\right)^* \\tilde \\varepsilon^i\\Big]\\Big(\\left(\\mathcal L_{g}\\right)_* \\tilde E_j \\Big) \\\\ \u0026= \\tilde \\varepsilon^i\\Big(\\left(\\mathcal L_{g^{-1}}\\right)_*\\left(\\mathcal L_{g}\\right)_* \\tilde E_j \\Big) =\\tilde \\varepsilon^i\\Big(\\tilde E_j\\Big) = \\delta_{ij}. \\end{align} \\] In the following, we assume that $(E_i)_{i=1}^n$ and $(\\varepsilon^i)_{i=1}^n$ are left-invariant. Analogous arguments follow for the right-invariant case. The only caveat is that the left-invariant and right-invariant metrics and volume forms may or may not turn out to be the same, as discussed in my previous post.\nWhat is Left-Invariance? Let’s scrutinize the left-invariance of $E_i$. Pretend that the left-multiplication map $L_g$ sends $G$ to another copy of itself, denoted as $G^💧$!\nIf we view $E_i$ as a vector field on $G$, its pushforward on $G^💧$, $(\\mathcal L_{g})_*E_i$, should act on a function $f\\in C^\\infty (G^💧)$ by mimicking whatever $E_i$ would have done in its place. Given some point $h\\in G$, with $\\mathcal L_g(h) = gh \\in G^💧$, we have\n\\[ \\begin{align} \\big[(\\mathcal L_{g})_*E_i \\,f\\big](gh) \u0026= \\big[E_i(f \\circ \\mathcal L_g)\\big](h) \\end{align} \\] Moreover,\n\\[ \\begin{align} \\big[E_i(f \\circ \\mathcal L_g)\\big](h) \u0026= \\frac{d}{dt}[f\\circ \\mathcal L_g]\\big(h \\exp(t\\tilde E_i)\\big)\\Big\\vert_{t=0}\\\\ \u0026= \\frac{d}{dt}f\\big(g h\\exp(t\\tilde E_i)\\big)\\Big\\vert_{t=0}\\\\ \u0026= [E_i f](gh)\\\\ \u0026= [(E_i f)\\circ \\mathcal L_g](h). \\end{align} \\] Now let $G=G^💧$ (as we have done implicitly in the calculation above). Observe that the calculation above involved the following maps:\n\\[ \\begin{align} f: G \u0026\\rightarrow \\mathbb R\\\\ E_i f : G \u0026\\rightarrow \\mathbb R\\\\ \\end{align} \\] i.e., $f$ and its derivative. Then, we notice that we can perform either of these maps on $G^💧$ as well. That is, we do $\\mathcal L_g: G \\rightarrow G$ first, and then perform either of the above maps. This gives us two more maps:\n\\[ \\begin{align} f\\circ \\mathcal L_g: G \u0026\\rightarrow \\mathbb R\\\\ (E_i f)\\circ \\mathcal L_g : G \u0026\\rightarrow \\mathbb R\\\\ \\end{align} \\] Finally, we note that $E_i$ can act on the function $f\\circ \\mathcal L_g$, giving us yet another function\n$$E_i(f\\circ \\mathcal L_g): G \\rightarrow \\mathbb R.$$ That $E_i(f\\circ \\mathcal L_g)$ and $E_i(f)\\circ \\mathcal L_g$ are the same function, is what we showed, which is not true unless $E_i$ is left-invariant. The fact that $\\mathcal L_g$ moves in and out of the differentiation is what “left-invariant” refers to (also see the commutative square here). An analogous property is exhibited by $\\varepsilon^i$.\nLeft-Invariance of Geometric Structure Now consider what should happen if we define the Riemannian metric of $G$ as\n\\[ \\langle \\hspace{1pt}\\cdot\\hspace{2pt},\\hspace{1pt}\\cdot\\hspace{2pt}\\rangle = \\textrm{k}_{ij}\\hspace{1pt}\\varepsilon^i \\varepsilon^j \\] where $\\textrm{k}_{ij}$ are constants that should be thought of as a “weighting matrix”. Clearly, this metric should inherit the left-invariance properties of $(\\varepsilon^i)_{i=1}^n$. Indeed, we can use similar arguments as before to show that if $\\mathbf v, \\mathbf w \\in T_gG$, then\n$$ \\langle \\mathbf v,\\mathbf w\\rangle_g = \\langle (\\mathcal L_h)_{\\ast_g}\\mathbf v, (\\mathcal L_h) _{\\ast_g}\\mathbf w\\rangle _{hg} $$To see this, we evaluate the right hand side:\n\\[ \\begin{align*} \\langle (\\mathcal L_h)_{\\ast_g}\\mathbf v, (\\mathcal L_h) _{\\ast_g}\\mathbf w\\rangle _{hg} \u0026= \\textrm{k}_{ij}\\hspace{1pt}\\varepsilon^i_{hg} \\varepsilon^j_{hg} \\big((\\mathcal L_h)_{\\ast_g}\\mathbf v, (\\mathcal L_h) _{\\ast_g}\\mathbf w\\big)\\\\ \u0026= \\textrm{k}_{ij}\\hspace{1pt}\\varepsilon^i_{hg} \\big((\\mathcal L_h)_{\\ast_g}\\mathbf v\\big) \\varepsilon^j_{hg} \\big((\\mathcal L_h) _{\\ast_g}\\mathbf w\\big)\\\\ \\end{align*} \\] Then, use the duality between pushforwards and pullbacks to show that\n\\[ \\begin{align*} \\varepsilon^i_{hg} \\big((\\mathcal L_h)_{\\ast_g}\\mathbf v\\big) \u0026= \\big[(\\mathcal L_h)^\\ast_{_{hg}}\\varepsilon^i_{hg}\\big] \\big(\\mathbf v\\big) \\\\ \u0026=\\big[(\\mathcal L_h)^\\ast_{_{hg}} (\\mathcal L_{h^{-1}})^\\ast_{_g} \\varepsilon^i_{g}\\big] \\big(\\mathbf v\\big) \\\\ \u0026= \\varepsilon^i_g \\big(\\mathbf v\\big). \\end{align*} \\] The notation may seem cumbersome, but given how light-yet-powerful the notation of differential geometry is already, it’s not too bad (depending on what you intend to do with it). Drawing a diagram involving the points $g$ and $hg$, as well as the maps $\\mathcal L_g$ and $\\mathcal L_h$, can help in understanding the above calculation.\nA left-invariant volume form can be defined as $\\omega = \\varepsilon^1 \\wedge \\varepsilon^2 \\wedge \\cdots \\wedge \\varepsilon^n$, and has analogous invariance properties.\nNote that we could also have chosen to work with a coordinate coframe on an open set $U\\subseteq G$ containing $g$ in order to express $\\langle \\cdot, \\cdot \\rangle$. In this case, we would need to compute the metric tensor coefficients since they will no longer be trivial. Evidently, if we work with coordinates on a Lie group, then we are not taking advantage of the group structure. In the next post, I compute the metric tensor coefficients for the sphere (which is not a Lie group!) in spherical polar coordinates. Some important comments about the Levi-Civita connection are made as well.\nFormally, such an object is an element of $\\Gamma (T^*M \\otimes T^*M)$, i.e., it is ‘a smooth section of the 2nd tensor power of the cotangent bundle of $M$’. There is a sense in which covariant $k$-tensor fields are elements of the dual space corresponding to the module of contravariant $k$-tensor fields on $M$, where instead of a field of scalars, we have a ring of $C^\\infty(M)$ functions. With this linear algebraic perspective, we recognize that a vector and its dual should combine to give a scalar. ↩︎\nThe space of differential $k$-forms on $M$ is denoted by $\\Omega^k(M)$, which is also the space $\\Gamma (\\Lambda^k T^* M)$ of smooth sections of the $k^{th}$ exterior power of the cotangent bundle, $T^{\\ast}M$. Note that $\\Omega^k(M)$ is a subspace (specifically, a submodule) of the space of all the covariant $k$-tensor fields on $M$ (viewed as a $C^\\infty(M)$-module). ↩︎\nWe conflate $\\mathfrak g$ with $T_e G$ for convenience. (the latter does not come with a Lie bracket). ↩︎\nBeware: In the first half of this post, $g$ denoted the Riemannian metric, whereas in the latter half, it represents an arbitrary element of $G$. ↩︎\n",
+  "wordCount" : "3674",
   "inLanguage": "en",
   "datePublished": "2024-01-30T09:53:05-05:00",
   "dateModified": "2024-01-30T09:53:05-05:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://shirazkn.github.io/posts/lie-groups_riemannian/"
+    "@id": "https://shiraz-k.com/posts/lie-groups_riemannian/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Shiraz",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://shirazkn.github.io/favicon.ico"
+      "url": "https://shiraz-k.com/favicon.ico"
     }
   }
 }
@@ -187,17 +201,17 @@
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
-            <a href="https://shirazkn.github.io/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
+            <a href="https://shiraz-k.com/" accesskey="h" title="Shiraz (Alt + H)">Shiraz</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -213,19 +227,19 @@
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
-                <a href="https://shirazkn.github.io/archives/" title="archives">
+                <a href="https://shiraz-k.com/archives/" title="archives">
                     <span>archives</span>
                 </a>
             </li>
             <li>
-                <a href="https://shirazkn.github.io/tags/" title="tags">
+                <a href="https://shiraz-k.com/tags/" title="tags">
                     <span>tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://shirazkn.github.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                <a href="https://shiraz-k.com/search/" title="search (Alt &#43; /)" accesskey=/>
                     <span>search</span>
                 </a>
             </li>
@@ -240,52 +254,52 @@
     <h1 class="post-title entry-hint-parent">
       Lie Groups as Riemannian Manifolds
     </h1>
-    <div class="post-meta"><span title='2024-01-30 09:53:05 -0500 EST'>January 30, 2024</span>
+    <div class="post-meta">
+
+<span title='2024-01-30 09:53:05 -0500 EST'>January 30, 2024</span>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> <details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#lengths-and-volumes-" aria-label="Lengths and Volumes ✨">Lengths and Volumes ✨</a></li>
-                <li>
-                    <a href="#frames-" aria-label="Frames ✨">Frames ✨</a><ul>
-                        <ul>
-                        
-                <li>
-                    <a href="#orthonormal-frames" aria-label="Orthonormal Frames">Orthonormal Frames</a></li>
-                <li>
-                    <a href="#coordinate-frames" aria-label="Coordinate Frames">Coordinate Frames</a></li>
-                <li>
-                    <a href="#orthonormal-coordinate-frames" aria-label="Orthonormal Coordinate Frames">Orthonormal Coordinate Frames</a></li></ul>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#pullbacks-" aria-label="Pullbacks ✨">Pullbacks ✨</a></li>
-                <li>
-                    <a href="#lie-groups-" aria-label="Lie Groups ✨">Lie Groups ✨</a><ul>
-                        <ul>
-                        
-                <li>
-                    <a href="#left-invariant-vector-fields" aria-label="Left-Invariant Vector Fields">Left-Invariant Vector Fields</a></li>
-                <li>
-                    <a href="#what-is-left-invariance" aria-label="What is Left-Invariance?">What is Left-Invariance?</a></li>
-                <li>
-                    <a href="#left-invariance-of-geometric-structure" aria-label="Left-Invariance of Geometric Structure">Left-Invariance of Geometric Structure</a>
-                </li>
-            </ul>
-            </ul>
+    <div class="inner"><ul>
+            <li>
+                <a href="#lengths-and-volumes-" aria-label="Lengths and Volumes ✨">Lengths and Volumes ✨</a></li>
+            <li>
+                <a href="#frames-" aria-label="Frames ✨">Frames ✨</a><ul>
+                    <ul>
+                    
+            <li>
+                <a href="#orthonormal-frames" aria-label="Orthonormal Frames">Orthonormal Frames</a></li>
+            <li>
+                <a href="#coordinate-frames" aria-label="Coordinate Frames">Coordinate Frames</a></li>
+            <li>
+                <a href="#orthonormal-coordinate-frames" aria-label="Orthonormal Coordinate Frames">Orthonormal Coordinate Frames</a></li></ul>
+                </ul>
             </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <li>
+                <a href="#pullbacks-" aria-label="Pullbacks ✨">Pullbacks ✨</a></li>
+            <li>
+                <a href="#lie-groups-" aria-label="Lie Groups ✨">Lie Groups ✨</a><ul>
+                    <ul>
+                    
+            <li>
+                <a href="#left-invariant-vector-fields" aria-label="Left-Invariant Vector Fields">Left-Invariant Vector Fields</a></li>
+            <li>
+                <a href="#what-is-left-invariance" aria-label="What is Left-Invariance?">What is Left-Invariance?</a></li>
+            <li>
+                <a href="#left-invariance-of-geometric-structure" aria-label="Left-Invariance of Geometric Structure">Left-Invariance of Geometric Structure</a>
+            </li>
+        </ul>
+        </ul>
+        </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><p>A <span class=accented>Lie group</span> $G$ is a group that is also a (continuous, differentiable) topological space. An example to keep in mind is $G=\mathbb R^n$ which is a group under vector addition and has well-defined notions of continuity and differentiation. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow $G$ with additional structure so that it is not merely a manifold, but a <span class=accented>Riemannian manifold</span>. Luckily for us, we only need to define an inner product for the Lie algebra, after which there is a natural definition of length and volume that can be made for the entire group manifold. I say that the resulting choice of volume (called the <span class=accented>Haar measure</span>) is <em>natural</em> because it is compatible with the group structure of $G$ as well as its differential structure as a manifold. This can be compared to how the standard notion of volume for $\mathbb R^n$, the Lebesgue measure, is compatible with vector addition; we have for a (measurable) set $A\subseteq \mathbb R^n$ and for every $\mathbf x_0 \in \mathbb R^n$,</p>
+  <div class="post-content md-content"><p>A <span class=accented>Lie group</span> $G$ is a group that is also a (continuous, differentiable) topological space. An example to keep in mind is $G=\mathbb R^n$ which is a group under vector addition and has well-defined notions of continuity and differentiation. To measure lengths and volumes (and relatedly, to define and integrate probability densities) we need to endow $G$ with additional structure so that it is not merely a manifold, but a <span class=accented>Riemannian manifold</span>. Luckily for us, we only need to define an inner product for the Lie algebra, after which there is a natural definition of length and volume that can be made for the entire group manifold. I say that the resulting choice of volume (called the <span class=accented>Haar measure</span>) is <em>natural</em> because it is compatible with the group structure of $G$ as well as its differential structure as a manifold. This can be compared to how the standard notion of volume for $\mathbb R^n$, the Lebesgue measure, is compatible with vector addition; we have for a (measurable) set $A\subseteq \mathbb R^n$ and for every $\mathbf x_0 \in \mathbb R^n$,</p>
 <p>
 \[
 \textrm{Vol}(A) = \textrm{Vol}(\mathbf x_0 + A),
@@ -297,19 +311,11 @@ where
 \mathbf x_0 + A \coloneqq \lbrace\, \mathbf x_0 + \mathbf x \ \vert\ \mathbf x \in A \,\rbrace.
 \]
 </p>
-<p>Thus begins our journey into making sense of this compatibility in the general context of a Lie group. If you are seeking a more application-oriented approach and/or aren&rsquo;t all that interested in this sort of abstraction, <a href="https://link.springer.com/book/10.1007/978-0-8176-4944-9" target="_blank" class="accented">
-    this book
-</a> has all the formulae worked out, and <a href="/posts/lie-groups_construction" class="accented">
-    my previous post
-</a> introduces the idea of invariant metrics and measures on Lie groups.
-Note that I will be using the <a href="https://en.wikipedia.org/wiki/Einstein_notation" target="_blank" class="accented">
-    Einstein summation
-</a> convention throughout.</p>
+<p>Thus begins our journey into making sense of this compatibility in the general context of a Lie group. If you are seeking a more application-oriented approach and/or aren&rsquo;t all that interested in this sort of abstraction, <a href="https://link.springer.com/book/10.1007/978-0-8176-4944-9" target="_blank" rel="noopener" class="accented">this book</a> has all the formulae worked out, and <a href="/posts/lie-groups_construction" class="accented">my previous post</a> introduces the idea of invariant metrics and measures on Lie groups.
+Note that I will be using the <a href="https://en.wikipedia.org/wiki/Einstein_notation" target="_blank" rel="noopener" class="accented">Einstein summation</a> convention throughout.</p>
 <h1 id="lengths-and-volumes-">Lengths and Volumes ✨<a hidden class="anchor" aria-hidden="true" href="#lengths-and-volumes-">#</a></h1>
 <p>Let $M$ be an $n$-dimensional smooth manifold.
-A covariant $2$-tensor field on $M$ is a bilinear map that takes $2$ smooth <a href="/posts/vector-fields" class="accented">
-    vector fields
-</a> as its arguments and produces a smooth $C^\infty(M)$ function.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> A <span class=accented>Riemannian metric</span> is a covariant $2$-tensor field that is symmetric:</p>
+A covariant $2$-tensor field on $M$ is a bilinear map that takes $2$ smooth <a href="/posts/vector-fields" class="accented">vector fields</a> as its arguments and produces a smooth $C^\infty(M)$ function.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> A <span class=accented>Riemannian metric</span> is a covariant $2$-tensor field that is symmetric:</p>
 <p>
 \[
     \begin{align}
@@ -332,9 +338,7 @@ That is, if $\mathbf{v}_1,\mathbf{v}_2, \cdots, \mathbf{v}_n \in \mathfrak X(M)$
 $$
 \omega(\mathbf{v}_1, \mathbf{v}_2, \cdots, \mathbf{v}_n) = -\omega(\mathbf{v}_2, \mathbf{v}_1, \cdots, \mathbf{v}_n) = \nu \in C^\infty(M)
 $$<p>The function $\nu$ that is spit out by $\omega$ (after it eats $n$ vector fields) assigns the volume $\nu(p)\in \mathbb R$ to the parallelopiped spanned by the vectors $\mathbf{v}_1(p), \mathbf{v}_2(p), \cdots, \mathbf{v}_n(p)\in T_pM$. Thus, $\omega$ is sort of like a &lsquo;volume meter&rsquo; affixed to each point of $M$. It is the authority on what counts as a positive volume, what counts as a small or a large volume, and so on. Its antisymmetry can be compared with the fact that $\int_a^b f(x) dx= -\int_b^a f(x) dx$.</p>
-<p>Either of these maps can be written as a tensor in local coordinates on $U\subseteq M$, e.g., $g=g_{ij}dx^i \otimes dx^j$, where the <a href="https://en.wikipedia.org/wiki/Einstein_notation" target="_blank" class="accented">
-    Einstein summation
-</a> convention is used and $g_{ij}\in C^\infty (U)$.
+<p>Either of these maps can be written as a tensor in local coordinates on $U\subseteq M$, e.g., $g=g_{ij}dx^i \otimes dx^j$, where the <a href="https://en.wikipedia.org/wiki/Einstein_notation" target="_blank" rel="noopener" class="accented">Einstein summation</a> convention is used and $g_{ij}\in C^\infty (U)$.
 Since the standard tensor notation doesn&rsquo;t reflect the symmetry/antisymmetry of the tensors, one typically drops it in favor of notation that does:</p>
 <p>
 \[
@@ -344,9 +348,7 @@ g &=  g_{i_1 i_2}dx^{i_1} dx^{i_2}\\
 \end{align}
 \]
 </p>
-<p>This helps us remember that the $dx^{i_1}$ and $dx^{i_2}$ of $g$ can be swapped without consequence, whereas swapping the $dx^{i_1}$ and $dx^{i_k}$ of $\omega$ may or may not incur a sign-change depending on the <a href="https://en.wikipedia.org/wiki/Parity_of_a_permutation" target="_blank" class="accented">
-    parity
-</a> of the permutation.</p>
+<p>This helps us remember that the $dx^{i_1}$ and $dx^{i_2}$ of $g$ can be swapped without consequence, whereas swapping the $dx^{i_1}$ and $dx^{i_k}$ of $\omega$ may or may not incur a sign-change depending on the <a href="https://en.wikipedia.org/wiki/Parity_of_a_permutation" target="_blank" rel="noopener" class="accented">parity</a> of the permutation.</p>
 <aside class=aside-center>
 Here, $dx^i dx^j = \textrm{Sym}(dx^i \otimes dx^j) \coloneqq \frac{1}{2}(dx^i \otimes dx^j + dx^j \otimes dx^i)$ denotes the symmetric product of tensors $-$ it is defined in a way that forces the resulting tensor to be symmetric in its arguments. Similarly, '$\wedge$' denotes the alternating (or wedge, or exterior) product of tensors, thereby capturing the antisymmetry of a differential form.
 </aside>
@@ -383,9 +385,7 @@ A frame is said to be <i>oriented</i> once we <i>order</i> it and decree that th
     \]
 </p> 
 <p>or their
-<a href="https://en.wikipedia.org/wiki/Exterior_algebra" target="_blank" class="accented">
-    exterior
-</a>/wedge products to obtain a basis for the space of differential $k$-forms:</p>
+<a href="https://en.wikipedia.org/wiki/Exterior_algebra" target="_blank" rel="noopener" class="accented">exterior</a>/wedge products to obtain a basis for the space of differential $k$-forms:</p>
 <p>
 \[
     \begin{align}
@@ -431,18 +431,14 @@ $$<p>Given a local orthonormal frame of vector fields $(E_i)_{i=1}^n$ whose dual
 <p>so that $\omega(E_1, E_2, \cdots, E_n) = 1$. The above statements will look identical in any of the local orthonormal frames of $M$.</p>
 <h3 id="coordinate-frames">Coordinate Frames<a hidden class="anchor" aria-hidden="true" href="#coordinate-frames">#</a></h3>
 <p>The allure of orthonormal frames is that $g$ and $\omega_g$ can be represented quite succinctly in them.
-However, the existence of an orthonormal frame <em>that arises as the coordinate frame of a chart</em> is a very rare occasion: such a frame only exists when the Riemannian manifold $(M, g)$ is locally flat. If we would rather work with a frame that arises from coordinates, then we must resort to computing the components of a non-flat metric tensor (one that is not simply the Kronecker delta). Also see my post on <a href="/posts/sphere" class="accented">
-    the non-flatness of the sphere
-</a>.</p>
+However, the existence of an orthonormal frame <em>that arises as the coordinate frame of a chart</em> is a very rare occasion: such a frame only exists when the Riemannian manifold $(M, g)$ is locally flat. If we would rather work with a frame that arises from coordinates, then we must resort to computing the components of a non-flat metric tensor (one that is not simply the Kronecker delta). Also see my post on <a href="/posts/sphere" class="accented">the non-flatness of the sphere</a>.</p>
 <p>Let $\frac{\partial}{\partial x^i}\Big\vert_{q}$ be the usual coordinate-wise partial derivative operators in $\mathbb R^n$, $q \coloneqq (q_1, q_2, \dots, q_n)$, and $q\in V \subseteq \mathbb R^n$.
 Given a smooth function $f\in C^\infty(V)$, the partial derivative operators of $\mathbb R^n$ operate on $f$ as follows:</p>
 $$
     \begin{align*}
 \frac{\partial}{\partial x^2}\bigg\vert_{q} f = \lim_{h\rightarrow 0} \frac{f(q_1, q_2+h, \dots, q_n) - f(q_1, q_2, \dots, q_n)}{h}
     \end{align*}
-   $$<p><a href="/posts/vector-fields" class="accented">
-    Recalling
-</a> that the job of a vector field is to map a smooth function to a real number at every point (in a smooth manner), the following object is in fact a vector field on $V$:
+   $$<p><a href="/posts/vector-fields" class="accented">Recalling</a> that the job of a vector field is to map a smooth function to a real number at every point (in a smooth manner), the following object is in fact a vector field on $V$:
 </p>
 $$\frac{\partial}{\partial x^i}\bigg\vert_{(\ \cdot\ )}:V \rightarrow TV.$$<p>
 Thus, $\left\lbrace\frac{\partial}{\partial x^i}\big\vert_{(\ \cdot\ )}\right\rbrace_{i=1}^n$ is a set of vector fields on $V$, and may be visualized as a &ldquo;fisherman&rsquo;s net&rdquo; spread across $V$.</p>
@@ -464,9 +460,7 @@ By an abuse of notation, I and many others use $\left(\frac{\partial}{\partial x
 <p>Let $f:M \rightarrow N$ be a diffeomorphism between manifolds (though it is possible to generalize the forthcoming discussion to other kinds of smooth maps).</p>
 <p>Recall that tangent and cotangent vectors are dual to each other, and so are their $k^{th}$ exterior powers: alternating $k$-vector fields and differential $k$-forms. Whenever we have a morphism for an object going one way, we expect a dual morphism for the corresponding dual object going the other way. Using this intuition, we deduce that if $f_{\ast}: TM \rightarrow TN$ allows us to push forward vector fields, there must be a dual morphism $f^{\ast}: T^{\ast} N \rightarrow T^{\ast} M$ that allows us to pull back covector fields. Similarly, $f^{\ast}: \Omega^k(N) \rightarrow \Omega^k(M)$<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> pulls back differential forms from $N$ to $M$ (we use the same notation for either map, $f^{\ast}$).   In particular, metrics and volume forms on $N$ can be pulled back to define metrics and volume forms on $M$.</p>
 <p>The covariant tensor field thus obtained on $M$ is called as the <span class=accented>pullback</span> of the covariant tensor field on $N$ under $f$.
-For example, consider $M=S^2$ to be the unit $2$-sphere and $f$ to be its usual submersion into $N=\mathbb R^3$. Then, the pullback of the Euclidean (&lsquo;dot product&rsquo;) metric $\bar g$ of $\mathbb R^3$ under $f$, $f^{\ast} \bar g$, is called the <em>round metric</em>, and it is a bonafide Riemannian metric for $S^2$ (I compute its components in <a href="/posts/sphere" class="accented">
-    the next post
-</a>). When the Euclidean metric is pulled back onto a submanifold $M\subseteq \mathbb R^3$ in this manner, the pullback metric is called the <em>induced metric</em> or the <em>first fundamental form</em> of $M$. More generally, we can pull back covariant tensor fields from arbitrary manifolds, as long as we have a smooth map onto it.</p>
+For example, consider $M=S^2$ to be the unit $2$-sphere and $f$ to be its usual embedding into $N=\mathbb R^3$. Then, the pullback of the Euclidean (&lsquo;dot product&rsquo;) metric $\bar g$ of $\mathbb R^3$ under $f$, $f^{\ast} \bar g$, is called the <em>round metric</em>, and it is a bonafide Riemannian metric for $S^2$ (I compute its components in <a href="/posts/sphere" class="accented">the next post</a>). When the Euclidean metric is pulled back onto a submanifold $M\subseteq \mathbb R^3$ in this manner, the pullback metric is called the <em>induced metric</em> or the <em>first fundamental form</em> of $M$. More generally, we can pull back covariant tensor fields from arbitrary manifolds, as long as we have a smooth map onto it.</p>
 <p>The pullback of a differential form is defined such that it must be in concordance with the pushforwards of vector fields. Specifically, if $\omega \in \Omega^k(N)$ is a differential $k$-form and $\mathbf{v}_1, \mathbf{v}_2, \cdots, \mathbf{v}_k \in \mathfrak X(M)$, then</p>
 <p>
 \[
@@ -480,9 +474,7 @@ For example, consider $M=S^2$ to be the unit $2$-sphere and $f$ to be its usual 
 <h1 id="lie-groups-">Lie Groups ✨<a hidden class="anchor" aria-hidden="true" href="#lie-groups-">#</a></h1>
 <p>The tangent space at the identity of a Lie group $G$ can be given one of infinitely many possible inner products. However, there is a unique way to extend this inner product to a Riemannian metric by requiring that it be compatible with the group structure of $G$ (and as a consequence, compatible with the differential structure of $G$ as a manifold). For the same reason, there is also a unique choice of volume form (or equivalently, measure) with respect to which one can define the integral. This will be called the <span class=accented>Haar integral</span>, and it specializes to the Lebesgue integral when $G=\mathbb R^n$.
 Yet another useful property of Lie groups is that there is a way to construct global orthonormal frames for it: we choose an orthonormal basis of $T_e G$ and extend it to a set of left/right-invariant vector fields. Even among Lie groups, orthonormal <em>coordinate</em> frames are a rare occurrence;
-if $G$ is non-Abelian, then an orthonormal frame could not possibly come from a coordinate system (also see <a href="/posts/sphere/#a-word-of-caution" class="accented">
-    this
-</a>). Nevertheless, the fact that a global orthonormal frame exists is already quite a special property.</p>
+if $G$ is non-Abelian, then such an orthonormal frame could not possibly come from a coordinate system (also see <a href="/posts/sphere/#a-word-of-caution" class="accented">this</a>). Nevertheless, the fact that a global orthonormal frame exists is already quite a special property.</p>
 <h3 id="left-invariant-vector-fields">Left-Invariant Vector Fields<a hidden class="anchor" aria-hidden="true" href="#left-invariant-vector-fields">#</a></h3>
 <p>Let $G$ be a Lie group, $e\in G$ its identity element, and $\mathfrak g$ its Lie algebra.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>
 Consider an inner product on $\mathfrak g$, $\langle \cdot, \cdot \rangle_e$, and use the Gram-Schmidt process to construct an orthonormal basis for $\mathfrak g$. Denote one such orthonormal basis by $(\tilde E_i)_{i=1}^n$, where $\tilde E_i \in \mathfrak g$ and $\langle \tilde E_i, \tilde E_j \rangle_e = \delta_{ij}$. Its corresponding dual basis is denoted as $(\tilde \varepsilon^i)_{i=1}^n$, where $\tilde \varepsilon^i \in \mathfrak g^*$.
@@ -510,9 +502,7 @@ $V = v^i E_i$ with $v^i \in C^\infty(G)$. Vector fields of the form $\text{c}^i 
   \end{align}
 \]
 </p>
-<p>In the following, we assume that $(E_i)_{i=1}^n$ and $(\varepsilon^i)_{i=1}^n$ are left-invariant. Analogous arguments follow for the right-invariant case. The only caveat is that the left-invariant and right-invariant metrics and volume forms may or may not turn out to be the same, as discussed in <a href="/posts/lie-groups_construction/#geometry" class="accented">
-    my previous post
-</a>.</p>
+<p>In the following, we assume that $(E_i)_{i=1}^n$ and $(\varepsilon^i)_{i=1}^n$ are left-invariant. Analogous arguments follow for the right-invariant case. The only caveat is that the left-invariant and right-invariant metrics and volume forms may or may not turn out to be the same, as discussed in <a href="/posts/lie-groups_construction/#geometry" class="accented">my previous post</a>.</p>
 <h3 id="what-is-left-invariance">What is Left-Invariance?<a hidden class="anchor" aria-hidden="true" href="#what-is-left-invariance">#</a></h3>
 <p>Let&rsquo;s scrutinize the left-invariance of $E_i$. Pretend that the left-multiplication map $L_g$ sends $G$ to another copy of itself, denoted as $G^💧$!</p>
 <figure class=invertible style="max-width: 80%;">
@@ -559,9 +549,7 @@ Then, we notice that we can perform either of these maps on $G^💧$ as well. Th
 </p>
 <p>Finally, we note that $E_i$ can act on the function $f\circ \mathcal L_g$, giving us yet another function</p>
 $$E_i(f\circ \mathcal L_g): G \rightarrow \mathbb R.$$<p>
-That $E_i(f\circ \mathcal L_g)$ and $E_i(f)\circ \mathcal L_g$ are the same function, is what we showed, which is not true unless $E_i$ is left-invariant. The fact that $\mathcal L_g$ moves in and out of the differentiation is what &ldquo;left-invariant&rdquo; refers to (also see the commutative square <a href="/posts/lie-groups/#invariant-vector-fields" class="accented">
-    here
-</a>).
+That $E_i(f\circ \mathcal L_g)$ and $E_i(f)\circ \mathcal L_g$ are the same function, is what we showed, which is not true unless $E_i$ is left-invariant. The fact that $\mathcal L_g$ moves in and out of the differentiation is what &ldquo;left-invariant&rdquo; refers to (also see the commutative square <a href="/posts/lie-groups/#invariant-vector-fields" class="accented">here</a>).
 An analogous property is exhibited by $\varepsilon^i$.</p>
 <h3 id="left-invariance-of-geometric-structure">Left-Invariance of Geometric Structure<a hidden class="anchor" aria-hidden="true" href="#left-invariance-of-geometric-structure">#</a></h3>
 <p>Now consider what should happen if we define the Riemannian metric of $G$ as</p>
@@ -600,16 +588,12 @@ $$<p>To see this, we evaluate the right hand side:</p>
 </p>
 <p>The notation may seem cumbersome, but given how light-yet-powerful the notation of differential geometry is already, it&rsquo;s not too bad (depending on what you intend to do with it). Drawing a diagram involving the points $g$ and $hg$, as well as the maps $\mathcal L_g$ and $\mathcal L_h$, can help in understanding the above calculation.</p>
 <p>A left-invariant volume form can be defined as $\omega = \varepsilon^1 \wedge \varepsilon^2 \wedge \cdots \wedge \varepsilon^n$, and has analogous invariance properties.</p>
-<p>Note that we could also have chosen to work with a coordinate coframe on an open set $U\subseteq G$ containing $g$ in order to express $\langle \cdot, \cdot \rangle$. In this case, we would need to compute the metric tensor coefficients since they will no longer be trivial. Evidently, if we work with coordinates on a Lie group, then we are not taking advantage of the group structure. In <a href="/posts/sphere/#the-sphere" class="accented">
-    the next post
-</a>, I compute the metric tensor coefficients for the sphere (which is not a Lie group!) in spherical polar coordinates. Some important comments about the Levi-Civita connection are made as well.</p>
+<p>Note that we could also have chosen to work with a coordinate coframe on an open set $U\subseteq G$ containing $g$ in order to express $\langle \cdot, \cdot \rangle$. In this case, we would need to compute the metric tensor coefficients since they will no longer be trivial. Evidently, if we work with coordinates on a Lie group, then we are not taking advantage of the group structure. In <a href="/posts/sphere/#the-sphere" class="accented">the next post</a>, I compute the metric tensor coefficients for the sphere (which is not a Lie group!) in spherical polar coordinates. Some important comments about the Levi-Civita connection are made as well.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>Formally, such an object is an element of $\Gamma (T^*M \otimes T^*M)$, i.e., it is &lsquo;a smooth section of the 2<sup>nd</sup> tensor power of the cotangent bundle of $M$&rsquo;. There is a sense in which covariant $k$-tensor fields are elements of the dual space corresponding to the <a href="https://en.wikipedia.org/wiki/Tensor_field#The_C%E2%88%9E%28M%29_module_explanation" target="_blank" class="accented">
-    module
-</a> of contravariant $k$-tensor fields on $M$, where instead of a <em>field</em> of scalars, we have a <em>ring</em> of $C^\infty(M)$ functions. With this linear algebraic perspective, we recognize that a vector and its dual should combine to give a scalar.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Formally, such an object is an element of $\Gamma (T^*M \otimes T^*M)$, i.e., it is &lsquo;a smooth section of the 2<sup>nd</sup> tensor power of the cotangent bundle of $M$&rsquo;. There is a sense in which covariant $k$-tensor fields are elements of the dual space corresponding to the <a href="https://en.wikipedia.org/wiki/Tensor_field#The_C%E2%88%9E%28M%29_module_explanation" target="_blank" rel="noopener" class="accented">module</a> of contravariant $k$-tensor fields on $M$, where instead of a <em>field</em> of scalars, we have a <em>ring</em> of $C^\infty(M)$ functions. With this linear algebraic perspective, we recognize that a vector and its dual should combine to give a scalar.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
 <p>The space of differential $k$-forms on $M$ is denoted by $\Omega^k(M)$, which is also the space $\Gamma (\Lambda^k T^* M)$ of smooth sections of the $k^{th}$ exterior power of the cotangent bundle, $T^{\ast}M$. Note that $\Omega^k(M)$ is a subspace (specifically, a submodule) of the space of all the covariant $k$-tensor fields on $M$ (viewed as a $C^\infty(M)$-module).&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
@@ -628,14 +612,13 @@ $$<p>To see this, we evaluate the right hand side:</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://shirazkn.github.io/tags/differential-geometry/">Differential Geometry</a></li>
+      <li><a href="https://shiraz-k.com/tags/differential-geometry/">Differential Geometry</a></li>
     </ul>
   </footer>
 <script>
 (function() {
-    var theme = localStorage.getItem("pref-theme");
-    var giscusTheme = (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches))
-        ? "noborder_dark" : "noborder_light";
+    
+    var giscusTheme = document.documentElement.dataset.theme === "dark" ? "noborder_dark" : "noborder_light";
 
     var script = document.createElement('script');
     script.src = "https://giscus.app/client.js";
@@ -661,7 +644,7 @@ $$<p>To see this, we evaluate the right hand side:</p>
     
 <footer class="footer">
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link hidden" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
@@ -670,26 +653,25 @@ $$<p>To see this, we evaluate the right hand side:</p>
 document.addEventListener('touchstart', function() {}, { passive: true });
 
 
-function syncDarkClass() {
-    const isDark = document.documentElement.dataset.theme === 'dark';
-    document.documentElement.classList.toggle('dark', isDark);
-    document.body.classList.toggle('dark', isDark);
-}
-syncDarkClass();
-
-
 
 
 document.querySelectorAll('.logo a, .post-title').forEach(el => {
-    el.innerHTML = el.textContent.trim().split(' ').map(word =>
-        `<span class="hover-word">${word.split('').map(char =>
-            `<span class="hover-letter">${char}</span>`
-        ).join('')}</span>`
-    ).join(' ');
+    const words = el.textContent.trim().split(/\s+/);
+    el.replaceChildren(...words.flatMap((word, i) => {
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'hover-word';
+        for (const char of word) {
+            const letter = document.createElement('span');
+            letter.className = 'hover-letter';
+            letter.textContent = char;
+            wordSpan.append(letter);
+        }
+        return i ? [' ', wordSpan] : [wordSpan];
+    }));
 });
 
 
-const isDark = () => document.body.classList.contains('dark');
+const isDark = () => document.documentElement.dataset.theme === 'dark';
 const hoverColorsDark = ['#ff51af', '#ff51af', '#f161ac', '#f161ac', '#db327e', '#db327e', '#3b82f6', '#38bdf8'];
 const hoverColorsLight = ['#ff51af', '#ff51af', '#e83a89', '#e83a89', '#f542a1', '#d6306f', '#3b9eff', '#00c2ff'];
 const getHoverColors = () => isDark() ? hoverColorsDark : hoverColorsLight;
@@ -757,373 +739,15 @@ if (window.matchMedia('(pointer: coarse)').matches) {
 }
 
 
-
-
-
-const CARD_CONFIG = {
-    
-    hoverLift: 4,
-    
-    maxRotation: 0.8,
-    
-    shadowOpacityLight: 0.22,      
-    shadowOpacityDark: 0.45,       
-    shadowOpacityRange: 0.12,      
-    
-    shadowBlurBase: 1.5,           
-    shadowBlurHover: 2.5,          
-    shadowYOffsetBase: 1,          
-    shadowYOffsetHover: 2,         
-    
-    glowBlur: 8,                   
-    glowSpread: 0,                 
-    glowOpacityLight: 0.22,        
-    glowOpacityDark: 0.07,         
-};
-
-
-
-const postCards = document.querySelectorAll('.post-entry');
-const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
-
-if (isTouchDevice && window.isSecureContext && 'DeviceOrientationEvent' in window) {
-    
-    
-    let gyroBaselineBeta = null;
-    let gyroBaselineGamma = null;
-    const GYRO_DRIFT_RATE_MIN = 0.0008;  
-    const GYRO_DRIFT_RATE_MAX = 0.25;   
-    let gyroRafId = null;
-    let latestBeta = null, latestGamma = null;
-    let cardGyroPermissionRequested = false;
-
-    
-    let currentRotateX = 0, currentRotateY = 0;
-    let currentTranslateX = 0, currentTranslateY = 0;
-
-    
-    let smoothedRotateX = 0, smoothedRotateY = 0;
-    let smoothedTranslateX = 0, smoothedTranslateY = 0;
-    const CARD_GYRO_SMOOTHING = 0.15;
-
-    
-    const softClamp = (value, limit) => limit * Math.tanh(value / limit);
-
-    
-    let cardFocusValues = new Array(postCards.length).fill(0);
-    let transformRafId = null;
-    let scrollProgress = 0; 
-
-    
-    function scheduleTransformUpdate() {
-        if (transformRafId) return;
-        transformRafId = requestAnimationFrame(() => {
-            applyCardTransforms();
-            transformRafId = null;
-        });
-    }
-
-    
-    function updateCardFocusValues() {
-        const viewportHeight = window.innerHeight;
-        
-        const targetY = viewportHeight * (0.15 + scrollProgress * 0.7);
-
-        for (let i = 0; i < postCards.length; i++) {
-            const rect = postCards[i].getBoundingClientRect();
-            const cardCenterY = rect.top + rect.height / 2;
-
-            
-            const distance = Math.abs(cardCenterY - targetY) / viewportHeight;
-
-            
-            const t = Math.max(0, (distance - 0.4) / 0.35);
-            const falloff = Math.max(0, 1 - t);
-            cardFocusValues[i] = falloff * falloff * (falloff * falloff); 
-        }
-    }
-
-    
-    let scrollRafId = null;
-    function handleScroll() {
-        if (scrollRafId) return;
-        scrollRafId = requestAnimationFrame(() => {
-            const scrollTop = window.scrollY || document.documentElement.scrollTop;
-            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-            scrollProgress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
-
-            updateCardFocusValues();
-            scheduleTransformUpdate();
-            scrollRafId = null;
-        });
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    
-    handleScroll();
-
-    function applyCardTransforms() {
-        
-        smoothedRotateX += (currentRotateX - smoothedRotateX) * CARD_GYRO_SMOOTHING;
-        smoothedRotateY += (currentRotateY - smoothedRotateY) * CARD_GYRO_SMOOTHING;
-        smoothedTranslateX += (currentTranslateX - smoothedTranslateX) * CARD_GYRO_SMOOTHING;
-        smoothedTranslateY += (currentTranslateY - smoothedTranslateY) * CARD_GYRO_SMOOTHING;
-
-        
-        const baseGyroX = smoothedRotateX * 0.3;
-        const baseGyroY = smoothedRotateY * 0.3;
-        const gyroRangeX = smoothedRotateX * 0.7;
-        const gyroRangeY = smoothedRotateY * 0.7;
-        
-        const baseTransX = smoothedTranslateX * 0.3;
-        const baseTransY = smoothedTranslateY * 0.3;
-        const transRangeX = smoothedTranslateX * 0.7;
-        const transRangeY = smoothedTranslateY * 0.7;
-
-        for (let i = 0; i < postCards.length; i++) {
-            const focus = cardFocusValues[i];
-            const card = postCards[i];
-
-            
-            const rotX = baseGyroX + gyroRangeX * focus;
-            const rotY = baseGyroY + gyroRangeY * focus;
-            const transX = baseTransX + transRangeX * focus;
-            const transY = baseTransY + transRangeY * focus;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateX(${transX}px) translateY(${transY}px) scale(${1 + focus * 0.02})`;
-            card.style.opacity = 0.55 + focus * 0.45;
-        }
-    }
-
-    function handleCardOrientation(event) {
-        if (event.beta === null || event.gamma === null) return;
-
-        
-        const orientation = screen.orientation?.angle ?? window.orientation ?? 0;
-        let beta, gamma;
-
-        if (orientation === 90) {
-            beta = event.gamma;
-            gamma = -event.beta;
-        } else if (orientation === -90 || orientation === 270) {
-            beta = -event.gamma;
-            gamma = event.beta;
-        } else if (orientation === 180) {
-            beta = -event.beta;
-            gamma = -event.gamma;
-        } else {
-            beta = event.beta;
-            gamma = event.gamma;
-        }
-
-        latestBeta = beta;
-        latestGamma = gamma;
-
-        if (!gyroRafId) {
-            gyroRafId = requestAnimationFrame(() => {
-                
-                if (gyroBaselineBeta === null) {
-                    gyroBaselineBeta = latestBeta;
-                    gyroBaselineGamma = latestGamma;
-                }
-
-                
-                const relativeBeta = latestBeta - gyroBaselineBeta;
-                const relativeGamma = latestGamma - gyroBaselineGamma;
-
-                
-                const maxTilt = Math.max(Math.abs(relativeBeta), Math.abs(relativeGamma));
-                const tiltFactor = Math.min(1, maxTilt / 30);  
-                
-                const driftRate = GYRO_DRIFT_RATE_MIN + tiltFactor * tiltFactor * tiltFactor * (GYRO_DRIFT_RATE_MAX - GYRO_DRIFT_RATE_MIN);
-
-                
-                gyroBaselineBeta += (latestBeta - gyroBaselineBeta) * driftRate;
-                gyroBaselineGamma += (latestGamma - gyroBaselineGamma) * driftRate;
-
-                
-                currentRotateY = softClamp(relativeGamma * 0.25, 6);
-                currentRotateX = softClamp(relativeBeta * -0.25, 6);
-
-                
-                currentTranslateX = softClamp(relativeGamma * 0.16, 4);
-                currentTranslateY = softClamp(relativeBeta * 0.14, 3);
-
-                scheduleTransformUpdate();
-                gyroRafId = null;
-            });
-        }
-    }
-
-    function enableCardGyroscope() {
-        window.addEventListener('deviceorientation', handleCardOrientation, { passive: true });
-    }
-
-    
-    applyCardTransforms();
-
-    
-    
-    postCards.forEach((card, index) => {
-        let isPressed = false;
-
-        card.addEventListener('touchstart', () => {
-            isPressed = true;
-            const focus = cardFocusValues[index];
-            card.style.transition = 'transform 0.08s ease-out, box-shadow 0.08s ease-out';
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(${0.97 + focus * 0.01})`;
-            card.style.boxShadow = `0 0.5px 1px rgba(0,0,0,0.2)`;
-        }, { passive: true });
-
-        card.addEventListener('touchmove', () => {
-            if (isPressed) {
-                isPressed = false;
-                card.style.transition = '';
-                scheduleTransformUpdate();
-            }
-        }, { passive: true });
-
-        card.addEventListener('touchend', () => {
-            if (isPressed) {
-                isPressed = false;
-                card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
-                setTimeout(() => {
-                    card.style.transition = '';
-                    scheduleTransformUpdate();
-                }, 150);
-            }
-        }, { passive: true });
-
-        card.addEventListener('touchcancel', () => {
-            isPressed = false;
-            card.style.transition = '';
-            scheduleTransformUpdate();
-        }, { passive: true });
-    });
-
-    
-    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        
-        enableCardGyroscope();
-
-        
-        if (!localStorage.getItem('gyro-permission-asked') && postCards.length > 0) {
-            const banner = document.createElement('div');
-            banner.id = 'gyro-banner';
-            banner.innerHTML = 'Tap to enable motion effects ↗';
-            banner.style.cssText = 'position:fixed;bottom:1.2em;left:50%;transform:translateX(-50%);background:var(--entry);color:var(--content);padding:0.55em 1.2em;border-radius:2em;font-size:0.85em;z-index:999;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.18);border:1px solid var(--border);opacity:0;transition:opacity 0.3s;';
-            document.body.appendChild(banner);
-            
-            setTimeout(() => { banner.style.opacity = '1'; }, 600);
-
-            banner.addEventListener('click', () => {
-                localStorage.setItem('gyro-permission-asked', '1');
-                banner.style.opacity = '0';
-                setTimeout(() => banner.remove(), 300);
-                if (!cardGyroPermissionRequested) {
-                    cardGyroPermissionRequested = true;
-                    DeviceOrientationEvent.requestPermission()
-                        .then(state => {
-                            if (state === 'granted') enableCardGyroscope();
-                        })
-                        .catch(() => { cardGyroPermissionRequested = false; });
-                }
-            });
-
-            
-            setTimeout(() => {
-                if (banner.parentNode) {
-                    banner.style.opacity = '0';
-                    setTimeout(() => banner.remove(), 300);
-                }
-            }, 8000);
-        }
-    } else {
-        
-        enableCardGyroscope();
-    }
-} else {
-    
-    
-    let currentMouseCard = null;
-    let lastMouseX = 0, lastMouseY = 0;
-
-    postCards.forEach(card => {
-        let rafId = null;
-        let isPressed = false;
-
-        card.addEventListener('mouseenter', () => {
-            currentMouseCard = card;
-            card.style.transition = 'none';
-        });
-
-        card.addEventListener('mousemove', (e) => {
-            if (isPressed) return; 
-            lastMouseX = e.clientX;
-            lastMouseY = e.clientY;
-
-            if (!rafId) {
-                rafId = requestAnimationFrame(() => {
-                    if (isPressed) { rafId = null; return; }
-                    const rect = card.getBoundingClientRect();
-                    const mouseX = lastMouseX - rect.left;
-                    const mouseY = lastMouseY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = (mouseY - centerY) / centerY * -CARD_CONFIG.maxRotation;
-                    const rotateY = (mouseX - centerX) / centerX * CARD_CONFIG.maxRotation;
-                    const normalizedY = (centerY - mouseY) / centerY;
-                    const isDarkMode = document.body.classList.contains('dark');
-                    const baseOpacity = isDarkMode ? CARD_CONFIG.shadowOpacityDark : CARD_CONFIG.shadowOpacityLight;
-                    const shadowOpacity = Math.max(0, baseOpacity + normalizedY * CARD_CONFIG.shadowOpacityRange);
-                    const glowOpacity = isDarkMode ? CARD_CONFIG.glowOpacityDark : CARD_CONFIG.glowOpacityLight;
-                    const glowColor = isDarkMode ? `rgba(251,152,204,${glowOpacity})` : `rgba(188,10,92,${glowOpacity})`;
-                    const glow = `0 0 ${CARD_CONFIG.glowBlur}px ${CARD_CONFIG.glowSpread}px ${glowColor}`;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${CARD_CONFIG.hoverLift}px)`;
-                    card.style.boxShadow = `0 ${CARD_CONFIG.shadowYOffsetHover}px ${CARD_CONFIG.shadowBlurHover}px rgba(0, 0, 0, ${shadowOpacity}), ${glow}`;
-                    rafId = null;
-                });
-            }
-        });
-
-        card.addEventListener('mousedown', () => {
-            isPressed = true;
-            card.style.transform = 'scale(0.99)';
-            card.style.boxShadow = '';
-        });
-
-        card.addEventListener('mouseup', () => {
-            isPressed = false;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            if (rafId) {
-                cancelAnimationFrame(rafId);
-                rafId = null;
-            }
-            isPressed = false;
-            card.style.transition = '';
-            card.style.transform = '';
-            card.style.boxShadow = '';
-            currentMouseCard = null;
-        });
-    });
-
-}
-
-
-const tocBox = document.querySelector('.toc');
+const tocBox = document.querySelector('details.toc');
 if (tocBox) {
-    const tocDetails = tocBox.querySelector('details');
-    if (tocDetails) {
-        tocBox.addEventListener('click', (e) => {
-            
-            if (e.target.tagName === 'A') return;
-            
-            if (e.target.closest('summary')) return;
-            tocDetails.open = !tocDetails.open;
-        });
-    }
+    tocBox.addEventListener('click', (e) => {
+        
+        if (e.target.tagName === 'A') return;
+        
+        if (e.target.closest('summary')) return;
+        tocBox.open = !tocBox.open;
+    });
 }
 </script>
 <div class="headerfooter">
@@ -1141,14 +765,18 @@ if (tocBox) {
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
-            e.preventDefault();
             var id = this.getAttribute("href").substr(1);
+            var target = null;
+            try { target = document.getElementById(decodeURIComponent(id)); } catch (_) { }
+            
+            if (!target) return;
+            e.preventDefault();
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                target.scrollIntoView({
                     behavior: "smooth"
                 });
             } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                target.scrollIntoView();
             }
             if (id === "top") {
                 history.replaceState(null, null, " ");
@@ -1160,14 +788,12 @@ if (tocBox) {
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.addEventListener('scroll', function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     });
 
@@ -1183,8 +809,6 @@ if (tocBox) {
             localStorage.setItem("pref-theme", 'dark');
         }
         const isDark = html.dataset.theme === 'dark';
-        html.classList.toggle('dark', isDark);
-        document.body.classList.toggle('dark', isDark);
         
         const giscusFrame = document.querySelector('iframe.giscus-frame');
         if (giscusFrame) {

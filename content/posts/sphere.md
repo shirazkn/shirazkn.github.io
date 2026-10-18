@@ -87,7 +87,7 @@ which means that $\mathcal L_X Y = [X, Y]$ is simply the Lie bracket of vector f
     \nabla_ X Y = \big(\nabla X + \mathcal L_ X\big) Y
     \]
     </p>
-The first of these is a $C^\infty(M)$-linear transformation of $Y$, so $\nabla _X$ can be viewed as an affine transformation, with $\mathcal L_X$ playing the role of translation. The presence of $\mathcal L_X$ destroys the linearity of $\nabla _X$, until and unless $X$ and $Y$ <i>commute</i>, in which case $\mathcal L_X Y = [X, Y] \equiv 0$.
+So, $\nabla _X$ can be viewed as the $C^\infty(M)$-linear transformation $\nabla X$ *translated* by the $C^\infty(M)$-nonlinear transformation $\mathcal L_X$. The presence of $\mathcal L_X$ destroys the linearity of $\nabla _X$, but when $X$ and $Y$ <i>commute</i>, in which case $\mathcal L_X Y = [X, Y] \equiv 0$, we have $\nabla_X Y = (\nabla X) Y$.
 
 ## Tangential Connection
 
@@ -133,7 +133,7 @@ We are ready to attempt Problem $5-5$ from Lee's book.
 
 # The Sphere
 
-A vector field $X$ is said to be a *parallel* vector field if $\nabla X$ is identically $0$. A (local) parallel coordinate frame (see [my other post](/posts/lie-groups_riemannian) for an introduction to coordinate frames) exists on (an open set of) a manifold $M$ if and only if $M$ is (locally) flat. Here, local or global flatness refers to the property of being locally or globally isometric, resp., to an open set of the Euclidean space of the same dimension. 
+A vector field $X$ is said to be a *parallel* vector field if $\nabla X$ is identically $0$. A (local) parallel coordinate frame (see [my other post](/posts/lie-groups_riemannian) for an introduction to coordinate frames) exists near a point $p$ of a manifold $M$ if and only if $M$ is (locally) flat near $p$. Here, local or global flatness refers to the property of being isometric to an open set of the Euclidean space of the same dimension near a given point or near every point, resp. 
 
 A $2$-dimensional manifold is locally flat if and only if a small piece (i.e., an open set) cut out from it can be laid flat on the table without stretching, tearing, or crumpling it. The surface of a Cylinder and the Möbius strip (with a certain, natural choice of metric for it) are examples of locally flat surfaces; this is exactly why one can construct these surfaces from a piece of paper. The crux of Problem $5-5$ is to show that such a local parallel vector field does not exist on the sphere $S^2$. (This can be compared to the difficulty of drawing a map of the Earth that does not introduce distortions of some sort.)
 
@@ -333,7 +333,7 @@ We have only shown that $(X,Y)$ is not a parallel frame, which does not preclude
 
 In the above, we worked with a specific isometric embedding of the sphere in $\mathbb R^3$, restricting our investigation to a specific choice of a metric. Could another metric be prescribed for the sphere that makes it flat (or equivalently, enables us to prescribe a local orthonormal/parallel coordinate frame)? Firstly, we belabor the point that flatness is dependent on the metric at all.
 
-**The non-flat torus:**  The 2-torus $\mathbb T^2 \cong S^1 \times S^1$ can be embedded in $\mathbb R^3$ as a donut: this is not flat, because parallel transport of a vector from inside the hole (i.e., close to the axis) of the donut to the outside (i.e., far from the axis) would need to preserve its length, posing an obstacle to the construction of a parallel coordinate frame. Equivalently, one cannot wrap a piece of paper around a donut (unless the length or width of the piece of paper were vanishingly small) without introducing creases or folds in the paper.
+**The non-flat torus:**  The 2-torus $\mathbb T^2 \cong S^1 \times S^1$ can be embedded in $\mathbb R^3$ as a donut: this is not flat, because one cannot wrap a piece of paper around a donut (unless the length or width of the piece of paper were vanishingly small) without introducing creases or folds in the paper.
 
 **The flat torus:** At the same time, the 2-torus can be embedded in $\mathbb R^4$ (analogous to how a circle can be embedded in $R^2$[^S2embedding])
 or realized as the quotient manifold $\mathbb R^2/\mathbb Z^2$. The latter two constructions would give rise to natural choices of flat metrics. We conclude that $\mathbb T^2$ admits a flat metric, but the donut (which is $\mathbb T^2$ with a specific choice of metric) is not flat. That being said, it is technically(?) possible  to isometrically embed the flat torus in $\mathbb R^3$; [these researchers](http://hevea-project.fr/ENPageToreDossierDePresse.html) are working on visualizing such an embedding, and observe that it has a self-similar, fractal-like structure, indicating that the situation is more intricate than our naive conception of the donut.
@@ -353,7 +353,7 @@ By metric compatibility of the corresponding Levi-Civita connection, we have
 
 This means that if $\langle X, X\rangle _p \neq 0$ at some point $p$, then $\langle X, X\rangle$ (and therefore, $X$) does not vanish anywhere on $S^2$. The [hairy ball theorem](https://en.wikipedia.org/wiki/Hairy_ball_theorem) says that this is impossible -- a contradiction!
 
-[^ortho]: I find it remarkable that this frame is orthogonal but not ortho*normal* (and moreover, not constant), and that in itself is enough to pose an obstruction to flatness.
+[^ortho]: I find it remarkable that this frame is orthogonal but not ortho*normal* (and moreover, not constant), and that this seemingly subtle departure from the Euclidean metric is nonetheless enough to pose an obstruction to the flatness of $S^2$.
 
 --- 
 

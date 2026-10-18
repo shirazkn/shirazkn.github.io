@@ -78,7 +78,7 @@ D_2(x,y) = \|x-y\|_2 = \sqrt{(x-y)\cdot (x-y)}
 The dot product induces the  $2$-norm which induces the Euclidean distance, so the whole gang is here.
 This is why we typically call $\mathbb R^n$ the Euclidean space; since there is only one canonical inner product for it (the dot product), we don't particularly mind restricting ourselves to the $p=2$ case because it feels somewhat natural to the space. 
 
-Thus, inner products are the rarest of them all, but also have the most structure. Metrics/distances are on the other extreme, because all Minkowski distances with $0\leq p\leq \infty$ are proper metrics, but only $p=2$ corresponds to an inner product. Norms are sandwiched in between the two in terms of their rarity; "$p$-norms" are proper norms only when $p \geq 1$.
+Thus, inner products are the rarest of them all, but also have the most structure. Metrics/distances are on the other extreme, because all Minkowski distances with $p=0$ or $1\leq p\leq \infty$ are proper metrics, but only $p=2$ corresponds to an inner product. Norms are sandwiched in between the two in terms of their rarity; "$p$-norms" are proper norms only when $p \geq 1$.
 
 <p>\[
 \text{Inner Product Spaces} \subset \text{Normed Vector Spaces} \subset \text{Metric Spaces}
@@ -87,7 +87,7 @@ Thus, inner products are the rarest of them all, but also have the most structur
 or in terms of the values for $p$, we can write
 
 <p>\[
-\lbrace 2 \rbrace \subset [1, \infty] \subset [0, \infty]
+\lbrace 2 \rbrace \subset [1, \infty] \subset \lbrace 0 \rbrace \cup [1, \infty]
 \]</p>
 
 An interesting observation which always trips me up is that metric spaces don't have to be vector spaces, or vice versa.
@@ -105,6 +105,6 @@ An interesting observation which always trips me up is that metric spaces don't 
 
 1. The [next post](/posts/pythagoras) gives some more insights. Also see my [previous post](/posts/leastsquares).
 
-1. The Euclidean space (the space $\mathbb R^n$ combined with the $2$-norm induced distance) [can be uniquely characterized by the fact that the distance-squared function is differentiable everywhere](https://mathstodon.xyz/@francisbrb/109908877121683860).
+1. Among complete Riemannian manifolds, $\mathbb R^n$ [can be characterized (up to diffeomorphism) by the fact that the distance-squared function is differentiable everywhere](https://mathstodon.xyz/@francisbrb/109908877121683860).
 
 The last one was fascinating to me because the differentiability fails not only if you change the distance function, but also if you change to a different topological space, like say, a circle! So not only is the Euclidean distance special, the Euclidean space $\mathbb R^n$ is itself quite special when equipped with the Euclidean distance.

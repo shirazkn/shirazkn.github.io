@@ -120,13 +120,13 @@ $$
 \lbrace f,g\rbrace \coloneqq \omega(X_f, X_g).
 $$
 
-It satisfies certain axioms, including versions of the Leibnitz rule and Jacobi identity. Recalling that $X_g= \frac{\partial g}{\partial q^i} \frac{\partial}{\partial q^i} - \frac{\partial g}{\partial p_i} \frac{\partial}{\partial p_i}$, we have (for the Poisson bracket inherited from the canonical symplectic structure of $T^\ast \mathcal Q$) 
+It satisfies certain axioms, including versions of the Leibnitz rule and Jacobi identity. Recalling that $X_g= \frac{\partial g}{\partial p_i} \frac{\partial}{\partial q^i} - \frac{\partial g}{\partial q^i} \frac{\partial}{\partial p_i}$, we have (for the Poisson bracket inherited from the canonical symplectic structure of $T^\ast \mathcal Q$) 
 
 <p>
 \[
     \begin{align*}
 \lbrace f, g \rbrace &= \omega(X_f, X_g) = X_g f\\
-&= \frac{\partial g}{\partial q^i} \frac{\partial f}{\partial q^i} - \frac{\partial g}{\partial p_i} \frac{\partial f}{\partial p_i}
+&=  \frac{\partial f}{\partial q^i}\frac{\partial g}{\partial p_i} - \frac{\partial g}{\partial q^i} \frac{\partial f}{\partial p_i}
 \end{align*}
 \]
 </p>
@@ -165,9 +165,10 @@ A Poisson algebra is a vector space (e.g., $C^\infty(\mathcal M)$ with pointwise
 </aside>
 
 Given a <span>general Poisson bracket</span> (i.e., one that is *not* defined in terms of a symplectic form), there may exist a function $f$ that makes $\lbrace \cdot, f\rbrace$ vanish on all the other functions. This is not allowed in the symplectic case by virtue of the non-degeneracy of $\omega$.
-An $f$ that has this property is called a <span class=accented>Casimir function</span>. For instance, the total angular momentum is a Casimir function for the Hamiltonian system describing rigid body dynamics. Due to the details given above, Casimir functions are invariant along all Hamiltonian systems on $T^\ast Q$; the angular momentum must and will be conserved! Conversely, the flow of a Casimir function preserves other functions. For instance, the Hamiltonian flow of the angular momentum function is a rotation, signifying the invariance of physical phenomena to rotation of 3D space. 
+An $f$ that has this property is called a <span class=accented>Casimir function</span>. For instance, the total angular momentum is a Casimir function for the Hamiltonian system describing rigid body dynamics. Due to the details given above, Casimir functions are invariant along all Hamiltonian systems on such a Poisson manifold; the angular momentum must and will be conserved! 
+<!-- Conversely, back on $T^\ast Q$, the Hamiltonian flow of (a component of) the angular momentum is a rotation, signifying the invariance of physical phenomena to rotation of 3D space.  -->
 
-In this setting, a proof of Noether's theorem is as follows: $\lbrace f, H \rbrace = X_H f = 0$ (i.e., $f$ is a conserved quantity) implies $\lbrace H, f \rbrace = X_f H = 0$ (i.e., $X_f$ is an infinitesimal symmetry). If the reader knows or learns more about de Rham cohomology, it will become clear why cohomology plays a role in proving one of the directions of the theorem (that is, the direction in which we start with an infinitesimal symmetry $X$).
+In this setting, a proof of Noether's theorem is as follows: $\lbrace f, H \rbrace = X_H f = 0$ (i.e., $f$ is a conserved quantity) implies $\lbrace H, f \rbrace = X_f H = 0$ (i.e., $X_f$ is an infinitesimal symmetry). If you know anything about de Rham cohomology, it should be clear why cohomology plays a role in proving one of the directions of the theorem (that is, the direction in which we start with an infinitesimal symmetry $X$).
 
 ### Momentum Maps
 

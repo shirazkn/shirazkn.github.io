@@ -1,9 +1,8 @@
 
 <script>
 (function() {
-    var theme = localStorage.getItem("pref-theme");
-    var giscusTheme = (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches))
-        ? "noborder_dark" : "noborder_light";
+    // The theme's head script has already resolved the theme onto data-theme
+    var giscusTheme = document.documentElement.dataset.theme === "dark" ? "noborder_dark" : "noborder_light";
 
     var script = document.createElement('script');
     script.src = "https://giscus.app/client.js";

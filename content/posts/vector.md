@@ -17,7 +17,7 @@ Before defining a vector space, we need to define a <span class=accented>field</
 
 A field, $K$, is a set of objects, together with two binary operations -- <span class=accented>addition</span> and <span class=accented>multiplication</span> (which we denote by '$+$' and '$\times$'), that satisfy the so-called [field axioms](https://mathworld.wolfram.com/FieldAxioms.html). The field axioms are a set of rules that establish the associativity, commutativity, and distributivity of addition and multiplication. For example, the addition operation is said to be associative if, for elements $a,b,$ and $c$ in $K$, $(a+b)+c=a+(b+c)$.  
 
-In addition, the field axioms stipulate that there be (distinct) identity elements for '$+$' and '$\times$'. In the field $\mathbb R$, we have for $a\in \mathbb R$, $a+0=a$ and $a\times 1=a$, which make $0$ and $1$ the identity elements of addition and multiplication, respectively. Addition is invertible; multiplication is invertible with one exception -- multiplication by the additive inverse [is not invertible](https://math.stackexchange.com/questions/2375545/in-a-field-why-does-the-multiplicative-identity-have-an-additive-inverse-wherea).
+In addition, the field axioms stipulate that there be (distinct) identity elements for '$+$' and '$\times$'. In the field $\mathbb R$, we have for $a\in \mathbb R$, $a+0=a$ and $a\times 1=a$, which make $0$ and $1$ the identity elements of addition and multiplication, respectively. Addition is invertible; multiplication is invertible with one exception -- multiplication by the additive identity [is not invertible](https://math.stackexchange.com/questions/2375545/in-a-field-why-does-the-multiplicative-identity-have-an-additive-inverse-wherea).
 
 <h3 id="Vector-Space">Vector Space</h3>
 

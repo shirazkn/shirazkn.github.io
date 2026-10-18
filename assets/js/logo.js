@@ -275,8 +275,9 @@ function initPointerTracking() {
 
 function init() {
   setVisualCentre();
-  posX = centreX;
-  posY = centreY;
+  touchPrimary = isTouchPrimary();
+  posX = prevX = centreX;
+  posY = prevY = centreY;
   targetX = centreX;
   targetY = centreY;
   velX = 0;
@@ -294,10 +295,23 @@ function init() {
   const logoElem = document.getElementById('logo-s');
   if (logoElem) {
     logoElem.style.opacity = 0;
-    logoElem.style.transition = 'opacity 0.7s ease';
+    logoElem.style.transition = 'opacity 0.4s ease-out';
     requestAnimationFrame(() => {
       logoElem.style.opacity = 1;
     });
+  }
+
+  // Pause SVG redraws while the logo is scrolled out of view
+  if (logoElem && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      logoVisible = entry.isIntersecting;
+      lastDrawnX = NaN;
+    }).observe(logoElem);
+  }
+
+  // Respect reduced-motion settings: draw the resting pose once and stop
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
   }
 
   // Initialize input handlers
@@ -311,24 +325,49 @@ function init() {
   }
 }
 
-let lastTime = 0;
+let lastTime = null;
+let accumulator = 0;
+let prevX, prevY;               // Physics state one step back, for interpolation
+let lastDrawnX = NaN, lastDrawnY = NaN;
+let logoVisible = true;
+let touchPrimary = false;
 
 function animate(timestamp) {
-  if (timestamp - lastTime < DT) {
-    requestAnimationFrame(animate);
-    return;
-  }
+  requestAnimationFrame(animate);
+  if (lastTime === null) lastTime = timestamp;
+
+  // Step the physics at a fixed DT so the spring feels the same at any refresh rate.
+  // Clamp elapsed time so a backgrounded tab doesn't replay seconds of physics.
+  accumulator += Math.min(timestamp - lastTime, 250);
   lastTime = timestamp;
+  while (accumulator >= DT) {
+    prevX = posX;
+    prevY = posY;
+    accelerateTowards(targetX, targetY);
+    accumulator -= DT;
+  }
 
-  // Physics update
-  accelerateTowards(targetX, targetY);
+  // Draw every frame, interpolating between physics steps (smooth at 60/120Hz)
+  const alpha = accumulator / DT;
+  const x = prevX + (posX - prevX) * alpha;
+  const y = prevY + (posY - prevY) * alpha;
 
+  // Skip redrawing the SVG while the logo is off-screen or at rest
+  if (!logoVisible) return;
+  if (Math.abs(x - lastDrawnX) < 0.01 && Math.abs(y - lastDrawnY) < 0.01) return;
+  lastDrawnX = x;
+  lastDrawnY = y;
+
+  draw(x, y);
+}
+
+function draw(x, y) {
   // Calculate keyframes
-  keyframeX = posX / centreX;
-  keyframeY = posY / centreY;
+  keyframeX = x / centreX;
+  keyframeY = y / centreY;
 
   // Amplify effect - stronger on mobile
-  const amplify = isTouchPrimary() ? 2.5 : 1.2;
+  const amplify = touchPrimary ? 2.5 : 1.2;
   const kfX = (keyframeX - 1) * amplify + 1;
   const kfY = (keyframeY - 1) * amplify + 1;
 
@@ -345,8 +384,8 @@ function animate(timestamp) {
   pinkGradient.setAttribute('y2', getKeyframedValue(0, -7, kfX) + '%');
 
   // Update transform - rotation is more pronounced on desktop, translation more on mobile
-  const rotationAmount = isTouchPrimary() ? 3 : 5;
-  const translateAmount = isTouchPrimary() ? 0.6 : 0.2;
+  const rotationAmount = touchPrimary ? 3 : 5;
+  const translateAmount = touchPrimary ? 0.6 : 0.2;
   const rotationX = getKeyframedValue(0, -rotationAmount, kfX) + 'deg';
   const rotationY = getKeyframedValue(0, rotationAmount, kfY) + 'deg';
   const translationX = getKeyframedValue(0, translateAmount, kfX) + '%';
@@ -357,10 +396,11 @@ function animate(timestamp) {
   blackPath.setAttribute('d', `M1034,366c35.5-54.894,62.83-131.321,34-185-42.55-79.227-252.733-142.207-517.087-23C269,285.116,${getKeyframedValue(206, -16, kfX)},${getKeyframedValue(475, 0, kfY)},${getKeyframedValue(299, -12, kfX)},${getKeyframedValue(544, -4, kfY)}c82.946,66.043,364.329,145.659,${getKeyframedValue(663, -5, kfX)},${getKeyframedValue(283, -12, kfY)},291.081,131.651,351.751,263.87,377.721,323.73,25.19,58.08,15.73,210.66${getKeyframedValue(-251, 12, kfX)},${getKeyframedValue(244, 8, kfY)}-281.67,35.34-428.145-31.29-568.769-91.36C380.3,1242.5,135.822,1068.23,200.539,937.684c22.031-44.44,162.2-78.073,162.2-78.073S-6.819,747.32,22.271,597.628C-8.014,706.162-5.483,791,${getKeyframedValue(46, 0, kfX)},${getKeyframedValue(917, -8, kfY)}c107.977,261.668,401.817,401.038,539.353,452.9,144.976,54.68,363.9,72.5,${getKeyframedValue(566, -12, kfX)},${getKeyframedValue(52, -8, kfY)},181.07-17.84,280.68-156.89,${getKeyframedValue(265, -4, kfX)},${getKeyframedValue(-246, -8, kfY)}-14.67-86.23-155.94-285.966${getKeyframedValue(-482, -4, kfX)}${getKeyframedValue(-417, 8, kfY)}-338.391-137.644-513.57${getKeyframedValue(-240, 8, kfY)}${getKeyframedValue(-552, 8, kfX)},${getKeyframedValue(-285, 16, kfY)}-37-43.08-85.188-130.385,159.836-262.9C773.258,87.064,902.781,136.941,968.4,177.612c74.975,46.471,36.675,132.184-14.524,184.764C951.191,361.005,1007.52,406.869,1034,366ZM856.987,381.907`);
 
   pinkPath.setAttribute('d', `M920.588,705.98A54.237,54.237,0,0,1,914,712c-68.941,54-99.809,76.651-132.779,99.385C634.878,915.185,499.363,994.707,476,1030c-28.209,42.61-106.167,144.21,129.6,261.4C263.32,1128.82,369.312,985.81,457.289,928.863c95-61.489,116.511-42.622,375.256-232.986,278.105-204.6,395.345-396.479,375.6-492.215-13.26-64.248-26.78-166.524-214.247-193.184C1111.79,26.143,1208.58,58.147,1242.6,154,1286.54,277.791,1215.4,465.893,920.588,705.98Zm73.305-695.5Q984.039,9.168,974,8,984.268,9.1,993.893,10.478Zm49.277,343.71C1000.81,422.852,929.154,494.2,851.246,558.347a1242.69,1242.69,0,0,1-136.46,101.785C678.145,684.989,643.068,706.965,612,725q-10.55,6.124-20.336,11.327C367.933,870.63,190.273,946.409,60,837,10.866,791.141-9.5,730.015,16.832,617.288,10.135,808.95,317.468,785.519,463,719q29.888-13.66,58.881-28.2C623.955,637.205,753,552.521,854.058,463.538,860.041,458.1,866.022,452.605,872,447c36.433-34.16,67.221-66.947,91.847-97.613C1000.33,301.726,1021.65,256.166,1019,217,1008.54,62.388,731,102,731,102s96.054-19,183-4C1079.18,126.489,1123.42,205.462,1043.17,354.188ZM1591,603m77,385`);
-
-  requestAnimationFrame(animate);
 }
 
 // Initialize
 window.addEventListener('load', init);
-window.addEventListener('resize', setVisualCentre);
+window.addEventListener('resize', () => {
+  setVisualCentre();
+  lastDrawnX = NaN;
+});

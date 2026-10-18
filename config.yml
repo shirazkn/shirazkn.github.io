@@ -1,5 +1,5 @@
-baseURL: https://shirazkn.github.io
-languageCode: en-us
+baseURL: https://shiraz-k.com/
+locale: en-us
 title: Shiraz
 theme: PaperMod
 publishDir: docs

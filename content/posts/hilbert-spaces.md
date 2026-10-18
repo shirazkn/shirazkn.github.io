@@ -153,14 +153,14 @@ This section is for people who might have encountered the Fourier transform befo
 (t)$.
 An orthogonal basis for $L^2([0, 1])$ is $(e_k)_{k\in \mathbb Z}$, where 
 
-$$e_k(t)=\frac{1}{\sqrt{2 \pi}}e^{2 \pi i k{t}}.$$
+$$e_k(t)=e^{2 \pi i k{t}}.$$
 
 Here, $\mathbb Z$ are the integers, which is still a countable set because we can count them as $(0, 1, -1, 2, -2, \dots)$.
 In this case, our isomorphism $T$ from $L^2([0,1])$ to $\ell^2$ is given by:
 
 $$\begin{align}
 T(f) &= \left(\langle f, e_k \rangle \right)_{k\in \mathbb Z}\\
- &= \left( \frac{1}{\sqrt{2\pi}}\int_{0}^1 f(t)e^{-2\pi i kt} dt\right)_{k\in \mathbb Z}
+ &= \left( \int_{0}^1 f(t)e^{-2\pi i kt} dt\right)_{k\in \mathbb Z}
 \end{align}$$
 
 These are exactly the Fourier coefficients (up to a constant factor, depending on how you define them)! Each coefficient tells you how much of a certain frequency is present in a signal. The way we have defined them (with proper normalization of the basis vectors) ensures that the Fourier transform $T$ is an isometric isomorphism. In fact, the observation that 

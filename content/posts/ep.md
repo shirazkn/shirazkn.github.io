@@ -176,8 +176,8 @@ Let $\xi(s) \coloneq \xi^i(s) E_i$ and $\delta\hspace{-1.5pt}\eta(s) \coloneq \d
 
 $$
 \begin{align*}
-\overline{\small\dot\xi} = \overline{\delta\hspace{-1.5pt}\eta}- \big[\hspace{2pt}\overline{\small {\delta\hspace{-1.5pt}\eta}}\hspace{0.5pt},\hspace{1pt}&\overline{\small \xi}\hspace{2pt}\big]= \overline{\delta\hspace{-1.5pt}\eta} + \overline{[\hspace{1.5pt}{\small\delta\hspace{-1.5pt}\eta}\hspace{0.5pt},\hspace{1pt} {\small \xi\hspace{1.5pt}}]}\\
-&\Downarrow \\ \dot\xi={\delta\hspace{-1.5pt}\eta} &+ {[\hspace{1.5pt}{\small\delta\hspace{-1.5pt}\eta}\hspace{0.5pt},\hspace{1pt} {\small \xi\hspace{1.5pt}}]}.
+\overline{\small\dot\xi} = \overline{\delta\hspace{-1.5pt}\eta}- \big[\hspace{2pt}\overline{\eta}\hspace{0.5pt},\hspace{1pt}&\overline{\small \xi}\hspace{2pt}\big]= \overline{\delta\hspace{-1.5pt}\eta} + \overline{[\hspace{1.5pt}{\eta}\hspace{0.5pt},\hspace{1pt} {\small \xi\hspace{1.5pt}}]}\\
+&\Downarrow \\ \dot\xi={\delta\hspace{-1.5pt}\eta} &+ {[\hspace{1.5pt}{\eta}\hspace{0.5pt},\hspace{1pt} {\small \xi\hspace{1.5pt}}]}.
 \end{align*}
 $$
 
@@ -186,7 +186,7 @@ Finally, we have something that agrees with Poincaré's note.[^alt] It agrees wi
 In the basis we chose for $\mathfrak g$, we can compute the structure constants $\lbrace c_{ij}^k\rbrace_{i,j,k=1}^r$, after which we can write
 
 $$
- \dot\xi^i  = {\delta\hspace{-1.5pt}\eta}^i \ +\ {\delta\hspace{-1.5pt}\eta}^{\hspace{0.5pt}j}\, \xi^k \,c_{jk}^i.
+ \dot\xi^i  = {\delta\hspace{-1.5pt}\eta}^i \ +\ {\eta}^{\hspace{0.5pt}j}\, \xi^k \,c_{jk}^i.
 $$
 
 # Euler-Poincaré Equations
@@ -232,8 +232,8 @@ The object ${d\mathscr A}_\gamma $ [is written](/posts/symplectic#appendix) by M
 
 $$
 \begin{align}
-&\int_0^1 \left[\frac{\partial \mathscr L'}{\partial\,\gamma^i\,}\xi^j \overline  E_j^i + \frac{\partial \mathscr L'}{\partial\,\eta^j\,}\dot\xi^j  \ +\ \frac{\partial \mathscr L'}{\partial\,\eta^i\,}{\delta\hspace{-1.5pt}\eta}^{k} \xi^j c_{jk}^i\right]\hspace{1pt} dt,\\
-&=\int_0^1 \xi^j \left[\frac{\partial \mathscr L'}{\partial\,\gamma^i\,} \overline  E_j^i - \frac{d}{dt}\left(\frac{\partial \mathscr L'}{\partial\,\eta^j\,}\right)+ \frac{\partial \mathscr L'}{\partial\,\eta^i\,} {\delta\hspace{-1.5pt}\eta}^{k}c_{jk}^i\right]\hspace{1pt} dt\\
+&\int_0^1 \left[\frac{\partial \mathscr L'}{\partial\,\gamma^i\,}\xi^j \overline  E_j^i + \frac{\partial \mathscr L'}{\partial\,\eta^j\,}\dot\xi^j  \ +\ \frac{\partial \mathscr L'}{\partial\,\eta^i\,}{\eta}^{k} \xi^j c_{jk}^i\right]\hspace{1pt} dt,\\
+&=\int_0^1 \xi^j \left[\frac{\partial \mathscr L'}{\partial\,\gamma^i\,} \overline  E_j^i - \frac{d}{dt}\left(\frac{\partial \mathscr L'}{\partial\,\eta^j\,}\right)+ \frac{\partial \mathscr L'}{\partial\,\eta^i\,} {\eta}^{k}c_{jk}^i\right]\hspace{1pt} dt\\
 &\qquad\qquad\qquad +\int_0^1  \frac{d}{dt}\left(\frac{\partial \mathscr L'}{\partial\,\eta^j\,} \xi^j\right) dt =0.
 \end{align}
 $$
@@ -248,7 +248,7 @@ For variations that fix the endpoints (I explain in the footnotes why we need th
 
 $$
 \begin{align}
-\frac{d}{dt}\left(\frac{\partial \mathscr L'}{\partial\,\eta^j\,}\right) = \frac{\partial \mathscr L'}{\partial\,\eta^i\,} {\delta\hspace{-1.5pt}\eta}^{k}c_{jk}^i + \frac{\partial \mathscr L'}{\partial\,\gamma^i\,} \overline  E_j^i .
+\frac{d}{dt}\left(\frac{\partial \mathscr L'}{\partial\,\eta^j\,}\right) = \frac{\partial \mathscr L'}{\partial\,\eta^i\,} {\eta}^{k}c_{jk}^i + \frac{\partial \mathscr L'}{\partial\,\gamma^i\,} \overline  E_j^i .
 \end{align}
 $$
 
