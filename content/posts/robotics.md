@@ -197,7 +197,7 @@ $$
 \mf 0 & 0
 \end{bmatrix}\in \mathfrak{se}(3),
 $$
-where $\mono{\Omega}fgk\in\mathfrak{so}(3)$ is a $3\times 3$ skew-symmetric matrix. As we will see, $\mono{\mf v}fgk$ is *not* the same as Tedrake's <span class=secondary>$\mono{\mf v}{f}{g}{k}$</span>; what I write as $\mono{\mf v}fgk$ is what Tedrake writes as <span class=secondary>$\mono{\mf v}{f}{g_f}{k}$</span>. I will justify my choice of notation shortly.
+where $\mono{\Omega}fgk\in\mathfrak{so}(3)$ is a $3\times 3$ skew-symmetric matrix. As we will see, $\mono{\mf v}fgk$ is *not* the same as Tedrake's <span class=secondary>$\mono{\mf v}{f}{g}{k}$</span>; what I write as $\mono{\mf v}fgk$ is what Tedrake writes as <span class=secondary>$\mono{\mf v}{f}{g_k}{k}$</span>. I will justify my choice of notation shortly.
 *<span class=tertiary>Using the notation.</span>*
 We denote the velocity of $g$ as seen from itself, with $e$ considered as the stationary frame, as
 
@@ -291,7 +291,7 @@ $$
 \mono{\mf v}{f}{g}{k}
 \end{bmatrix}
 $$
-which is the vector that Tedrake writes as <span class=secondary>$\mono{\mathrm V}{f}{g_f}{k}$</span> (recall that my $\mono{\mf v}{f}{g}{k}$ is Tedrake's <span class=secondary>$\mono{\mf v}{f}{g_f}{k}$</span>). This vee map satisfies the following property; basically the choice of basis for $\mathfrak{se}(3)$ lets us write the adjoint action as a matrix:
+which is the vector that Tedrake writes as <span class=secondary>$\mono{\mathrm V}{f}{g_k}{k}$</span> (recall that my $\mono{\mf v}{f}{g}{k}$ is Tedrake's <span class=secondary>$\mono{\mf v}{f}{g_k}{k}$</span>). This vee map satisfies the following property; basically the choice of basis for $\mathfrak{se}(3)$ lets us write the adjoint action as a matrix:
 <p style="text-align: center">
 <span class=boxed style="text-align: center">
 $$
@@ -336,7 +336,7 @@ $$
 ## <span class=tertiary>Appendix A.</span> The Two Definitions
 This begs the question of what the term <span class=tertiary>$\mono {\mf v}ABC$</span> even means, in Tedrake's notation. In his notation, what I am claiming is that
 $
-\mono{\mf v}{A}{C_A}A = \mono{\mf v}{A}{B_A}A + \mono{\mf v}{B}{C_B}A
+\mono{\mf v}{A}{C_A}A = \mono{\mf v}{A}{B_A}A + \mono{\mf v}{B}{C_A}A
 $, which is true! In other words, my <span style="color:var(--primary)">$\mono{\mf v}{A}{B}A$</span> is what Tedrake writes as $\mono{\mf v}{A}{B_A}A$. Note that $\mono{\boldsymbol\omega}ABA=\mono{\boldsymbol\omega}A{B_A}A$ in both of our notations, but
 
 <div style="text-align: center; padding-bottom:1em">

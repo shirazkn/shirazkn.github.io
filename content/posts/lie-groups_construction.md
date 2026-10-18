@@ -119,7 +119,7 @@ By the defining property of a normal subgroup, we have that $g\odot H \odot g^{-
 
 The fact that $H$ is normal makes this definition independent of the choice of representatives, $g_1$ and $g_2$. 
 
-An example of a quotient group is $\mathbb R^2/\mathbb Z^2$, where $\mathbb Z^2$ is the integer lattice in $\mathbb R^2$ considered as a group under addition. Topologically, $\mathbb R^2/\mathbb Z^2$ is a torus, and can be used to model for instance the repeating pattern of a crystal structure or a tesselation. Another example is $SO(3)/SO(2)$, which is topologically a $2$-sphere (i.e., the surface of a ball in $\mathbb R^3$). Notice that the subgroup of rotations that stabilize a given point on the sphere is isomorphic to $SO(2)$.
+An example of a quotient group is $\mathbb R^2/\mathbb Z^2$, where $\mathbb Z^2$ is the integer lattice in $\mathbb R^2$ considered as a group under addition. Topologically, $\mathbb R^2/\mathbb Z^2$ is a torus, and can be used to model for instance the repeating pattern of a crystal structure or a tesselation. On the other hand, $SO(3)/SO(2)$ is not a quotient group (since $SO(2)$ is not a normal subgroup of $SO(3)$), but it is a homogeneous space that is topologically a $2$-sphere (i.e., the surface of a ball in $\mathbb R^3$). Notice that the subgroup of rotations that stabilize a given point on the sphere is isomorphic to $SO(2)$.
 
 ---
 
